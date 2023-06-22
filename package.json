@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "client": "yarn workspace @serverless-app-scaffold/client",
-    "cms": "yarn workspace @serverless-app-scaffold/cms"
+    "cms": "yarn workspace @serverless-app-scaffold/cms",
+    "heroku-postbuild": "./heroku.build"
   }
 }
