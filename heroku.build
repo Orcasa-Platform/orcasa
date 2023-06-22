@@ -10,10 +10,6 @@ if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
 fi
 
 (
-  PROJECT_ROOT="$(cd $(dirname $0)/..; pwd)"
-
-  cd $PROJECT_ROOT
-
   if [ "$BUILD_ENV" = "cms" ]; then
     yarn workspace @serverless-app-scaffold/cms build
   elif [ "$BUILD_ENV" = "client" ]; then
