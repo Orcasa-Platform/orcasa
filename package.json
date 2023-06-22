@@ -10,5 +10,8 @@
     "client": "yarn workspace @serverless-app-scaffold/client",
     "cms": "yarn workspace @serverless-app-scaffold/cms",
     "heroku-postbuild": "./heroku.build"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
