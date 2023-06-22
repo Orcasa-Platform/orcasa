@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "metadata",
+  "info": {
+    "singularName": "metadatum",
+    "pluralName": "metadata",
+    "displayName": "Metadata"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dataset": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dataset.dataset",
+      "inversedBy": "metadatum"
+    }
+  }
+}
