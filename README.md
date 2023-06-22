@@ -6,3 +6,19 @@ This is a scaffold for a serverless app. It contains the next:
 * Dataset and layer management
 * CMS for data management: layers, datasets, legend and metadata
 * An default layout of sidebar and map
+
+## Client
+
+Start the client with:
+
+```bash
+yarn client dev
+```
+
+## Server CMS
+
+Start the server with:
+
+```bash
+yarn cms develop
+```
