@@ -4,14 +4,15 @@
   "info": {
     "singularName": "layer",
     "pluralName": "layers",
-    "displayName": "Layer"
+    "displayName": "Layer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "dataset": {

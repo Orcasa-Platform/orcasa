@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "dataset_group": {

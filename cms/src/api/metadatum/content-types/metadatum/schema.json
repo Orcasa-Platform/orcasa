@@ -4,7 +4,8 @@
   "info": {
     "singularName": "metadatum",
     "pluralName": "metadata",
-    "displayName": "Metadata"
+    "displayName": "Metadata",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,35 @@
       "relation": "oneToOne",
       "target": "api::dataset.dataset",
       "inversedBy": "metadatum"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "source": {
+      "type": "richtext"
+    },
+    "citation": {
+      "type": "richtext"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "time_intervals": {
+      "type": "enumeration",
+      "enum": [
+        "daily",
+        "monthly",
+        "yearly",
+        "quarterly",
+        "other"
+      ]
+    },
+    "data_download": {
+      "type": "richtext"
     }
   }
 }
