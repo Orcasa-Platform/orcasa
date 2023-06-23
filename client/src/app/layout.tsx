@@ -1,5 +1,9 @@
-import './globals.css';
+import '@/styles/globals.css';
+import '@/styles/mapbox.css';
+
 import { Inter } from 'next/font/google';
+
+import Providers from '@/app/providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,10 +14,10 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main>{children}</main>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </Providers>
   );
 }
