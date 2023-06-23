@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deck_gl_layers",
+  "info": {
+    "singularName": "deck-gl-layer",
+    "pluralName": "deck-gl-layers",
+    "displayName": "Deck.gl Layer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "config": {
+      "type": "json",
+      "required": true
+    },
+    "dataset": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dataset.dataset",
+      "inversedBy": "deckgl_layers"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "params_config": {
+      "type": "json"
+    },
+    "legend_config": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

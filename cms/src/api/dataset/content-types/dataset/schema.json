@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "dataset_group": {
       "type": "relation",
@@ -21,16 +22,22 @@
       "target": "api::dataset-group.dataset-group",
       "inversedBy": "datasets"
     },
-    "layers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::layer.layer",
-      "mappedBy": "dataset"
-    },
     "metadatum": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::metadatum.metadatum",
+      "mappedBy": "dataset"
+    },
+    "deckgl_layers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::deck-gl-layer.deck-gl-layer",
+      "mappedBy": "dataset"
+    },
+    "mapbox_layers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mapbox-layer.mapbox-layer",
       "mappedBy": "dataset"
     }
   }

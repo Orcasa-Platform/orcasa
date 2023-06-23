@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mapbox_layers",
+  "info": {
+    "singularName": "mapbox-layer",
+    "pluralName": "mapbox-layers",
+    "displayName": "Mapbox Layer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dataset": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dataset.dataset",
+      "inversedBy": "mapbox_layers"
+    },
+    "source": {
+      "type": "json",
+      "required": true
+    },
+    "params_config": {
+      "type": "json"
+    },
+    "styles": {
+      "type": "json"
+    },
+    "legend_config": {
+      "type": "json",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
