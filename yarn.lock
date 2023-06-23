@@ -3206,6 +3206,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@serverless-app-scaffold/client@workspace:client"
   dependencies:
+    "@t3-oss/env-nextjs": 0.4.1
     "@types/node": 20.3.1
     "@types/react": 18.2.12
     "@types/react-dom": 18.2.5
@@ -3216,6 +3217,7 @@ __metadata:
     postcss: 8.4.24
     react: 18.2.0
     react-dom: 18.2.0
+    react-map-gl: 7.0.25
     tailwindcss: 3.3.2
     typescript: 5.1.3
   languageName: unknown
@@ -3942,6 +3944,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@t3-oss/env-core@npm:0.4.1":
+  version: 0.4.1
+  resolution: "@t3-oss/env-core@npm:0.4.1"
+  peerDependencies:
+    typescript: ">=4.7.2"
+    zod: ^3.0.0
+  checksum: 169287d50f74b9aea494e60af82e868618850dad64532786f16c573f868bf66cd21653a027780b5b66f1f5907a7f4c247bb47b3fbad7fe3595ce689781c43195
+  languageName: node
+  linkType: hard
+
+"@t3-oss/env-nextjs@npm:0.4.1":
+  version: 0.4.1
+  resolution: "@t3-oss/env-nextjs@npm:0.4.1"
+  dependencies:
+    "@t3-oss/env-core": 0.4.1
+  peerDependencies:
+    typescript: ">=4.7.2"
+    zod: ^3.0.0
+  checksum: bb2557c4fd7be2a2dcaa21d095c0dc99222a238543fddc3058ed2549c6d479918626102772dddda25a0d0293df6b6d7222d2e08956643b38aac0645cb90a48fc
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:2":
   version: 2.0.0
   resolution: "@tootallnate/once@npm:2.0.0"
@@ -4073,6 +4097,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/geojson@npm:*":
+  version: 7946.0.10
+  resolution: "@types/geojson@npm:7946.0.10"
+  checksum: 12c407c2dc93ecb26c08af533ee732f1506a9b29456616ba7ba1d525df96206c28ddf44a528f6a5415d7d22893e9d967420940a9c095ee5e539c1eba5fefc1f4
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:^7.1.1":
   version: 7.2.0
   resolution: "@types/glob@npm:7.2.0"
@@ -4173,6 +4204,15 @@ __metadata:
   version: 4.14.195
   resolution: "@types/lodash@npm:4.14.195"
   checksum: 39b75ca635b3fa943d17d3d3aabc750babe4c8212485a4df166fe0516e39288e14b0c60afc6e21913cc0e5a84734633c71e617e2bd14eaa1cf51b8d7799c432e
+  languageName: node
+  linkType: hard
+
+"@types/mapbox-gl@npm:^2.6.0":
+  version: 2.7.11
+  resolution: "@types/mapbox-gl@npm:2.7.11"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 7da2b92dfffeec188996bc70bf1b6e7571a39a98a70c65487454d63538cfd7a675504eeb263ef91954a6ca26a852d40f8ac5c1aa8c967a41a99221bdb8517814
   languageName: node
   linkType: hard
 
@@ -13414,6 +13454,18 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-map-gl@npm:7.0.25":
+  version: 7.0.25
+  resolution: "react-map-gl@npm:7.0.25"
+  dependencies:
+    "@types/mapbox-gl": ^2.6.0
+  peerDependencies:
+    mapbox-gl: "*"
+    react: ">=16.3.0"
+  checksum: c52624629f781e2c16e8f3bf340e26aa842287475f873cf66acc1c8bd72024063c5e0939212a8a0316e3bd9fe523158ff39bc7c968b936efc6f1d35faf18f484
   languageName: node
   linkType: hard
 
