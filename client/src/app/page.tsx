@@ -6,6 +6,17 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col space-y-10 p-5">
@@ -32,6 +43,24 @@ export default function Home() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+
+      <Popover>
+        <PopoverTrigger>Open popover</PopoverTrigger>
+        <PopoverContent>Place content for the popover here.</PopoverContent>
+      </Popover>
+
+      <Dialog>
+        <DialogTrigger>Open Dialog</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account and remove
+              your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }
