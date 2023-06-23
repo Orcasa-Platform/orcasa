@@ -117,4 +117,4 @@ build
 ############################
 # Plugins
 ############################
-extensions/documentation/**/documentation/*.json
+src/extensions/documentation/documentation/**/*.json
