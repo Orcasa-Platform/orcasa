@@ -1,8 +1,12 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import { useMap } from 'react-map-gl';
+import { LngLatBoundsLike, useMap } from 'react-map-gl';
+
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+
+import { bboxAtom, tmpBboxAtom } from '@/store/index.';
 
 import { Bbox } from '@/types/map';
 
@@ -31,6 +35,29 @@ export default function MapContainer() {
 
   const { [id]: map } = useMap();
 
+  const bbox = useRecoilValue(bboxAtom);
+  const tmpBbox = useRecoilValue(tmpBboxAtom);
+
+  const setBbox = useSetRecoilState(bboxAtom);
+  const setTmpBbox = useSetRecoilState(tmpBboxAtom);
+
+  const tmpBounds: CustomMapProps['bounds'] = useMemo(() => {
+    if (tmpBbox) {
+      return {
+        bbox: tmpBbox,
+        options: {
+          padding: {
+            top: 50,
+            bottom: 50,
+            // left: sidebarOpen ? 640 + 50 : 50,
+            left: 50,
+            right: 50,
+          },
+        },
+      };
+    }
+  }, [tmpBbox]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleViewState = useCallback(() => {
     if (map) {
       const b = map
@@ -41,18 +68,22 @@ export default function MapContainer() {
           return parseFloat(v.toFixed(2));
         }) as Bbox;
 
-      // setBbox(b as Bbox);
-      // setTmpBbox(null);
+      setBbox(b);
+      setTmpBbox(null);
     }
-  }, [
-    map, //setBbox, setTmpBbox
-  ]);
+  }, [map, setBbox, setTmpBbox]);
 
   return (
     <div className="h-screen w-screen">
       <Map
         id={id}
-        initialViewState={initialViewState}
+        initialViewState={{
+          ...initialViewState,
+          ...(bbox && {
+            bounds: bbox as LngLatBoundsLike,
+          }),
+        }}
+        bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
         onMapViewStateChange={handleViewState}
