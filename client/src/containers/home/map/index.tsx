@@ -4,6 +4,8 @@ import { useCallback, useMemo } from 'react';
 
 import { LngLatBoundsLike, useMap } from 'react-map-gl';
 
+import dynamic from 'next/dynamic';
+
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { bboxAtom, tmpBboxAtom } from '@/store/index.';
@@ -14,6 +16,10 @@ import Map from '@/components/map';
 import Controls from '@/components/map/controls';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
+
+const LayerManager = dynamic(() => import('@/containers/home/map/layer-manager'), {
+  ssr: false,
+});
 
 const DEFAULT_PROPS: CustomMapProps = {
   id: 'default',
@@ -93,6 +99,8 @@ export default function MapContainer() {
             <Controls className="absolute right-5 top-12 z-40 space-y-10 sm:right-6 sm:top-6">
               <ZoomControl />
             </Controls>
+
+            <LayerManager />
           </>
         )}
       </Map>
