@@ -4,11 +4,13 @@
   "private": true,
   "workspaces": [
     "client",
-    "cms"
+    "cms",
+    "types"
   ],
   "scripts": {
     "client": "yarn workspace @serverless-app-scaffold/client",
     "cms": "yarn workspace @serverless-app-scaffold/cms",
+    "types": "yarn workspace @serverless-app-scaffold/types",
     "heroku-postbuild": "./heroku.build"
   },
   "engines": {
