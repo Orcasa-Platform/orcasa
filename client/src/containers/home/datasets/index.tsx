@@ -1,10 +1,29 @@
 'use client';
 
-import { useGetDatasetGroups } from '@serverless-app-scaffold/types/generated/dataset-group';
+import { useGetDatasets } from '@serverless-app-scaffold/types/generated/dataset';
+
+import env from '@/env.mjs';
 
 export default function Datasets() {
-  const { data: datasetGroupsData } = useGetDatasetGroups();
-  console.log(datasetGroupsData);
+  const { data: datasetData } = useGetDatasets(
+    {
+      populate: '*',
+    },
+    {
+      axios: {
+        baseURL: env.NEXT_PUBLIC_API_URL,
+      },
+      query: {
+        select(data) {
+          return data.data;
+        },
+      },
+    }
+  );
+
+  console.info({
+    datasetData,
+  });
 
   return (
     <main className="absolute">

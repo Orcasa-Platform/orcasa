@@ -1,13 +1,14 @@
 'use client';
 
-import { PropsWithChildren, useCallback, useState } from 'react';
+import { PropsWithChildren, useCallback, useState, cache } from 'react';
 
 import { MapProvider } from 'react-map-gl';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 
-import { Deserialize, RecoilURLSyncNext, Serialize } from '@/lib/recoil';
+import { RecoilURLSyncNext } from '@/lib/recoil';
+import type { Deserialize, Serialize } from '@/lib/recoil';
 import RecoilDevTools from '@/lib/recoil/devtools';
 
 import { TooltipProvider } from '@/components/ui/tooltip';
