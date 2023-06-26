@@ -1,9 +1,10 @@
 'use client';
 
-import { PropsWithChildren, useCallback } from 'react';
+import { PropsWithChildren, useCallback, useState } from 'react';
 
 import { MapProvider } from 'react-map-gl';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RecoilRoot } from 'recoil';
 
 import { Deserialize, RecoilURLSyncNext, Serialize } from '@/lib/recoil';
@@ -12,6 +13,8 @@ import RecoilDevTools from '@/lib/recoil/devtools';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 export default function Providers({ children }: PropsWithChildren) {
+  const [queryClient] = useState(() => new QueryClient());
+
   const serialize: Serialize = useCallback((x) => {
     return x === undefined ? '' : JSON.stringify(x);
   }, []);
@@ -22,18 +25,20 @@ export default function Providers({ children }: PropsWithChildren) {
   }, []);
 
   return (
-    <RecoilRoot>
-      <RecoilURLSyncNext
-        location={{ part: 'queryParams' }}
-        serialize={serialize}
-        deserialize={deserialize}
-      >
-        <RecoilDevTools />
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <RecoilURLSyncNext
+          location={{ part: 'queryParams' }}
+          serialize={serialize}
+          deserialize={deserialize}
+        >
+          <RecoilDevTools />
 
-        <TooltipProvider>
-          <MapProvider>{children}</MapProvider>
-        </TooltipProvider>
-      </RecoilURLSyncNext>
-    </RecoilRoot>
+          <TooltipProvider>
+            <MapProvider>{children}</MapProvider>
+          </TooltipProvider>
+        </RecoilURLSyncNext>
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
