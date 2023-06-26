@@ -16,7 +16,7 @@ const LayerManager = () => {
         getColor={(d) => [Math.sqrt(d.inbound + d.outbound), 140, 0]}
         getSourcePosition={(d) => d.from.coordinates}
         getTargetPosition={(d) => d.to.coordinates}
-        getWidth={8}
+        getWidth={5}
         pickable
         beforeId="admin-1-boundary-bg"
         settings={{
@@ -32,7 +32,7 @@ const LayerManager = () => {
         data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf.h3cells.json"
         extruded={true}
         getHexagon={(d) => d.hex}
-        getFillColor={(d) => [255, 140, 0]}
+        getFillColor={(d) => [d.count, 140, 0]}
         getElevation={(d) => d.count}
         elevationScale={100}
         pickable
