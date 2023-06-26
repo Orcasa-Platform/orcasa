@@ -13,11 +13,6 @@ export default function Datasets() {
       axios: {
         baseURL: env.NEXT_PUBLIC_API_URL,
       },
-      query: {
-        select(data) {
-          return data.data;
-        },
-      },
     }
   );
 
