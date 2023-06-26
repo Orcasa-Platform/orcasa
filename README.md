@@ -22,3 +22,11 @@ Start the server with:
 ```bash
 yarn cms develop
 ```
+
+## Types for API
+
+To generate the types for the API, run:
+
+```bash
+yarn types build
+```
