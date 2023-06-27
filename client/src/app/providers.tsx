@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren, useCallback, useState, cache } from 'react';
+import { PropsWithChildren, useCallback, useState } from 'react';
 
 import { MapProvider } from 'react-map-gl';
 

@@ -4531,6 +4531,7 @@ __metadata:
     "@serverless-app-scaffold/types": "workspace:^"
     "@t3-oss/env-nextjs": 0.4.1
     "@tanstack/react-query": ^4.29.18
+    "@types/d3-array": 3.0.5
     "@types/node": 20.3.1
     "@types/react": 18.2.12
     "@types/react-dom": 18.2.5
@@ -4540,6 +4541,7 @@ __metadata:
     axios: ^1.4.0
     class-variance-authority: ^0.6.0
     clsx: ^1.2.1
+    d3-array: 3.2.4
     deck.gl: 8.9.19
     eslint: 8.42.0
     eslint-config-next: 13.4.5
@@ -5817,6 +5819,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: fe81351470f2d3165e8b12ce33542eef89ea893e36dd62e8f7d72566dfb7e448376ae962f9f3ea888547ce8b55a40020ca0e01d637fab5d99567673084542641
+  languageName: node
+  linkType: hard
+
+"@types/d3-array@npm:3.0.5":
+  version: 3.0.5
+  resolution: "@types/d3-array@npm:3.0.5"
+  checksum: c0014042f75dc77ff4749f6a7a78074aa73e63e5b6a985ac79a0abf3e3d943b19ddd3fbfcfcd11124f25b7f4b97cd0948eec84b2e0783cd617b49c593de695f0
   languageName: node
   linkType: hard
 
@@ -8872,7 +8881,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-array@npm:2 - 3, d3-array@npm:2.10.0 - 3, d3-array@npm:^3.2.0":
+"d3-array@npm:2 - 3, d3-array@npm:2.10.0 - 3, d3-array@npm:3.2.4, d3-array@npm:^3.2.0":
   version: 3.2.4
   resolution: "d3-array@npm:3.2.4"
   dependencies:

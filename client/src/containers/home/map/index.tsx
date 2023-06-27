@@ -37,7 +37,7 @@ const DEFAULT_PROPS: CustomMapProps = {
 };
 
 export default function MapContainer() {
-  const { id, initialViewState, minZoom, maxZoom, mapStyle } = DEFAULT_PROPS;
+  const { id, initialViewState, minZoom, maxZoom } = DEFAULT_PROPS;
 
   const { [id]: map } = useMap();
 

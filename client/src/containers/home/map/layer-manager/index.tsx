@@ -1,12 +1,7 @@
 'use client';
 
 import { H3HexagonLayer, H3HexagonLayerProps } from '@deck.gl/geo-layers/typed';
-import {
-  LineLayer,
-  LineLayerProps,
-  ScatterplotLayer,
-  ScatterplotLayerProps,
-} from '@deck.gl/layers/typed';
+import { LineLayerProps, ScatterplotLayer, ScatterplotLayerProps } from '@deck.gl/layers/typed';
 
 import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
 import DeckLayer from '@/components/map/layers/deck-layer';
