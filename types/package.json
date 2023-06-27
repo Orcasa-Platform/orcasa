@@ -4,14 +4,11 @@
   "version": "0.1.0",
   "description": "Types generated from Strapi models",
   "scripts": {
-    "build": "orval --config ./orval.config.ts"
-  },
-  "dependencies": {
-    "@tanstack/react-query": "^4.29.17",
-    "axios": "^1.4.0"
+    "build": "orval --config ./orval.config.ts && yarn workspace @serverless-app-scaffold/client lint --fix --dir src/types/generated"
   },
   "devDependencies": {
     "orval": "^6.16.0",
+    "prettier": "^2.8.8",
     "typescript": "5.1.3"
   },
   "engines": {
