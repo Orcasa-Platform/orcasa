@@ -23,7 +23,7 @@ export const mapSettingsAtom = atom({
   ],
 });
 
-// Map settings
+// Map viewport
 export const bboxAtom = atom<readonly [number, number, number, number] | null | undefined>({
   key: 'bbox',
   default: null,
@@ -37,4 +37,10 @@ export const bboxAtom = atom<readonly [number, number, number, number] | null | 
 export const tmpBboxAtom = atom<[number, number, number, number] | null>({
   key: 'tmp-bbox',
   default: null,
+});
+
+// Sidebar and menus
+export const sidebarOpenAtom = atom({
+  key: 'sidebar-open',
+  default: true,
 });

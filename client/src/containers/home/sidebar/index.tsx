@@ -1,15 +1,19 @@
 'use client';
 
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { ChevronLeft } from 'lucide-react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
+
+import { sidebarOpenAtom } from '@/store/index.';
 
 import { Button } from '@/components/ui/button';
 
 export default function Sidebar({ children }: PropsWithChildren) {
-  const [open, setOpen] = useState(true);
+  const open = useRecoilValue(sidebarOpenAtom);
+  const setOpen = useSetRecoilState(sidebarOpenAtom);
 
   return (
     <div
