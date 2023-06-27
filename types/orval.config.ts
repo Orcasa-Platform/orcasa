@@ -8,10 +8,14 @@ module.exports = {
       clean: true,
       prettier: true,
       override: {
+        mutator: {
+          path: '../client/src/services/api/index.ts',
+          name: 'API',
+        },
         query: {
           useQuery: true,
           useInfinite: true,
-          useInfiniteQueryParam: 'nextId',
+          useInfiniteQueryParam: "'pagination[page]'",
           useMutation: true,
           options: {
             staleTime: 10000,

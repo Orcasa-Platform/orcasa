@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 
-import { useGetDatasets } from '@serverless-app-scaffold/types/generated/dataset';
+import { useGetDatasets } from '@/types/generated/dataset';
 import { ChevronLeft } from 'lucide-react';
-
-import env from '@/env.mjs';
 
 import { cn } from '@/lib/classnames';
 
@@ -13,16 +11,8 @@ import { Button } from '@/components/ui/button';
 
 export default function Datasets() {
   const [open, setOpen] = useState(true);
-  const { data: datasetData } = useGetDatasets(
-    {
-      populate: '*',
-    },
-    {
-      axios: {
-        baseURL: env.NEXT_PUBLIC_API_URL,
-      },
-    }
-  );
+  const { data: datasetData } = useGetDatasets({ populate: '*' });
+  console.log({ datasetData });
 
   return (
     <div
@@ -54,7 +44,7 @@ export default function Datasets() {
         <h2>Datasets</h2>
 
         <ul>
-          {datasetData?.data?.data?.map((dataset) => {
+          {datasetData?.data?.map((dataset) => {
             return (
               <li key={dataset.id}>
                 <h3>{dataset.attributes?.title}</h3>
