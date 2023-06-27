@@ -6,6 +6,18 @@ module.exports = {
       target: './generated/strapi.ts',
       mock: false,
       clean: true,
+      prettier: true,
+      override: {
+        query: {
+          useQuery: true,
+          useInfinite: true,
+          useInfiniteQueryParam: 'nextId',
+          useMutation: true,
+          options: {
+            staleTime: 10000,
+          },
+        },
+      },
     },
     input: {
       target: '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
