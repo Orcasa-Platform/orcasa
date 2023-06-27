@@ -32,7 +32,7 @@ const DEFAULT_PROPS: CustomMapProps = {
     bounds: [-122.519, 37.7045, -122.355, 37.829],
   },
   minZoom: 2,
-  maxZoom: 10,
+  maxZoom: 20,
   // mapStyle: MAPBOX_STYLES.explore,
 };
 

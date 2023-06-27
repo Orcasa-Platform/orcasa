@@ -1,8 +1,14 @@
 'use client';
 
 import { H3HexagonLayer, H3HexagonLayerProps } from '@deck.gl/geo-layers/typed';
-import { LineLayer, LineLayerProps } from '@deck.gl/layers/typed';
+import {
+  LineLayer,
+  LineLayerProps,
+  ScatterplotLayer,
+  ScatterplotLayerProps,
+} from '@deck.gl/layers/typed';
 
+import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
 import DeckLayer from '@/components/map/layers/deck-layer';
 import MapboxLayer from '@/components/map/layers/mapbox-layer';
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
@@ -49,16 +55,39 @@ const LayerManager = () => {
         }}
       />
 
-      <DeckLayer<LineLayerProps>
-        id="line-layer"
-        type={LineLayer}
-        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-segments.json"
-        getColor={(d) => [Math.sqrt(d.inbound + d.outbound), 140, 0]}
-        getSourcePosition={(d) => d.from.coordinates}
-        getTargetPosition={(d) => d.to.coordinates}
-        getWidth={5}
+      <DeckJsonLayer<LineLayerProps>
+        id="deck-json-layer"
+        beforeId="poi-label"
+        layer={{
+          '@@type': 'LineLayer',
+          data: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-segments.json',
+          getColor: [255, 0, 0],
+          getSourcePosition: '@@=from.coordinates',
+          getTargetPosition: '@@=to.coordinates',
+          getWidth: 5,
+          pickable: true,
+        }}
+        settings={{
+          opacity: 1,
+          visibility: true,
+        }}
+        onHover={(info) => console.info(info)}
+      />
+
+      <DeckLayer<ScatterplotLayerProps>
+        id="scatterplot-layer"
+        type={ScatterplotLayer}
+        data="https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/bart-stations.json"
+        getFillColor={[255, 140, 0]}
+        getLineColor={[0, 0, 0]}
+        getPosition={(d) => d.coordinates}
+        getRadius={(d) => Math.sqrt(d.exits)}
+        lineWidthMinPixels={1}
+        radiusMaxPixels={100}
+        radiusMinPixels={1}
+        radiusScale={6}
+        stroked
         pickable
-        beforeId="admin-1-boundary-bg"
         settings={{
           opacity: 1,
           visibility: true,

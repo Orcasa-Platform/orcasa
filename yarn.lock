@@ -4511,6 +4511,7 @@ __metadata:
   resolution: "@serverless-app-scaffold/client@workspace:client"
   dependencies:
     "@deck.gl/geo-layers": 8.9.19
+    "@deck.gl/json": 8.9.19
     "@deck.gl/layers": 8.9.19
     "@deck.gl/mapbox": 8.9.19
     "@hookform/resolvers": ^3.1.1

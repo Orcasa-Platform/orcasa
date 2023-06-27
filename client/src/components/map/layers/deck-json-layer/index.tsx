@@ -4,34 +4,41 @@ import { useEffect } from 'react';
 
 import { Layer } from 'react-map-gl';
 
+import { JSONConverter } from '@deck.gl/json/typed';
+
 import { LayerProps, Settings } from '@/types/map';
 
 import { useDeckMapboxOverlayContext } from '@/components/map/provider';
 
-export type DeckLayerProps<T, S> = LayerProps<S> &
-  T & {
-    type: any;
+const JSON_CONFIGURATION = {
+  layers: Object.assign(
+    //
+    {},
+    require('@deck.gl/layers'),
+    require('@deck.gl/aggregation-layers')
+  ),
+};
+
+const JSON_CONVERTER = new JSONConverter({ configuration: JSON_CONFIGURATION });
+
+export type DeckJsonLayerProps<T, S> = LayerProps<S> &
+  Partial<T> & {
+    layer: any;
   };
 
-const DeckLayer = <T extends unknown>({
+const DeckJsonLayer = <T extends unknown>({
   id,
-  settings,
   beforeId,
-  type,
-  ...props
-}: DeckLayerProps<T, Settings>) => {
+  layer,
+}: DeckJsonLayerProps<T, Settings>) => {
   // Render deck layer
   const i = `${id}-deck`;
   const { addLayer, removeLayer } = useDeckMapboxOverlayContext();
 
   useEffect(() => {
-    const ly = new type({
-      ...props,
-      id: i,
-      beforeId,
-    });
-    addLayer(ly);
-  }, [i, beforeId, type, props, addLayer]);
+    const ly = JSON_CONVERTER.convert(layer);
+    addLayer(ly.clone({ id: i, beforeId }));
+  }, [i, beforeId, layer, addLayer]);
 
   useEffect(() => {
     return () => {
@@ -52,4 +59,4 @@ const DeckLayer = <T extends unknown>({
   );
 };
 
-export default DeckLayer;
+export default DeckJsonLayer;

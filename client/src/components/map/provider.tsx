@@ -36,15 +36,10 @@ export const DeckMapboxOverlayProvider = ({ children }: PropsWithChildren) => {
 
   const addLayer = useCallback(
     (layer: any) => {
-      const l1 = new layer.type({
-        ...layer,
-        getPolygonOffset: () => [0, -100000000 + layer.zIndex * 1000],
-      });
-
-      const newLayers = [...layersRef.current.filter((l) => l.id !== layer.id), l1];
+      const newLayers = [...layersRef.current.filter((l) => l.id !== layer.id), layer];
 
       layersRef.current = newLayers;
-      OVERLAY.setProps({ layers: newLayers });
+      return OVERLAY.setProps({ layers: newLayers });
     },
     [OVERLAY]
   );
