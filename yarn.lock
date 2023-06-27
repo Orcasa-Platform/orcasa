@@ -4506,7 +4506,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless-app-scaffold/client@workspace:client":
+"@serverless-app-scaffold/client@workspace:^, @serverless-app-scaffold/client@workspace:client":
   version: 0.0.0-use.local
   resolution: "@serverless-app-scaffold/client@workspace:client"
   dependencies:
@@ -4581,9 +4581,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@serverless-app-scaffold/types@workspace:types"
   dependencies:
+    "@serverless-app-scaffold/client": "workspace:^"
     "@tanstack/react-query": ^4.29.17
     axios: ^1.4.0
     orval: ^6.16.0
+    prettier: ^2.8.8
     typescript: 5.1.3
   languageName: unknown
   linkType: soft

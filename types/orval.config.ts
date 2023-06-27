@@ -3,7 +3,7 @@ module.exports = {
     output: {
       mode: 'tags',
       client: 'react-query',
-      target: './generated/strapi.ts',
+      target: '../client/src/types/generated/strapi.ts',
       mock: false,
       clean: true,
       prettier: true,
@@ -24,6 +24,9 @@ module.exports = {
       filters: {
         tags: ['Dataset', 'Dataset-group', 'Deck-gl-layer', 'Mapbox-layer', 'Metadatum'],
       },
-    }
+    },
+    hooks: {
+      afterAllFilesWrite: 'prettier --write',
+    },
   }
 }
