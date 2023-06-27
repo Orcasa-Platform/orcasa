@@ -4,17 +4,20 @@
  * DOCUMENTATION
  * OpenAPI spec version: 1.0.0
  */
-import axios from 'axios';
-import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
   UseQueryOptions,
+  UseInfiniteQueryOptions,
   UseMutationOptions,
   QueryFunction,
   MutationFunction,
   UseQueryResult,
+  UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
+import axios from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+
 import type {
   MapboxLayerListResponse,
   Error,
@@ -25,7 +28,7 @@ import type {
 
 export const getMapboxLayers = (
   params?: GetMapboxLayersParams,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<MapboxLayerListResponse>> => {
   return axios.get(`/mapbox-layers`, {
     ...options,
@@ -36,15 +39,65 @@ export const getMapboxLayers = (
 export const getGetMapboxLayersQueryKey = (params?: GetMapboxLayersParams) =>
   [`/mapbox-layers`, ...(params ? [params] : [])] as const;
 
+export const getGetMapboxLayersInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMapboxLayers>>,
+  TError = AxiosError<Error>
+>(
+  params?: GetMapboxLayersParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getMapboxLayers>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getMapboxLayers>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions, axios: axiosOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetMapboxLayersQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMapboxLayers>>> = ({
+    signal,
+    pageParam,
+  }) => getMapboxLayers({ nextId: pageParam, ...params }, { signal, ...axiosOptions });
+
+  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
+};
+
+export type GetMapboxLayersInfiniteQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getMapboxLayers>>
+>;
+export type GetMapboxLayersInfiniteQueryError = AxiosError<Error>;
+
+export const useGetMapboxLayersInfinite = <
+  TData = Awaited<ReturnType<typeof getMapboxLayers>>,
+  TError = AxiosError<Error>
+>(
+  params?: GetMapboxLayersParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getMapboxLayers>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetMapboxLayersInfiniteQueryOptions(params, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
+
 export const getGetMapboxLayersQueryOptions = <
   TData = Awaited<ReturnType<typeof getMapboxLayers>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   params?: GetMapboxLayersParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getMapboxLayers>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryOptions<Awaited<ReturnType<typeof getMapboxLayers>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -55,7 +108,7 @@ export const getGetMapboxLayersQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getMapboxLayers>>> = ({ signal }) =>
     getMapboxLayers(params, { signal, ...axiosOptions });
 
-  return { queryKey, queryFn, ...queryOptions };
+  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
 };
 
 export type GetMapboxLayersQueryResult = NonNullable<Awaited<ReturnType<typeof getMapboxLayers>>>;
@@ -63,13 +116,13 @@ export type GetMapboxLayersQueryError = AxiosError<Error>;
 
 export const useGetMapboxLayers = <
   TData = Awaited<ReturnType<typeof getMapboxLayers>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   params?: GetMapboxLayersParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getMapboxLayers>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetMapboxLayersQueryOptions(params, options);
 
@@ -82,14 +135,14 @@ export const useGetMapboxLayers = <
 
 export const postMapboxLayers = (
   mapboxLayerRequest: MapboxLayerRequest,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<MapboxLayerResponse>> => {
   return axios.post(`/mapbox-layers`, mapboxLayerRequest, options);
 };
 
 export const getPostMapboxLayersMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postMapboxLayers>>,
@@ -139,22 +192,70 @@ export const usePostMapboxLayers = <TError = AxiosError<Error>, TContext = unkno
 };
 export const getMapboxLayersId = (
   id: number,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<MapboxLayerResponse>> => {
   return axios.get(`/mapbox-layers/${id}`, options);
 };
 
 export const getGetMapboxLayersIdQueryKey = (id: number) => [`/mapbox-layers/${id}`] as const;
 
+export const getGetMapboxLayersIdInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMapboxLayersId>>,
+  TError = AxiosError<Error>
+>(
+  id: number,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getMapboxLayersId>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getMapboxLayersId>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions, axios: axiosOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetMapboxLayersIdQueryKey(id);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMapboxLayersId>>> = ({ signal }) =>
+    getMapboxLayersId(id, { signal, ...axiosOptions });
+
+  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
+};
+
+export type GetMapboxLayersIdInfiniteQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getMapboxLayersId>>
+>;
+export type GetMapboxLayersIdInfiniteQueryError = AxiosError<Error>;
+
+export const useGetMapboxLayersIdInfinite = <
+  TData = Awaited<ReturnType<typeof getMapboxLayersId>>,
+  TError = AxiosError<Error>
+>(
+  id: number,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getMapboxLayersId>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetMapboxLayersIdInfiniteQueryOptions(id, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
+
 export const getGetMapboxLayersIdQueryOptions = <
   TData = Awaited<ReturnType<typeof getMapboxLayersId>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   id: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getMapboxLayersId>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryOptions<Awaited<ReturnType<typeof getMapboxLayersId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -165,7 +266,7 @@ export const getGetMapboxLayersIdQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getMapboxLayersId>>> = ({ signal }) =>
     getMapboxLayersId(id, { signal, ...axiosOptions });
 
-  return { queryKey, queryFn, enabled: !!id, ...queryOptions };
+  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
 
 export type GetMapboxLayersIdQueryResult = NonNullable<
@@ -175,13 +276,13 @@ export type GetMapboxLayersIdQueryError = AxiosError<Error>;
 
 export const useGetMapboxLayersId = <
   TData = Awaited<ReturnType<typeof getMapboxLayersId>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   id: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getMapboxLayersId>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetMapboxLayersIdQueryOptions(id, options);
 
@@ -195,14 +296,14 @@ export const useGetMapboxLayersId = <
 export const putMapboxLayersId = (
   id: number,
   mapboxLayerRequest: MapboxLayerRequest,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<MapboxLayerResponse>> => {
   return axios.put(`/mapbox-layers/${id}`, mapboxLayerRequest, options);
 };
 
 export const getPutMapboxLayersIdMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof putMapboxLayersId>>,
@@ -252,14 +353,14 @@ export const usePutMapboxLayersId = <TError = AxiosError<Error>, TContext = unkn
 };
 export const deleteMapboxLayersId = (
   id: number,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<number>> => {
   return axios.delete(`/mapbox-layers/${id}`, options);
 };
 
 export const getDeleteMapboxLayersIdMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof deleteMapboxLayersId>>,

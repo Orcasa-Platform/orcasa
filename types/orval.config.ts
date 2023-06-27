@@ -24,9 +24,6 @@ module.exports = {
       filters: {
         tags: ['Dataset', 'Dataset-group', 'Deck-gl-layer', 'Mapbox-layer', 'Metadatum'],
       },
-    },
-    hooks: {
-      afterAllFilesWrite: 'prettier --write',
-    },
+    }
   }
 }

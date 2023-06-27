@@ -4,17 +4,20 @@
  * DOCUMENTATION
  * OpenAPI spec version: 1.0.0
  */
-import axios from 'axios';
-import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
   UseQueryOptions,
+  UseInfiniteQueryOptions,
   UseMutationOptions,
   QueryFunction,
   MutationFunction,
   UseQueryResult,
+  UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
+import axios from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+
 import type {
   DeckGlLayerListResponse,
   Error,
@@ -25,7 +28,7 @@ import type {
 
 export const getDeckGlLayers = (
   params?: GetDeckGlLayersParams,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DeckGlLayerListResponse>> => {
   return axios.get(`/deck-gl-layers`, {
     ...options,
@@ -36,15 +39,65 @@ export const getDeckGlLayers = (
 export const getGetDeckGlLayersQueryKey = (params?: GetDeckGlLayersParams) =>
   [`/deck-gl-layers`, ...(params ? [params] : [])] as const;
 
+export const getGetDeckGlLayersInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getDeckGlLayers>>,
+  TError = AxiosError<Error>
+>(
+  params?: GetDeckGlLayersParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDeckGlLayers>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDeckGlLayers>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions, axios: axiosOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetDeckGlLayersQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getDeckGlLayers>>> = ({
+    signal,
+    pageParam,
+  }) => getDeckGlLayers({ nextId: pageParam, ...params }, { signal, ...axiosOptions });
+
+  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
+};
+
+export type GetDeckGlLayersInfiniteQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getDeckGlLayers>>
+>;
+export type GetDeckGlLayersInfiniteQueryError = AxiosError<Error>;
+
+export const useGetDeckGlLayersInfinite = <
+  TData = Awaited<ReturnType<typeof getDeckGlLayers>>,
+  TError = AxiosError<Error>
+>(
+  params?: GetDeckGlLayersParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDeckGlLayers>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetDeckGlLayersInfiniteQueryOptions(params, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
+
 export const getGetDeckGlLayersQueryOptions = <
   TData = Awaited<ReturnType<typeof getDeckGlLayers>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   params?: GetDeckGlLayersParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDeckGlLayers>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryOptions<Awaited<ReturnType<typeof getDeckGlLayers>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -55,7 +108,7 @@ export const getGetDeckGlLayersQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getDeckGlLayers>>> = ({ signal }) =>
     getDeckGlLayers(params, { signal, ...axiosOptions });
 
-  return { queryKey, queryFn, ...queryOptions };
+  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
 };
 
 export type GetDeckGlLayersQueryResult = NonNullable<Awaited<ReturnType<typeof getDeckGlLayers>>>;
@@ -63,13 +116,13 @@ export type GetDeckGlLayersQueryError = AxiosError<Error>;
 
 export const useGetDeckGlLayers = <
   TData = Awaited<ReturnType<typeof getDeckGlLayers>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   params?: GetDeckGlLayersParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDeckGlLayers>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDeckGlLayersQueryOptions(params, options);
 
@@ -82,14 +135,14 @@ export const useGetDeckGlLayers = <
 
 export const postDeckGlLayers = (
   deckGlLayerRequest: DeckGlLayerRequest,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DeckGlLayerResponse>> => {
   return axios.post(`/deck-gl-layers`, deckGlLayerRequest, options);
 };
 
 export const getPostDeckGlLayersMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postDeckGlLayers>>,
@@ -139,22 +192,70 @@ export const usePostDeckGlLayers = <TError = AxiosError<Error>, TContext = unkno
 };
 export const getDeckGlLayersId = (
   id: number,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DeckGlLayerResponse>> => {
   return axios.get(`/deck-gl-layers/${id}`, options);
 };
 
 export const getGetDeckGlLayersIdQueryKey = (id: number) => [`/deck-gl-layers/${id}`] as const;
 
+export const getGetDeckGlLayersIdInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getDeckGlLayersId>>,
+  TError = AxiosError<Error>
+>(
+  id: number,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDeckGlLayersId>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDeckGlLayersId>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions, axios: axiosOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetDeckGlLayersIdQueryKey(id);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getDeckGlLayersId>>> = ({ signal }) =>
+    getDeckGlLayersId(id, { signal, ...axiosOptions });
+
+  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
+};
+
+export type GetDeckGlLayersIdInfiniteQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getDeckGlLayersId>>
+>;
+export type GetDeckGlLayersIdInfiniteQueryError = AxiosError<Error>;
+
+export const useGetDeckGlLayersIdInfinite = <
+  TData = Awaited<ReturnType<typeof getDeckGlLayersId>>,
+  TError = AxiosError<Error>
+>(
+  id: number,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDeckGlLayersId>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetDeckGlLayersIdInfiniteQueryOptions(id, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
+
 export const getGetDeckGlLayersIdQueryOptions = <
   TData = Awaited<ReturnType<typeof getDeckGlLayersId>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   id: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDeckGlLayersId>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryOptions<Awaited<ReturnType<typeof getDeckGlLayersId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -165,7 +266,7 @@ export const getGetDeckGlLayersIdQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getDeckGlLayersId>>> = ({ signal }) =>
     getDeckGlLayersId(id, { signal, ...axiosOptions });
 
-  return { queryKey, queryFn, enabled: !!id, ...queryOptions };
+  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
 
 export type GetDeckGlLayersIdQueryResult = NonNullable<
@@ -175,13 +276,13 @@ export type GetDeckGlLayersIdQueryError = AxiosError<Error>;
 
 export const useGetDeckGlLayersId = <
   TData = Awaited<ReturnType<typeof getDeckGlLayersId>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   id: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDeckGlLayersId>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDeckGlLayersIdQueryOptions(id, options);
 
@@ -195,14 +296,14 @@ export const useGetDeckGlLayersId = <
 export const putDeckGlLayersId = (
   id: number,
   deckGlLayerRequest: DeckGlLayerRequest,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DeckGlLayerResponse>> => {
   return axios.put(`/deck-gl-layers/${id}`, deckGlLayerRequest, options);
 };
 
 export const getPutDeckGlLayersIdMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof putDeckGlLayersId>>,
@@ -252,14 +353,14 @@ export const usePutDeckGlLayersId = <TError = AxiosError<Error>, TContext = unkn
 };
 export const deleteDeckGlLayersId = (
   id: number,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<number>> => {
   return axios.delete(`/deck-gl-layers/${id}`, options);
 };
 
 export const getDeleteDeckGlLayersIdMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof deleteDeckGlLayersId>>,

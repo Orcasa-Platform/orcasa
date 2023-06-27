@@ -4,17 +4,20 @@
  * DOCUMENTATION
  * OpenAPI spec version: 1.0.0
  */
-import axios from 'axios';
-import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
   UseQueryOptions,
+  UseInfiniteQueryOptions,
   UseMutationOptions,
   QueryFunction,
   MutationFunction,
   UseQueryResult,
+  UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
+import axios from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+
 import type {
   DatasetGroupListResponse,
   Error,
@@ -25,7 +28,7 @@ import type {
 
 export const getDatasetGroups = (
   params?: GetDatasetGroupsParams,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DatasetGroupListResponse>> => {
   return axios.get(`/dataset-groups`, {
     ...options,
@@ -36,15 +39,65 @@ export const getDatasetGroups = (
 export const getGetDatasetGroupsQueryKey = (params?: GetDatasetGroupsParams) =>
   [`/dataset-groups`, ...(params ? [params] : [])] as const;
 
+export const getGetDatasetGroupsInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getDatasetGroups>>,
+  TError = AxiosError<Error>
+>(
+  params?: GetDatasetGroupsParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions, axios: axiosOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetDatasetGroupsQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetGroups>>> = ({
+    signal,
+    pageParam,
+  }) => getDatasetGroups({ nextId: pageParam, ...params }, { signal, ...axiosOptions });
+
+  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
+};
+
+export type GetDatasetGroupsInfiniteQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getDatasetGroups>>
+>;
+export type GetDatasetGroupsInfiniteQueryError = AxiosError<Error>;
+
+export const useGetDatasetGroupsInfinite = <
+  TData = Awaited<ReturnType<typeof getDatasetGroups>>,
+  TError = AxiosError<Error>
+>(
+  params?: GetDatasetGroupsParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetDatasetGroupsInfiniteQueryOptions(params, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
+
 export const getGetDatasetGroupsQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetGroups>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   params?: GetDatasetGroupsParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -55,7 +108,7 @@ export const getGetDatasetGroupsQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetGroups>>> = ({ signal }) =>
     getDatasetGroups(params, { signal, ...axiosOptions });
 
-  return { queryKey, queryFn, ...queryOptions };
+  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
 };
 
 export type GetDatasetGroupsQueryResult = NonNullable<Awaited<ReturnType<typeof getDatasetGroups>>>;
@@ -63,13 +116,13 @@ export type GetDatasetGroupsQueryError = AxiosError<Error>;
 
 export const useGetDatasetGroups = <
   TData = Awaited<ReturnType<typeof getDatasetGroups>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   params?: GetDatasetGroupsParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetGroupsQueryOptions(params, options);
 
@@ -82,14 +135,14 @@ export const useGetDatasetGroups = <
 
 export const postDatasetGroups = (
   datasetGroupRequest: DatasetGroupRequest,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DatasetGroupResponse>> => {
   return axios.post(`/dataset-groups`, datasetGroupRequest, options);
 };
 
 export const getPostDatasetGroupsMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postDatasetGroups>>,
@@ -139,22 +192,70 @@ export const usePostDatasetGroups = <TError = AxiosError<Error>, TContext = unkn
 };
 export const getDatasetGroupsId = (
   id: number,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DatasetGroupResponse>> => {
   return axios.get(`/dataset-groups/${id}`, options);
 };
 
 export const getGetDatasetGroupsIdQueryKey = (id: number) => [`/dataset-groups/${id}`] as const;
 
+export const getGetDatasetGroupsIdInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getDatasetGroupsId>>,
+  TError = AxiosError<Error>
+>(
+  id: number,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions, axios: axiosOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetDatasetGroupsIdQueryKey(id);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetGroupsId>>> = ({ signal }) =>
+    getDatasetGroupsId(id, { signal, ...axiosOptions });
+
+  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
+};
+
+export type GetDatasetGroupsIdInfiniteQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getDatasetGroupsId>>
+>;
+export type GetDatasetGroupsIdInfiniteQueryError = AxiosError<Error>;
+
+export const useGetDatasetGroupsIdInfinite = <
+  TData = Awaited<ReturnType<typeof getDatasetGroupsId>>,
+  TError = AxiosError<Error>
+>(
+  id: number,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData>;
+    axios?: AxiosRequestConfig;
+  }
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetDatasetGroupsIdInfiniteQueryOptions(id, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
+
 export const getGetDatasetGroupsIdQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetGroupsId>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   id: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -165,7 +266,7 @@ export const getGetDatasetGroupsIdQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetGroupsId>>> = ({ signal }) =>
     getDatasetGroupsId(id, { signal, ...axiosOptions });
 
-  return { queryKey, queryFn, enabled: !!id, ...queryOptions };
+  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
 
 export type GetDatasetGroupsIdQueryResult = NonNullable<
@@ -175,13 +276,13 @@ export type GetDatasetGroupsIdQueryError = AxiosError<Error>;
 
 export const useGetDatasetGroupsId = <
   TData = Awaited<ReturnType<typeof getDatasetGroupsId>>,
-  TError = AxiosError<Error>,
+  TError = AxiosError<Error>
 >(
   id: number,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData>;
     axios?: AxiosRequestConfig;
-  },
+  }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetGroupsIdQueryOptions(id, options);
 
@@ -195,14 +296,14 @@ export const useGetDatasetGroupsId = <
 export const putDatasetGroupsId = (
   id: number,
   datasetGroupRequest: DatasetGroupRequest,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<DatasetGroupResponse>> => {
   return axios.put(`/dataset-groups/${id}`, datasetGroupRequest, options);
 };
 
 export const getPutDatasetGroupsIdMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof putDatasetGroupsId>>,
@@ -252,14 +353,14 @@ export const usePutDatasetGroupsId = <TError = AxiosError<Error>, TContext = unk
 };
 export const deleteDatasetGroupsId = (
   id: number,
-  options?: AxiosRequestConfig,
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<number>> => {
   return axios.delete(`/dataset-groups/${id}`, options);
 };
 
 export const getDeleteDatasetGroupsIdMutationOptions = <
   TError = AxiosError<Error>,
-  TContext = unknown,
+  TContext = unknown
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof deleteDatasetGroupsId>>,
