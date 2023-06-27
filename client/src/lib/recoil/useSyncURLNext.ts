@@ -23,6 +23,7 @@ export function useSyncURLNext(
     replaceURL: useCallback(
       (url: string) => {
         const u = decodedQueryParams ? decodeURIComponent(url) : url;
+        // window.history.replaceState({}, '', u);
         return replace(u, { shallow: true });
       },
       [decodedQueryParams, replace]

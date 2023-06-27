@@ -52,6 +52,17 @@ export default function Datasets() {
 
       <div className="prose flex grow flex-col overflow-y-auto">
         <h2>Datasets</h2>
+
+        <ul>
+          {datasetData?.data?.data?.map((dataset) => {
+            return (
+              <li key={dataset.id}>
+                <h3>{dataset.attributes?.title}</h3>
+                <p>{dataset.attributes?.publishedAt}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );
