@@ -29,7 +29,7 @@ const DEFAULT_PROPS: CustomMapProps = {
     zoom: 2,
     pitch: 0,
     bearing: 0,
-    bounds: [-122.519, 37.7045, -122.355, 37.829],
+    bounds: [-159.86, 6.31, -65.75, 60.67],
   },
   minZoom: 2,
   maxZoom: 20,

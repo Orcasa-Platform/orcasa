@@ -26,7 +26,7 @@ module.exports = {
     input: {
       target: '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
       filters: {
-        tags: ['Dataset', 'Dataset-group', 'Deck-gl-layer', 'Mapbox-layer', 'Metadatum'],
+        tags: ['Dataset', 'Dataset-group', 'Layer', 'Metadatum'],
       },
     }
   }

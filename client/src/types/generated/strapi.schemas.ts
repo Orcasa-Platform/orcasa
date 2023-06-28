@@ -47,50 +47,7 @@ export type GetMetadataParams = {
   locale?: string;
 };
 
-export type GetMapboxLayersParams = {
-  /**
-   * Sort by attributes ascending (asc) or descending (desc)
-   */
-  sort?: string;
-  /**
-   * Return page/pageSize (default: true)
-   */
-  'pagination[withCount]'?: boolean;
-  /**
-   * Page number (default: 0)
-   */
-  'pagination[page]'?: number;
-  /**
-   * Page size (default: 25)
-   */
-  'pagination[pageSize]'?: number;
-  /**
-   * Offset value (default: 0)
-   */
-  'pagination[start]'?: number;
-  /**
-   * Number of entities to return (default: 25)
-   */
-  'pagination[limit]'?: number;
-  /**
-   * Fields to return (ex: title,author)
-   */
-  fields?: string;
-  /**
-   * Relations to return
-   */
-  populate?: string;
-  /**
-   * Filters to apply
-   */
-  filters?: { [key: string]: any };
-  /**
-   * Locale to apply
-   */
-  locale?: string;
-};
-
-export type GetDeckGlLayersParams = {
+export type GetLayersParams = {
   /**
    * Sort by attributes ascending (asc) or descending (desc)
    */
@@ -315,22 +272,6 @@ export type MetadatumUpdatedBy = {
   data?: MetadatumUpdatedByData;
 };
 
-export interface Metadatum {
-  dataset?: MetadatumDataset;
-  description: string;
-  source?: string;
-  citation?: string;
-  start_date?: string;
-  end_date?: string;
-  time_intervals?: MetadatumTimeIntervals;
-  data_download?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: MetadatumCreatedBy;
-  updatedBy?: MetadatumUpdatedBy;
-}
-
 export type MetadatumCreatedByDataAttributes = { [key: string]: any };
 
 export type MetadatumCreatedByData = {
@@ -354,19 +295,6 @@ export const MetadatumTimeIntervals = {
   other: 'other',
 } as const;
 
-export type MetadatumDatasetDataAttributes = {
-  title?: string;
-  dataset_group?: MetadatumDatasetDataAttributesDatasetGroup;
-  metadatum?: MetadatumDatasetDataAttributesMetadatum;
-  deckgl_layers?: MetadatumDatasetDataAttributesDeckglLayers;
-  mapbox_layers?: MetadatumDatasetDataAttributesMapboxLayers;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: MetadatumDatasetDataAttributesCreatedBy;
-  updatedBy?: MetadatumDatasetDataAttributesUpdatedBy;
-};
-
 export type MetadatumDatasetData = {
   id?: number;
   attributes?: MetadatumDatasetDataAttributes;
@@ -375,6 +303,22 @@ export type MetadatumDatasetData = {
 export type MetadatumDataset = {
   data?: MetadatumDatasetData;
 };
+
+export interface Metadatum {
+  dataset?: MetadatumDataset;
+  description: string;
+  source?: string;
+  citation?: string;
+  start_date?: string;
+  end_date?: string;
+  time_intervals?: MetadatumTimeIntervals;
+  data_download?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: MetadatumCreatedBy;
+  updatedBy?: MetadatumUpdatedBy;
+}
 
 export type MetadatumDatasetDataAttributesUpdatedByDataAttributes = { [key: string]: any };
 
@@ -398,146 +342,90 @@ export type MetadatumDatasetDataAttributesCreatedBy = {
   data?: MetadatumDatasetDataAttributesCreatedByData;
 };
 
-export type MetadatumDatasetDataAttributesMapboxLayersDataItem = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributes;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayers = {
-  data?: MetadatumDatasetDataAttributesMapboxLayersDataItem[];
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedBy = {
-  data?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByData;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesCreatedBy = {
-  data?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByData;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesDatasetDataAttributes = {
-  [key: string]: any;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesDatasetData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesDatasetDataAttributes;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesDataset = {
-  data?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesDatasetData;
-};
-
-export type MetadatumDatasetDataAttributesMapboxLayersDataItemAttributes = {
-  dataset?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesDataset;
-  source?: unknown;
-  params_config?: unknown;
-  styles?: unknown;
-  legend_config?: unknown;
+export type MetadatumDatasetDataAttributesLayersDataItemAttributes = {
   title?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesCreatedBy;
-  updatedBy?: MetadatumDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedBy;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItem = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributes;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayers = {
-  data?: MetadatumDatasetDataAttributesDeckglLayersDataItem[];
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedBy = {
-  data?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByData;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesCreatedBy = {
-  data?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByData;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesDatasetDataAttributes = {
-  [key: string]: any;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesDatasetData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesDatasetDataAttributes;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesDataset = {
-  data?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesDatasetData;
-};
-
-export type MetadatumDatasetDataAttributesDeckglLayersDataItemAttributes = {
+  type?: MetadatumDatasetDataAttributesLayersDataItemAttributesType;
+  dataset?: MetadatumDatasetDataAttributesLayersDataItemAttributesDataset;
   config?: unknown;
-  dataset?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesDataset;
-  title?: string;
   params_config?: unknown;
   legend_config?: unknown;
+  interaction_config?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesCreatedBy;
-  updatedBy?: MetadatumDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedBy;
+  createdBy?: MetadatumDatasetDataAttributesLayersDataItemAttributesCreatedBy;
+  updatedBy?: MetadatumDatasetDataAttributesLayersDataItemAttributesUpdatedBy;
 };
 
-export type MetadatumDatasetDataAttributesMetadatumData = {
+export type MetadatumDatasetDataAttributesLayersDataItem = {
   id?: number;
-  attributes?: MetadatumDatasetDataAttributesMetadatumDataAttributes;
+  attributes?: MetadatumDatasetDataAttributesLayersDataItemAttributes;
 };
 
-export type MetadatumDatasetDataAttributesMetadatum = {
-  data?: MetadatumDatasetDataAttributesMetadatumData;
+export type MetadatumDatasetDataAttributesLayers = {
+  data?: MetadatumDatasetDataAttributesLayersDataItem[];
 };
 
-export type MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes = {
+export type MetadatumDatasetDataAttributes = {
+  title?: string;
+  dataset_group?: MetadatumDatasetDataAttributesDatasetGroup;
+  metadatum?: MetadatumDatasetDataAttributesMetadatum;
+  layers?: MetadatumDatasetDataAttributesLayers;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: MetadatumDatasetDataAttributesCreatedBy;
+  updatedBy?: MetadatumDatasetDataAttributesUpdatedBy;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByData = {
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesUpdatedByData = {
   id?: number;
-  attributes?: MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes;
+  attributes?: MetadatumDatasetDataAttributesLayersDataItemAttributesUpdatedByDataAttributes;
 };
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesUpdatedBy = {
+  data?: MetadatumDatasetDataAttributesLayersDataItemAttributesUpdatedByData;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesCreatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesCreatedByData = {
+  id?: number;
+  attributes?: MetadatumDatasetDataAttributesLayersDataItemAttributesCreatedByDataAttributes;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesCreatedBy = {
+  data?: MetadatumDatasetDataAttributesLayersDataItemAttributesCreatedByData;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesDatasetDataAttributes = {
+  [key: string]: any;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesDatasetData = {
+  id?: number;
+  attributes?: MetadatumDatasetDataAttributesLayersDataItemAttributesDatasetDataAttributes;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesDataset = {
+  data?: MetadatumDatasetDataAttributesLayersDataItemAttributesDatasetData;
+};
+
+export type MetadatumDatasetDataAttributesLayersDataItemAttributesType =
+  (typeof MetadatumDatasetDataAttributesLayersDataItemAttributesType)[keyof typeof MetadatumDatasetDataAttributesLayersDataItemAttributesType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const MetadatumDatasetDataAttributesLayersDataItemAttributesType = {
+  deckgl: 'deckgl',
+  mapbox: 'mapbox',
+  carto: 'carto',
+} as const;
 
 export type MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedBy = {
   data?: MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByData;
@@ -557,6 +445,24 @@ export type MetadatumDatasetDataAttributesMetadatumDataAttributes = {
   publishedAt?: string;
   createdBy?: MetadatumDatasetDataAttributesMetadatumDataAttributesCreatedBy;
   updatedBy?: MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedBy;
+};
+
+export type MetadatumDatasetDataAttributesMetadatumData = {
+  id?: number;
+  attributes?: MetadatumDatasetDataAttributesMetadatumDataAttributes;
+};
+
+export type MetadatumDatasetDataAttributesMetadatum = {
+  data?: MetadatumDatasetDataAttributesMetadatumData;
+};
+
+export type MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByData = {
+  id?: number;
+  attributes?: MetadatumDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes;
 };
 
 export type MetadatumDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes = {
@@ -597,21 +503,6 @@ export type MetadatumDatasetDataAttributesMetadatumDataAttributesDataset = {
   data?: MetadatumDatasetDataAttributesMetadatumDataAttributesDatasetData;
 };
 
-export type MetadatumDatasetDataAttributesDatasetGroupDataAttributes = {
-  title?: string;
-  datasets?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesDatasets;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedBy;
-  updatedBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy;
-};
-
-export type MetadatumDatasetDataAttributesDatasetGroupData = {
-  id?: number;
-  attributes?: MetadatumDatasetDataAttributesDatasetGroupDataAttributes;
-};
-
 export type MetadatumDatasetDataAttributesDatasetGroup = {
   data?: MetadatumDatasetDataAttributesDatasetGroupData;
 };
@@ -629,23 +520,6 @@ export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy = 
   data?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData;
 };
 
-export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy;
-};
-
 export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByData = {
   id?: number;
   attributes?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes;
@@ -653,6 +527,21 @@ export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDat
 
 export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedBy = {
   data?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByData;
+};
+
+export type MetadatumDatasetDataAttributesDatasetGroupDataAttributes = {
+  title?: string;
+  datasets?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesDatasets;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedBy;
+  updatedBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy;
+};
+
+export type MetadatumDatasetDataAttributesDatasetGroupData = {
+  id?: number;
+  attributes?: MetadatumDatasetDataAttributesDatasetGroupDataAttributes;
 };
 
 export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
@@ -704,6 +593,23 @@ export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDat
 
 export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles = {
   data?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem[];
+};
+
+export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy;
+  updatedBy?: MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy;
 };
 
 export type MetadatumDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
@@ -877,273 +783,227 @@ export interface MetadatumRequest {
   data: MetadatumRequestData;
 }
 
-export type MapboxLayerResponseMeta = { [key: string]: any };
+export type LayerResponseMeta = { [key: string]: any };
 
-export interface MapboxLayerResponseDataObject {
+export interface LayerResponseDataObject {
   id?: number;
-  attributes?: MapboxLayer;
+  attributes?: Layer;
 }
 
-export interface MapboxLayerResponse {
-  data?: MapboxLayerResponseDataObject;
-  meta?: MapboxLayerResponseMeta;
+export interface LayerResponse {
+  data?: LayerResponseDataObject;
+  meta?: LayerResponseMeta;
 }
 
-export type MapboxLayerUpdatedByDataAttributes = { [key: string]: any };
+export type LayerUpdatedByDataAttributes = { [key: string]: any };
 
-export type MapboxLayerUpdatedByData = {
+export type LayerUpdatedByData = {
   id?: number;
-  attributes?: MapboxLayerUpdatedByDataAttributes;
+  attributes?: LayerUpdatedByDataAttributes;
 };
 
-export type MapboxLayerUpdatedBy = {
-  data?: MapboxLayerUpdatedByData;
+export type LayerUpdatedBy = {
+  data?: LayerUpdatedByData;
 };
 
-export type MapboxLayerCreatedByDataAttributes = { [key: string]: any };
-
-export type MapboxLayerCreatedByData = {
-  id?: number;
-  attributes?: MapboxLayerCreatedByDataAttributes;
-};
-
-export type MapboxLayerCreatedBy = {
-  data?: MapboxLayerCreatedByData;
-};
-
-export type MapboxLayerDatasetData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributes;
-};
-
-export type MapboxLayerDataset = {
-  data?: MapboxLayerDatasetData;
-};
-
-export interface MapboxLayer {
-  dataset?: MapboxLayerDataset;
-  source: unknown;
-  params_config?: unknown;
-  styles?: unknown;
-  legend_config: unknown;
+export interface Layer {
   title: string;
+  type: LayerType;
+  dataset?: LayerDataset;
+  config: unknown;
+  params_config?: unknown;
+  legend_config: unknown;
+  interaction_config?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: MapboxLayerCreatedBy;
-  updatedBy?: MapboxLayerUpdatedBy;
+  createdBy?: LayerCreatedBy;
+  updatedBy?: LayerUpdatedBy;
 }
 
-export type MapboxLayerDatasetDataAttributesUpdatedByDataAttributes = { [key: string]: any };
+export type LayerCreatedByDataAttributes = { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesUpdatedByData = {
+export type LayerCreatedByData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesUpdatedByDataAttributes;
+  attributes?: LayerCreatedByDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesUpdatedBy = {
-  data?: MapboxLayerDatasetDataAttributesUpdatedByData;
+export type LayerCreatedBy = {
+  data?: LayerCreatedByData;
 };
 
-export type MapboxLayerDatasetDataAttributesCreatedByData = {
+export type LayerDatasetData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesCreatedByDataAttributes;
+  attributes?: LayerDatasetDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesCreatedBy = {
-  data?: MapboxLayerDatasetDataAttributesCreatedByData;
+export type LayerDataset = {
+  data?: LayerDatasetData;
 };
 
-export type MapboxLayerDatasetDataAttributes = {
+export type LayerDatasetDataAttributesUpdatedByDataAttributes = { [key: string]: any };
+
+export type LayerDatasetDataAttributesUpdatedByData = {
+  id?: number;
+  attributes?: LayerDatasetDataAttributesUpdatedByDataAttributes;
+};
+
+export type LayerDatasetDataAttributesUpdatedBy = {
+  data?: LayerDatasetDataAttributesUpdatedByData;
+};
+
+export type LayerDatasetDataAttributesCreatedByDataAttributes = { [key: string]: any };
+
+export type LayerDatasetDataAttributesCreatedByData = {
+  id?: number;
+  attributes?: LayerDatasetDataAttributesCreatedByDataAttributes;
+};
+
+export type LayerDatasetDataAttributesCreatedBy = {
+  data?: LayerDatasetDataAttributesCreatedByData;
+};
+
+export type LayerDatasetDataAttributesLayersDataItem = {
+  id?: number;
+  attributes?: LayerDatasetDataAttributesLayersDataItemAttributes;
+};
+
+export type LayerDatasetDataAttributesLayers = {
+  data?: LayerDatasetDataAttributesLayersDataItem[];
+};
+
+export type LayerDatasetDataAttributes = {
   title?: string;
-  dataset_group?: MapboxLayerDatasetDataAttributesDatasetGroup;
-  metadatum?: MapboxLayerDatasetDataAttributesMetadatum;
-  deckgl_layers?: MapboxLayerDatasetDataAttributesDeckglLayers;
-  mapbox_layers?: MapboxLayerDatasetDataAttributesMapboxLayers;
+  dataset_group?: LayerDatasetDataAttributesDatasetGroup;
+  metadatum?: LayerDatasetDataAttributesMetadatum;
+  layers?: LayerDatasetDataAttributesLayers;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: MapboxLayerDatasetDataAttributesCreatedBy;
-  updatedBy?: MapboxLayerDatasetDataAttributesUpdatedBy;
+  createdBy?: LayerDatasetDataAttributesCreatedBy;
+  updatedBy?: LayerDatasetDataAttributesUpdatedBy;
 };
 
-export type MapboxLayerDatasetDataAttributesCreatedByDataAttributes = { [key: string]: any };
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributes = {
-  dataset?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesDataset;
-  source?: unknown;
-  params_config?: unknown;
-  styles?: unknown;
-  legend_config?: unknown;
-  title?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedBy;
-  updatedBy?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedBy;
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItem = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayers = {
-  data?: MapboxLayerDatasetDataAttributesMapboxLayersDataItem[];
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedBy = {
-  data?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByData;
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedBy = {
-  data?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByData;
-};
-
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetDataAttributes = {
+export type LayerDatasetDataAttributesLayersDataItemAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetData = {
+export type LayerDatasetDataAttributesLayersDataItemAttributesUpdatedByData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetDataAttributes;
+  attributes?: LayerDatasetDataAttributesLayersDataItemAttributesUpdatedByDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesDataset = {
-  data?: MapboxLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetData;
+export type LayerDatasetDataAttributesLayersDataItemAttributesUpdatedBy = {
+  data?: LayerDatasetDataAttributesLayersDataItemAttributesUpdatedByData;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItem = {
+export type LayerDatasetDataAttributesLayersDataItemAttributesCreatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type LayerDatasetDataAttributesLayersDataItemAttributesCreatedByData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributes;
+  attributes?: LayerDatasetDataAttributesLayersDataItemAttributesCreatedByDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayers = {
-  data?: MapboxLayerDatasetDataAttributesDeckglLayersDataItem[];
+export type LayerDatasetDataAttributesLayersDataItemAttributesCreatedBy = {
+  data?: LayerDatasetDataAttributesLayersDataItemAttributesCreatedByData;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
+export type LayerDatasetDataAttributesLayersDataItemAttributesDatasetDataAttributes = {
+  [key: string]: any;
+};
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByData = {
+export type LayerDatasetDataAttributesLayersDataItemAttributesDatasetData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes;
+  attributes?: LayerDatasetDataAttributesLayersDataItemAttributesDatasetDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedBy = {
-  data?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByData;
+export type LayerDatasetDataAttributesLayersDataItemAttributesDataset = {
+  data?: LayerDatasetDataAttributesLayersDataItemAttributesDatasetData;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributes = {
+export type LayerDatasetDataAttributesLayersDataItemAttributesType =
+  (typeof LayerDatasetDataAttributesLayersDataItemAttributesType)[keyof typeof LayerDatasetDataAttributesLayersDataItemAttributesType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const LayerDatasetDataAttributesLayersDataItemAttributesType = {
+  deckgl: 'deckgl',
+  mapbox: 'mapbox',
+  carto: 'carto',
+} as const;
+
+export type LayerDatasetDataAttributesLayersDataItemAttributes = {
+  title?: string;
+  type?: LayerDatasetDataAttributesLayersDataItemAttributesType;
+  dataset?: LayerDatasetDataAttributesLayersDataItemAttributesDataset;
   config?: unknown;
-  dataset?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesDataset;
-  title?: string;
   params_config?: unknown;
   legend_config?: unknown;
+  interaction_config?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedBy;
-  updatedBy?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedBy;
+  createdBy?: LayerDatasetDataAttributesLayersDataItemAttributesCreatedBy;
+  updatedBy?: LayerDatasetDataAttributesLayersDataItemAttributesUpdatedBy;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByData = {
+export type LayerDatasetDataAttributesMetadatumData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes;
+  attributes?: LayerDatasetDataAttributesMetadatumDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedBy = {
-  data?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByData;
+export type LayerDatasetDataAttributesMetadatum = {
+  data?: LayerDatasetDataAttributesMetadatumData;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetDataAttributes = {
+export type LayerDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetData = {
+export type LayerDatasetDataAttributesMetadatumDataAttributesUpdatedByData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetDataAttributes;
+  attributes?: LayerDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesDataset = {
-  data?: MapboxLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetData;
+export type LayerDatasetDataAttributesMetadatumDataAttributesUpdatedBy = {
+  data?: LayerDatasetDataAttributesMetadatumDataAttributesUpdatedByData;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributes = {
-  dataset?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesDataset;
+export type LayerDatasetDataAttributesMetadatumDataAttributes = {
+  dataset?: LayerDatasetDataAttributesMetadatumDataAttributesDataset;
   description?: string;
   source?: string;
   citation?: string;
   start_date?: string;
   end_date?: string;
-  time_intervals?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals;
+  time_intervals?: LayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals;
   data_download?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesCreatedBy;
-  updatedBy?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesUpdatedBy;
+  createdBy?: LayerDatasetDataAttributesMetadatumDataAttributesCreatedBy;
+  updatedBy?: LayerDatasetDataAttributesMetadatumDataAttributesUpdatedBy;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMetadatumDataAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesMetadatum = {
-  data?: MapboxLayerDatasetDataAttributesMetadatumData;
-};
-
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes = {
+export type LayerDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByData = {
+export type LayerDatasetDataAttributesMetadatumDataAttributesCreatedByData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes;
+  attributes?: LayerDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesUpdatedBy = {
-  data?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByData;
+export type LayerDatasetDataAttributesMetadatumDataAttributesCreatedBy = {
+  data?: LayerDatasetDataAttributesMetadatumDataAttributesCreatedByData;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesCreatedBy = {
-  data?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesCreatedByData;
-};
-
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals =
-  (typeof MapboxLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals)[keyof typeof MapboxLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals];
+export type LayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals =
+  (typeof LayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals)[keyof typeof LayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const MapboxLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals = {
+export const LayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals = {
   daily: 'daily',
   monthly: 'monthly',
   yearly: 'yearly',
@@ -1151,100 +1011,91 @@ export const MapboxLayerDatasetDataAttributesMetadatumDataAttributesTimeInterval
   other: 'other',
 } as const;
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesDatasetDataAttributes = {
+export type LayerDatasetDataAttributesMetadatumDataAttributesDataset = {
+  data?: LayerDatasetDataAttributesMetadatumDataAttributesDatasetData;
+};
+
+export type LayerDatasetDataAttributesMetadatumDataAttributesDatasetDataAttributes = {
   [key: string]: any;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesDatasetData = {
+export type LayerDatasetDataAttributesMetadatumDataAttributesDatasetData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesDatasetDataAttributes;
+  attributes?: LayerDatasetDataAttributesMetadatumDataAttributesDatasetDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesMetadatumDataAttributesDataset = {
-  data?: MapboxLayerDatasetDataAttributesMetadatumDataAttributesDatasetData;
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByDataAttributes = {
+  [key: string]: any;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributes = {
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData = {
+  id?: number;
+  attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByDataAttributes;
+};
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy = {
+  data?: LayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData;
+};
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByData = {
+  id?: number;
+  attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes;
+};
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedBy = {
+  data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByData;
+};
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributes = {
   title?: string;
-  datasets?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesDatasets;
+  datasets?: LayerDatasetDataAttributesDatasetGroupDataAttributesDatasets;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedBy;
-  updatedBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy;
+  createdBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedBy;
+  updatedBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupData = {
+export type LayerDatasetDataAttributesDatasetGroupData = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributes;
+  attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroup = {
-  data?: MapboxLayerDatasetDataAttributesDatasetGroupData;
+export type LayerDatasetDataAttributesDatasetGroup = {
+  data?: LayerDatasetDataAttributesDatasetGroupData;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByDataAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy = {
-  data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData;
-};
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes;
-};
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedBy = {
-  data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByData;
-};
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy =
-  {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByData;
-  };
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy = {
+  data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByData;
+};
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy =
-  {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByData;
-  };
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy = {
+  data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByData;
+};
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem =
-  {
-    id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
-  };
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles = {
+  data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem[];
+};
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles =
-  {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem[];
-  };
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes = {
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes = {
   firstname?: string;
   lastname?: string;
   username?: string;
@@ -1252,736 +1103,209 @@ export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByD
   resetPasswordToken?: string;
   registrationToken?: string;
   isActive?: boolean;
-  roles?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles;
+  roles?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles;
   blocked?: boolean;
   preferedLanguage?: string;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy;
+  createdBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy;
+  updatedBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
   {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
   {
     name?: string;
     code?: string;
     description?: string;
-    users?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    users?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+    createdBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem =
+  {
+    id?: number;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+  };
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
+  { [key: string]: any };
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
+  {
+    id?: number;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
+  };
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+  {
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+  };
+
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
-    role?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    role?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+    createdBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
-  { [key: string]: any };
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
   {
     id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
+    attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
   {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+    data?: LayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
   };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
-  { [key: string]: any };
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
-  {
-    id?: number;
-    attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
-  };
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
-  {
-    data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
-  };
-
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItemAttributes = {
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItemAttributes = {
   [key: string]: any;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItem = {
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItem = {
   id?: number;
-  attributes?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItemAttributes;
+  attributes?: LayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItemAttributes;
 };
 
-export type MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesDatasets = {
-  data?: MapboxLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItem[];
+export type LayerDatasetDataAttributesDatasetGroupDataAttributesDatasets = {
+  data?: LayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItem[];
 };
 
-export type MapboxLayerListResponseMetaPagination = {
-  page?: number;
-  pageSize?: number;
-  pageCount?: number;
-  total?: number;
-};
-
-export type MapboxLayerListResponseMeta = {
-  pagination?: MapboxLayerListResponseMetaPagination;
-};
-
-export interface MapboxLayerListResponseDataItem {
-  id?: number;
-  attributes?: MapboxLayer;
-}
-
-export interface MapboxLayerListResponse {
-  data?: MapboxLayerListResponseDataItem[];
-  meta?: MapboxLayerListResponseMeta;
-}
-
-export type MapboxLayerRequestDataDataset = number | string;
-
-export type MapboxLayerRequestData = {
-  dataset?: MapboxLayerRequestDataDataset;
-  source: unknown;
-  params_config?: unknown;
-  styles?: unknown;
-  legend_config: unknown;
-  title: string;
-};
-
-export interface MapboxLayerRequest {
-  data: MapboxLayerRequestData;
-}
-
-export type DeckGlLayerResponseMeta = { [key: string]: any };
-
-export interface DeckGlLayerResponseDataObject {
-  id?: number;
-  attributes?: DeckGlLayer;
-}
-
-export interface DeckGlLayerResponse {
-  data?: DeckGlLayerResponseDataObject;
-  meta?: DeckGlLayerResponseMeta;
-}
-
-export type DeckGlLayerUpdatedByDataAttributes = { [key: string]: any };
-
-export type DeckGlLayerUpdatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerUpdatedByDataAttributes;
-};
-
-export type DeckGlLayerUpdatedBy = {
-  data?: DeckGlLayerUpdatedByData;
-};
-
-export type DeckGlLayerCreatedByDataAttributes = { [key: string]: any };
-
-export type DeckGlLayerCreatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerCreatedByDataAttributes;
-};
-
-export type DeckGlLayerCreatedBy = {
-  data?: DeckGlLayerCreatedByData;
-};
-
-export type DeckGlLayerDatasetData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributes;
-};
-
-export type DeckGlLayerDataset = {
-  data?: DeckGlLayerDatasetData;
-};
-
-export interface DeckGlLayer {
-  config: unknown;
-  dataset?: DeckGlLayerDataset;
-  title: string;
-  params_config?: unknown;
-  legend_config: unknown;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DeckGlLayerCreatedBy;
-  updatedBy?: DeckGlLayerUpdatedBy;
-}
-
-export type DeckGlLayerDatasetDataAttributesUpdatedByDataAttributes = { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesUpdatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesUpdatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesUpdatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesCreatedByDataAttributes = { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesCreatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesCreatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesCreatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributes = {
-  title?: string;
-  dataset_group?: DeckGlLayerDatasetDataAttributesDatasetGroup;
-  metadatum?: DeckGlLayerDatasetDataAttributesMetadatum;
-  deckgl_layers?: DeckGlLayerDatasetDataAttributesDeckglLayers;
-  mapbox_layers?: DeckGlLayerDatasetDataAttributesMapboxLayers;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DeckGlLayerDatasetDataAttributesCreatedBy;
-  updatedBy?: DeckGlLayerDatasetDataAttributesUpdatedBy;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributes = {
-  dataset?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesDataset;
-  source?: unknown;
-  params_config?: unknown;
-  styles?: unknown;
-  legend_config?: unknown;
-  title?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedBy;
-  updatedBy?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedBy;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItem = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayers = {
-  data?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItem[];
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesUpdatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesCreatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetDataAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesDataset = {
-  data?: DeckGlLayerDatasetDataAttributesMapboxLayersDataItemAttributesDatasetData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItem = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayers = {
-  data?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItem[];
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributes = {
-  config?: unknown;
-  dataset?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesDataset;
-  title?: string;
-  params_config?: unknown;
-  legend_config?: unknown;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedBy;
-  updatedBy?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesUpdatedBy;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesCreatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetDataAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesDataset = {
-  data?: DeckGlLayerDatasetDataAttributesDeckglLayersDataItemAttributesDatasetData;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributes = {
-  dataset?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesDataset;
-  description?: string;
-  source?: string;
-  citation?: string;
-  start_date?: string;
-  end_date?: string;
-  time_intervals?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals;
-  data_download?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesCreatedBy;
-  updatedBy?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesUpdatedBy;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatum = {
-  data?: DeckGlLayerDatasetDataAttributesMetadatumData;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesUpdatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesUpdatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesCreatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesCreatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesCreatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals =
-  (typeof DeckGlLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals)[keyof typeof DeckGlLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals];
+export type LayerType = (typeof LayerType)[keyof typeof LayerType];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const DeckGlLayerDatasetDataAttributesMetadatumDataAttributesTimeIntervals = {
-  daily: 'daily',
-  monthly: 'monthly',
-  yearly: 'yearly',
-  quarterly: 'quarterly',
-  other: 'other',
+export const LayerType = {
+  deckgl: 'deckgl',
+  mapbox: 'mapbox',
+  carto: 'carto',
 } as const;
 
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesDatasetDataAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesDatasetData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesDatasetDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesMetadatumDataAttributesDataset = {
-  data?: DeckGlLayerDatasetDataAttributesMetadatumDataAttributesDatasetData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributes = {
-  title?: string;
-  datasets?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesDatasets;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedBy;
-  updatedBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroup = {
-  data?: DeckGlLayerDatasetDataAttributesDatasetGroupData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesUpdatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedBy = {
-  data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByData;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedByData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedByData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItem[];
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesUpdatedBy;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
-  { [key: string]: any };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
-  {
-    id?: number;
-    attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
-  {
-    data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
-  };
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItemAttributes = {
-  [key: string]: any;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItem = {
-  id?: number;
-  attributes?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItemAttributes;
-};
-
-export type DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesDatasets = {
-  data?: DeckGlLayerDatasetDataAttributesDatasetGroupDataAttributesDatasetsDataItem[];
-};
-
-export type DeckGlLayerListResponseMetaPagination = {
+export type LayerListResponseMetaPagination = {
   page?: number;
   pageSize?: number;
   pageCount?: number;
   total?: number;
 };
 
-export type DeckGlLayerListResponseMeta = {
-  pagination?: DeckGlLayerListResponseMetaPagination;
+export type LayerListResponseMeta = {
+  pagination?: LayerListResponseMetaPagination;
 };
 
-export interface DeckGlLayerListResponseDataItem {
+export interface LayerListResponseDataItem {
   id?: number;
-  attributes?: DeckGlLayer;
+  attributes?: Layer;
 }
 
-export interface DeckGlLayerListResponse {
-  data?: DeckGlLayerListResponseDataItem[];
-  meta?: DeckGlLayerListResponseMeta;
+export interface LayerListResponse {
+  data?: LayerListResponseDataItem[];
+  meta?: LayerListResponseMeta;
 }
 
-export type DeckGlLayerRequestDataDataset = number | string;
-
-export type DeckGlLayerRequestData = {
-  config: unknown;
-  dataset?: DeckGlLayerRequestDataDataset;
+export type LayerRequestData = {
   title: string;
+  type: LayerRequestDataType;
+  dataset?: LayerRequestDataDataset;
+  config: unknown;
   params_config?: unknown;
   legend_config: unknown;
+  interaction_config?: unknown;
 };
 
-export interface DeckGlLayerRequest {
-  data: DeckGlLayerRequestData;
+export interface LayerRequest {
+  data: LayerRequestData;
 }
+
+export type LayerRequestDataDataset = number | string;
+
+export type LayerRequestDataType = (typeof LayerRequestDataType)[keyof typeof LayerRequestDataType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const LayerRequestDataType = {
+  deckgl: 'deckgl',
+  mapbox: 'mapbox',
+  carto: 'carto',
+} as const;
 
 export type DatasetGroupResponseMeta = { [key: string]: any };
 
@@ -2047,21 +1371,11 @@ export type DatasetGroupDatasetsDataItemAttributesUpdatedBy = {
   data?: DatasetGroupDatasetsDataItemAttributesUpdatedByData;
 };
 
-export type DatasetGroupDatasetsDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesCreatedByDataAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesCreatedBy = {
-  data?: DatasetGroupDatasetsDataItemAttributesCreatedByData;
-};
-
 export type DatasetGroupDatasetsDataItemAttributes = {
   title?: string;
   dataset_group?: DatasetGroupDatasetsDataItemAttributesDatasetGroup;
   metadatum?: DatasetGroupDatasetsDataItemAttributesMetadatum;
-  deckgl_layers?: DatasetGroupDatasetsDataItemAttributesDeckglLayers;
-  mapbox_layers?: DatasetGroupDatasetsDataItemAttributesMapboxLayers;
+  layers?: DatasetGroupDatasetsDataItemAttributesLayers;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -2071,122 +1385,85 @@ export type DatasetGroupDatasetsDataItemAttributes = {
 
 export type DatasetGroupDatasetsDataItemAttributesCreatedByDataAttributes = { [key: string]: any };
 
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributes = {
-  dataset?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesDataset;
-  source?: unknown;
-  params_config?: unknown;
-  styles?: unknown;
-  legend_config?: unknown;
+export type DatasetGroupDatasetsDataItemAttributesCreatedByData = {
+  id?: number;
+  attributes?: DatasetGroupDatasetsDataItemAttributesCreatedByDataAttributes;
+};
+
+export type DatasetGroupDatasetsDataItemAttributesCreatedBy = {
+  data?: DatasetGroupDatasetsDataItemAttributesCreatedByData;
+};
+
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributes = {
   title?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedBy;
-  updatedBy?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedBy;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItem = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayers = {
-  data?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItem[];
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedBy = {
-  data?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByData;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedBy = {
-  data?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByData;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetDataAttributes =
-  { [key: string]: any };
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetData = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetDataAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesDataset = {
-  data?: DatasetGroupDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetData;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItem = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayers = {
-  data?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItem[];
-};
-
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedBy = {
-  data?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByData;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributes = {
+  type?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesType;
+  dataset?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesDataset;
   config?: unknown;
-  dataset?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesDataset;
-  title?: string;
   params_config?: unknown;
   legend_config?: unknown;
+  interaction_config?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedBy;
-  updatedBy?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedBy;
+  createdBy?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesCreatedBy;
+  updatedBy?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesUpdatedBy;
 };
 
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes =
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItem = {
+  id?: number;
+  attributes?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributes;
+};
+
+export type DatasetGroupDatasetsDataItemAttributesLayers = {
+  data?: DatasetGroupDatasetsDataItemAttributesLayersDataItem[];
+};
+
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByData = {
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByData = {
   id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes;
+  attributes?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes;
 };
 
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedBy = {
-  data?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByData;
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesUpdatedBy = {
+  data?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByData;
 };
 
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetDataAttributes =
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetData = {
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesCreatedByData = {
   id?: number;
-  attributes?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetDataAttributes;
+  attributes?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributes;
 };
 
-export type DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesDataset = {
-  data?: DatasetGroupDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetData;
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesCreatedBy = {
+  data?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesCreatedByData;
 };
+
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesDatasetDataAttributes = {
+  [key: string]: any;
+};
+
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesDatasetData = {
+  id?: number;
+  attributes?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesDatasetDataAttributes;
+};
+
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesDataset = {
+  data?: DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesDatasetData;
+};
+
+export type DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesType =
+  (typeof DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesType)[keyof typeof DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const DatasetGroupDatasetsDataItemAttributesLayersDataItemAttributesType = {
+  deckgl: 'deckgl',
+  mapbox: 'mapbox',
+  carto: 'carto',
+} as const;
 
 export type DatasetGroupDatasetsDataItemAttributesMetadatumDataAttributes = {
   dataset?: DatasetGroupDatasetsDataItemAttributesMetadatumDataAttributesDataset;
@@ -2264,6 +1541,10 @@ export type DatasetGroupDatasetsDataItemAttributesMetadatumDataAttributesDataset
   data?: DatasetGroupDatasetsDataItemAttributesMetadatumDataAttributesDatasetData;
 };
 
+export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpdatedBy = {
+  data?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpdatedByData;
+};
+
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributes = {
   title?: string;
   datasets?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesDatasets;
@@ -2289,10 +1570,6 @@ export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpda
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpdatedByData = {
   id?: number;
   attributes?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpdatedByDataAttributes;
-};
-
-export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpdatedBy = {
-  data?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesUpdatedByData;
 };
 
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByData = {
@@ -2375,6 +1652,19 @@ export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCrea
     data?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
+export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+  };
+
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -2389,6 +1679,19 @@ export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCrea
     data?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
+export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -2398,19 +1701,6 @@ export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCrea
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
     data?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-  };
-
-export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -2439,19 +1729,6 @@ export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCrea
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
     data?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
-  };
-
-export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type DatasetGroupDatasetsDataItemAttributesDatasetGroupDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
@@ -2528,12 +1805,25 @@ export interface DatasetGroupRequest {
 
 export type DatasetResponseMeta = { [key: string]: any };
 
+export interface DatasetResponse {
+  data?: DatasetResponseDataObject;
+  meta?: DatasetResponseMeta;
+}
+
+export type DatasetUpdatedByData = {
+  id?: number;
+  attributes?: DatasetUpdatedByDataAttributes;
+};
+
+export type DatasetUpdatedBy = {
+  data?: DatasetUpdatedByData;
+};
+
 export interface Dataset {
   title: string;
   dataset_group?: DatasetDatasetGroup;
   metadatum?: DatasetMetadatum;
-  deckgl_layers?: DatasetDeckglLayers;
-  mapbox_layers?: DatasetMapboxLayers;
+  layers?: DatasetLayers;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -2546,21 +1836,7 @@ export interface DatasetResponseDataObject {
   attributes?: Dataset;
 }
 
-export interface DatasetResponse {
-  data?: DatasetResponseDataObject;
-  meta?: DatasetResponseMeta;
-}
-
 export type DatasetUpdatedByDataAttributes = { [key: string]: any };
-
-export type DatasetUpdatedByData = {
-  id?: number;
-  attributes?: DatasetUpdatedByDataAttributes;
-};
-
-export type DatasetUpdatedBy = {
-  data?: DatasetUpdatedByData;
-};
 
 export type DatasetCreatedByDataAttributes = { [key: string]: any };
 
@@ -2573,26 +1849,15 @@ export type DatasetCreatedBy = {
   data?: DatasetCreatedByData;
 };
 
-export type DatasetMapboxLayersDataItemAttributes = { [key: string]: any };
+export type DatasetLayersDataItemAttributes = { [key: string]: any };
 
-export type DatasetMapboxLayersDataItem = {
+export type DatasetLayersDataItem = {
   id?: number;
-  attributes?: DatasetMapboxLayersDataItemAttributes;
+  attributes?: DatasetLayersDataItemAttributes;
 };
 
-export type DatasetMapboxLayers = {
-  data?: DatasetMapboxLayersDataItem[];
-};
-
-export type DatasetDeckglLayersDataItemAttributes = { [key: string]: any };
-
-export type DatasetDeckglLayersDataItem = {
-  id?: number;
-  attributes?: DatasetDeckglLayersDataItemAttributes;
-};
-
-export type DatasetDeckglLayers = {
-  data?: DatasetDeckglLayersDataItem[];
+export type DatasetLayers = {
+  data?: DatasetLayersDataItem[];
 };
 
 export type DatasetMetadatumDataAttributes = { [key: string]: any };
@@ -2604,6 +1869,11 @@ export type DatasetMetadatumData = {
 
 export type DatasetMetadatum = {
   data?: DatasetMetadatumData;
+};
+
+export type DatasetDatasetGroupData = {
+  id?: number;
+  attributes?: DatasetDatasetGroupDataAttributes;
 };
 
 export type DatasetDatasetGroup = {
@@ -2621,6 +1891,16 @@ export type DatasetDatasetGroupDataAttributesUpdatedBy = {
   data?: DatasetDatasetGroupDataAttributesUpdatedByData;
 };
 
+export type DatasetDatasetGroupDataAttributes = {
+  title?: string;
+  datasets?: DatasetDatasetGroupDataAttributesDatasets;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: DatasetDatasetGroupDataAttributesCreatedBy;
+  updatedBy?: DatasetDatasetGroupDataAttributesUpdatedBy;
+};
+
 export type DatasetDatasetGroupDataAttributesCreatedByDataAttributes = { [key: string]: any };
 
 export type DatasetDatasetGroupDataAttributesCreatedByData = {
@@ -2632,6 +1912,18 @@ export type DatasetDatasetGroupDataAttributesCreatedBy = {
   data?: DatasetDatasetGroupDataAttributesCreatedByData;
 };
 
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributes = {
+  title?: string;
+  dataset_group?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDatasetGroup;
+  metadatum?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum;
+  layers?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayers;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesCreatedBy;
+  updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesUpdatedBy;
+};
+
 export type DatasetDatasetGroupDataAttributesDatasetsDataItem = {
   id?: number;
   attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributes;
@@ -2639,21 +1931,6 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItem = {
 
 export type DatasetDatasetGroupDataAttributesDatasets = {
   data?: DatasetDatasetGroupDataAttributesDatasetsDataItem[];
-};
-
-export type DatasetDatasetGroupDataAttributes = {
-  title?: string;
-  datasets?: DatasetDatasetGroupDataAttributesDatasets;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: DatasetDatasetGroupDataAttributesCreatedBy;
-  updatedBy?: DatasetDatasetGroupDataAttributesUpdatedBy;
-};
-
-export type DatasetDatasetGroupData = {
-  id?: number;
-  attributes?: DatasetDatasetGroupDataAttributes;
 };
 
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesUpdatedByDataAttributes = {
@@ -2682,149 +1959,82 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesCreatedBy
   data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesCreatedByData;
 };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributes =
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByData =
   {
-    dataset?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesDataset;
-    source?: unknown;
-    params_config?: unknown;
-    styles?: unknown;
-    legend_config?: unknown;
-    title?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    publishedAt?: string;
-    createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedBy;
-    updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedBy;
+    id?: number;
+    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItem = {
-  id?: number;
-  attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributes;
-};
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesUpdatedBy =
+  {
+    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesUpdatedByData;
+  };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayers = {
-  data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItem[];
-};
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributes = {
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributes;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesCreatedBy =
+  {
+    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesCreatedByData;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesDatasetDataAttributes =
+  { [key: string]: any };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesDatasetData =
+  {
+    id?: number;
+    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesDatasetDataAttributes;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesDataset =
+  {
+    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesDatasetData;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesType =
+  (typeof DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesType)[keyof typeof DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesType];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesType =
+  {
+    deckgl: 'deckgl',
+    mapbox: 'mapbox',
+    carto: 'carto',
+  } as const;
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributes = {
   title?: string;
-  dataset_group?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDatasetGroup;
-  metadatum?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum;
-  deckgl_layers?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayers;
-  mapbox_layers?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayers;
+  type?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesType;
+  dataset?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesDataset;
+  config?: unknown;
+  params_config?: unknown;
+  legend_config?: unknown;
+  interaction_config?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
-  createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesCreatedBy;
-  updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesUpdatedBy;
+  createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesCreatedBy;
+  updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributesUpdatedBy;
 };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedBy =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesUpdatedByData;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedBy =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesCreatedByData;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesDataset =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMapboxLayersDataItemAttributesDatasetData;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedBy =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByData;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributes =
-  {
-    config?: unknown;
-    dataset?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesDataset;
-    title?: string;
-    params_config?: unknown;
-    legend_config?: unknown;
-    createdAt?: string;
-    updatedAt?: string;
-    publishedAt?: string;
-    createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedBy;
-    updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedBy;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItem = {
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItem = {
   id?: number;
-  attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributes;
+  attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItemAttributes;
 };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayers = {
-  data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItem[];
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayers = {
+  data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesLayersDataItem[];
 };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedBy =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesCreatedByData;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesDataset =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesDeckglLayersDataItemAttributesDatasetData;
-  };
 
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributes = {
   dataset?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesDataset;
@@ -2865,26 +2075,6 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum
     data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesUpdatedByData;
   };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributes;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedBy =
-  {
-    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByData;
-  };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
-  };
-
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedBy =
   {
     data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByData;
@@ -2906,6 +2096,26 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum
     updatedAt?: string;
     createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesCreatedBy;
     updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedBy;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributes;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedBy =
+  {
+    data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByData;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
   };
 
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
@@ -2947,19 +2157,6 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum
     data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-  };
-
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -2974,19 +2171,6 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum
     data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -2996,6 +2180,19 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
     data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -3038,6 +2235,19 @@ export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatum
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
   {
     data?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+  };
+
+export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type DatasetDatasetGroupDataAttributesDatasetsDataItemAttributesMetadatumDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
@@ -3118,9 +2328,7 @@ export interface DatasetRequest {
   data: DatasetRequestData;
 }
 
-export type DatasetRequestDataMapboxLayersItem = number | string;
-
-export type DatasetRequestDataDeckglLayersItem = number | string;
+export type DatasetRequestDataLayersItem = number | string;
 
 export type DatasetRequestDataMetadatum = number | string;
 
@@ -3130,8 +2338,7 @@ export type DatasetRequestData = {
   title: string;
   dataset_group?: DatasetRequestDataDatasetGroup;
   metadatum?: DatasetRequestDataMetadatum;
-  deckgl_layers?: DatasetRequestDataDeckglLayersItem[];
-  mapbox_layers?: DatasetRequestDataMapboxLayersItem[];
+  layers?: DatasetRequestDataLayersItem[];
 };
 
 export type ErrorErrorDetails = { [key: string]: any };

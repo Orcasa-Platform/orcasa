@@ -4,17 +4,11 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { layersAtom } from '@/store';
 
-import {
-  DeckGlLayerListResponseDataItem,
-  MapboxLayerListResponseDataItem,
-} from '@/types/generated/strapi.schemas';
+import { LayerListResponseDataItem } from '@/types/generated/strapi.schemas';
 
 import { Switch } from '@/components/ui/switch';
 
-export default function LayersItem({
-  id,
-  attributes,
-}: Required<MapboxLayerListResponseDataItem> | Required<DeckGlLayerListResponseDataItem>) {
+export default function LayersItem({ id, attributes }: Required<LayerListResponseDataItem>) {
   const layers = useRecoilValue(layersAtom);
   const setLayers = useSetRecoilState(layersAtom);
 
