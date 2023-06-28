@@ -21,7 +21,7 @@ export default function LayersItem({ id, attributes }: Required<LayerListRespons
 
     // Add layers if they don't exist
     if (!layers.includes(id)) {
-      return setLayers([...layers, id]);
+      return setLayers([id, ...layers]);
     }
   };
 

@@ -8,12 +8,16 @@ import { MapboxOverlay, MapboxOverlayProps } from '@deck.gl/mapbox/typed';
 
 interface DeckMapboxOverlayContext {
   addLayer: (layer: any) => void;
-  removeLayer: (id: any) => void;
+  removeLayer: (id: string) => void;
 }
 
 const Context = createContext<DeckMapboxOverlayContext>({
-  addLayer: () => {},
-  removeLayer: () => {},
+  addLayer: () => {
+    console.info('addLayer');
+  },
+  removeLayer: () => {
+    console.info('removeLayer');
+  },
 });
 
 function useMapboxOverlay(

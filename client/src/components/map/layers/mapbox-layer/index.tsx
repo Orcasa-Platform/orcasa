@@ -7,21 +7,16 @@ import { AnyLayer, AnySourceData } from 'mapbox-gl';
 import { LayerProps, Settings } from '@/types/map';
 
 export type MapboxLayerProps<S> = LayerProps<S> & {
-  source: AnySourceData;
-  styles: AnyLayer[];
+  config: {
+    source: AnySourceData;
+    styles: AnyLayer[];
+  };
   params_config?: Record<string, unknown>[];
 };
 
-const MapboxLayer = ({
-  id,
-  source,
-  styles,
-  beforeId,
-  onAdd,
-  onRemove,
-}: MapboxLayerProps<Settings>) => {
-  const SOURCE = source;
-  const STYLES = styles;
+const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps<Settings>) => {
+  const SOURCE = config.source;
+  const STYLES = config.styles;
 
   useEffect(() => {
     if (SOURCE && STYLES && onAdd) {
@@ -44,23 +39,12 @@ const MapboxLayer = ({
   if (!SOURCE || !STYLES) return null;
 
   return (
-    <>
-      <Layer
-        id={id}
-        type="background"
-        beforeId={beforeId}
-        paint={{
-          'background-color': '#000',
-          'background-opacity': 0,
-        }}
-      />
-      <Source {...SOURCE}>
-        {STYLES.map((layer: AnyLayer) => (
-          <Layer key={layer.id} {...layer} beforeId={id} />
-        ))}
-        {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}
-      </Source>
-    </>
+    <Source {...SOURCE}>
+      {STYLES.map((layer: AnyLayer) => (
+        <Layer key={layer.id} {...layer} beforeId={id} />
+      ))}
+      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}
+    </Source>
   );
 };
 

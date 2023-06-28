@@ -21,7 +21,6 @@ type OnAddRemoveProps = {
 
 export type LayerProps<S> = {
   id?: string;
-  beforeId?: string;
   settings: Partial<S>;
   zIndex?: number;
   onAdd?: (props: OnAddRemoveProps) => void;

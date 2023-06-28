@@ -3,14 +3,10 @@
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
 
+import DeckJsonLayer, { DeckJsonLayerProps } from '@/components/map/layers/deck-json-layer';
 import MapboxLayer, { MapboxLayerProps } from '@/components/map/layers/mapbox-layer';
 
-const LayerManagerItem = ({
-  id,
-  beforeId,
-}: Required<Pick<LayerResponseDataObject, 'id'>> & {
-  beforeId: string;
-}) => {
+const LayerManagerItem = ({ id }: Required<Pick<LayerResponseDataObject, 'id'>>) => {
   const { data } = useGetLayersId(id);
 
   if (!data?.data?.attributes) return null;
@@ -19,14 +15,28 @@ const LayerManagerItem = ({
 
   if (type === 'mapbox') {
     const { config } = data.data.attributes;
-    const c = config as Pick<MapboxLayerProps<Record<string, unknown>>, 'source' | 'styles'>;
+    const c = config as MapboxLayerProps<Record<string, unknown>>['config'];
 
     return (
       <MapboxLayer
         id={`${id}-layer`}
-        beforeId={beforeId}
-        source={c.source}
-        styles={c.styles}
+        config={c}
+        settings={{
+          opacity: 1,
+          visibility: true,
+        }}
+      />
+    );
+  }
+
+  if (type === 'deckgl') {
+    const { config } = data.data.attributes;
+    const c = config as DeckJsonLayerProps<unknown, Record<string, unknown>>['config'];
+
+    return (
+      <DeckJsonLayer
+        id={`${id}-layer`}
+        config={c}
         settings={{
           opacity: 1,
           visibility: true,
