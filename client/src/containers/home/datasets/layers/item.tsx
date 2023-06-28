@@ -27,7 +27,7 @@ export default function LayersItem({ id, attributes }: Required<LayerListRespons
 
   return (
     <li key={id} className="flex justify-between space-x-2.5">
-      <h4>{attributes?.title}</h4>
+      <h4>{attributes.title}</h4>
 
       <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
     </li>
