@@ -148,7 +148,6 @@ export const MapMapbox: FC<CustomMapProps> = ({
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
         onMove={handleMapMove}
         onLoad={handleMapLoad}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
         {...mapboxProps}
         {...localViewState}
       >

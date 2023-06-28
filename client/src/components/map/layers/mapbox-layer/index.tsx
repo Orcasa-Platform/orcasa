@@ -9,10 +9,17 @@ import { LayerProps, Settings } from '@/types/map';
 export type MapboxLayerProps<S> = LayerProps<S> & {
   source: AnySourceData;
   styles: AnyLayer[];
-  params_config?: {};
+  params_config?: Record<string, unknown>[];
 };
 
-const MapboxLayer = ({ source, styles, beforeId, onAdd, onRemove }: MapboxLayerProps<Settings>) => {
+const MapboxLayer = ({
+  id,
+  source,
+  styles,
+  beforeId,
+  onAdd,
+  onRemove,
+}: MapboxLayerProps<Settings>) => {
   const SOURCE = source;
   const STYLES = styles;
 
@@ -37,11 +44,23 @@ const MapboxLayer = ({ source, styles, beforeId, onAdd, onRemove }: MapboxLayerP
   if (!SOURCE || !STYLES) return null;
 
   return (
-    <Source {...SOURCE}>
-      {STYLES.map((layer: AnyLayer) => (
-        <Layer key={layer.id} {...layer} beforeId={beforeId} />
-      ))}
-    </Source>
+    <>
+      <Layer
+        id={id}
+        type="background"
+        beforeId={beforeId}
+        paint={{
+          'background-color': '#000',
+          'background-opacity': 0,
+        }}
+      />
+      <Source {...SOURCE}>
+        {STYLES.map((layer: AnyLayer) => (
+          <Layer key={layer.id} {...layer} beforeId={id} />
+        ))}
+        {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}
+      </Source>
+    </>
   );
 };
 

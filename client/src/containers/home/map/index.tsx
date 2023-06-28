@@ -12,6 +12,8 @@ import { bboxAtom, tmpBboxAtom } from '@/store';
 
 import { Bbox } from '@/types/map';
 
+import { MAPBOX_STYLES } from '@/constants/mapbox';
+
 import Map from '@/components/map';
 import Controls from '@/components/map/controls';
 import ZoomControl from '@/components/map/controls/zoom';
@@ -33,7 +35,6 @@ const DEFAULT_PROPS: CustomMapProps = {
   },
   minZoom: 2,
   maxZoom: 20,
-  // mapStyle: MAPBOX_STYLES.explore,
 };
 
 export default function MapContainer() {
@@ -92,6 +93,7 @@ export default function MapContainer() {
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
+        mapStyle={MAPBOX_STYLES.default}
         onMapViewStateChange={handleViewState}
       >
         {() => (
