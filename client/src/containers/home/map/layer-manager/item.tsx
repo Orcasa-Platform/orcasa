@@ -1,5 +1,7 @@
 'use client';
 
+import { replace } from '@/lib/utils';
+
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
 
@@ -15,7 +17,24 @@ const LayerManagerItem = ({ id }: Required<Pick<LayerResponseDataObject, 'id'>>)
 
   if (type === 'mapbox') {
     const { config } = data.data.attributes;
-    const c = config as MapboxLayerProps<Record<string, unknown>>['config'];
+    const c = replace(config, {
+      opacity: 1,
+      color: [
+        'match',
+        ['get', 'bws_cat'],
+        0,
+        '#FF0000',
+        1,
+        '#d95000',
+        2,
+        '#ad5d00',
+        3,
+        '#785600',
+        4,
+        '#F15300',
+        '#ccc',
+      ],
+    }) as MapboxLayerProps<Record<string, unknown>>['config'];
 
     return (
       <MapboxLayer
