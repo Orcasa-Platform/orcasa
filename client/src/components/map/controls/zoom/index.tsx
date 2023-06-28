@@ -58,14 +58,10 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
         </TooltipTrigger>
 
         <TooltipPortal>
-          <TooltipContent
-            side="left"
-            align="center"
-            className="rounded-none border-slate-500 bg-slate-500"
-          >
-            <div className="text-xxs text-white">Zoom in</div>
+          <TooltipContent side="left" align="center">
+            <div className="text-xxs">Zoom in</div>
 
-            <TooltipArrow className="fill-slate-500" width={10} height={5} />
+            <TooltipArrow className="fill-white" width={10} height={5} />
           </TooltipContent>
         </TooltipPortal>
       </Tooltip>
@@ -89,14 +85,10 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
         </TooltipTrigger>
 
         <TooltipPortal>
-          <TooltipContent
-            side="left"
-            align="center"
-            className="rounded-none border-slate-500 bg-slate-500"
-          >
-            <div className="text-xxs text-white">Zoom out</div>
+          <TooltipContent side="left" align="center">
+            <div className="text-xxs">Zoom out</div>
 
-            <TooltipArrow className="fill-slate-500" width={10} height={5} />
+            <TooltipArrow className="fill-white" width={10} height={5} />
           </TooltipContent>
         </TooltipPortal>
       </Tooltip>

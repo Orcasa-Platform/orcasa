@@ -1,3 +1,3 @@
-export interface ControlsProps {
+export interface SettingsControlProps {
   className?: string;
 }

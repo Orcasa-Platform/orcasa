@@ -1,106 +1,29 @@
-import { useCallback, useEffect } from 'react';
+import Basemaps from './basemaps';
+import Boundaries from './boundaries';
+import Labels from './labels';
+import Roads from './roads';
 
-import { useMap } from 'react-map-gl';
+const MapSettings = () => {
+  return (
+    <div className="space-y-3">
+      <h3 className="font-display text-lg">Map settings</h3>
 
-import { AnyLayer } from 'mapbox-gl';
-import { useRecoilValue } from 'recoil';
+      <div className="space-y-3 divide-y">
+        <Basemaps />
 
-import { mapSettingsAtom } from '@/store/index';
+        <div className="grid grid-flow-col gap-4 pt-5">
+          <div className="col-span-6">
+            <Labels />
+          </div>
 
-import { BASEMAPS } from '@/constants/basemaps';
-
-interface MapSettingsProps {
-  id: string;
-}
-
-type AnyLayerWithMetadata = AnyLayer & {
-  metadata: any;
-};
-
-const MapSettings = ({ id }: MapSettingsProps) => {
-  const { [id]: mapRef } = useMap();
-  const { basemap, labels, boundaries, roads } = useRecoilValue(mapSettingsAtom);
-
-  const handleGroup = useCallback(
-    (groups: string[], groupId: string, visible = true) => {
-      if (!mapRef) return;
-      const map = mapRef.getMap();
-      const { layers, metadata } = mapRef.getStyle();
-
-      const lys = layers as AnyLayerWithMetadata[];
-
-      const GROUPS = Object.keys(metadata['mapbox:groups']).filter((k) => {
-        const { name } = metadata['mapbox:groups'][k];
-
-        const matchedGroups = groups.map((rgr) => name.toLowerCase().includes(rgr));
-
-        return matchedGroups.some((bool) => bool);
-      });
-
-      const GROUPS_META = GROUPS.map((gId) => ({
-        ...metadata['mapbox:groups'][gId],
-        id: gId,
-      }));
-      const GROUP_TO_DISPLAY = GROUPS_META.find((_group) => _group.name.includes(groupId)) || {};
-
-      const GROUPS_LAYERS = lys.filter((l) => {
-        const { metadata: layerMetadata } = l;
-        if (!layerMetadata) return false;
-
-        const gr = layerMetadata['mapbox:group'];
-        return GROUPS.includes(gr);
-      });
-
-      GROUPS_LAYERS.forEach((_layer) => {
-        const match = _layer.metadata['mapbox:group'] === GROUP_TO_DISPLAY.id && visible;
-        if (!match) {
-          map.setLayoutProperty(_layer.id, 'visibility', 'none');
-        } else {
-          map.setLayoutProperty(_layer.id, 'visibility', 'visible');
-        }
-      });
-    },
-    [mapRef]
+          <div className="col-span-6 space-y-3">
+            <Boundaries />
+            <Roads />
+          </div>
+        </div>
+      </div>
+    </div>
   );
-
-  const handleStyleLoad = useCallback(() => {
-    const B = BASEMAPS.find((b) => b.value === basemap);
-
-    handleGroup(['basemap'], basemap);
-    handleGroup(['labels'], labels);
-
-    if (B) {
-      handleGroup(['boundaries'], B.settings.boundaries, boundaries);
-      handleGroup(['roads'], B.settings.roads, roads);
-    }
-  }, [basemap, labels, boundaries, roads, handleGroup]);
-
-  // * handle style load
-  useEffect(() => {
-    if (!mapRef) return;
-    mapRef.on('style.load', handleStyleLoad);
-
-    return () => {
-      mapRef.off('style.load', handleStyleLoad);
-    };
-  }, [mapRef, handleStyleLoad]);
-
-  // * handle basemap, labels, boundaries, roads
-  useEffect(() => {
-    if (!!mapRef && mapRef.loaded()) {
-      const B = BASEMAPS.find((b) => b.value === basemap);
-
-      handleGroup(['basemap'], basemap);
-      handleGroup(['labels'], labels);
-
-      if (B) {
-        handleGroup(['boundaries'], B.settings.boundaries, boundaries);
-        handleGroup(['roads'], B.settings.roads, roads);
-      }
-    }
-  }, [mapRef, basemap, labels, boundaries, roads, handleGroup]);
-
-  return null;
 };
 
 export default MapSettings;

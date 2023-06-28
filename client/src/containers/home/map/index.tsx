@@ -14,8 +14,12 @@ import { Bbox } from '@/types/map';
 
 import { MAPBOX_STYLES } from '@/constants/mapbox';
 
+import MapSettings from '@/containers/home/map/settings';
+import MapSettingsManager from '@/containers/home/map/settings/manager';
+
 import Map from '@/components/map';
 import Controls from '@/components/map/controls';
+import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
@@ -98,11 +102,16 @@ export default function MapContainer() {
       >
         {() => (
           <>
-            <Controls className="absolute right-5 top-12 z-40 space-y-10 sm:right-6 sm:top-6">
+            <Controls className="absolute right-5 top-12 z-40 sm:right-6 sm:top-6">
               <ZoomControl />
+              <SettingsControl>
+                <MapSettings />
+              </SettingsControl>
             </Controls>
 
             <LayerManager />
+
+            <MapSettingsManager id={id} />
           </>
         )}
       </Map>
