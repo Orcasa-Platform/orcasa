@@ -28,16 +28,10 @@
       "target": "api::metadatum.metadatum",
       "mappedBy": "dataset"
     },
-    "deckgl_layers": {
+    "layers": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::deck-gl-layer.deck-gl-layer",
-      "mappedBy": "dataset"
-    },
-    "mapbox_layers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::mapbox-layer.mapbox-layer",
+      "target": "api::layer.layer",
       "mappedBy": "dataset"
     }
   }

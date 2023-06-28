@@ -1,5 +1,5 @@
 {
-  "/deck-gl-layers": {
+  "/layers": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeckGlLayerListResponse"
+                "$ref": "#/components/schemas/LayerListResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Deck-gl-layer"
+        "Layer"
       ],
       "parameters": [
         {
@@ -169,7 +169,7 @@
           }
         }
       ],
-      "operationId": "get/deck-gl-layers"
+      "operationId": "get/layers"
     },
     "post": {
       "responses": {
@@ -178,7 +178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeckGlLayerResponse"
+                "$ref": "#/components/schemas/LayerResponse"
               }
             }
           }
@@ -235,23 +235,23 @@
         }
       },
       "tags": [
-        "Deck-gl-layer"
+        "Layer"
       ],
       "parameters": [],
-      "operationId": "post/deck-gl-layers",
+      "operationId": "post/layers",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/DeckGlLayerRequest"
+              "$ref": "#/components/schemas/LayerRequest"
             }
           }
         }
       }
     }
   },
-  "/deck-gl-layers/{id}": {
+  "/layers/{id}": {
     "get": {
       "responses": {
         "200": {
@@ -259,7 +259,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeckGlLayerResponse"
+                "$ref": "#/components/schemas/LayerResponse"
               }
             }
           }
@@ -316,7 +316,7 @@
         }
       },
       "tags": [
-        "Deck-gl-layer"
+        "Layer"
       ],
       "parameters": [
         {
@@ -330,7 +330,7 @@
           }
         }
       ],
-      "operationId": "get/deck-gl-layers/{id}"
+      "operationId": "get/layers/{id}"
     },
     "put": {
       "responses": {
@@ -339,7 +339,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DeckGlLayerResponse"
+                "$ref": "#/components/schemas/LayerResponse"
               }
             }
           }
@@ -396,7 +396,7 @@
         }
       },
       "tags": [
-        "Deck-gl-layer"
+        "Layer"
       ],
       "parameters": [
         {
@@ -410,13 +410,13 @@
           }
         }
       ],
-      "operationId": "put/deck-gl-layers/{id}",
+      "operationId": "put/layers/{id}",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/DeckGlLayerRequest"
+              "$ref": "#/components/schemas/LayerRequest"
             }
           }
         }
@@ -487,7 +487,7 @@
         }
       },
       "tags": [
-        "Deck-gl-layer"
+        "Layer"
       ],
       "parameters": [
         {
@@ -501,7 +501,7 @@
           }
         }
       ],
-      "operationId": "delete/deck-gl-layers/{id}"
+      "operationId": "delete/layers/{id}"
     }
   }
 }
