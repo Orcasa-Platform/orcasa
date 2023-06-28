@@ -7,7 +7,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { sidebarOpenAtom } from '@/store/index.';
+import { sidebarOpenAtom } from '@/store';
 
 import { Button } from '@/components/ui/button';
 

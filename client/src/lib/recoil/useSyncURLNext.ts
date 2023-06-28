@@ -17,16 +17,19 @@ export function useSyncURLNext(
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { replace, push } = useRouter();
+  const {
+    // replace,
+    push,
+  } = useRouter();
 
   const browserInterface: BrowserInterface = {
     replaceURL: useCallback(
       (url: string) => {
         const u = decodedQueryParams ? decodeURIComponent(url) : url;
-        // window.history.replaceState({}, '', u);
-        return replace(u, { shallow: true });
+        return window.history.replaceState({}, '', u);
+        // return replace(u, { shallow: true });
       },
-      [decodedQueryParams, replace]
+      [decodedQueryParams]
     ),
 
     pushURL: useCallback(

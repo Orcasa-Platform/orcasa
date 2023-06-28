@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { bboxAtom, tmpBboxAtom } from '@/store/index.';
+import { bboxAtom, tmpBboxAtom } from '@/store';
 
 import { Bbox } from '@/types/map';
 

@@ -1,4 +1,4 @@
-import { bool, nullable, number, object, string, tuple } from '@recoiljs/refine';
+import { array, bool, nullable, number, object, string, tuple } from '@recoiljs/refine';
 import { atom } from 'recoil';
 import { urlSyncEffect } from 'recoil-sync';
 
@@ -34,13 +34,24 @@ export const bboxAtom = atom<readonly [number, number, number, number] | null | 
   ],
 });
 
-export const tmpBboxAtom = atom<[number, number, number, number] | null>({
+export const tmpBboxAtom = atom<readonly [number, number, number, number] | null>({
   key: 'tmp-bbox',
   default: null,
 });
 
 // Sidebar and menus
-export const sidebarOpenAtom = atom({
+export const sidebarOpenAtom = atom<boolean>({
   key: 'sidebar-open',
   default: true,
+});
+
+// Map layers
+export const layersAtom = atom<readonly number[]>({
+  key: 'layers',
+  default: [],
+  effects: [
+    urlSyncEffect({
+      refine: array(number()),
+    }),
+  ],
 });
