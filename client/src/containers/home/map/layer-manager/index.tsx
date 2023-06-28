@@ -16,7 +16,10 @@ const LayerManager = () => {
   return (
     <DeckMapboxOverlayProvider>
       <>
-        {/* Generate all transparent backgrounds to be able to sort by layers without an error */}
+        {/*
+          Generate all transparent backgrounds to be able to sort by layers without an error
+          - https://github.com/visgl/react-map-gl/issues/939#issuecomment-625290200
+        */}
         {layers.map((l, i) => {
           const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
 
