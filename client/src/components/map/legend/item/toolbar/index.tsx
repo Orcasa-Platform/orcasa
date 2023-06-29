@@ -50,11 +50,11 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                 <TooltipContent
                   align="end"
                   alignOffset={-10}
-                  className="rounded-none border-slate-500 bg-slate-500"
+                  className="border-primary bg-primary rounded-none"
                 >
                   <div className="text-xxs text-white">Opacity</div>
 
-                  <TooltipArrow className="fill-slate-500" width={10} height={5} />
+                  <TooltipArrow className="fill-primary" width={10} height={5} />
                 </TooltipContent>
               </Tooltip>
 
@@ -62,10 +62,10 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                 side="top"
                 align="end"
                 alignOffset={-10}
-                className="max-w-[122px] border-slate-500 bg-slate-500 px-2.5 pb-2.5 pt-1"
+                className="border-primary bg-primary max-w-[122px] px-2.5 pb-2.5 pt-1"
               >
-                <div className="space-y-5">
-                  <div className="text-xxs text-white">Opacity</div>
+                <div className="space-y-2">
+                  <div className="text-xxs text-secondary text-center">Opacity</div>
 
                   <Slider
                     className="w-full"
@@ -78,7 +78,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                     }}
                   />
                 </div>
-                <PopoverArrow className="block fill-slate-500" width={11} height={5} />
+                <PopoverArrow className="fill-primary block" width={11} height={5} />
               </PopoverContent>
             </Popover>
           </div>
@@ -104,13 +104,13 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                 side="top"
                 align="end"
                 alignOffset={-10}
-                className="rounded-none border-slate-500 bg-slate-500"
+                className="border-primary bg-primary rounded-none"
               >
                 <div className="text-xxs text-white">
                   {visibility ? 'Hide layer' : 'Show layer'}
                 </div>
 
-                <TooltipArrow className="fill-slate-500" width={10} height={5} />
+                <TooltipArrow className="fill-primary" width={10} height={5} />
               </TooltipContent>
             </Tooltip>
           </div>
@@ -136,11 +136,11 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   side="top"
                   align="end"
                   alignOffset={-10}
-                  className="rounded-none border-slate-500 bg-slate-500"
+                  className="border-primary bg-primary rounded-none"
                 >
                   <div className="text-xxs text-white">Show info</div>
 
-                  <TooltipArrow className="fill-slate-500" width={10} height={5} />
+                  <TooltipArrow className="fill-primary" width={10} height={5} />
                 </TooltipContent>
 
                 <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>{info}</DialogContent>
@@ -179,13 +179,13 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                 side="top"
                 align="end"
                 alignOffset={-10}
-                className="rounded-none border-slate-500 bg-slate-500"
+                className="border-primary bg-primary rounded-none"
               >
                 <div className="text-xxs text-white">
                   {expand ? 'Collapse layer' : 'Expand layer'}
                 </div>
 
-                <TooltipArrow className="fill-slate-500" width={10} height={5} />
+                <TooltipArrow className="fill-primary" width={10} height={5} />
               </TooltipContent>
             </Tooltip>
           </div>
