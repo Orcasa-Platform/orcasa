@@ -2,16 +2,10 @@ import { useEffect } from 'react';
 
 import { Source, Layer } from 'react-map-gl';
 
-import { AnyLayer, AnySourceData } from 'mapbox-gl';
-
-import { LayerProps } from '@/types/map';
+import { Config, LayerProps } from '@/types/layers';
 
 export type MapboxLayerProps = LayerProps & {
-  config: {
-    source: AnySourceData;
-    styles: AnyLayer[];
-  };
-  params_config?: Record<string, unknown>[];
+  config: Config;
 };
 
 const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
@@ -22,7 +16,7 @@ const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
     if (SOURCE && STYLES && onAdd) {
       onAdd({
         source: SOURCE,
-        layers: STYLES,
+        styles: STYLES,
       });
     }
 
@@ -30,7 +24,7 @@ const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
       if (SOURCE && STYLES && onRemove) {
         onRemove({
           source: SOURCE,
-          layers: STYLES,
+          styles: STYLES,
         });
       }
     };
@@ -40,7 +34,7 @@ const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
 
   return (
     <Source {...SOURCE}>
-      {STYLES.map((layer: AnyLayer) => (
+      {STYLES.map((layer) => (
         <Layer key={layer.id} {...layer} beforeId={id} />
       ))}
       {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}

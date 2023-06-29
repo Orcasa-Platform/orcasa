@@ -2,13 +2,13 @@
 
 import { useCallback, useMemo } from 'react';
 
-import { LngLatBoundsLike, useMap } from 'react-map-gl';
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap } from 'react-map-gl';
 
 import dynamic from 'next/dynamic';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { bboxAtom, tmpBboxAtom } from '@/store';
+import { bboxAtom, layersInteractiveIdsAtom, tmpBboxAtom } from '@/store';
 
 import { Bbox } from '@/types/map';
 
@@ -48,6 +48,7 @@ export default function MapContainer() {
 
   const bbox = useRecoilValue(bboxAtom);
   const tmpBbox = useRecoilValue(tmpBboxAtom);
+  const layersInteractiveIds = useRecoilValue(layersInteractiveIdsAtom);
 
   const setBbox = useSetRecoilState(bboxAtom);
   const setTmpBbox = useSetRecoilState(tmpBboxAtom);
@@ -69,7 +70,7 @@ export default function MapContainer() {
     }
   }, [tmpBbox]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleViewState = useCallback(() => {
+  const handleMapViewStateChange = useCallback(() => {
     if (map) {
       const b = map
         .getBounds()
@@ -83,6 +84,12 @@ export default function MapContainer() {
       setTmpBbox(null);
     }
   }, [map, setBbox, setTmpBbox]);
+
+  const handleMapClick = useCallback((e: MapLayerMouseEvent) => {
+    if (e?.features) {
+      console.info(e.features);
+    }
+  }, []);
 
   return (
     <div className="h-screen w-screen">
@@ -98,7 +105,9 @@ export default function MapContainer() {
         minZoom={minZoom}
         maxZoom={maxZoom}
         mapStyle={MAPBOX_STYLES.default}
-        onMapViewStateChange={handleViewState}
+        interactiveLayerIds={layersInteractiveIds}
+        onClick={handleMapClick}
+        onMapViewStateChange={handleMapViewStateChange}
       >
         {() => (
           <>

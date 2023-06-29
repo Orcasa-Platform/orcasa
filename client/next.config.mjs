@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     domains: ['api.mapbox.com'],
   },
+  env: {
+    RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED: 'false',
+  },
 };
 
 export default nextConfig;

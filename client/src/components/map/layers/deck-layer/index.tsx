@@ -2,16 +2,16 @@
 
 import { useEffect } from 'react';
 
-import { LayerProps, Settings } from '@/types/map';
+import { LayerProps } from '@/types/layers';
 
 import { useDeckMapboxOverlayContext } from '@/components/map/provider';
 
-export type DeckLayerProps<T, S> = LayerProps<S> &
+export type DeckLayerProps<T> = LayerProps &
   T & {
     type: any;
   };
 
-const DeckLayer = <T,>({ id, type, ...props }: DeckLayerProps<T, Settings>) => {
+const DeckLayer = <T,>({ id, type, ...props }: DeckLayerProps<T>) => {
   // Render deck layer
   const i = `${id}-deck`;
   const { addLayer, removeLayer } = useDeckMapboxOverlayContext();

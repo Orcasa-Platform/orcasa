@@ -4,6 +4,9 @@
     "plugin:prettier/recommended",
     "next/core-web-vitals"
   ],
+  "ignorePatterns": [
+    "src/types/generated/*"
+  ],
   "rules": {
     "no-console": [1, { "allow": ["info", "error", "debug"] }],
     "import/order": [

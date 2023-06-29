@@ -3,7 +3,7 @@
 
 import { useEffect } from 'react';
 
-import { LayerProps } from '@/types/map';
+import { LayerProps } from '@/types/layers';
 
 import { useDeckMapboxOverlayContext } from '@/components/map/provider';
 

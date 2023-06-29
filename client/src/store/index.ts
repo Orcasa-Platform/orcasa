@@ -71,13 +71,23 @@ export const layersAtom = atom<readonly number[]>({
 });
 
 export const layersSettingsAtom = atom({
-  key: 'layer-settings',
+  key: 'layers-settings',
   default: {},
   effects: [
     urlSyncEffect({
       refine: writableDict(writableDict(mixed())),
     }),
   ],
+});
+
+export const layersInteractiveAtom = atom<number[]>({
+  key: 'layers-interactive',
+  default: [],
+});
+
+export const layersInteractiveIdsAtom = atom<string[]>({
+  key: 'layers-interactive-ids',
+  default: [],
 });
 
 export function useSyncLayersAndSettings() {
@@ -92,6 +102,7 @@ export function useSyncLayersAndSettings() {
         // Reset layersettings that are not in layers
         Object.keys(lysSettings).forEach((ly) => {
           if (!lys.includes(parseInt(ly))) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { [ly]: _, ...rest } = lysSettings;
             set(layersSettingsAtom, rest);
           }
