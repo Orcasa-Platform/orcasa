@@ -10,7 +10,11 @@ import { parseConfig } from '@/containers/home/map/layer-manager/utils';
 import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
 import MapboxLayer from '@/components/map/layers/mapbox-layer';
 
-const LayerManagerItem = ({ id }: Required<Pick<LayerResponseDataObject, 'id'>>) => {
+interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, 'id'>> {
+  settings: Record<string, unknown>;
+}
+
+const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const { data } = useGetLayersId(id);
 
   if (!data?.data?.attributes) return null;
@@ -26,19 +30,10 @@ const LayerManagerItem = ({ id }: Required<Pick<LayerResponseDataObject, 'id'>>)
     }>({
       config,
       params_config,
-      // settings
+      settings,
     });
 
-    return (
-      <MapboxLayer
-        id={`${id}-layer`}
-        config={c}
-        settings={{
-          opacity: 1,
-          visibility: true,
-        }}
-      />
-    );
+    return <MapboxLayer id={`${id}-layer`} config={c} />;
   }
 
   if (type === 'deckgl') {
@@ -47,19 +42,10 @@ const LayerManagerItem = ({ id }: Required<Pick<LayerResponseDataObject, 'id'>>)
       // TODO: type
       config,
       params_config,
-      // settings
+      settings,
     });
 
-    return (
-      <DeckJsonLayer
-        id={`${id}-layer`}
-        config={c}
-        settings={{
-          opacity: 1,
-          visibility: true,
-        }}
-      />
-    );
+    return <DeckJsonLayer id={`${id}-layer`} config={c} />;
   }
 };
 

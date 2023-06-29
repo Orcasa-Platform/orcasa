@@ -3,16 +3,16 @@
 
 import { useEffect } from 'react';
 
-import { LayerProps, Settings } from '@/types/map';
+import { LayerProps } from '@/types/map';
 
 import { useDeckMapboxOverlayContext } from '@/components/map/provider';
 
-export type DeckJsonLayerProps<T, S> = LayerProps<S> &
+export type DeckJsonLayerProps<T> = LayerProps &
   Partial<T> & {
     config: any;
   };
 
-const DeckJsonLayer = <T,>({ id, config }: DeckJsonLayerProps<T, Settings>) => {
+const DeckJsonLayer = <T,>({ id, config }: DeckJsonLayerProps<T>) => {
   // Render deck config
   const i = `${id}-deck`;
   const { addLayer, removeLayer } = useDeckMapboxOverlayContext();

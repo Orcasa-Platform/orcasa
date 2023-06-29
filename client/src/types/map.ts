@@ -19,9 +19,8 @@ type OnAddRemoveProps = {
   layers: AnyLayer[];
 };
 
-export type LayerProps<S> = {
+export type LayerProps = {
   id?: string;
-  settings: Partial<S>;
   zIndex?: number;
   onAdd?: (props: OnAddRemoveProps) => void;
   onRemove?: (props: OnAddRemoveProps) => void;

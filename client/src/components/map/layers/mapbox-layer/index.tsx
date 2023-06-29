@@ -4,9 +4,9 @@ import { Source, Layer } from 'react-map-gl';
 
 import { AnyLayer, AnySourceData } from 'mapbox-gl';
 
-import { LayerProps, Settings } from '@/types/map';
+import { LayerProps } from '@/types/map';
 
-export type MapboxLayerProps<S> = LayerProps<S> & {
+export type MapboxLayerProps = LayerProps & {
   config: {
     source: AnySourceData;
     styles: AnyLayer[];
@@ -14,7 +14,7 @@ export type MapboxLayerProps<S> = LayerProps<S> & {
   params_config?: Record<string, unknown>[];
 };
 
-const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps<Settings>) => {
+const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
   const SOURCE = config.source;
   const STYLES = config.styles;
 

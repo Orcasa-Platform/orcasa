@@ -55,3 +55,13 @@ export const layersAtom = atom<readonly number[]>({
     }),
   ],
 });
+
+export const layersSettingsAtom = atom<Record<string, Record<string, unknown>>>({
+  key: 'layer-settings',
+  default: {},
+  effects: [
+    urlSyncEffect({
+      refine: object({}),
+    }),
+  ],
+});

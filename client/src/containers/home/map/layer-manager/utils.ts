@@ -28,6 +28,7 @@ export const JSON_CONFIGURATION = {
   ),
   functions: {
     setOpacity,
+    setVisibility,
   },
   constants: {},
   enumerations: {},
@@ -45,19 +46,17 @@ export type ParamConfig = {
   default: unknown;
 };
 export interface GetParamsProps {
+  settings: Record<string, unknown>;
   params_config: ParamConfig[];
 }
-export const getParams = ({
-  // settings
-  params_config,
-}: GetParamsProps) => {
+export const getParams = ({ params_config, settings = {} }: GetParamsProps) => {
   if (!params_config) {
     return {};
   }
   return params_config.reduce((acc, p) => {
     return {
       ...acc,
-      [p.key]: p.default,
+      [p.key]: settings[p.key] ?? p.default,
     };
   }, {});
 };
@@ -73,18 +72,21 @@ export const getParams = ({
 interface ParseConfigurationProps {
   config: unknown;
   params_config: unknown;
+  settings: Record<string, unknown>;
 }
-export const parseConfig = <T>({ config, params_config }: ParseConfigurationProps): T => {
+export const parseConfig = <T>({ config, params_config, settings }: ParseConfigurationProps): T => {
   const JSON_CONVERTER = new JSONConverter({
     configuration: JSON_CONFIGURATION,
   });
 
   const pc = params_config as ParamConfig[];
-  const constants = getParams({ params_config: pc });
+  const params = getParams({ params_config: pc, settings });
 
   // Merge constants with config
   JSON_CONVERTER.mergeConfiguration({
-    constants,
+    enumerations: {
+      params,
+    },
   });
   return JSON_CONVERTER.convert(config);
 };
