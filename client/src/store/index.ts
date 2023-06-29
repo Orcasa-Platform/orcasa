@@ -1,5 +1,19 @@
-import { array, bool, nullable, number, object, string, tuple } from '@recoiljs/refine';
-import { atom } from 'recoil';
+'use client';
+
+import { useEffect } from 'react';
+
+import {
+  array,
+  bool,
+  mixed,
+  nullable,
+  number,
+  object,
+  string,
+  tuple,
+  writableDict,
+} from '@recoiljs/refine';
+import { atom, useRecoilCallback, useRecoilValue } from 'recoil';
 import { urlSyncEffect } from 'recoil-sync';
 
 // Map settings
@@ -56,12 +70,40 @@ export const layersAtom = atom<readonly number[]>({
   ],
 });
 
-export const layersSettingsAtom = atom<Record<string, Record<string, unknown>>>({
+export const layersSettingsAtom = atom({
   key: 'layer-settings',
   default: {},
   effects: [
     urlSyncEffect({
-      refine: object({}),
+      refine: writableDict(writableDict(mixed())),
     }),
   ],
 });
+
+export function useSyncLayersAndSettings() {
+  const layers = useRecoilValue(layersAtom);
+
+  const syncAtoms = useRecoilCallback(
+    ({ snapshot, set }) =>
+      async () => {
+        const lys = await snapshot.getPromise(layersAtom);
+        const lysSettings = await snapshot.getPromise(layersSettingsAtom);
+
+        // Reset layersettings that are not in layers
+        Object.keys(lysSettings).forEach((ly) => {
+          if (!lys.includes(parseInt(ly))) {
+            const { [ly]: _, ...rest } = lysSettings;
+            set(layersSettingsAtom, rest);
+          }
+        });
+      },
+    []
+  );
+
+  // Sync layersettings when layers change
+  useEffect(() => {
+    syncAtoms();
+  }, [layers.length]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return true;
+}
