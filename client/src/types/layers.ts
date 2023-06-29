@@ -9,13 +9,12 @@ export type Config = {
   styles: AnyLayer[];
 };
 
-export type ParamsConfig = Record<
-  string,
-  {
-    key: string;
-    default: unknown;
-  }
->[];
+export type ParamsConfigValue = {
+  key: string;
+  default: unknown;
+};
+
+export type ParamsConfig = Record<string, ParamsConfigValue>[];
 
 export type LegendConfig = {
   type: string;

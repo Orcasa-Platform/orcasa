@@ -1823,6 +1823,78 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dnd-kit/accessibility@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "@dnd-kit/accessibility@npm:3.0.1"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 0afc2c0fce9a1c107453620ca0da1778f182d340e74ffbc6e369ef0ac8943cafb929d3a6c0891d9b915aa23b2b92137ff4fad958f43118466586d8129a3359d5
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/core@npm:6.0.5":
+  version: 6.0.5
+  resolution: "@dnd-kit/core@npm:6.0.5"
+  dependencies:
+    "@dnd-kit/accessibility": ^3.0.0
+    "@dnd-kit/utilities": ^3.2.0
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 09061e741bea9d2ba3987d01bb760c354fe29ca27996e74da3774e68c4783cf09ad21087703b5ffb036d3c2f86d16bea3c9f24466c2f266c8698f1e76c29d386
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/modifiers@npm:6.0.0":
+  version: 6.0.0
+  resolution: "@dnd-kit/modifiers@npm:6.0.0"
+  dependencies:
+    "@dnd-kit/utilities": ^3.2.0
+    tslib: ^2.0.0
+  peerDependencies:
+    "@dnd-kit/core": ^6.0.0
+  checksum: 82c2640627aa9d04641fce2a48e8a374d2c6be6f96d75a110eaf69c043cce84685914e58453d54254b9bfc6041668ee3c34f8c4294b1ce367435900b210336e6
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/sortable@npm:7.0.1":
+  version: 7.0.1
+  resolution: "@dnd-kit/sortable@npm:7.0.1"
+  dependencies:
+    "@dnd-kit/utilities": ^3.2.0
+    tslib: ^2.0.0
+  peerDependencies:
+    "@dnd-kit/core": ^6.0.4
+    react: ">=16.8.0"
+  checksum: b8b5ae504d57d6afb847c3ac8a865a3623c5915f4f0dd767017a17e6d1d36e144b74f6f90a17c07d5f8ddc83395a2db8bb90c420f017aee15bd88538b6f3f226
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/utilities@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@dnd-kit/utilities@npm:3.2.0"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 575e554992c5ff26622854b889b6288580f308e1125620a4aae55d0a113d47f05fdb7c6e2023ce51c58d5a206091fc1deac868222dd5f9c35c80c3e2f99db9af
+  languageName: node
+  linkType: hard
+
+"@dnd-kit/utilities@npm:^3.2.0":
+  version: 3.2.1
+  resolution: "@dnd-kit/utilities@npm:3.2.1"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 038fd5cc1328bf4c9dca17cd48046e5a687bbf9d904c7197f851aab869ab52d9dee2734b2e255256fd6158245acd00063a23deed962c7673c0fadfbf061f04ca
+  languageName: node
+  linkType: hard
+
 "@emotion/babel-plugin@npm:^11.11.0":
   version: 11.11.0
   resolution: "@emotion/babel-plugin@npm:11.11.0"
@@ -1862,7 +1934,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:^0.8.8":
+"@emotion/is-prop-valid@npm:^0.8.2, @emotion/is-prop-valid@npm:^0.8.8":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
   dependencies:
@@ -4514,6 +4586,10 @@ __metadata:
     "@deck.gl/json": 8.9.19
     "@deck.gl/layers": 8.9.19
     "@deck.gl/mapbox": 8.9.19
+    "@dnd-kit/core": 6.0.5
+    "@dnd-kit/modifiers": 6.0.0
+    "@dnd-kit/sortable": 7.0.1
+    "@dnd-kit/utilities": 3.2.0
     "@hookform/resolvers": ^3.1.1
     "@radix-ui/react-accordion": ^1.1.2
     "@radix-ui/react-checkbox": ^1.0.4
@@ -4548,6 +4624,7 @@ __metadata:
     eslint-config-prettier: ^8.8.0
     eslint-plugin-import: 2.27.5
     eslint-plugin-prettier: ^4.2.1
+    framer-motion: ^10.12.17
     lucide-react: ^0.252.0
     mapbox-gl: 2.15.0
     next: 13.4.5
@@ -11157,6 +11234,27 @@ __metadata:
   dependencies:
     map-cache: ^0.2.2
   checksum: 1cbbd0b0116b67d5790175de0038a11df23c1cd2e8dcdbade58ebba5594c2d641dade6b4f126d82a7b4a6ffc2ea12e3d387dbb64ea2ae97cf02847d436f60fdc
+  languageName: node
+  linkType: hard
+
+"framer-motion@npm:^10.12.17":
+  version: 10.12.17
+  resolution: "framer-motion@npm:10.12.17"
+  dependencies:
+    "@emotion/is-prop-valid": ^0.8.2
+    tslib: ^2.4.0
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  dependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: d36fbc7fabd0b9e519e5ef776528b37acea9129ee3cfb4ced77c641dd3b9c31b4b63a7328f86d3b79dd86e8139102dac57f70915c0afd0a3eb7361dc2bd15e81
   languageName: node
   linkType: hard
 

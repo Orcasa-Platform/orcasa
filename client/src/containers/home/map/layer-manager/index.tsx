@@ -23,7 +23,6 @@ const LayerManager = () => {
         */}
         {layers.map((l, i) => {
           const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
-
           return (
             <Layer
               type="background"
@@ -39,11 +38,14 @@ const LayerManager = () => {
           Loop through active layers. The id is gonna be used to fetch the current layer and know how to order the layers.
           The first item will always be at the top of the layers stack
         */}
-        {layers.map((l) => {
+        {layers.map((l, i) => {
+          const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
+
           return (
             <LayerManagerItem
               key={l}
               id={l}
+              beforeId={beforeId}
               settings={layersSettings[l] ?? { opacity: 1, visibility: true }}
             />
           );

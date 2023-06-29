@@ -16,7 +16,7 @@ export const setOpacity = ({ o = 1, base = 1 }: SetOpacityProps) => {
 
 type SetVisibilityProps = { v: boolean };
 export const setVisibility = ({ v = true }: SetVisibilityProps) => {
-  return v;
+  return v ? 'visible' : 'none';
 };
 
 export const JSON_CONFIGURATION = {
@@ -27,8 +27,8 @@ export const JSON_CONFIGURATION = {
     require('@deck.gl/aggregation-layers')
   ),
   functions: {
-    setOpacity,
     setVisibility,
+    setOpacity,
   },
   constants: {},
   enumerations: {},
@@ -81,7 +81,6 @@ export const parseConfig = <T>({ config, params_config, settings }: ParseConfigu
 
   const pc = params_config as ParamConfig[];
   const params = getParams({ params_config: pc, settings });
-
   // Merge constants with config
   JSON_CONVERTER.mergeConfiguration({
     enumerations: {

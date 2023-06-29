@@ -6,9 +6,10 @@ import { Config, LayerProps } from '@/types/layers';
 
 export type MapboxLayerProps = LayerProps & {
   config: Config;
+  beforeId?: string;
 };
 
-const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
+const MapboxLayer = ({ id, config, onAdd, onRemove, beforeId }: MapboxLayerProps) => {
   const SOURCE = config.source;
   const STYLES = config.styles;
 
@@ -35,9 +36,9 @@ const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
   return (
     <Source {...SOURCE}>
       {STYLES.map((layer) => (
-        <Layer key={layer.id} {...layer} beforeId={id} />
+        <Layer key={layer.id} {...layer} beforeId={beforeId} />
       ))}
-      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}
+      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={beforeId} />}
     </Source>
   );
 };

@@ -17,9 +17,10 @@ import MapboxLayer from '@/components/map/layers/mapbox-layer';
 
 interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, 'id'>> {
   settings: Record<string, unknown>;
+  beforeId?: string;
 }
 
-const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
+const LayerManagerItem = ({ id, settings, beforeId }: LayerManagerItemProps) => {
   const { data } = useGetLayersId(id);
   const layersInteractive = useRecoilValue(layersInteractiveAtom);
   const setLayersInteractive = useSetRecoilState(layersInteractiveAtom);
@@ -58,7 +59,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       settings,
     });
 
-    return <MapboxLayer id={`${id}-layer`} config={c} onAdd={handleAddMapboxLayer} />;
+    return <MapboxLayer beforeId={beforeId} config={c} onAdd={handleAddMapboxLayer} />;
   }
 
   if (type === 'deckgl') {

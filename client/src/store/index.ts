@@ -98,7 +98,13 @@ export const popupAtom = atom<MapLayerMouseEvent | null>({
   dangerouslyAllowMutability: true,
 });
 
-export function useSyncLayers() {
+export const DEFAULT_SETTINGS = {
+  // opacity: 1,
+  // visibility: true,
+  expand: true,
+};
+
+export function useSyncLayersAndSettings() {
   const layers = useRecoilValue(layersAtom);
 
   const setPopup = useSetRecoilState(popupAtom);
@@ -116,7 +122,14 @@ export function useSyncLayers() {
             setTimeout(async () => {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const { [ly]: _, ...rest } = lysSettings;
-              set(layersSettingsAtom, rest);
+              const settings = Object.entries(rest).reduce(
+                (prev, [key, value]) => ({
+                  ...prev,
+                  [key]: { ...DEFAULT_SETTINGS, ...value },
+                }),
+                {}
+              );
+              set(layersSettingsAtom, settings);
             }, 0);
           }
         });
