@@ -9,16 +9,13 @@ import { mapSettingsAtom } from '@/store/index';
 
 import { BASEMAPS } from '@/constants/basemaps';
 
-interface MapSettingsManagerProps {
-  id: string;
-}
-
 type AnyLayerWithMetadata = AnyLayer & {
   metadata: Record<string, unknown>;
 };
 
-const MapSettingsManager = ({ id }: MapSettingsManagerProps) => {
-  const { [id]: mapRef } = useMap();
+const MapSettingsManager = () => {
+  const { default: mapRef } = useMap();
+  const loaded = mapRef?.loaded();
   const { basemap, labels, boundaries, roads } = useRecoilValue(mapSettingsAtom);
 
   const handleGroup = useCallback(
@@ -83,22 +80,22 @@ const MapSettingsManager = ({ id }: MapSettingsManagerProps) => {
     return () => {
       mapRef.off('style.load', handleStyleLoad);
     };
-  }, [mapRef, handleStyleLoad]);
+  }, [mapRef, loaded, handleStyleLoad]);
 
   // * handle basemap, labels, boundaries, roads
   useEffect(() => {
-    if (!!mapRef && mapRef.loaded()) {
-      const B = BASEMAPS.find((b) => b.value === basemap);
+    if (!mapRef) return;
 
-      handleGroup(['basemap'], basemap);
-      handleGroup(['labels'], labels);
+    const B = BASEMAPS.find((b) => b.value === basemap);
 
-      if (B) {
-        handleGroup(['boundaries'], B.settings.boundaries, boundaries);
-        handleGroup(['roads'], B.settings.roads, roads);
-      }
+    handleGroup(['basemap'], basemap);
+    handleGroup(['labels'], labels);
+
+    if (B) {
+      handleGroup(['boundaries'], B.settings.boundaries, boundaries);
+      handleGroup(['roads'], B.settings.roads, roads);
     }
-  }, [mapRef, basemap, labels, boundaries, roads, handleGroup]);
+  }, [mapRef, loaded, basemap, labels, boundaries, roads, handleGroup]);
 
   return null;
 };

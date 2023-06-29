@@ -111,7 +111,7 @@ export default function MapContainer() {
 
             <LayerManager />
 
-            <MapSettingsManager id={id} />
+            <MapSettingsManager />
           </>
         )}
       </Map>
