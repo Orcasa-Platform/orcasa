@@ -28,7 +28,7 @@ const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
         });
       }
     };
-  }, [onAdd, onRemove]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!SOURCE || !STYLES) return null;
 

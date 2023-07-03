@@ -45,6 +45,22 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
     [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds]
   );
 
+  const handleRemoveMapboxLayer = useCallback(
+    ({ styles }: Config) => {
+      if (!data?.data?.attributes) return null;
+
+      const { interaction_config } = data.data.attributes as LayerTyped;
+
+      if (interaction_config?.enabled) {
+        const ids = styles.map((l) => l.id);
+
+        setLayersInteractive((prev) => prev.filter((i) => i !== id));
+        setLayersInteractiveIds((prev) => prev.filter((i) => !ids.includes(i)));
+      }
+    },
+    [data?.data?.attributes, id, setLayersInteractive, setLayersInteractiveIds]
+  );
+
   if (!data?.data?.attributes) return null;
 
   const { type } = data.data.attributes as LayerTyped;
@@ -58,7 +74,14 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       settings,
     });
 
-    return <MapboxLayer id={`${id}-layer`} config={c} onAdd={handleAddMapboxLayer} />;
+    return (
+      <MapboxLayer
+        id={`${id}-layer`}
+        config={c}
+        onAdd={handleAddMapboxLayer}
+        onRemove={handleRemoveMapboxLayer}
+      />
+    );
   }
 
   if (type === 'deckgl') {
