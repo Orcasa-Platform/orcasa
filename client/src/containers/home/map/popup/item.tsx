@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useMap } from 'react-map-gl';
 
+import type { Feature } from 'geojson';
 import { useRecoilValue } from 'recoil';
 
 import { format } from '@/lib/utils/formats';
@@ -18,7 +19,7 @@ export interface PopupItemProps {
 }
 const PopupItem = ({ id }: PopupItemProps) => {
   const [rendered, setRendered] = useState(false);
-  const DATA_REF = useRef<Record<string, unknown> | null>(null);
+  const DATA_REF = useRef<Feature['properties'] | undefined>();
 
   const { default: map } = useMap();
 
@@ -41,8 +42,9 @@ const PopupItem = ({ id }: PopupItemProps) => {
         return d.source === source?.id;
       })?.properties;
 
+      DATA_REF.current = d;
+
       if (d) {
-        DATA_REF.current = d;
         return DATA_REF.current;
       }
     }
@@ -73,15 +75,15 @@ const PopupItem = ({ id }: PopupItemProps) => {
       skeletonClassName="h-20 w-[250px]"
     >
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold">{attributes.title}</h3>
+        <h3 className="text-base font-semibold">{attributes.title}</h3>
         <dl className="space-y-2">
           {click &&
             !!DATA &&
             click.values.map((v) => {
               return (
                 <div key={v.key}>
-                  <dt className="text-xs font-semibold uppercase underline">{v.label || v.key}:</dt>
-                  <dd>
+                  <dt className="text-xs font-semibold uppercase">{v.label || v.key}:</dt>
+                  <dd className="text-sm">
                     {format({
                       id: v.format?.id,
                       value: DATA[v.key],
@@ -91,6 +93,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
                 </div>
               );
             })}
+          {click && !DATA && <div className="text-xs">No data</div>}
         </dl>
       </div>
     </ContentLoader>
