@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+import { MapLayerMouseEvent } from 'react-map-gl';
+
 import {
   array,
   bool,
@@ -13,7 +15,7 @@ import {
   tuple,
   writableDict,
 } from '@recoiljs/refine';
-import { atom, useRecoilCallback, useRecoilValue } from 'recoil';
+import { atom, useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil';
 import { urlSyncEffect } from 'recoil-sync';
 
 // Map settings
@@ -90,23 +92,46 @@ export const layersInteractiveIdsAtom = atom<string[]>({
   default: [],
 });
 
-export function useSyncLayersAndSettings() {
+export const popupAtom = atom<MapLayerMouseEvent | null>({
+  key: 'point',
+  default: null,
+  dangerouslyAllowMutability: true,
+});
+
+export function useSyncLayers() {
   const layers = useRecoilValue(layersAtom);
+
+  const setPopup = useSetRecoilState(popupAtom);
 
   const syncAtoms = useRecoilCallback(
     ({ snapshot, set }) =>
       async () => {
         const lys = await snapshot.getPromise(layersAtom);
         const lysSettings = await snapshot.getPromise(layersSettingsAtom);
+        const lysInteractive = await snapshot.getPromise(layersInteractiveAtom);
 
         // Reset layersettings that are not in layers
         Object.keys(lysSettings).forEach((ly) => {
           if (!lys.includes(parseInt(ly))) {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { [ly]: _, ...rest } = lysSettings;
-            set(layersSettingsAtom, rest);
+            setTimeout(async () => {
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              const { [ly]: _, ...rest } = lysSettings;
+              set(layersSettingsAtom, rest);
+            }, 0);
           }
         });
+
+        // Reset interactive layers
+        // If I don't use setTimeout, the url will not be updated
+        // setTimeout is needed to put this function to the end of the js queue
+        setTimeout(() => {
+          const newLysInteractive = lysInteractive.filter((ly) => lys.includes(ly));
+          set(layersInteractiveAtom, newLysInteractive);
+
+          if (!newLysInteractive.length) {
+            setPopup(null);
+          }
+        }, 0);
       },
     []
   );
@@ -114,7 +139,7 @@ export function useSyncLayersAndSettings() {
   // Sync layersettings when layers change
   useEffect(() => {
     syncAtoms();
-  }, [layers.length]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [layers.length, syncAtoms]);
 
   return true;
 }

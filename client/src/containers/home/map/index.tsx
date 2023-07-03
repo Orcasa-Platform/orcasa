@@ -8,12 +8,21 @@ import dynamic from 'next/dynamic';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { bboxAtom, layersInteractiveIdsAtom, tmpBboxAtom } from '@/store';
+import {
+  bboxAtom,
+  layersInteractiveAtom,
+  layersInteractiveIdsAtom,
+  popupAtom,
+  tmpBboxAtom,
+} from '@/store';
 
+import { useGetLayers } from '@/types/generated/layer';
+import type { LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
 
 import { MAPBOX_STYLES } from '@/constants/mapbox';
 
+import Popup from '@/containers/home/map/popup';
 import MapSettings from '@/containers/home/map/settings';
 import MapSettingsManager from '@/containers/home/map/settings/manager';
 
@@ -48,10 +57,27 @@ export default function MapContainer() {
 
   const bbox = useRecoilValue(bboxAtom);
   const tmpBbox = useRecoilValue(tmpBboxAtom);
+  const layersInteractive = useRecoilValue(layersInteractiveAtom);
   const layersInteractiveIds = useRecoilValue(layersInteractiveIdsAtom);
 
   const setBbox = useSetRecoilState(bboxAtom);
   const setTmpBbox = useSetRecoilState(tmpBboxAtom);
+  const setPopup = useSetRecoilState(popupAtom);
+
+  const { data: layersInteractiveData } = useGetLayers(
+    {
+      filters: {
+        id: {
+          $in: layersInteractive,
+        },
+      },
+    },
+    {
+      query: {
+        enabled: !!layersInteractive.length,
+      },
+    }
+  );
 
   const tmpBounds: CustomMapProps['bounds'] = useMemo(() => {
     if (tmpBbox) {
@@ -85,11 +111,23 @@ export default function MapContainer() {
     }
   }, [map, setBbox, setTmpBbox]);
 
-  const handleMapClick = useCallback((e: MapLayerMouseEvent) => {
-    if (e?.features) {
-      console.info(e.features);
-    }
-  }, []);
+  const handleMapClick = useCallback(
+    (e: MapLayerMouseEvent) => {
+      if (
+        layersInteractive.length &&
+        layersInteractiveData?.data &&
+        layersInteractiveData?.data.some((l) => {
+          const attributes = l.attributes as LayerTyped;
+          return attributes?.interaction_config?.events.some((ev) => ev.type === 'click');
+        })
+      ) {
+        const p = Object.assign({}, e, { features: e.features ?? [] });
+
+        setPopup(p);
+      }
+    },
+    [layersInteractive, layersInteractiveData, setPopup]
+  );
 
   return (
     <div className="h-screen w-screen">
@@ -119,6 +157,8 @@ export default function MapContainer() {
             </Controls>
 
             <LayerManager />
+
+            <Popup />
 
             <MapSettingsManager />
           </>

@@ -2,13 +2,13 @@
 
 import { useCallback } from 'react';
 
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { layersInteractiveAtom, layersInteractiveIdsAtom } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
-import { Config, MaboxLayer } from '@/types/layers';
+import { Config, LayerTyped } from '@/types/layers';
 
 import { parseConfig } from '@/containers/home/map/layer-manager/utils';
 
@@ -21,6 +21,7 @@ interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, '
 
 const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const { data } = useGetLayersId(id);
+  const layersInteractive = useRecoilValue(layersInteractiveAtom);
   const setLayersInteractive = useSetRecoilState(layersInteractiveAtom);
   const setLayersInteractiveIds = useSetRecoilState(layersInteractiveIdsAtom);
 
@@ -28,21 +29,25 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
     ({ styles }: Config) => {
       if (!data?.data?.attributes) return null;
 
-      const { interaction_config } = data.data.attributes as MaboxLayer;
+      const { interaction_config } = data.data.attributes as LayerTyped;
 
       if (interaction_config?.enabled) {
         const ids = styles.map((l) => l.id);
+
+        if (layersInteractive.includes(id)) {
+          return;
+        }
 
         setLayersInteractive((prev) => [...prev, id]);
         setLayersInteractiveIds((prev) => [...prev, ...ids]);
       }
     },
-    [data?.data?.attributes, id, setLayersInteractive, setLayersInteractiveIds]
+    [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds]
   );
 
   if (!data?.data?.attributes) return null;
 
-  const { type } = data.data.attributes as MaboxLayer;
+  const { type } = data.data.attributes as LayerTyped;
 
   if (type === 'mapbox') {
     const { config, params_config } = data.data.attributes;

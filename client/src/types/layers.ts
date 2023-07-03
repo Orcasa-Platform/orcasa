@@ -1,5 +1,7 @@
 import type { AnyLayer, AnySourceData } from 'mapbox-gl';
 
+import { FormatProps } from '@/lib/utils/formats';
+
 import type { Layer } from '@/types/generated/strapi.schemas';
 
 export type Config = {
@@ -25,6 +27,14 @@ export type LegendConfig = {
 
 export type InteractionConfig = {
   enabled: boolean;
+  events: {
+    type: 'click' | 'hover';
+    values: {
+      key: string;
+      label: string;
+      format?: FormatProps;
+    }[];
+  }[];
 };
 
 export type LayerProps = {
@@ -34,7 +44,7 @@ export type LayerProps = {
   onRemove?: (props: Config) => void;
 };
 
-export type MaboxLayer = Layer & {
+export type LayerTyped = Layer & {
   config: Config;
   params_config: ParamsConfig;
   legend_config: LegendConfig;
