@@ -4,9 +4,9 @@ import { Children, FC, PropsWithChildren } from 'react';
 
 import { cn } from '@/lib/classnames';
 
-import type { ControlsProps } from './types';
+import type { SettingsControlProps } from './types';
 
-type ControlsPropsWithChildren = PropsWithChildren<ControlsProps>;
+type ControlsPropsWithChildren = PropsWithChildren<SettingsControlProps>;
 
 export const Controls: FC<ControlsPropsWithChildren> = ({
   className = 'absolute bottom-10 left-2',

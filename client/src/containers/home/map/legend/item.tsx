@@ -108,7 +108,7 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
         info={legend_config?.info}
         settingsManager={settingsManager}
       >
-        {!!LEGEND_TYPE}
+        {LEGEND_TYPE}
       </LegendItem>
     </ContentLoader>
   );
