@@ -14,9 +14,13 @@ export const setOpacity = ({ o = 1, base = 1 }: SetOpacityProps) => {
   return o * base;
 };
 
-type SetVisibilityProps = { v: boolean };
-export const setVisibility = ({ v = true }: SetVisibilityProps) => {
-  return v ? 'visible' : 'none';
+type SetVisibilityProps = { v: boolean; type: 'mapbox' | 'deck' };
+export const setVisibility = ({ v = true, type = 'mapbox' }: SetVisibilityProps) => {
+  if (type === 'mapbox') {
+    return v ? 'visible' : 'none';
+  }
+
+  return v;
 };
 
 export const JSON_CONFIGURATION = {

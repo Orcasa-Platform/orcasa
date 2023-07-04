@@ -67,6 +67,7 @@ const getParams = (data?: LayerResponse) => {
     };
   }, {});
   const legend_config = data?.data?.attributes?.legend_config as Legend;
+
   return {
     ...p,
     expand: !!legend_config && !!legend_config.type,

@@ -163,7 +163,7 @@ export default function MapContainer() {
 
             <MapSettingsManager />
 
-            <Legend className="absolute bottom-12 right-5" />
+            <Legend />
           </>
         )}
       </Map>
