@@ -2,22 +2,7 @@
 
 import { JSONConverter } from '@deck.gl/json/typed';
 
-/**
- * *`setOpacity`*
- * Set opacity
- * @param {Number} o
- * @param {Number} base
- * @returns {Number} opacity
- */
-type SetOpacityProps = { o: number; base: number };
-export const setOpacity = ({ o = 1, base = 1 }: SetOpacityProps) => {
-  return o * base;
-};
-
-type SetVisibilityProps = { v: boolean };
-export const setVisibility = ({ v = true }: SetVisibilityProps) => {
-  return v;
-};
+import FUNCTIONS from '@/lib/utils';
 
 export const JSON_CONFIGURATION = {
   layers: Object.assign(
@@ -25,11 +10,9 @@ export const JSON_CONFIGURATION = {
     {},
     require('@deck.gl/layers'),
     require('@deck.gl/aggregation-layers')
+    // require('@/components/ui/button')
   ),
-  functions: {
-    setOpacity,
-    setVisibility,
-  },
+  functions: FUNCTIONS,
   constants: {},
   enumerations: {},
 };
