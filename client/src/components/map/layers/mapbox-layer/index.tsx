@@ -6,10 +6,9 @@ import { Config, LayerProps } from '@/types/layers';
 
 export type MapboxLayerProps = LayerProps & {
   config: Config;
-  beforeId?: string;
 };
 
-const MapboxLayer = ({ id, config, onAdd, onRemove, beforeId }: MapboxLayerProps) => {
+const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
   const SOURCE = config.source;
   const STYLES = config.styles;
 
@@ -29,16 +28,16 @@ const MapboxLayer = ({ id, config, onAdd, onRemove, beforeId }: MapboxLayerProps
         });
       }
     };
-  }, [onAdd, onRemove]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!SOURCE || !STYLES) return null;
 
   return (
     <Source {...SOURCE}>
       {STYLES.map((layer) => (
-        <Layer key={layer.id} {...layer} beforeId={beforeId} />
+        <Layer key={layer.id} {...layer} beforeId={id} />
       ))}
-      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={beforeId} />}
+      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}
     </Source>
   );
 };

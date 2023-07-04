@@ -21,7 +21,7 @@ export function formatHA(value: number, options?: Intl.NumberFormatOptions) {
     ...options,
   });
 
-  return v.format(value).replace(/(\d+)([A-Za-z]+)/, '$1 $2');
+  return v.format(value);
 }
 
 const FORMATS = {
@@ -30,7 +30,7 @@ const FORMATS = {
 } as const;
 
 export type FormatProps = {
-  value: number;
+  value: unknown;
   id?: keyof typeof FORMATS;
   options?: Intl.NumberFormatOptions;
 };
@@ -38,7 +38,7 @@ export type FormatProps = {
 export function format({ id, value, options }: FormatProps) {
   const fn = id ? FORMATS[id] : undefined;
 
-  if (typeof fn === 'function') {
+  if (typeof fn === 'function' && typeof value === 'number') {
     return fn(value, options);
   }
 
@@ -46,7 +46,9 @@ export function format({ id, value, options }: FormatProps) {
     return value.toLocaleString();
   }
 
-  return value;
+  if (typeof value === 'string') {
+    return value;
+  }
 }
 
 export default FORMATS;

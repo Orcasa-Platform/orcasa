@@ -17,10 +17,9 @@ import MapboxLayer from '@/components/map/layers/mapbox-layer';
 
 interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, 'id'>> {
   settings: Record<string, unknown>;
-  beforeId?: string;
 }
 
-const LayerManagerItem = ({ id, settings, beforeId }: LayerManagerItemProps) => {
+const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
   const { data } = useGetLayersId(id);
   const layersInteractive = useRecoilValue(layersInteractiveAtom);
   const setLayersInteractive = useSetRecoilState(layersInteractiveAtom);
@@ -46,6 +45,22 @@ const LayerManagerItem = ({ id, settings, beforeId }: LayerManagerItemProps) => 
     [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds]
   );
 
+  const handleRemoveMapboxLayer = useCallback(
+    ({ styles }: Config) => {
+      if (!data?.data?.attributes) return null;
+
+      const { interaction_config } = data.data.attributes as LayerTyped;
+
+      if (interaction_config?.enabled) {
+        const ids = styles.map((l) => l.id);
+
+        setLayersInteractive((prev) => prev.filter((i) => i !== id));
+        setLayersInteractiveIds((prev) => prev.filter((i) => !ids.includes(i)));
+      }
+    },
+    [data?.data?.attributes, id, setLayersInteractive, setLayersInteractiveIds]
+  );
+
   if (!data?.data?.attributes) return null;
 
   const { type } = data.data.attributes as LayerTyped;
@@ -59,7 +74,14 @@ const LayerManagerItem = ({ id, settings, beforeId }: LayerManagerItemProps) => 
       settings,
     });
 
-    return <MapboxLayer beforeId={beforeId} config={c} onAdd={handleAddMapboxLayer} />;
+    return (
+      <MapboxLayer
+        id={`${id}-layer`}
+        config={c}
+        onAdd={handleAddMapboxLayer}
+        onRemove={handleRemoveMapboxLayer}
+      />
+    );
   }
 
   if (type === 'deckgl') {

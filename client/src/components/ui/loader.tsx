@@ -37,6 +37,8 @@ const ContentLoader = ({
       {isError && isFetched && !isFetching && 'Error'}
 
       {!isPlaceholderData && !isError && isFetched && !!data && children}
+
+      {!isPlaceholderData && !isError && isFetched && !data && 'No data'}
     </div>
   );
 };
