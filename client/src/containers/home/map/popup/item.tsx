@@ -33,13 +33,24 @@ const PopupItem = ({ id }: PopupItemProps) => {
   const click = attributes.interaction_config.events.find((ev) => ev.type === 'click');
 
   const DATA = useMemo(() => {
-    if (source.type === 'vector' && rendered) {
-      const query = map?.queryRenderedFeatures(popup?.point, {
+    if (source.type === 'vector' && rendered && popup && map) {
+      const point = map.project(popup.lngLat);
+
+      // check if the point is outside the canvas
+      if (
+        point.x < 0 ||
+        point.x > map.getCanvas().width ||
+        point.y < 0 ||
+        point.y > map.getCanvas().height
+      ) {
+        return DATA_REF.current;
+      }
+      const query = map.queryRenderedFeatures(point, {
         layers: layersInteractiveIds,
       });
 
-      const d = query?.find((d) => {
-        return d.source === source?.id;
+      const d = query.find((d) => {
+        return d.source === source.id;
       })?.properties;
 
       DATA_REF.current = d;
@@ -66,37 +77,40 @@ const PopupItem = ({ id }: PopupItemProps) => {
   }, [map, handleMapRender]);
 
   return (
-    <ContentLoader
-      data={data?.data}
-      isFetching={isFetching || (!rendered && !DATA_REF.current)}
-      isFetched={isFetched && (rendered || !!DATA_REF.current)}
-      isError={isError}
-      isPlaceholderData={isPlaceholderData}
-      skeletonClassName="h-20 w-[250px]"
-    >
+    <div className="p-4">
       <div className="space-y-3">
         <h3 className="text-base font-semibold">{attributes.title}</h3>
-        <dl className="space-y-2">
-          {click &&
-            !!DATA &&
-            click.values.map((v) => {
-              return (
-                <div key={v.key}>
-                  <dt className="text-xs font-semibold uppercase">{v.label || v.key}:</dt>
-                  <dd className="text-sm">
-                    {format({
-                      id: v.format?.id,
-                      value: DATA[v.key],
-                      options: v.format?.options,
-                    })}
-                  </dd>
-                </div>
-              );
-            })}
-          {click && !DATA && <div className="text-xs">No data</div>}
-        </dl>
+
+        <ContentLoader
+          data={data?.data}
+          isFetching={isFetching || (!rendered && !DATA_REF.current)}
+          isFetched={isFetched && (rendered || !!DATA_REF.current)}
+          isError={isError}
+          isPlaceholderData={isPlaceholderData}
+          skeletonClassName="h-20 w-[250px]"
+        >
+          <dl className="space-y-2">
+            {click &&
+              !!DATA &&
+              click.values.map((v) => {
+                return (
+                  <div key={v.key}>
+                    <dt className="text-xs font-semibold uppercase">{v.label || v.key}:</dt>
+                    <dd className="text-sm">
+                      {format({
+                        id: v.format?.id,
+                        value: DATA[v.key],
+                        options: v.format?.options,
+                      })}
+                    </dd>
+                  </div>
+                );
+              })}
+            {click && !DATA && <div className="text-xs">No data</div>}
+          </dl>
+        </ContentLoader>
       </div>
-    </ContentLoader>
+    </div>
   );
 };
 
