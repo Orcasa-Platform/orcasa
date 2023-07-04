@@ -16,10 +16,11 @@ import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
 import MapboxLayer from '@/components/map/layers/mapbox-layer';
 
 interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, 'id'>> {
+  beforeId: string;
   settings: Record<string, unknown>;
 }
 
-const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
+const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => {
   const { data } = useGetLayersId(id);
   const layersInteractive = useRecoilValue(layersInteractiveAtom);
   const setLayersInteractive = useSetRecoilState(layersInteractiveAtom);
@@ -77,6 +78,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
     return (
       <MapboxLayer
         id={`${id}-layer`}
+        beforeId={beforeId}
         config={c}
         onAdd={handleAddMapboxLayer}
         onRemove={handleRemoveMapboxLayer}
@@ -93,7 +95,7 @@ const LayerManagerItem = ({ id, settings }: LayerManagerItemProps) => {
       settings,
     });
 
-    return <DeckJsonLayer id={`${id}-layer`} config={c} />;
+    return <DeckJsonLayer id={`${id}-layer`} beforeId={beforeId} config={c} />;
   }
 };
 

@@ -4,13 +4,11 @@ import { useSetRecoilState } from 'recoil';
 
 import { DEFAULT_SETTINGS, layersSettingsAtom } from '@/store';
 
-import { Settings } from '@/types/map';
-
 export const useChangeLayerSettings = () => {
   const setLayersSettings = useSetRecoilState(layersSettingsAtom);
 
   return useCallback(
-    (id: number, setting: keyof Settings, value: unknown) =>
+    (id: number, setting: string, value: unknown) =>
       setLayersSettings((prev) => ({
         ...prev,
         [id]: {
