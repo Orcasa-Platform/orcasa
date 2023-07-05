@@ -4,13 +4,14 @@ import { JSONConverter } from '@deck.gl/json/typed';
 
 import FUNCTIONS from '@/lib/utils';
 
+import { ParamsConfig } from '@/types/layers';
+
 export const JSON_CONFIGURATION = {
   layers: Object.assign(
     //
     {},
     require('@deck.gl/layers'),
     require('@deck.gl/aggregation-layers')
-    // require('@/components/ui/button')
   ),
   functions: FUNCTIONS,
   constants: {},
@@ -24,13 +25,9 @@ export const JSON_CONFIGURATION = {
  * @returns {Object} params
  *
  */
-export type ParamConfig = {
-  key: string;
-  default: unknown;
-};
 export interface GetParamsProps {
   settings: Record<string, unknown>;
-  params_config: ParamConfig[];
+  params_config: ParamsConfig;
 }
 export const getParams = ({ params_config, settings = {} }: GetParamsProps) => {
   if (!params_config) {
@@ -39,7 +36,7 @@ export const getParams = ({ params_config, settings = {} }: GetParamsProps) => {
   return params_config.reduce((acc, p) => {
     return {
       ...acc,
-      [p.key]: settings[p.key] ?? p.default,
+      [`${p.key}`]: settings[`${p.key}`] ?? p.default,
     };
   }, {});
 };
@@ -62,9 +59,9 @@ export const parseConfig = <T>({ config, params_config, settings }: ParseConfigu
     configuration: JSON_CONFIGURATION,
   });
 
-  const pc = params_config as ParamConfig[];
+  const pc = params_config as ParamsConfig;
   const params = getParams({ params_config: pc, settings });
-  // Merge constants with config
+  // Merge enumerations with config
   JSON_CONVERTER.mergeConfiguration({
     enumerations: {
       params,

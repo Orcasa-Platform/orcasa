@@ -14,7 +14,7 @@ export type ParamsConfigValue = {
   default: unknown;
 };
 
-export type ParamsConfig = Record<string, ParamsConfigValue>[];
+export type ParamsConfig = Record<keyof ParamsConfigValue, ParamsConfigValue>[];
 
 export type LegendConfig = {
   type: string;
