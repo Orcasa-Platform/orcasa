@@ -99,8 +99,6 @@ export const popupAtom = atom<MapLayerMouseEvent | null>({
 });
 
 export const DEFAULT_SETTINGS = {
-  // opacity: 1,
-  // visibility: true,
   expand: true,
 };
 
@@ -122,14 +120,7 @@ export function useSyncLayersAndSettings() {
             setTimeout(async () => {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               const { [ly]: _, ...rest } = lysSettings;
-              const settings = Object.entries(rest).reduce(
-                (prev, [key, value]) => ({
-                  ...prev,
-                  [key]: { ...DEFAULT_SETTINGS, ...value },
-                }),
-                {}
-              );
-              set(layersSettingsAtom, settings);
+              set(layersSettingsAtom, rest);
             }, 0);
           }
         });

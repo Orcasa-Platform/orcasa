@@ -19,7 +19,7 @@ export const LegendItemButton = ({
         className={cn({
           'text-primary relative z-10 flex h-5 w-5 items-center justify-center rounded-full transition-colors':
             true,
-          'group-hover:text-primary/80 group-active:text-slate-500': true,
+          'group-hover:text-primary/50 group-active:text-slate-500': true,
           'fill-primary': selected,
         })}
         style={{ fillOpacity: selected ? value : 1 }}

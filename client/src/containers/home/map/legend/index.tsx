@@ -1,23 +1,20 @@
 import { useCallback, useMemo } from 'react';
 
-import { motion, AnimatePresence } from 'framer-motion';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { layersSettingsAtom, layersAtom } from '@/store';
+import { layersSettingsAtom, layersAtom, DEFAULT_SETTINGS } from '@/store';
 
 import MapLegendItem from '@/containers/home/map/legend/item';
 
 import Legend from '@/components/map/legend';
 
-import { useChangeLayerSettings } from './utils';
-
 const MapLegends = ({ className = '' }) => {
   const layers = useRecoilValue(layersAtom);
   const setLayers = useSetRecoilState(layersAtom);
   const layersSettings = useRecoilValue(layersSettingsAtom);
-  const changeLayerSettings = useChangeLayerSettings();
+  const setLayersSettings = useSetRecoilState(layersSettingsAtom);
 
   const handleChangeOrder = useCallback(
     (order: string[]) => {
@@ -32,18 +29,41 @@ const MapLegends = ({ className = '' }) => {
   );
 
   const handleChangeOpacity = useCallback(
-    (id: number, opacity: number) => changeLayerSettings(id, 'opacity', opacity),
-    [changeLayerSettings]
+    (id: number, opacity: number) =>
+      setLayersSettings((prev) => ({
+        ...prev,
+        [id]: {
+          ...DEFAULT_SETTINGS,
+          ...prev[id],
+          opacity,
+        },
+      })),
+    [setLayersSettings]
   );
 
   const handleChangeVisibility = useCallback(
-    (id: number, visibility: boolean) => changeLayerSettings(id, 'visibility', visibility),
-    [changeLayerSettings]
+    (id: number, visibility: boolean) =>
+      setLayersSettings((prev) => ({
+        ...prev,
+        [id]: {
+          ...DEFAULT_SETTINGS,
+          ...prev[id],
+          visibility,
+        },
+      })),
+    [setLayersSettings]
   );
 
   const handleChangeExpand = useCallback(
-    (id: number, expand: boolean) => changeLayerSettings(id, 'expand', expand),
-    [changeLayerSettings]
+    (id: number, expand: boolean) =>
+      setLayersSettings((prev) => ({
+        ...prev,
+        [id]: {
+          ...prev[id],
+          expand,
+        },
+      })),
+    [setLayersSettings]
   );
 
   const sortable = layers?.length > 1;
@@ -70,9 +90,6 @@ const MapLegends = ({ className = '' }) => {
             enabled: sortable,
             handle: layers.length > 1,
           }}
-          // onChangeColumn={(column) => {
-          //   handleChangeColumn(layer, column);
-          // }}
         />
       );
     });
@@ -86,29 +103,21 @@ const MapLegends = ({ className = '' }) => {
   ]);
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key="legend"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute bottom-16 right-6 z-10 w-full max-w-xs"
+    <div className="absolute bottom-16 right-6 z-10 w-full max-w-xs">
+      <Legend
+        className={cn(
+          'max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]',
+          className
+        )}
+        sortable={{
+          enabled: sortable,
+          handle: true,
+        }}
+        onChangeOrder={handleChangeOrder}
       >
-        <Legend
-          className={cn(
-            'max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]',
-            className
-          )}
-          sortable={{
-            enabled: sortable,
-            handle: true,
-          }}
-          onChangeOrder={handleChangeOrder}
-        >
-          {ITEMS}
-        </Legend>
-      </motion.div>
-    </AnimatePresence>
+        {ITEMS}
+      </Legend>
+    </div>
   );
 };
 

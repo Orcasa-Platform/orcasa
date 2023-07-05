@@ -8,10 +8,10 @@ import { cn } from '@/lib/classnames';
 import { LegendItemToolbarProps } from '@/components/map/legend/types';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import LegendItemButton from './button';
+import Slider from './slider';
 
 export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
   info,
@@ -68,17 +68,18 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   <div className="text-xxs text-secondary text-center">Opacity</div>
 
                   <Slider
-                    className="w-full"
+                    className="z-10 w-full"
                     defaultValue={[opacity]}
                     min={0}
                     max={1}
                     step={0.01}
+                    value={[opacity]}
                     onValueChange={(value) => {
                       if (onChangeOpacity) onChangeOpacity(value[0]);
                     }}
                   />
                 </div>
-                <PopoverArrow className="fill-primary block" width={11} height={5} />
+                <PopoverArrow className="fill-primary z-0 block" width={11} height={5} />
               </PopoverContent>
             </Popover>
           </div>
