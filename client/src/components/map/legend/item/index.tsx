@@ -61,7 +61,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
                 <button
                   aria-label="drag"
                   type="button"
-                  className="text-primary hover:text-primary/50 mt-0.5 cursor-pointer transition-colors"
+                  className="mt-0.5 cursor-pointer text-slate-800 transition-colors hover:text-slate-800/50"
                   {...listeners}
                 >
                   <GripVertical className="h-5 w-5" />
@@ -70,7 +70,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
 
               <div
                 className={cn({
-                  'text-primary mt-px text-sm font-semibold': true,
+                  'mt-px text-sm font-semibold text-slate-800': true,
                 })}
               >
                 {name}
@@ -90,7 +90,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
 
           {validChildren && (
             <AccordionContent className="grow bg-white px-2.5 transition-all">
-              <div className="">{children}</div>
+              <div className="-ml-0.5 pl-5 pr-7">{children}</div>
             </AccordionContent>
           )}
         </div>
