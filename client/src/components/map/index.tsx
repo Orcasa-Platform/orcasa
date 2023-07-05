@@ -146,6 +146,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
         scrollZoom={!isFlying && scrollZoom}
         doubleClickZoom={!isFlying && doubleClickZoom}
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+        // projection="globe"
         onMove={handleMapMove}
         onLoad={handleMapLoad}
         {...mapboxProps}
