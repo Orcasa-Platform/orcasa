@@ -1,6 +1,6 @@
 export type Bbox = [number, number, number, number];
 
-export const LEGEND_TYPE = ['matrix', 'basic', 'choropleth', 'gradient'] as const;
+export const LEGEND_TYPE = ['basic', 'choropleth', 'gradient'] as const;
 
 export type LegendType = (typeof LEGEND_TYPE)[number];
 

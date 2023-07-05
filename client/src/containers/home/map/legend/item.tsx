@@ -1,72 +1,48 @@
 'use-client';
-import { createElement, useMemo } from 'react';
+import { ReactElement, createElement, isValidElement, useMemo } from 'react';
+
+import { parseConfig } from '@/lib/json-converter';
 
 import { useGetLayersId } from '@/types/generated/layer';
-import { LayerResponse } from '@/types/generated/strapi.schemas';
-import { ParamsConfigValue } from '@/types/layers';
-import { LEGEND_TYPE, Legend, LegendType } from '@/types/map';
+import { LayerTyped, LegendConfig } from '@/types/layers';
+import { LegendType } from '@/types/map';
 
 import LegendItem from '@/components/map/legend/item';
 import {
   LegendTypeBasic,
   LegendTypeChoropleth,
   LegendTypeGradient,
-  LegendTypeMatrix,
 } from '@/components/map/legend/item-types';
-import {
-  LegendItemProps,
-  LegendMatrixIntersectionsProps,
-  LegendTypeProps,
-} from '@/components/map/legend/types';
+import { LegendItemProps, LegendTypeProps, SettingsManager } from '@/components/map/legend/types';
 import ContentLoader from '@/components/ui/loader';
 
-const LEGEND_TYPES: Record<
-  LegendType,
-  React.FC<LegendTypeProps & LegendMatrixIntersectionsProps>
-> = {
+const LEGEND_TYPES: Record<LegendType, React.FC<LegendTypeProps>> = {
   basic: LegendTypeBasic,
   choropleth: LegendTypeChoropleth,
   gradient: LegendTypeGradient,
-  matrix: LegendTypeMatrix,
 };
 
 type MapLegendItemProps = LegendItemProps;
 
 /** Check if the legend_config is valid and return the properties corresponding to the type */
-const getLegendConfig = (legendConfig: unknown) => {
+const getLegendConfig = (legendConfig: unknown): LegendConfig | ReactElement | null => {
   if (!!legendConfig) {
-    const { type, items, intersections } = legendConfig as Legend;
-    if (LEGEND_TYPE.includes(type) && items?.length) {
-      if (type === 'matrix') {
-        if (intersections?.length) {
-          return {
-            type,
-            items,
-            intersections,
-          };
-        }
-      } else {
-        return {
-          type,
-          items,
-        };
-      }
-    }
+    return parseConfig({ config: legendConfig, params_config: [], settings: {} });
   }
   return null;
 };
 
-const getParams = (data?: LayerResponse) => {
-  const params_config = data?.data?.attributes?.params_config as ParamsConfigValue[];
+const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManager => {
+  const { params_config, legend_config } = data;
+
   if (!params_config?.length) return {};
   const p = params_config.reduce((acc: Record<string, boolean>, { key }) => {
     if (!key) return acc;
     return {
       ...acc,
-      [key]: true,
+      [`${key}`]: true,
     };
   }, {});
-  const legend_config = data?.data?.attributes?.legend_config as Legend;
 
   return {
     ...p,
@@ -76,20 +52,25 @@ const getParams = (data?: LayerResponse) => {
 
 const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const { data, isError, isFetched, isFetching, isPlaceholderData } = useGetLayersId(id);
-  const settingsManager = getParams(data);
-  const attributes = data?.data?.attributes;
-  const legend_config = attributes?.legend_config as Legend;
 
-  const LEGEND_TYPE = useMemo(() => {
-    const legendProps = getLegendConfig(legend_config);
+  const attributes = data?.data?.attributes as LayerTyped;
+  const legend_config = attributes?.legend_config;
+  const settingsManager = getSettingsManager(attributes);
 
-    if (legendProps) {
-      const { type, ...props } = legendProps;
-      return createElement(
-        LEGEND_TYPES[type],
-        props as LegendTypeProps & LegendMatrixIntersectionsProps
-      );
+  const LEGEND_COMPONENT = useMemo(() => {
+    const l = getLegendConfig(legend_config);
+
+    if (!l) return null;
+
+    if (isValidElement(l)) {
+      return l;
     }
+
+    if (!isValidElement(l) && 'items' in l) {
+      const { type, ...props } = l;
+      return createElement(LEGEND_TYPES[type], props);
+    }
+
     return null;
   }, [legend_config]);
 
@@ -102,14 +83,8 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
-      <LegendItem
-        id={id}
-        {...props}
-        name={attributes?.title}
-        info={legend_config?.info}
-        settingsManager={settingsManager}
-      >
-        {LEGEND_TYPE}
+      <LegendItem id={id} name={attributes?.title} settingsManager={settingsManager} {...props}>
+        {LEGEND_COMPONENT}
       </LegendItem>
     </ContentLoader>
   );

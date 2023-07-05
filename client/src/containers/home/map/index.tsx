@@ -22,7 +22,6 @@ import { Bbox } from '@/types/map';
 
 import { MAPBOX_STYLES } from '@/constants/mapbox';
 
-import Legend from '@/containers/home/map/legend';
 import Popup from '@/containers/home/map/popup';
 import MapSettings from '@/containers/home/map/settings';
 import MapSettingsManager from '@/containers/home/map/settings/manager';
@@ -34,6 +33,10 @@ import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
 const LayerManager = dynamic(() => import('@/containers/home/map/layer-manager'), {
+  ssr: false,
+});
+
+const Legend = dynamic(() => import('@/containers/home/map/legend'), {
   ssr: false,
 });
 

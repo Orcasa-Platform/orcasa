@@ -1,22 +1,24 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import React from 'react';
 
-import { JSONConverter } from '@deck.gl/json/typed';
+import { JSONConfiguration, JSONConverter } from '@deck.gl/json/typed';
 
 import FUNCTIONS from '@/lib/utils';
 
 import { ParamsConfig } from '@/types/layers';
 
-export const JSON_CONFIGURATION = {
-  layers: Object.assign(
+export const JSON_CONFIGURATION = new JSONConfiguration({
+  classes: Object.assign(
     //
     {},
     require('@deck.gl/layers'),
-    require('@deck.gl/aggregation-layers')
+    require('@deck.gl/aggregation-layers'),
+    { React }
   ),
   functions: FUNCTIONS,
-  constants: {},
   enumerations: {},
-};
+  reactComponents: {},
+});
 
 /**
  * *`getParams`*
@@ -38,7 +40,7 @@ export const getParams = ({ params_config, settings = {} }: GetParamsProps) => {
       ...acc,
       [`${p.key}`]: settings[`${p.key}`] ?? p.default,
     };
-  }, {});
+  }, {} as Record<string, unknown>);
 };
 
 /**
