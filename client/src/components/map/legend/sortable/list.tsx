@@ -33,8 +33,6 @@ import { SortableListProps } from '@/components/map/legend/types';
 
 import SortableItem from './item';
 
-// import SortableItem from './item';
-
 export const SortableList: React.FC<SortableListProps> = ({
   children,
   sortable,

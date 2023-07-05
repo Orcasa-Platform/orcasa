@@ -5,8 +5,8 @@ import { Source, Layer } from 'react-map-gl';
 import { Config, LayerProps } from '@/types/layers';
 
 export type MapboxLayerProps = LayerProps & {
-  beforeId: string;
   config: Config;
+  beforeId?: string;
 };
 
 const MapboxLayer = ({ beforeId, config, onAdd, onRemove }: MapboxLayerProps) => {

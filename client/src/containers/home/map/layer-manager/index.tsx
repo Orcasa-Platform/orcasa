@@ -40,7 +40,6 @@ const LayerManager = () => {
         */}
         {layers.map((l, i) => {
           const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
-
           return (
             <LayerManagerItem
               key={l}
