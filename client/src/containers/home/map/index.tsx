@@ -22,6 +22,7 @@ import { Bbox } from '@/types/map';
 
 import { MAPBOX_STYLES } from '@/constants/mapbox';
 
+import Legend from '@/containers/home/map/legend';
 import Popup from '@/containers/home/map/popup';
 import MapSettings from '@/containers/home/map/settings';
 import MapSettingsManager from '@/containers/home/map/settings/manager';
@@ -161,6 +162,8 @@ export default function MapContainer() {
             <Popup />
 
             <MapSettingsManager />
+
+            <Legend />
           </>
         )}
       </Map>

@@ -1,7 +1,7 @@
 'use client';
-import { useSyncLayers } from '@/store';
+import { useSyncLayersAndSettings } from '@/store';
 
 export default function SyncStoreHome() {
-  useSyncLayers();
+  useSyncLayersAndSettings();
   return null;
 }

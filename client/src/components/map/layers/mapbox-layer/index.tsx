@@ -5,10 +5,11 @@ import { Source, Layer } from 'react-map-gl';
 import { Config, LayerProps } from '@/types/layers';
 
 export type MapboxLayerProps = LayerProps & {
+  beforeId: string;
   config: Config;
 };
 
-const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
+const MapboxLayer = ({ beforeId, config, onAdd, onRemove }: MapboxLayerProps) => {
   const SOURCE = config.source;
   const STYLES = config.styles;
 
@@ -35,9 +36,9 @@ const MapboxLayer = ({ id, config, onAdd, onRemove }: MapboxLayerProps) => {
   return (
     <Source {...SOURCE}>
       {STYLES.map((layer) => (
-        <Layer key={layer.id} {...layer} beforeId={id} />
+        <Layer key={layer.id} {...layer} beforeId={beforeId} />
       ))}
-      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={id} />}
+      {!STYLES.length && SOURCE.type === 'raster' && <Layer type="raster" beforeId={beforeId} />}
     </Source>
   );
 };
