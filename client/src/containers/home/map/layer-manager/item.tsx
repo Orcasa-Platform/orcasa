@@ -4,13 +4,13 @@ import { useCallback } from 'react';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { parseConfig } from '@/lib/json-converter';
+
 import { layersInteractiveAtom, layersInteractiveIdsAtom } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
 import { Config, LayerTyped } from '@/types/layers';
-
-import { parseConfig } from '@/containers/home/map/layer-manager/utils';
 
 import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
 import MapboxLayer from '@/components/map/layers/mapbox-layer';
