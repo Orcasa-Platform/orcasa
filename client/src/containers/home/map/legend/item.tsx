@@ -1,7 +1,11 @@
 'use-client';
 import { ReactElement, createElement, isValidElement, useMemo } from 'react';
 
+import { useRecoilValue } from 'recoil';
+
 import { parseConfig } from '@/lib/json-converter';
+
+import { layersSettingsAtom } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerTyped, LegendConfig } from '@/types/layers';
@@ -24,14 +28,6 @@ const LEGEND_TYPES: Record<LegendType, React.FC<LegendTypeProps>> = {
 
 type MapLegendItemProps = LegendItemProps;
 
-/** Check if the legend_config is valid and return the properties corresponding to the type */
-const getLegendConfig = (legendConfig: unknown): LegendConfig | ReactElement | null => {
-  if (!!legendConfig) {
-    return parseConfig({ config: legendConfig, params_config: [], settings: {} });
-  }
-  return null;
-};
-
 const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManager => {
   const { params_config, legend_config } = data;
 
@@ -51,14 +47,21 @@ const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManage
 };
 
 const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
+  const layersSettings = useRecoilValue(layersSettingsAtom);
+
   const { data, isError, isFetched, isFetching, isPlaceholderData } = useGetLayersId(id);
 
   const attributes = data?.data?.attributes as LayerTyped;
   const legend_config = attributes?.legend_config;
+  const params_config = attributes?.params_config;
   const settingsManager = getSettingsManager(attributes);
 
   const LEGEND_COMPONENT = useMemo(() => {
-    const l = getLegendConfig(legend_config);
+    const l = parseConfig<LegendConfig | ReactElement | null>({
+      config: legend_config,
+      params_config,
+      settings: layersSettings[id] ?? {},
+    });
 
     if (!l) return null;
 
@@ -72,7 +75,7 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
     }
 
     return null;
-  }, [legend_config]);
+  }, [id, legend_config, params_config, layersSettings]);
 
   return (
     <ContentLoader

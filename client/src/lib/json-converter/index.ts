@@ -7,6 +7,12 @@ import FUNCTIONS from '@/lib/utils';
 
 import { ParamsConfig } from '@/types/layers';
 
+import {
+  LegendTypeBasic,
+  LegendTypeChoropleth,
+  LegendTypeGradient,
+} from '@/components/map/legend/item-types';
+
 export const JSON_CONFIGURATION = new JSONConfiguration({
   classes: Object.assign(
     //
@@ -17,7 +23,11 @@ export const JSON_CONFIGURATION = new JSONConfiguration({
   ),
   functions: FUNCTIONS,
   enumerations: {},
-  reactComponents: {},
+  reactComponents: {
+    LegendTypeBasic,
+    LegendTypeChoropleth,
+    LegendTypeGradient,
+  },
 });
 
 /**
@@ -56,7 +66,15 @@ interface ParseConfigurationProps {
   params_config: unknown;
   settings: Record<string, unknown>;
 }
-export const parseConfig = <T>({ config, params_config, settings }: ParseConfigurationProps): T => {
+export const parseConfig = <T>({
+  config,
+  params_config,
+  settings,
+}: ParseConfigurationProps): T | null => {
+  if (!config || !params_config) {
+    return null;
+  }
+
   const JSON_CONVERTER = new JSONConverter({
     configuration: JSON_CONFIGURATION,
   });

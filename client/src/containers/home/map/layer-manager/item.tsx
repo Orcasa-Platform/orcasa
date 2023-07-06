@@ -75,6 +75,8 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       settings,
     });
 
+    if (!c) return null;
+
     return (
       <MapboxLayer
         id={`${id}-layer`}
