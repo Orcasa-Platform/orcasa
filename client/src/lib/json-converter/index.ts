@@ -14,12 +14,12 @@ import {
 } from '@/components/map/legend/item-types';
 
 export const JSON_CONFIGURATION = new JSONConfiguration({
+  React,
   classes: Object.assign(
     //
     {},
     require('@deck.gl/layers'),
-    require('@deck.gl/aggregation-layers'),
-    { React }
+    require('@deck.gl/aggregation-layers')
   ),
   functions: FUNCTIONS,
   enumerations: {},
