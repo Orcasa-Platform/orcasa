@@ -20,7 +20,40 @@ module.exports = {
           options: {
             staleTime: 10000,
           },
+          signal: true
         },
+        operations: {
+          "get/datasets/{id}": {
+            query: {
+              useQuery: true,
+              useInfinite: false,
+              signal: true,
+              options: {
+                staleTime: 10000,
+              },
+            }
+          },
+          "get/dataset-groups/{id}": {
+            query: {
+              useQuery: true,
+              useInfinite: false,
+              signal: true,
+              options: {
+                staleTime: 10000,
+              },
+            }
+          },
+          "get/layers/{id}": {
+            query: {
+              useQuery: true,
+              useInfinite: false,
+              signal: true,
+              options: {
+                staleTime: 10000,
+              },
+            }
+          }
+        }
       },
     },
     input: {
