@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:14-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=cms
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  cms:
+    build:
+      context: .
+      dockerfile: Dockerfile.cms
+    ports:
+      - '1337:1337'
+    env_file:
+      - ./cms/.env
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_SSL=false
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/cms
+    links:
+      - db
+    depends_on:
+      - db
+    volumes:
+      - ./cms:/app/cms
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./client/.env.local
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:1337/api
+    links:
+      - cms
+    volumes:
+      - ./client:/app/client
+
+volumes:
+  pgdata:
