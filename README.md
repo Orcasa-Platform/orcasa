@@ -20,7 +20,7 @@ yarn client dev
 Start the server with:
 
 ```bash
-yarn cms develop
+yarn cms dev
 ```
 
 ## Types for API
