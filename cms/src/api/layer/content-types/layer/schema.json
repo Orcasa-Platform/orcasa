@@ -45,6 +45,11 @@
     },
     "interaction_config": {
       "type": "json"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "documentation.metadata"
     }
   }
 }

@@ -22,17 +22,16 @@
       "target": "api::dataset-group.dataset-group",
       "inversedBy": "datasets"
     },
-    "metadatum": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::metadatum.metadatum",
-      "mappedBy": "dataset"
-    },
     "layers": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::layer.layer",
       "mappedBy": "dataset"
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "documentation.metadata"
     }
   }
 }
