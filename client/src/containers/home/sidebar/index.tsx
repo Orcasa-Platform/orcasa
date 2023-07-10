@@ -41,7 +41,7 @@ export default function Sidebar({ children }: PropsWithChildren) {
         </Button>
       </div>
 
-      <div className="prose flex grow flex-col overflow-y-auto">{children}</div>
+      <div className="flex grow flex-col overflow-y-auto">{children}</div>
     </div>
   );
 }

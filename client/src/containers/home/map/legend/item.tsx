@@ -11,6 +11,8 @@ import { useGetLayersId } from '@/types/generated/layer';
 import { LayerTyped, LegendConfig } from '@/types/layers';
 import { LegendType } from '@/types/map';
 
+import Metadata from '@/containers/metadata';
+
 import LegendItem from '@/components/map/legend/item';
 import {
   LegendTypeBasic,
@@ -60,8 +62,6 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const metadata = attributes?.metadata;
   const settingsManager = getSettingsManager(attributes);
 
-  console.log(metadata);
-
   const LEGEND_COMPONENT = useMemo(() => {
     const l = parseConfig<LegendConfig | ReactElement | null>({
       config: legend_config,
@@ -97,7 +97,7 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
         name={attributes?.title}
         settingsManager={settingsManager}
         {...props}
-        InfoContent={<div>Info</div>}
+        InfoContent={!!metadata && <Metadata {...attributes} />}
       >
         {LEGEND_COMPONENT}
       </LegendItem>
