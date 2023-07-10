@@ -15,10 +15,6 @@ import type {
   UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
-
-import { API } from '../../services/api/index';
-import type { ErrorType } from '../../services/api/index';
-
 import type {
   DatasetListResponse,
   Error,
@@ -26,6 +22,8 @@ import type {
   DatasetResponse,
   DatasetRequest,
 } from './strapi.schemas';
+import { API } from '../../services/api/index';
+import type { ErrorType } from '../../services/api/index';
 
 export const getDatasets = (params?: GetDatasetsParams, signal?: AbortSignal) => {
   return API<DatasetListResponse>({ url: `/datasets`, method: 'get', params, signal });

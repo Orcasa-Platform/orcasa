@@ -15,10 +15,6 @@ import type {
   UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
-
-import { API } from '../../services/api/index';
-import type { ErrorType } from '../../services/api/index';
-
 import type {
   DatasetGroupListResponse,
   Error,
@@ -26,6 +22,8 @@ import type {
   DatasetGroupResponse,
   DatasetGroupRequest,
 } from './strapi.schemas';
+import { API } from '../../services/api/index';
+import type { ErrorType } from '../../services/api/index';
 
 export const getDatasetGroups = (params?: GetDatasetGroupsParams, signal?: AbortSignal) => {
   return API<DatasetGroupListResponse>({ url: `/dataset-groups`, method: 'get', params, signal });

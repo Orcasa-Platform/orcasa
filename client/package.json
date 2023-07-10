@@ -32,7 +32,6 @@
     "@radix-ui/react-toast": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.0.6",
     "@recoiljs/refine": "^0.1.1",
-    "@serverless-app-scaffold/types": "workspace:^",
     "@t3-oss/env-nextjs": "0.4.1",
     "@tanstack/react-query": "^4.29.18",
     "@types/node": "20.3.1",
