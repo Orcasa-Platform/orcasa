@@ -21,6 +21,7 @@ import type {
   GetDatasetsParams,
   DatasetResponse,
   DatasetRequest,
+  GetDatasetsIdParams,
 } from './strapi.schemas';
 import { API } from '../../services/api/index';
 import type { ErrorType } from '../../services/api/index';
@@ -169,17 +170,19 @@ export const usePostDatasets = <TError = ErrorType<Error>, TContext = unknown>(o
 
   return useMutation(mutationOptions);
 };
-export const getDatasetsId = (id: number, signal?: AbortSignal) => {
-  return API<DatasetResponse>({ url: `/datasets/${id}`, method: 'get', signal });
+export const getDatasetsId = (id: number, params?: GetDatasetsIdParams, signal?: AbortSignal) => {
+  return API<DatasetResponse>({ url: `/datasets/${id}`, method: 'get', params, signal });
 };
 
-export const getGetDatasetsIdQueryKey = (id: number) => [`/datasets/${id}`] as const;
+export const getGetDatasetsIdQueryKey = (id: number, params?: GetDatasetsIdParams) =>
+  [`/datasets/${id}`, ...(params ? [params] : [])] as const;
 
 export const getGetDatasetsIdInfiniteQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetsId>>,
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetDatasetsIdParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData>;
   }
@@ -188,10 +191,12 @@ export const getGetDatasetsIdInfiniteQueryOptions = <
 } => {
   const { query: queryOptions } = options ?? {};
 
-  const queryKey = queryOptions?.queryKey ?? getGetDatasetsIdQueryKey(id);
+  const queryKey = queryOptions?.queryKey ?? getGetDatasetsIdQueryKey(id, params);
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetsId>>> = ({ signal }) =>
-    getDatasetsId(id, signal);
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetsId>>> = ({
+    signal,
+    pageParam,
+  }) => getDatasetsId(id, { 'pagination[page]': pageParam, ...params }, signal);
 
   return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
@@ -206,11 +211,12 @@ export const useGetDatasetsIdInfinite = <
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetDatasetsIdParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData>;
   }
 ): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
-  const queryOptions = getGetDatasetsIdInfiniteQueryOptions(id, options);
+  const queryOptions = getGetDatasetsIdInfiniteQueryOptions(id, params, options);
 
   const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
     queryKey: QueryKey;
@@ -226,16 +232,17 @@ export const getGetDatasetsIdQueryOptions = <
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetDatasetsIdParams,
   options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> }
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
   const { query: queryOptions } = options ?? {};
 
-  const queryKey = queryOptions?.queryKey ?? getGetDatasetsIdQueryKey(id);
+  const queryKey = queryOptions?.queryKey ?? getGetDatasetsIdQueryKey(id, params);
 
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getDatasetsId>>> = ({ signal }) =>
-    getDatasetsId(id, signal);
+    getDatasetsId(id, params, signal);
 
   return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
@@ -248,9 +255,10 @@ export const useGetDatasetsId = <
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetDatasetsIdParams,
   options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
-  const queryOptions = getGetDatasetsIdQueryOptions(id, options);
+  const queryOptions = getGetDatasetsIdQueryOptions(id, params, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

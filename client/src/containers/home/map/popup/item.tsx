@@ -26,7 +26,9 @@ const PopupItem = ({ id }: PopupItemProps) => {
   const popup = useRecoilValue(popupAtom);
   const layersInteractiveIds = useRecoilValue(layersInteractiveIdsAtom);
 
-  const { data, isFetching, isFetched, isError, isPlaceholderData } = useGetLayersId(id);
+  const { data, isFetching, isFetched, isError, isPlaceholderData } = useGetLayersId(id, {
+    populate: 'metadata',
+  });
 
   const attributes = data?.data?.attributes as LayerTyped;
   const source = attributes.config.source;

@@ -48,4 +48,5 @@ export type LayerTyped = Layer & {
   params_config: ParamsConfig;
   legend_config: LegendConfig;
   interaction_config: InteractionConfig;
+  metadata: Record<string, unknown>;
 };

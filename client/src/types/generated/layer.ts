@@ -21,6 +21,7 @@ import type {
   GetLayersParams,
   LayerResponse,
   LayerRequest,
+  GetLayersIdParams,
 } from './strapi.schemas';
 import { API } from '../../services/api/index';
 import type { ErrorType } from '../../services/api/index';
@@ -169,17 +170,19 @@ export const usePostLayers = <TError = ErrorType<Error>, TContext = unknown>(opt
 
   return useMutation(mutationOptions);
 };
-export const getLayersId = (id: number, signal?: AbortSignal) => {
-  return API<LayerResponse>({ url: `/layers/${id}`, method: 'get', signal });
+export const getLayersId = (id: number, params?: GetLayersIdParams, signal?: AbortSignal) => {
+  return API<LayerResponse>({ url: `/layers/${id}`, method: 'get', params, signal });
 };
 
-export const getGetLayersIdQueryKey = (id: number) => [`/layers/${id}`] as const;
+export const getGetLayersIdQueryKey = (id: number, params?: GetLayersIdParams) =>
+  [`/layers/${id}`, ...(params ? [params] : [])] as const;
 
 export const getGetLayersIdInfiniteQueryOptions = <
   TData = Awaited<ReturnType<typeof getLayersId>>,
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetLayersIdParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData>;
   }
@@ -188,10 +191,10 @@ export const getGetLayersIdInfiniteQueryOptions = <
 } => {
   const { query: queryOptions } = options ?? {};
 
-  const queryKey = queryOptions?.queryKey ?? getGetLayersIdQueryKey(id);
+  const queryKey = queryOptions?.queryKey ?? getGetLayersIdQueryKey(id, params);
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getLayersId>>> = ({ signal }) =>
-    getLayersId(id, signal);
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getLayersId>>> = ({ signal, pageParam }) =>
+    getLayersId(id, { 'pagination[page]': pageParam, ...params }, signal);
 
   return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
@@ -204,11 +207,12 @@ export const useGetLayersIdInfinite = <
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetLayersIdParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData>;
   }
 ): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
-  const queryOptions = getGetLayersIdInfiniteQueryOptions(id, options);
+  const queryOptions = getGetLayersIdInfiniteQueryOptions(id, params, options);
 
   const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
     queryKey: QueryKey;
@@ -224,16 +228,17 @@ export const getGetLayersIdQueryOptions = <
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetLayersIdParams,
   options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> }
 ): UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
   const { query: queryOptions } = options ?? {};
 
-  const queryKey = queryOptions?.queryKey ?? getGetLayersIdQueryKey(id);
+  const queryKey = queryOptions?.queryKey ?? getGetLayersIdQueryKey(id, params);
 
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getLayersId>>> = ({ signal }) =>
-    getLayersId(id, signal);
+    getLayersId(id, params, signal);
 
   return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
 };
@@ -246,9 +251,10 @@ export const useGetLayersId = <
   TError = ErrorType<Error>
 >(
   id: number,
+  params?: GetLayersIdParams,
   options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> }
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
-  const queryOptions = getGetLayersIdQueryOptions(id, options);
+  const queryOptions = getGetLayersIdQueryOptions(id, params, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

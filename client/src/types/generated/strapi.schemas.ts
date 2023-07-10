@@ -4,6 +4,13 @@
  * DOCUMENTATION
  * OpenAPI spec version: 1.0.0
  */
+export type GetLayersIdParams = {
+  /**
+   * Relations to return
+   */
+  populate?: string;
+};
+
 export type GetLayersParams = {
   /**
    * Sort by attributes ascending (asc) or descending (desc)
@@ -47,6 +54,13 @@ export type GetLayersParams = {
   locale?: string;
 };
 
+export type GetDatasetGroupsIdParams = {
+  /**
+   * Relations to return
+   */
+  populate?: string;
+};
+
 export type GetDatasetGroupsParams = {
   /**
    * Sort by attributes ascending (asc) or descending (desc)
@@ -88,6 +102,13 @@ export type GetDatasetGroupsParams = {
    * Locale to apply
    */
   locale?: string;
+};
+
+export type GetDatasetsIdParams = {
+  /**
+   * Relations to return
+   */
+  populate?: string;
 };
 
 export type GetDatasetsParams = {

@@ -14,7 +14,7 @@ import LegendItemButton from './button';
 import Slider from './slider';
 
 export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
-  info,
+  InfoContent,
   settings,
   settingsManager,
   onChangeOpacity,
@@ -128,7 +128,9 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   <TooltipArrow className="fill-white" width={10} height={5} />
                 </TooltipContent>
 
-                <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>{info}</DialogContent>
+                <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+                  {InfoContent}
+                </DialogContent>
               </Tooltip>
             </Dialog>
           </div>

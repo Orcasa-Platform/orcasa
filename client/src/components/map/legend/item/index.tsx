@@ -24,7 +24,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
   settingsManager,
   settings,
   // components
-  info,
+  InfoContent,
   // events
   onChangeOpacity,
   onChangeVisibility,
@@ -84,7 +84,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
               onChangeOpacity={onChangeOpacity}
               onChangeVisibility={onChangeVisibility}
               onChangeExpand={onChangeExpand}
-              info={info}
+              InfoContent={InfoContent}
             />
           </header>
 

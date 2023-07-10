@@ -21,7 +21,9 @@ interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, '
 }
 
 const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => {
-  const { data } = useGetLayersId(id);
+  const { data } = useGetLayersId(id, {
+    populate: 'metadata',
+  });
   const layersInteractive = useRecoilValue(layersInteractiveAtom);
   const setLayersInteractive = useSetRecoilState(layersInteractiveAtom);
   const setLayersInteractiveIds = useSetRecoilState(layersInteractiveIdsAtom);

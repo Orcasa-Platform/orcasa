@@ -29,7 +29,7 @@ const LEGEND_TYPES: Record<LegendType, React.FC<LegendTypeProps>> = {
 type MapLegendItemProps = LegendItemProps;
 
 const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManager => {
-  const { params_config, legend_config } = data;
+  const { params_config, legend_config, metadata } = data;
 
   if (!params_config?.length) return {};
   const p = params_config.reduce((acc: Record<string, boolean>, { key }) => {
@@ -42,6 +42,7 @@ const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManage
 
   return {
     ...p,
+    info: !!metadata,
     expand: !!legend_config && !!legend_config.type,
   };
 };
@@ -49,12 +50,17 @@ const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManage
 const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const layersSettings = useRecoilValue(layersSettingsAtom);
 
-  const { data, isError, isFetched, isFetching, isPlaceholderData } = useGetLayersId(id);
+  const { data, isError, isFetched, isFetching, isPlaceholderData } = useGetLayersId(id, {
+    populate: 'metadata',
+  });
 
   const attributes = data?.data?.attributes as LayerTyped;
   const legend_config = attributes?.legend_config;
   const params_config = attributes?.params_config;
+  const metadata = attributes?.metadata;
   const settingsManager = getSettingsManager(attributes);
+
+  console.log(metadata);
 
   const LEGEND_COMPONENT = useMemo(() => {
     const l = parseConfig<LegendConfig | ReactElement | null>({
@@ -86,7 +92,13 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
-      <LegendItem id={id} name={attributes?.title} settingsManager={settingsManager} {...props}>
+      <LegendItem
+        id={id}
+        name={attributes?.title}
+        settingsManager={settingsManager}
+        {...props}
+        InfoContent={<div>Info</div>}
+      >
         {LEGEND_COMPONENT}
       </LegendItem>
     </ContentLoader>

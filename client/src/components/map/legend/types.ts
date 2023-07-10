@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
 import { DraggableAttributes } from '@dnd-kit/core';
 import { SyntheticListeners } from '@dnd-kit/core/dist/hooks/utilities';
@@ -50,7 +50,7 @@ export interface LegendItemProps extends LegendItemEvents {
   className?: string;
 
   // components
-  info?: string;
+  InfoContent?: ReactNode;
 
   // sortable
   sortable: Sortable;
@@ -66,7 +66,7 @@ export interface LegendItemProps extends LegendItemEvents {
 export interface LegendItemToolbarProps extends LegendItemEvents {
   className?: string;
   // components
-  info?: string;
+  InfoContent?: ReactNode;
   // settings
   settings?: Settings;
   settingsManager?: SettingsManager;
