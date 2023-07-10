@@ -15,10 +15,6 @@ import type {
   UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
-
-import { API } from '../../services/api/index';
-import type { ErrorType } from '../../services/api/index';
-
 import type {
   LayerListResponse,
   Error,
@@ -26,6 +22,8 @@ import type {
   LayerResponse,
   LayerRequest,
 } from './strapi.schemas';
+import { API } from '../../services/api/index';
+import type { ErrorType } from '../../services/api/index';
 
 export const getLayers = (params?: GetLayersParams, signal?: AbortSignal) => {
   return API<LayerListResponse>({ url: `/layers`, method: 'get', params, signal });
