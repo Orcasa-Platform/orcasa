@@ -7,7 +7,8 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "seed": "strapi import -f ./seed.tar.gz"
   },
   "dependencies": {
     "@strapi/plugin-documentation": "4.11.2",
