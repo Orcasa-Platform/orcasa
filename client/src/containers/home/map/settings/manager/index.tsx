@@ -26,7 +26,7 @@ const MapSettingsManager = () => {
 
       const lys = layers as AnyLayerWithMetadata[];
 
-      const GROUPS = Object.keys(metadata['mapbox:groups']).filter((k) => {
+      const GROUPS = Object.keys(metadata['mapbox:groups'] || {}).filter((k) => {
         const { name } = metadata['mapbox:groups'][k];
 
         const matchedGroups = groups.map((rgr) => name.toLowerCase().includes(rgr));
