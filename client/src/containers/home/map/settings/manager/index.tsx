@@ -2,10 +2,11 @@ import { useCallback, useEffect } from 'react';
 
 import { useMap } from 'react-map-gl';
 
-import { AnyLayer } from 'mapbox-gl';
 import { useRecoilValue } from 'recoil';
 
 import { mapSettingsAtom } from '@/store/index';
+
+import type { AnyLayer } from '@/types/layers';
 
 import { BASEMAPS } from '@/constants/basemaps';
 
@@ -44,7 +45,7 @@ const MapSettingsManager = () => {
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
 
-        const gr = layerMetadata['mapbox:group'];
+        const gr = layerMetadata['mapbox:group'] as string;
         return GROUPS.includes(gr);
       });
 

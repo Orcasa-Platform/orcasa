@@ -1,18 +1,13 @@
 'use client';
 
+import 'maplibre-gl/dist/maplibre-gl.css';
+
 import { useEffect, useState, useCallback, FC } from 'react';
 
 import ReactMapGL, { ViewState, ViewStateChangeEvent, MapboxEvent, useMap } from 'react-map-gl';
 
-// * If you plan to use Mapbox (and not a fork):
-// * 1) remove maplibre-gl,
-// * 2) install Mapbox v1/v2 (v2 requires token)
-// * 3) if you installed v2: provide the token to the map through the `mapboxAccessToken` property
-// * 4) remove `mapLib` property
-
+import MapLibreGL from 'maplibre-gl';
 import { useDebounce } from 'rooks';
-
-import env from '@/env.mjs';
 
 import { cn } from '@/lib/classnames';
 
@@ -45,13 +40,12 @@ export const MapMapbox: FC<CustomMapProps> = ({
   /**
    * STATE
    */
+  const defaultViewState = {
+    ...DEFAULT_VIEW_STATE,
+    ...viewState,
+  };
   const [localViewState, setLocalViewState] = useState<Partial<ViewState> | null>(
-    !initialViewState
-      ? {
-          ...DEFAULT_VIEW_STATE,
-          ...viewState,
-        }
-      : null
+    !initialViewState ? defaultViewState : null
   );
   const [isFlying, setFlying] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -140,13 +134,12 @@ export const MapMapbox: FC<CustomMapProps> = ({
     <div className={cn('relative z-0 h-full w-full', className)}>
       <ReactMapGL
         id={id}
+        mapLib={MapLibreGL}
         initialViewState={initialViewState}
         dragPan={!isFlying && dragPan}
         dragRotate={!isFlying && dragRotate}
         scrollZoom={!isFlying && scrollZoom}
         doubleClickZoom={!isFlying && doubleClickZoom}
-        mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-        // projection="globe"
         onMove={handleMapMove}
         onLoad={handleMapLoad}
         {...mapboxProps}

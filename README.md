@@ -14,9 +14,7 @@ yarn install
 
 ### Client
 
-Copy the .env.default file to .env.local and fill in the NEXT_PUBLIC_API_URL field with the url of the API. (By default it's http://localhost:1337)
-
-Add the NEXT_PUBLIC_MAPBOX_TOKEN field with the Mapbox token of the project. (You can get one [here](https://account.mapbox.com/access-tokens/))
+Copy the .env.default file to .env.local and fill in the NEXT_PUBLIC_API_URL field with the url of the API. (By default it's http://localhost:1337/api)
 
 Start the client with:
 

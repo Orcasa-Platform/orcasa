@@ -20,8 +20,6 @@ import { useGetLayers } from '@/types/generated/layer';
 import type { LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
 
-import { MAPBOX_STYLES } from '@/constants/mapbox';
-
 import Popup from '@/containers/home/map/popup';
 import MapSettings from '@/containers/home/map/settings';
 import MapSettingsManager from '@/containers/home/map/settings/manager';
@@ -146,7 +144,7 @@ export default function MapContainer() {
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={MAPBOX_STYLES.default}
+        mapStyle={'https://demotiles.maplibre.org/style.json'}
         interactiveLayerIds={layersInteractiveIds}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}

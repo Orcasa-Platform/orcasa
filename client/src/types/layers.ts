@@ -1,11 +1,32 @@
-import type { AnyLayer, AnySourceData } from 'mapbox-gl';
+import {
+  SymbolStyleLayer,
+  HeatmapStyleLayer,
+  CircleStyleLayer,
+  FillStyleLayer,
+  FillExtrusionStyleLayer,
+  HillshadeStyleLayer,
+  LineStyleLayer,
+} from 'maplibre-gl';
+
+interface SourceData {
+  type: 'vector' | 'raster' | 'raster-dem' | 'geojson' | 'image' | 'video';
+}
 
 import { FormatProps } from '@/lib/utils/formats';
 
 import type { Layer } from '@/types/generated/strapi.schemas';
 
+export type AnyLayer =
+  | SymbolStyleLayer
+  | HeatmapStyleLayer
+  | CircleStyleLayer
+  | FillStyleLayer
+  | FillExtrusionStyleLayer
+  | HillshadeStyleLayer
+  | LineStyleLayer;
+
 export type Config = {
-  source: AnySourceData;
+  source: SourceData;
   styles: AnyLayer[];
 };
 
