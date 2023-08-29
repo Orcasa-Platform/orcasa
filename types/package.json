@@ -1,10 +1,10 @@
 {
-  "name": "@serverless-app-scaffold/types",
+  "name": "@orcasa/types",
   "private": true,
   "version": "0.1.0",
   "description": "Types generated from Strapi models",
   "scripts": {
-    "build": "orval --config ./orval.config.ts && yarn workspace @serverless-app-scaffold/client lint --fix --dir src/types/generated"
+    "build": "orval --config ./orval.config.ts && yarn workspace @orcasa/client lint --fix --dir src/types/generated"
   },
   "devDependencies": {
     "orval": "^6.16.0",

@@ -1,1 +1,1 @@
-web: yarn workspace @serverless-app-scaffold/cms start
+web: yarn workspace @orcasa/cms start

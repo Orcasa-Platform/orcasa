@@ -11,9 +11,9 @@ fi
 
 (
   if [ "$BUILD_ENV" = "cms" ]; then
-    yarn workspace @serverless-app-scaffold/cms build
+    yarn workspace @orcasa/cms build
   elif [ "$BUILD_ENV" = "client" ]; then
-    yarn workspace @serverless-app-scaffold/client build
+    yarn workspace @orcasa/client build
   else
     echo "Error: no build config for INATO_BUILD_ENV value '$INATO_BUILD_ENV'"
     exit 1

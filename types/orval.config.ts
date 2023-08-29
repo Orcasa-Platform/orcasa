@@ -1,5 +1,5 @@
 module.exports = {
-  scaffold: {
+  orcasa: {
     output: {
       mode: 'tags',
       client: 'react-query',
@@ -20,10 +20,10 @@ module.exports = {
           options: {
             staleTime: 10000,
           },
-          signal: true
+          signal: true,
         },
         operations: {
-          "get/datasets/{id}": {
+          'get/datasets/{id}': {
             query: {
               useQuery: true,
               useInfinite: false,
@@ -31,9 +31,9 @@ module.exports = {
               options: {
                 staleTime: 10000,
               },
-            }
+            },
           },
-          "get/dataset-groups/{id}": {
+          'get/dataset-groups/{id}': {
             query: {
               useQuery: true,
               useInfinite: false,
@@ -41,9 +41,9 @@ module.exports = {
               options: {
                 staleTime: 10000,
               },
-            }
+            },
           },
-          "get/layers/{id}": {
+          'get/layers/{id}': {
             query: {
               useQuery: true,
               useInfinite: false,
@@ -51,16 +51,17 @@ module.exports = {
               options: {
                 staleTime: 10000,
               },
-            }
-          }
-        }
+            },
+          },
+        },
       },
     },
     input: {
-      target: '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
+      target:
+        '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
       filters: {
         tags: ['Dataset', 'Dataset-group', 'Layer'],
       },
-    }
-  }
-}
+    },
+  },
+};

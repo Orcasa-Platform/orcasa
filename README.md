@@ -1,13 +1,10 @@
-# Serverless App scaffold
+# ORCaSa
 
-This is a scaffold for a serverless app. It contains the next:
+Launched in September 2022, ORCaSa is a Horizon Europe initiative that aims to bring together international stakeholders working on techniques for capturing and storing carbon in the soil.
 
-- A map with layers and legend
-- Dataset and layer management
-- CMS for data management: layers, datasets, legend and metadata
-- An default layout of sidebar and map
+The project seeks to address the issue of increasing carbon emissions from human activities, which have led to a disruption in the balance of organic carbon absorbed and stored in the soil to support plant growth.
 
-## Getting started
+## Development set up
 
 Install all dependencies:
 
@@ -17,7 +14,7 @@ yarn install
 
 ### Client
 
-Copy the .env.example file to .env.local and fill in the NEXT_PUBLIC_API_URL field with the url of the API. (By default it's http://localhost:1337)
+Copy the .env.default file to .env.local and fill in the NEXT_PUBLIC_API_URL field with the url of the API. (By default it's http://localhost:1337)
 
 Add the NEXT_PUBLIC_MAPBOX_TOKEN field with the Mapbox token of the project. (You can get one [here](https://account.mapbox.com/access-tokens/))
 

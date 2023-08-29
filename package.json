@@ -1,5 +1,5 @@
 {
-  "name": "serverless-app-scaffold",
+  "name": "orcasa",
   "packageManager": "yarn@3.6.0",
   "private": true,
   "workspaces": [
@@ -8,9 +8,9 @@
     "types"
   ],
   "scripts": {
-    "client": "yarn workspace @serverless-app-scaffold/client",
-    "cms": "yarn workspace @serverless-app-scaffold/cms",
-    "types": "yarn workspace @serverless-app-scaffold/types",
+    "client": "yarn workspace @orcasa/client",
+    "cms": "yarn workspace @orcasa/cms",
+    "types": "yarn workspace @orcasa/types",
     "heroku-postbuild": "./heroku.build"
   },
   "engines": {
