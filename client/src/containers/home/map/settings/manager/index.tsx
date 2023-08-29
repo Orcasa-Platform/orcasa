@@ -27,8 +27,8 @@ const MapSettingsManager = () => {
 
       const lys = layers as AnyLayerWithMetadata[];
 
-      const GROUPS = Object.keys(metadata['mapbox:groups'] || {}).filter((k) => {
-        const { name } = metadata['mapbox:groups'][k];
+      const GROUPS = Object.keys(metadata?.['mapbox:groups'] || {}).filter((k) => {
+        const { name } = metadata?.['mapbox:groups'][k];
 
         const matchedGroups = groups.map((rgr) => name.toLowerCase().includes(rgr));
 
@@ -36,7 +36,7 @@ const MapSettingsManager = () => {
       });
 
       const GROUPS_META = GROUPS.map((gId) => ({
-        ...metadata['mapbox:groups'][gId],
+        ...(metadata && metadata['mapbox:groups'][gId]),
         id: gId,
       }));
       const GROUP_TO_DISPLAY = GROUPS_META.find((_group) => _group.name.includes(groupId)) || {};
@@ -45,12 +45,12 @@ const MapSettingsManager = () => {
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
 
-        const gr = layerMetadata['mapbox:group'] as string;
+        const gr = layerMetadata?.['mapbox:group'] as string;
         return GROUPS.includes(gr);
       });
 
       GROUPS_LAYERS.forEach((_layer) => {
-        const match = _layer.metadata['mapbox:group'] === GROUP_TO_DISPLAY.id && visible;
+        const match = _layer.metadata?.['mapbox:group'] === GROUP_TO_DISPLAY.id && visible;
         if (!match) {
           map.setLayoutProperty(_layer.id, 'visibility', 'none');
         } else {
