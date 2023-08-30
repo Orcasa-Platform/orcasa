@@ -36,7 +36,7 @@ const BasemapLayer = () => {
   if (!c || !basemapId) return null;
   return (
     <MapboxLayer
-      id={`basemap-${String(basemapId)}`}
+      id={`basemap`}
       key={`basemap-${String(basemapId)}`}
       beforeId={'custom-layers'}
       config={c}

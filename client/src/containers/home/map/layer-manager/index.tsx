@@ -11,6 +11,7 @@ import LayerManagerItem from '@/containers/home/map/layer-manager/item';
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
 
 import BasemapLayer from './basemap';
+import LabelsLayer from './labels';
 
 const LayerManager = () => {
   const layers = useRecoilValue(layersAtom);
@@ -27,6 +28,7 @@ const LayerManager = () => {
           layout={{ visibility: 'none' }}
         />
         <BasemapLayer />
+        <LabelsLayer />
         {/*
           Generate all transparent backgrounds to be able to sort by layers without an error
           - https://github.com/visgl/react-map-gl/issues/939#issuecomment-625290200
