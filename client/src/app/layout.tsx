@@ -1,10 +1,13 @@
 import '@/styles/globals.css';
 
-import { Inter } from 'next/font/google';
+import { Roboto_Slab, Roboto } from 'next/font/google';
+
+import { cn } from '@/lib/classnames';
 
 import Providers from '@/app/layout-providers';
 
-const inter = Inter({ subsets: ['latin'] });
+const robotoSlab = Roboto_Slab({ subsets: ['latin'] });
+const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'] });
 
 // TODO: Update metadata
 export const metadata = {
@@ -25,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <Providers>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={cn(robotoSlab.className, roboto.className)}>{children}</body>
       </html>
     </Providers>
   );

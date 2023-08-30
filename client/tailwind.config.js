@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 module.exports = {
   darkMode: ['class'],
   content: [
@@ -16,7 +19,19 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.serif],
+        serif: ['Roboto\\ Slab', ...defaultTheme.fontFamily.serif],
+      },
+      fontSize: {
+        '3.5xl': ['32px', '48px'],
+      },
       colors: {
+        main: '#3C4363',
+        'gray-50': '#F7F7F9',
+        'mod-sc-ev': '#2BB3A7',
+        'mod-sc-ev-light': '#CEEEE3',
+        'mod-sc-ev-dark': '#1E6B65',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

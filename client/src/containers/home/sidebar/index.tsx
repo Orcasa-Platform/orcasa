@@ -18,15 +18,15 @@ export default function Sidebar({ children }: PropsWithChildren) {
   return (
     <div
       className={cn({
-        'absolute left-0 top-0 flex h-full w-full max-w-[400px] flex-col bg-white shadow-lg transition-transform duration-500':
+        'absolute left-[117px] top-0 flex h-full w-full max-w-[400px] flex-col bg-white shadow-lg transition-transform duration-500':
           true,
         'translate-x-0': open,
         '-translate-x-full': !open,
       })}
     >
-      <div className="absolute left-full top-6 z-10">
+      <div className="absolute left-full top-0 z-10">
         <Button
-          variant="default"
+          variant="opener"
           size="icon"
           onClick={() => {
             setOpen(!open);

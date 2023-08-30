@@ -21,7 +21,7 @@ const LabelsLayer = () => {
   });
   if (labels === 'labels-none') return null;
 
-  if (isError || labelsData?.data?.length === 0) {
+  if (isError) {
     console.error('Could not load labels:', isError);
   }
 
