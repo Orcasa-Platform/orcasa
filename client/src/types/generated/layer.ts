@@ -35,12 +35,12 @@ export const getGetLayersQueryKey = (params?: GetLayersParams) =>
 
 export const getGetLayersInfiniteQueryOptions = <
   TData = Awaited<ReturnType<typeof getLayers>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetLayersParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData>;
-  }
+  },
 ): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -59,12 +59,12 @@ export type GetLayersInfiniteQueryError = ErrorType<Error>;
 
 export const useGetLayersInfinite = <
   TData = Awaited<ReturnType<typeof getLayers>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetLayersParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData>;
-  }
+  },
 ): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetLayersInfiniteQueryOptions(params, options);
 
@@ -79,10 +79,10 @@ export const useGetLayersInfinite = <
 
 export const getGetLayersQueryOptions = <
   TData = Awaited<ReturnType<typeof getLayers>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetLayersParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData> },
 ): UseQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -101,10 +101,10 @@ export type GetLayersQueryError = ErrorType<Error>;
 
 export const useGetLayers = <
   TData = Awaited<ReturnType<typeof getLayers>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetLayersParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayers>>, TError, TData> },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetLayersQueryOptions(params, options);
 
@@ -126,7 +126,7 @@ export const postLayers = (layerRequest: LayerRequest) => {
 
 export const getPostLayersMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postLayers>>,
@@ -179,11 +179,11 @@ export const getGetLayersIdQueryKey = (id: number, params?: GetLayersIdParams) =
 
 export const getGetLayersIdQueryOptions = <
   TData = Awaited<ReturnType<typeof getLayersId>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   id: number,
   params?: GetLayersIdParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> },
 ): UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -202,11 +202,11 @@ export type GetLayersIdQueryError = ErrorType<Error>;
 
 export const useGetLayersId = <
   TData = Awaited<ReturnType<typeof getLayersId>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   id: number,
   params?: GetLayersIdParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getLayersId>>, TError, TData> },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetLayersIdQueryOptions(id, params, options);
 
@@ -228,7 +228,7 @@ export const putLayersId = (id: number, layerRequest: LayerRequest) => {
 
 export const getPutLayersIdMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof putLayersId>>,
@@ -278,7 +278,7 @@ export const deleteLayersId = (id: number) => {
 
 export const getDeleteLayersIdMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof deleteLayersId>>,
@@ -295,7 +295,7 @@ export const getDeleteLayersIdMutationOptions = <
   const { mutation: mutationOptions } = options ?? {};
 
   const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteLayersId>>, { id: number }> = (
-    props
+    props,
   ) => {
     const { id } = props ?? {};
 

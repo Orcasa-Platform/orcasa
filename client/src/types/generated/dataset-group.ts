@@ -35,12 +35,12 @@ export const getGetDatasetGroupsQueryKey = (params?: GetDatasetGroupsParams) =>
 
 export const getGetDatasetGroupsInfiniteQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetGroups>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetGroupsParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
-  }
+  },
 ): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -63,12 +63,12 @@ export type GetDatasetGroupsInfiniteQueryError = ErrorType<Error>;
 
 export const useGetDatasetGroupsInfinite = <
   TData = Awaited<ReturnType<typeof getDatasetGroups>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetGroupsParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
-  }
+  },
 ): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetGroupsInfiniteQueryOptions(params, options);
 
@@ -83,10 +83,12 @@ export const useGetDatasetGroupsInfinite = <
 
 export const getGetDatasetGroupsQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetGroups>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetGroupsParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData> }
+  options?: {
+    query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
+  },
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -105,10 +107,12 @@ export type GetDatasetGroupsQueryError = ErrorType<Error>;
 
 export const useGetDatasetGroups = <
   TData = Awaited<ReturnType<typeof getDatasetGroups>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetGroupsParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData> }
+  options?: {
+    query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroups>>, TError, TData>;
+  },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetGroupsQueryOptions(params, options);
 
@@ -130,7 +134,7 @@ export const postDatasetGroups = (datasetGroupRequest: DatasetGroupRequest) => {
 
 export const getPostDatasetGroupsMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postDatasetGroups>>,
@@ -179,7 +183,7 @@ export const usePostDatasetGroups = <TError = ErrorType<Error>, TContext = unkno
 export const getDatasetGroupsId = (
   id: number,
   params?: GetDatasetGroupsIdParams,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ) => {
   return API<DatasetGroupResponse>({ url: `/dataset-groups/${id}`, method: 'get', params, signal });
 };
@@ -189,13 +193,13 @@ export const getGetDatasetGroupsIdQueryKey = (id: number, params?: GetDatasetGro
 
 export const getGetDatasetGroupsIdQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetGroupsId>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   id: number,
   params?: GetDatasetGroupsIdParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData>;
-  }
+  },
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -216,13 +220,13 @@ export type GetDatasetGroupsIdQueryError = ErrorType<Error>;
 
 export const useGetDatasetGroupsId = <
   TData = Awaited<ReturnType<typeof getDatasetGroupsId>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   id: number,
   params?: GetDatasetGroupsIdParams,
   options?: {
     query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetGroupsId>>, TError, TData>;
-  }
+  },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetGroupsIdQueryOptions(id, params, options);
 
@@ -244,7 +248,7 @@ export const putDatasetGroupsId = (id: number, datasetGroupRequest: DatasetGroup
 
 export const getPutDatasetGroupsIdMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof putDatasetGroupsId>>,
@@ -296,7 +300,7 @@ export const deleteDatasetGroupsId = (id: number) => {
 
 export const getDeleteDatasetGroupsIdMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof deleteDatasetGroupsId>>,

@@ -35,12 +35,12 @@ export const getGetDatasetsQueryKey = (params?: GetDatasetsParams) =>
 
 export const getGetDatasetsInfiniteQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasets>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetsParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData>;
-  }
+  },
 ): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -59,12 +59,12 @@ export type GetDatasetsInfiniteQueryError = ErrorType<Error>;
 
 export const useGetDatasetsInfinite = <
   TData = Awaited<ReturnType<typeof getDatasets>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetsParams,
   options?: {
     query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData>;
-  }
+  },
 ): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetsInfiniteQueryOptions(params, options);
 
@@ -79,10 +79,10 @@ export const useGetDatasetsInfinite = <
 
 export const getGetDatasetsQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasets>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetsParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData> },
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -101,10 +101,10 @@ export type GetDatasetsQueryError = ErrorType<Error>;
 
 export const useGetDatasets = <
   TData = Awaited<ReturnType<typeof getDatasets>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   params?: GetDatasetsParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasets>>, TError, TData> },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetsQueryOptions(params, options);
 
@@ -126,7 +126,7 @@ export const postDatasets = (datasetRequest: DatasetRequest) => {
 
 export const getPostDatasetsMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof postDatasets>>,
@@ -179,11 +179,11 @@ export const getGetDatasetsIdQueryKey = (id: number, params?: GetDatasetsIdParam
 
 export const getGetDatasetsIdQueryOptions = <
   TData = Awaited<ReturnType<typeof getDatasetsId>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   id: number,
   params?: GetDatasetsIdParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> },
 ): UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> & {
   queryKey: QueryKey;
 } => {
@@ -202,11 +202,11 @@ export type GetDatasetsIdQueryError = ErrorType<Error>;
 
 export const useGetDatasetsId = <
   TData = Awaited<ReturnType<typeof getDatasetsId>>,
-  TError = ErrorType<Error>
+  TError = ErrorType<Error>,
 >(
   id: number,
   params?: GetDatasetsIdParams,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> }
+  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof getDatasetsId>>, TError, TData> },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
   const queryOptions = getGetDatasetsIdQueryOptions(id, params, options);
 
@@ -228,7 +228,7 @@ export const putDatasetsId = (id: number, datasetRequest: DatasetRequest) => {
 
 export const getPutDatasetsIdMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof putDatasetsId>>,
@@ -278,7 +278,7 @@ export const deleteDatasetsId = (id: number) => {
 
 export const getDeleteDatasetsIdMutationOptions = <
   TError = ErrorType<Error>,
-  TContext = unknown
+  TContext = unknown,
 >(options?: {
   mutation?: UseMutationOptions<
     Awaited<ReturnType<typeof deleteDatasetsId>>,

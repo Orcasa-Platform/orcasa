@@ -10,6 +10,8 @@ import LayerManagerItem from '@/containers/home/map/layer-manager/item';
 
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
 
+import BasemapLayer from './basemap';
+
 const LayerManager = () => {
   const layers = useRecoilValue(layersAtom);
   const layersSettings = useRecoilValue(layersSettingsAtom);
@@ -17,6 +19,14 @@ const LayerManager = () => {
   return (
     <DeckMapboxOverlayProvider>
       <>
+        {/* This layer is here to provide a base for the other layers to be positioned */}
+        <Layer
+          id="custom-layers"
+          key="custom-layers"
+          type="background"
+          layout={{ visibility: 'none' }}
+        />
+        <BasemapLayer />
         {/*
           Generate all transparent backgrounds to be able to sort by layers without an error
           - https://github.com/visgl/react-map-gl/issues/939#issuecomment-625290200
@@ -25,8 +35,8 @@ const LayerManager = () => {
           const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
           return (
             <Layer
-              id={`${l}-layer`}
-              key={l}
+              id={`${l}-slug-layer`}
+              key={`${l}-slug-layer`}
               type="background"
               layout={{ visibility: 'none' }}
               beforeId={beforeId}
