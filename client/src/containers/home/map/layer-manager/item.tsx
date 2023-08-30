@@ -45,7 +45,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
         setLayersInteractiveIds((prev) => [...prev, ...ids]);
       }
     },
-    [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds]
+    [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds],
   );
 
   const handleRemoveMapboxLayer = useCallback(
@@ -61,7 +61,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
         setLayersInteractiveIds((prev) => prev.filter((i) => !ids.includes(i)));
       }
     },
-    [data?.data?.attributes, id, setLayersInteractive, setLayersInteractiveIds]
+    [data?.data?.attributes, id, setLayersInteractive, setLayersInteractiveIds],
   );
 
   if (!data?.data?.attributes) return null;

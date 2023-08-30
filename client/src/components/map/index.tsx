@@ -45,7 +45,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
     ...viewState,
   };
   const [localViewState, setLocalViewState] = useState<Partial<ViewState> | null>(
-    !initialViewState ? defaultViewState : null
+    !initialViewState ? defaultViewState : null,
   );
   const [isFlying, setFlying] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -68,7 +68,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
           [bbox[0], bbox[1]],
           [bbox[2], bbox[3]],
         ],
-        options
+        options,
       );
     }
   }, [bounds, mapRef]);
@@ -83,7 +83,12 @@ export const MapMapbox: FC<CustomMapProps> = ({
       setLocalViewState(newViewState);
       debouncedViewStateChange(newViewState);
     },
-    [constrainedAxis, localViewState?.latitude, localViewState?.longitude, debouncedViewStateChange]
+    [
+      constrainedAxis,
+      localViewState?.latitude,
+      localViewState?.longitude,
+      debouncedViewStateChange,
+    ],
   );
 
   const handleMapLoad = useCallback(
@@ -94,7 +99,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
         onLoad(e);
       }
     },
-    [onLoad]
+    [onLoad],
   );
 
   useEffect(() => {

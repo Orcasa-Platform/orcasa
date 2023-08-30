@@ -25,7 +25,7 @@ const MapLegends = ({ className = '' }) => {
 
       setLayers(newLayers);
     },
-    [layers, setLayers]
+    [layers, setLayers],
   );
 
   const handleChangeOpacity = useCallback(
@@ -38,7 +38,7 @@ const MapLegends = ({ className = '' }) => {
           opacity,
         },
       })),
-    [setLayersSettings]
+    [setLayersSettings],
   );
 
   const handleChangeVisibility = useCallback(
@@ -51,7 +51,7 @@ const MapLegends = ({ className = '' }) => {
           visibility,
         },
       })),
-    [setLayersSettings]
+    [setLayersSettings],
   );
 
   const handleChangeExpand = useCallback(
@@ -63,7 +63,7 @@ const MapLegends = ({ className = '' }) => {
           expand,
         },
       })),
-    [setLayersSettings]
+    [setLayersSettings],
   );
 
   const sortable = layers?.length > 1;
@@ -107,7 +107,7 @@ const MapLegends = ({ className = '' }) => {
       <Legend
         className={cn(
           'max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]',
-          className
+          className,
         )}
         sortable={{
           enabled: sortable,

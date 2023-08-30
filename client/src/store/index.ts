@@ -137,7 +137,7 @@ export function useSyncLayersAndSettings() {
           }
         }, 0);
       },
-    []
+    [],
   );
 
   // Sync layersettings when layers change

@@ -78,7 +78,7 @@ export default function MapContainer() {
       query: {
         enabled: !!layersInteractive.length,
       },
-    }
+    },
   );
 
   const tmpBounds: CustomMapProps['bounds'] = useMemo(() => {
@@ -128,7 +128,7 @@ export default function MapContainer() {
         setPopup(p);
       }
     },
-    [layersInteractive, layersInteractiveData, setPopup]
+    [layersInteractive, layersInteractiveData, setPopup],
   );
 
   return (
