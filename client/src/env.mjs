@@ -16,7 +16,7 @@ export const env = createEnv({
    * Will throw if you access these variables on the client.
    */
   server: {
-    RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED: z.preprocess(castToBoolean, z.boolean())
+    RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED: z.preprocess(castToBoolean, z.boolean()),
   },
   /*
    * Environment variables available on the client (and server).
@@ -24,10 +24,10 @@ export const env = createEnv({
    * 💡 You'll get typeerrors if these are not prefixed with NEXT_PUBLIC_.
    */
   client: {
-    NEXT_PUBLIC_ENVIRONMENT: z.enum(['development', 'staging', 'production']),
+    NEXT_PUBLIC_ENVIRONMENT: z.enum(['development', 'staging', 'production']).optional(),
     NEXT_PUBLIC_URL: z.string().url(),
     NEXT_PUBLIC_API_URL: z.string().url(),
-    NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional()
+    NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
