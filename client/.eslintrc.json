@@ -4,11 +4,11 @@
     "plugin:prettier/recommended",
     "next/core-web-vitals"
   ],
-  "ignorePatterns": [
-    "src/types/generated/*"
-  ],
+  "ignorePatterns": ["src/types/generated/*"],
   "rules": {
     "no-console": [1, { "allow": ["info", "error", "debug"] }],
+    "comma-dangle": "off",
+    "prettier/prettier": "warn",
     "import/order": [
       "warn",
       {
