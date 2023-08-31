@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node index.js",
     "lint": "next lint",
     "check-types": "tsc",
     "test": "playwright test"
@@ -46,10 +46,14 @@
     "deck.gl": "8.9.19",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
+    "express": "^4.17.2",
     "lucide-react": "^0.252.0",
     "mapbox-gl": "npm:empty-npm-package@1.0.0",
     "maplibre-gl": "3.3.0",
     "next": "13.4.5",
+    "pino": "^8.15.0",
+    "pino-http": "^8.4.0",
+    "pino-pretty": "^10.2.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

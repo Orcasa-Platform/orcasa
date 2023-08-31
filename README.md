@@ -24,13 +24,16 @@ yarn client dev
 
 ### Strapi Server CMS
 
-1 - Make sure you have Postgres installed and a Postgres database running locally.
+#### Requirements
 
-You can download Postgres [here](https://www.postgresql.org/download/). Or the Posgres Mac app [here](https://postgresapp.com/).
+- Node v20.5
+- Postgres 15.4
 
-Create a database if you don't have it and add a user with SUPERUSER privileges.
+#### Set up
 
-2 - Copy the .env.example file to .env and fill in the DATABASE_NAME, DATABASE_USERNAME and DATABASE_PASSWORD fields with your database credentials. Maybe you need to change the DATABASE_HOST and DATABASE_PORT fields too.
+1 - Ensure you have the dependencies up and running. Also ensure you have a database created for this application.
+
+2 - Copy the `.env.example` file to `.env` and fill in the `DATABASE_NAME`, `DATABASE_USERNAME` and `DATABASE_PASSWORD` fields with your database credentials. Maybe you need to change the `DATABASE_HOST` and `DATABASE_PORT` fields too.
 
 3 - Then run the cms:
 
@@ -69,5 +72,3 @@ docker-compose up --build
 ```
 
 Open the app in http://localhost:3000 for the client and http://localhost:1337 for the CMS.
-
-NOTE: Docker is recommended for development, but not for production (yet).

@@ -1,11 +1,13 @@
 name: Playwright Tests
 on:
-  pull_request:
-    branches: [ main, master ]
+  push:
+    paths:
+      - 'client/**'
+      - 'cms/**'
 jobs:
   test_setup:
     name: Test setup
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
@@ -19,12 +21,12 @@ jobs:
     needs: test_setup
     name: Test
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 20.5
     - name: Install dependencies
       run: yarn client install
     - name: Install Playwright Browsers

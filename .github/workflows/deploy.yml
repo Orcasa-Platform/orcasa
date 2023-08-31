@@ -1,0 +1,169 @@
+name: Run deploy
+
+on:
+  workflow_dispatch:
+  push:
+#    branches:
+#      - main
+#      - staging
+    paths:
+      - 'client/**'
+      - 'cms/**'
+      - '.github/workflows/*'
+      - 'infrastructure/**'
+
+jobs:
+  build_client_image:
+    name: Build Client image and push to Amazon ECR
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Copy env variables to docker
+        env:
+          ENVIRONMENT: ${{ steps.extract_branch.outputs.branch == 'main' && 'PROD' || 'STAGING' }}
+        run: |
+          echo "${{ secrets[format('{0}_CLIENT_ENV_FILE', env.ENVIRONMENT)] }}" > client/.env.local
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          mask-password: 'true'
+
+      - name: Build, tag, and push Client image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}-client
+          IMAGE_TAG: client-${{ github.sha }}
+        run: |
+          docker build -f client/Dockerfile.prod -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./client
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+  build_cms_image:
+    name: Build CMS image and push to Amazon ECR
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Copy env variables to docker
+        env:
+          ENVIRONMENT: ${{ steps.extract_branch.outputs.branch == 'main' && 'PROD' || 'STAGING' }}
+        run: |
+          echo "${{ secrets[format('{0}_CMS_ENV_FILE', env.ENVIRONMENT)] }}" > cms/.env
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          mask-password: 'true'
+
+      - name: Build, tag, and push CMS image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}-cms
+          IMAGE_TAG: cms-${{ github.sha }}
+        run: |
+          docker build -f cms/Dockerfile.prod -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./cms
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+  deploy:
+    name: Deploy Client and CMS to Amazon EB
+    needs: [build_client_image, build_cms_image]
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          mask-password: 'true'
+
+      - name: Generate docker compose file
+        working-directory: infrastructure/source_bundle
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY_CLIENT: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}-client
+          IMAGE_TAG_CLIENT: client-${{ github.sha }}
+          ECR_REPOSITORY_CMS: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}-cms
+          IMAGE_TAG_CMS: cms-${{ github.sha }}
+        run: |
+          echo "version: '3.3'" > docker-compose.yml
+          echo "services:" >> docker-compose.yml
+          echo "  client:" >> docker-compose.yml
+          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG_CLIENT" >> docker-compose.yml
+          echo "    ports:" >> docker-compose.yml
+          echo "      - 3000:3000" >> docker-compose.yml
+          echo "  cms:" >> docker-compose.yml
+          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CMS:$IMAGE_TAG_CMS" >> docker-compose.yml
+          echo "    ports:" >> docker-compose.yml
+          echo "      - 1337:1337" >> docker-compose.yml
+          echo "  nginx:" >> docker-compose.yml
+          echo "    image: nginx" >> docker-compose.yml
+          echo "    volumes:" >> docker-compose.yml
+          echo "      - ./proxy/conf.d:/etc/nginx/conf.d" >> docker-compose.yml
+          echo "      - \"\${EB_LOG_BASE_DIR}/nginx:/var/log/nginx\"" >> docker-compose.yml
+          echo "    ports:" >> docker-compose.yml
+          echo "      - 80:80" >> docker-compose.yml
+          echo "    depends_on:" >> docker-compose.yml
+          echo "      - cms" >> docker-compose.yml
+          echo "      - client" >> docker-compose.yml
+
+      - name: Generate zip file
+        working-directory: infrastructure/source_bundle
+        run: |
+          zip -r deploy.zip * .[^.]*
+
+      - name: Deploy to Amazon EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
+          application_name: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}
+          environment_name: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}-environment
+          region: ${{ vars.AWS_REGION }}
+          version_label: ${{ github.sha }}
+          deployment_package: infrastructure/source_bundle/deploy.zip
