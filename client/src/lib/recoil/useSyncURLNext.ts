@@ -11,7 +11,7 @@ type UseSyncURLNextOptions = {
 };
 
 export function useSyncURLNext(
-  options: UseSyncURLNextOptions
+  options: UseSyncURLNextOptions,
 ): Partial<Omit<RecoilURLSyncOptions, 'children'>> {
   const { decodedQueryParams } = options;
 
@@ -29,7 +29,7 @@ export function useSyncURLNext(
         return window.history.replaceState({}, '', u);
         // return replace(u, { shallow: true });
       },
-      [decodedQueryParams]
+      [decodedQueryParams],
     ),
 
     pushURL: useCallback(
@@ -37,13 +37,13 @@ export function useSyncURLNext(
         const u = decodedQueryParams ? decodeURIComponent(url) : url;
         return push(u, { shallow: true });
       },
-      [decodedQueryParams, push]
+      [decodedQueryParams, push],
     ),
 
     getURL: useCallback(() => {
       const url = new URL(
         `${pathname}${searchParams ? `?${searchParams.toString()}` : ''}`,
-        globalThis?.document?.location?.href ?? 'http://localhost:3000'
+        globalThis?.document?.location?.href ?? 'http://localhost:3000',
       );
 
       return url.toString();

@@ -18,7 +18,7 @@ const Boundaries = () => {
         boundaries: v,
       }));
     },
-    [setMapSettings]
+    [setMapSettings],
   );
 
   return (

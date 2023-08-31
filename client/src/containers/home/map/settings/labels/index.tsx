@@ -20,7 +20,7 @@ const Labels = () => {
         labels: v,
       }));
     },
-    [setMapSettings]
+    [setMapSettings],
   );
 
   return (

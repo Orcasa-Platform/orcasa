@@ -74,7 +74,7 @@ export const SortableList: React.FC<SortableListProps> = ({
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const handleDragStart = useCallback((event: DragStartEvent) => {
@@ -94,7 +94,7 @@ export const SortableList: React.FC<SortableListProps> = ({
         if (onChangeOrder) onChangeOrder(arrayMove(itemsIds || [], oldIndex, newIndex));
       }
     },
-    [itemsIds, onChangeOrder]
+    [itemsIds, onChangeOrder],
   );
 
   return (

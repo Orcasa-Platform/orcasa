@@ -19,9 +19,9 @@ export const useDatasetsGroups = () => {
         .from(
           group(
             data.data,
-            (d) => d.attributes?.dataset_group?.data?.attributes?.title || 'No parent'
+            (d) => d.attributes?.dataset_group?.data?.attributes?.title || 'No parent',
           ),
-          ([key, value]) => ({ key, value })
+          ([key, value]) => ({ key, value }),
         )
         // sort by key
         .sort((a, b) => a.key.localeCompare(b.key))

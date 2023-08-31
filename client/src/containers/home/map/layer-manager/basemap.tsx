@@ -25,8 +25,8 @@ const BasemapLayer = () => {
   }
 
   const { id: basemapId } = basemapData?.data?.[0] || {};
+  const { config: basemapConfig } = basemapData?.data?.[0]?.attributes || {};
 
-  const { config: basemapConfig } = basemapData?.data?.[0].attributes || {};
   const c = parseConfig<Config>({
     config: basemapConfig,
     params_config: [],

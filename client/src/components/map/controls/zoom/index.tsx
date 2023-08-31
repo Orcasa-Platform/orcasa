@@ -26,7 +26,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
       e.stopPropagation();
       mapRef?.zoomIn();
     },
-    [mapRef]
+    [mapRef],
   );
 
   const decreaseZoom = useCallback(
@@ -34,7 +34,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
       e.stopPropagation();
       mapRef?.zoomOut();
     },
-    [mapRef]
+    [mapRef],
   );
 
   return (

@@ -18,7 +18,7 @@ const Roads = () => {
         roads: v,
       }));
     },
-    [setMapSettings]
+    [setMapSettings],
   );
 
   return (
