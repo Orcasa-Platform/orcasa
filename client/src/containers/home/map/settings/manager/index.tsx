@@ -2,15 +2,14 @@ import { useCallback, useEffect } from 'react';
 
 import { useMap } from 'react-map-gl';
 
+import type { LayerSpecification } from 'maplibre-gl';
 import { useRecoilValue } from 'recoil';
 
 import { mapSettingsAtom } from '@/store/index';
 
-import type { AnyLayer } from '@/types/layers';
-
 import { BASEMAPS } from '@/constants/basemaps';
 
-type AnyLayerWithMetadata = AnyLayer & {
+type AnyLayerWithMetadata = LayerSpecification & {
   metadata: Record<string, unknown>;
 };
 
@@ -58,7 +57,7 @@ const MapSettingsManager = () => {
         }
       });
     },
-    [mapRef]
+    [mapRef],
   );
 
   const handleStyleLoad = useCallback(() => {

@@ -1,14 +1,7 @@
-import {
-  SymbolStyleLayer,
-  HeatmapStyleLayer,
-  CircleStyleLayer,
-  FillStyleLayer,
-  FillExtrusionStyleLayer,
-  HillshadeStyleLayer,
-  LineStyleLayer,
-} from 'maplibre-gl';
+import { MapboxStyle } from 'react-map-gl';
 
 interface SourceData {
+  id: string;
   type: 'vector' | 'raster' | 'raster-dem' | 'geojson' | 'image' | 'video';
 }
 
@@ -16,18 +9,9 @@ import { FormatProps } from '@/lib/utils/formats';
 
 import type { Layer } from '@/types/generated/strapi.schemas';
 
-export type AnyLayer =
-  | SymbolStyleLayer
-  | HeatmapStyleLayer
-  | CircleStyleLayer
-  | FillStyleLayer
-  | FillExtrusionStyleLayer
-  | HillshadeStyleLayer
-  | LineStyleLayer;
-
 export type Config = {
   source: SourceData;
-  styles: AnyLayer[];
+  styles: MapboxStyle['layers'];
 };
 
 export type ParamsConfigValue = {
