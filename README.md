@@ -28,23 +28,7 @@ yarn client dev
 
 You can download Postgres [here](https://www.postgresql.org/download/). Or the Posgres Mac app [here](https://postgresapp.com/).
 
-If you don't already have a database, you can create it running:
-
-```bash
-createdb <database_name>
-```
-
-To create a user on the database run:
-
-```bash
-psql <database_name>
-```
-
-And then run:
-
-```sql
-CREATE USER <username> SUPERUSER PASSWORD <'passwordstring'>
-```
+Create a database if you don't have it and add a user with SUPERUSER privileges.
 
 2 - Copy the .env.example file to .env and fill in the DATABASE_NAME, DATABASE_USERNAME and DATABASE_PASSWORD fields with your database credentials. Maybe you need to change the DATABASE_HOST and DATABASE_PORT fields too.
 
