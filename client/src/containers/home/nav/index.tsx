@@ -9,18 +9,30 @@ import { cn } from '@/lib/classnames';
 interface LinkProps {
   href: string;
   children: React.ReactNode;
-  color?: string;
+  color: string;
   active?: boolean;
 }
+
+const borderColors: { [key: string]: string } = {
+  'dark-yellow': 'border-yellow-600',
+  yellow: 'border-yellow-400',
+  teal: 'border-teal-500',
+  blue: 'border-blue-500',
+  indigo: 'border-indigo-500',
+};
 
 const Link = ({ href, children, color, active }: LinkProps) => (
   <a
     href={href}
     className={cn(
       'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-6 pr-4 font-sans text-sm font-semibold leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
-      `bg-${active ? 'white' : 'slate-700'}`,
-      `text-${active ? 'text-slate-700' : 'white'}`,
-      `border-${color}`,
+      borderColors[color],
+      {
+        'bg-white': active,
+        'text-slate-700': active,
+        'bg-slate-700': !active,
+        'text-white': !active,
+      },
     )}
   >
     {children}
@@ -32,27 +44,27 @@ export default function Nav() {
   const links = [
     {
       href: '/',
-      color: 'yellow-400',
+      color: 'yellow',
       text: 'Map Layers',
     },
     {
       href: '/scientific-evidence',
-      color: 'teal-500',
+      color: 'teal',
       text: 'Scientific Evidence',
     },
     {
       href: '/practices',
-      color: 'yellow-600',
+      color: 'dark-yellow',
       text: 'Practices',
     },
     {
       href: '/network',
-      color: 'blue-500',
+      color: 'blue',
       text: 'Network',
     },
     {
       href: '/datasets',
-      color: 'indigo-500',
+      color: 'indigo',
       text: 'Datasets',
     },
   ];
