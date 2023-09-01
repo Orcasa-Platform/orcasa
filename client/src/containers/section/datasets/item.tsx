@@ -2,7 +2,7 @@
 
 import { DatasetListResponseDataItem } from '@/types/generated/strapi.schemas';
 
-import Layers from '@/containers/home/datasets/layers';
+import Layers from '@/containers/section/datasets/layers';
 
 import {
   Accordion,

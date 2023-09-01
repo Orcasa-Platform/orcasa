@@ -1,6 +1,6 @@
 'use client';
 
-import LayersList from '@/containers/home/datasets/layers/list';
+import LayersList from '@/containers/section/datasets/layers/list';
 
 export default function Layers({ datasetId }: { datasetId: number }) {
   return (

@@ -20,9 +20,9 @@ import { useGetLayers } from '@/types/generated/layer';
 import type { LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
 
-import Popup from '@/containers/home/map/popup';
-import MapSettings from '@/containers/home/map/settings';
-import MapSettingsManager from '@/containers/home/map/settings/manager';
+import Popup from '@/containers/section/map/popup';
+import MapSettings from '@/containers/section/map/settings';
+import MapSettingsManager from '@/containers/section/map/settings/manager';
 
 import Map from '@/components/map';
 import Controls from '@/components/map/controls';
@@ -30,11 +30,11 @@ import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
-const LayerManager = dynamic(() => import('@/containers/home/map/layer-manager'), {
+const LayerManager = dynamic(() => import('@/containers/section/map/layer-manager'), {
   ssr: false,
 });
 
-const Legend = dynamic(() => import('@/containers/home/map/legend'), {
+const Legend = dynamic(() => import('@/containers/section/map/legend'), {
   ssr: false,
 });
 

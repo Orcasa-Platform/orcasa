@@ -6,7 +6,7 @@ import { cn } from '@/lib/classnames';
 
 import Providers from '@/app/layout-providers';
 
-const robotoSlab = Roboto_Slab({ subsets: ['latin'] });
+const robotoSlab = Roboto_Slab({ subsets: ['latin'], weight: ['400', '600', '700'] });
 const roboto = Roboto({ weight: ['400', '700'], subsets: ['latin'] });
 
 // TODO: Update metadata

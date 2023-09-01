@@ -18,7 +18,7 @@ export default function Sidebar({ children }: PropsWithChildren) {
   return (
     <div
       className={cn({
-        'absolute left-[117px] top-0 flex h-full w-full max-w-[400px] flex-col bg-white shadow-lg transition-transform duration-500':
+        'absolute left-[117px] top-0 flex h-full w-full max-w-[487px] flex-col bg-white shadow-lg transition-transform duration-500':
           true,
         'translate-x-0': open,
         '-translate-x-full': !open,

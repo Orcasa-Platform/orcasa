@@ -3,7 +3,7 @@
 import { useGetLayers } from '@/types/generated/layer';
 import { LayerListResponseDataItem } from '@/types/generated/strapi.schemas';
 
-import LayersItem from '@/containers/home/datasets/layers/item';
+import LayersItem from '@/containers/section/datasets/layers/item';
 
 import ContentLoader from '@/components/ui/loader';
 

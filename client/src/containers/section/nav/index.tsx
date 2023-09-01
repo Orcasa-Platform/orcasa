@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-import logo from 'public/images/logo.svg';
 
 import { cn } from '@/lib/classnames';
 
-interface LinkProps {
+import logo from '/public/images/logo.svg';
+
+interface NavLinkProps {
   href: string;
   children: React.ReactNode;
   color: string;
@@ -21,9 +22,8 @@ const borderColors: { [key: string]: string } = {
   indigo: 'border-indigo-500',
 };
 
-const Link = ({ href, children, color, active }: LinkProps) => (
-  <a
-    href={href}
+const NavLink = ({ href, children, color, active }: NavLinkProps) => (
+  <Link
     className={cn(
       'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-6 pr-4 font-sans text-sm font-semibold leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
       borderColors[color],
@@ -34,16 +34,17 @@ const Link = ({ href, children, color, active }: LinkProps) => (
         'text-white': !active,
       },
     )}
+    href={href}
   >
     {children}
-  </a>
+  </Link>
 );
 
 export default function Nav() {
   const pathname = usePathname();
   const links = [
     {
-      href: '/',
+      href: '/map-layers',
       color: 'yellow',
       text: 'Map Layers',
     },
@@ -72,14 +73,20 @@ export default function Nav() {
   return (
     <div className="absolute left-0 z-50 h-full w-[117px]">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 bg-slate-700 py-6">
-        <img src={logo.src} alt="logo" className={`h-[${logo.height}-px] w-[${logo.height}-px]`} />
+        <Link href="/">
+          <img
+            src={logo.src}
+            alt="logo"
+            className={`h-[${logo.height}-px] w-[${logo.height}-px]`}
+          />
+        </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">
           {links.map((link) => {
             const { href, color, text } = link;
             return (
-              <Link key={href} href={href} color={color} active={pathname === href}>
+              <NavLink key={href} href={href} color={color} active={pathname === href}>
                 {text}
-              </Link>
+              </NavLink>
             );
           })}
         </div>
