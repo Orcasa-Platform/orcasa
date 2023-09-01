@@ -144,7 +144,7 @@ export default function MapContainer() {
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        // mapStyle={'https://demotiles.maplibre.org/style.json'}
+        mapStyle={'https://demotiles.maplibre.org/style.json'}
         interactiveLayerIds={layersInteractiveIds}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
