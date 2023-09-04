@@ -6,7 +6,6 @@ import { MapLayerMouseEvent } from 'react-map-gl';
 
 import {
   array,
-  bool,
   mixed,
   nullable,
   number,
