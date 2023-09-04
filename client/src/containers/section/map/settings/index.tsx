@@ -1,5 +1,3 @@
-import { X } from 'lucide-react';
-
 import Basemaps from './basemaps';
 import Labels from './labels';
 
