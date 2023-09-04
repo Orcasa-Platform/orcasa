@@ -1,0 +1,44 @@
+{
+  "data": [
+      {
+          "id": 7,
+          "attributes": {
+              "title": "basemap-light",
+              "type": "mapbox",
+              "config": {
+                  "source": {
+                      "id": "basemap-light",
+                      "type": "raster",
+                      "tiles": [
+                          "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+                      ],
+                      "maxzoom": 12,
+                      "minzoom": 3,
+                      "tileSize": 256
+                  },
+                  "styles": [
+                      {
+                          "id": "basemap-light",
+                          "type": "raster"
+                      }
+                  ]
+              },
+              "params_config": [],
+              "legend_config": {},
+              "interaction_config": {},
+              "createdAt": "2023-08-30T10:42:29.966Z",
+              "updatedAt": "2023-08-31T13:13:01.315Z",
+              "publishedAt": "2023-08-30T10:42:33.366Z",
+              "role": "basemap"
+          }
+      }
+  ],
+  "meta": {
+      "pagination": {
+          "page": 1,
+          "pageSize": 25,
+          "pageCount": 1,
+          "total": 1
+      }
+  }
+}

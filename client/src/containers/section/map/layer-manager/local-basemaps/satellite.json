@@ -1,0 +1,44 @@
+{
+  "data": [
+      {
+          "id": 6,
+          "attributes": {
+              "title": "basemap-satellite",
+              "type": "mapbox",
+              "config": {
+                  "source": {
+                      "id": "basemap-satellite",
+                      "type": "raster",
+                      "tiles": [
+                          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                      ],
+                      "maxzoom": 12,
+                      "minzoom": 3,
+                      "tileSize": 256
+                  },
+                  "styles": [
+                      {
+                          "id": "basemap-satellite",
+                          "type": "raster"
+                      }
+                  ]
+              },
+              "params_config": [],
+              "legend_config": {},
+              "interaction_config": {},
+              "createdAt": "2023-08-29T14:12:09.297Z",
+              "updatedAt": "2023-08-31T13:12:54.322Z",
+              "publishedAt": "2023-08-29T14:16:18.477Z",
+              "role": "basemap"
+          }
+      }
+  ],
+  "meta": {
+      "pagination": {
+          "page": 1,
+          "pageSize": 25,
+          "pageCount": 1,
+          "total": 1
+      }
+  }
+}
