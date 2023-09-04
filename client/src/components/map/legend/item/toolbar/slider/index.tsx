@@ -33,7 +33,7 @@ const Slider = React.forwardRef<
           <TooltipContent
             align="center"
             side="bottom"
-            className="bg-secondary z-50 w-10 p-1 text-center text-xs text-slate-800 drop-shadow-lg"
+            className="bg-secondary z-50 w-10 p-1 text-center text-xs text-slate-800"
           >
             {(Number(props.value) * 100).toFixed(0)}%
             <TooltipArrow className="fill-secondary z-50" width={10} height={5} />

@@ -4,11 +4,11 @@ import { FC } from 'react';
 
 import { PopoverArrow } from '@radix-ui/react-popover';
 import { TooltipPortal } from '@radix-ui/react-tooltip';
-import { Settings } from 'lucide-react';
+import { Settings, X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger, PopoverClose } from '@/components/ui/popover';
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import { CONTROL_BUTTON_STYLES } from '../constants';
@@ -31,7 +31,7 @@ export const SettingsControl: FC<SettingsControlProps> = ({
                   [CONTROL_BUTTON_STYLES.hover]: true,
                   [CONTROL_BUTTON_STYLES.active]: true,
                 })}
-                aria-label="Map settings"
+                aria-label="Map style"
                 type="button"
               >
                 <Settings className="h-full w-full" />
@@ -41,14 +41,16 @@ export const SettingsControl: FC<SettingsControlProps> = ({
 
           <TooltipPortal>
             <TooltipContent side="left" align="center">
-              <div className="text-xxs">Map settings</div>
-
+              <div className="text-xxs font-serif">Map style</div>
               <TooltipArrow className="fill-white" width={10} height={5} />
             </TooltipContent>
           </TooltipPortal>
 
           <PopoverContent side="left" align="start">
             {children}
+            <PopoverClose className="absolute right-4 top-4" aria-label="Close">
+              <X className="h-6 w-6" />
+            </PopoverClose>
             <PopoverArrow className="fill-white" width={10} height={5} />
           </PopoverContent>
         </Tooltip>
