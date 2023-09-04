@@ -22,7 +22,7 @@ jobs:
 
       - name: Copy env variables to docker
         run: |
-          echo "${{ secrets.STAGING_CLIENT_ENV_FILE] }}" > client/.env.local
+          echo "${{ secrets.STAGING_CLIENT_ENV_FILE }}" > client/.env.local
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
