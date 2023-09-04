@@ -56,7 +56,7 @@ jobs:
 
       - name: Copy env variables to docker
         run: |
-          echo "${{ secrets.STAGING_CMS_ENV_FILE' }}" > cms/.env
+          echo "${{ secrets.STAGING_CMS_ENV_FILE }}" > cms/.env
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
