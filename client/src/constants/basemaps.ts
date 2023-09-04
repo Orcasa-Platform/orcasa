@@ -5,8 +5,6 @@ export const BASEMAPS = [
     preview: `/images/map/light.jpeg`,
     settings: {
       labels: 'labels-dark',
-      boundaries: 'boundaries-dark',
-      roads: 'roads-dark',
     },
   },
   {
@@ -15,8 +13,6 @@ export const BASEMAPS = [
     preview: `/images/map/satellite.jpeg`,
     settings: {
       labels: 'labels-light',
-      boundaries: 'boundaries-light',
-      roads: 'roads-light',
     },
   },
 ];

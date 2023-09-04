@@ -24,16 +24,12 @@ export const mapSettingsAtom = atom({
   default: {
     basemap: 'basemap-light',
     labels: 'labels-dark',
-    boundaries: false,
-    roads: false,
   },
   effects: [
     urlSyncEffect({
       refine: object({
         basemap: string(),
         labels: string(),
-        boundaries: bool(),
-        roads: bool(),
       }),
     }),
   ],
