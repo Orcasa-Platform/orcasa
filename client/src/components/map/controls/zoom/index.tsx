@@ -38,7 +38,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
   );
 
   return (
-    <div className={cn('flex flex-col space-y-0.5', className)}>
+    <div className={cn('flex flex-col', className)}>
       <Tooltip>
         <TooltipTrigger asChild>
           <button
@@ -71,6 +71,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
           <button
             className={cn({
               [CONTROL_BUTTON_STYLES.default]: true,
+              'border-t-0': true,
               [CONTROL_BUTTON_STYLES.hover]: zoom !== minZoom,
               [CONTROL_BUTTON_STYLES.active]: zoom !== minZoom,
               [CONTROL_BUTTON_STYLES.disabled]: zoom === minZoom,

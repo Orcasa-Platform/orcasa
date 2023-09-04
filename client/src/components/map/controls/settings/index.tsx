@@ -30,7 +30,6 @@ export const SettingsControl: FC<SettingsControlProps> = ({
                   [CONTROL_BUTTON_STYLES.default]: true,
                   [CONTROL_BUTTON_STYLES.hover]: true,
                   [CONTROL_BUTTON_STYLES.active]: true,
-                  // [CONTROL_BUTTON_STYLES.disabled]: false,
                 })}
                 aria-label="Map settings"
                 type="button"

@@ -151,11 +151,11 @@ export default function MapContainer() {
       >
         {() => (
           <>
-            <Controls className="absolute right-5 top-12 z-40 sm:right-6 sm:top-6">
-              <ZoomControl />
+            <Controls className="absolute right-5 z-40 sm:right-6 sm:top-6">
               <SettingsControl>
                 <MapSettings />
               </SettingsControl>
+              <ZoomControl />
             </Controls>
 
             <LayerManager />
