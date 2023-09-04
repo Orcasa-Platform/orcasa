@@ -7,3 +7,9 @@
 .pnp.*
 
 /node_modules
+
+
+infrastructure/base/vars/*
+!infrastructure/base/vars/terraform.tfvars
+infrastructure/state/vars/*
+!infrastructure/state/vars/terraform.tfvars
