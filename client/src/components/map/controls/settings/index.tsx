@@ -8,6 +8,8 @@ import { Settings, X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
+import { useTheme } from '@/hooks/ui/theme';
+
 import { Popover, PopoverContent, PopoverTrigger, PopoverClose } from '@/components/ui/popover';
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -19,6 +21,7 @@ export const SettingsControl: FC<SettingsControlProps> = ({
   className,
   children,
 }: SettingsControlProps) => {
+  const theme = useTheme();
   return (
     <div className={cn('flex flex-col space-y-0.5', className)}>
       <Popover>
@@ -30,6 +33,7 @@ export const SettingsControl: FC<SettingsControlProps> = ({
                   [CONTROL_BUTTON_STYLES.default]: true,
                   [CONTROL_BUTTON_STYLES.hover]: true,
                   [CONTROL_BUTTON_STYLES.active]: true,
+                  [CONTROL_BUTTON_STYLES.dark]: theme === 'dark',
                 })}
                 aria-label="Map style"
                 type="button"

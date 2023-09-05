@@ -9,6 +9,8 @@ import { Minus, Plus } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
+import { useTheme } from '@/hooks/ui/theme';
+
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import { CONTROL_BUTTON_STYLES } from '../constants';
@@ -20,7 +22,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
   const zoom = mapRef?.getZoom();
   const minZoom = mapRef?.getMinZoom();
   const maxZoom = mapRef?.getMaxZoom();
-
+  const theme = useTheme();
   const increaseZoom = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
@@ -47,6 +49,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
               [CONTROL_BUTTON_STYLES.hover]: zoom !== maxZoom,
               [CONTROL_BUTTON_STYLES.active]: zoom !== maxZoom,
               [CONTROL_BUTTON_STYLES.disabled]: zoom === maxZoom,
+              [CONTROL_BUTTON_STYLES.dark]: theme === 'dark',
             })}
             aria-label="Zoom in"
             type="button"
@@ -75,6 +78,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
               [CONTROL_BUTTON_STYLES.hover]: zoom !== minZoom,
               [CONTROL_BUTTON_STYLES.active]: zoom !== minZoom,
               [CONTROL_BUTTON_STYLES.disabled]: zoom === minZoom,
+              [CONTROL_BUTTON_STYLES.dark]: theme === 'dark',
             })}
             aria-label="Zoom out"
             type="button"
