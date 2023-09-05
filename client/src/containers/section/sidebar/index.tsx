@@ -9,18 +9,15 @@ import { cn } from '@/lib/classnames';
 
 import { sidebarOpenAtom } from '@/store';
 
-import { mapSettingsAtom } from '@/store/index';
+import { useTheme } from '@/hooks/ui/theme';
 
 import { Button } from '@/components/ui/button';
+type OpenerVariant = 'opener-dark' | 'opener-light';
 
 export default function Sidebar({ children }: PropsWithChildren) {
   const open = useRecoilValue(sidebarOpenAtom);
   const setOpen = useSetRecoilState(sidebarOpenAtom);
-  const { basemap } = useRecoilValue(mapSettingsAtom);
-  const variants: { [key: typeof basemap]: 'opener-light' | 'opener-dark' } = {
-    'basemap-light': 'opener-dark',
-    'basemap-satellite': 'opener-light',
-  };
+  const variant: OpenerVariant = useTheme('opener');
 
   return (
     <div
@@ -33,7 +30,7 @@ export default function Sidebar({ children }: PropsWithChildren) {
     >
       <div className="absolute left-full top-0 z-10">
         <Button
-          variant={variants[basemap]}
+          variant={variant}
           size="icon"
           onClick={() => {
             setOpen(!open);
