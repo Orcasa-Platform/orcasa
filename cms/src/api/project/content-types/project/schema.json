@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "project_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project-type.project-type"
+    },
+    "start_date": {
+      "type": "date",
+      "required": true
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "short_description": {
+      "type": "string",
+      "maxLength": 200,
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 1500
+    },
+    "country_of_coordination": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::country.country"
+    },
+    "region_of_interventions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::region.region",
+      "mappedBy": "project"
+    },
+    "country_of_interventions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::country.country",
+      "mappedBy": "project"
+    },
+    "website": {
+      "type": "string",
+      "required": true
+    },
+    "project_coordinator_name": {
+      "type": "string"
+    },
+    "project_coordinator_email": {
+      "type": "string"
+    },
+    "second_project_coordinator_name": {
+      "type": "string"
+    },
+    "second_project_coordinator_email": {
+      "type": "string"
+    },
+    "main_area_of_intervention": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::area-of-intervention.area-of-intervention"
+    },
+    "main_area_of_intervention_other": {
+      "type": "string"
+    },
+    "secondary_area_of_intervention": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::area-of-intervention.area-of-intervention"
+    },
+    "third_area_of_intervention": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::area-of-intervention.area-of-intervention"
+    },
+    "sustainable_development_goal": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "inversedBy": "projects"
+    },
+    "lead_partner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization.organization",
+      "inversedBy": "lead_projects"
+    },
+    "partners": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization.organization",
+      "inversedBy": "partner_projects"
+    },
+    "funders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization.organization",
+      "inversedBy": "funded_projects"
+    }
+  }
+}

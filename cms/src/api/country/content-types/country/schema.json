@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countries",
+  "info": {
+    "singularName": "country",
+    "pluralName": "countries",
+    "displayName": "Country",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "capital": {
+      "type": "string"
+    },
+    "code": {
+      "type": "integer"
+    },
+    "fips": {
+      "type": "string"
+    },
+    "iso_2": {
+      "type": "string"
+    },
+    "iso_3": {
+      "type": "string"
+    },
+    "continent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::continent.continent"
+    },
+    "region": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::region.region"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "country_of_interventions"
+    }
+  }
+}

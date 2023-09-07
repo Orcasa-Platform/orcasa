@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "area_of_interventions",
+  "info": {
+    "singularName": "area-of-intervention",
+    "pluralName": "area-of-interventions",
+    "displayName": "Area of intervention",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

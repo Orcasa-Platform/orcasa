@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sustainable_dev_goals",
+  "info": {
+    "singularName": "sustainable-dev-goal",
+    "pluralName": "sustainable-dev-goals",
+    "displayName": "Sustainable development goal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "sustainable_development_goal"
+    }
+  }
+}

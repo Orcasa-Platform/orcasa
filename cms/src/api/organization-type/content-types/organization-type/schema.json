@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organization_types",
+  "info": {
+    "singularName": "organization-type",
+    "pluralName": "organization-types",
+    "displayName": "Organization type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

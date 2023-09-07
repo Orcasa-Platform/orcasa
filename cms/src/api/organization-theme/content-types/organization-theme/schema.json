@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organization_themes",
+  "info": {
+    "singularName": "organization-theme",
+    "pluralName": "organization-themes",
+    "displayName": "Organization theme",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

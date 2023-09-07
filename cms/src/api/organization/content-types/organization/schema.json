@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organizations",
+  "info": {
+    "singularName": "organization",
+    "pluralName": "organizations",
+    "displayName": "Organization"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150,
+      "unique": true
+    },
+    "organization_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization-type.organization-type"
+    },
+    "organization_type_other": {
+      "type": "string"
+    },
+    "main_organization_theme": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization-theme.organization-theme"
+    },
+    "secondary_organization_theme": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization-theme.organization-theme"
+    },
+    "short_description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 200
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 1500
+    },
+    "country": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::country.country"
+    },
+    "url": {
+      "type": "string"
+    },
+    "lead_projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "lead_partner"
+    },
+    "partner_projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "partners"
+    },
+    "funded_projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "funders"
+    }
+  }
+}
