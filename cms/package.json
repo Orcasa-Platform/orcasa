@@ -12,11 +12,11 @@
     "export": "strapi export -f ./seed --no-encrypt"
   },
   "dependencies": {
-    "@strapi/plugin-documentation": "4.13.1",
-    "@strapi/plugin-i18n": "4.13.1",
-    "@strapi/plugin-users-permissions": "4.13.1",
-    "@strapi/strapi": "4.13.1",
-    "pg": "8.11.3",
+    "@strapi/plugin-documentation": "4.13.2",
+    "@strapi/plugin-i18n": "4.13.2",
+    "@strapi/plugin-users-permissions": "4.13.2",
+    "@strapi/strapi": "4.13.2",
+    "pg": "^8.11.3",
     "strapi-plugin-import-export-entries": "^1.21.1"
   },
   "devDependencies": {
