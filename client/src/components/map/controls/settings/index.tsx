@@ -38,7 +38,7 @@ export const SettingsControl: FC<SettingsControlProps> = ({
                 aria-label="Map style"
                 type="button"
               >
-                <Settings className="h-full w-full" />
+                <Settings className="h-[24px] w-[24px]" />
               </button>
             </TooltipTrigger>
           </PopoverTrigger>

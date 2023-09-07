@@ -56,7 +56,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
             disabled={zoom === maxZoom}
             onClick={increaseZoom}
           >
-            <Plus className="h-full w-full" />
+            <Plus className="h-[24px] w-[24px]" />
           </button>
         </TooltipTrigger>
 
@@ -85,7 +85,7 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
             disabled={zoom === minZoom}
             onClick={decreaseZoom}
           >
-            <Minus className="h-full w-full" />
+            <Minus className="h-[24px] w-[24px]" />
           </button>
         </TooltipTrigger>
 
