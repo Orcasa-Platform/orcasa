@@ -27,7 +27,7 @@ module.exports = {
         '3.5xl': ['32px', '48px'],
       },
       colors: {
-        main: '#3C4363',
+        main: 'hsl(var(--main))',
         'gray-50': '#F7F7F9',
         'mod-sc-ev': '#2BB3A7',
         'mod-sc-ev-light': '#CEEEE3',
@@ -65,6 +65,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+      },
+      textColor: {
+        default: 'hsl(var(--main))',
       },
       borderRadius: {
         lg: 'var(--radius)',
