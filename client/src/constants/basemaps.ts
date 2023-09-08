@@ -1,18 +1,18 @@
 export const BASEMAPS = [
   {
-    label: 'Clean',
-    value: 'basemap-light',
-    preview: `/images/map/light.jpeg`,
+    alt: 'Satellite basemap',
+    value: 'basemap-satellite',
+    preview: `/images/map/satellite.jpg`,
     settings: {
-      labels: 'labels-dark',
+      labels: 'labels-light',
     },
   },
   {
-    label: 'Satellite',
-    value: 'basemap-satellite',
-    preview: `/images/map/satellite.jpeg`,
+    alt: 'Light basemap',
+    value: 'basemap-light',
+    preview: `/images/map/light.jpg`,
     settings: {
-      labels: 'labels-light',
+      labels: 'labels-dark',
     },
   },
 ];

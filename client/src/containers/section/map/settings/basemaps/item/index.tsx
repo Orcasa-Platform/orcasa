@@ -9,12 +9,12 @@ import { cn } from '@/lib/classnames';
 import { mapSettingsAtom } from '@/store/index';
 
 export interface BasemapItemProps {
-  label: string;
+  alt: string;
   value: string;
   preview: string;
 }
 
-const BasemapItem = ({ label, value, preview }: BasemapItemProps) => {
+const BasemapItem = ({ alt, value, preview }: BasemapItemProps) => {
   const { basemap } = useRecoilValue(mapSettingsAtom);
   const setMapSettings = useSetRecoilState(mapSettingsAtom);
 
@@ -31,25 +31,15 @@ const BasemapItem = ({ label, value, preview }: BasemapItemProps) => {
         <div className="space-y-2">
           <div
             className={cn({
-              'shrink-0 overflow-hidden rounded transition-opacity': true,
+              'shrink-0 overflow-hidden transition-opacity': true,
               'group-hover:opacity-75 group-active:outline group-active:outline-2 group-active:outline-slate-400':
                 true,
-              'outline outline-2 outline-slate-500 group-hover:opacity-100 group-active:outline-slate-500':
+              'outline outline-2 outline-offset-4 outline-yellow-500 group-hover:opacity-100 group-active:outline-slate-500':
                 value === basemap,
             })}
           >
-            <Image src={preview} alt={label} width={96} height={64} className="w-full rounded" />
+            <Image src={preview} alt={alt} width={104} height={104} className="w-full" />
           </div>
-
-          <span
-            className={cn({
-              'block text-sm font-light text-slate-500 transition-colors': true,
-              'group-hover:text-slate-400': true,
-              'group-hover:text-slate-500': value === basemap,
-            })}
-          >
-            {label}
-          </span>
         </div>
       </button>
     </div>

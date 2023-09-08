@@ -9,11 +9,15 @@ import { cn } from '@/lib/classnames';
 
 import { sidebarOpenAtom } from '@/store';
 
+import { useTheme } from '@/hooks/ui/theme';
+
 import { Button } from '@/components/ui/button';
+type OpenerVariant = 'opener-dark' | 'opener-light';
 
 export default function Sidebar({ children }: PropsWithChildren) {
   const open = useRecoilValue(sidebarOpenAtom);
   const setOpen = useSetRecoilState(sidebarOpenAtom);
+  const variant: OpenerVariant = useTheme('opener');
 
   return (
     <div
@@ -26,7 +30,7 @@ export default function Sidebar({ children }: PropsWithChildren) {
     >
       <div className="absolute left-full top-0 z-10">
         <Button
-          variant="opener"
+          variant={variant}
           size="icon"
           onClick={() => {
             setOpen(!open);

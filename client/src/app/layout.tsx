@@ -28,7 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <Providers>
       <html lang="en">
-        <body className={cn(robotoSlab.className, roboto.className)}>{children}</body>
+        <body className={cn(robotoSlab.className, roboto.className, 'text-default')}>
+          {children}
+        </body>
       </html>
     </Providers>
   );

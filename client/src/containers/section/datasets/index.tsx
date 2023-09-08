@@ -9,10 +9,10 @@ export default function Datasets({ section }: { section: Section }) {
     <div className="space-y-5 p-5 text-slate-700">
       {section === 'map-layers' && (
         <>
-          <h2 className="text-3.5xl font-serif">
+          <h1 className="font-serif text-3.5xl">
             Identify <span className="font-semibold">areas of interest</span> for research or
             interventions.
-          </h2>
+          </h1>
           <p>
             Give context to your research visualising scientifically-reliable soil-related map
             layers.
