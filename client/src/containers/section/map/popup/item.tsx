@@ -81,7 +81,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
   return (
     <div className="p-4">
       <div className="space-y-3">
-        <h3 className="text-base font-semibold">{attributes.title}</h3>
+        <h2 className="text-base font-semibold">{attributes.title}</h2>
 
         <ContentLoader
           data={data?.data}
