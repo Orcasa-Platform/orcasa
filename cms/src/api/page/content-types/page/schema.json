@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "default_basemap": {
+      "type": "enumeration",
+      "enum": [
+        "basemap-satellite",
+        "basemap-light"
+      ]
+    },
+    "layer_groups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::layer-group.layer-group"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "external_url": {
+      "type": "string"
+    }
+  }
+}

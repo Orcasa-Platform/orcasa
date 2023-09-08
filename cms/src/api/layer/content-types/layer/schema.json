@@ -26,12 +26,6 @@
       "required": true,
       "default": "mapbox"
     },
-    "dataset": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::dataset.dataset",
-      "inversedBy": "layers"
-    },
     "config": {
       "type": "json",
       "required": true
