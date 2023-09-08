@@ -72,7 +72,7 @@ export default function Nav() {
 
   return (
     <div className="absolute left-0 z-50 h-full w-[117px]">
-      <div className="flex h-full w-full flex-col items-center justify-start gap-20 bg-slate-700 py-6">
+      <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-slate-700 py-6">
         <Link href="/">
           <img
             src={logo.src}
