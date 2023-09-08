@@ -85,7 +85,7 @@ export default function Nav() {
             const { href, color, text } = link;
             return (
               <NavLink key={href} href={href} color={color} active={pathname === href}>
-                {text}
+                <h1>{text}</h1>
               </NavLink>
             );
           })}
