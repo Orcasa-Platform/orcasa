@@ -2,11 +2,11 @@ import { dehydrate } from '@tanstack/query-core';
 
 import getQueryClient from '@/lib/react-query';
 
-import { getGetDatasetsQueryOptions } from '@/types/generated/dataset';
+import { getGetLayerGroupsQueryOptions } from '@/types/generated/layer-group';
 export async function prefetchQueries() {
-  // Prefetch datasets
+  // Prefetch layer-groups
   const queryClient = getQueryClient();
-  const { queryKey, queryFn } = getGetDatasetsQueryOptions({ populate: '*' });
+  const { queryKey, queryFn } = getGetLayerGroupsQueryOptions({ populate: '*' });
 
   await queryClient.prefetchQuery({
     queryKey,
