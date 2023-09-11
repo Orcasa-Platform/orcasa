@@ -44,16 +44,6 @@
       "type": "component",
       "repeatable": false,
       "component": "documentation.metadata"
-    },
-    "role": {
-      "type": "enumeration",
-      "enum": [
-        "standard",
-        "basemap",
-        "labels"
-      ],
-      "default": "standard",
-      "required": true
     }
   }
 }

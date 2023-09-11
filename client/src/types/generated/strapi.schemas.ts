@@ -3425,7 +3425,7 @@ export type PageUpdatedBy = {
 };
 
 export interface Page {
-  Name?: string;
+  title?: string;
   default_basemap?: PageDefaultBasemap;
   layer_groups?: PageLayerGroups;
   slug?: string;
@@ -3785,7 +3785,7 @@ export const PageRequestDataDefaultBasemap = {
 } as const;
 
 export type PageRequestData = {
-  Name?: string;
+  title?: string;
   default_basemap?: PageRequestDataDefaultBasemap;
   layer_groups?: PageRequestDataLayerGroupsItem[];
   slug?: string;
