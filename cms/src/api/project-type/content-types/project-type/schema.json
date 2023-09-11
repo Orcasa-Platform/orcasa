@@ -4,10 +4,11 @@
   "info": {
     "singularName": "project-type",
     "pluralName": "project-types",
-    "displayName": "Project Type"
+    "displayName": "Project Type",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
