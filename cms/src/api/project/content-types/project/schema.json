@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project",
     "pluralName": "projects",
-    "displayName": "Project"
+    "displayName": "Project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -44,15 +45,15 @@
     },
     "region_of_interventions": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::region.region",
-      "mappedBy": "project"
+      "mappedBy": "projects"
     },
     "country_of_interventions": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::country.country",
-      "mappedBy": "project"
+      "mappedBy": "projects"
     },
     "website": {
       "type": "string",
