@@ -43,6 +43,14 @@ services:
       - cms
     volumes:
       - ./client:/app/client
+  qgis:
+    image: qgis/qgis:release-3_28
+    ports:
+      - '5555:5555'
+    environment:
+      - QGIS_PROJECT_FILE=/data/osm.qgs
+    volumes:
+      - ./data:/data
 
 volumes:
   pgdata:
