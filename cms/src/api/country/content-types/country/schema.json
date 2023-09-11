@@ -42,9 +42,9 @@
       "relation": "oneToOne",
       "target": "api::region.region"
     },
-    "project": {
+    "projects": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "country_of_interventions"
     }
