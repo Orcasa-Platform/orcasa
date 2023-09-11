@@ -4,23 +4,22 @@ import { mapSettingsAtom } from '@/store/index';
 
 type OpenerVariant = 'opener-dark' | 'opener-light';
 type DefaultVariant = 'dark' | 'light';
-type Variant = { [key: string]: DefaultVariant | OpenerVariant };
+type TextVariant = 'text-white' | 'text-black';
+type Variant = { [key: string]: DefaultVariant | OpenerVariant | TextVariant };
 
 export function useTheme(prefix: 'opener'): OpenerVariant;
+export function useTheme(prefix: 'text'): TextVariant;
 export function useTheme(): DefaultVariant;
-export function useTheme(prefix?: string): DefaultVariant | OpenerVariant {
+export function useTheme(prefix?: string): DefaultVariant | OpenerVariant | TextVariant {
   const variants: { [key: string]: Variant } = {
     'basemap-light': {
       opener: 'opener-dark',
+      text: 'text-black',
       default: 'dark',
     },
-    'basemap-satellite': { opener: 'opener-light', default: 'light' },
+    'basemap-satellite': { opener: 'opener-light', text: 'text-white', default: 'light' },
   };
   const { basemap } = useRecoilValue(mapSettingsAtom);
 
-  if (prefix === 'opener') {
-    return variants[basemap].opener;
-  }
-
-  return variants[basemap].default;
+  return variants[basemap][prefix || 'default'];
 }
