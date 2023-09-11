@@ -131,6 +131,14 @@ jobs:
           echo "    depends_on:" >> docker-compose.yml
           echo "      - cms" >> docker-compose.yml
           echo "      - client" >> docker-compose.yml
+          echo "  qgis:" >> docker-compose.yml
+          echo "    image: qgis/qgis:release-3_28" >> docker-compose.yml
+          echo "    volumes:" >> docker-compose.yml
+          echo "      - ./data:/data" >> docker-compose.yml
+          echo "    ports:" >> docker-compose.yml
+          echo "      - 5555:5555" >> docker-compose.yml
+          echo "    environment:" >> docker-compose.yml
+          echo "      - QGIS_PROJECT_FILE=/data/osm.qgs" >> docker-compose.yml
 
       - name: Generate zip file
         working-directory: infrastructure/source_bundle
