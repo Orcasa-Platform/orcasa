@@ -4,10 +4,11 @@
   "info": {
     "singularName": "continent",
     "pluralName": "continents",
-    "displayName": "Continent"
+    "displayName": "Continent",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
