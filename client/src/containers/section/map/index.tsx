@@ -30,6 +30,8 @@ import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
+import mapStyle from './map-style.json';
+
 const LayerManager = dynamic(() => import('@/containers/section/map/layer-manager'), {
   ssr: false,
 });
@@ -144,7 +146,8 @@ export default function MapContainer() {
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={'https://demotiles.maplibre.org/style.json'}
+        // @ts-expect-error TODO: Map style is not matching the type
+        mapStyle={mapStyle}
         interactiveLayerIds={layersInteractiveIds}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}

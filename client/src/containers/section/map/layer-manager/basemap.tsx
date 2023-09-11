@@ -34,14 +34,7 @@ const BasemapLayer = () => {
   });
 
   if (!c || !basemapId) return null;
-  return (
-    <MapboxLayer
-      id={`basemap`}
-      key={`basemap-${String(basemapId)}`}
-      beforeId={'custom-layers'}
-      config={c}
-    />
-  );
+  return <MapboxLayer id={`basemap`} key={`basemap-${String(basemapId)}`} config={c} />;
 };
 
 export default BasemapLayer;

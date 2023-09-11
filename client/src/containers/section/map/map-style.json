@@ -1,0 +1,39 @@
+{
+  "version": 8,
+  "name": "OSM Liberty",
+  "metadata": {
+    "maputnik:license": "https://github.com/maputnik/osm-liberty/blob/gh-pages/LICENSE.md",
+    "maputnik:renderer": "mbgljs",
+    "openmaptiles:version": "3.x"
+  },
+  "sources": {},
+  "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=YOUR_MAPTILER_ACCESS_TOKEN",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "layout": {"visibility": "visible"},
+      "paint": {"background-color": "#f8f4f0"}
+    },
+    {
+      "id": "sky",
+      "type": "sky",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "sky-type": "atmosphere",
+        "sky-atmosphere-sun": [0.0, 0.0],
+        "sky-atmosphere-sun-intensity": 15
+      }
+    },
+    {
+      "id": "custom-layers",
+      "type": "background",
+      "layout": {"visibility": "none"},
+      "paint": {"background-color": "#f8f4f0"}
+    }
+  ],
+  "id": "osm-liberty"
+}
