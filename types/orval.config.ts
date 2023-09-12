@@ -23,7 +23,7 @@ module.exports = {
           signal: true,
         },
         operations: {
-          'get/datasets/{id}': {
+          'get/pages/{id}': {
             query: {
               useQuery: true,
               useInfinite: false,
@@ -33,7 +33,7 @@ module.exports = {
               },
             },
           },
-          'get/dataset-groups/{id}': {
+          'get/layer-groups/{id}': {
             query: {
               useQuery: true,
               useInfinite: false,
@@ -60,7 +60,7 @@ module.exports = {
       target:
         '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
       filters: {
-        tags: ['Dataset', 'Dataset-group', 'Layer'],
+        tags: ['Page', 'Layer-group', 'Layer'],
       },
     },
   },

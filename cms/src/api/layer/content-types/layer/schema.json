@@ -26,12 +26,6 @@
       "required": true,
       "default": "mapbox"
     },
-    "dataset": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::dataset.dataset",
-      "inversedBy": "layers"
-    },
     "config": {
       "type": "json",
       "required": true
@@ -50,16 +44,6 @@
       "type": "component",
       "repeatable": false,
       "component": "documentation.metadata"
-    },
-    "role": {
-      "type": "enumeration",
-      "enum": [
-        "standard",
-        "basemap",
-        "labels"
-      ],
-      "default": "standard",
-      "required": true
     }
   }
 }

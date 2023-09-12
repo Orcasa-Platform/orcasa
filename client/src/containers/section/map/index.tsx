@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo } from 'react';
 
-import { LngLatBoundsLike, MapLayerMouseEvent, useMap } from 'react-map-gl';
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapboxStyle } from 'react-map-gl';
 
 import dynamic from 'next/dynamic';
 
@@ -29,6 +29,9 @@ import Controls from '@/components/map/controls';
 import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
+
+import Attribution from './attribution';
+import mapStyle from './map-style.json';
 
 const LayerManager = dynamic(() => import('@/containers/section/map/layer-manager'), {
   ssr: false,
@@ -144,7 +147,7 @@ export default function MapContainer() {
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={'https://demotiles.maplibre.org/style.json'}
+        mapStyle={mapStyle as MapboxStyle}
         interactiveLayerIds={layersInteractiveIds}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
@@ -159,7 +162,7 @@ export default function MapContainer() {
             </Controls>
 
             <LayerManager />
-
+            <Attribution />
             <Popup />
 
             <MapSettingsManager />
