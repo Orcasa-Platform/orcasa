@@ -124,7 +124,7 @@ jobs:
 
   deploy:
     name: Deploy Client and CMS to Amazon EB
-    needs: [build_client_image, build_cms_image]
+    needs: [build_client_image, build_cms_image, build_qgis_image]
     runs-on: ubuntu-22.04
 
     steps:
