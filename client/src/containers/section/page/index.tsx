@@ -4,6 +4,7 @@ import { Section } from '@/types/app';
 import { useGetPages } from '@/types/generated/page';
 
 import LayerGroupsList from '@/containers/section/page/list';
+import NetworkList from '@/containers/section/page/networks/network-list';
 
 export default function Page({ section }: { section: Section }) {
   const pages = useGetPages({ filters: { slug: section } });
@@ -23,6 +24,14 @@ export default function Page({ section }: { section: Section }) {
         </>
       )}
       {pageId && <LayerGroupsList pageId={pageId} />}
+      {section === 'network' && (
+        <>
+          <h1 className="font-serif text-3.5xl">
+            Discover <span className="font-semibold">who does what</span> on soils carbon.
+          </h1>
+          <NetworkList />
+        </>
+      )}
     </div>
   );
 }
