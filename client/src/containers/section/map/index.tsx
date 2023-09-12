@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo } from 'react';
 
-import { LngLatBoundsLike, MapLayerMouseEvent, useMap } from 'react-map-gl';
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapboxStyle } from 'react-map-gl';
 
 import dynamic from 'next/dynamic';
 
@@ -147,8 +147,7 @@ export default function MapContainer() {
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        // @ts-expect-error TODO: Map style is not matching the type
-        mapStyle={mapStyle}
+        mapStyle={mapStyle as MapboxStyle}
         interactiveLayerIds={layersInteractiveIds}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
