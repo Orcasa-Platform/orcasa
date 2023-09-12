@@ -1,5 +1,7 @@
 import { useRecoilValue } from 'recoil';
 
+import { cn } from '@/lib/classnames';
+
 import { mapSettingsAtom } from '@/store/index';
 
 import { useTheme } from '@/hooks/ui/theme';
@@ -54,9 +56,16 @@ const Attribution = () => {
 
   return (
     <div
-      className={`absolute bottom-0 right-0 z-40 max-w-[400px] gap-1 bg-gray-50/25 px-2 py-1 text-sm leading-tight ${theme}`}
+      className={cn(
+        'absolute bottom-0 right-0 z-40 max-w-[400px] gap-1 px-2 py-1 text-sm leading-tight',
+        theme,
+        {
+          'bg-gray-50/25': basemap === 'basemap-satellite',
+          'bg-gray-50/75': basemap === 'basemap-light',
+        },
+      )}
     >
-      <span>Powered by</span> {getAttributionContent()}
+      {getAttributionContent()}
     </div>
   );
 };
