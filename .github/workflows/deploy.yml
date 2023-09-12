@@ -150,6 +150,7 @@ jobs:
           ECR_REPOSITORY_CLIENT: orcasa-staging-client
           IMAGE_TAG_CLIENT: client-${{ github.sha }}
           ECR_REPOSITORY_CMS: orcasa-staging-cms
+          ECR_REPOSITORY_QGIS: orcasa-staging-qgis
           IMAGE_TAG_CMS: cms-${{ github.sha }}
         run: |
           echo "version: '3.3'" > docker-compose.yml
@@ -173,7 +174,7 @@ jobs:
           echo "      - cms" >> docker-compose.yml
           echo "      - client" >> docker-compose.yml
           echo "  qgis-server:" >> docker-compose.yml
-          echo "    image: qgis/qgis:release-3_28" >> docker-compose.yml
+          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_QGIS:latest" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 5555:5555" >> docker-compose.yml
           echo "    environment:" >> docker-compose.yml
