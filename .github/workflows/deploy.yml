@@ -18,7 +18,6 @@ jobs:
 
     steps:
       - name: Checkout code
-        if: steps.qgis-changes.outputs.src == 'true'
         uses: actions/checkout@v3
 
       - uses: dorny/paths-filter@v2
