@@ -57,7 +57,7 @@ const Attribution = () => {
   return (
     <div
       className={cn(
-        'absolute bottom-0 right-0 z-40 max-w-[400px] gap-1 px-2 py-1 text-sm leading-tight',
+        'absolute bottom-0 right-0 z-40 max-w-[55%] gap-1 px-2 py-1 text-sm leading-tight',
         theme,
         {
           'bg-gray-50/25': basemap === 'basemap-satellite',
