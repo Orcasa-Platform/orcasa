@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+      - name: Checkout code
+        if: steps.qgis-changes.outputs.src == 'true'
+        uses: actions/checkout@v3
+
       - uses: dorny/paths-filter@v2
         id: qgis-changes
         with:
@@ -24,10 +28,6 @@ jobs:
             qgis:
               - 'qgis/**'
               - '.github/workflows/**'
-
-      - name: Checkout code
-        if: steps.qgis-changes.outputs.src == 'true'
-        uses: actions/checkout@v3
 
       - name: Configure AWS credentials
         if: steps.qgis-changes.outputs.src == 'true'
