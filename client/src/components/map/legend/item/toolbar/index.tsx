@@ -141,7 +141,6 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
         <div className="pl-2">
           <div className="flex items-start">
             <Tooltip delayDuration={500}>
-              {/* <AccordionTrigger> */}
               <TooltipTrigger
                 type="button"
                 aria-label={expand ? 'Collapse layer' : 'Expand layer'}
