@@ -7,20 +7,56 @@ import { useTheme } from '@/hooks/ui/theme';
 const Attribution = () => {
   const { basemap } = useRecoilValue(mapSettingsAtom);
   const theme = useTheme('text');
-  const attributionLinkText = {
-    'basemap-satellite': { text: 'ESRI', href: 'https://www.esri.com/home' },
-    'basemap-light': { text: 'Carto', href: 'https://carto.com/' },
-  }[basemap];
+  const getAttributionContent = () => {
+    if (basemap === 'basemap-satellite') {
+      return (
+        <>
+          Tiles ©{' '}
+          <a
+            className="hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://esri.com"
+          >
+            Esri
+          </a>{' '}
+          — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP,
+          and the GIS User Community
+        </>
+      );
+    }
+    if (basemap === 'basemap-light') {
+      return (
+        <>
+          ©{' '}
+          <a
+            className="hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.openstreetmap.org/"
+          >
+            OpenStreetMap
+          </a>{' '}
+          contributors ©
+          <a
+            className="hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://carto.com/"
+          >
+            CARTO
+          </a>
+        </>
+      );
+    }
+    return null;
+  };
 
-  const { text, href } = attributionLinkText || {};
   return (
     <div
-      className={`absolute bottom-0 right-0 z-40 flex h-7 items-center justify-end gap-1 bg-gray-50/25 px-2 py-1 text-sm font-normal leading-tight ${theme}`}
+      className={`absolute bottom-0 right-0 z-40 max-w-[400px] gap-1 bg-gray-50/25 px-2 py-1 text-sm leading-tight ${theme}`}
     >
-      <div>Powered by</div>
-      <a className="hover:underline" rel="noopener noreferrer" target="_blank" href={href}>
-        {text}
-      </a>
+      <span>Powered by</span> {getAttributionContent()}
     </div>
   );
 };
