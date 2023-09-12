@@ -12,6 +12,48 @@ on:
       - 'infrastructure/**'
 
 jobs:
+  build_qgis_image:
+    name: Build QGIS image and push to Amazon ECR
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: qgis-changes
+        with:
+          filters: |
+            qgis:
+              - 'qgis/**'
+              - '.github/workflows/**'
+
+      - name: Checkout code
+        if: steps.qgis-changes.outputs.src == 'true'
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        if: steps.qgis-changes.outputs.src == 'true'
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        if: steps.qgis-changes.outputs.src == 'true'
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          mask-password: 'true'
+
+      - name: Build, tag, and push QGIS image to Amazon ECR
+        if: steps.qgis-changes.outputs.src == 'true'
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: orcasa-staging-qgis
+          IMAGE_TAG: client-${{ github.sha }}
+        run: |
+          docker build -f qgis/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest ./qgis
+          docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
+
   build_client_image:
     name: Build Client image and push to Amazon ECR
     runs-on: ubuntu-22.04
@@ -131,13 +173,12 @@ jobs:
           echo "    depends_on:" >> docker-compose.yml
           echo "      - cms" >> docker-compose.yml
           echo "      - client" >> docker-compose.yml
-          echo "  qgis:" >> docker-compose.yml
+          echo "  qgis-server:" >> docker-compose.yml
           echo "    image: qgis/qgis:release-3_28" >> docker-compose.yml
-          echo "    volumes:" >> docker-compose.yml
-          echo "      - ./data:/data" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 5555:5555" >> docker-compose.yml
           echo "    environment:" >> docker-compose.yml
+          echo "      - LANG=en_EN.UTF-8" >> docker-compose.yml
           echo "      - QGIS_PROJECT_FILE=/data/osm.qgs" >> docker-compose.yml
 
       - name: Generate zip file
