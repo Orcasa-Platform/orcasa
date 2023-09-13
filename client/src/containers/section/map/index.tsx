@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useMemo } from 'react';
+import { useEffect } from 'react';
 
 import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapboxStyle } from 'react-map-gl';
 
@@ -15,10 +16,14 @@ import {
   popupAtom,
   tmpBboxAtom,
 } from '@/store';
+import { mapSettingsAtom } from '@/store';
 
+import { Section } from '@/types/app';
 import { useGetLayers } from '@/types/generated/layer';
 import type { LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
+
+import { useDefaultBasemap } from '@/hooks/pages';
 
 import Popup from '@/containers/section/map/popup';
 import MapSettings from '@/containers/section/map/settings';
@@ -32,7 +37,6 @@ import { CustomMapProps } from '@/components/map/types';
 
 import Attribution from './attribution';
 import mapStyle from './map-style.json';
-
 const LayerManager = dynamic(() => import('@/containers/section/map/layer-manager'), {
   ssr: false,
 });
@@ -55,7 +59,7 @@ const DEFAULT_PROPS: CustomMapProps = {
   maxZoom: 20,
 };
 
-export default function MapContainer() {
+export default function MapContainer({ section }: { section: Section }) {
   const { id, initialViewState, minZoom, maxZoom } = DEFAULT_PROPS;
 
   const { [id]: map } = useMap();
@@ -68,6 +72,19 @@ export default function MapContainer() {
   const setBbox = useSetRecoilState(bboxAtom);
   const setTmpBbox = useSetRecoilState(tmpBboxAtom);
   const setPopup = useSetRecoilState(popupAtom);
+
+  const setMapSettings = useSetRecoilState(mapSettingsAtom);
+  const defaultBasemap = useDefaultBasemap(section);
+
+  // Reset map settings every time the section changes
+  useEffect(() => {
+    if (defaultBasemap) {
+      setMapSettings((prev) => ({
+        ...prev,
+        basemap: defaultBasemap,
+      }));
+    }
+  }, [setMapSettings, defaultBasemap]);
 
   const { data: layersInteractiveData } = useGetLayers(
     {

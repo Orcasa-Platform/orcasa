@@ -1,4 +1,5 @@
-import { useGetPagesId } from '@/types/generated/page';
+import { Section } from '@/types/app';
+import { useGetPagesId, useGetPages } from '@/types/generated/page';
 
 export const usePage = (pageId: number) => {
   const query = useGetPagesId(pageId, { populate: '*' });
@@ -11,4 +12,9 @@ export const usePage = (pageId: number) => {
     ...query,
     layerGroupIds,
   };
+};
+
+export const useDefaultBasemap = (section: Section) => {
+  const pages = useGetPages({ filters: { slug: section } });
+  return pages?.data?.data?.[0]?.attributes?.default_basemap;
 };
