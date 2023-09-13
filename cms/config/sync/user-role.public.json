@@ -4,6 +4,48 @@
   "type": "public",
   "permissions": [
     {
+      "action": "api::organization-theme.organization-theme.find"
+    },
+    {
+      "action": "api::organization-theme.organization-theme.findOne"
+    },
+    {
+      "action": "api::organization-type.organization-type.find"
+    },
+    {
+      "action": "api::organization-type.organization-type.findOne"
+    },
+    {
+      "action": "api::organization.organization.find"
+    },
+    {
+      "action": "api::organization.organization.findOne"
+    },
+    {
+      "action": "api::project-type.project-type.find"
+    },
+    {
+      "action": "api::project-type.project-type.findOne"
+    },
+    {
+      "action": "api::project.project.find"
+    },
+    {
+      "action": "api::project.project.findOne"
+    },
+    {
+      "action": "api::region.region.find"
+    },
+    {
+      "action": "api::region.region.findOne"
+    },
+    {
+      "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"
+    },
+    {
+      "action": "api::sustainable-dev-goal.sustainable-dev-goal.findOne"
+    },
+    {
       "action": "plugin::users-permissions.auth.callback"
     },
     {
