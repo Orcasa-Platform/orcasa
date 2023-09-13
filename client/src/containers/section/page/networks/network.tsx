@@ -26,7 +26,12 @@ export default function Network({
 
   const Icons = () => {
     if (type === 'project') {
-      const { project_type, start_date: startDate, region_of_interventions } = attributes || {};
+      const {
+        project_type,
+        start_date: startDate,
+        end_date: endDate,
+        region_of_interventions,
+      } = attributes || {};
       const projectType = project_type?.data?.attributes?.name;
       const regionName = region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
       return (
@@ -40,7 +45,10 @@ export default function Network({
           {startDate && (
             <div className="flex gap-2">
               <Calendar className="h-6 w-6" />
-              <div className="text-base text-slate-500">{startDate}</div>
+              <div className="text-base text-slate-500">
+                {startDate}
+                {endDate ? ` / ${endDate}` : ''}
+              </div>
             </div>
           )}
           {regionName && (
