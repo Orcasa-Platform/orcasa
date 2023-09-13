@@ -12,7 +12,7 @@ case "${NODE_ENV}" in
         ;;
     production)
         echo "Import config"
-        exec yarn config-sync import -y
+        yarn config-sync import -y
         echo "Running Production Server"
         exec yarn start
         ;;
