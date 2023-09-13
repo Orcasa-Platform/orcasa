@@ -13,7 +13,7 @@ export default async function Section({ section }: { section: Section }) {
         <div className="h-screen w-screen">
           <Nav />
           <Map />
-          <Sidebar>
+          <Sidebar section={section}>
             <Page section={section} />
           </Sidebar>
         </div>
