@@ -43,5 +43,5 @@ The customisation options for Amazon Linux 2 platform can be found here:
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-linux-extend.html
 
 We're using the following customisation options, using the ".platform" folder:
-- .platform/nginx/conf.d/platform.conf: to configure nginx to proxy the requests to the CMS and client applications
+- .platform/nginx/conf.d/orcasa.conf: to configure nginx to proxy the requests to the CMS and client applications
 - .ebextensions/authorized_keys.config: to add public SSH keys to the EC2 instances

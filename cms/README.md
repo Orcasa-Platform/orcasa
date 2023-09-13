@@ -1,57 +1,70 @@
-# Getting started with Strapi
+# ORCaSa Content Management System
 
-Strapi comes with a full-featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+## Overview
 
-### `develop`
+This platform is built using [Strapi](https://strapi.io/), with the necessary customizations to support the ORCaSa
+project.
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+## Dependencies
 
-```
-npm run dev
-# or
+- Nodejs v18.17
+- Postgres v15.4
+- Yarn v3.6
+
+## Set up
+
+- Install the necessary dependencies. Create a database for this application using your prefered database client
+  application.
+- Set the necessary configuration values - see the [Configuration](#configuration) section below.
+
+To run the application in development mode, use:
+
+```bash
 yarn dev
 ```
 
-### `start`
+To run the application in production mode, use:
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
-
-```
-npm run start
-# or
+```bash
+yarn build
 yarn start
 ```
 
-### `build`
+In both situations, be sure to set the corresponding `NODE_ENV` value.
 
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+## Configuration
 
-```
-npm run build
-# or
-yarn build
-```
+Configuration is done using environment variables that manipulate and extend the default Strapi configuration - refer to
+the official Strapi docs for more details on these or other configuration options.
 
-## ⚙️ Deployment
+You can set custom values for environment variables in a number of different ways, including by copying the
+included `.env.example` to `.env` and setting the values there.
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+The following environment variables are used:
 
-## 📚 Learn more
+| Variable name       |                                                                                                                                                                                                     Description |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| HOST                |                                                                                                                                                        Hostname where the CMS is reachable. Typically `0.0.0.0` |              
+| PORT                |                                                                                                                                                  Port on which the nodejs webserver will listen for connections |              
+| APP_KEYS            | Declare session keys (based on [Koa session](https://github.com/koajs/session/blob/master/Readme.md)), which is used by the session middleware for the Users & Permissions plugin and the Documentation plugin. |              
+| API_TOKEN_SALT      |                                                                                                                   Salt used to generate [API tokens](https://docs.strapi.io/dev-docs/configurations/api-tokens) |              
+| TRANSFER_TOKEN_SALT |          Salt used to generate [Transfer tokens](https://docs.strapi.io/dev-docs/data-management/transfer#generate-a-transfer-token). If no transfer token salt is defined, transfer features will be disabled. |              
+| ADMIN_JWT_SECRET    |                                                                                                                                                                          Secret used to encode admin JWT tokens |              
+| JWT_SECRET          |                                                                                                                                                                           Secret used to encode user JWT tokens |              
+| DATABASE_CLIENT     |                                                                                                                                                                                 Database client. Use `postgres` |              
+| DATABASE_HOST       |                                                                                                                                                                                            Database server host |              
+| DATABASE_PORT       |                                                                                                                                                                                            Database server port |              
+| DATABASE_NAME       |                                                                                                                                                                                                   Database name |              
+| DATABASE_USERNAME   |                                                                                                                                                                                               Database username |              
+| DATABASE_PASSWORD   |                                                                                                                                                                                               Database password |              
+| DATABASE_SSL        |                                                                                                                                                    If SSL should be used when connecting to the database server |              
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+## Docker
 
-## ✨ Community
+This project includes 2 docker configuration files:
+- `Dockerfile` aimed at development environments (may require tuning to work on different environments)
+- `Dockerfile.prod` aimed at production environments
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+You can use either file to build a docker image for this application. Be sure to set the required environment variables
+when running the container.
