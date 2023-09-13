@@ -19,6 +19,7 @@ export default function Network({
   const [checked, setChecked] = useState(false);
   if (!id) return null;
   const { name, short_description: shortDescription } = attributes || {};
+
   const openDetails = () => {
     // TOOD: Open details
   };
@@ -63,6 +64,7 @@ export default function Network({
     }
     return null;
   };
+
   return (
     <li key={id} className="mb-2 flex min-h-[240px] w-full gap-6 bg-gray-50 p-6">
       <div
@@ -81,7 +83,11 @@ export default function Network({
           <div className="flex gap-2">
             <div className="text-base text-slate-500">See network in the map</div>
             <div className="flex h-6 w-11 items-center justify-center">
-              <Switch checked={checked} onCheckedChange={() => setChecked(!checked)} />
+              <Switch
+                checked={checked}
+                onCheckedChange={() => setChecked(!checked)}
+                color={type === 'project' ? 'sky' : 'blue'}
+              />
             </div>
           </div>
           <button type="button" onClick={() => openDetails()} className="flex space-x-1">
