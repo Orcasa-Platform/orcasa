@@ -73,15 +73,15 @@ export default function Network({
           'bg-blue-400': type === 'organization',
         })}
       />
-      <div className="flex w-full flex-col justify-between gap-6">
+      <div className="flex w-full flex-col justify-between gap-6 text-base text-slate-500">
         <header className="flex flex-col gap-4">
-          <div className="flex gap-2 text-2xl font-semibold leading-10">{name}</div>
+          <div className="flex gap-2 text-2xl font-semibold leading-10 text-slate-700">{name}</div>
           <Icons />
-          <div className="text-base text-slate-500">{shortDescription}</div>
+          <p>{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end gap-4">
           <div className="flex gap-2">
-            <div className="text-base text-slate-500">See network in the map</div>
+            <p>See network in the map</p>
             <div className="flex h-6 w-11 items-center justify-center">
               <Switch
                 checked={checked}
@@ -91,9 +91,8 @@ export default function Network({
             </div>
           </div>
           <button type="button" onClick={() => openDetails()} className="flex space-x-1">
-            <div className="text-base font-semibold text-blue-400">See details</div>
+            <div className="font-semibold text-blue-400">See details</div>
             <ArrowRight className="h-6 w-6 text-blue-400" />
-            <div className="relative h-6 w-6" />
           </button>
         </div>
       </div>
