@@ -5,6 +5,14 @@ import {
   OrganizationListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
+export type NetworkResponse = {
+  networks: OrganizationListResponseDataItem[] | ProjectListResponseDataItem[];
+  isFetching: boolean;
+  isFetched: boolean;
+  isPlaceholderData: boolean;
+  isError: boolean;
+};
+
 export const useNetworks = ({ page = 1 }: { page: number }) => {
   const {
     data: organizationsData,
@@ -43,6 +51,10 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
 
   return {
     networks,
+    count: {
+      organizations: organizationsData?.meta?.pagination?.total || 0,
+      projects: projectsData?.meta?.pagination?.total || 0,
+    },
     isFetching: organizationIsFetching || projectsIsFetching,
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,

@@ -5,15 +5,19 @@ import {
   OrganizationListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
-import { useNetworks } from '@/hooks/networks';
+import type { NetworkResponse } from '@/hooks/networks';
 
 import ContentLoader from '@/components/ui/loader';
 
 import Network from './network';
 
-export default function NetworkList() {
-  const page = 1;
-  const { networks, isFetching, isFetched, isPlaceholderData, isError } = useNetworks({ page });
+export default function NetworkList({
+  networks,
+  isFetching,
+  isFetched,
+  isPlaceholderData,
+  isError,
+}: NetworkResponse) {
   return (
     <ContentLoader
       data={networks}
