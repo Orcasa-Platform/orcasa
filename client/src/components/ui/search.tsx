@@ -1,7 +1,5 @@
-import { useMemo } from 'react';
-
-import { debounce } from 'lodash';
 import { Search as SearchIcon } from 'lucide-react';
+import { useDebounce } from 'rooks';
 
 import { Input } from '@/components/ui/input';
 type SearchProps = {
@@ -10,13 +8,10 @@ type SearchProps = {
 };
 
 const Search = ({ className, onChange }: SearchProps) => {
-  const debouncedOnChange = useMemo(
-    () =>
-      debounce((newValue: string) => {
-        onChange(newValue);
-      }, 500),
-    [onChange],
-  );
+  const debouncedOnChange = useDebounce((newValue: string) => {
+    onChange(newValue);
+  }, 250);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     debouncedOnChange(event.target.value);
   };
