@@ -1,0 +1,271 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::country.country",
+  "value": {
+    "uid": "api::country.country",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "Name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "capital": {
+        "edit": {
+          "label": "Capital",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "capital",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "code": {
+        "edit": {
+          "label": "Code",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "code",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "fips": {
+        "edit": {
+          "label": "Fips",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "fips",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iso_2": {
+        "edit": {
+          "label": "ISO 2",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iso_2",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iso_3": {
+        "edit": {
+          "label": "ISO 3",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iso_3",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "continent": {
+        "edit": {
+          "label": "Continent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "continent",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "region": {
+        "edit": {
+          "label": "Region",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "region",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "projects": {
+        "edit": {
+          "label": "Projects",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "projects",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 6
+          },
+          {
+            "name": "capital",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "code",
+            "size": 4
+          },
+          {
+            "name": "fips",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "iso_2",
+            "size": 6
+          },
+          {
+            "name": "iso_3",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "continent",
+            "size": 6
+          },
+          {
+            "name": "region",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "projects",
+            "size": 6
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "capital",
+        "continent"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
