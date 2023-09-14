@@ -27,9 +27,9 @@ export default function Sidebar({
   const maxWidth = () => {
     if (section === 'scientific-evidence' || section === 'datasets') return '';
     const sectionMaxWidth = {
-      'map-layers': 'max-w-[487px]',
-      practices: 'max-w-[823px]',
-      network: 'max-w-[823px]',
+      'map-layers': 'max-w-[35%]',
+      practices: 'max-w-[58%]',
+      network: 'max-w-[58%]',
     };
     return sectionMaxWidth[section];
   };
