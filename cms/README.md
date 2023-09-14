@@ -5,15 +5,17 @@
 This platform is built using [Strapi](https://strapi.io/), with the necessary customizations to support the ORCaSa
 project.
 
-## Dependencies
+## Install & run
+
+### Dependencies
 
 - Nodejs v18.17
 - Postgres v15.4
 - Yarn v3.6
 
-## Set up
+### Set up
 
-- Install the necessary dependencies. Create a database for this application using your prefered database client
+- Install the necessary dependencies. Create a database for this application using your preferred database client
   application.
 - Set the necessary configuration values - see the [Configuration](#configuration) section below.
 
@@ -32,7 +34,7 @@ yarn start
 
 In both situations, be sure to set the corresponding `NODE_ENV` value.
 
-## Configuration
+### Configuration
 
 Configuration is done using environment variables that manipulate and extend the default Strapi configuration - refer to
 the official Strapi docs for more details on these or other configuration options.
@@ -59,12 +61,40 @@ The following environment variables are used:
 | DATABASE_PASSWORD   |                                                                                                                                                                                               Database password |              
 | DATABASE_SSL        |                                                                                                                                                    If SSL should be used when connecting to the database server |              
 
-
-## Docker
+### Docker
 
 This project includes 2 docker configuration files:
+
 - `Dockerfile` aimed at development environments (may require tuning to work on different environments)
 - `Dockerfile.prod` aimed at production environments
 
 You can use either file to build a docker image for this application. Be sure to set the required environment variables
 when running the container.
+
+## Data management
+
+The CMS stores both user data and configuration data in the database. Different types of data are managed in different
+ways:
+
+### Managing configuration data
+
+Configuration data handles tool-specific settings, such as admin labels, user roles, etc. Despite being natively stored
+in the database by Strapi, this project uses
+the [Strapi Config Sync](https://github.com/boazpoolman/strapi-plugin-config-sync) plugin to store this data in files,
+that can be stored under version control, thus providing a clear source of truth and data migration path.
+
+When modifying configuration data, be sure to use
+the [plugin's admin interface](https://github.com/boazpoolman/strapi-plugin-config-sync#%EF%B8%8F-admin-panel-gui)
+or [CLI tool](https://github.com/boazpoolman/strapi-plugin-config-sync#-command-line-interface-cli) to export
+the data to files, and commit those to version control.
+
+On deployment, the data on file will be automatically be imported, thus replacing previous settings changes.
+
+### Managing user data
+
+User data is data typically managed by users - in a blog site, user data would be posts or comments. In this project,
+user data is stored in the database, thus becoming deployment specific. If you need to migrate user data between
+deployments (for example, copy staging/production data to your local development environment), you can use
+the installed [Strapi Import Export entries plugin](https://github.com/Baboo7/strapi-plugin-import-export-entries) to do
+so. The plugin has dedicated sections in the admin UI for importing and exporting data. Refer to the plugin's
+documentation for more details.

@@ -8,8 +8,6 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "seed": "strapi import -f ./seed.tar.gz",
-    "export": "strapi export -f ./seed --no-encrypt",
     "config-sync": "config-sync"
   },
   "dependencies": {
