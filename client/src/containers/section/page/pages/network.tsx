@@ -71,10 +71,10 @@ const NetworkPage = () => {
       </div>
       <NetworkList {...networksResponse} />
       <div className="flex items-center justify-between">
-        <div className="text-xl font-semibold leading-[30px]">
+        <div className="font-serif text-xl font-semibold leading-[30px]">
           Help us building the soil-carbon network
         </div>
-        <div className=" space-x-4">
+        <div className="space-x-4">
           <AddButton text="Add organisation" />
           <AddButton text="Add project" />
         </div>

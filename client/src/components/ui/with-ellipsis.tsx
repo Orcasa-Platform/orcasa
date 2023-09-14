@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipArrow } from '@radix-ui/react-tooltip';
 
-const WithEllipsis = ({ text, maxLength = 35 }: { text: string; maxLength: number }) => {
+const WithEllipsis = ({ text, maxLength = 35 }: { text: string; maxLength?: number }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   if (text?.length < maxLength) return text;

@@ -77,7 +77,12 @@ export default function Network({
   };
 
   return (
-    <li key={id} className="mb-2 flex min-h-[240px] w-full gap-6 bg-gray-50 p-6">
+    <li
+      key={id}
+      className={cn('mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50 p-6 pl-0', {
+        'bg-slate-100': checked,
+      })}
+    >
       <div
         className={cn('h-10 w-[8px] min-w-[8px]', {
           'bg-sky-700': type === 'project',
@@ -86,7 +91,9 @@ export default function Network({
       />
       <div className="flex w-full flex-col justify-between gap-6 text-base text-slate-500">
         <header className="flex flex-col gap-4">
-          <div className="flex gap-2 text-2xl font-semibold leading-10 text-slate-700">{name}</div>
+          <div className="flex gap-2 font-serif text-2xl font-semibold leading-10 text-slate-700">
+            {name}
+          </div>
           <Icons />
           <p>{shortDescription}</p>
         </header>
