@@ -1,10 +1,7 @@
 {
   "version": 8,
-  "name": "OSM Liberty",
+  "name": "Orcasa",
   "metadata": {
-    "maputnik:license": "https://github.com/maputnik/osm-liberty/blob/gh-pages/LICENSE.md",
-    "maputnik:renderer": "mbgljs",
-    "openmaptiles:version": "3.x",
     "groups": {
       "basemap-satellite": {
           "name": "basemap-satellite",
@@ -55,8 +52,8 @@
       "type": "geojson"
     }
   },
-  "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
-  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=8k3OpweQg8O0TfOOUwcF",
+  "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
+  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -120,5 +117,5 @@
       }
     }
   ],
-  "id": "osm-liberty"
+  "id": "orcasa-style"
 }
