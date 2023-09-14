@@ -20,6 +20,7 @@ const Search = ({ className, onChange }: SearchProps) => {
     <Input
       className={className}
       type="text"
+      aria-label="Search by keyword"
       placeholder="Search by keyword"
       icon={<SearchIcon />}
       onChange={handleInputChange}

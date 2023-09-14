@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { cn } from '@/lib/classnames';
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & { icon?: React.ReactNode };
 
-const Input = React.forwardRef<HTMLInputElement, InputProps & { icon?: React.ReactNode }>(
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, icon, ...props }, ref) => {
     return (
       <div className="relative">

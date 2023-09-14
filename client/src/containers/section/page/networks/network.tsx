@@ -11,6 +11,7 @@ import {
 } from '@/types/generated/strapi.schemas';
 
 import { Switch } from '@/components/ui/switch';
+import { WithEllipsis } from '@/components/ui/with-ellipsis';
 export default function Network({
   id,
   attributes,
@@ -21,7 +22,7 @@ export default function Network({
   const { name, short_description: shortDescription } = attributes || {};
 
   const openDetails = () => {
-    // TOOD: Open details
+    // TODO: Open details
   };
 
   const Icons = () => {
@@ -54,7 +55,9 @@ export default function Network({
           {regionName && (
             <div className="flex gap-2">
               <Globe2 className="h-6 w-6" />
-              <div className="text-base text-slate-500">{regionName}</div>
+              <div className="text-base text-slate-500">
+                <WithEllipsis text={regionName} />
+              </div>
             </div>
           )}
         </div>
