@@ -1,6 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { useCallback } from 'react';
-
-import Image from 'next/image';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
@@ -38,7 +37,7 @@ const BasemapItem = ({ alt, value, preview }: BasemapItemProps) => {
                 value === basemap,
             })}
           >
-            <Image src={preview} alt={alt} width={104} height={104} className="w-full" />
+            <img src={preview} alt={alt} width={104} height={104} className="w-full" />
           </div>
         </div>
       </button>
