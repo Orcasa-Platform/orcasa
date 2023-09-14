@@ -20,8 +20,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Roboto', ...defaultTheme.fontFamily.serif],
-        serif: ['Roboto\\ Slab', ...defaultTheme.fontFamily.serif],
+        sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
+        serif: ['var(--font-roboto-slab)', ...defaultTheme.fontFamily.serif],
       },
       fontSize: {
         '3.5xl': ['32px', '48px'],
