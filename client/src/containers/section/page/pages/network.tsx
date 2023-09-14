@@ -1,3 +1,4 @@
+import { capitalize } from 'lodash';
 import { Filter, Plus } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -8,10 +9,6 @@ import NetworkList from '@/containers/section/page/networks/network-list';
 
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
-
-function capitalize(text: string) {
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
 
 const AddButton = ({ text }: { text: string }) => (
   <Button
