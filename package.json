@@ -10,8 +10,7 @@
   "scripts": {
     "client": "yarn workspace @orcasa/client",
     "cms": "yarn workspace @orcasa/cms",
-    "types": "yarn workspace @orcasa/types",
-    "heroku-postbuild": "./heroku.build"
+    "types": "yarn workspace @orcasa/types"
   },
   "engines": {
     "node": "18.x"
