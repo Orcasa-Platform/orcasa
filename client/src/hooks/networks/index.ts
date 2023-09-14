@@ -40,6 +40,11 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
     sort: 'name:asc',
   });
 
+  const sortAlphabetically = (
+    a: OrganizationListResponseDataItem | ProjectListResponseDataItem,
+    b: OrganizationListResponseDataItem | ProjectListResponseDataItem,
+  ) => (a.attributes?.name ?? '').localeCompare(b.attributes?.name ?? '');
+
   const networks = [
     ...(organizationsData?.data?.map((d: OrganizationListResponseDataItem) => ({
       ...d,
@@ -47,7 +52,7 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
     })) || []),
     ...(projectsData?.data?.map((d: ProjectListResponseDataItem) => ({ ...d, type: 'project' })) ||
       []),
-  ];
+  ].sort(sortAlphabetically);
 
   return {
     networks,
