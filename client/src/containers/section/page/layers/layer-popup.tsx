@@ -12,7 +12,7 @@ export default function LayerPopup({ children }: { children: React.ReactNode }) 
         </button>
       </PopoverTrigger>
 
-      <PopoverContent side="top" align="start">
+      <PopoverContent side="top" align="start" className="flex min-w-[500px] flex-col space-y-2">
         {children}
         <PopoverClose className="absolute right-4 top-4" aria-label="Close">
           <X className="h-6 w-6" />

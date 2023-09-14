@@ -29,8 +29,15 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
       return setLayers([id, ...layers]);
     }
   };
-
-  const { title } = attributes || {};
+  const {
+    title,
+    source,
+    source_url: sourceURL,
+    long_title: longTitle,
+    description,
+    short_description: shortDescription,
+    other_information: otherInformation,
+  } = attributes || {};
   const isChecked = layers.includes(id);
   return (
     <li
@@ -48,22 +55,24 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
           <h4 className="text-base font-semibold">{title}</h4>
           <div className="flex items-center justify-between space-x-4">
             <LayerPopup>
-              <div className="text-base font-semibold">{title}</div>
+              <h4 className="text-base font-semibold">{longTitle}</h4>
+              <p className="text-base">{description}</p>
+              <p>{otherInformation}</p>
             </LayerPopup>
             <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
           </div>
         </header>
-        <p className="text-base">Domain... TBD</p>
+        <p className="text-base">{shortDescription}</p>
       </div>
       <div>
         <span className="mr-2 text-base">Data source:</span>
         <a
-          href="#"
+          href={sourceURL}
           className="inline-block text-base font-semibold text-amber-500 underline"
           target="_blank"
           rel="noreferrer noopener"
         >
-          TBD
+          {source}
         </a>
       </div>
     </li>

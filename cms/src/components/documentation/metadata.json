@@ -6,24 +6,22 @@
   },
   "options": {},
   "attributes": {
-    "description": {
-      "type": "richtext",
-      "required": true
-    },
-    "citation": {
-      "type": "richtext",
-      "required": false
-    },
     "source": {
-      "type": "richtext"
-    },
-    "resolution": {
       "type": "string"
     },
-    "content_date": {
-      "type": "date"
+    "source_url": {
+      "type": "string"
     },
-    "license": {
+    "description": {
+      "type": "text"
+    },
+    "other_information": {
+      "type": "richtext"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "long_title": {
       "type": "string"
     }
   }

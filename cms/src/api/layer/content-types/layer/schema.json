@@ -40,10 +40,23 @@
     "interaction_config": {
       "type": "json"
     },
-    "metadata": {
-      "type": "component",
-      "repeatable": false,
-      "component": "documentation.metadata"
+    "source": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "long_title": {
+      "type": "string"
+    },
+    "other_information": {
+      "type": "richtext"
     }
   }
 }
