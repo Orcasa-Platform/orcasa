@@ -69,13 +69,15 @@
       "id": "basemap-satellite",
       "type": "raster",
       "source": "basemap-satellite",
-      "metadata": {"group": "basemap-satellite"}
+      "metadata": {"group": "basemap-satellite"},
+      "layout": {"visibility": "none"}
     },
     {
       "id": "basemap-light",
       "type": "raster",
       "source": "basemap-light",
-      "metadata": {"group": "basemap-light"}
+      "metadata": {"group": "basemap-light"},
+      "layout": {"visibility": "none"}
     },
 
     {
