@@ -53,6 +53,26 @@ module.exports = {
               },
             },
           },
+          'get/organizations/{id}': {
+            query: {
+              useQuery: true,
+              useInfinite: false,
+              signal: true,
+              options: {
+                staleTime: 10000,
+              },
+            },
+          },
+          'get/projects/{id}': {
+            query: {
+              useQuery: true,
+              useInfinite: false,
+              signal: true,
+              options: {
+                staleTime: 10000,
+              },
+            },
+          },
         },
       },
     },
@@ -60,7 +80,7 @@ module.exports = {
       target:
         '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
       filters: {
-        tags: ['Page', 'Layer-group', 'Layer'],
+        tags: ['Page', 'Layer-group', 'Layer', 'Organization', 'Project'],
       },
     },
   },

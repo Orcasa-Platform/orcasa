@@ -33,7 +33,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
       <header className="flex justify-between space-x-2.5 py-1 pl-2">
         <h4>{title}</h4>
 
-        <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
+        <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} color="yellow" />
       </header>
     </li>
   );

@@ -12,8 +12,8 @@ export default async function Section({ section }: { section: Section }) {
       <main className="flex min-h-screen flex-col">
         <div className="h-screen w-screen">
           <Nav />
-          <Map />
-          <Sidebar>
+          <Map section={section} />
+          <Sidebar section={section}>
             <Page section={section} />
           </Sidebar>
         </div>

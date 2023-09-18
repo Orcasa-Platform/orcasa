@@ -1078,6 +1078,7 @@ __metadata:
     "@tailwindcss/typography": 0.5.9
     "@tanstack/react-query": ^4.29.18
     "@types/d3-array": 3.0.5
+    "@types/lodash": ^4.14.198
     "@types/node": 20.3.1
     "@types/react": 18.2.12
     "@types/react-dom": 18.2.5
@@ -1095,6 +1096,7 @@ __metadata:
     eslint-plugin-import: 2.27.5
     eslint-plugin-prettier: ^4.2.1
     express: ^4.17.2
+    lodash: ^4.17.21
     lucide-react: ^0.252.0
     mapbox-gl: "npm:empty-npm-package@1.0.0"
     maplibre-gl: 3.3.0
@@ -2210,6 +2212,13 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: e60b153664572116dfea673c5bda7778dbff150498f44f998e34b5886d8afc47f16799280e4b6e241c0472aef1bc36add771c569c68fc5125fc2ae519a3eb9ac
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.198":
+  version: 4.14.198
+  resolution: "@types/lodash@npm:4.14.198"
+  checksum: b290e4480707151bcec738bca40527915defe52a0d8e26c83685c674163a265e1a88cb2ee56b0fb587a89819d0cd5df86ada836aec3e9c2e4bf516e7d348d524
   languageName: node
   linkType: hard
 
@@ -5582,6 +5591,13 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
+  languageName: node
+  linkType: hard
+
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
   languageName: node
   linkType: hard
 
