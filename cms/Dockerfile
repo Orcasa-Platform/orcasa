@@ -1,4 +1,4 @@
-FROM node:18.15.0-bullseye-slim
+FROM node:18.17-bullseye-slim
 # Install dependencies
 RUN apt-get update -y && \
     apt-get upgrade -y && \
@@ -12,19 +12,31 @@ RUN apt-get update -y && \
       libvips-dev \
     && apt-get clean
 
-WORKDIR /app/
-COPY .yarn ./.yarn
-COPY package.json .yarnrc.yml yarn.lock ./
+ENV NODE_ENV development
 
-WORKDIR /app/cms
-COPY ./cms/package.json ./
+WORKDIR /app
+
+COPY .yarn ./.yarn
+COPY config ./config
+COPY database ./database
+COPY public ./public
+COPY src ./src
+
+COPY .env \
+     .nvmrc \
+     favicon.png \
+     package.json \
+     entrypoint.sh \
+     Procfile \
+     tsconfig.json \
+     ./
+
 RUN yarn install
 
 ENV PATH /app/node_modules/.bin:$PATH
 
-COPY ./cms .
-RUN chown -R node:node /app/cms
+
+RUN chown -R node:node /app
 USER node
-RUN ["yarn", "build"]
 EXPOSE 1337
-ENTRYPOINT ["/app/cms/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
