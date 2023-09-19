@@ -10,6 +10,10 @@ export default ({ env }) => ({
       salt: env('TRANSFER_TOKEN_SALT'),
     },
   },
+  tutorial: false,
+  notifications: {
+    releases: false,
+  },
   watchIgnoreFiles: [
     '**/config/sync/**',
   ],
