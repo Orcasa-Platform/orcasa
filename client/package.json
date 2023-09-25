@@ -8,7 +8,9 @@
     "start": "node index.js",
     "lint": "next lint",
     "check-types": "tsc",
-    "test": "playwright test"
+    "test": "playwright test",
+    "types": "orval --config ./orval.config.ts",
+    "prepare": "cd .. && husky install client/.husky"
   },
   "dependencies": {
     "@deck.gl/geo-layers": "8.9.19",
@@ -79,7 +81,9 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
     "lodash": "^4.17.21",
+    "orval": "^6.17.0",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0"
   }

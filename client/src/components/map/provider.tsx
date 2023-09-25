@@ -23,7 +23,7 @@ const Context = createContext<DeckMapboxOverlayContext>({
 function useMapboxOverlay(
   props: MapboxOverlayProps & {
     interleaved?: boolean;
-  }
+  },
 ) {
   const overlay = useControl<MapboxOverlay>(() => new MapboxOverlay(props));
   overlay.setProps(props);
@@ -45,7 +45,7 @@ export const DeckMapboxOverlayProvider = ({ children }: PropsWithChildren) => {
       layersRef.current = newLayers;
       return OVERLAY.setProps({ layers: newLayers });
     },
-    [OVERLAY]
+    [OVERLAY],
   );
 
   const removeLayer = useCallback(
@@ -55,7 +55,7 @@ export const DeckMapboxOverlayProvider = ({ children }: PropsWithChildren) => {
       layersRef.current = newLayers;
       OVERLAY.setProps({ layers: newLayers });
     },
-    [OVERLAY]
+    [OVERLAY],
   );
 
   const context = useMemo(
@@ -63,7 +63,7 @@ export const DeckMapboxOverlayProvider = ({ children }: PropsWithChildren) => {
       addLayer,
       removeLayer,
     }),
-    [addLayer, removeLayer]
+    [addLayer, removeLayer],
   );
 
   return (

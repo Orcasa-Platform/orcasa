@@ -51,7 +51,7 @@ export const getGetProjectsInfiniteQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getProjects>>> = ({ signal, pageParam }) =>
     getProjects({ 'pagination[page]': pageParam, ...params }, signal);
 
-  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
+  return { queryKey, queryFn, ...queryOptions };
 };
 
 export type GetProjectsInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof getProjects>>>;
@@ -93,7 +93,7 @@ export const getGetProjectsQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getProjects>>> = ({ signal }) =>
     getProjects(params, signal);
 
-  return { queryKey, queryFn, staleTime: 10000, ...queryOptions };
+  return { queryKey, queryFn, ...queryOptions };
 };
 
 export type GetProjectsQueryResult = NonNullable<Awaited<ReturnType<typeof getProjects>>>;
@@ -194,7 +194,7 @@ export const getGetProjectsIdQueryOptions = <
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getProjectsId>>> = ({ signal }) =>
     getProjectsId(id, params, signal);
 
-  return { queryKey, queryFn, enabled: !!id, staleTime: 10000, ...queryOptions };
+  return { queryKey, queryFn, enabled: !!id, ...queryOptions };
 };
 
 export type GetProjectsIdQueryResult = NonNullable<Awaited<ReturnType<typeof getProjectsId>>>;

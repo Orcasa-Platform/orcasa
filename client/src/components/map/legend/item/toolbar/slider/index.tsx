@@ -19,7 +19,7 @@ const Slider = React.forwardRef<
       className={cn('relative flex w-full touch-none select-none items-center', className)}
       {...props}
     >
-      <SliderPrimitive.Track className="bg-secondary relative h-2 w-full grow overflow-hidden rounded-full">
+      <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">
         <SliderPrimitive.Range className="absolute h-full bg-slate-800/50" />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb>
@@ -28,15 +28,15 @@ const Slider = React.forwardRef<
             onMouseEnter={() => setTooltipOpen(true)}
             onMouseLeave={() => setTooltipOpen(false)}
           >
-            <div className="bg-background ring-offset-background focus-visible:ring-ring block h-4 w-4 translate-y-0.5 rounded-full border-2 border-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"></div>
+            <div className="block h-4 w-4 translate-y-0.5 rounded-full border-2 border-slate-800 bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"></div>
           </TooltipTrigger>
           <TooltipContent
             align="center"
             side="bottom"
-            className="bg-secondary z-50 w-10 p-1 text-center text-xs text-slate-800"
+            className="z-50 w-10 bg-secondary p-1 text-center text-xs text-slate-800"
           >
             {(Number(props.value) * 100).toFixed(0)}%
-            <TooltipArrow className="fill-secondary z-50" width={10} height={5} />
+            <TooltipArrow className="z-50 fill-secondary" width={10} height={5} />
           </TooltipContent>
         </Tooltip>
       </SliderPrimitive.Thumb>
