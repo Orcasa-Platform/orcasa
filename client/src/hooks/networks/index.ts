@@ -23,7 +23,8 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
   } = useGetOrganizations({
     populate: '*',
     'pagination[page]': page,
-    'pagination[pageSize]': 5,
+    // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
+    'pagination[pageSize]': 1000,
     sort: 'name:asc',
   });
 
