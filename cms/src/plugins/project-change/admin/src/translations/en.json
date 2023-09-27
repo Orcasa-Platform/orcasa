@@ -1,0 +1,10 @@
+{
+  "plugin.name": "Project Change",
+  "plugin.description": "Easily manage project change suggestions",
+  "decline-changes.success": "Changes declined",
+  "decline-changes.failure": "Failed to decline changes",
+  "decline-changes.button": "Decline changes",
+  "accept-changes.success": "Changes applied",
+  "accept-changes.failure": "Failed to accept changes",
+  "accept-changes.button": "Accept changes"
+}

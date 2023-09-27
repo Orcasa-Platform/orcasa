@@ -391,6 +391,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/is-prop-valid@npm:^1.1.0":
+  version: 1.2.1
+  resolution: "@emotion/is-prop-valid@npm:1.2.1"
+  dependencies:
+    "@emotion/memoize": ^0.8.1
+  checksum: 8f42dc573a3fad79b021479becb639b8fe3b60bdd1081a775d32388bca418ee53074c7602a4c845c5f75fa6831eb1cbdc4d208cc0299f57014ed3a02abcad16a
+  languageName: node
+  linkType: hard
+
 "@emotion/memoize@npm:0.7.4":
   version: 0.7.4
   resolution: "@emotion/memoize@npm:0.7.4"
@@ -663,7 +672,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/react-dom@npm:^2.0.0, @floating-ui/react-dom@npm:^2.0.1":
+"@floating-ui/react-dom@npm:^2.0.0, @floating-ui/react-dom@npm:^2.0.1, @floating-ui/react-dom@npm:^2.0.2":
   version: 2.0.2
   resolution: "@floating-ui/react-dom@npm:2.0.2"
   dependencies:
@@ -795,6 +804,15 @@ __metadata:
   dependencies:
     "@swc/helpers": ^0.5.0
   checksum: 699cac3a7b4e6ccad027cb33e2682535af4287d6101d0d3a5267141209e9954cf779d0c148b6cb9ff92abd480b92b72315ff536328f8a0b55f5d2761774769aa
+  languageName: node
+  linkType: hard
+
+"@internationalized/date@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@internationalized/date@npm:3.5.0"
+  dependencies:
+    "@swc/helpers": ^0.5.0
+  checksum: 621298a1686bad64212b1f2a497492dcc9d657a3789ea62a1a5ee1cb37719fa7a54944d4bb318bf22f709eccfcb6627e6d1aad9825aaa67c2150973ccca8c15d
   languageName: node
   linkType: hard
 
@@ -1896,6 +1914,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/design-system@npm:^1.6.3":
+  version: 1.11.0
+  resolution: "@strapi/design-system@npm:1.11.0"
+  dependencies:
+    "@codemirror/lang-json": ^6.0.1
+    "@floating-ui/react-dom": ^2.0.2
+    "@internationalized/date": ^3.5.0
+    "@internationalized/number": ^3.2.1
+    "@radix-ui/react-dismissable-layer": ^1.0.4
+    "@radix-ui/react-dropdown-menu": ^2.0.5
+    "@radix-ui/react-focus-scope": 1.0.3
+    "@strapi/ui-primitives": ^1.11.0
+    "@uiw/react-codemirror": ^4.21.13
+    aria-hidden: ^1.2.3
+    compute-scroll-into-view: ^3.0.3
+    prop-types: ^15.8.1
+    react-remove-scroll: ^2.5.6
+  peerDependencies:
+    "@strapi/icons": ^1.5.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.2.0
+    styled-components: ^5.2.1
+  checksum: 7337b1d72db2321d6004a91637733a13a7a78cedfd97074fbc9b932a9371793871d22f60b0d47ac63ba3359be46226afc99d19ba11445930527b7e6520cc38db
+  languageName: node
+  linkType: hard
+
 "@strapi/generate-new@npm:4.13.2":
   version: 4.13.2
   resolution: "@strapi/generate-new@npm:4.13.2"
@@ -1958,6 +2003,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/helper-plugin@npm:^4.6.0":
+  version: 4.13.7
+  resolution: "@strapi/helper-plugin@npm:4.13.7"
+  dependencies:
+    axios: 1.5.0
+    date-fns: 2.30.0
+    formik: 2.4.0
+    immer: 9.0.19
+    lodash: 4.17.21
+    prop-types: ^15.8.1
+    qs: 6.11.1
+    react-helmet: 6.1.0
+    react-intl: 6.4.1
+    react-query: 3.39.3
+    react-select: 5.7.0
+  peerDependencies:
+    "@strapi/design-system": 1.10.1
+    "@strapi/icons": 1.10.1
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.3
+  checksum: 589c4db46ba77c486fa9c12a525d607d9aa166deb2bd8dad031f8a379733c7fa307f74a877ce837f4b95821ad91e99ae8a2e4bd6e0220f3e50b4cffcc7d5dd08
+  languageName: node
+  linkType: hard
+
 "@strapi/icons@npm:1.9.0":
   version: 1.9.0
   resolution: "@strapi/icons@npm:1.9.0"
@@ -1965,6 +2036,16 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   checksum: 0b33aee430cb764498fa398450cf36e51af336001ec1867898557e51bbda72384a4610e5b6acaa14cacb396cc83001c19d175b0bf8b9139d7a2212e7d8b35979
+  languageName: node
+  linkType: hard
+
+"@strapi/icons@npm:^1.6.3":
+  version: 1.11.0
+  resolution: "@strapi/icons@npm:1.11.0"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 112949935895d8dca06d14731c0734d93d1b24a7aa56d187a54f393d6ee211b46e87d348be9ddb497918dbdfa7766d92097be84b1c76284f39021b99aa4b1cde
   languageName: node
   linkType: hard
 
@@ -2290,6 +2371,38 @@ __metadata:
     prettier: 2.8.4
     typescript: 5.1.3
   checksum: 308280d1d82954dd5796293141b72128015ab119222952eb0be0f9232c1824ab1ccb93e54d5a06136c956932cd091c2e46597d65d09e4b490affe14106c76f4e
+  languageName: node
+  linkType: hard
+
+"@strapi/ui-primitives@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "@strapi/ui-primitives@npm:1.11.0"
+  dependencies:
+    "@radix-ui/number": ^1.0.1
+    "@radix-ui/primitive": ^1.0.1
+    "@radix-ui/react-collection": 1.0.3
+    "@radix-ui/react-compose-refs": ^1.0.1
+    "@radix-ui/react-context": ^1.0.1
+    "@radix-ui/react-direction": 1.0.1
+    "@radix-ui/react-dismissable-layer": ^1.0.4
+    "@radix-ui/react-focus-guards": 1.0.1
+    "@radix-ui/react-focus-scope": 1.0.3
+    "@radix-ui/react-id": ^1.0.1
+    "@radix-ui/react-popper": ^1.1.2
+    "@radix-ui/react-portal": ^1.0.3
+    "@radix-ui/react-primitive": ^1.0.3
+    "@radix-ui/react-slot": ^1.0.2
+    "@radix-ui/react-use-callback-ref": ^1.0.1
+    "@radix-ui/react-use-controllable-state": ^1.0.1
+    "@radix-ui/react-use-layout-effect": 1.0.1
+    "@radix-ui/react-use-previous": ^1.0.1
+    "@radix-ui/react-visually-hidden": ^1.0.3
+    aria-hidden: ^1.2.3
+    react-remove-scroll: ^2.5.6
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 43ae932f4bdb02c81abeb496f4cc9248f7aa8330da226e6d4fa0ad8588f5a202aa6c30c2ca9583dd08edf94c5717e887fda4624d9120854673b047c2657af730
   languageName: node
   linkType: hard
 
@@ -2817,6 +2930,51 @@ __metadata:
     "@codemirror/state": ">=6.0.0"
     "@codemirror/view": ">=6.0.0"
   checksum: c3592e1ec15e02f7b07e37bbc004a52b250de70fdd4a42690bcd3ded70b72aebb9dd91e1f84815612c883da92add532db9724ee538c1b6bebb013615367b7118
+  languageName: node
+  linkType: hard
+
+"@uiw/codemirror-extensions-basic-setup@npm:4.21.18":
+  version: 4.21.18
+  resolution: "@uiw/codemirror-extensions-basic-setup@npm:4.21.18"
+  dependencies:
+    "@codemirror/autocomplete": ^6.0.0
+    "@codemirror/commands": ^6.0.0
+    "@codemirror/language": ^6.0.0
+    "@codemirror/lint": ^6.0.0
+    "@codemirror/search": ^6.0.0
+    "@codemirror/state": ^6.0.0
+    "@codemirror/view": ^6.0.0
+  peerDependencies:
+    "@codemirror/autocomplete": ">=6.0.0"
+    "@codemirror/commands": ">=6.0.0"
+    "@codemirror/language": ">=6.0.0"
+    "@codemirror/lint": ">=6.0.0"
+    "@codemirror/search": ">=6.0.0"
+    "@codemirror/state": ">=6.0.0"
+    "@codemirror/view": ">=6.0.0"
+  checksum: c643eebc45e2067080c46e28fdb4ac40043e5890f4862bd45fe5bf816894b6c118ea901ca9ba1dce8862877622ebd793db6ec220491506355ed562a0dc0c4507
+  languageName: node
+  linkType: hard
+
+"@uiw/react-codemirror@npm:^4.21.13":
+  version: 4.21.18
+  resolution: "@uiw/react-codemirror@npm:4.21.18"
+  dependencies:
+    "@babel/runtime": ^7.18.6
+    "@codemirror/commands": ^6.1.0
+    "@codemirror/state": ^6.1.1
+    "@codemirror/theme-one-dark": ^6.0.0
+    "@uiw/codemirror-extensions-basic-setup": 4.21.18
+    codemirror: ^6.0.0
+  peerDependencies:
+    "@babel/runtime": ">=7.11.0"
+    "@codemirror/state": ">=6.0.0"
+    "@codemirror/theme-one-dark": ">=6.0.0"
+    "@codemirror/view": ">=6.0.0"
+    codemirror: ">=6.0.0"
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: ef3897e9901b98fd981d4b9db2ae8702aa7ffda4cf5cab3286963580606a6dde38e77a4314c12574b6f5f251d62b62e59f0a1a445009b5927b8500f4b5fd795c
   languageName: node
   linkType: hard
 
@@ -9935,6 +10093,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"project-change@workspace:src/plugins/project-change":
+  version: 0.0.0-use.local
+  resolution: "project-change@workspace:src/plugins/project-change"
+  dependencies:
+    "@strapi/design-system": ^1.6.3
+    "@strapi/helper-plugin": ^4.6.0
+    "@strapi/icons": ^1.6.3
+    prop-types: ^15.7.2
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-intl: 6.4.1
+    react-redux: 8.1.1
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.6
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.6
+  languageName: unknown
+  linkType: soft
+
 "promise-retry@npm:^2.0.1":
   version: 2.0.1
   resolution: "promise-retry@npm:2.0.1"
@@ -10192,7 +10372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-helmet@npm:^6.1.0":
+"react-helmet@npm:6.1.0, react-helmet@npm:^6.1.0":
   version: 6.1.0
   resolution: "react-helmet@npm:6.1.0"
   dependencies:
@@ -10355,7 +10535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:5.3.4":
+"react-router-dom@npm:5.3.4, react-router-dom@npm:^5.3.4":
   version: 5.3.4
   resolution: "react-router-dom@npm:5.3.4"
   dependencies:
@@ -11774,6 +11954,28 @@ __metadata:
     react-dom: ">= 16.8.0"
     react-is: ">= 16.8.0"
   checksum: a104341068fc39fa2c73950a34970d832dc7a511fc52b3df12f34e6746031f1f128f53b4d540bf39d9f0da043cf0d91517faf874d2c87de5e385f5c2e7620436
+  languageName: node
+  linkType: hard
+
+"styled-components@npm:^5.3.6":
+  version: 5.3.11
+  resolution: "styled-components@npm:5.3.11"
+  dependencies:
+    "@babel/helper-module-imports": ^7.0.0
+    "@babel/traverse": ^7.4.5
+    "@emotion/is-prop-valid": ^1.1.0
+    "@emotion/stylis": ^0.8.4
+    "@emotion/unitless": ^0.7.4
+    babel-plugin-styled-components: ">= 1.12.0"
+    css-to-react-native: ^3.0.0
+    hoist-non-react-statics: ^3.0.0
+    shallowequal: ^1.1.0
+    supports-color: ^5.5.0
+  peerDependencies:
+    react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+    react-is: ">= 16.8.0"
+  checksum: 10edd4dae3b0231ec02d86bdd09c88e894eedfa7e9d4f8e562b09fb69c67a27d586cbcf35c785002d59b3bf11e6c0940b0efce40d13ae9ed148b26b1dc8f3284
   languageName: node
   linkType: hard
 
