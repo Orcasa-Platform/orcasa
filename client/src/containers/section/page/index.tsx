@@ -4,7 +4,7 @@ import { Section } from '@/types/app';
 import { useGetPages } from '@/types/generated/page';
 
 import LayerGroupsList from '@/containers/section/page/list';
-import MapLayersPage from '@/containers/section/page/pages/map-layers';
+import GeospatialDataPage from '@/containers/section/page/pages/geospatial-data';
 import NetworkPage from '@/containers/section/page/pages/network';
 
 export default function Page({ section }: { section: Section }) {
@@ -13,9 +13,9 @@ export default function Page({ section }: { section: Section }) {
 
   return (
     <div className="space-y-5 p-5 text-slate-700">
-      {section === 'map-layers' && (
+      {section === 'geospatial-data' && (
         <>
-          <MapLayersPage />
+          <GeospatialDataPage />
           {pageId && <LayerGroupsList pageId={pageId} />}
         </>
       )}

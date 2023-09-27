@@ -25,13 +25,12 @@ export default function Sidebar({
   const setOpen = useSetRecoilState(sidebarOpenAtom);
   const variant: OpenerVariant = useTheme('opener');
   const maxWidth = () => {
-    if (section === 'scientific-evidence' || section === 'datasets') return '';
-    const sectionMaxWidth = {
-      'map-layers': 'max-w-[35%]',
+    const sectionMaxWidth: Partial<Record<Section, string>> = {
+      'geospatial-data': 'max-w-[35%]',
       practices: 'max-w-[58%]',
       network: 'max-w-[58%]',
     };
-    return sectionMaxWidth[section];
+    return sectionMaxWidth[section] ?? '';
   };
 
   return (
