@@ -1,4 +1,4 @@
-const MapLayersPage = () => {
+const GeospatialDataPage = () => {
   return (
     <>
       <h1 className="font-serif text-3.5xl">
@@ -12,4 +12,4 @@ const MapLayersPage = () => {
   );
 };
 
-export default MapLayersPage;
+export default GeospatialDataPage;

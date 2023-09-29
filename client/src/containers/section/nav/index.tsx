@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
+import { PropsWithChildren } from 'react';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -7,26 +9,15 @@ import { cn } from '@/lib/classnames';
 
 import logo from '/public/images/logo.svg';
 
-interface NavLinkProps {
-  href: string;
-  children: React.ReactNode;
-  color: string;
-  active?: boolean;
-}
+import { Module, moduleColors, modules } from '@/constants/modules';
 
-const borderColors: { [key: string]: string } = {
-  'dark-yellow': 'border-yellow-600',
-  yellow: 'border-yellow-400',
-  teal: 'border-teal-500',
-  blue: 'border-blue-500',
-  indigo: 'border-indigo-500',
-};
+type NavLinkProps = PropsWithChildren<Omit<Module, 'name'> & { active?: boolean }>;
 
 const NavLink = ({ href, children, color, active }: NavLinkProps) => (
   <Link
     className={cn(
       'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-6 pr-4 text-sm font-semibold leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
-      borderColors[color],
+      moduleColors[color].border,
       {
         'bg-white': active,
         'text-slate-700': active,
@@ -42,33 +33,6 @@ const NavLink = ({ href, children, color, active }: NavLinkProps) => (
 
 export default function Nav() {
   const pathname = usePathname();
-  const links = [
-    {
-      href: '/map-layers',
-      color: 'yellow',
-      text: 'Map Layers',
-    },
-    {
-      href: '/scientific-evidence',
-      color: 'teal',
-      text: 'Scientific Evidence',
-    },
-    {
-      href: '/practices',
-      color: 'dark-yellow',
-      text: 'Practices',
-    },
-    {
-      href: '/network',
-      color: 'blue',
-      text: 'Network',
-    },
-    {
-      href: '/datasets',
-      color: 'indigo',
-      text: 'Datasets',
-    },
-  ];
 
   return (
     <div className="absolute left-0 z-50 h-full w-[117px]">
@@ -81,11 +45,11 @@ export default function Nav() {
           />
         </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">
-          {links.map((link) => {
-            const { href, color, text } = link;
+          {modules.map((module) => {
+            const { href, color, name } = module;
             return (
               <NavLink key={href} href={href} color={color} active={pathname === href}>
-                {text}
+                {name}
               </NavLink>
             );
           })}

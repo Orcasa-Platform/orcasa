@@ -5,57 +5,17 @@ import logo from 'public/images/logo.svg';
 
 import { cn } from '@/lib/classnames';
 
-interface Link {
-  href: string;
-  color: string;
-  text: string;
-}
+import { Module, moduleColors, modules } from '@/constants/modules';
 
-const backgroundColors: { [key: string]: string } = {
-  'dark-yellow': 'bg-yellow-600',
-  yellow: 'bg-yellow-400',
-  teal: 'bg-teal-500',
-  blue: 'bg-blue-500',
-  indigo: 'bg-indigo-500',
-};
-
-const links: Link[] = [
-  {
-    href: '/map-layers',
-    color: 'yellow',
-    text: 'Map Layers',
-  },
-  {
-    href: '/scientific-evidence',
-    color: 'teal',
-    text: 'Scientific Evidence',
-  },
-  {
-    href: '/practices',
-    color: 'dark-yellow',
-    text: 'Practices',
-  },
-  {
-    href: '/network',
-    color: 'blue',
-    text: 'Network',
-  },
-  {
-    href: '/datasets',
-    color: 'indigo',
-    text: 'Datasets',
-  },
-];
-
-const LinkBox = ({ href, color, text }: Link) => (
+const LinkBox = ({ href, color, name }: Module) => (
   <Link
     href={href}
     className={cn(
       'relative flex h-[279px] w-[308px] items-center justify-center',
-      backgroundColors[color],
+      moduleColors[color].background,
     )}
   >
-    <div className="text-center text-[40px] font-bold text-white">{text}</div>
+    <div className="text-center text-[40px] font-bold text-white">{name}</div>
   </Link>
 );
 
@@ -67,8 +27,8 @@ export default async function HomePage() {
         The Soil Carbon One-Stop Hub for Climate Action
       </div>
       <div className="flex">
-        {links.map((link) => (
-          <LinkBox key={link.href} {...link} />
+        {modules.map((module) => (
+          <LinkBox key={module.href} {...module} />
         ))}
       </div>
     </div>
