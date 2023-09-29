@@ -176,7 +176,7 @@ jobs:
           echo "  qgis-server:" >> docker-compose.yml
           echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_QGIS:latest" >> docker-compose.yml
           echo "    volumes:" >> docker-compose.yml
-          echo "      - /data:/data:ro" >> docker-compose.yml
+          echo "      - /qgis_data:/data:ro" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 5555:5555" >> docker-compose.yml
           echo "    environment:" >> docker-compose.yml
