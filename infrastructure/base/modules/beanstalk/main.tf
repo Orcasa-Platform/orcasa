@@ -62,7 +62,7 @@ locals {
     {
       namespace = "aws:ec2:vpc"
       name      = "AssociatePublicIpAddress"
-      value     = "True"
+      value     = "true"
     },
     {
       namespace = "aws:ec2:vpc"

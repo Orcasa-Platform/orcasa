@@ -53,6 +53,8 @@ locals {
   subnets_with_ec2_instance_type_offering_ids = sort([
     for k, v in data.aws_subnets.subnets_with_ec2_instance_type_offering_map : v.ids[0]
   ])
+
+  bucket_name = "orcasa-data-layer-upload-public"
 }
 
 module "iam" {
@@ -129,6 +131,10 @@ module "github_values" {
   }
 }
 
+module "data_bucket" {
+  source      = "./modules/bucket"
+  bucket_name = local.bucket_name
+}
 
 module "staging" {
   source             = "./modules/env"
@@ -144,4 +150,5 @@ module "staging" {
   ec2_instance_type  = var.ec2_instance_type
   rds_engine_version = var.rds_engine_version
   rds_instance_class = var.rds_instance_class
+  data_bucket_name   = local.bucket_name
 }

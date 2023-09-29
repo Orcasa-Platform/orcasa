@@ -3,7 +3,7 @@ module "ecr" {
 
   project     = var.project
   environment = var.environment
-  tags = {
+  tags        = {
     project     = var.project,
     environment = var.environment
   }
@@ -69,4 +69,33 @@ module "beanstalk" {
   rds_security_group_id   = aws_security_group.postgresql_access.id
   domain                  = var.domain
   acm_certificate         = aws_acm_certificate.acm_certificate
+}
+
+resource "aws_iam_policy" "policy" {
+  name        = "${title(var.project)}${title(var.environment)}DataLayerBucketReader"
+  path        = "/"
+  description = "Allows read access to the data layer bucket"
+
+  policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ]
+        Effect   = "Allow"
+        Resource = [
+          "arn:aws:s3:::${var.data_bucket_name}/*",
+          "arn:aws:s3:::${var.data_bucket_name}"
+        ]
+      },
+    ]
+  })
+}
+
+resource "aws_iam_policy_attachment" "beanstalk_ec2_worker" {
+  name       = "${var.project}-${var.environment}-s3-data-reader"
+  roles      = [module.beanstalk.eb_role_id]
+  policy_arn = aws_iam_policy.policy.arn
 }

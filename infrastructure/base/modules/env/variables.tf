@@ -74,3 +74,9 @@ variable "rds_instance_class" {
   type        = string
   description = "RDS instance type class"
 }
+
+
+variable "data_bucket_name" {
+  type        = string
+  description = "Name of the data S3 bucket where QGIS data will be stored"
+}
