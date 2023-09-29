@@ -28,11 +28,14 @@ jobs:
       with:
         node-version: 20.5
     - name: Install dependencies
-      run: yarn client install
+      working-directory: ./client
+      run: yarn install
     - name: Install Playwright Browsers
-      run: yarn client playwright install --with-deps
+      working-directory: ./client
+      run: yarn playwright install --with-deps
     - name: Run Playwright tests
-      run: yarn client playwright test
+      working-directory: ./client
+      run: yarn playwright test
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ needs.test_setup.outputs.preview_url }}
     - uses: actions/upload-artifact@v3
