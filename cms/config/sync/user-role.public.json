@@ -4,36 +4,6 @@
   "type": "public",
   "permissions": [
     {
-      "action": "api::area-of-intervention.area-of-intervention.find"
-    },
-    {
-      "action": "api::area-of-intervention.area-of-intervention.findOne"
-    },
-    {
-      "action": "api::continent.continent.find"
-    },
-    {
-      "action": "api::continent.continent.findOne"
-    },
-    {
-      "action": "api::country.country.find"
-    },
-    {
-      "action": "api::country.country.findOne"
-    },
-    {
-      "action": "api::layer-group.layer-group.find"
-    },
-    {
-      "action": "api::layer-group.layer-group.findOne"
-    },
-    {
-      "action": "api::layer.layer.find"
-    },
-    {
-      "action": "api::layer.layer.findOne"
-    },
-    {
       "action": "api::organization-theme.organization-theme.find"
     },
     {
@@ -50,12 +20,6 @@
     },
     {
       "action": "api::organization.organization.findOne"
-    },
-    {
-      "action": "api::page.page.find"
-    },
-    {
-      "action": "api::page.page.findOne"
     },
     {
       "action": "api::project-type.project-type.find"

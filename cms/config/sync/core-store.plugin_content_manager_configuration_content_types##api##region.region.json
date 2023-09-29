@@ -49,6 +49,21 @@
           "sortable": false
         }
       },
+      "project_changes": {
+        "edit": {
+          "label": "project_changes",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "project_changes",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -109,6 +124,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -119,13 +140,13 @@
             "name": "projects",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "project_changes",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "createdAt",
-        "updatedAt"
       ]
     }
   },
