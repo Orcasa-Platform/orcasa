@@ -164,6 +164,34 @@
           "sortable": false
         }
       },
+      "lat": {
+        "edit": {
+          "label": "Latitude",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "lat",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "long": {
+        "edit": {
+          "label": "Longitude",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "long",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -224,12 +252,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "capital",
-        "continent"
-      ],
       "edit": [
         [
           {
@@ -275,12 +297,24 @@
           {
             "name": "projects",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "lat",
+            "size": 4
           },
           {
-            "name": "project_changes",
-            "size": 6
+            "name": "long",
+            "size": 4
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "capital",
+        "continent"
       ]
     }
   },

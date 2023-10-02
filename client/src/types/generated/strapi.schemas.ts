@@ -650,6 +650,8 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
   region?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
   projects?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
   project_changes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectChanges;
+  lat?: number;
+  long?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
@@ -1851,6 +1853,8 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributes 
   region?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
   projects?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
   project_changes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectChanges;
+  lat?: number;
+  long?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
@@ -3306,6 +3310,8 @@ export type ProjectChangeCountryOfCoordinationDataAttributes = {
   region?: ProjectChangeCountryOfCoordinationDataAttributesRegion;
   projects?: ProjectChangeCountryOfCoordinationDataAttributesProjects;
   project_changes?: ProjectChangeCountryOfCoordinationDataAttributesProjectChanges;
+  lat?: number;
+  long?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: ProjectChangeCountryOfCoordinationDataAttributesCreatedBy;
@@ -4752,6 +4758,8 @@ export type ProjectCountryOfCoordinationDataAttributes = {
   region?: ProjectCountryOfCoordinationDataAttributesRegion;
   projects?: ProjectCountryOfCoordinationDataAttributesProjects;
   project_changes?: ProjectCountryOfCoordinationDataAttributesProjectChanges;
+  lat?: number;
+  long?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: ProjectCountryOfCoordinationDataAttributesCreatedBy;
@@ -7009,6 +7017,8 @@ export type OrganizationCountryDataAttributes = {
   region?: OrganizationCountryDataAttributesRegion;
   projects?: OrganizationCountryDataAttributesProjects;
   project_changes?: OrganizationCountryDataAttributesProjectChanges;
+  lat?: number;
+  long?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationCountryDataAttributesCreatedBy;
@@ -8851,6 +8861,8 @@ export interface Country {
   region?: CountryRegion;
   projects?: CountryProjects;
   project_changes?: CountryProjectChanges;
+  lat?: number;
+  long?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: CountryCreatedBy;
@@ -9194,6 +9206,8 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     region?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
     projects?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
     project_changes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectChanges;
+    lat?: number;
+    long?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
@@ -10138,6 +10152,8 @@ export type CountryRequestData = {
   region?: CountryRequestDataRegion;
   projects?: CountryRequestDataProjectsItem[];
   project_changes?: CountryRequestDataProjectChangesItem[];
+  lat?: number;
+  long?: number;
 };
 
 export type ContinentResponseMeta = { [key: string]: any };

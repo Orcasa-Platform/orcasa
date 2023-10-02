@@ -89,7 +89,9 @@
           "continent",
           "region",
           "projects",
-          "project_changes"
+          "project_changes",
+          "lat",
+          "long"
         ]
       },
       "conditions": []
@@ -114,7 +116,9 @@
           "continent",
           "region",
           "projects",
-          "project_changes"
+          "project_changes",
+          "lat",
+          "long"
         ]
       },
       "conditions": []
@@ -133,7 +137,9 @@
           "continent",
           "region",
           "projects",
-          "project_changes"
+          "project_changes",
+          "lat",
+          "long"
         ]
       },
       "conditions": []
