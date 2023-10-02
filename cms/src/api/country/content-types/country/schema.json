@@ -53,6 +53,12 @@
       "relation": "manyToMany",
       "target": "api::project-change.project-change",
       "mappedBy": "country_of_interventions"
+    },
+    "lat": {
+      "type": "float"
+    },
+    "long": {
+      "type": "float"
     }
   }
 }
