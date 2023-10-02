@@ -31,12 +31,12 @@
     },
     "short_description": {
       "type": "string",
-      "maxLength": 200,
+      "maxLength": 350,
       "required": true
     },
     "description": {
       "type": "text",
-      "maxLength": 1500
+      "maxLength": 3000
     },
     "country_of_coordination": {
       "type": "relation",

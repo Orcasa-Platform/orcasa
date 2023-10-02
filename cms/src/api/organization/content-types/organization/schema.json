@@ -4,7 +4,8 @@
   "info": {
     "singularName": "organization",
     "pluralName": "organizations",
-    "displayName": "Organization"
+    "displayName": "Organization",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -38,11 +39,11 @@
     "short_description": {
       "type": "text",
       "required": true,
-      "maxLength": 200
+      "maxLength": 350
     },
     "description": {
       "type": "text",
-      "maxLength": 1500
+      "maxLength": 3000
     },
     "country": {
       "type": "relation",
