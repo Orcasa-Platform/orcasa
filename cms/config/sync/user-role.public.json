@@ -55,6 +55,12 @@
       "action": "api::organization.organization.map"
     },
     {
+      "action": "api::page.page.find"
+    },
+    {
+      "action": "api::page.page.findOne"
+    },
+    {
       "action": "api::project-type.project-type.find"
     },
     {
