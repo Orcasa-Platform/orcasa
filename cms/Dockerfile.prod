@@ -27,7 +27,6 @@ COPY .env \
      favicon.png \
      package.json \
      entrypoint.sh \
-     Procfile \
      tsconfig.json \
      ./
 
