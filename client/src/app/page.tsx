@@ -23,10 +23,7 @@ export default async function HomePage() {
   return (
     <div className="h-screen w-screen bg-indigo-950/80">
       <img src={logo.src} alt="logo" className={`h-[${logo.height}-px] w-[${logo.height}-px]`} />
-      <div className="w-[640px] text-7xl font-semibold leading-[80px] text-white">
-        The Soil Carbon One-Stop Hub for Climate Action
-      </div>
-      <div className="flex">
+      <div className="flex h-[75%] items-center gap-4 p-10">
         {modules.map((module) => (
           <LinkBox key={module.href} {...module} />
         ))}
