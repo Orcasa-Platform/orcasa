@@ -153,6 +153,12 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::layer-group.layer-group",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::layer-group.layer-group",
       "properties": {
@@ -349,6 +355,12 @@
       "conditions": []
     },
     {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::organization.organization",
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::organization.organization",
       "properties": {
@@ -407,6 +419,12 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::page.page",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
       "subject": "api::page.page",
       "properties": {},
       "conditions": []
@@ -510,6 +528,12 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::project.project",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
       "subject": "api::project.project",
       "properties": {},
       "conditions": []
