@@ -39,7 +39,6 @@ ENV QGIS_SERVER_LOG_STDERR 1
 ENV QGIS_SERVER_LOG_LEVEL 2
 
 COPY cmd.sh /home/qgis/cmd.sh
-COPY data /data
 RUN chmod -R 777 /home/qgis/cmd.sh
 RUN chown qgis:qgis /home/qgis/cmd.sh
 

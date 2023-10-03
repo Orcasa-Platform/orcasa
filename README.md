@@ -9,6 +9,7 @@ The project seeks to address the issue of increasing carbon emissions from human
 This application is split into several parts, divided into their respective folders:
 - `/cms`: A content management system (CMS) built with Strapi, which is used to manage the content Network4C and the map application.
 - `/client`: A frontend application built using Next.js, which is used to display the content of the CMS and the map application.
+- `/qgis`: A docker image that contains a QGIS server.
 - `/infrastructure`: A Terraform configuration that deploys the client and CMS applications to AWS.
 
 
@@ -20,15 +21,6 @@ Start the client with:
 
 ```bash
 yarn client dev
-```
-
-
-## Types for API
-
-To generate the types for the API, run:
-
-```bash
-yarn types build
 ```
 
 ## Usage with Docker (recommended)
