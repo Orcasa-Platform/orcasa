@@ -12,18 +12,7 @@ This application is split into several parts, divided into their respective fold
 - `/qgis`: A docker image that contains a QGIS server.
 - `/infrastructure`: A Terraform configuration that deploys the client and CMS applications to AWS.
 
-
-### Client
-
-Copy the .env.default file to .env.local and fill in the NEXT_PUBLIC_API_URL field with the url of the API. (By default it's http://localhost:1337/api)
-
-Start the client with:
-
-```bash
-yarn client dev
-```
-
-## Usage with Docker (recommended)
+## Development usage with Docker (recommended)
 
 To run the app with docker, run:
 
@@ -32,3 +21,7 @@ docker-compose up --build
 ```
 
 Open the app in http://localhost:3000 for the client and http://localhost:1337 for the CMS.
+
+## Production usage with Docker
+
+See the respective README.md on each application folder.
