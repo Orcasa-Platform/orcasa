@@ -40,10 +40,41 @@
     "interaction_config": {
       "type": "json"
     },
-    "metadata": {
-      "type": "component",
-      "repeatable": false,
-      "component": "documentation.metadata"
+    "source": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "citation": {
+      "type": "string"
+    },
+    "cautions": {
+      "type": "text"
+    },
+    "related_publications": {
+      "type": "text"
+    },
+    "resource_contact_name": {
+      "type": "string"
+    },
+    "resource_contact_url": {
+      "type": "string"
+    },
+    "metadata_contact_name": {
+      "type": "string"
+    },
+    "metadata_contact_url": {
+      "type": "string"
     }
   }
 }

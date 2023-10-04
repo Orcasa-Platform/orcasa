@@ -19,6 +19,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::layer.layer"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }
