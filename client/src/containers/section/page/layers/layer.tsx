@@ -77,7 +77,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
   };
 
   return (
-    <li key={id} className="mb-4 space-y-2.5 bg-yellow-50 p-6">
+    <li key={id} className="mb-4 space-y-4 bg-yellow-50 p-6">
       <header className="flex justify-between space-x-2.5 py-1 pl-2">
         <h4 className="font-serif text-lg leading-7">{title}</h4>
         <div className="flex gap-4">
@@ -98,6 +98,16 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
           />
         </div>
       </header>
+      <div className="flex justify-end">
+        <a
+          href={source_url}
+          target="_blank"
+          rel="noreferrer"
+          className="font-semibold text-yellow-500"
+        >
+          {source}
+        </a>
+      </div>
     </li>
   );
 }
