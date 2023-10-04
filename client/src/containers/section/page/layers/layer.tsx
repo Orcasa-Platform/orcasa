@@ -3,6 +3,8 @@
 import { Info } from 'lucide-react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { cn } from '@/lib/classnames';
+
 import { layersAtom } from '@/store';
 
 import { LayerGroupLayersDataItem } from '@/types/generated/strapi.schemas';
@@ -75,15 +77,23 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
       </div>
     );
   };
-
+  const isActive = layers.includes(id);
   return (
-    <li key={id} className="mb-4 space-y-4 bg-yellow-50 p-6">
+    <li
+      key={id}
+      className={cn('mb-4 space-y-4 bg-yellow-50 p-6', { 'bg-slate-700 text-white': isActive })}
+    >
       <header className="flex justify-between space-x-2.5 py-1 pl-2">
         <h4 className="font-serif text-lg leading-7">{title}</h4>
         <div className="flex gap-4">
           <Dialog>
             <DialogTrigger asChild>
-              <Info className="relative h-6 w-6 hover:fill-white hover:stroke-slate-500" />
+              <Info
+                className={cn('relative h-6 w-6 cursor-pointer', {
+                  'hover:stroke-slate-300': isActive,
+                  'hover:stroke-slate-500': !isActive,
+                })}
+              />
             </DialogTrigger>
             <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
               <div className="font-serif text-2xl leading-10">{title}</div>
@@ -103,7 +113,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
           href={source_url}
           target="_blank"
           rel="noreferrer"
-          className="font-semibold text-yellow-500"
+          className="font-semibold text-yellow-500 hover:text-yellow-300"
         >
           {source}
         </a>
