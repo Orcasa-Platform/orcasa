@@ -101,11 +101,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
               {fields.map(renderField)}
             </DialogContent>
           </Dialog>
-          <Switch
-            checked={layers.includes(id)}
-            onCheckedChange={handleLayerChange}
-            color="yellow"
-          />
+          <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
         </div>
       </header>
       <div className="flex justify-end">
