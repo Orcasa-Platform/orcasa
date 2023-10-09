@@ -6,7 +6,8 @@ const GeospatialDataPage = () => {
         interventions.
       </h1>
       <p>
-        Give context to your research visualising scientifically-reliable soil-related map layers.
+        Give context to your research visualising scientifically-reliable map layers related to soil
+        carbon.
       </p>
     </>
   );
