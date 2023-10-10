@@ -15,7 +15,7 @@ export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({ className = ''
         {items.map(({ color }) => (
           <li
             key={`${color}`}
-            className="h-2 flex-shrink-0"
+            className="h-4 flex-shrink-0"
             style={{
               width: `${100 / items.length}%`,
               backgroundColor: color,
@@ -24,11 +24,15 @@ export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({ className = ''
         ))}
       </ul>
 
-      <ul className="mt-1 flex w-full">
+      <ul className="mt-3 flex w-full">
         {items.map(({ value }) => (
           <li
             key={`${value}`}
-            className="flex-shrink-0 text-center text-xs"
+            className={cn({
+              'relative flex-shrink-0 text-center text-xs text-gray-500': true,
+              'before:absolute before:-top-2 before:left-1/2 before:block before:h-1 before:w-px before:bg-gray-700':
+                value !== undefined && value !== null,
+            })}
             style={{
               width: `${100 / items.length}%`,
             }}

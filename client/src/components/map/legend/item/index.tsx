@@ -69,7 +69,9 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
         />
       </header>
 
-      {validChildren && <div className="-ml-0.5 pl-5 pr-7">{children}</div>}
+      {validChildren && (
+        <div className={cn(sortable?.handle ? 'px-10 pb-5' : 'px-3 pb-5')}>{children}</div>
+      )}
     </div>
   );
 };
