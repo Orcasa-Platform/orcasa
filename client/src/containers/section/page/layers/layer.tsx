@@ -88,14 +88,9 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
         <div className="flex items-center gap-4">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="ghost" size="asChild">
+              <Button variant="vanilla" size="asChild" className={cn({ 'text-white': isActive })}>
                 <span className="sr-only">Info button</span>
-                <Info
-                  className={cn('relative h-6 w-6 cursor-pointer', {
-                    'hover:stroke-slate-300': isActive,
-                    'hover:stroke-slate-500': !isActive,
-                  })}
-                />
+                <Info className="h-6 w-6" />
               </Button>
             </DialogTrigger>
             <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
