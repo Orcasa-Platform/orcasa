@@ -62,7 +62,6 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
     { key: 'Metadata Contact', value: metadata_contact_name || '', url: metadata_contact_url },
     { key: 'Source', value: source || '', url: source_url },
   ].filter((f) => f.value !== '');
-
   const renderField = ({ key, value, url }: Field) => {
     if (!key || !value) return null;
     return (
@@ -73,7 +72,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
             {value}
           </a>
         ) : (
-          <div>{value}</div>
+          <div className="whitespace-pre-wrap">{value}</div>
         )}
       </div>
     );
@@ -101,7 +100,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
             </DialogTrigger>
             <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
               <div className="font-serif text-2xl leading-10">{title}</div>
-              <div className="text-sm">{description}</div>
+              <div className="whitespace-pre-wrap text-sm">{description}</div>
               {fields.map(renderField)}
             </DialogContent>
           </Dialog>
