@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { capitalize } from 'lodash';
 import { Filter, Plus } from 'lucide-react';
 
@@ -5,6 +7,7 @@ import { cn } from '@/lib/classnames';
 
 import { useNetworks } from '@/hooks/networks';
 
+import NetworkDetailPanel from '@/containers/section/page/networks/network-detail-panel';
 import NetworkList from '@/containers/section/page/networks/network-list';
 
 import { Button } from '@/components/ui/button';
@@ -46,13 +49,33 @@ const CategoryButton = ({ category, count }: { category: string; count: number }
   </Button>
 );
 
+export type OpenDetails = {
+  id: number;
+  type: 'project' | 'organization';
+} | null;
+
 const NetworkPage = () => {
   const page = 1;
   const { count, ...networksResponse } = useNetworks({ page });
+  const [networkOpened, setNetworkOpened] = useState<OpenDetails>(null);
+  const networkPanelOpened =
+    (networkOpened &&
+      networksResponse?.networks?.find(
+        (n) => n.id === networkOpened.id && n.type === networkOpened.type,
+      )) ||
+    null;
+  const setOpenDetails = (details: OpenDetails) =>
+    details ? setNetworkOpened(details) : setNetworkOpened(null);
+
   return (
     <>
-      <h1 className="font-serif text-3.5xl">
-        Discover <span className="font-semibold">who does what</span> on soils carbon.
+      <NetworkDetailPanel
+        data={networkPanelOpened}
+        type={networkOpened?.type}
+        setOpenDetails={setOpenDetails}
+      />
+      <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
+        Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
       </h1>
       <Search
         onChange={() => {
@@ -66,7 +89,7 @@ const NetworkPage = () => {
         </div>
         <FilterButton text="More filters" />
       </div>
-      <NetworkList {...networksResponse} />
+      <NetworkList {...networksResponse} setOpenDetails={setOpenDetails} />
       <div className="flex items-center justify-between">
         <div className="font-serif text-xl font-semibold leading-[30px]">
           Help us building the soil-carbon network
