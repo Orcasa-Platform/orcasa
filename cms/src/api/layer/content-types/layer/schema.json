@@ -49,9 +49,6 @@
     "description": {
       "type": "text"
     },
-    "name": {
-      "type": "string"
-    },
     "license": {
       "type": "string"
     },
