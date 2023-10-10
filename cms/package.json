@@ -35,6 +35,6 @@
     "node": "~18.17",
     "npm": ">=6.0.0"
   },
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@3.6.3",
   "license": "MIT"
 }

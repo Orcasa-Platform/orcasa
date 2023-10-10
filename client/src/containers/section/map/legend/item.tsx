@@ -11,8 +11,6 @@ import { useGetLayersId } from '@/types/generated/layer';
 import { LayerTyped, LegendConfig } from '@/types/layers';
 import { LegendType } from '@/types/map';
 
-import Metadata from '@/containers/metadata';
-
 import LegendItem from '@/components/map/legend/item';
 import {
   LegendTypeBasic,
@@ -59,7 +57,6 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
   const attributes = data?.data?.attributes as LayerTyped;
   const legend_config = attributes?.legend_config;
   const params_config = attributes?.params_config;
-  const metadata = attributes?.metadata;
   const settingsManager = getSettingsManager(attributes);
 
   const LEGEND_COMPONENT = useMemo(() => {
@@ -92,13 +89,7 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
-      <LegendItem
-        id={id}
-        name={attributes?.title}
-        settingsManager={settingsManager}
-        {...props}
-        InfoContent={!!metadata && <Metadata {...attributes} />}
-      >
+      <LegendItem id={id} name={attributes?.title} settingsManager={settingsManager} {...props}>
         {LEGEND_COMPONENT}
       </LegendItem>
     </ContentLoader>
