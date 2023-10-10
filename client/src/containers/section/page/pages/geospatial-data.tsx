@@ -5,13 +5,10 @@ const GeospatialDataPage = () => {
         <span className="text-slate-700">
           Give context to your research by scientifically-reliable{' '}
         </span>
-        <span className="font-semibold text-yellow-400">soil-related geospatial data</span>
+        <span className="font-semibold text-yellow-400">map layers related to soil carbon</span>
         <span className="text-slate-700">.</span>
       </h1>
-      <p>
-        Give context to your research visualising scientifically-reliable map layers related to soil
-        carbon.
-      </p>
+      <p></p>
     </>
   );
 };
