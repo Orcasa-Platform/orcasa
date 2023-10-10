@@ -12,6 +12,7 @@ const buttonVariants = cva(
       variant: {
         // From the UI kit
         primary: 'bg-gray-700 hover:bg-gray-800 text-white',
+        vanilla: '',
         // Not reviewed yet
         default: 'border border-blue-400 px-4 py-2 hover:bg-gray-50 text-sky-700',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
@@ -29,6 +30,7 @@ const buttonVariants = cva(
       size: {
         // From the UI kit
         xs: 'text-xs px-2 py-1',
+        'icon-sm': 'h-6 w-6',
         // Not reviewed yet
         default: 'h-10 px-4 py-2',
         sm: 'h-9 rounded-md px-3',
@@ -46,7 +48,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

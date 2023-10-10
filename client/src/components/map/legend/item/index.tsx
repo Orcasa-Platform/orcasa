@@ -7,7 +7,7 @@ import { GripVertical } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 import { LegendItemProps } from '@/components/map/legend/types';
-import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 
 import LegendItemToolbar from './toolbar';
 
@@ -23,15 +23,11 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
   // settings
   settingsManager,
   settings,
-  // components
-  InfoContent,
   // events
   onChangeOpacity,
   onChangeVisibility,
-  onChangeExpand,
+  onRemove,
 }) => {
-  const { expand } = settings || {};
-
   const validChildren = useMemo(() => {
     const chldn = Children.map(children, (Child) => {
       return isValidElement(Child);
@@ -39,63 +35,42 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
     return chldn && chldn.some((c) => !!c);
   }, [children]);
 
-  const acordionState = expand ? `${id}` : undefined;
-
   return (
-    <Accordion type="single" value={acordionState} asChild>
-      <AccordionItem value={`${id}`} asChild>
+    <div
+      className={cn({
+        'mb-px w-full bg-white font-sans shadow': true,
+        [className]: !!className,
+      })}
+    >
+      <header className="sticky top-0 z-10 mb-1 flex items-start justify-between space-x-2 border-t border-slate-200 bg-white p-3">
         <div
           className={cn({
-            'mb-px w-full shadow': true,
-            [className]: !!className,
+            'relative flex items-start space-x-2': true,
+            '-ml-1': sortable?.handle,
           })}
         >
-          <header className="sticky top-0 z-10 flex items-start justify-between space-x-8 border-t border-slate-200 bg-white px-2.5 py-2.5">
-            <div
-              className={cn({
-                'relative flex items-start space-x-0.5': true,
-                '-ml-1': sortable?.handle,
-              })}
-            >
-              {sortable?.handle && (
-                <button
-                  aria-label="drag"
-                  type="button"
-                  className="mt-0.5 cursor-pointer text-slate-800 transition-colors hover:text-slate-800/50"
-                  {...listeners}
-                >
-                  <GripVertical className="h-5 w-5" />
-                </button>
-              )}
-
-              <div
-                className={cn({
-                  'mt-px text-sm font-semibold text-slate-800': true,
-                })}
-              >
-                {name}
-              </div>
-            </div>
-
-            {/* TOOLBAR */}
-            <LegendItemToolbar
-              settings={settings}
-              settingsManager={settingsManager}
-              onChangeOpacity={onChangeOpacity}
-              onChangeVisibility={onChangeVisibility}
-              onChangeExpand={onChangeExpand}
-              InfoContent={InfoContent}
-            />
-          </header>
-
-          {validChildren && (
-            <AccordionContent className="grow bg-white px-2.5 transition-all">
-              <div className="-ml-0.5 pl-5 pr-7">{children}</div>
-            </AccordionContent>
+          {sortable?.handle && (
+            <Button type="button" variant="vanilla" size="icon-sm" {...listeners}>
+              <span className="sr-only">Click and drag to reorder</span>
+              <GripVertical className="h-5 w-5" />
+            </Button>
           )}
+
+          <div className="text-base font-semibold text-gray-700">{name}</div>
         </div>
-      </AccordionItem>
-    </Accordion>
+
+        {/* TOOLBAR */}
+        <LegendItemToolbar
+          settings={settings}
+          settingsManager={settingsManager}
+          onChangeOpacity={onChangeOpacity}
+          onChangeVisibility={onChangeVisibility}
+          onRemove={onRemove}
+        />
+      </header>
+
+      {validChildren && <div className="-ml-0.5 pl-5 pr-7">{children}</div>}
+    </div>
   );
 };
 

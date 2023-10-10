@@ -14,7 +14,7 @@ export const Legend: React.FC<LegendProps> = ({
   sortable,
   onChangeOrder,
 }: LegendProps) => {
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(true);
 
   const hasChildren = useMemo(() => {
     return !!Children.count(Children.toArray(children).filter((c) => isValidElement(c)));

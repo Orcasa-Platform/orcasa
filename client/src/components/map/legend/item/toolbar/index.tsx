@@ -1,32 +1,36 @@
 import { useState } from 'react';
 
 import { PopoverArrow } from '@radix-ui/react-popover';
-import { Eye, Info, EyeOff, Droplet, ChevronDown } from 'lucide-react';
+import { Eye, EyeOff, Droplet, X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
 import { LegendItemToolbarProps } from '@/components/map/legend/types';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
-import LegendItemButton from './button';
 import Slider from './slider';
 
 export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
-  InfoContent,
   settings,
   settingsManager,
   onChangeOpacity,
   onChangeVisibility,
-  onChangeExpand,
+  onRemove,
 }: LegendItemToolbarProps) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const { opacity = 1, visibility = true, expand = true } = settings || {};
+  const { opacity = 1, visibility = true } = settings || {};
 
   return (
-    <div id="legend-toolbar" className="mt-0.5 flex divide-x">
-      <div className="flex space-x-1 pr-2">
+    <div id="legend-toolbar" className="flex space-x-2 divide-x divide-gray-200">
+      <div className="flex space-x-2">
         {settingsManager?.opacity && (
           <div className="flex items-start">
             <Popover
@@ -36,22 +40,33 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
             >
               <Tooltip delayDuration={500}>
                 <PopoverTrigger asChild>
-                  <TooltipTrigger
-                    type="button"
-                    aria-label="Change layer opacity"
-                    className={cn({
-                      'pointer-events-none': popoverOpen,
-                    })}
-                  >
-                    <LegendItemButton Icon={Droplet} value={opacity} selected />
+                  <TooltipTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="vanilla"
+                      size="icon-sm"
+                      className={cn({
+                        'pointer-events-none': popoverOpen,
+                      })}
+                    >
+                      <Droplet className="flex h-5 w-5" />
+                      <Droplet
+                        className="absolute flex h-5 w-5 fill-current stroke-none"
+                        style={{
+                          clipPath: `polygon(0 62%, 100% 62%, 100% 100%, 0 100%, 0 62%)`,
+                        }}
+                      />
+                      <span className="sr-only">Change opacity</span>
+                    </Button>
                   </TooltipTrigger>
                 </PopoverTrigger>
 
-                <TooltipContent align="end" alignOffset={-10}>
-                  <div className="text-xxs">Opacity</div>
-
-                  <TooltipArrow className="fill-white" width={10} height={5} />
-                </TooltipContent>
+                <TooltipPortal>
+                  <TooltipContent align="end" alignOffset={-10}>
+                    <div className="text-xxs">Opacity</div>
+                    <TooltipArrow className="fill-white" width={10} height={5} />
+                  </TooltipContent>
+                </TooltipPortal>
               </Tooltip>
 
               <PopoverContent
@@ -84,93 +99,59 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
         {settingsManager?.visibility && (
           <div className="flex items-start">
             <Tooltip delayDuration={500}>
-              <TooltipTrigger
-                type="button"
-                aria-label={visibility ? 'Hide layer' : 'Show layer'}
-                className={cn({
-                  'pointer-events-none': popoverOpen,
-                })}
-                onClick={() => {
-                  if (onChangeVisibility) onChangeVisibility(!visibility);
-                }}
-              >
-                <LegendItemButton Icon={visibility ? Eye : EyeOff} />
+              <TooltipTrigger asChild>
+                <Button
+                  type="button"
+                  variant="vanilla"
+                  size="icon-sm"
+                  className={cn({
+                    'pointer-events-none': popoverOpen,
+                  })}
+                  onClick={() => {
+                    if (onChangeVisibility) onChangeVisibility(!visibility);
+                  }}
+                >
+                  {!!visibility && <Eye className="flex h-5 w-5" />}
+                  {!visibility && <EyeOff className="flex h-5 w-5" />}
+                  <span className="sr-only">{visibility ? 'Hide layer' : 'Show layer'}</span>
+                </Button>
               </TooltipTrigger>
 
-              <TooltipContent side="top" align="end" alignOffset={-10}>
-                <div className="text-xxs">{visibility ? 'Hide layer' : 'Show layer'}</div>
-
-                <TooltipArrow className="fill-white" width={10} height={5} />
-              </TooltipContent>
-            </Tooltip>
-          </div>
-        )}
-
-        {settingsManager?.info && (
-          <div className="flex items-start">
-            <Dialog>
-              <Tooltip delayDuration={500}>
-                <DialogTrigger asChild>
-                  <TooltipTrigger
-                    type="button"
-                    aria-label="Show info"
-                    className={cn({
-                      'pointer-events-none': popoverOpen,
-                    })}
-                  >
-                    <LegendItemButton Icon={Info} />
-                  </TooltipTrigger>
-                </DialogTrigger>
-
+              <TooltipPortal>
                 <TooltipContent side="top" align="end" alignOffset={-10}>
-                  <div className="text-xxs">Show info</div>
-
+                  <div className="text-xxs">{visibility ? 'Hide layer' : 'Show layer'}</div>
                   <TooltipArrow className="fill-white" width={10} height={5} />
                 </TooltipContent>
-
-                <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
-                  {InfoContent}
-                </DialogContent>
-              </Tooltip>
-            </Dialog>
+              </TooltipPortal>
+            </Tooltip>
           </div>
         )}
       </div>
 
-      {settingsManager?.expand && (
-        <div className="pl-2">
-          <div className="flex items-start">
-            <Tooltip delayDuration={500}>
-              {/* <AccordionTrigger> */}
-              <TooltipTrigger
-                type="button"
-                aria-label={expand ? 'Collapse layer' : 'Expand layer'}
-                className={cn({
-                  'pointer-events-none': popoverOpen,
-                })}
-                onClick={() => {
-                  if (onChangeExpand) onChangeExpand(!expand);
-                }}
-              >
-                <LegendItemButton
-                  Icon={ChevronDown}
-                  className={cn({
-                    'rotate-180': !expand,
-                    'rotate-0 transform transition-transform': expand,
-                  })}
-                />
-              </TooltipTrigger>
-              {/* </AccordionTrigger> */}
+      <div className="flex items-start pl-2">
+        <Tooltip delayDuration={500}>
+          <TooltipTrigger asChild>
+            <Button
+              type="button"
+              variant="vanilla"
+              size="icon-sm"
+              onClick={() => {
+                if (onRemove) onRemove();
+              }}
+            >
+              <X className="flex h-5 w-5" />
+              <span className="sr-only">Remove layer</span>
+            </Button>
+          </TooltipTrigger>
 
-              <TooltipContent side="top" align="end" alignOffset={-10}>
-                <div className="text-xxs">{expand ? 'Collapse layer' : 'Expand layer'}</div>
-
-                <TooltipArrow className="fill-white" width={10} height={5} />
-              </TooltipContent>
-            </Tooltip>
-          </div>
-        </div>
-      )}
+          <TooltipPortal>
+            <TooltipContent side="top" align="end" alignOffset={-10}>
+              <div className="text-xxs">Remove layer</div>
+              <TooltipArrow className="fill-white" width={10} height={5} />
+            </TooltipContent>
+          </TooltipPortal>
+        </Tooltip>
+      </div>
     </div>
   );
 };

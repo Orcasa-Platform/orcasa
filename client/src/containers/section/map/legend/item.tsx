@@ -29,7 +29,7 @@ const LEGEND_TYPES: Record<LegendType, React.FC<LegendTypeProps>> = {
 type MapLegendItemProps = LegendItemProps;
 
 const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManager => {
-  const { params_config, legend_config, metadata } = data;
+  const { params_config, metadata } = data;
 
   if (!params_config?.length) return {};
   const p = params_config.reduce((acc: Record<string, boolean>, { key }) => {
@@ -43,7 +43,6 @@ const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManage
   return {
     ...p,
     info: !!metadata,
-    expand: !!legend_config && !!legend_config.type,
   };
 };
 

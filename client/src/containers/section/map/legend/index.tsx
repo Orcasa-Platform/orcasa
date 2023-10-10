@@ -54,23 +54,21 @@ const MapLegends = ({ className = '' }) => {
     [setLayersSettings],
   );
 
-  const handleChangeExpand = useCallback(
-    (id: number, expand: boolean) =>
-      setLayersSettings((prev) => ({
-        ...prev,
-        [id]: {
-          ...prev[id],
-          expand,
-        },
-      })),
-    [setLayersSettings],
+  const handleRemove = useCallback(
+    (id: number) => {
+      const newSettings = { ...layersSettings };
+      delete newSettings[id];
+      setLayersSettings(newSettings);
+      setLayers(layers.filter((layerId) => layerId !== id));
+    },
+    [layers, layersSettings, setLayers, setLayersSettings],
   );
 
   const sortable = layers?.length > 1;
 
   const ITEMS = useMemo(() => {
     return layers.map((layer) => {
-      const settings = layersSettings[layer] ?? { opacity: 1, visibility: true, expand: true };
+      const settings = layersSettings[layer] ?? { opacity: 1, visibility: true };
 
       return (
         <MapLegendItem
@@ -83,8 +81,8 @@ const MapLegends = ({ className = '' }) => {
           onChangeVisibility={(visibility: boolean) => {
             handleChangeVisibility(layer, visibility);
           }}
-          onChangeExpand={(expand: boolean) => {
-            handleChangeExpand(layer, expand);
+          onRemove={() => {
+            handleRemove(layer);
           }}
           sortable={{
             enabled: sortable,
@@ -93,14 +91,7 @@ const MapLegends = ({ className = '' }) => {
         />
       );
     });
-  }, [
-    layers,
-    layersSettings,
-    sortable,
-    handleChangeOpacity,
-    handleChangeVisibility,
-    handleChangeExpand,
-  ]);
+  }, [layers, layersSettings, sortable, handleChangeOpacity, handleChangeVisibility, handleRemove]);
 
   return (
     <div className="absolute bottom-16 right-6 z-10 w-full max-w-xs">
