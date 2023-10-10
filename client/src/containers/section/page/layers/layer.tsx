@@ -9,6 +9,7 @@ import { layersAtom } from '@/store';
 
 import { LayerGroupLayersDataItem } from '@/types/generated/strapi.schemas';
 
+import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Switch } from '@/components/ui/switch';
 
@@ -85,15 +86,18 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
     >
       <header className="flex justify-between space-x-2.5 py-1 pl-2">
         <h4 className="font-serif text-lg leading-7">{title}</h4>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <Dialog>
             <DialogTrigger asChild>
-              <Info
-                className={cn('relative h-6 w-6 cursor-pointer', {
-                  'hover:stroke-slate-300': isActive,
-                  'hover:stroke-slate-500': !isActive,
-                })}
-              />
+              <Button variant="ghost" size="asChild">
+                <span className="sr-only">Info button</span>
+                <Info
+                  className={cn('relative h-6 w-6 cursor-pointer', {
+                    'hover:stroke-slate-300': isActive,
+                    'hover:stroke-slate-500': !isActive,
+                  })}
+                />
+              </Button>
             </DialogTrigger>
             <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
               <div className="font-serif text-2xl leading-10">{title}</div>
