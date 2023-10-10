@@ -38,8 +38,8 @@ export const Legend: React.FC<LegendProps> = ({
           {opened ? 'Hide legend' : 'Show legend'}
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className="relative flex h-full flex-col overflow-hidden">
-        <div className="overflow-y-auto overflow-x-hidden">
+      <CollapsibleContent className="relative -mx-1 flex h-full flex-col overflow-hidden">
+        <div className="overflow-y-auto overflow-x-hidden px-1">
           {!!sortable.enabled && !!onChangeOrder && (
             <SortableList sortable={sortable} onChangeOrder={onChangeOrder}>
               {children}

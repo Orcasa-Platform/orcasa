@@ -46,7 +46,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
       <AccordionItem value={`${id}`} asChild>
         <div
           className={cn({
-            'mb-1 w-full border border-slate-200 border-t-transparent': true,
+            'mb-px w-full shadow': true,
             [className]: !!className,
           })}
         >
