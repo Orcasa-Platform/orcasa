@@ -10,7 +10,7 @@ import { NetworkResponse } from '@/hooks/networks';
 
 import type { OpenDetails } from '@/containers/section/page/pages/network';
 
-import { Button } from '@/components/ui/button';
+import { SlidingButton, Button } from '@/components/ui/button';
 type ProjectWithType = { type: 'project'; attributes: Project; id: number };
 type OrganizationWithType = { type: 'organization'; attributes: Organization; id: number };
 
@@ -192,21 +192,14 @@ export default function NetworkDetailPanel({
         },
       )}
     >
-      <Button
-        size="icon"
-        className="mb-6"
+      <SlidingButton
         onClick={() => {
           setOpenDetails(null);
         }}
-      >
-        <div className="absolute left-[1px] top-[8px] font-['Roboto'] text-xs font-normal leading-[18px] text-slate-700 opacity-0">
-          Back to results
-        </div>
-        <div className="inline-flex h-[34px] w-[34px] flex-col items-start justify-start gap-2.5 bg-gray-100 px-2 py-2.5">
-          <ArrowLeft className="h-8 w-8 transition-transform" />
-        </div>
-      </Button>
-      <div className="mb-6 text-[34px] leading-[50px]">{name}</div>
+        text="Back to Results"
+        Icon={ArrowLeft}
+      />
+      <div className="mb-6 mt-10 text-[34px] leading-[50px]">{name}</div>
       <div className="flex flex-col gap-4">
         {fields.map((field) => (
           <Field key={field.label} {...field} type={type} />

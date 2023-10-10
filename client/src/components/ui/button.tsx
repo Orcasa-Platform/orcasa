@@ -62,4 +62,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = 'Button';
 
-export { Button, buttonVariants };
+const SlidingButton = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps & { Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; text: string }
+>(({ className, asChild = false, Icon, text, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'button';
+  return (
+    <>
+      <Comp className={cn('group flex items-center justify-start', className)} ref={ref} {...props}>
+        <Icon className="mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 group-hover:bg-slate-700 group-hover:text-white" />
+        <span className="-translate-x-[50%] text-xs opacity-0 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100">
+          {text}
+        </span>
+      </Comp>
+    </>
+  );
+});
+
+SlidingButton.displayName = 'SlidingButton';
+
+export { Button, SlidingButton, buttonVariants };
