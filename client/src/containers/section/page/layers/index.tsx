@@ -1,14 +1,24 @@
 'use client';
 
-import type { LayerGroupLayers } from '@/types/generated/strapi.schemas';
+import type {
+  LayerGroupLayers,
+  LayerGroupLayersDataItemAttributes,
+} from '@/types/generated/strapi.schemas';
 
 import Layer from '@/containers/section/page/layers/layer';
 
-export default function Layers({ data }: { data: LayerGroupLayers | undefined }) {
+export default function Layers({
+  data,
+  description,
+}: {
+  data: LayerGroupLayers | undefined;
+  description: LayerGroupLayersDataItemAttributes['description'];
+}) {
   return (
     <div>
       {data?.data && (
         <ul>
+          {description && <div className="mb-8">{description}</div>}
           {data.data.map((l) => {
             if (!l.id || !l.attributes) return null;
             return <Layer key={l.id} {...l} />;

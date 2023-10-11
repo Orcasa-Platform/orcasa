@@ -6116,7 +6116,6 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributes = {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
@@ -8326,7 +8325,6 @@ export type LayerGroupLayersDataItemAttributes = {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
@@ -8624,7 +8622,6 @@ export interface Layer {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
@@ -8850,7 +8847,6 @@ export type LayerRequestData = {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;

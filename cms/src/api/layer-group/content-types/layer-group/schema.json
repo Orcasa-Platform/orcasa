@@ -22,6 +22,9 @@
     },
     "order": {
       "type": "integer"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
