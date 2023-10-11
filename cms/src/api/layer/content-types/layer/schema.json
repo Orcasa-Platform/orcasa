@@ -72,6 +72,9 @@
     },
     "metadata_contact_url": {
       "type": "string"
+    },
+    "has_bounds_rectangle": {
+      "type": "boolean"
     }
   }
 }
