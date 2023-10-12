@@ -12,6 +12,7 @@ import { useGetLayersId } from '@/types/generated/layer';
 import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
 import { Config, LayerTyped } from '@/types/layers';
 
+import BoundsLayer from '@/components/map/layers/bounds-layer';
 import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
 import MapboxLayer from '@/components/map/layers/mapbox-layer';
 
@@ -69,7 +70,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
   const { type } = data.data.attributes as LayerTyped;
 
   if (type === 'mapbox') {
-    const { config, params_config } = data.data.attributes;
+    const { config, params_config, highlighted_bounds } = data.data.attributes;
 
     const c = parseConfig<Config>({
       config,
@@ -77,16 +78,23 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       settings,
     });
 
+    const bounds = highlighted_bounds as number[][] | null;
+
     if (!c) return null;
 
     return (
-      <MapboxLayer
-        id={`${id}-layer`}
-        beforeId={beforeId}
-        config={c}
-        onAdd={handleAddMapboxLayer}
-        onRemove={handleRemoveMapboxLayer}
-      />
+      <>
+        <MapboxLayer
+          id={`${id}-layer`}
+          beforeId={beforeId}
+          config={c}
+          onAdd={handleAddMapboxLayer}
+          onRemove={handleRemoveMapboxLayer}
+        />
+        {bounds && bounds.length > 0 && (
+          <BoundsLayer id={`${id}-bounds-layer`} config={c} bounds={bounds} beforeId={beforeId} />
+        )}
+      </>
     );
   }
 

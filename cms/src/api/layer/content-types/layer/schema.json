@@ -72,6 +72,9 @@
     },
     "metadata_contact_url": {
       "type": "string"
+    },
+    "highlighted_bounds": {
+      "type": "json"
     }
   }
 }

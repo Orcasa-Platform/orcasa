@@ -65,7 +65,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
   const renderField = ({ key, value, url }: Field) => {
     if (!key || !value) return null;
     return (
-      <div className="flex gap-10 text-sm">
+      <div key={key} className="flex gap-10 text-sm">
         <div className="w-[134px] min-w-[134px] font-semibold">{key}</div>
         {url ? (
           <a href={url} target="_blank" rel="noreferrer" className="font-semibold text-yellow-500">
