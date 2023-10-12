@@ -23,6 +23,7 @@ import { useGetLayers } from '@/types/generated/layer';
 import type { LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
 
+import { useMapPadding } from '@/hooks/map';
 import { useDefaultBasemap } from '@/hooks/pages';
 
 import Popup from '@/containers/section/map/popup';
@@ -45,23 +46,33 @@ const Legend = dynamic(() => import('@/containers/section/map/legend'), {
   ssr: false,
 });
 
-const DEFAULT_PROPS: CustomMapProps = {
-  id: 'default',
-  initialViewState: {
-    longitude: 0,
-    latitude: 20,
-    zoom: 2,
-    pitch: 0,
-    bearing: 0,
-    bounds: [-159.86, 6.31, -65.75, 60.67],
-  },
-  minZoom: 2,
-  maxZoom: 20,
+const getMapsDefaultProps = (padding: {
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+}): CustomMapProps => {
+  return {
+    id: 'default',
+    initialViewState: {
+      longitude: 0,
+      latitude: 20,
+      zoom: 1,
+      pitch: 0,
+      bearing: 0,
+      // The southern longitude doesn't go up to -90 on purpose so that the map looks better by
+      // default i.e. less of the Antarctica is shown
+      bounds: [-180, -80, 180, 90],
+      padding,
+    },
+    minZoom: 1,
+    maxZoom: 20,
+  };
 };
 
 export default function MapContainer({ section }: { section: Section }) {
-  const { id, initialViewState, minZoom, maxZoom } = DEFAULT_PROPS;
-
+  const padding = useMapPadding();
+  const { id, initialViewState, minZoom, maxZoom } = getMapsDefaultProps(padding);
   const { [id]: map } = useMap();
 
   const bbox = useRecoilValue(bboxAtom);
@@ -86,6 +97,12 @@ export default function MapContainer({ section }: { section: Section }) {
     }
   }, [setMapSettings, defaultBasemap]);
 
+  useEffect(() => {
+    if (map) {
+      map.easeTo({ padding, duration: 500 });
+    }
+  }, [padding, map]);
+
   const { data: layersInteractiveData } = useGetLayers(
     {
       filters: {
@@ -106,17 +123,11 @@ export default function MapContainer({ section }: { section: Section }) {
       return {
         bbox: tmpBbox,
         options: {
-          padding: {
-            top: 50,
-            bottom: 50,
-            // left: sidebarOpen ? 640 + 50 : 50,
-            left: 50,
-            right: 50,
-          },
+          padding,
         },
       };
     }
-  }, [tmpBbox]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [tmpBbox, padding]);
 
   const handleMapViewStateChange = useCallback(() => {
     if (map) {

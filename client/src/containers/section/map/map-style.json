@@ -34,7 +34,7 @@
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
       ],
       "maxzoom": 12,
-      "minzoom": 3,
+      "minzoom": 1,
       "layout": { "visibility": "none" }
     },
     "basemap-light": {
@@ -44,7 +44,7 @@
         "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
       ],
       "maxzoom": 12,
-      "minzoom": 3,
+      "minzoom": 1,
       "layout": { "visibility": "none" }
     },
     "labels": {

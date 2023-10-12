@@ -37,7 +37,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <div className="absolute left-0 z-50 h-full w-[117px]">
+    <div className="js-main-nav absolute left-0 z-50 h-full w-[117px]">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-slate-700 py-6">
         <Link href="/">
           <Icon icon={Logo} className="h-[68px] w-[69px]" />
