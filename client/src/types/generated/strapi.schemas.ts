@@ -6124,6 +6124,7 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributes = {
   resource_contact_url?: string;
   metadata_contact_name?: string;
   metadata_contact_url?: string;
+  highlighted_bounds?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8333,6 +8334,7 @@ export type LayerGroupLayersDataItemAttributes = {
   resource_contact_url?: string;
   metadata_contact_name?: string;
   metadata_contact_url?: string;
+  highlighted_bounds?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8630,6 +8632,7 @@ export interface Layer {
   resource_contact_url?: string;
   metadata_contact_name?: string;
   metadata_contact_url?: string;
+  highlighted_bounds?: unknown;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8855,6 +8858,7 @@ export type LayerRequestData = {
   resource_contact_url?: string;
   metadata_contact_name?: string;
   metadata_contact_url?: string;
+  highlighted_bounds?: unknown;
 };
 
 export interface LayerRequest {

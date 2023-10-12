@@ -70,7 +70,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
   const { type } = data.data.attributes as LayerTyped;
 
   if (type === 'mapbox') {
-    const { config, params_config, has_bounds_rectangle } = data.data.attributes;
+    const { config, params_config, highlighted_bounds } = data.data.attributes;
 
     const c = parseConfig<Config>({
       config,
@@ -78,11 +78,12 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       settings,
     });
 
+    const bounds = highlighted_bounds as number[][] | null;
+
     if (!c) return null;
 
     return (
       <>
-        {has_bounds_rectangle && <BoundsLayer id={`${id}-bounds-layer`} />}
         <MapboxLayer
           id={`${id}-layer`}
           beforeId={beforeId}
@@ -90,6 +91,9 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
           onAdd={handleAddMapboxLayer}
           onRemove={handleRemoveMapboxLayer}
         />
+        {bounds && bounds.length > 0 && (
+          <BoundsLayer id={`${id}-bounds-layer`} config={c} bounds={bounds} beforeId={beforeId} />
+        )}
       </>
     );
   }
