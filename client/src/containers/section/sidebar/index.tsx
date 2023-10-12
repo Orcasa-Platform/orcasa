@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo } from 'react';
+
 import { ChevronLeft } from 'lucide-react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
@@ -24,21 +26,22 @@ export default function Sidebar({
   const open = useRecoilValue(sidebarOpenAtom);
   const setOpen = useSetRecoilState(sidebarOpenAtom);
   const variant: OpenerVariant = useTheme('opener');
-  const maxWidth = () => {
+
+  const widthClassName = useMemo(() => {
     const sectionMaxWidth: Partial<Record<Section, string>> = {
-      'geospatial-data': 'max-w-[35%]',
-      practices: 'max-w-[58%]',
-      network: 'max-w-[58%]',
+      'geospatial-data': 'w-[min(35%,_490px)]',
+      practices: 'w-[min(45%,_820px)]',
+      network: 'w-[min(45%,_860px)]',
     };
     return sectionMaxWidth[section] ?? '';
-  };
+  }, [section]);
 
   return (
     <div
       className={cn({
         'absolute left-[117px] top-0 flex h-full w-full flex-col bg-white shadow-lg transition-transform duration-500':
           true,
-        [maxWidth()]: true,
+        [widthClassName]: true,
         'translate-x-0': open,
         '-translate-x-full': !open,
       })}
