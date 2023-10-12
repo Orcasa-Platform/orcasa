@@ -4,13 +4,18 @@ import { cn } from '@/lib/classnames';
 
 import { LegendTypeProps } from '../../types';
 
-export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({ className = '', items }) => {
+export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({
+  className = '',
+  unit,
+  items,
+}) => {
   return (
     <div
       className={cn({
         [className]: !!className,
       })}
     >
+      {!!unit && <div className="mb-1 flex justify-end text-xs text-gray-500">{unit}</div>}
       <ul className="flex w-full">
         {items.map(({ color }) => (
           <li

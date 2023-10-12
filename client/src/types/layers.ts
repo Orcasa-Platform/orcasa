@@ -23,6 +23,7 @@ export type ParamsConfig = Record<string, ParamsConfigValue>[];
 
 export type LegendConfig = {
   type: 'basic' | 'gradient' | 'choropleth';
+  unit?: string;
   items: {
     value: string;
     color: string;

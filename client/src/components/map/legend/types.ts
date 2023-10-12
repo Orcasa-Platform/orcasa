@@ -86,6 +86,7 @@ export interface SortableItemProps extends PropsWithChildren {
 
 export interface LegendTypeProps {
   className?: string;
+  unit?: string;
   items: Array<{
     value: string;
     color: string;

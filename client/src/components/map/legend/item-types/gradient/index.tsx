@@ -4,13 +4,14 @@ import { cn } from '@/lib/classnames';
 
 import { LegendTypeProps } from '../../types';
 
-export const LegendTypeGradient: React.FC<LegendTypeProps> = ({ className = '', items }) => {
+export const LegendTypeGradient: React.FC<LegendTypeProps> = ({ className = '', unit, items }) => {
   return (
     <div
       className={cn({
         [className || '']: !!className,
       })}
     >
+      {!!unit && <div className="mb-1 flex justify-end text-xs text-gray-500">{unit}</div>}
       <div
         className="flex h-4 w-full"
         style={{
