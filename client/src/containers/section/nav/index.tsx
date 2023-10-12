@@ -7,7 +7,9 @@ import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/classnames';
 
-import logo from '/public/images/logo.svg';
+import Logo from '/public/images/logo.svg';
+
+import Icon from '@/components/ui/icon';
 
 import { Module, moduleColors, modules } from '@/constants/modules';
 
@@ -38,11 +40,8 @@ export default function Nav() {
     <div className="absolute left-0 z-50 h-full w-[117px]">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-slate-700 py-6">
         <Link href="/">
-          <img
-            src={logo.src}
-            alt="logo"
-            className={`h-[${logo.height}-px] w-[${logo.height}-px]`}
-          />
+          <Icon icon={Logo} className="h-[68px] w-[69px]" />
+          <span className="sr-only">ORCaSa</span>
         </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">
           {modules.map((module) => {
