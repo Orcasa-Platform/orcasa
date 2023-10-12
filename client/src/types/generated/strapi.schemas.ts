@@ -6068,6 +6068,7 @@ export type PageLayerGroupsDataItemAttributes = {
   title?: string;
   layers?: PageLayerGroupsDataItemAttributesLayers;
   order?: number;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8304,6 +8305,7 @@ export interface LayerGroup {
   title?: string;
   layers?: LayerGroupLayers;
   order?: number;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8574,6 +8576,7 @@ export type LayerGroupRequestData = {
   title?: string;
   layers?: LayerGroupRequestDataLayersItem[];
   order?: number;
+  description?: string;
 };
 
 export interface LayerGroupRequest {
