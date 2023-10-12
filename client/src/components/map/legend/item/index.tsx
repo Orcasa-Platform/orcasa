@@ -12,7 +12,6 @@ import { Button } from '@/components/ui/button';
 import LegendItemToolbar from './toolbar';
 
 export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
-  id,
   children,
   name,
   className = '',
