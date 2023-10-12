@@ -41,7 +41,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
         [className]: !!className,
       })}
     >
-      <header className="sticky top-0 z-10 mb-1 flex items-start justify-between space-x-2 border-t border-slate-200 bg-white p-3">
+      <header className="sticky top-0 z-10 flex items-start justify-between space-x-2 border-t border-slate-200 bg-white p-2">
         <div
           className={cn({
             'relative flex items-start space-x-2': true,
@@ -68,9 +68,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
         />
       </header>
 
-      {validChildren && (
-        <div className={cn(sortable?.handle ? 'px-10 pb-5' : 'px-3 pb-5')}>{children}</div>
-      )}
+      {validChildren && <div className="px-2 pb-2">{children}</div>}
     </div>
   );
 };

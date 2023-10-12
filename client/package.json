@@ -85,6 +85,9 @@
     "lodash": "^4.17.21",
     "orval": "^6.17.0",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0"
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "svg-sprite-loader": "6.0.11",
+    "svgo": "3.0.2",
+    "svgo-loader": "3.0.3"
   }
 }
