@@ -13,13 +13,14 @@ import {
 
 export default function DatasetsItem(props: Required<LayerGroupListResponseDataItem>) {
   const { id, attributes } = props || {};
+  const { layers, description, title } = attributes || {};
   return (
     <div>
       <Accordion type="single" collapsible defaultValue={`${id}`} className="w-full">
         <AccordionItem key={props.id} value={`${id}`}>
-          <AccordionTrigger className="font-serif text-2xl">{attributes.title}</AccordionTrigger>
+          <AccordionTrigger className="font-serif text-2xl">{title}</AccordionTrigger>
           <AccordionContent>
-            <Layers data={attributes.layers} />
+            <Layers data={layers} description={description} />
           </AccordionContent>
         </AccordionItem>
       </Accordion>

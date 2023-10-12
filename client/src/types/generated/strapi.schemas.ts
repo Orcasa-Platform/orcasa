@@ -6068,6 +6068,7 @@ export type PageLayerGroupsDataItemAttributes = {
   title?: string;
   layers?: PageLayerGroupsDataItemAttributesLayers;
   order?: number;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -6116,7 +6117,6 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributes = {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
@@ -8305,6 +8305,7 @@ export interface LayerGroup {
   title?: string;
   layers?: LayerGroupLayers;
   order?: number;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8326,7 +8327,6 @@ export type LayerGroupLayersDataItemAttributes = {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
@@ -8576,6 +8576,7 @@ export type LayerGroupRequestData = {
   title?: string;
   layers?: LayerGroupRequestDataLayersItem[];
   order?: number;
+  description?: string;
 };
 
 export interface LayerGroupRequest {
@@ -8624,7 +8625,6 @@ export interface Layer {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
@@ -8850,7 +8850,6 @@ export type LayerRequestData = {
   source?: string;
   source_url?: string;
   description?: string;
-  name?: string;
   license?: string;
   citation?: string;
   cautions?: string;
