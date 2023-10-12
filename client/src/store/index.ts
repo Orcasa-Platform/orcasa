@@ -93,9 +93,7 @@ export const popupAtom = atom<MapLayerMouseEvent | null>({
   dangerouslyAllowMutability: true,
 });
 
-export const DEFAULT_SETTINGS = {
-  expand: true,
-};
+export const DEFAULT_SETTINGS = {};
 
 export function useSyncLayersAndSettings() {
   const layers = useRecoilValue(layersAtom);

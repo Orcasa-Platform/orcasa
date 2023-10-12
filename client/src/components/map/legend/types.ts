@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { DraggableAttributes } from '@dnd-kit/core';
 import { SyntheticListeners } from '@dnd-kit/core/dist/hooks/utilities';
@@ -13,27 +13,23 @@ type Sortable = {
 type OnChangeOrder = (id: string[]) => void;
 type OnChangeOpacity = (opacity: number) => void;
 type OnChangeVisibility = (visibility: boolean) => void;
-type OnChangeExpand = (expand: boolean) => void;
-type OnChangeColumn = (column: string) => void;
+type OnRemove = () => void;
 
 export type Settings = Record<string, unknown> & {
   opacity?: number;
   visibility?: boolean;
-  expand?: boolean;
 };
 
 export type SettingsManager = {
   opacity?: boolean;
   visibility?: boolean;
-  expand?: boolean;
   info?: boolean;
 };
 
 export type LegendItemEvents = {
   onChangeOpacity?: OnChangeOpacity;
   onChangeVisibility?: OnChangeVisibility;
-  onChangeExpand?: OnChangeExpand;
-  onChangeColumn?: OnChangeColumn;
+  onRemove?: OnRemove;
 };
 /*
  * Legend
@@ -49,9 +45,6 @@ export interface LegendItemProps extends LegendItemEvents {
   name?: string;
   className?: string;
 
-  // components
-  InfoContent?: ReactNode;
-
   // sortable
   sortable: Sortable;
   listeners?: SyntheticListeners;
@@ -65,8 +58,6 @@ export interface LegendItemProps extends LegendItemEvents {
 
 export interface LegendItemToolbarProps extends LegendItemEvents {
   className?: string;
-  // components
-  InfoContent?: ReactNode;
   // settings
   settings?: Settings;
   settingsManager?: SettingsManager;
@@ -95,6 +86,7 @@ export interface SortableItemProps extends PropsWithChildren {
 
 export interface LegendTypeProps {
   className?: string;
+  unit?: string;
   items: Array<{
     value: string;
     color: string;
