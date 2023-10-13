@@ -5,10 +5,19 @@ import { useRecoilValue } from 'recoil';
 
 import { sidebarOpenAtom } from '@/store';
 
+// The values are based on the default size of the sidebar on the Geospatial Data module
+const DEFAULT_NAV_WIDTH = 117;
+const DEFAULT_SIDEBAR_WIDTH = 490;
+
 const getMapPadding = (sidebarOpen: boolean) => {
-  // The fallback values are based on the default size of the sidebar on the Geospatial Data module
-  const navWidth = document.querySelector('.js-main-nav')?.getBoundingClientRect().width ?? 117;
-  const sidebarWidth = document.querySelector('.js-sidebar')?.getBoundingClientRect().width ?? 490;
+  const isClientSide = typeof document !== 'undefined';
+
+  const navWidth = isClientSide
+    ? document.querySelector('.js-main-nav')?.getBoundingClientRect().width ?? DEFAULT_NAV_WIDTH
+    : DEFAULT_NAV_WIDTH;
+  const sidebarWidth = isClientSide
+    ? document.querySelector('.js-sidebar')?.getBoundingClientRect().width ?? DEFAULT_SIDEBAR_WIDTH
+    : DEFAULT_SIDEBAR_WIDTH;
 
   return {
     top: 0,
