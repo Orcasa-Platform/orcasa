@@ -18,7 +18,7 @@ export default function DatasetsItem(props: Required<LayerGroupListResponseDataI
     <div>
       <Accordion type="single" collapsible defaultValue={`${id}`} className="w-full">
         <AccordionItem key={props.id} value={`${id}`}>
-          <AccordionTrigger className="font-serif text-2xl">{title}</AccordionTrigger>
+          <AccordionTrigger className="text-left font-serif text-2xl">{title}</AccordionTrigger>
           <AccordionContent>
             <Layers data={layers} description={description} />
           </AccordionContent>

@@ -9,18 +9,7 @@ module.exports = {
     './src/components/**/*.{ts,tsx}',
     './src/containers/**/*.{ts,tsx}',
     './src/app/**/*.{ts,tsx}',
-  ],
-  safelist: [
-    'bg-yellow-600',
-    'border-yellow-600',
-    'bg-yellow-400',
-    'border-yellow-400',
-    'bg-teal-500',
-    'border-teal-500',
-    'bg-blue-500',
-    'border-blue-500',
-    'bg-indigo-500',
-    'border-indigo-500',
+    './src/constants/**/*.{ts,tsx}',
   ],
   theme: {
     container: {
@@ -41,6 +30,11 @@ module.exports = {
       colors: {
         main: 'hsl(var(--main))',
         'gray-50': '#F7F7F9',
+        yellow: {
+          50: '#FFF7E6',
+          500: '#FFD500',
+          600: '#FFC200',
+        },
         'mod-sc-ev': '#2BB3A7',
         'mod-sc-ev-light': '#CEEEE3',
         'mod-sc-ev-dark': '#1E6B65',

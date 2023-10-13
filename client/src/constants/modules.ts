@@ -4,8 +4,8 @@ export const moduleColors = {
     border: 'border-yellow-600',
   },
   yellow: {
-    background: 'bg-yellow-400',
-    border: 'border-yellow-400',
+    background: 'bg-yellow-500',
+    border: 'border-yellow-500',
   },
   teal: {
     background: 'bg-teal-500',

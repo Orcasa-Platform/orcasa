@@ -17,13 +17,15 @@ export default function Layers({
   return (
     <div>
       {data?.data && (
-        <ul>
-          {description && <div className="mb-8 text-base leading-6">{description}</div>}
-          {data.data.map((l) => {
-            if (!l.id || !l.attributes) return null;
-            return <Layer key={l.id} {...l} />;
-          })}
-        </ul>
+        <>
+          {description && <p className="mb-8 text-base leading-6">{description}</p>}
+          <ul className="space-y-4">
+            {data.data.map((l) => {
+              if (!l.id || !l.attributes) return null;
+              return <Layer key={l.id} {...l} />;
+            })}
+          </ul>
+        </>
       )}
     </div>
   );

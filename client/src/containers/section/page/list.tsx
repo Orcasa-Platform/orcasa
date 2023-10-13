@@ -21,9 +21,11 @@ export default function LayerGroupList({ pageId }: { pageId: number }) {
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
-      {groups?.map((g) => {
-        return <LayerGroup key={g.id} {...(g as Required<LayerGroupListResponseDataItem>)} />;
-      })}
+      <div className="space-y-6">
+        {groups?.map((g) => {
+          return <LayerGroup key={g.id} {...(g as Required<LayerGroupListResponseDataItem>)} />;
+        })}
+      </div>
     </ContentLoader>
   );
 }

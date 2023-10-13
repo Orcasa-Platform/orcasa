@@ -68,7 +68,12 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
       <div key={key} className="flex gap-10 text-sm">
         <div className="w-[134px] min-w-[134px] font-semibold">{key}</div>
         {url ? (
-          <a href={url} target="_blank" rel="noreferrer" className="font-semibold text-yellow-500">
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-yellow-600 hover:underline"
+          >
             {value}
           </a>
         ) : (
@@ -81,11 +86,13 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
   return (
     <li
       key={id}
-      className={cn('mb-4 space-y-4 bg-yellow-50 p-6', { 'bg-slate-700 text-white': isActive })}
+      className={cn('flex flex-col gap-y-4 bg-yellow-50 p-6', {
+        'bg-slate-700 text-white': isActive,
+      })}
     >
-      <header className="flex justify-between space-x-2.5 py-1 pl-2">
+      <header className="flex items-start justify-between gap-x-4">
         <h4 className="font-serif text-lg leading-7">{title}</h4>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 pt-1">
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="vanilla" size="asChild" className={cn({ 'text-white': isActive })}>
@@ -107,7 +114,11 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
           href={source_url}
           target="_blank"
           rel="noreferrer"
-          className="font-semibold text-yellow-500 hover:text-yellow-300"
+          className={cn({
+            'font-semibold hover:underline': true,
+            'text-yellow-600': !isActive,
+            'text-white': isActive,
+          })}
         >
           {source}
         </a>
