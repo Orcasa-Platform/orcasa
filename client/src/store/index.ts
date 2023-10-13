@@ -96,34 +96,32 @@ export const DEFAULT_SETTINGS = {};
 
 export function useSyncLayersAndSettings() {
   const layers = useRecoilValue(layersAtom);
+  const layersSettings = useRecoilValue(layersSettingsAtom);
 
   const setPopup = useSetRecoilState(popupAtom);
 
   const syncAtoms = useRecoilCallback(
     ({ snapshot, set }) =>
       async () => {
-        const lys = await snapshot.getPromise(layersAtom);
-        const lysSettings = await snapshot.getPromise(layersSettingsAtom);
-        const lysInteractive = await snapshot.getPromise(layersInteractiveAtom);
-
+        const layers = await snapshot.getPromise(layersAtom);
+        const layersSettings = await snapshot.getPromise(layersSettingsAtom);
+        const layersInteractive = await snapshot.getPromise(layersInteractiveAtom);
         // Reset layersettings that are not in layers
-        Object.keys(lysSettings).forEach((ly) => {
-          if (!lys.includes(parseInt(ly))) {
+        Object.keys(layersSettings).forEach((layer) => {
+          if (!layers.includes(parseInt(layer))) {
             setTimeout(async () => {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              const { [ly]: _, ...rest } = lysSettings;
+              const { [layer]: _, ...rest } = layersSettings;
               set(layersSettingsAtom, rest);
             }, 0);
           }
         });
-
         // Reset interactive layers
         // If I don't use setTimeout, the url will not be updated
         // setTimeout is needed to put this function to the end of the js queue
         setTimeout(() => {
-          const newLysInteractive = lysInteractive.filter((ly) => lys.includes(ly));
+          const newLysInteractive = layersInteractive.filter((layer) => layers.includes(layer));
           set(layersInteractiveAtom, newLysInteractive);
-
           if (!newLysInteractive.length) {
             setPopup(null);
           }
@@ -135,7 +133,7 @@ export function useSyncLayersAndSettings() {
   // Sync layersettings when layers change
   useEffect(() => {
     syncAtoms();
-  }, [layers.length, syncAtoms]);
+  }, [layers, layersSettings, syncAtoms]);
 
   return true;
 }
