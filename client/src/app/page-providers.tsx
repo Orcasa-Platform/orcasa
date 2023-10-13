@@ -6,7 +6,6 @@ import { MapProvider } from 'react-map-gl';
 
 import { RecoilURLSyncNext } from '@/lib/recoil';
 import type { Deserialize, Serialize } from '@/lib/recoil';
-import RecoilDevTools from '@/lib/recoil/devtools';
 
 export default function Providers({ children }: PropsWithChildren) {
   const serialize: Serialize = useCallback((x) => {
@@ -24,8 +23,6 @@ export default function Providers({ children }: PropsWithChildren) {
       serialize={serialize}
       deserialize={deserialize}
     >
-      <RecoilDevTools />
-
       <MapProvider>{children}</MapProvider>
     </RecoilURLSyncNext>
   );
