@@ -1,8 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
-import { useMap } from 'react-map-gl/maplibre';
-
 import type { LayerSpecification } from 'maplibre-gl';
+import { useMap } from 'react-map-gl/maplibre';
 import { useRecoilValue } from 'recoil';
 
 import { mapSettingsAtom } from '@/store/index';
@@ -22,18 +21,22 @@ const MapSettingsManager = () => {
       const map = mapRef.getMap();
       const { layers, metadata } = mapRef.getStyle();
 
+      const { groups: metadataGroups } = metadata as {
+        groups: Record<string, { name: string; [key: string]: unknown }>;
+      };
+
       const typedLayers = layers as AnyLayerWithMetadata[];
-      const GROUPS = Object.keys(metadata?.['groups'] || {}).filter((k) => {
-        const { name } = metadata?.['groups'][k];
+      const GROUPS = Object.keys(metadataGroups || {}).filter((k) => {
+        const { name } = metadataGroups[k];
         const matchedGroups = groups.map((g) => name.toLowerCase().includes(g));
         return matchedGroups.some(Boolean);
       });
 
       const GROUPS_META = GROUPS.map((gId) => ({
-        ...(metadata && metadata['groups'][gId]),
+        ...(metadata ? metadataGroups[gId] : {}),
         id: gId,
       }));
-      const GROUP_TO_DISPLAY = GROUPS_META.find((_group) => _group.name.includes(groupId)) || {};
+      const GROUP_TO_DISPLAY = GROUPS_META.find((_group) => _group?.name?.includes(groupId));
       const GROUPS_LAYERS = typedLayers.filter((l) => {
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
@@ -42,7 +45,7 @@ const MapSettingsManager = () => {
       });
 
       GROUPS_LAYERS.forEach((_layer) => {
-        const match = _layer.metadata?.['group'] === GROUP_TO_DISPLAY.id && visible;
+        const match = _layer.metadata?.['group'] === GROUP_TO_DISPLAY?.id && visible;
         if (!match) {
           map.setLayoutProperty(_layer.id, 'visibility', 'none');
         } else {
