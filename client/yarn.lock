@@ -964,6 +964,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@maplibre/maplibre-gl-style-spec@npm:^19.2.1":
+  version: 19.3.2
+  resolution: "@maplibre/maplibre-gl-style-spec@npm:19.3.2"
+  dependencies:
+    "@mapbox/jsonlint-lines-primitives": ~2.0.2
+    "@mapbox/unitbezier": ^0.0.1
+    json-stringify-pretty-compact: ^3.0.0
+    minimist: ^1.2.8
+    rw: ^1.3.3
+    sort-object: ^3.0.3
+  bin:
+    gl-style-format: dist/gl-style-format.mjs
+    gl-style-migrate: dist/gl-style-migrate.mjs
+    gl-style-validate: dist/gl-style-validate.mjs
+  checksum: 9bb5bf4b2319a4f13bfc1519584c95dc4a91a019bc2ea1fe6de514fd6f7ce9a7ab4d61df9d303cc3fee9a13a72816f1d9c7f76f7467d81a8a323278e42a97d88
+  languageName: node
+  linkType: hard
+
 "@maplibre/maplibre-gl-style-spec@npm:^19.3.0":
   version: 19.3.0
   resolution: "@maplibre/maplibre-gl-style-spec@npm:19.3.0"
@@ -1218,7 +1236,6 @@ __metadata:
     husky: ^8.0.3
     lodash: ^4.17.21
     lucide-react: ^0.252.0
-    mapbox-gl: "npm:empty-npm-package@1.0.0"
     maplibre-gl: 3.3.0
     next: 13.4.5
     orval: ^6.17.0
@@ -1231,7 +1248,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: ^7.45.0
-    react-map-gl: 7.0.25
+    react-map-gl: 7.1.6
     recoil: ^0.7.7
     recoil-sync: ^0.2.0
     rooks: 7.14.1
@@ -2816,7 +2833,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mapbox-gl@npm:^2.6.0, @types/mapbox-gl@npm:^2.6.3":
+"@types/mapbox-gl@npm:>=1.0.0":
+  version: 2.7.15
+  resolution: "@types/mapbox-gl@npm:2.7.15"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 39d5ef3341d2cbc6bf254c08e14ac2a09c7e6192cf18c838a0b7ce7ca6db195376f5c0357edd1b7f2afe132a0ba5bd262842b8274c4cd091a413057221e4322b
+  languageName: node
+  linkType: hard
+
+"@types/mapbox-gl@npm:^2.6.3":
   version: 2.7.13
   resolution: "@types/mapbox-gl@npm:2.7.13"
   dependencies:
@@ -7782,13 +7808,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mapbox-gl@npm:empty-npm-package@1.0.0":
-  version: 1.0.0
-  resolution: "empty-npm-package@npm:1.0.0"
-  checksum: 745b1e85c1c3f42d5960fc5729e6ad6114a41af9425a673b1f3493c0fb431273d48e30170bcfaf8141feca15f95ca141c8237aefee8ee84fd34586f06ee62368
-  languageName: node
-  linkType: hard
-
 "maplibre-gl@npm:3.3.0":
   version: 3.3.0
   resolution: "maplibre-gl@npm:3.3.0"
@@ -9451,15 +9470,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-map-gl@npm:7.0.25":
-  version: 7.0.25
-  resolution: "react-map-gl@npm:7.0.25"
+"react-map-gl@npm:7.1.6":
+  version: 7.1.6
+  resolution: "react-map-gl@npm:7.1.6"
   dependencies:
-    "@types/mapbox-gl": ^2.6.0
+    "@maplibre/maplibre-gl-style-spec": ^19.2.1
+    "@types/mapbox-gl": ">=1.0.0"
   peerDependencies:
-    mapbox-gl: "*"
+    mapbox-gl: ">=1.13.0"
+    maplibre-gl: ">=1.13.0"
     react: ">=16.3.0"
-  checksum: c52624629f781e2c16e8f3bf340e26aa842287475f873cf66acc1c8bd72024063c5e0939212a8a0316e3bd9fe523158ff39bc7c968b936efc6f1d35faf18f484
+    react-dom: ">=16.3.0"
+  peerDependenciesMeta:
+    mapbox-gl:
+      optional: true
+    maplibre-gl:
+      optional: true
+  checksum: 6c85996198fd781c6c08c6e3c191b133dc99f4bc35849a4e1cc35dd52e7d798183a8f6d976fed331728164e99e039478ba19cb39a33d3f3d9fc53747ae03e681
   languageName: node
   linkType: hard
 

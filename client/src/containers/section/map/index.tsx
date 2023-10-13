@@ -3,11 +3,13 @@
 import { useCallback, useMemo } from 'react';
 import { useEffect } from 'react';
 
-import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapboxStyle } from 'react-map-gl';
-
 import dynamic from 'next/dynamic';
 
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapStyle } from 'react-map-gl/maplibre';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { usePreviousImmediate } from 'rooks';
+
+import { getCroppedBounds } from '@/lib/utils/map';
 
 import {
   bboxAtom,
@@ -46,23 +48,23 @@ const Legend = dynamic(() => import('@/containers/section/map/legend'), {
   ssr: false,
 });
 
-const getMapsDefaultProps = (padding: {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
-}): CustomMapProps => {
+const getMapsDefaultProps = (
+  bounds: LngLatBoundsLike,
+  padding: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  },
+): CustomMapProps => {
   return {
     id: 'default',
     initialViewState: {
-      longitude: 0,
-      latitude: 20,
-      zoom: 1,
       pitch: 0,
       bearing: 0,
       // The southern longitude doesn't go up to -90 on purpose so that the map looks better by
       // default i.e. less of the Antarctica is shown
-      bounds: [-180, -80, 180, 90],
+      bounds: bounds ?? [-180, -80, 180, 90],
       padding,
     },
     minZoom: 1,
@@ -72,8 +74,7 @@ const getMapsDefaultProps = (padding: {
 
 export default function MapContainer({ section }: { section: Section }) {
   const padding = useMapPadding();
-  const { id, initialViewState, minZoom, maxZoom } = getMapsDefaultProps(padding);
-  const { [id]: map } = useMap();
+  const previousPadding = usePreviousImmediate(padding);
 
   const bbox = useRecoilValue(bboxAtom);
   const tmpBbox = useRecoilValue(tmpBboxAtom);
@@ -87,6 +88,12 @@ export default function MapContainer({ section }: { section: Section }) {
   const setMapSettings = useSetRecoilState(mapSettingsAtom);
   const defaultBasemap = useDefaultBasemap(section);
 
+  const { id, initialViewState, minZoom, maxZoom } = getMapsDefaultProps(
+    bbox as LngLatBoundsLike,
+    padding,
+  );
+  const { [id]: map } = useMap();
+
   // Reset map settings every time the section changes
   useEffect(() => {
     if (defaultBasemap) {
@@ -98,10 +105,16 @@ export default function MapContainer({ section }: { section: Section }) {
   }, [setMapSettings, defaultBasemap]);
 
   useEffect(() => {
-    if (map) {
+    // We only want to detect changes of padding, not the initial value (when
+    // `previousPadding` === `null`) nor when the reference has changed
+    const isPaddingDifferent =
+      previousPadding !== null &&
+      Object.values(padding).toString() !== Object.values(previousPadding).toString();
+
+    if (map && isPaddingDifferent) {
       map.easeTo({ padding, duration: 500 });
     }
-  }, [padding, map]);
+  }, [padding, previousPadding, bbox, map]);
 
   const { data: layersInteractiveData } = useGetLayers(
     {
@@ -131,18 +144,21 @@ export default function MapContainer({ section }: { section: Section }) {
 
   const handleMapViewStateChange = useCallback(() => {
     if (map) {
-      const b = map
-        .getBounds()
+      // By cropping the bounds, we actually get the visible part of the map
+      const bounds = map.getBounds();
+      const croppedBounds = getCroppedBounds(bounds, padding, map.project, map.unproject);
+
+      const bbox = croppedBounds
         .toArray()
         .flat()
         .map((v: number) => {
           return parseFloat(v.toFixed(2));
         }) as Bbox;
 
-      setBbox(b);
+      setBbox(bbox);
       setTmpBbox(null);
     }
-  }, [map, setBbox, setTmpBbox]);
+  }, [map, padding, setBbox, setTmpBbox]);
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
@@ -166,16 +182,11 @@ export default function MapContainer({ section }: { section: Section }) {
     <div className="h-screen w-screen">
       <Map
         id={id}
-        initialViewState={{
-          ...initialViewState,
-          ...(bbox && {
-            bounds: bbox as LngLatBoundsLike,
-          }),
-        }}
+        initialViewState={initialViewState}
         bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={mapStyle as MapboxStyle}
+        mapStyle={mapStyle as MapStyle}
         interactiveLayerIds={layersInteractiveIds}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}

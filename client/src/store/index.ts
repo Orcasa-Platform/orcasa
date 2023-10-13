@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 
-import { MapLayerMouseEvent } from 'react-map-gl';
-
 import {
   array,
   mixed,
@@ -14,6 +12,7 @@ import {
   tuple,
   writableDict,
 } from '@recoiljs/refine';
+import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 import { atom, useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil';
 import { urlSyncEffect } from 'recoil-sync';
 

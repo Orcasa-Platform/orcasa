@@ -1,7 +1,6 @@
 'use client';
 
-import { Layer } from 'react-map-gl';
-
+import { Layer } from 'react-map-gl/maplibre';
 import { useRecoilValue } from 'recoil';
 
 import { layersAtom, layersSettingsAtom } from '@/store';

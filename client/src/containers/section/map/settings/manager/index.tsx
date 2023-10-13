@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react';
 
-import { useMap } from 'react-map-gl';
+import { useMap } from 'react-map-gl/maplibre';
 
 import type { LayerSpecification } from 'maplibre-gl';
 import { useRecoilValue } from 'recoil';

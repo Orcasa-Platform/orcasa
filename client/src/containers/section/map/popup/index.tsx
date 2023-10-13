@@ -1,4 +1,4 @@
-import { Popup } from 'react-map-gl';
+import { Popup } from 'react-map-gl/maplibre';
 
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 

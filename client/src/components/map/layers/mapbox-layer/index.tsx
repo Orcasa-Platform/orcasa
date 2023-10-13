@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { Source, Layer } from 'react-map-gl';
+import { Source, Layer, SourceProps } from 'react-map-gl/maplibre';
 
 import { Config, LayerProps } from '@/types/layers';
 
@@ -34,7 +34,7 @@ const MapboxLayer = ({ beforeId, config, onAdd, onRemove }: MapboxLayerProps) =>
   if (!SOURCE || !STYLES) return null;
 
   return (
-    <Source {...SOURCE}>
+    <Source {...(SOURCE as SourceProps)}>
       {STYLES.map((layer) => (
         <Layer key={layer.id} {...layer} beforeId={beforeId} />
       ))}

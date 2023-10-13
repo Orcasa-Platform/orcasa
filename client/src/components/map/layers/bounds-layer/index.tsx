@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { Source, Layer, GeoJSONSourceRaw, LineLayer } from 'react-map-gl';
+import { Source, Layer, GeoJSONSourceRaw, LineLayer } from 'react-map-gl/maplibre';
 
 import { Config, LayerProps } from '@/types/layers';
 
@@ -38,7 +38,7 @@ const getSource = (bounds: number[][]): GeoJSONSourceRaw | null => {
   }
 };
 
-const getLayer = (config: Config): LineLayer => ({
+const getLayer = (config: Config): Omit<LineLayer, 'source'> => ({
   id: 'bounds-layer',
   type: 'line',
   layout: {

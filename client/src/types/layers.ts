@@ -1,4 +1,4 @@
-import { MapboxStyle } from 'react-map-gl';
+import { MapStyle } from 'react-map-gl/maplibre';
 
 interface SourceData {
   id: string;
@@ -11,7 +11,7 @@ import type { Layer } from '@/types/generated/strapi.schemas';
 
 export type Config = {
   source: SourceData;
-  styles: MapboxStyle['layers'];
+  styles: MapStyle['layers'];
 };
 
 export type ParamsConfigValue = {

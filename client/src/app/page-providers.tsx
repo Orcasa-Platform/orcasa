@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useCallback } from 'react';
 
-import { MapProvider } from 'react-map-gl';
+import { MapProvider } from 'react-map-gl/maplibre';
 
 import { RecoilURLSyncNext } from '@/lib/recoil';
 import type { Deserialize, Serialize } from '@/lib/recoil';

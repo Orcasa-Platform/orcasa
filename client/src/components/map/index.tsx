@@ -4,9 +4,12 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import { useEffect, useState, useCallback, FC } from 'react';
 
-import ReactMapGL, { ViewState, ViewStateChangeEvent, MapboxEvent, useMap } from 'react-map-gl';
-
-import MapLibreGL from 'maplibre-gl';
+import ReactMapGL, {
+  ViewState,
+  ViewStateChangeEvent,
+  MapEvent,
+  useMap,
+} from 'react-map-gl/maplibre';
 import { useDebounce } from 'rooks';
 
 import { cn } from '@/lib/classnames';
@@ -25,12 +28,12 @@ export const MapMapbox: FC<CustomMapProps> = ({
   initialViewState,
   bounds,
   onMapViewStateChange,
-  dragPan,
-  dragRotate,
-  scrollZoom,
-  doubleClickZoom,
+  dragPan = true,
+  dragRotate = false,
+  scrollZoom = true,
+  doubleClickZoom = true,
   onLoad,
-  ...mapboxProps
+  ...rest
 }: CustomMapProps) => {
   /**
    * REFS
@@ -92,7 +95,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
   );
 
   const handleMapLoad = useCallback(
-    (e: MapboxEvent<undefined>) => {
+    (e: MapEvent<unknown>) => {
       setLoaded(true);
 
       if (onLoad) {
@@ -139,7 +142,6 @@ export const MapMapbox: FC<CustomMapProps> = ({
     <div className={cn('relative z-0 h-full w-full', className)}>
       <ReactMapGL
         id={id}
-        mapLib={MapLibreGL}
         initialViewState={initialViewState}
         dragPan={!isFlying && dragPan}
         dragRotate={!isFlying && dragRotate}
@@ -147,7 +149,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
         doubleClickZoom={!isFlying && doubleClickZoom}
         onMove={handleMapMove}
         onLoad={handleMapLoad}
-        {...mapboxProps}
+        {...rest}
         {...localViewState}
       >
         {!!mapRef && loaded && !!children && children(mapRef.getMap())}
