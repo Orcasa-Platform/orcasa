@@ -106,6 +106,12 @@ locals {
     DATABASE_SSL                     = true
     DATABASE_SSL_REJECT_UNAUTHORIZED = false
 
+    SMTP_FROM     = "no-reply@no-reply.${var.staging_domain}"
+    SMTP_REPLY_TO = "no-reply@no-reply.${var.staging_domain}"
+    SMTP_HOST     = "email-smtp.${var.aws_region}.amazonaws.com"
+    SMTP_PORT     = 465
+    SMTP_USER     = module.staging.smtp_username
+    SMTP_PASSWORD = module.staging.smtp_password
   }
   staging_client_env = {
     NEXT_PUBLIC_URL            = "https://${var.staging_domain}"

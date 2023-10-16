@@ -14,6 +14,10 @@ output "postgresql_password" {
   value = module.postgresql.password
 }
 
+output "postgresql_db_name" {
+  value = module.postgresql.db_name
+}
+
 output "beanstalk_environment_settings" {
   value = module.beanstalk.environment_settings
 }
@@ -32,6 +36,35 @@ output "acm_certificate_arn" {
   value       = aws_acm_certificate.acm_certificate.arn
 }
 
-output "eb_role_arn" {
-  value = module.beanstalk.eb_role_arn
+output "dkim_tokens" {
+  value = module.email.dkim_tokens
+}
+
+output "smtp_server_address" {
+  value = module.email.smtp_server_address
+}
+
+output "mx_record_name" {
+  value = module.email.mx_record_name
+}
+
+output "mx_record_value" {
+  value = module.email.mx_record_value
+}
+
+output "txt_record_name" {
+  value = module.email.txt_record_name
+}
+
+output "txt_record_value" {
+  value = module.email.txt_record_value
+}
+
+output "smtp_username" {
+  value = aws_iam_access_key.email_user_access_key.id
+}
+
+output "smtp_password" {
+  value     = aws_iam_access_key.email_user_access_key.ses_smtp_password_v4
+  sensitive = true
 }

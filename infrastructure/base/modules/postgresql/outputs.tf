@@ -28,3 +28,7 @@ output "host" {
 output "port" {
   value = aws_db_instance.postgresql.port
 }
+
+output "db_name" {
+  value = aws_db_instance.postgresql.db_name
+}

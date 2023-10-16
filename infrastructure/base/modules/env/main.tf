@@ -31,6 +31,17 @@ resource "aws_security_group_rule" "port_forward_postgres" {
   security_group_id        = aws_security_group.postgresql_access.id
 }
 
+module "email" {
+  source = "../email"
+
+  domain = var.domain
+  region = var.aws_region
+}
+
+resource "aws_iam_access_key" "email_user_access_key" {
+  user = module.email.iam_user.name
+}
+
 module "postgresql" {
   source = "../postgresql"
 

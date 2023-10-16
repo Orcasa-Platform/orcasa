@@ -34,7 +34,8 @@
                 "s3:GetBucketAcl",
                 "s3:GetReplicationConfiguration",
                 "dynamodb:CreateTable",
-                "s3:GetBucketCORS"
+                "s3:GetBucketCORS",
+                "ses:VerifyDomainIdentity"
             ],
             "Resource": [
                 "arn:aws:dynamodb:*:{accountId}:table/*",

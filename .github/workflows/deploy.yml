@@ -157,14 +157,17 @@ jobs:
           echo "services:" >> docker-compose.yml
           echo "  client:" >> docker-compose.yml
           echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG_CLIENT" >> docker-compose.yml
+          echo "    restart: always" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 3000:3000" >> docker-compose.yml
           echo "  cms:" >> docker-compose.yml
           echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CMS:$IMAGE_TAG_CMS" >> docker-compose.yml
+          echo "    restart: always" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 1337:1337" >> docker-compose.yml
           echo "  nginx:" >> docker-compose.yml
           echo "    image: nginx" >> docker-compose.yml
+          echo "    restart: always" >> docker-compose.yml
           echo "    volumes:" >> docker-compose.yml
           echo "      - ./proxy/conf.d:/etc/nginx/conf.d" >> docker-compose.yml
           echo "      - \"\${EB_LOG_BASE_DIR}/nginx:/var/log/nginx\"" >> docker-compose.yml
@@ -175,6 +178,7 @@ jobs:
           echo "      - client" >> docker-compose.yml
           echo "  qgis-server:" >> docker-compose.yml
           echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_QGIS:latest" >> docker-compose.yml
+          echo "    restart: always" >> docker-compose.yml
           echo "    volumes:" >> docker-compose.yml
           echo "      - /qgis_data:/data:ro" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
