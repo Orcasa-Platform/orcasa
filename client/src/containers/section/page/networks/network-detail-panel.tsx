@@ -206,11 +206,9 @@ export default function NetworkDetailPanel({
         ))}
       </div>
       <div className="mt-10 flex justify-end gap-4">
-        <Button disabled asChild variant="secondary">
-          <div>
+        <Button disabled variant="secondary">
             <Pencil className="mr-2 h-6 w-6" />
             Suggest changes
-          </div>
         </Button>
         <Button asChild variant="secondary">
           <a href={url} target="_blank" rel="noreferrer">
