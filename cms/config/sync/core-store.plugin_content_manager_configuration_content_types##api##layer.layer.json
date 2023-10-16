@@ -181,7 +181,8 @@
       "list": [
         "id",
         "title",
-        "type"
+        "type",
+        "createdBy"
       ],
       "edit": [
         [

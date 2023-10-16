@@ -1517,6 +1517,7 @@ export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttribute
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -2824,6 +2825,7 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -2995,6 +2997,7 @@ export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
 export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -4460,6 +4463,7 @@ export type ProjectChangeProjectTypeDataAttributesCreatedByDataAttributesRolesDa
 export type ProjectChangeProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -5893,6 +5897,7 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -6245,6 +6250,7 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDa
 export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -6554,6 +6560,7 @@ export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermis
 export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -6764,6 +6771,7 @@ export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreat
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -8181,6 +8189,7 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -8517,6 +8526,7 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataIt
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -8731,6 +8741,7 @@ export type LayerCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
 
 export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes = {
   action?: string;
+  actionParameters?: unknown;
   subject?: string;
   properties?: unknown;
   conditions?: unknown;
@@ -10052,6 +10063,7 @@ export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAt
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -10292,6 +10304,7 @@ export type ContinentCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
 
 export type ContinentCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes = {
   action?: string;
+  actionParameters?: unknown;
   subject?: string;
   properties?: unknown;
   conditions?: unknown;
@@ -10526,6 +10539,7 @@ export type AreaOfInterventionCreatedByDataAttributesRolesDataItemAttributesCrea
 export type AreaOfInterventionCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
+    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;

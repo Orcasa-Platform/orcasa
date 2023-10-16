@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { useMap } from 'react-map-gl/maplibre';
-
 import type { Feature } from 'geojson';
+import { useMap } from 'react-map-gl/maplibre';
 import { useRecoilValue } from 'recoil';
 
 import { format } from '@/lib/utils/formats';

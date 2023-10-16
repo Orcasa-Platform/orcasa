@@ -11,13 +11,15 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -27,7 +29,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -37,7 +40,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -47,13 +51,15 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::continent.continent",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -63,7 +69,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -73,7 +80,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -94,13 +102,15 @@
           "long"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::country.country",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -121,7 +131,8 @@
           "long"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -142,7 +153,8 @@
           "long"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -153,19 +165,22 @@
           "layers"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::layer-group.layer-group",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::layer-group.layer-group",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -176,7 +191,8 @@
           "layers"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -187,7 +203,8 @@
           "layers"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -208,19 +225,22 @@
           "metadata.license"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::layer.layer",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::layer.layer",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -241,7 +261,8 @@
           "metadata.license"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -262,7 +283,8 @@
           "metadata.license"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -272,13 +294,15 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::organization-theme.organization-theme",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -288,7 +312,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -298,7 +323,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -308,13 +334,15 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::organization-type.organization-type",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -324,7 +352,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -334,7 +363,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -358,19 +388,22 @@
           "funded_project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::organization.organization",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::organization.organization",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -394,7 +427,8 @@
           "funded_project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -418,7 +452,8 @@
           "funded_project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -433,19 +468,22 @@
           "external_url"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::page.page",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::page.page",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -460,7 +498,8 @@
           "external_url"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -475,7 +514,8 @@
           "external_url"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -508,13 +548,15 @@
           "status"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::project-change.project-change",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -547,7 +589,8 @@
           "status"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -580,7 +623,8 @@
           "status"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -590,13 +634,15 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::project-type.project-type",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -606,7 +652,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -616,7 +663,8 @@
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -647,19 +695,22 @@
           "funders"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::project.project",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::project.project",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -690,7 +741,8 @@
           "funders"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -721,7 +773,8 @@
           "funders"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -733,13 +786,15 @@
           "project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::region.region",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -751,7 +806,8 @@
           "project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -763,7 +819,8 @@
           "project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -775,13 +832,15 @@
           "project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -793,7 +852,8 @@
           "project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -805,193 +865,225 @@
           "project_changes"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::api-tokens.access",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::api-tokens.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::api-tokens.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::api-tokens.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::api-tokens.regenerate",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::api-tokens.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::marketplace.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::project-settings.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::project-settings.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::roles.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::roles.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::roles.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::roles.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::transfer.tokens.access",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::transfer.tokens.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::transfer.tokens.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::transfer.tokens.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::transfer.tokens.regenerate",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::transfer.tokens.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::users.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::users.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::users.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::users.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::webhooks.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::webhooks.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::webhooks.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "admin::webhooks.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::config-sync.menu-link",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::config-sync.settings.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.collection-types.configure-view",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.components.configure-layout",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -1009,13 +1101,15 @@
           "role"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "plugin::users-permissions.user",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -1033,7 +1127,8 @@
           "role"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -1051,187 +1146,218 @@
           "role"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.single-types.configure-view",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-type-builder.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::documentation.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::documentation.settings.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::documentation.settings.regenerate",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::documentation.settings.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::email.settings.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::i18n.locale.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::i18n.locale.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::i18n.locale.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::i18n.locale.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::import-export-entries.export",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::import-export-entries.import",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.download",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.configure-view",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.settings.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.advanced-settings.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.advanced-settings.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.email-templates.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.email-templates.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.providers.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.providers.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.roles.create",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.roles.delete",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.roles.read",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::users-permissions.roles.update",
       "subject": null,
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     }
   ]
 }

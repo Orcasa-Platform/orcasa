@@ -2,10 +2,9 @@
 
 import { FC, useCallback, MouseEvent } from 'react';
 
-import { useMap } from 'react-map-gl/maplibre';
-
 import { TooltipPortal } from '@radix-ui/react-tooltip';
 import { Minus, Plus } from 'lucide-react';
+import { useMap } from 'react-map-gl/maplibre';
 
 import { cn } from '@/lib/classnames';
 

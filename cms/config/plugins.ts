@@ -1,5 +1,23 @@
-
-module.exports = {
+module.exports = ({ env }) => ({
+  email: {
+    config: {
+      provider: 'strapi-provider-email-smtp',
+      providerOptions: {
+        host: env('SMTP_HOST'),
+        port: env('SMTP_PORT'),
+        secure: true,
+        username: env('SMTP_USER'),
+        password: env('SMTP_PASSWORD'),
+        rejectUnauthorized: true,
+        requireTLS: true,
+        connectionTimeout: 1,
+      },
+    },
+    settings: {
+      defaultFrom: `no-reply@no-reply.${env('SMTP_DOMAIN')}`,
+      defaultReplyTo: `no-reply@no-reply.${env('AWS_SES_DOMAIN')}`,
+    },
+  },
   'project-change': {
     enabled: true,
     resolve: './src/plugins/project-change'
@@ -35,4 +53,4 @@ module.exports = {
       },
     },
   },
-};
+});

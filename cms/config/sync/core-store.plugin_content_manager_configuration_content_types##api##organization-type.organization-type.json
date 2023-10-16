@@ -22,14 +22,14 @@
       },
       "name": {
         "edit": {
-          "label": "Name",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Name",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -94,6 +94,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -101,11 +107,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "createdAt"
       ]
     }
   },
