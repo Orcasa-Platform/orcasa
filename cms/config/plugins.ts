@@ -14,8 +14,8 @@ module.exports = ({ env }) => ({
       },
     },
     settings: {
-      defaultFrom: `no-reply@no-reply.${env('SMTP_DOMAIN')}`,
-      defaultReplyTo: `no-reply@no-reply.${env('AWS_SES_DOMAIN')}`,
+      defaultFrom: env('SMTP_FROM'),
+      defaultReplyTo: env('SMTP_REPLY_TO'),
     },
   },
   'project-change': {
