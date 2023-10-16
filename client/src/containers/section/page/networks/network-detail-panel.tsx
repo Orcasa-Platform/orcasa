@@ -48,7 +48,7 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
                   href={u}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-red-400"
+                  className="text-sm text-peach-700"
                 >
                   {value[i]}
                 </a>
@@ -57,7 +57,7 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
         )}
       </div>
     ) : (
-      <a href={url} target="_blank" rel="noreferrer" className="text-sm text-red-400">
+      <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
         {value}
       </a>
     );
@@ -127,8 +127,8 @@ export default function NetworkDetailPanel({
       </div>
       <div className="mt-10 flex justify-end gap-4">
         <Button disabled variant="secondary">
-            <Pencil className="mr-2 h-6 w-6" />
-            Suggest changes
+          <Pencil className="mr-2 h-6 w-6" />
+          Suggest changes
         </Button>
         <Button asChild variant="secondary">
           <a href={url} target="_blank" rel="noreferrer">

@@ -14,6 +14,7 @@ import {
 
 import type { OpenDetails } from '@/containers/section/page/pages/network';
 
+import { SlidingButton } from '@/components/ui/button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
 
 const Icons = ({
@@ -90,37 +91,35 @@ export default function Network({
   return (
     <li
       key={id}
-      className={cn('mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50 p-6 pl-0', {
-        'bg-yellow-50': type === 'project',
+      className={cn('mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50', {
+        'bg-peach-50': type === 'project',
         'bg-blue-50': type === 'organization',
       })}
     >
-      <div className="flex w-full flex-col justify-between gap-6 px-12 py-6 text-base text-slate-500">
-        <header className="flex flex-col gap-4">
-          <div className="flex gap-2 font-serif text-2xl font-semibold leading-10 text-slate-700">
+      <div className="flex w-full flex-col justify-between gap-6 px-12 py-10 text-base text-slate-500">
+        <header className="flex flex-col gap-6">
+          <Icons type={type} attributes={attributes} />
+          <div
+            className={cn('font-serif text-2xl leading-10', {
+              'text-peach-700': type === 'project',
+              'text-blue-500': type === 'organization',
+            })}
+          >
             {name}
           </div>
-          <Icons type={type} attributes={attributes} />
           <p>{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
-          <button
-            type="button"
+          <SlidingButton
+            text="Learn more"
+            Icon={ChevronRight}
+            position="right"
             onClick={() => setOpenDetails({ id, type })}
-            className="flex space-x-1"
-          >
-            <div className="absolute left-[50px] top-2 text-xs font-normal leading-[18px] text-slate-700 opacity-0">
-              Learn more
-            </div>
-            <div
-              className={cn('flex h-[34px] w-[34px] flex-col items-center justify-center', {
-                'bg-orange-100': type === 'project',
-                'bg-blue-100': type === 'organization',
-              })}
-            >
-              <ChevronRight className="relative h-6 w-6" />
-            </div>
-          </button>
+            buttonClassName={cn({
+              'bg-peach-100': type === 'project',
+              'bg-blue-100': type === 'organization',
+            })}
+          />
         </div>
       </div>
     </li>

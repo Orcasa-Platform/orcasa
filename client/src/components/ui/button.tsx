@@ -64,20 +64,51 @@ Button.displayName = 'Button';
 
 const SlidingButton = React.forwardRef<
   HTMLButtonElement,
-  ButtonProps & { Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; text: string }
->(({ className, asChild = false, Icon, text, ...props }, ref) => {
-  const Comp = asChild ? Slot : 'button';
-  return (
-    <>
-      <Comp className={cn('group flex items-center justify-start', className)} ref={ref} {...props}>
-        <Icon className="mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 group-hover:bg-slate-700 group-hover:text-white group-focus:bg-slate-700 group-focus:text-white" />
-        <span className="-translate-x-1/2 text-xs opacity-0 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100">
-          {text}
-        </span>
-      </Comp>
-    </>
-  );
-});
+  ButtonProps & {
+    buttonClassName?: string;
+    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    text: string;
+    position?: 'left' | 'right' | undefined;
+  }
+>(
+  (
+    { className, asChild = false, buttonClassName, Icon, text, position = 'left', ...props },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : 'button';
+    return (
+      <>
+        <Comp
+          className={cn(
+            'group flex items-center justify-start',
+            { 'flex-row-reverse': position === 'right' },
+            className,
+          )}
+          ref={ref}
+          {...props}
+        >
+          <Icon
+            className={cn(
+              'mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 transition-colors group-hover:bg-slate-700 group-hover:text-white group-focus:bg-slate-700 group-focus:text-white',
+              buttonClassName,
+            )}
+          />
+          <span
+            className={cn(
+              'text-xs opacity-0 transition duration-500 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100',
+              {
+                '-translate-x-1/3 group-hover:translate-x-0': position === 'left',
+                'translate-x-0 group-hover:-translate-x-1/3': position === 'right',
+              },
+            )}
+          >
+            {text}
+          </span>
+        </Comp>
+      </>
+    );
+  },
+);
 
 SlidingButton.displayName = 'SlidingButton';
 
