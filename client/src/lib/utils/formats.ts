@@ -16,8 +16,14 @@ export function formatDate(value: string, options?: Intl.DateTimeFormatOptions) 
     console.warn('Date not valid', value);
     return value;
   }
-  const formatter = Intl.DateTimeFormat('en-IE', options);
-  return formatter.format(dateValue);
+  const formatter = Intl.DateTimeFormat('en-IE', {
+    ...options,
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
+  return formatter.format(dateValue).replace(/\s/g, '/');
 }
 
 export function formatHA(value: number, options?: Intl.NumberFormatOptions) {
