@@ -47,7 +47,7 @@ const Icons = ({
             <Calendar className="h-6 w-6" />
             <div className="text-base text-slate-500">
               {format({ id: 'formatDate', value: startDate })}
-              {endDate ? ` - ${format({ id: 'formatDate', value: startDate })}` : ''}
+              {endDate ? ` - ${format({ id: 'formatDate', value: endDate })}` : ''}
             </div>
           </div>
         )}
