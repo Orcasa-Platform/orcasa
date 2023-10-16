@@ -70,8 +70,8 @@ const SlidingButton = React.forwardRef<
   return (
     <>
       <Comp className={cn('group flex items-center justify-start', className)} ref={ref} {...props}>
-        <Icon className="mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 group-hover:bg-slate-700 group-hover:text-white" />
-        <span className="-translate-x-[50%] text-xs opacity-0 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100">
+        <Icon className="mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 group-hover:bg-slate-700 group-hover:text-white group-focus:bg-slate-700 group-focus:text-white" />
+        <span className="-translate-x-1/2 text-xs opacity-0 transition duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100">
           {text}
         </span>
       </Comp>
