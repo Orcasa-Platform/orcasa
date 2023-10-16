@@ -30,7 +30,7 @@
       "type": "date"
     },
     "short_description": {
-      "type": "string",
+      "type": "text",
       "maxLength": 350,
       "required": true
     },

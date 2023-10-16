@@ -1096,7 +1096,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     >;
     start_date: Attribute.Date & Attribute.Required;
     end_date: Attribute.Date;
-    short_description: Attribute.String &
+    short_description: Attribute.Text &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 350;
