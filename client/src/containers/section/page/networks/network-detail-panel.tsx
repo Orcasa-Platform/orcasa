@@ -1,4 +1,5 @@
 'use client';
+
 import { ArrowLeft, ExternalLink, Pencil } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -12,6 +13,7 @@ import type { OpenDetails } from '@/containers/section/page/pages/network';
 
 import { SlidingButton, Button } from '@/components/ui/button';
 type ProjectWithType = { type: 'project'; attributes: Project; id: number };
+
 type OrganizationWithType = { type: 'organization'; attributes: Organization; id: number };
 
 const isProject = (
@@ -26,8 +28,8 @@ type Data = NetworkResponse['networks'][0] | null;
 type Type = 'project' | 'organization' | undefined;
 type Field = {
   label: string;
-  value: string | undefined;
-  url?: string;
+  value: string | (string | undefined)[] | undefined;
+  url?: string | string[];
 };
 
 const getOrganizationFields = (dataWithType: OrganizationWithType) => {
@@ -55,6 +57,12 @@ const getOrganizationFields = (dataWithType: OrganizationWithType) => {
     });
   }
   return fields;
+};
+
+const hasData = (field: Project[keyof Project]) => {
+  if (!field || field === '') return false;
+  if (typeof field === 'string') return true;
+  return typeof field !== 'undefined' && field?.data;
 };
 
 const getProjectFields = (dataWithType: ProjectWithType) => {
@@ -85,48 +93,46 @@ const getProjectFields = (dataWithType: ProjectWithType) => {
       value: `${formatDate(startDate)}${endDate ? ` - ${formatDate(endDate)}` : ''}`,
     });
   }
-
-  if (typeof countryOfCoordination !== 'undefined') {
+  if (hasData(countryOfCoordination)) {
     fields.push({
       label: 'Country of coordination',
       value: countryOfCoordination?.data?.attributes?.name,
     });
   }
-
-  if (typeof projectCoordinatorName !== 'undefined') {
-    fields.push({
-      label: 'Project coordinator',
-      value: projectCoordinatorName,
-      url: `mailto:${projectCoordinatorEmail}`,
-    });
+  if (hasData(projectCoordinatorName)) {
+    if (hasData(secondProjectCoordinatorName)) {
+      fields.push({
+        label: 'Project coordinators',
+        value: [projectCoordinatorName, secondProjectCoordinatorName],
+        url: [`mailto:${projectCoordinatorEmail}`, `mailto:${secondProjectCoordinatorEmail}`],
+      });
+    } else {
+      fields.push({
+        label: 'Project coordinator',
+        value: projectCoordinatorName,
+        url: `mailto:${projectCoordinatorEmail}`,
+      });
+    }
   }
-
-  if (typeof secondProjectCoordinatorName !== 'undefined') {
-    fields.push({
-      label: 'Second project coordinator',
-      value: secondProjectCoordinatorName,
-      url: `mailto:${secondProjectCoordinatorEmail}`,
-    });
-  }
-  if (typeof projectType !== 'undefined') {
+  if (hasData(projectType)) {
     fields.push({
       label: 'Project type',
       value: projectType?.data?.attributes?.name,
     });
   }
-  if (typeof countryOfInterventions !== 'undefined') {
+  if (hasData(countryOfInterventions) && countryOfInterventions?.data?.length) {
     fields.push({
       label: 'Country of interventions',
       value: countryOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
-  if (typeof mainAreaOfIntervention !== 'undefined') {
+  if (hasData(mainAreaOfIntervention)) {
     fields.push({
       label: 'Main area of intervention',
       value: mainAreaOfIntervention?.data?.attributes?.name,
     });
   }
-  if (typeof sustainableDevelopmentGoal !== 'undefined') {
+  if (hasData(sustainableDevelopmentGoal)) {
     fields.push({
       label: 'Sustainable Development Goal',
       value: sustainableDevelopmentGoal?.data?.attributes?.name,
@@ -136,6 +142,33 @@ const getProjectFields = (dataWithType: ProjectWithType) => {
 };
 
 const Field = ({ label, value, url, type }: Field & { type: Type }) => {
+  const renderLink = (url: string | string[]) =>
+    Array.isArray(url) ? (
+      <div>
+        {url.map(
+          (u, i) =>
+            value?.[i] && (
+              <>
+                {i !== 0 ? ', ' : ''}
+                <a
+                  key={u}
+                  href={u}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm text-red-400"
+                >
+                  {value[i]}
+                </a>
+              </>
+            ),
+        )}
+      </div>
+    ) : (
+      <a href={url} target="_blank" rel="noreferrer" className="text-sm text-red-400">
+        {value}
+      </a>
+    );
+
   return (
     <div className="flex gap-6">
       <div
@@ -146,13 +179,7 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
       >
         {label}
       </div>
-      {url ? (
-        <a href={url} target="_blank" rel="noreferrer" className="text-sm text-red-400">
-          {value}
-        </a>
-      ) : (
-        <div className="text-sm">{value}</div>
-      )}
+      {url ? renderLink(url) : <div className="text-sm">{value}</div>}
     </div>
   );
 };
