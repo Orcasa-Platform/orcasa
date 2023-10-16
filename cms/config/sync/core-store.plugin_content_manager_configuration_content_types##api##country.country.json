@@ -22,7 +22,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "capital": {
         "edit": {
-          "label": "capital",
+          "label": "Capital",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "code": {
         "edit": {
-          "label": "code",
+          "label": "Code",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "fips": {
         "edit": {
-          "label": "fips",
+          "label": "Fips",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "iso_2": {
         "edit": {
-          "label": "iso_2",
+          "label": "ISO 2",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +92,7 @@
       },
       "iso_3": {
         "edit": {
-          "label": "iso_3",
+          "label": "ISO 3",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -106,7 +106,7 @@
       },
       "continent": {
         "edit": {
-          "label": "continent",
+          "label": "Continent",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -121,7 +121,7 @@
       },
       "region": {
         "edit": {
-          "label": "region",
+          "label": "Region",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -136,7 +136,7 @@
       },
       "projects": {
         "edit": {
-          "label": "projects",
+          "label": "Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -166,7 +166,7 @@
       },
       "lat": {
         "edit": {
-          "label": "lat",
+          "label": "Latitude",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -180,7 +180,7 @@
       },
       "long": {
         "edit": {
-          "label": "long",
+          "label": "Longitude",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -252,12 +252,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "capital",
-        "code"
-      ],
       "edit": [
         [
           {
@@ -303,10 +297,6 @@
           {
             "name": "projects",
             "size": 6
-          },
-          {
-            "name": "project_changes",
-            "size": 6
           }
         ],
         [
@@ -319,6 +309,12 @@
             "size": 4
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "capital",
+        "continent"
       ]
     }
   },

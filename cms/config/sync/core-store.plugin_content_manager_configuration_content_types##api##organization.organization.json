@@ -22,21 +22,21 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "organization_type": {
         "edit": {
-          "label": "organization_type",
+          "label": "Organization Type",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,14 +44,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "organization_type",
+          "label": "Organization Type",
           "searchable": true,
           "sortable": true
         }
       },
       "organization_type_other": {
         "edit": {
-          "label": "organization_type_other",
+          "label": "Organization Type - other",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -65,7 +65,7 @@
       },
       "main_organization_theme": {
         "edit": {
-          "label": "main_organization_theme",
+          "label": "Main Organization Theme",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -80,7 +80,7 @@
       },
       "secondary_organization_theme": {
         "edit": {
-          "label": "secondary_organization_theme",
+          "label": "Secondary Oganization Theme",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -95,7 +95,7 @@
       },
       "short_description": {
         "edit": {
-          "label": "short_description",
+          "label": "Short Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -109,7 +109,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -123,7 +123,7 @@
       },
       "country": {
         "edit": {
-          "label": "country",
+          "label": "Country",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -131,14 +131,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country",
+          "label": "Country",
           "searchable": true,
           "sortable": true
         }
       },
       "url": {
         "edit": {
-          "label": "url",
+          "label": "URL",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -152,7 +152,7 @@
       },
       "lead_projects": {
         "edit": {
-          "label": "lead_projects",
+          "label": "Lead Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -167,7 +167,7 @@
       },
       "partner_projects": {
         "edit": {
-          "label": "partner_projects",
+          "label": "Partner Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -182,7 +182,7 @@
       },
       "funded_projects": {
         "edit": {
-          "label": "funded_projects",
+          "label": "Funded Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -300,12 +300,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "organization_type",
-        "organization_type_other"
-      ],
       "edit": [
         [
           {
@@ -366,23 +360,13 @@
             "name": "funded_projects",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "lead_project_changes",
-            "size": 6
-          },
-          {
-            "name": "partner_project_changes",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "funded_project_changes",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "organization_type",
+        "lead_project_changes"
       ]
     }
   },

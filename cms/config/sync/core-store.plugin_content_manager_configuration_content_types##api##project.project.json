@@ -22,21 +22,21 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "project_type": {
         "edit": {
-          "label": "project_type",
+          "label": "Project Type",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,28 +44,28 @@
           "mainField": "name"
         },
         "list": {
-          "label": "project_type",
+          "label": "Project Type",
           "searchable": true,
           "sortable": true
         }
       },
       "start_date": {
         "edit": {
-          "label": "start_date",
+          "label": "Start Date",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "start_date",
+          "label": "Start Date",
           "searchable": true,
           "sortable": true
         }
       },
       "end_date": {
         "edit": {
-          "label": "end_date",
+          "label": "End Date",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -79,7 +79,7 @@
       },
       "short_description": {
         "edit": {
-          "label": "short_description",
+          "label": "Short Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -93,7 +93,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,7 +107,7 @@
       },
       "country_of_coordination": {
         "edit": {
-          "label": "country_of_coordination",
+          "label": "Country of Coordination",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -122,7 +122,7 @@
       },
       "region_of_interventions": {
         "edit": {
-          "label": "region_of_interventions",
+          "label": "Regions of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -137,7 +137,7 @@
       },
       "country_of_interventions": {
         "edit": {
-          "label": "country_of_interventions",
+          "label": "Countries of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -152,7 +152,7 @@
       },
       "website": {
         "edit": {
-          "label": "website",
+          "label": "Website",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -166,7 +166,7 @@
       },
       "project_coordinator_name": {
         "edit": {
-          "label": "project_coordinator_name",
+          "label": "Project Coordinator Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -180,7 +180,7 @@
       },
       "project_coordinator_email": {
         "edit": {
-          "label": "project_coordinator_email",
+          "label": "Project Coordinator Email",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -194,7 +194,7 @@
       },
       "second_project_coordinator_name": {
         "edit": {
-          "label": "second_project_coordinator_name",
+          "label": "Second Project Coordinator Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -208,7 +208,7 @@
       },
       "second_project_coordinator_email": {
         "edit": {
-          "label": "second_project_coordinator_email",
+          "label": "Second Project Coordinator Email",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -222,7 +222,7 @@
       },
       "main_area_of_intervention": {
         "edit": {
-          "label": "main_area_of_intervention",
+          "label": "Main Area of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -237,7 +237,7 @@
       },
       "main_area_of_intervention_other": {
         "edit": {
-          "label": "main_area_of_intervention_other",
+          "label": "Main Area of Intervention - Other",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -251,7 +251,7 @@
       },
       "secondary_area_of_intervention": {
         "edit": {
-          "label": "secondary_area_of_intervention",
+          "label": "Secondary Area of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -266,7 +266,7 @@
       },
       "third_area_of_intervention": {
         "edit": {
-          "label": "third_area_of_intervention",
+          "label": "Third Area of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -281,7 +281,7 @@
       },
       "sustainable_development_goal": {
         "edit": {
-          "label": "sustainable_development_goal",
+          "label": "Sustainable Development Goal",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -296,7 +296,7 @@
       },
       "lead_partner": {
         "edit": {
-          "label": "lead_partner",
+          "label": "Lead Partner",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -311,7 +311,7 @@
       },
       "partners": {
         "edit": {
-          "label": "partners",
+          "label": "Partners",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -399,12 +399,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "project_type",
-        "start_date"
-      ],
       "edit": [
         [
           {
@@ -516,6 +510,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "project_type",
+        "start_date"
       ]
     }
   },

@@ -22,7 +22,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "projects": {
         "edit": {
-          "label": "projects",
+          "label": "Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -127,8 +127,8 @@
       "list": [
         "id",
         "name",
-        "projects",
-        "project_changes"
+        "createdAt",
+        "updatedAt"
       ],
       "edit": [
         [

@@ -162,7 +162,9 @@
       "properties": {
         "fields": [
           "title",
-          "layers"
+          "layers",
+          "order",
+          "description"
         ]
       },
       "conditions": [],
@@ -188,7 +190,9 @@
       "properties": {
         "fields": [
           "title",
-          "layers"
+          "layers",
+          "order",
+          "description"
         ]
       },
       "conditions": [],
@@ -200,7 +204,9 @@
       "properties": {
         "fields": [
           "title",
-          "layers"
+          "layers",
+          "order",
+          "description"
         ]
       },
       "conditions": [],
@@ -217,12 +223,18 @@
           "params_config",
           "legend_config",
           "interaction_config",
-          "metadata.description",
-          "metadata.citation",
-          "metadata.source",
-          "metadata.resolution",
-          "metadata.content_date",
-          "metadata.license"
+          "source",
+          "source_url",
+          "description",
+          "license",
+          "citation",
+          "cautions",
+          "related_publications",
+          "resource_contact_name",
+          "resource_contact_url",
+          "metadata_contact_name",
+          "metadata_contact_url",
+          "highlighted_bounds"
         ]
       },
       "conditions": [],
@@ -253,12 +265,18 @@
           "params_config",
           "legend_config",
           "interaction_config",
-          "metadata.description",
-          "metadata.citation",
-          "metadata.source",
-          "metadata.resolution",
-          "metadata.content_date",
-          "metadata.license"
+          "source",
+          "source_url",
+          "description",
+          "license",
+          "citation",
+          "cautions",
+          "related_publications",
+          "resource_contact_name",
+          "resource_contact_url",
+          "metadata_contact_name",
+          "metadata_contact_url",
+          "highlighted_bounds"
         ]
       },
       "conditions": [],
@@ -275,12 +293,18 @@
           "params_config",
           "legend_config",
           "interaction_config",
-          "metadata.description",
-          "metadata.citation",
-          "metadata.source",
-          "metadata.resolution",
-          "metadata.content_date",
-          "metadata.license"
+          "source",
+          "source_url",
+          "description",
+          "license",
+          "citation",
+          "cautions",
+          "related_publications",
+          "resource_contact_name",
+          "resource_contact_url",
+          "metadata_contact_name",
+          "metadata_contact_url",
+          "highlighted_bounds"
         ]
       },
       "conditions": [],

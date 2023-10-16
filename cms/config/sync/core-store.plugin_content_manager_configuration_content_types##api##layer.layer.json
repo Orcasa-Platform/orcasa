@@ -104,16 +104,170 @@
           "sortable": false
         }
       },
-      "metadata": {
+      "source": {
         "edit": {
-          "label": "metadata",
+          "label": "source",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "metadata",
+          "label": "source",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "source_url": {
+        "edit": {
+          "label": "source_url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "source_url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "license": {
+        "edit": {
+          "label": "license",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "license",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "citation": {
+        "edit": {
+          "label": "citation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "citation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "cautions": {
+        "edit": {
+          "label": "cautions",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "cautions",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "related_publications": {
+        "edit": {
+          "label": "related_publications",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "related_publications",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "resource_contact_name": {
+        "edit": {
+          "label": "resource_contact_name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "resource_contact_name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "resource_contact_url": {
+        "edit": {
+          "label": "resource_contact_url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "resource_contact_url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metadata_contact_name": {
+        "edit": {
+          "label": "metadata_contact_name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "metadata_contact_name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metadata_contact_url": {
+        "edit": {
+          "label": "metadata_contact_url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "metadata_contact_url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "highlighted_bounds": {
+        "edit": {
+          "label": "highlighted_bounds",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "highlighted_bounds",
           "searchable": false,
           "sortable": false
         }
@@ -181,8 +335,7 @@
       "list": [
         "id",
         "title",
-        "type",
-        "createdBy"
+        "type"
       ],
       "edit": [
         [
@@ -221,7 +374,63 @@
         ],
         [
           {
-            "name": "metadata",
+            "name": "source",
+            "size": 6
+          },
+          {
+            "name": "source_url",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 6
+          },
+          {
+            "name": "license",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "citation",
+            "size": 6
+          },
+          {
+            "name": "cautions",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "related_publications",
+            "size": 6
+          },
+          {
+            "name": "resource_contact_name",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "resource_contact_url",
+            "size": 6
+          },
+          {
+            "name": "metadata_contact_name",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "metadata_contact_url",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "highlighted_bounds",
             "size": 12
           }
         ]

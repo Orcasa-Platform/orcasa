@@ -5,6 +5,181 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::area-of-intervention.area-of-intervention",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::area-of-intervention.area-of-intervention",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::area-of-intervention.area-of-intervention",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::continent.continent",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::continent.continent",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::continent.continent",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::country.country",
+      "properties": {
+        "fields": [
+          "name",
+          "capital",
+          "code",
+          "fips",
+          "iso_2",
+          "iso_3",
+          "continent",
+          "region",
+          "projects"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::country.country",
+      "properties": {
+        "fields": [
+          "name",
+          "capital",
+          "code",
+          "fips",
+          "iso_2",
+          "iso_3",
+          "continent",
+          "region",
+          "projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::country.country",
+      "properties": {
+        "fields": [
+          "name",
+          "capital",
+          "code",
+          "fips",
+          "iso_2",
+          "iso_3",
+          "continent",
+          "region",
+          "projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::layer-group.layer-group",
+      "properties": {
+        "fields": [
+          "title",
+          "layers"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::layer-group.layer-group",
+      "properties": {
+        "fields": [
+          "title",
+          "layers"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::layer-group.layer-group",
+      "properties": {
+        "fields": [
+          "title",
+          "layers"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -13,13 +188,7 @@
           "config",
           "params_config",
           "legend_config",
-          "interaction_config",
-          "metadata.description",
-          "metadata.citation",
-          "metadata.source",
-          "metadata.resolution",
-          "metadata.content_date",
-          "metadata.license"
+          "interaction_config"
         ]
       },
       "conditions": [],
@@ -35,13 +204,7 @@
           "config",
           "params_config",
           "legend_config",
-          "interaction_config",
-          "metadata.description",
-          "metadata.citation",
-          "metadata.source",
-          "metadata.resolution",
-          "metadata.content_date",
-          "metadata.license"
+          "interaction_config"
         ]
       },
       "conditions": [
@@ -59,19 +222,426 @@
           "config",
           "params_config",
           "legend_config",
-          "interaction_config",
-          "metadata.description",
-          "metadata.citation",
-          "metadata.source",
-          "metadata.resolution",
-          "metadata.content_date",
-          "metadata.license"
+          "interaction_config"
         ]
       },
       "conditions": [
         "admin::is-creator"
       ],
       "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-theme.organization-theme",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-theme.organization-theme",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization-theme.organization-theme",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization-type.organization-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization-type.organization-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization-type.organization-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "organization_type",
+          "organization_type_other",
+          "main_organization_theme",
+          "secondary_organization_theme",
+          "short_description",
+          "description",
+          "country",
+          "url",
+          "lead_projects",
+          "partner_projects",
+          "funded_projects"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "organization_type",
+          "organization_type_other",
+          "main_organization_theme",
+          "secondary_organization_theme",
+          "short_description",
+          "description",
+          "country",
+          "url",
+          "lead_projects",
+          "partner_projects",
+          "funded_projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::organization.organization",
+      "properties": {
+        "fields": [
+          "name",
+          "organization_type",
+          "organization_type_other",
+          "main_organization_theme",
+          "secondary_organization_theme",
+          "short_description",
+          "description",
+          "country",
+          "url",
+          "lead_projects",
+          "partner_projects",
+          "funded_projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "default_basemap",
+          "layer_groups",
+          "slug",
+          "color",
+          "external_url"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "default_basemap",
+          "layer_groups",
+          "slug",
+          "color",
+          "external_url"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "default_basemap",
+          "layer_groups",
+          "slug",
+          "color",
+          "external_url"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::project-type.project-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::project-type.project-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::project-type.project-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "name",
+          "project_type",
+          "start_date",
+          "end_date",
+          "short_description",
+          "description",
+          "country_of_coordination",
+          "region_of_interventions",
+          "country_of_interventions",
+          "website",
+          "project_coordinator_name",
+          "project_coordinator_email",
+          "second_project_coordinator_name",
+          "second_project_coordinator_email",
+          "main_area_of_intervention",
+          "main_area_of_intervention_other",
+          "secondary_area_of_intervention",
+          "third_area_of_intervention",
+          "sustainable_development_goal",
+          "lead_partner",
+          "partners",
+          "funders"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "name",
+          "project_type",
+          "start_date",
+          "end_date",
+          "short_description",
+          "description",
+          "country_of_coordination",
+          "region_of_interventions",
+          "country_of_interventions",
+          "website",
+          "project_coordinator_name",
+          "project_coordinator_email",
+          "second_project_coordinator_name",
+          "second_project_coordinator_email",
+          "main_area_of_intervention",
+          "main_area_of_intervention_other",
+          "secondary_area_of_intervention",
+          "third_area_of_intervention",
+          "sustainable_development_goal",
+          "lead_partner",
+          "partners",
+          "funders"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "name",
+          "project_type",
+          "start_date",
+          "end_date",
+          "short_description",
+          "description",
+          "country_of_coordination",
+          "region_of_interventions",
+          "country_of_interventions",
+          "website",
+          "project_coordinator_name",
+          "project_coordinator_email",
+          "second_project_coordinator_name",
+          "second_project_coordinator_email",
+          "main_area_of_intervention",
+          "main_area_of_intervention_other",
+          "secondary_area_of_intervention",
+          "third_area_of_intervention",
+          "sustainable_development_goal",
+          "lead_partner",
+          "partners",
+          "funders"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::region.region",
+      "properties": {
+        "fields": [
+          "name",
+          "projects"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::region.region",
+      "properties": {
+        "fields": [
+          "name",
+          "projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::region.region",
+      "properties": {
+        "fields": [
+          "name",
+          "projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "properties": {
+        "fields": [
+          "name",
+          "projects"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "properties": {
+        "fields": [
+          "name",
+          "projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "properties": {
+        "fields": [
+          "name",
+          "projects"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.copy-link",

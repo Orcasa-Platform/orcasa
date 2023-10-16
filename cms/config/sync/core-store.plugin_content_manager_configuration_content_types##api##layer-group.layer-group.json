@@ -49,6 +49,34 @@
           "sortable": false
         }
       },
+      "order": {
+        "edit": {
+          "label": "order",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "order",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -123,6 +151,16 @@
           },
           {
             "name": "layers",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "order",
+            "size": 4
+          },
+          {
+            "name": "description",
             "size": 6
           }
         ]

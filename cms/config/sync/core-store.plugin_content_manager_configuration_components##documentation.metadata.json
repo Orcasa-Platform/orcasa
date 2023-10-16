@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "resolution",
-      "defaultSortBy": "resolution",
+      "mainField": "source",
+      "defaultSortBy": "source",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -16,34 +16,6 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "description": {
-        "edit": {
-          "label": "description",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "description",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "citation": {
-        "edit": {
-          "label": "citation",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "citation",
           "searchable": false,
           "sortable": false
         }
@@ -62,44 +34,72 @@
           "sortable": false
         }
       },
-      "resolution": {
+      "source_url": {
         "edit": {
-          "label": "resolution",
+          "label": "source_url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "resolution",
+          "label": "source_url",
           "searchable": true,
           "sortable": true
         }
       },
-      "content_date": {
+      "description": {
         "edit": {
-          "label": "content_date",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "content_date",
+          "label": "description",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "other_information": {
+        "edit": {
+          "label": "other_information",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "other_information",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "short_description": {
+        "edit": {
+          "label": "short_description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "short_description",
           "searchable": true,
           "sortable": true
         }
       },
-      "license": {
+      "long_title": {
         "edit": {
-          "label": "license",
+          "label": "long_title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "license",
+          "label": "long_title",
           "searchable": true,
           "sortable": true
         }
@@ -108,20 +108,13 @@
     "layouts": {
       "list": [
         "id",
-        "resolution",
-        "content_date",
-        "license"
+        "source_url",
+        "short_description"
       ],
       "edit": [
         [
           {
             "name": "description",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "citation",
             "size": 12
           }
         ],
@@ -133,17 +126,23 @@
         ],
         [
           {
-            "name": "resolution",
+            "name": "source_url",
             "size": 6
-          },
-          {
-            "name": "content_date",
-            "size": 4
           }
         ],
         [
           {
-            "name": "license",
+            "name": "other_information",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "short_description",
+            "size": 6
+          },
+          {
+            "name": "long_title",
             "size": 6
           }
         ]
