@@ -109,7 +109,7 @@ export default function Network({
             onClick={() => setOpenDetails({ id, type })}
             className="flex space-x-1"
           >
-            <div className="absolute left-[50px] top-[8px] font-['Roboto'] text-xs font-normal leading-[18px] text-slate-700 opacity-0">
+            <div className="absolute left-[50px] top-2 text-xs font-normal leading-[18px] text-slate-700 opacity-0">
               Learn more
             </div>
             <div
