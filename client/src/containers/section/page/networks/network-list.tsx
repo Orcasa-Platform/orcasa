@@ -7,8 +7,6 @@ import {
 
 import type { NetworkResponse } from '@/hooks/networks';
 
-import type { OpenDetails } from '@/containers/section/page/pages/network';
-
 import ContentLoader from '@/components/ui/loader';
 
 import Network from './network';
@@ -19,10 +17,7 @@ export default function NetworkList({
   isFetched,
   isPlaceholderData,
   isError,
-  setOpenDetails,
-}: NetworkResponse & {
-  setOpenDetails: (details: OpenDetails) => void;
-}) {
+}: NetworkResponse) {
   return (
     <ContentLoader
       data={networks}
@@ -35,10 +30,9 @@ export default function NetworkList({
         return (
           <Network
             key={g.id}
-            setOpenDetails={setOpenDetails}
             {...(g as Required<
               ProjectListResponseDataItem &
-                OrganizationListResponseDataItem & { type: 'project' | 'organization' }
+              OrganizationListResponseDataItem & { type: 'project' | 'organization' }
             >)}
           />
         );

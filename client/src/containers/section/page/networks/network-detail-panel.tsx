@@ -1,14 +1,15 @@
 'use client';
 
 import { ArrowLeft, ExternalLink, Pencil } from 'lucide-react';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 
 import { cn } from '@/lib/classnames';
+
+import { networkDetailAtom } from '@/store';
 
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import { NetworkResponse } from '@/hooks/networks';
-
-import type { OpenDetails } from '@/containers/section/page/pages/network';
 
 import { SlidingButton, Button } from '@/components/ui/button';
 
@@ -27,7 +28,7 @@ const isOrganization = (
 ): dataWithType is OrganizationWithType & { type: Type } => dataWithType.type === 'organization';
 
 type Data = NetworkResponse['networks'][0] | null;
-type Type = 'project' | 'organization' | undefined;
+type Type = 'project' | 'organization';
 type Field = {
   label: string;
   value: string | (string | undefined)[] | undefined;
@@ -77,15 +78,9 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
   );
 };
 
-export default function NetworkDetailPanel({
-  data,
-  type,
-  setOpenDetails,
-}: {
-  data: Data;
-  type: Type;
-  setOpenDetails: (details: OpenDetails) => void;
-}) {
+export default function NetworkDetailPanel({ data }: { data: Data }) {
+  const setMapSettings = useSetRecoilState(networkDetailAtom);
+  const { type } = useRecoilValue(networkDetailAtom);
   if (!data || !type) return null;
   const { attributes } = data || {};
   const { name, description } = attributes || {};
@@ -114,7 +109,7 @@ export default function NetworkDetailPanel({
     >
       <SlidingButton
         onClick={() => {
-          setOpenDetails(null);
+          setMapSettings({ id: undefined, type: undefined, name: undefined });
         }}
         text="Back to Results"
         Icon={ArrowLeft}

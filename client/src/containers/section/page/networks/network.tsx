@@ -1,9 +1,12 @@
 'use client';
 
 import { ChevronRight, Calendar, FolderOpen, Globe2 } from 'lucide-react';
+import { useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
+
+import { networkDetailAtom } from '@/store';
 
 import {
   ProjectListResponseDataItem,
@@ -11,8 +14,6 @@ import {
   Organization,
   Project,
 } from '@/types/generated/strapi.schemas';
-
-import type { OpenDetails } from '@/containers/section/page/pages/network';
 
 import { SlidingButton } from '@/components/ui/button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
@@ -79,15 +80,13 @@ export default function Network({
   id,
   attributes,
   type,
-  setOpenDetails,
 }: ProjectListResponseDataItem &
   OrganizationListResponseDataItem & {
     type: 'project' | 'organization';
-    setOpenDetails: (details: OpenDetails) => void;
   }) {
+  const setMapSettings = useSetRecoilState(networkDetailAtom);
   if (!id) return null;
   const { name, short_description: shortDescription } = attributes || {};
-
   return (
     <li
       key={id}
@@ -114,7 +113,7 @@ export default function Network({
             text="Learn more"
             Icon={ChevronRight}
             position="right"
-            onClick={() => setOpenDetails({ id, type })}
+            onClick={() => setMapSettings({ id, type, name })}
             buttonClassName={cn({
               'bg-peach-100': type === 'project',
               'bg-blue-100': type === 'organization',

@@ -10,11 +10,37 @@ import {
   object,
   string,
   tuple,
+  voidable,
   writableDict,
+  or,
+  literal,
 } from '@recoiljs/refine';
 import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 import { atom, useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil';
 import { urlSyncEffect } from 'recoil-sync';
+
+// NETWORK
+
+// Network detail page
+export const networkDetailAtom = atom({
+  key: 'network-detail',
+  default: {
+    id: undefined,
+    type: undefined,
+    name: undefined,
+  },
+  effects: [
+    urlSyncEffect({
+      refine: object({
+        id: voidable(number()),
+        type: voidable(or(literal('organization'), literal('project'))),
+        name: voidable(string()),
+      }),
+    }),
+  ],
+});
+
+// MAP
 
 // Map settings
 export const mapSettingsAtom = atom({
