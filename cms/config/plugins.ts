@@ -1,21 +1,20 @@
 module.exports = ({ env }) => ({
   email: {
     config: {
-      provider: 'strapi-provider-email-smtp',
+      provider: 'nodemailer',
       providerOptions: {
         host: env('SMTP_HOST'),
         port: env('SMTP_PORT'),
         secure: true,
-        username: env('SMTP_USER'),
-        password: env('SMTP_PASSWORD'),
-        rejectUnauthorized: true,
-        requireTLS: true,
-        connectionTimeout: 1,
+        auth: {
+          username: env('SMTP_USER'),
+          password: env('SMTP_PASSWORD'),
+        }
       },
-    },
-    settings: {
-      defaultFrom: env('SMTP_FROM'),
-      defaultReplyTo: env('SMTP_REPLY_TO'),
+      settings: {
+        defaultFrom: env('SMTP_FROM'),
+        defaultReplyTo: env('SMTP_REPLY_TO'),
+      },
     },
   },
   'project-change': {
