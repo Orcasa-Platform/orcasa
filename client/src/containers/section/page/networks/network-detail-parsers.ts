@@ -89,7 +89,7 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
         .filter(Boolean)
         .join(', ');
       fields.push({
-        label: 'Main area of interventions',
+        label: 'Main areas of interventions',
         value: mainAreaOfInterventions,
       });
     }
