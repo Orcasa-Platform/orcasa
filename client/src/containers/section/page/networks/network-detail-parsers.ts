@@ -77,7 +77,7 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
   if (hasData(mainAreaOfIntervention)) {
     if (mainAreaOfIntervention?.data?.attributes?.name === 'Other (to be specified)') {
       fields.push({
-        label: 'Main area of interventions',
+        label: 'Main areas of interventions',
         value: mainAreaOfInterventionOther,
       });
     } else {
