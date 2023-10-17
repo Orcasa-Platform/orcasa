@@ -36,7 +36,7 @@ const Icons = ({
     const projectType = project_type?.data?.attributes?.name;
     const regionName = region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
     return (
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-x-4 gap-y-2">
         {projectType && (
           <div className="flex gap-2">
             <FolderOpen className="h-6 w-6" />
