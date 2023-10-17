@@ -1,5 +1,7 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 import { Layer } from 'react-map-gl/maplibre';
 import { useRecoilValue } from 'recoil';
 
@@ -7,11 +9,15 @@ import { layersAtom, layersSettingsAtom } from '@/store';
 
 import LayerManagerItem from '@/containers/section/map/layer-manager/item';
 
+import NetworksLayer from '@/components/map/layers/networks-layer';
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
 
 const LayerManager = () => {
   const layers = useRecoilValue(layersAtom);
   const layersSettings = useRecoilValue(layersSettingsAtom);
+  const pathname = usePathname();
+  const isNetworkPage = pathname.includes('network');
+
   return (
     <DeckMapboxOverlayProvider>
       <>
@@ -48,6 +54,8 @@ const LayerManager = () => {
             />
           );
         })}
+
+        {isNetworkPage && <NetworksLayer beforeId="custom-layers" />}
       </>
     </DeckMapboxOverlayProvider>
   );

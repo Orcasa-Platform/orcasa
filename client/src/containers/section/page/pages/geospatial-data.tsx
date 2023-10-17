@@ -8,7 +8,6 @@ const GeospatialDataPage = () => {
         <span className="font-semibold text-yellow-600">map layers related to soil carbon</span>
         <span className="text-slate-700">.</span>
       </h1>
-      <p></p>
     </>
   );
 };
