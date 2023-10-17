@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
+
 import { ArrowLeft, ExternalLink, Pencil } from 'lucide-react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 
@@ -81,6 +83,15 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
 export default function NetworkDetailPanel({ data }: { data: Data }) {
   const setMapSettings = useSetRecoilState(networkDetailAtom);
   const { type } = useRecoilValue(networkDetailAtom);
+
+  // Focus the close button when the panel opens
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, [data?.id, type]);
+
   if (!data || !type) return null;
   const { attributes } = data || {};
   const { name, description } = attributes || {};
@@ -97,6 +108,7 @@ export default function NetworkDetailPanel({ data }: { data: Data }) {
     url = dataWithType.attributes?.url;
     fields = fields.concat(getOrganizationFields(dataWithType));
   }
+
   return (
     <div
       className={cn(
@@ -113,6 +125,7 @@ export default function NetworkDetailPanel({ data }: { data: Data }) {
         }}
         text="Back to Results"
         Icon={ArrowLeft}
+        ref={closeButtonRef}
       />
       <div className="mb-6 mt-10 text-[34px] leading-[50px]">{name}</div>
       <div className="flex flex-col gap-4">
