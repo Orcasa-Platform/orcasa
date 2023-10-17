@@ -94,6 +94,34 @@ export default function MapContainer({ section }: { section: Section }) {
   );
   const { [id]: map } = useMap();
 
+  // Add network icon marker to the map
+  useEffect(() => {
+    // Create a new canvas element
+    const canvas = document.createElement('canvas');
+
+    // Set the size of the image
+    canvas.width = 20;
+    canvas.height = 40;
+
+    // Get the 2D rendering context
+    const ctx = canvas.getContext('2d');
+
+    // Draw a rectangle on the canvas
+    if (!ctx) return;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Get the image data from the canvas
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // Create a Uint8Array from the image data
+    const data = new Uint8Array(imageData.data.buffer);
+
+    if (map) {
+      // sdf is needed to be able to change icon color
+      map.addImage('square', { width: canvas.width, height: canvas.height, data }, { sdf: true });
+    }
+  }, [map]);
+
   // Reset map settings every time the section changes
   useEffect(() => {
     if (defaultBasemap) {
