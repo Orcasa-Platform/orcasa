@@ -32,7 +32,7 @@ export default function NetworkList({
             key={g.id}
             {...(g as Required<
               ProjectListResponseDataItem &
-              OrganizationListResponseDataItem & { type: 'project' | 'organization' }
+                OrganizationListResponseDataItem & { type: 'project' | 'organization' }
             >)}
           />
         );
