@@ -32,7 +32,7 @@ const buttonVariants = cva(
         xs: 'text-xs px-2 py-1',
         'icon-sm': 'h-6 w-6',
         // Not reviewed yet
-        default: 'h-10 px-4 py-2',
+        default: 'h-10 px-6 py-2 box-content',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
         icon: 'h-10 w-10',
@@ -48,7 +48,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
@@ -62,4 +62,56 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = 'Button';
 
-export { Button, buttonVariants };
+const SlidingButton = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps & {
+    buttonClassName?: string;
+    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    text: string;
+    position?: 'left' | 'right' | undefined;
+  }
+>(
+  (
+    { className, asChild = false, buttonClassName, Icon, text, position = 'left', ...props },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : 'button';
+    return (
+      <>
+        <Comp
+          className={cn(
+            'group flex items-center justify-start',
+            { 'flex-row-reverse': position === 'right' },
+            className,
+          )}
+          ref={ref}
+          {...props}
+        >
+          <Icon
+            className={cn(
+              'mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 transition-colors group-hover:bg-slate-700 group-hover:text-white group-focus:bg-slate-700 group-focus:text-white',
+              buttonClassName,
+            )}
+          />
+          <span
+            className={cn(
+              'text-xs opacity-0 transition duration-500 group-hover:opacity-100 group-focus:opacity-100',
+              {
+                '-translate-x-1/3 group-hover:translate-x-0 group-focus:translate-x-0':
+                  position === 'left',
+                'translate-x-0 group-hover:-translate-x-1/3 group-focus:-translate-x-1/3':
+                  position === 'right',
+              },
+            )}
+          >
+            {text}
+          </span>
+        </Comp>
+      </>
+    );
+  },
+);
+
+SlidingButton.displayName = 'SlidingButton';
+
+export { Button, SlidingButton, buttonVariants };

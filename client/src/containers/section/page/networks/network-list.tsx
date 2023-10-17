@@ -31,7 +31,8 @@ export default function NetworkList({
           <Network
             key={g.id}
             {...(g as Required<
-              ProjectListResponseDataItem & OrganizationListResponseDataItem & { type: string }
+              ProjectListResponseDataItem &
+              OrganizationListResponseDataItem & { type: 'project' | 'organization' }
             >)}
           />
         );

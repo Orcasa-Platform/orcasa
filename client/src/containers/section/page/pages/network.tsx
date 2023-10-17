@@ -1,10 +1,14 @@
 import { capitalize } from 'lodash';
 import { Filter, Plus } from 'lucide-react';
+import { useRecoilValue } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
+import { networkDetailAtom } from '@/store';
+
 import { useNetworks } from '@/hooks/networks';
 
+import NetworkDetailPanel from '@/containers/section/page/networks/network-detail-panel';
 import NetworkList from '@/containers/section/page/networks/network-list';
 
 import { Button } from '@/components/ui/button';
@@ -49,10 +53,14 @@ const CategoryButton = ({ category, count }: { category: string; count: number }
 const NetworkPage = () => {
   const page = 1;
   const { count, ...networksResponse } = useNetworks({ page });
+  const { id, type } = useRecoilValue(networkDetailAtom);
+  const networkPanelOpened =
+    (id && networksResponse?.networks?.find((n) => n.id === id && n.type === type)) || null;
   return (
     <>
-      <h1 className="font-serif text-3.5xl">
-        Discover <span className="font-semibold">who does what</span> on soils carbon.
+      <NetworkDetailPanel data={networkPanelOpened} />
+      <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
+        Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
       </h1>
       <Search
         onChange={() => {

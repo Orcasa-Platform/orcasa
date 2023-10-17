@@ -35,6 +35,16 @@ module.exports = {
           500: '#FFD500',
           600: '#FFC200',
         },
+        blue: {
+          50: '#F2F7FB',
+          100: '#EAF1F8',
+          500: '#358FE3',
+        },
+        peach: {
+          50: '#FFF7EF',
+          100: '#FFECDB',
+          700: '#EF6A4C',
+        },
         'mod-sc-ev': '#2BB3A7',
         'mod-sc-ev-light': '#CEEEE3',
         'mod-sc-ev-dark': '#1E6B65',

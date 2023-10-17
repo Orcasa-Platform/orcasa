@@ -16,6 +16,27 @@ import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 import { atom, useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil';
 import { urlSyncEffect } from 'recoil-sync';
 
+// NETWORK
+
+// Network detail page
+
+interface NetworkDetail {
+  id?: number;
+  type?: 'organization' | 'project';
+  name?: string;
+}
+
+export const networkDetailAtom = atom<NetworkDetail>({
+  key: 'network-detail',
+  default: {
+    id: undefined,
+    type: undefined,
+    name: undefined,
+  },
+});
+
+// MAP
+
 // Map settings
 export const mapSettingsAtom = atom({
   key: 'map-settings',
