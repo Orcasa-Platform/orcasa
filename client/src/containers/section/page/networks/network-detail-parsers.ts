@@ -75,24 +75,25 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
     });
   }
   if (hasData(mainAreaOfIntervention)) {
-    if (mainAreaOfIntervention?.data?.attributes?.name === 'Other (to be specified)') {
-      fields.push({
-        label: 'Main areas of interventions',
-        value: mainAreaOfInterventionOther,
-      });
-    } else {
-      const mainAreaOfInterventions = [
-        mainAreaOfIntervention?.data?.attributes?.name,
-        secondaryAreaOfIntervention?.data?.attributes?.name,
-        thirdAreaOfIntervention?.data?.attributes?.name,
-      ]
-        .filter(Boolean)
-        .join(', ');
-      fields.push({
-        label: 'Main areas of interventions',
-        value: mainAreaOfInterventions,
-      });
+    const mainAreaName =
+      mainAreaOfIntervention?.data?.attributes?.name === 'Other (to be specified)'
+        ? mainAreaOfInterventionOther
+        : mainAreaOfIntervention?.data?.attributes?.name;
+
+    const mainAreaOfInterventions = [mainAreaName];
+    const secondaryAreaName = secondaryAreaOfIntervention?.data?.attributes?.name;
+    if (secondaryAreaName && secondaryAreaName !== 'Other (to be specified)') {
+      mainAreaOfInterventions.push(secondaryAreaName);
     }
+    const thirdAreaName = thirdAreaOfIntervention?.data?.attributes?.name;
+    if (thirdAreaName && thirdAreaName !== 'Other (to be specified)') {
+      mainAreaOfInterventions.push(thirdAreaName);
+    }
+
+    fields.push({
+      label: 'Main areas of interventions',
+      value: mainAreaOfInterventions.join(', '),
+    });
   }
   if (hasData(sustainableDevelopmentGoal)) {
     fields.push({
