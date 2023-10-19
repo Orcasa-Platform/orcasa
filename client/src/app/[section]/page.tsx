@@ -7,6 +7,8 @@ import type { Section as SectionType } from '@/types/app';
 
 import Providers from '@/app/page-providers';
 
+import { modules } from '@/constants/modules';
+
 import Section from '@/containers/section';
 
 import { metadata as baseMetadata } from '../page';
@@ -37,6 +39,6 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  return ['map-data', 'scientific-evidence', 'practices', 'network', 'datasets'];
+export async function generateStaticParams(): Promise<SectionType[]> {
+  return ['geospatial-data', 'scientific-evidence', 'practices', 'network', 'datasets'];
 }
