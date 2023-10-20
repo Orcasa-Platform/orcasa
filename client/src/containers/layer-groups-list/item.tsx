@@ -2,14 +2,14 @@
 
 import { LayerGroupListResponseDataItem } from '@/types/generated/strapi.schemas';
 
-import Layers from '@/containers/section/page/layers';
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+
+import Layers from './layers';
 
 export default function DatasetsItem(props: Required<LayerGroupListResponseDataItem>) {
   const { id, attributes } = props || {};

@@ -1,18 +1,16 @@
+'use client';
+
 import { capitalize } from 'lodash';
 import { Filter, Plus } from 'lucide-react';
-import { useRecoilValue } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { networkDetailAtom } from '@/store';
-
 import { useNetworks } from '@/hooks/networks';
-
-import NetworkDetailPanel from '@/containers/section/page/networks/network-detail-panel';
-import NetworkList from '@/containers/section/page/networks/network-list';
 
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
+
+import NetworkList from './network-list';
 
 const AddButton = ({ text }: { text: string }) => (
   <Button
@@ -50,15 +48,11 @@ const CategoryButton = ({ category, count }: { category: string; count: number }
   </Button>
 );
 
-const NetworkPage = () => {
-  const page = 1;
-  const { count, ...networksResponse } = useNetworks({ page });
-  const { id, type } = useRecoilValue(networkDetailAtom);
-  const networkPanelOpened =
-    (id && networksResponse?.networks?.find((n) => n.id === id && n.type === type)) || null;
+export default function NetworkModule() {
+  const networks = useNetworks({ page: 1 });
+
   return (
     <>
-      <NetworkDetailPanel data={networkPanelOpened} />
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
         Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
       </h1>
@@ -69,12 +63,12 @@ const NetworkPage = () => {
       />
       <div className="flex justify-between">
         <div className="flex space-x-4">
-          <CategoryButton category="organisations" count={count.organizations} />
-          <CategoryButton category="projects" count={count.projects} />
+          <CategoryButton category="organisations" count={networks.count.organizations} />
+          <CategoryButton category="projects" count={networks.count.projects} />
         </div>
         <FilterButton text="More filters" />
       </div>
-      <NetworkList {...networksResponse} />
+      <NetworkList {...networks} />
       <div className="flex items-center justify-between">
         <div className="font-serif text-xl font-semibold leading-[30px]">
           Help us building the soil-carbon network
@@ -86,6 +80,4 @@ const NetworkPage = () => {
       </div>
     </>
   );
-};
-
-export default NetworkPage;
+}

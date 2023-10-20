@@ -6,7 +6,7 @@ import { cn } from '@/lib/classnames';
 
 import { layersSettingsAtom, layersAtom, DEFAULT_SETTINGS } from '@/store';
 
-import MapLegendItem from '@/containers/section/map/legend/item';
+import MapLegendItem from '@/containers/map/legend/item';
 
 import Legend from '@/components/map/legend';
 

@@ -1,12 +1,11 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
+
 import { ChevronRight, Calendar, FolderOpen, Globe2 } from 'lucide-react';
-import { useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
-
-import { networkDetailAtom } from '@/store';
 
 import {
   ProjectListResponseDataItem,
@@ -15,7 +14,7 @@ import {
   Project,
 } from '@/types/generated/strapi.schemas';
 
-import { SlidingButton } from '@/components/ui/button';
+import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
 
 const Icons = ({
@@ -84,9 +83,8 @@ export default function Network({
   OrganizationListResponseDataItem & {
     type: 'project' | 'organization';
   }) {
-  const setMapSettings = useSetRecoilState(networkDetailAtom);
-  if (!id) return null;
   const { name, short_description: shortDescription } = attributes || {};
+
   return (
     <li
       key={id}
@@ -109,16 +107,17 @@ export default function Network({
           <p>{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
-          <SlidingButton
-            text="Learn more"
+          <SlidingLinkButton
             Icon={ChevronRight}
             position="right"
-            onClick={() => setMapSettings({ id, type, name })}
+            href={`/network/${type}/${id}`}
             buttonClassName={cn({
               'bg-peach-100': type === 'project',
               'bg-blue-100': type === 'organization',
             })}
-          />
+          >
+            Learn more
+          </SlidingLinkButton>
         </div>
       </div>
     </li>

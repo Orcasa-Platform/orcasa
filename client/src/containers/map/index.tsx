@@ -28,9 +28,9 @@ import { Bbox } from '@/types/map';
 import { useMapPadding } from '@/hooks/map';
 import { useDefaultBasemap } from '@/hooks/pages';
 
-import Popup from '@/containers/section/map/popup';
-import MapSettings from '@/containers/section/map/settings';
-import MapSettingsManager from '@/containers/section/map/settings/manager';
+import Popup from '@/containers/map/popup';
+import MapSettings from '@/containers/map/settings';
+import MapSettingsManager from '@/containers/map/settings/manager';
 
 import Map from '@/components/map';
 import Controls from '@/components/map/controls';
@@ -40,11 +40,11 @@ import { CustomMapProps } from '@/components/map/types';
 
 import Attribution from './attribution';
 import mapStyle from './map-style.json';
-const LayerManager = dynamic(() => import('@/containers/section/map/layer-manager'), {
+const LayerManager = dynamic(() => import('@/containers/map/layer-manager'), {
   ssr: false,
 });
 
-const Legend = dynamic(() => import('@/containers/section/map/legend'), {
+const Legend = dynamic(() => import('@/containers/map/legend'), {
   ssr: false,
 });
 

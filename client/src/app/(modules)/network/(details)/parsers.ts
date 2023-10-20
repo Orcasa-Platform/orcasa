@@ -1,8 +1,6 @@
 import { format } from '@/lib/utils/formats';
 
-import { Project } from '@/types/generated/strapi.schemas';
-
-import { ProjectWithType, OrganizationWithType } from './network-detail-panel';
+import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 const hasData = (field: Project[keyof Project]) => {
   if (!field || field === '') return false;
@@ -10,8 +8,9 @@ const hasData = (field: Project[keyof Project]) => {
   return typeof field !== 'undefined' && field?.data;
 };
 
-export const getProjectFields = (dataWithType: ProjectWithType) => {
+export const getProjectFields = (project: Project) => {
   const {
+    description,
     start_date: startDate,
     end_date: endDate,
     country_of_coordination: countryOfCoordination,
@@ -26,9 +25,14 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
     third_area_of_intervention: thirdAreaOfIntervention,
     main_area_of_intervention_other: mainAreaOfInterventionOther,
     sustainable_development_goal: sustainableDevelopmentGoal,
-  } = dataWithType.attributes || {};
+  } = project;
 
   const fields = [];
+
+  if (typeof description !== 'undefined' && description.length > 0) {
+    fields.push({ label: 'Description', value: description });
+  }
+
   if (typeof startDate !== 'undefined') {
     const formatDate = (date: string) =>
       format({
@@ -41,12 +45,14 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
       value: `${formatDate(startDate)}${endDate ? ` - ${formatDate(endDate)}` : ''}`,
     });
   }
+
   if (hasData(countryOfCoordination)) {
     fields.push({
       label: 'Country of coordination',
       value: countryOfCoordination?.data?.attributes?.name,
     });
   }
+
   if (hasData(projectCoordinatorName)) {
     if (hasData(secondProjectCoordinatorName)) {
       fields.push({
@@ -62,18 +68,21 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
       });
     }
   }
+
   if (hasData(projectType)) {
     fields.push({
       label: 'Project type',
       value: projectType?.data?.attributes?.name,
     });
   }
+
   if (hasData(countryOfInterventions) && countryOfInterventions?.data?.length) {
     fields.push({
       label: 'Country of interventions',
       value: countryOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
+
   if (hasData(mainAreaOfIntervention)) {
     const mainAreaName =
       mainAreaOfIntervention?.data?.attributes?.name === 'Other (to be specified)'
@@ -85,6 +94,7 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
     if (secondaryAreaName && secondaryAreaName !== 'Other (to be specified)') {
       mainAreaOfInterventions.push(secondaryAreaName);
     }
+
     const thirdAreaName = thirdAreaOfIntervention?.data?.attributes?.name;
     if (thirdAreaName && thirdAreaName !== 'Other (to be specified)') {
       mainAreaOfInterventions.push(thirdAreaName);
@@ -95,26 +105,35 @@ export const getProjectFields = (dataWithType: ProjectWithType) => {
       value: mainAreaOfInterventions.join(', '),
     });
   }
+
   if (hasData(sustainableDevelopmentGoal)) {
     fields.push({
       label: 'Sustainable Development Goal',
       value: sustainableDevelopmentGoal?.data?.attributes?.name,
     });
   }
+
   return fields;
 };
 
-export const getOrganizationFields = (dataWithType: OrganizationWithType) => {
+export const getOrganizationFields = (organization: Organization) => {
   const {
+    description,
     country,
     main_organization_theme: thematic,
     secondary_organization_theme: secondaryThematic,
     organization_type: organizationType,
-  } = dataWithType.attributes || {};
+  } = organization;
   const fields = [];
+
+  if (typeof description !== 'undefined' && description.length > 0) {
+    fields.push({ label: 'Description', value: description });
+  }
+
   if (typeof country !== 'undefined') {
     fields.push({ label: 'Country', value: country?.data?.attributes?.name });
   }
+
   if (typeof thematic !== 'undefined') {
     const thematics = `${thematic?.data?.attributes?.name}${
       secondaryThematic?.data?.attributes?.name
@@ -123,11 +142,13 @@ export const getOrganizationFields = (dataWithType: OrganizationWithType) => {
     } `;
     fields.push({ label: 'Thematic', value: thematics });
   }
+
   if (typeof organizationType !== 'undefined') {
     fields.push({
       label: 'Type of organisation',
       value: organizationType?.data?.attributes?.name,
     });
   }
+
   return fields;
 };

@@ -5,7 +5,7 @@ import {
   OrganizationListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
-import type { NetworkResponse } from '@/hooks/networks';
+import type { useNetworks } from '@/hooks/networks';
 
 import ContentLoader from '@/components/ui/loader';
 
@@ -17,7 +17,7 @@ export default function NetworkList({
   isFetched,
   isPlaceholderData,
   isError,
-}: NetworkResponse) {
+}: ReturnType<typeof useNetworks>) {
   return (
     <ContentLoader
       data={networks}
@@ -29,7 +29,7 @@ export default function NetworkList({
       {networks?.map((g) => {
         return (
           <Network
-            key={g.id}
+            key={`${g.type}-${g.id}`}
             {...(g as Required<
               ProjectListResponseDataItem &
                 OrganizationListResponseDataItem & { type: 'project' | 'organization' }

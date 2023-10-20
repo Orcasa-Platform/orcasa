@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { layersInteractiveAtom, popupAtom } from '@/store/index';
 
-import PopupItem from '@/containers/section/map/popup/item';
+import PopupItem from '@/containers/map/popup/item';
 
 const PopupContainer = () => {
   const popup = useRecoilValue(popupAtom);

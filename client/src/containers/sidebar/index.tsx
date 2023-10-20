@@ -63,7 +63,9 @@ export default function Sidebar({
         </Button>
       </div>
 
-      <div className="flex grow flex-col overflow-y-auto">{children}</div>
+      <div className="flex grow flex-col overflow-y-auto">
+        <div className="space-y-5 p-5 text-slate-700">{children}</div>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import type {
   LayerGroupLayersDataItemAttributes,
 } from '@/types/generated/strapi.schemas';
 
-import Layer from '@/containers/section/page/layers/layer';
+import Layer from './layer';
 
 export default function Layers({
   data,

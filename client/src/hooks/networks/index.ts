@@ -5,14 +5,6 @@ import {
   OrganizationListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
-export type NetworkResponse = {
-  networks: OrganizationListResponseDataItem[] | ProjectListResponseDataItem[];
-  isFetching: boolean;
-  isFetched: boolean;
-  isPlaceholderData: boolean;
-  isError: boolean;
-};
-
 export const useNetworks = ({ page = 1 }: { page: number }) => {
   const {
     data: organizationsData,
