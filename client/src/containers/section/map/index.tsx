@@ -5,7 +5,13 @@ import { useEffect } from 'react';
 
 import dynamic from 'next/dynamic';
 
-import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapStyle } from 'react-map-gl/maplibre';
+import {
+  LngLatBoundsLike,
+  MapLayerMouseEvent,
+  useMap,
+  MapStyle,
+  GeoJSONSource,
+} from 'react-map-gl/maplibre';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { usePreviousImmediate } from 'rooks';
 
@@ -118,7 +124,7 @@ export default function MapContainer({ section }: { section: Section }) {
 
     if (map) {
       // sdf is needed to be able to change icon color
-      map.addImage('square', { width: canvas.width, height: canvas.height, data }, { sdf: true });
+      map.addImage('rect', { width: canvas.width, height: canvas.height, data }, { sdf: true });
     }
   }, [map]);
 
@@ -190,6 +196,29 @@ export default function MapContainer({ section }: { section: Section }) {
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
+      // Check if a cluster was clicked
+      const features = map?.queryRenderedFeatures(e.point);
+      if (features?.length && features.some((f) => f.properties.cluster)) {
+        // Get the cluster ID
+        const clusterFeature = features.find((f) => f.properties.cluster_id);
+        const clusterId = clusterFeature?.properties.cluster_id;
+        const id = clusterFeature?.layer?.source;
+
+        // Get the zoom level at which the cluster expands
+        if (map && clusterId && id) {
+          const source = map.getSource(id) as GeoJSONSource;
+          source?.getClusterExpansionZoom(clusterId, function (err, zoom) {
+            if (err || zoom === null || typeof zoom === 'undefined') return;
+            // Zoom in to the cluster
+            map.easeTo({
+              center: e.lngLat,
+              zoom: zoom,
+            });
+          });
+        }
+      }
+
+      // Layer interaction
       if (
         layersInteractive.length &&
         layersInteractiveData?.data &&
@@ -203,7 +232,7 @@ export default function MapContainer({ section }: { section: Section }) {
         setPopup(p);
       }
     },
-    [layersInteractive, layersInteractiveData, setPopup],
+    [layersInteractive, layersInteractiveData, setPopup, map],
   );
 
   return (

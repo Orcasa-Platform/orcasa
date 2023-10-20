@@ -113,6 +113,8 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     data: {
       type: 'FeatureCollection',
       features: Object.keys(groupedNetworks).map((key) => {
+        const organizations = groupedNetworks[key].filter((n) => n.type === 'organization');
+        const projects = groupedNetworks[key].filter((n) => n.type === 'project');
         return {
           type: 'Feature',
           geometry: {
@@ -120,12 +122,10 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
             coordinates: [countryCoordinates[key].long, countryCoordinates[key].lat],
           },
           properties: {
-            organizations: groupedNetworks[key]
-              .filter((n) => n.type === 'organization')
-              .map((o) => ({ id: o.id, name: o.name })),
-            projects: groupedNetworks[key]
-              .filter((n) => n.type === 'project')
-              .map((p) => ({ id: p.id, name: p.name })),
+            organizations: organizations.map((o) => ({ id: o.id, name: o.name })),
+            organizationsCount: organizations.length,
+            projects: projects.map((p) => ({ id: p.id, name: p.name })),
+            projectsCount: projects.length,
           },
         };
       }),
