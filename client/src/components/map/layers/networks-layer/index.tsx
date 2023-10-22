@@ -36,7 +36,7 @@ const sharedLayout: SymbolLayer['layout'] = {
 const organizationsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['paint'] } = {
   layout: {
     ...sharedLayout,
-    'icon-size': ['interpolate', ['linear'], ['get', 'organizationsCount'], 0, 0, 1, 1, 10, 2],
+    'icon-size': ['step', ['get', 'organizationsCount'], 1, 1, 1.5, 10, 2, 50, 2.5, 100, 2.5],
     'icon-offset': [10, 0],
     'text-field': ['number-format', ['get', 'organizationsCount'], { locale: 'en' }],
     'text-anchor': 'left',
@@ -45,14 +45,13 @@ const organizationsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['p
   paint: {
     'text-color': '#fff',
     'icon-color': '#2487E3',
-    'icon-translate-anchor': 'map',
   },
 };
 
 const projectsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['paint'] } = {
   layout: {
     ...sharedLayout,
-    'icon-size': ['interpolate', ['linear'], ['get', 'projectsCount'], 0, 0, 1, 1, 10, 2],
+    'icon-size': ['step', ['get', 'projectsCount'], 1, 1, 1.5, 10, 2, 50, 2.5, 100, 2.5],
     'icon-offset': [-10, 0],
     'text-anchor': 'right',
     'text-field': ['number-format', ['get', 'projectsCount'], { locale: 'en' }],
@@ -66,7 +65,7 @@ const projectsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['paint'
 
 const paintBorder: SymbolLayer['paint'] = {
   'icon-halo-color': '#000',
-  'icon-halo-width': 4,
+  'icon-halo-width': 8,
   'icon-halo-blur': 0,
 };
 // STYLE LAYERS
@@ -74,7 +73,7 @@ const paintBorder: SymbolLayer['paint'] = {
 const getOrganizationsLayer = (): Omit<SymbolLayer, 'source'> => ({
   id: 'organizations-networks-layer',
   type: 'symbol',
-  filter: ['!', ['has', 'point_count']],
+  filter: ['all', ['!', ['has', 'point_count']], ['>', ['get', 'organizationsCount'], 0]],
   layout: organizationsStyle.layout,
   paint: {
     ...organizationsStyle.paint,
@@ -85,14 +84,14 @@ const getOrganizationsLayer = (): Omit<SymbolLayer, 'source'> => ({
 const getOrganizationsClusterLayer = (): Omit<SymbolLayer, 'source'> => ({
   id: 'organizations-cluster-networks-layer',
   type: 'symbol',
-  filter: ['has', 'point_count'],
+  filter: ['all', ['has', 'point_count'], ['>', ['get', 'organizationsCount'], 0]],
   ...organizationsStyle,
 });
 
 const getProjectsLayer = (): Omit<SymbolLayer, 'source'> => ({
   id: 'projects-networks-layer',
   type: 'symbol',
-  filter: ['!', ['has', 'point_count']],
+  filter: ['all', ['!', ['has', 'point_count']], ['>', ['get', 'projectsCount'], 0]],
   layout: projectsStyle.layout,
   paint: {
     ...projectsStyle.paint,
@@ -103,7 +102,7 @@ const getProjectsLayer = (): Omit<SymbolLayer, 'source'> => ({
 const getProjectsClusterLayer = (): Omit<SymbolLayer, 'source'> => ({
   id: 'projects-cluster-networks-layer',
   type: 'symbol',
-  filter: ['has', 'point_count'],
+  filter: ['all', ['has', 'point_count'], ['>', ['get', 'projectsCount'], 0]],
   ...projectsStyle,
 });
 
