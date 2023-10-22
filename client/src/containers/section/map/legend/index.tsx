@@ -1,5 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
+import { usePathname } from 'next/navigation';
+
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
@@ -10,11 +12,15 @@ import MapLegendItem from '@/containers/section/map/legend/item';
 
 import Legend from '@/components/map/legend';
 
+import NetworkLegend from './static-legends/network-legend';
+
 const MapLegends = ({ className = '' }) => {
   const layers = useRecoilValue(layersAtom);
   const setLayers = useSetRecoilState(layersAtom);
   const layersSettings = useRecoilValue(layersSettingsAtom);
   const setLayersSettings = useSetRecoilState(layersSettingsAtom);
+  const pathname = usePathname();
+  const isSingleLayerPage = pathname === '/network';
 
   const handleChangeOrder = useCallback(
     (order: string[]) => {
@@ -67,6 +73,10 @@ const MapLegends = ({ className = '' }) => {
   const sortable = layers?.length > 1;
 
   const ITEMS = useMemo(() => {
+    if (isSingleLayerPage) {
+      return <NetworkLegend />;
+    }
+
     return layers.map((layer) => {
       const settings = layersSettings[layer] ?? { opacity: 1, visibility: true };
 
@@ -91,7 +101,15 @@ const MapLegends = ({ className = '' }) => {
         />
       );
     });
-  }, [layers, layersSettings, sortable, handleChangeOpacity, handleChangeVisibility, handleRemove]);
+  }, [
+    layers,
+    layersSettings,
+    sortable,
+    handleChangeOpacity,
+    handleChangeVisibility,
+    handleRemove,
+    isSingleLayerPage,
+  ]);
 
   return (
     <div className="absolute bottom-16 right-6 z-10 w-full max-w-xs">
