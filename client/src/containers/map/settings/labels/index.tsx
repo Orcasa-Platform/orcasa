@@ -1,8 +1,6 @@
 import { useCallback } from 'react';
 
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-
-import { mapSettingsAtom } from '@/store/index';
+import { useMapSettings } from '@/store/index';
 
 import { LABELS } from '@/constants/basemaps';
 
@@ -10,8 +8,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const Labels = () => {
-  const { labels } = useRecoilValue(mapSettingsAtom);
-  const setMapSettings = useSetRecoilState(mapSettingsAtom);
+  const [{ labels }, setMapSettings] = useMapSettings();
 
   const handleChange = useCallback(
     (v: string) => {

@@ -1,16 +1,13 @@
 import { Popup } from 'react-map-gl/maplibre';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { layersInteractiveAtom, popupAtom } from '@/store/index';
+import { useLayersInteractive, usePopup } from '@/store/index';
 
 import PopupItem from '@/containers/map/popup/item';
 
 const PopupContainer = () => {
-  const popup = useRecoilValue(popupAtom);
-  const layersInteractive = useRecoilValue(layersInteractiveAtom);
+  const [popup, setPopup] = usePopup();
+  const [layersInteractive] = useLayersInteractive();
   const lys = [...layersInteractive].reverse();
-
-  const setPopup = useSetRecoilState(popupAtom);
 
   if (!popup) return null;
 

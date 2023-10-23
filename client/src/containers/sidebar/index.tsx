@@ -3,11 +3,10 @@
 import { useMemo } from 'react';
 
 import { ChevronLeft } from 'lucide-react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { sidebarOpenAtom } from '@/store';
+import { useSidebarOpen } from '@/store';
 
 import { Section } from '@/types/app';
 
@@ -23,8 +22,7 @@ export default function Sidebar({
   children: React.ReactNode;
   section: Section;
 }) {
-  const open = useRecoilValue(sidebarOpenAtom);
-  const setOpen = useSetRecoilState(sidebarOpenAtom);
+  const [open, setOpen] = useSidebarOpen();
   const variant: OpenerVariant = useTheme('opener');
 
   const widthClassName = useMemo(() => {

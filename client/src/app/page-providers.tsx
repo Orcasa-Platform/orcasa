@@ -1,29 +1,9 @@
 'use client';
 
-import { PropsWithChildren, useCallback } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { MapProvider } from 'react-map-gl/maplibre';
 
-import { RecoilURLSyncNext } from '@/lib/recoil';
-import type { Deserialize, Serialize } from '@/lib/recoil';
-
 export default function Providers({ children }: PropsWithChildren) {
-  const serialize: Serialize = useCallback((x) => {
-    return x === undefined ? '' : JSON.stringify(x);
-  }, []);
-
-  //Demo of custom deserialization
-  const deserialize: Deserialize = useCallback((x: string) => {
-    return JSON.parse(x);
-  }, []);
-
-  return (
-    <RecoilURLSyncNext
-      location={{ part: 'queryParams' }}
-      serialize={serialize}
-      deserialize={deserialize}
-    >
-      <MapProvider>{children}</MapProvider>
-    </RecoilURLSyncNext>
-  );
+  return <MapProvider>{children}</MapProvider>;
 }

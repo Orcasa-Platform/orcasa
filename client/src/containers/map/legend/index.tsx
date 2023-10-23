@@ -1,20 +1,16 @@
 import { useCallback, useMemo } from 'react';
 
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-
 import { cn } from '@/lib/classnames';
 
-import { layersSettingsAtom, layersAtom, DEFAULT_SETTINGS } from '@/store';
+import { useLayersSettings, useLayers, DEFAULT_SETTINGS } from '@/store';
 
 import MapLegendItem from '@/containers/map/legend/item';
 
 import Legend from '@/components/map/legend';
 
 const MapLegends = ({ className = '' }) => {
-  const layers = useRecoilValue(layersAtom);
-  const setLayers = useSetRecoilState(layersAtom);
-  const layersSettings = useRecoilValue(layersSettingsAtom);
-  const setLayersSettings = useSetRecoilState(layersSettingsAtom);
+  const [layers, setLayers] = useLayers();
+  const [layersSettings, setLayersSettings] = useLayersSettings();
 
   const handleChangeOrder = useCallback(
     (order: string[]) => {

@@ -2,11 +2,9 @@
 
 import { useCallback } from 'react';
 
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-
 import { parseConfig } from '@/lib/json-converter';
 
-import { layersInteractiveAtom, layersInteractiveIdsAtom } from '@/store';
+import { useLayersInteractive, useLayersInteractiveIds } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
@@ -25,9 +23,8 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
   const { data } = useGetLayersId(id, {
     populate: 'metadata',
   });
-  const layersInteractive = useRecoilValue(layersInteractiveAtom);
-  const setLayersInteractive = useSetRecoilState(layersInteractiveAtom);
-  const setLayersInteractiveIds = useSetRecoilState(layersInteractiveIdsAtom);
+  const [layersInteractive, setLayersInteractive] = useLayersInteractive();
+  const [, setLayersInteractiveIds] = useLayersInteractiveIds();
 
   const handleAddMapboxLayer = useCallback(
     ({ styles }: Config) => {
@@ -43,7 +40,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
         }
 
         setLayersInteractive((prev) => [...prev, id]);
-        setLayersInteractiveIds((prev) => [...prev, ...ids]);
+        setLayersInteractiveIds((prev) => [...prev, ...ids.map((id) => parseInt(id))]);
       }
     },
     [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds],
@@ -59,7 +56,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
         const ids = styles.map((l) => l.id);
 
         setLayersInteractive((prev) => prev.filter((i) => i !== id));
-        setLayersInteractiveIds((prev) => prev.filter((i) => !ids.includes(i)));
+        setLayersInteractiveIds((prev) => prev.filter((i) => !ids.includes(i.toString())));
       }
     },
     [data?.data?.attributes, id, setLayersInteractive, setLayersInteractiveIds],

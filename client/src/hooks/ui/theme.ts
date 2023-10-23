@@ -1,6 +1,4 @@
-import { useRecoilValue } from 'recoil';
-
-import { mapSettingsAtom } from '@/store/index';
+import { useMapSettings } from '@/store/index';
 
 type OpenerVariant = 'opener-dark' | 'opener-light';
 type DefaultVariant = 'dark' | 'light';
@@ -19,7 +17,7 @@ export function useTheme(prefix?: string): DefaultVariant | OpenerVariant | Text
     },
     'basemap-satellite': { opener: 'opener-light', text: 'text-white', default: 'light' },
   };
-  const { basemap } = useRecoilValue(mapSettingsAtom);
+  const [{ basemap }] = useMapSettings();
 
   return variants[basemap][prefix || 'default'];
 }

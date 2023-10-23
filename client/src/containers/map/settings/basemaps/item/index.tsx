@@ -1,11 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { useCallback } from 'react';
 
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-
 import { cn } from '@/lib/classnames';
 
-import { mapSettingsAtom } from '@/store/index';
+import { useMapSettings } from '@/store/index';
 
 export interface BasemapItemProps {
   alt: string;
@@ -14,8 +12,7 @@ export interface BasemapItemProps {
 }
 
 const BasemapItem = ({ alt, value, preview }: BasemapItemProps) => {
-  const { basemap } = useRecoilValue(mapSettingsAtom);
-  const setMapSettings = useSetRecoilState(mapSettingsAtom);
+  const [{ basemap }, setMapSettings] = useMapSettings();
 
   const handleToggleBasemap = useCallback(() => {
     setMapSettings((prev) => ({

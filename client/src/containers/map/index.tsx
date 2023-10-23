@@ -6,19 +6,17 @@ import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
 import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapStyle } from 'react-map-gl/maplibre';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { usePreviousImmediate } from 'rooks';
 
 import { getCroppedBounds } from '@/lib/utils/map';
 
 import {
-  bboxAtom,
-  layersInteractiveAtom,
-  layersInteractiveIdsAtom,
-  popupAtom,
-  tmpBboxAtom,
+  useBbox,
+  useLayersInteractive,
+  useLayersInteractiveIds,
+  usePopup,
+  useMapSettings,
 } from '@/store';
-import { mapSettingsAtom } from '@/store';
 
 import { Section } from '@/types/app';
 import { useGetLayers } from '@/types/generated/layer';
@@ -76,16 +74,13 @@ export default function MapContainer({ section }: { section: Section }) {
   const padding = useMapPadding();
   const previousPadding = usePreviousImmediate(padding);
 
-  const bbox = useRecoilValue(bboxAtom);
-  const tmpBbox = useRecoilValue(tmpBboxAtom);
-  const layersInteractive = useRecoilValue(layersInteractiveAtom);
-  const layersInteractiveIds = useRecoilValue(layersInteractiveIdsAtom);
+  const [bbox, setBbox] = useBbox();
+  const [layersInteractive] = useLayersInteractive();
+  const [layersInteractiveIds] = useLayersInteractiveIds();
 
-  const setBbox = useSetRecoilState(bboxAtom);
-  const setTmpBbox = useSetRecoilState(tmpBboxAtom);
-  const setPopup = useSetRecoilState(popupAtom);
+  const [, setPopup] = usePopup();
 
-  const setMapSettings = useSetRecoilState(mapSettingsAtom);
+  const [, setMapSettings] = useMapSettings();
   const defaultBasemap = useDefaultBasemap(section);
 
   const { id, initialViewState, minZoom, maxZoom } = getMapsDefaultProps(
@@ -131,17 +126,6 @@ export default function MapContainer({ section }: { section: Section }) {
     },
   );
 
-  const tmpBounds: CustomMapProps['bounds'] = useMemo(() => {
-    if (tmpBbox) {
-      return {
-        bbox: tmpBbox,
-        options: {
-          padding,
-        },
-      };
-    }
-  }, [tmpBbox, padding]);
-
   const handleMapViewStateChange = useCallback(() => {
     if (map) {
       // By cropping the bounds, we actually get the visible part of the map
@@ -156,9 +140,8 @@ export default function MapContainer({ section }: { section: Section }) {
         }) as Bbox;
 
       setBbox(bbox);
-      setTmpBbox(null);
     }
-  }, [map, padding, setBbox, setTmpBbox]);
+  }, [map, padding, setBbox]);
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
@@ -183,11 +166,10 @@ export default function MapContainer({ section }: { section: Section }) {
       <Map
         id={id}
         initialViewState={initialViewState}
-        bounds={tmpBounds}
         minZoom={minZoom}
         maxZoom={maxZoom}
         mapStyle={mapStyle as MapStyle}
-        interactiveLayerIds={layersInteractiveIds}
+        interactiveLayerIds={layersInteractiveIds.map((id) => id.toString())}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
       >

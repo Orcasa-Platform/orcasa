@@ -1,11 +1,9 @@
 'use-client';
 import { ReactElement, createElement, isValidElement, useMemo } from 'react';
 
-import { useRecoilValue } from 'recoil';
-
 import { parseConfig } from '@/lib/json-converter';
 
-import { layersSettingsAtom } from '@/store';
+import { useLayersSettings } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerTyped, LegendConfig } from '@/types/layers';
@@ -47,7 +45,7 @@ const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManage
 };
 
 const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
-  const layersSettings = useRecoilValue(layersSettingsAtom);
+  const [layersSettings] = useLayersSettings();
 
   const { data, isError, isFetched, isFetching, isPlaceholderData } = useGetLayersId(id, {
     populate: 'metadata',

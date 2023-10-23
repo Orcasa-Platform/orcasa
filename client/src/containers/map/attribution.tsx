@@ -1,13 +1,11 @@
-import { useRecoilValue } from 'recoil';
-
 import { cn } from '@/lib/classnames';
 
-import { mapSettingsAtom } from '@/store/index';
+import { useMapSettings } from '@/store/index';
 
 import { useTheme } from '@/hooks/ui/theme';
 
 const Attribution = () => {
-  const { basemap } = useRecoilValue(mapSettingsAtom);
+  const [{ basemap }] = useMapSettings();
   const theme = useTheme('text');
   const getAttributionContent = () => {
     if (basemap === 'basemap-satellite') {

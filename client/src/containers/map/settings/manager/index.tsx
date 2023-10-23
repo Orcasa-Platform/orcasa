@@ -2,9 +2,8 @@ import { useCallback, useEffect } from 'react';
 
 import type { LayerSpecification } from 'maplibre-gl';
 import { useMap } from 'react-map-gl/maplibre';
-import { useRecoilValue } from 'recoil';
 
-import { mapSettingsAtom } from '@/store/index';
+import { useMapSettings } from '@/store/index';
 
 type AnyLayerWithMetadata = LayerSpecification & {
   metadata: Record<string, unknown>;
@@ -13,7 +12,7 @@ type AnyLayerWithMetadata = LayerSpecification & {
 const MapSettingsManager = () => {
   const { default: mapRef } = useMap();
   const loaded = mapRef?.loaded();
-  const { basemap, labels } = useRecoilValue(mapSettingsAtom);
+  const [{ basemap, labels }] = useMapSettings();
 
   const handleGroup = useCallback(
     (groups: string[], groupId: string, visible = true) => {

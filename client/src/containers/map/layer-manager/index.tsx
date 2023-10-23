@@ -1,17 +1,17 @@
 'use client';
 
 import { Layer } from 'react-map-gl/maplibre';
-import { useRecoilValue } from 'recoil';
 
-import { layersAtom, layersSettingsAtom } from '@/store';
+import { useLayers, useLayersSettings } from '@/store';
 
 import LayerManagerItem from '@/containers/map/layer-manager/item';
 
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
 
 const LayerManager = () => {
-  const layers = useRecoilValue(layersAtom);
-  const layersSettings = useRecoilValue(layersSettingsAtom);
+  const [layers] = useLayers();
+  const [layersSettings] = useLayersSettings();
+
   return (
     <DeckMapboxOverlayProvider>
       <>

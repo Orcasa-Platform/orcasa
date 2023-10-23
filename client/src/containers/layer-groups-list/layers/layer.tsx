@@ -1,11 +1,10 @@
 'use client';
 
 import { Info } from 'lucide-react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { layersAtom } from '@/store';
+import { useLayers } from '@/store';
 
 import { LayerGroupLayersDataItem } from '@/types/generated/strapi.schemas';
 
@@ -14,8 +13,7 @@ import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Switch } from '@/components/ui/switch';
 
 export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
-  const layers = useRecoilValue(layersAtom);
-  const setLayers = useSetRecoilState(layersAtom);
+  const [layers, setLayers] = useLayers();
 
   if (!id) return null;
 

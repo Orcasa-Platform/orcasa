@@ -2,11 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { Feature } from 'geojson';
 import { useMap } from 'react-map-gl/maplibre';
-import { useRecoilValue } from 'recoil';
 
 import { format } from '@/lib/utils/formats';
 
-import { layersInteractiveIdsAtom, popupAtom } from '@/store';
+import { useLayersInteractiveIds, usePopup } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
 import { LayerTyped } from '@/types/layers';
@@ -22,8 +21,8 @@ const PopupItem = ({ id }: PopupItemProps) => {
 
   const { default: map } = useMap();
 
-  const popup = useRecoilValue(popupAtom);
-  const layersInteractiveIds = useRecoilValue(layersInteractiveIdsAtom);
+  const [popup] = usePopup();
+  const [layersInteractiveIds] = useLayersInteractiveIds();
 
   const { data, isFetching, isFetched, isError, isPlaceholderData } = useGetLayersId(id, {
     populate: 'metadata',
@@ -47,7 +46,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
         return DATA_REF.current;
       }
       const query = map.queryRenderedFeatures(point, {
-        layers: layersInteractiveIds,
+        layers: layersInteractiveIds.map((id) => id.toString()),
       });
 
       const d = query.find((d) => {
