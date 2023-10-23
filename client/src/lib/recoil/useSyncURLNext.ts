@@ -17,25 +17,21 @@ export function useSyncURLNext(
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const {
-    // replace,
-    push,
-  } = useRouter();
+  const { replace, push } = useRouter();
 
   const browserInterface: BrowserInterface = {
     replaceURL: useCallback(
       (url: string) => {
         const u = decodedQueryParams ? decodeURIComponent(url) : url;
-        return window.history.replaceState({}, '', u);
-        // return replace(u, { shallow: true });
+        return replace(u, { scroll: false });
       },
-      [decodedQueryParams],
+      [decodedQueryParams, replace],
     ),
 
     pushURL: useCallback(
       (url: string) => {
         const u = decodedQueryParams ? decodeURIComponent(url) : url;
-        return push(u, { shallow: true });
+        return push(u);
       },
       [decodedQueryParams, push],
     ),

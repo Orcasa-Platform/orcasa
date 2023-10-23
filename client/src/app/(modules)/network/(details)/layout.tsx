@@ -1,11 +1,17 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
+
 import { ArrowLeft } from 'lucide-react';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 
 export default function NetworkModuleDetailsLayout({ children }: { children: React.ReactNode }) {
+  const searchParams = useSearchParams();
+
   return (
     <div className="p-7">
-      <SlidingLinkButton href="/network" Icon={ArrowLeft}>
+      <SlidingLinkButton href={`/network?${searchParams.toString()}`} Icon={ArrowLeft}>
         Back to Results
       </SlidingLinkButton>
       {children}

@@ -84,6 +84,7 @@ export default function Network({
     type: 'project' | 'organization';
   }) {
   const { name, short_description: shortDescription } = attributes || {};
+  const searchParams = useSearchParams();
 
   return (
     <li
@@ -110,7 +111,7 @@ export default function Network({
           <SlidingLinkButton
             Icon={ChevronRight}
             position="right"
-            href={`/network/${type}/${id}`}
+            href={`/network/${type}/${id}?${searchParams.toString()}`}
             buttonClassName={cn({
               'bg-peach-100': type === 'project',
               'bg-blue-100': type === 'organization',
