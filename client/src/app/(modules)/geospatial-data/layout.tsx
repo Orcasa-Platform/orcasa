@@ -8,7 +8,7 @@ export const metadata = {
 export default function GeospatialDataModuleLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Map section="geospatial-data" />
+      <Map />
       <Sidebar section="geospatial-data">
         <h1 className="max-w-[372px] border-l-4 border-yellow-500 pl-5 font-serif text-lg leading-7">
           Give context to your research by scientifically-reliable{' '}

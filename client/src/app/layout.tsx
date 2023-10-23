@@ -6,6 +6,8 @@ import { cn } from '@/lib/classnames';
 
 import Providers from '@/app/layout-providers';
 
+import DefaultBasemap from '@/containers/default-basemap';
+
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <Providers>
       <html lang="en">
         <body className={cn(roboto.variable, robotoSlab.variable, 'font-sans text-default')}>
+          <DefaultBasemap />
           {children}
         </body>
       </html>

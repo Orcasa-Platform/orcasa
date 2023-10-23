@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useEffect } from 'react';
 
 import dynamic from 'next/dynamic';
@@ -10,21 +10,13 @@ import { usePreviousImmediate } from 'rooks';
 
 import { getCroppedBounds } from '@/lib/utils/map';
 
-import {
-  useBbox,
-  useLayersInteractive,
-  useLayersInteractiveIds,
-  usePopup,
-  useMapSettings,
-} from '@/store';
+import { useBbox, useLayersInteractive, useLayersInteractiveIds, usePopup } from '@/store';
 
-import { Section } from '@/types/app';
 import { useGetLayers } from '@/types/generated/layer';
 import type { LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
 
 import { useMapPadding } from '@/hooks/map';
-import { useDefaultBasemap } from '@/hooks/pages';
 
 import Popup from '@/containers/map/popup';
 import MapSettings from '@/containers/map/settings';
@@ -70,7 +62,7 @@ const getMapsDefaultProps = (
   };
 };
 
-export default function MapContainer({ section }: { section: Section }) {
+export default function MapContainer() {
   const padding = useMapPadding();
   const previousPadding = usePreviousImmediate(padding);
 
@@ -80,24 +72,11 @@ export default function MapContainer({ section }: { section: Section }) {
 
   const [, setPopup] = usePopup();
 
-  const [, setMapSettings] = useMapSettings();
-  const defaultBasemap = useDefaultBasemap(section);
-
   const { id, initialViewState, minZoom, maxZoom } = getMapsDefaultProps(
     bbox as LngLatBoundsLike,
     padding,
   );
   const { [id]: map } = useMap();
-
-  // Reset map settings every time the section changes
-  useEffect(() => {
-    if (defaultBasemap) {
-      setMapSettings((prev) => ({
-        ...prev,
-        basemap: defaultBasemap,
-      }));
-    }
-  }, [setMapSettings, defaultBasemap]);
 
   useEffect(() => {
     // We only want to detect changes of padding, not the initial value (when

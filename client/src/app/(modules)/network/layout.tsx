@@ -8,7 +8,7 @@ export const metadata = {
 export default function NetworkModuleLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Map section="network" />
+      <Map />
       <Sidebar section="network">{children}</Sidebar>
     </>
   );
