@@ -9,7 +9,7 @@ import { layersAtom, layersSettingsAtom } from '@/store';
 
 import LayerManagerItem from '@/containers/section/map/layer-manager/item';
 
-import NetworksLayer from '@/components/map/layers/networks-layer';
+import NetworksMarkers from '@/components/map/layers/networks-markers';
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
 
 const LayerManager = () => {
@@ -55,7 +55,7 @@ const LayerManager = () => {
           );
         })}
 
-        {isNetworkPage && <NetworksLayer beforeId="custom-layers" />}
+        {isNetworkPage && <NetworksMarkers />}
       </>
     </DeckMapboxOverlayProvider>
   );

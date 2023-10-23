@@ -1,5 +1,3 @@
-import { GeoJSONSourceRaw } from 'react-map-gl/maplibre';
-
 import { useGetOrganizations } from '@/types/generated/organization';
 import { useGetProjects } from '@/types/generated/project';
 import {
@@ -17,8 +15,18 @@ export type NetworkResponse = {
   isError: boolean;
 };
 
+type GroupedNetworks = {
+  [key: string]: {
+    id: number | undefined;
+    name: string | undefined;
+    type: string;
+    countryLat: number;
+    countryLong: number;
+  }[];
+};
+
 export type NetworkMapResponse = {
-  data: GeoJSONSourceRaw;
+  data: GroupedNetworks;
   isFetching: boolean;
   isFetched: boolean;
   isPlaceholderData: boolean;
@@ -52,85 +60,44 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     type: string;
     name: string | undefined;
     countryISO: string | undefined;
-    countryLat: number | undefined;
-    countryLong: number | undefined;
+    countryLat: number;
+    countryLong: number;
   };
+
   const parseData = (data: Data, type: string): ParsedData[] => {
     if (!data?.data) return [];
-    return data.data?.map((d) => {
-      const countryData =
-        type === 'organization'
-          ? (d as OrganizationListResponseDataItem).attributes?.country
-          : (d as ProjectListResponseDataItem).attributes?.country_of_coordination;
-      return {
-        id: d.id,
-        type: type,
-        name: d.attributes?.name,
-        countryISO: countryData?.data?.attributes?.iso_3,
-        countryLat: countryData?.data?.attributes?.lat,
-        countryLong: countryData?.data?.attributes?.long,
-      };
-    });
+    return data.data
+      ?.map((d) => {
+        const countryData =
+          type === 'organization'
+            ? (d as OrganizationListResponseDataItem).attributes?.country
+            : (d as ProjectListResponseDataItem).attributes?.country_of_coordination;
+        if (!countryData?.data?.attributes) return null;
+        return {
+          id: d.id,
+          type: type,
+          name: d.attributes?.name,
+          countryISO: countryData?.data?.attributes?.iso_3,
+          countryLat: countryData?.data?.attributes?.lat,
+          countryLong: countryData?.data?.attributes?.long,
+        };
+      })
+      .filter((d): d is ParsedData => d !== null);
   };
 
   const parsedOrganizations = parseData(organizationsData, 'organization');
   const parsedProjects = parseData(projectsData, 'project');
   const networks = [...(parsedOrganizations || []), ...(parsedProjects || [])];
-  type CountryCoordinates = {
-    [key: string]: {
-      lat: number | undefined;
-      long: number | undefined;
-    };
-  };
 
-  type GroupedNetworks = {
-    [key: string]: {
-      id: number | undefined;
-      name: string | undefined;
-      type: string;
-    }[];
-  };
-
-  const countryCoordinates: CountryCoordinates = {};
-  const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
-    const countryIso = network.countryISO;
-    if (typeof countryIso === 'undefined') return acc;
-    if (!acc[countryIso]) {
-      acc[countryIso] = [];
+  const data: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
+    const { countryISO } = network;
+    if (typeof countryISO === 'undefined') return acc;
+    if (!acc[countryISO]) {
+      acc[countryISO] = [];
     }
-    acc[countryIso].push(network);
-    if (!countryCoordinates[countryIso]) {
-      countryCoordinates[countryIso] = {
-        lat: network.countryLat,
-        long: network.countryLong,
-      };
-    }
+    acc[countryISO].push(network);
     return acc;
   }, {});
-
-  const data: GeoJSONSourceRaw = {
-    type: 'geojson',
-    data: {
-      type: 'FeatureCollection',
-      features: Object.keys(groupedNetworks).map((key) => {
-        const organizations = groupedNetworks[key].filter((n) => n.type === 'organization');
-        const projects = groupedNetworks[key].filter((n) => n.type === 'project');
-        return {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [countryCoordinates[key].long, countryCoordinates[key].lat],
-          },
-          properties: {
-            organizations: organizations.map((o) => ({ id: o.id, name: o.name })),
-            organizationsCount: organizations.length,
-            projects: projects.map((p) => ({ id: p.id, name: p.name })),
-            projectsCount: projects.length,
-          },
-        };
-      }),
-    },
-  };
 
   return {
     data,
