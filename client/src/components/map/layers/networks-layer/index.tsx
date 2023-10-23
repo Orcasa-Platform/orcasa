@@ -33,14 +33,51 @@ const sharedLayout: SymbolLayer['layout'] = {
   'text-ignore-placement': true,
 };
 
+const textField: (field: string) => SymbolLayer['layout'] = (field) => ({
+  // The format must correspond to the one defined in `formatNumber` in
+  // `/javascript/utils.js`. For that we would use this line:
+  //
+  // 'text-field': ['number-format', ['get', 'number_primary_studies'], { locale: 'fr' }],
+  //
+  // Unfortunately, and for unknown reasons, the space between thousands, millions, etc.
+  // is not rendered. As a workaround, we're manually adding the spaces.
+  'text-field': [
+    'let',
+    'char_len',
+    ['length', ['to-string', ['get', field]]],
+    'str',
+    ['to-string', ['get', field]],
+    [
+      'case',
+      ['all', ['>=', ['var', 'char_len'], 7]],
+      [
+        'concat',
+        ['slice', ['var', 'str'], 0, ['-', ['var', 'char_len'], 6]],
+        ' ',
+        ['slice', ['var', 'str'], ['-', ['var', 'char_len'], 6], ['-', ['var', 'char_len'], 3]],
+        ' ',
+        ['slice', ['var', 'str'], ['-', ['var', 'char_len'], 3], ['var', 'char_len']],
+      ],
+      ['all', ['>=', ['var', 'char_len'], 4]],
+      [
+        'concat',
+        ['slice', ['var', 'str'], 0, ['-', ['var', 'char_len'], 3]],
+        ' ',
+        ['slice', ['var', 'str'], ['-', ['var', 'char_len'], 3], ['var', 'char_len']],
+      ],
+      ['var', 'str'],
+    ],
+  ],
+});
+
 const organizationsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['paint'] } = {
   layout: {
     ...sharedLayout,
     'icon-size': ['step', ['get', 'organizationsCount'], 1, 1, 1.5, 10, 2, 50, 2.5, 100, 2.5],
     'icon-offset': [10, 0],
-    'text-field': ['number-format', ['get', 'organizationsCount'], { locale: 'en' }],
     'text-anchor': 'left',
     'text-offset': [0.75, 0],
+    ...textField('organizationsCount'),
   },
   paint: {
     'text-color': '#fff',
@@ -54,8 +91,8 @@ const projectsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['paint'
     'icon-size': ['step', ['get', 'projectsCount'], 1, 1, 1.5, 10, 2, 50, 2.5, 100, 2.5],
     'icon-offset': [-10, 0],
     'text-anchor': 'right',
-    'text-field': ['number-format', ['get', 'projectsCount'], { locale: 'en' }],
     'text-offset': [-0.75, 0],
+    ...textField('projectsCount'),
   },
   paint: {
     'text-color': '#fff',
@@ -64,7 +101,7 @@ const projectsStyle: { layout: SymbolLayer['layout']; paint: SymbolLayer['paint'
 };
 
 const paintBorder: SymbolLayer['paint'] = {
-  'icon-halo-color': '#000',
+  'icon-halo-color': '#3C4363',
   'icon-halo-width': 8,
   'icon-halo-blur': 0,
 };
