@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { atom, useAtom } from 'jotai';
 import { parseAsJson, useQueryState } from 'next-usequerystate';
@@ -12,7 +12,7 @@ import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 export const useMapSettings = () => {
   return useQueryState(
     'map-settings',
-    parseAsJson<{ basemap: string; labels: string }>().withDefault({
+    parseAsJson<{ basemap: string; labels: string }>().withOptions({ shallow: false }).withDefault({
       basemap: 'basemap-satellite',
       labels: 'labels-dark',
     }),
@@ -21,7 +21,10 @@ export const useMapSettings = () => {
 
 // Map viewport
 export const useBbox = () => {
-  return useQueryState('bbox', parseAsJson<[number, number, number, number] | null>());
+  return useQueryState(
+    'bbox',
+    parseAsJson<[number, number, number, number] | null>().withOptions({ shallow: false }),
+  );
 };
 
 // Sidebar and menus
@@ -32,13 +35,18 @@ export const useSidebarOpen = () => {
 
 // Map layers
 export const useLayers = () => {
-  return useQueryState('layers', parseAsJson<number[]>().withDefault([]));
+  return useQueryState(
+    'layers',
+    parseAsJson<number[]>().withOptions({ shallow: false }).withDefault([]),
+  );
 };
 
 export const useLayersSettings = () => {
   return useQueryState(
     'layers-settings',
-    parseAsJson<Record<string, { opacity?: number; visibility?: boolean }>>().withDefault({}),
+    parseAsJson<Record<string, { opacity?: number; visibility?: boolean }>>()
+      .withOptions({ shallow: false })
+      .withDefault({}),
   );
 };
 
