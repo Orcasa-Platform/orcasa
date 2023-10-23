@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import { atom, useAtom } from 'jotai';
 import { parseAsJson, useQueryState } from 'next-usequerystate';
 import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 
@@ -24,8 +25,9 @@ export const useBbox = () => {
 };
 
 // Sidebar and menus
+const sidebarOpenAtom = atom(true);
 export const useSidebarOpen = () => {
-  return useState(true);
+  return useAtom(sidebarOpenAtom);
 };
 
 // Map layers
@@ -40,16 +42,19 @@ export const useLayersSettings = () => {
   );
 };
 
+const layersInteractiveAtom = atom<number[]>([]);
 export const useLayersInteractive = () => {
-  return useState<number[]>([]);
+  return useAtom(layersInteractiveAtom);
 };
 
+const layersInteractiveIdsAtom = atom<number[]>([]);
 export const useLayersInteractiveIds = () => {
-  return useState<number[]>([]);
+  return useAtom(layersInteractiveIdsAtom);
 };
 
+const popupAtom = atom<MapLayerMouseEvent | null>(null);
 export const usePopup = () => {
-  return useState<MapLayerMouseEvent | null>(null);
+  return useAtom(popupAtom);
 };
 
 export const DEFAULT_SETTINGS = {};

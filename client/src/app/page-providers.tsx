@@ -2,8 +2,13 @@
 
 import { PropsWithChildren } from 'react';
 
+import { Provider as JotaiProvider } from 'jotai';
 import { MapProvider } from 'react-map-gl/maplibre';
 
 export default function Providers({ children }: PropsWithChildren) {
-  return <MapProvider>{children}</MapProvider>;
+  return (
+    <JotaiProvider>
+      <MapProvider>{children}</MapProvider>
+    </JotaiProvider>
+  );
 }
