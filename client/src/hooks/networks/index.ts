@@ -1,3 +1,5 @@
+import { PointFeature } from 'supercluster';
+
 import { useGetOrganizations } from '@/types/generated/organization';
 import { useGetProjects } from '@/types/generated/project';
 import {
@@ -15,18 +17,36 @@ export type NetworkResponse = {
   isError: boolean;
 };
 
-type GroupedNetworks = {
-  [key: string]: {
-    id: number | undefined;
-    name: string | undefined;
-    type: string;
-    countryLat: number;
-    countryLong: number;
-  }[];
+export type OrganizationProperties = {
+  id: number | undefined;
+  name: string | undefined;
+  type: 'organization';
+  countryLat: number;
+  countryLong: number;
 };
 
+export type ProjectProperties = {
+  id: number | undefined;
+  name: string | undefined;
+  type: 'project';
+  countryLat: number;
+  countryLong: number;
+};
+
+type GroupedNetworks = {
+  [key: string]: (OrganizationProperties | ProjectProperties)[];
+};
+
+type NetworkProperties = {
+  countryKey: string;
+  organizations: OrganizationProperties[];
+  projects: ProjectProperties[];
+};
+
+type PointFeatureWithNetworkProperties = PointFeature<NetworkProperties>;
+
 export type NetworkMapResponse = {
-  data: GroupedNetworks;
+  features: PointFeatureWithNetworkProperties[];
   isFetching: boolean;
   isFetched: boolean;
   isPlaceholderData: boolean;
@@ -57,7 +77,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
   type Data = ProjectListResponse | OrganizationListResponse | undefined;
   type ParsedData = {
     id: number | undefined;
-    type: string;
+    type: 'project' | 'organization';
     name: string | undefined;
     countryISO: string | undefined;
     countryLat: number;
@@ -89,7 +109,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
   const parsedProjects = parseData(projectsData, 'project');
   const networks = [...(parsedOrganizations || []), ...(parsedProjects || [])];
 
-  const data: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
+  const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
     const { countryISO } = network;
     if (typeof countryISO === 'undefined') return acc;
     if (!acc[countryISO]) {
@@ -99,8 +119,34 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     return acc;
   }, {});
 
+  const features: PointFeatureWithNetworkProperties[] =
+    groupedNetworks &&
+    Object.entries(groupedNetworks)
+      .filter(([, networks]) => networks && networks.length > 0)
+      .map(([countryKey, networks]) => {
+        if (!networks || (networks.length === 0 && typeof networks === 'undefined')) {
+          return null;
+        }
+        const organizations = networks?.filter((network) => network?.type === 'organization');
+        const projects = networks?.filter((network) => network?.type === 'project');
+
+        return {
+          type: 'Feature',
+          properties: {
+            countryKey,
+            organizations,
+            projects,
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: [networks[0]?.countryLong, networks[0]?.countryLat],
+          },
+        };
+      })
+      .filter((feature): feature is PointFeatureWithNetworkProperties => feature !== null);
+
   return {
-    data,
+    features,
     isFetching: organizationIsFetching || projectsIsFetching,
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,
