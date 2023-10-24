@@ -38,7 +38,7 @@ type GroupedNetworks = {
 };
 
 type NetworkProperties = {
-  countryKey: string;
+  countryName: string;
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];
 };
@@ -80,6 +80,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     type: 'project' | 'organization';
     name: string | undefined;
     countryISO: string | undefined;
+    countryName: string | undefined;
     countryLat: number;
     countryLong: number;
   };
@@ -97,7 +98,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
           id: d.id,
           type: type,
           name: d.attributes?.name,
-          countryISO: countryData?.data?.attributes?.iso_3,
+          countryName: countryData?.data?.attributes?.name,
           countryLat: countryData?.data?.attributes?.lat,
           countryLong: countryData?.data?.attributes?.long,
         };
@@ -110,12 +111,12 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
   const networks = [...(parsedOrganizations || []), ...(parsedProjects || [])];
 
   const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
-    const { countryISO } = network;
-    if (typeof countryISO === 'undefined') return acc;
-    if (!acc[countryISO]) {
-      acc[countryISO] = [];
+    const { countryName } = network;
+    if (typeof countryName === 'undefined') return acc;
+    if (!acc[countryName]) {
+      acc[countryName] = [];
     }
-    acc[countryISO].push(network);
+    acc[countryName].push(network);
     return acc;
   }, {});
 
@@ -123,7 +124,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     groupedNetworks &&
     Object.entries(groupedNetworks)
       .filter(([, networks]) => networks && networks.length > 0)
-      .map(([countryKey, networks]) => {
+      .map(([countryName, networks]) => {
         if (!networks || (networks.length === 0 && typeof networks === 'undefined')) {
           return null;
         }
@@ -133,7 +134,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
         return {
           type: 'Feature',
           properties: {
-            countryKey,
+            countryName,
             organizations,
             projects,
           },
