@@ -78,3 +78,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Overrides */
+
+.maplibregl-popup-content {
+  padding: 0 !important;
+}

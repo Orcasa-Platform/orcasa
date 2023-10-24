@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
@@ -8,6 +8,8 @@ import { cn } from '@/lib/classnames';
 import { LayerProps } from '@/types/layers';
 
 import { OrganizationProperties, ProjectProperties, useMapNetworks } from '@/hooks/networks';
+
+import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
 
 export type NetworksLayerProps = LayerProps & {
   beforeId?: string;
@@ -34,17 +36,17 @@ const getSize = (size: number) => {
 };
 
 type MarkerProps = {
-  iso: string | number;
+  id: string | number;
   longitude: number;
   latitude: number;
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];
   isCluster?: boolean;
-  onClick?: () => void;
+  onClick?: (type: 'project' | 'organization') => void;
 };
 
 const MarkerComponent = ({
-  iso,
+  id,
   longitude,
   latitude,
   organizations,
@@ -52,10 +54,15 @@ const MarkerComponent = ({
   isCluster = false,
   onClick,
 }: MarkerProps) => (
-  <Marker key={`marker-${iso}`} longitude={longitude} latitude={latitude} onClick={onClick}>
+  <Marker key={`marker-${id}`} longitude={longitude} latitude={latitude}>
     <div className="flex items-center gap-px">
       {organizations.length > 0 && (
-        <div
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (onClick) onClick('organization');
+          }}
           className={cn(
             'flex origin-left items-center justify-center bg-blue-500',
             getSize(organizations?.length),
@@ -63,10 +70,15 @@ const MarkerComponent = ({
           )}
         >
           <div className="text-sm text-white">{organizations?.length}</div>
-        </div>
+        </button>
       )}
       {projects.length > 0 && (
-        <div
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (onClick) onClick('project');
+          }}
           className={cn(
             'flex origin-left items-center justify-center bg-peach-700',
             getSize(projects?.length),
@@ -74,7 +86,7 @@ const MarkerComponent = ({
           )}
         >
           <div className="text-sm text-white">{projects?.length}</div>
-        </div>
+        </button>
       )}
     </div>
   </Marker>
@@ -83,6 +95,21 @@ const MarkerComponent = ({
 const NetworksMarkers = () => {
   const { current: map } = useMap();
   const { features, isError, isFetched } = useMapNetworks();
+
+  // Close popup on map click. Important stopPropagation() in MarkerComponent
+  useEffect(() => {
+    if (map) {
+      map.on('click', () => {
+        setPopup(null);
+      });
+
+      return () => {
+        map.off('click', () => {
+          setPopup(null);
+        });
+      };
+    }
+  }, [map]);
 
   const SUPERCLUSTER: Supercluster = useMemo(
     () => features && new Supercluster({ radius: 100 }).load(features),
@@ -98,6 +125,8 @@ const NetworksMarkers = () => {
     return SUPERCLUSTER.getClusters(bbox, zoom);
   }, [SUPERCLUSTER, bbox, zoom]);
 
+  const [popup, setPopup] = useState<PopupAttributes>(null);
+
   if (!features || (isFetched && isError) || typeof map === 'undefined') {
     return null;
   }
@@ -108,6 +137,7 @@ const NetworksMarkers = () => {
   // If is a cluster (properties.cluster = true):
   return (
     <>
+      <NetworksPopup popup={popup} setPopup={setPopup} />
       {clusters.map((feature) => {
         const { geometry, properties } = feature;
         const { coordinates } = geometry;
@@ -136,7 +166,7 @@ const NetworksMarkers = () => {
                 });
               }}
               key={`cluster-marker-${clusterId}`}
-              iso={clusterId}
+              id={clusterId}
               longitude={longitude}
               latitude={latitude}
               organizations={organizations}
@@ -147,14 +177,27 @@ const NetworksMarkers = () => {
         }
 
         // If is not a cluster, it's a country marker
+        const { countryName, organizations, projects } = properties;
         return (
           <MarkerComponent
-            key={`marker-${properties.countryKey}`}
-            iso={properties.countryKey}
+            key={`marker-${countryName}`}
+            id={countryName}
             longitude={longitude}
             latitude={latitude}
-            organizations={properties.organizations}
-            projects={properties.projects}
+            organizations={organizations}
+            projects={projects}
+            onClick={(type) => {
+              setPopup({
+                type,
+                longitude,
+                latitude,
+                properties: {
+                  countryName,
+                  organizations,
+                  projects,
+                },
+              });
+            }}
           />
         );
       })}

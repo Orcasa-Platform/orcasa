@@ -1,7 +1,7 @@
 const NetworkLegend = () => {
   const renderMarkersLegend = () => {
     const legendItem = (text: string) => (
-      <div className="-mt-px flex h-[21px] w-full items-center text-right">
+      <div key={text} className="-mt-px flex h-[21px] w-full items-center text-right">
         <span className="mr-[10px] w-[60px]">{text}</span>
         <span className="h-[6px] w-[8px] rotate-45 bg-gray-300 p-0" />
         <span className="mr-3 w-full border-t border-dashed border-gray-300" />
