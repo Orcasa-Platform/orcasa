@@ -82,7 +82,7 @@ locals {
     {
       namespace = "aws:elasticbeanstalk:environment"
       name      = "ServiceRole"
-      value     = aws_iam_service_linked_role.elasticbeanstalk.name
+      value     = var.elasticbeanstalk_iam_service_linked_role_name
     },
     {
       namespace = "aws:autoscaling:launchconfiguration"
