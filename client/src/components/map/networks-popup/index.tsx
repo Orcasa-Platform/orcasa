@@ -42,13 +42,13 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
       longitude={popup.longitude}
       closeOnClick={false}
       closeButton={false}
+      offset={20}
       maxWidth="332px"
       className="gap- z-50 flex h-[332px] w-[332px] flex-col p-0 font-serif"
     >
       <div className="p-6">
         <Button
           size="icon"
-          // variant="opener-dark"
           onClick={() => setPopup(null)}
           className="absolute right-0 top-0 flex items-center justify-center bg-slate-700 p-0 text-white transition-colors hover:bg-slate-500 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
         >
@@ -59,7 +59,7 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
           <span>{type === 'project' ? 'Projects coordinated in ' : 'Organisations from '}</span>
           <span className="font-semibold">{countryName}</span>
         </header>
-        <div className="flex h-[232px] flex-col items-start justify-start gap-2">
+        <div className="flex max-h-[232px] flex-col items-start justify-start gap-2 overflow-y-auto">
           {networks.map((network) => {
             const { id, name } = network;
             return (
