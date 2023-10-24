@@ -1,21 +1,21 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-
 import { ArrowLeft } from 'lucide-react';
+
+import { useMapSearchParams } from '@/store';
 
 import { useScrollSidebarToTop } from '@/containers/sidebar';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 
 export default function NetworkModuleDetailsLayout({ children }: { children: React.ReactNode }) {
-  const searchParams = useSearchParams();
+  const mapSearchParams = useMapSearchParams();
 
   useScrollSidebarToTop();
 
   return (
     <div className="p-7">
-      <SlidingLinkButton href={`/network?${searchParams.toString()}`} Icon={ArrowLeft}>
+      <SlidingLinkButton href={`/network?${mapSearchParams.toString()}`} Icon={ArrowLeft}>
         Back to Results
       </SlidingLinkButton>
       {children}

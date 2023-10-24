@@ -1,11 +1,11 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-
 import { ChevronRight, Calendar, FolderOpen, Globe2 } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
+
+import { useMapSearchParams } from '@/store';
 
 import {
   ProjectListResponseDataItem,
@@ -84,7 +84,7 @@ export default function Network({
     type: 'project' | 'organization';
   }) {
   const { name, short_description: shortDescription } = attributes || {};
-  const searchParams = useSearchParams();
+  const searchParams = useMapSearchParams();
 
   return (
     <li

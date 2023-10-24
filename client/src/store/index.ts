@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { atom, useAtom } from 'jotai';
 import { parseAsJson, useQueryState } from 'next-usequerystate';
@@ -12,7 +12,7 @@ import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 export const useMapSettings = () => {
   return useQueryState(
     'map-settings',
-    parseAsJson<{ basemap: string; labels: string }>().withOptions({ shallow: false }).withDefault({
+    parseAsJson<{ basemap: string; labels: string }>().withDefault({
       basemap: 'basemap-satellite',
       labels: 'labels-dark',
     }),
@@ -21,10 +21,7 @@ export const useMapSettings = () => {
 
 // Map viewport
 export const useBbox = () => {
-  return useQueryState(
-    'bbox',
-    parseAsJson<[number, number, number, number] | null>().withOptions({ shallow: false }),
-  );
+  return useQueryState('bbox', parseAsJson<[number, number, number, number] | null>());
 };
 
 // Sidebar and menus
@@ -35,19 +32,32 @@ export const useSidebarOpen = () => {
 
 // Map layers
 export const useLayers = () => {
-  return useQueryState(
-    'layers',
-    parseAsJson<number[]>().withOptions({ shallow: false }).withDefault([]),
-  );
+  return useQueryState('layers', parseAsJson<number[]>().withDefault([]));
 };
 
 export const useLayersSettings = () => {
   return useQueryState(
     'layers-settings',
-    parseAsJson<Record<string, { opacity?: number; visibility?: boolean }>>()
-      .withOptions({ shallow: false })
-      .withDefault({}),
+    parseAsJson<Record<string, { opacity?: number; visibility?: boolean }>>().withDefault({}),
   );
+};
+
+export const useMapSearchParams = () => {
+  const [mapSettings] = useMapSettings();
+  const [bbox] = useBbox();
+  const [layers] = useLayers();
+  const [layersSettings] = useLayersSettings();
+
+  const searchParams = useMemo(() => {
+    return new URLSearchParams({
+      'map-settings': JSON.stringify(mapSettings),
+      ...(bbox ? { bbox: JSON.stringify(bbox) } : {}),
+      layers: JSON.stringify(layers),
+      'layers-settings': JSON.stringify(layersSettings),
+    });
+  }, [mapSettings, bbox, layers, layersSettings]);
+
+  return searchParams;
 };
 
 const layersInteractiveAtom = atom<number[]>([]);
