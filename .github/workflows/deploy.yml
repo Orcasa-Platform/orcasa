@@ -32,7 +32,7 @@ jobs:
               - '.github/workflows/**'
 
       - name: Extract branch name
-        if: steps.client-changes.outputs.qgis == 'true'
+        if: steps.qgis-changes.outputs.qgis == 'true'
         shell: bash
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
@@ -65,8 +65,8 @@ jobs:
           file: ./qgis/Dockerfile
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-qgis:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-qgis:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   build_client_image:
     name: Build Client image and push to Amazon ECR
@@ -123,8 +123,8 @@ jobs:
           file: ./client/Dockerfile.prod
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-client:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-client:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   build_cms_image:
     name: Build CMS image and push to Amazon ECR
@@ -182,8 +182,8 @@ jobs:
           file: ./cms/Dockerfile.prod
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-cms:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-cms:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CMS_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CMS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   deploy:
     name: Deploy Client and CMS to Amazon EB
