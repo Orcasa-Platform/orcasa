@@ -116,6 +116,12 @@ export default function Network({
               'bg-peach-100': type === 'project',
               'bg-blue-100': type === 'organization',
             })}
+            // Next.js has a bug where the sidebar is not scrolled up to the top when navigating but
+            // up to where `{children}` is visually located *within* the layout. Paddings around
+            // `{children}` also causes issues.
+            // For this reason, the automatic scroll restoration is disabled and manually set inside
+            // `(details)/layout.tsx`.
+            scroll={false}
           >
             Learn more
           </SlidingLinkButton>

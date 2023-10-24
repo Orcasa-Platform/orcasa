@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { ChevronLeft } from 'lucide-react';
 
@@ -14,6 +14,18 @@ import { useTheme } from '@/hooks/ui/theme';
 
 import { Button } from '@/components/ui/button';
 type OpenerVariant = 'opener-dark' | 'opener-light';
+
+export const useScrollSidebarToTop = () => {
+  useEffect(() => {
+    // NOTE: a ref would be preferable but unfortunately means that the whole file tree needs to be
+    // changed. This hook won't be necessary anymore when Next.js fixes the issues related to the
+    // automatic scroll restoration when navigating.
+    const sidebarScrollContainer = document.querySelector('.js-sidebar-scroll-container');
+    if (sidebarScrollContainer) {
+      sidebarScrollContainer.scrollTo({ top: 0 });
+    }
+  }, []);
+};
 
 export default function Sidebar({
   children,
@@ -61,7 +73,7 @@ export default function Sidebar({
         </Button>
       </div>
 
-      <div className="flex grow flex-col overflow-y-auto">
+      <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto">
         <div className="space-y-5 p-5 text-slate-700">{children}</div>
       </div>
     </div>
