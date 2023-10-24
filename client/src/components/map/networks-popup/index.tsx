@@ -56,7 +56,7 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
           <span className="sr-only">Close</span>
         </Button>
         <header className="pb-6 text-lg text-slate-700">
-          <span>{type === 'project' ? 'Projects' : 'Organisations'} from </span>
+          <span>{type === 'project' ? 'Projects coordinated in ' : 'Organisations from '}</span>
           <span className="font-semibold">{countryName}</span>
         </header>
         <div className="flex h-[232px] flex-col items-start justify-start gap-2">
