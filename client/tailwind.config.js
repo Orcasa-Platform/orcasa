@@ -40,6 +40,9 @@ module.exports = {
           100: '#EAF1F8',
           500: '#358FE3',
         },
+        gray: {
+          800: '#3C4363',
+        },
         peach: {
           50: '#FFF7EF',
           100: '#FFECDB',

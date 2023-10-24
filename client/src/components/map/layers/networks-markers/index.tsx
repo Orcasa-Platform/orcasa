@@ -1,9 +1,10 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 
 import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
 import { cn } from '@/lib/classnames';
+import { format } from '@/lib/utils/formats';
 
 import { LayerProps } from '@/types/layers';
 
@@ -66,10 +67,12 @@ const MarkerComponent = ({
           className={cn(
             'flex origin-left items-center justify-center bg-blue-500',
             getSize(organizations?.length),
-            { 'border-2 border-black': !isCluster },
+            { 'border-2 border-gray-800': !isCluster },
           )}
         >
-          <div className="text-sm text-white">{organizations?.length}</div>
+          <div className="text-sm text-white">
+            {format({ id: 'formatNumber', value: organizations.length })}
+          </div>
         </button>
       )}
       {projects.length > 0 && (
@@ -82,10 +85,12 @@ const MarkerComponent = ({
           className={cn(
             'flex origin-left items-center justify-center bg-peach-700',
             getSize(projects?.length),
-            { 'border-2 border-black': !isCluster },
+            { 'border-2 border-gray-800': !isCluster },
           )}
         >
-          <div className="text-sm text-white">{projects?.length}</div>
+          <div className="text-sm text-white">
+            {format({ id: 'formatNumber', value: projects.length })}
+          </div>
         </button>
       )}
     </div>
@@ -95,21 +100,19 @@ const MarkerComponent = ({
 const NetworksMarkers = () => {
   const { current: map } = useMap();
   const { features, isError, isFetched } = useMapNetworks();
+  const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent
+  const onClickMap = useCallback(() => setPopup(null), [setPopup]);
   useEffect(() => {
     if (map) {
-      map.on('click', () => {
-        setPopup(null);
-      });
+      map.on('click', onClickMap);
 
       return () => {
-        map.off('click', () => {
-          setPopup(null);
-        });
+        map.off('click', onClickMap);
       };
     }
-  }, [map]);
+  }, [map, onClickMap]);
 
   const SUPERCLUSTER: Supercluster = useMemo(
     () => features && new Supercluster({ radius: 100 }).load(features),
@@ -124,8 +127,6 @@ const NetworksMarkers = () => {
 
     return SUPERCLUSTER.getClusters(bbox, zoom);
   }, [SUPERCLUSTER, bbox, zoom]);
-
-  const [popup, setPopup] = useState<PopupAttributes>(null);
 
   if (!features || (isFetched && isError) || typeof map === 'undefined') {
     return null;

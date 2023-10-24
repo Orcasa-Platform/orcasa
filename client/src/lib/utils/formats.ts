@@ -26,24 +26,16 @@ export function formatDate(value: string, options?: Intl.DateTimeFormatOptions) 
   return formatter.format(dateValue).replace(/\s/g, '/');
 }
 
-export function formatHA(value: number, options?: Intl.NumberFormatOptions) {
-  const formatter = Intl.NumberFormat('en-IE', {
-    notation: 'compact',
-    compactDisplay: 'short',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-    style: 'unit',
-    unit: 'hectare',
-    unitDisplay: 'short',
-    ...options,
-  });
-
+const formatNumber = (value: number) => {
+  // The French number format uses spaces to separate thousands, millions, etc. and a comma to
+  // separate the decimals e.g. 1 456 357,45
+  const formatter = Intl.NumberFormat('fr');
   return formatter.format(value);
-}
+};
 
 const NUMBER_FORMATS = {
   formatPercentage,
-  formatHA,
+  formatNumber,
 } as const;
 
 const STRING_FORMATS = {
