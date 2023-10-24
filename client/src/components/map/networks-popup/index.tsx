@@ -46,7 +46,7 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
       maxWidth="332px"
       className="gap- z-50 flex h-[332px] w-[332px] flex-col p-0 font-serif"
     >
-      <div className="p-6">
+      <div className="p-6 pr-12">
         <Button
           size="icon"
           onClick={() => setPopup(null)}
