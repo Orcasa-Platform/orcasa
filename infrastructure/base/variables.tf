@@ -23,6 +23,10 @@ variable "staging_domain" {
   type = string
 }
 
+variable "demo_domain" {
+  type = string
+}
+
 #
 # Elastic Beanstalk configuration
 # concepts: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.html

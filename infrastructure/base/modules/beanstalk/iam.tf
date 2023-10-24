@@ -49,7 +49,3 @@ resource "aws_iam_policy_attachment" "beanstalk_ec2_ecr" {
   roles      = [aws_iam_role.beanstalk_ec2.id]
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
-
-resource "aws_iam_service_linked_role" "elasticbeanstalk" {
-  aws_service_name = "elasticbeanstalk.amazonaws.com"
-}

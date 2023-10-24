@@ -1,15 +1,3 @@
-module "ecr" {
-  source = "../ecr"
-
-  project     = var.project
-  environment = var.environment
-  tags        = {
-    project     = var.project,
-    environment = var.environment
-  }
-}
-
-
 resource "aws_security_group" "postgresql_access" {
   vpc_id      = var.vpc.id
   description = "SG allowing access to the Postgres SG"

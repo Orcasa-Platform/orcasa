@@ -75,6 +75,10 @@ variable "rds_instance_class" {
   description = "RDS instance type class"
 }
 
+variable "elasticbeanstalk_iam_service_linked_role_name" {
+  type        = string
+  description = "The IAM service linked role to use for the environment"
+}
 
 variable "data_bucket_name" {
   type        = string
