@@ -86,13 +86,17 @@ jobs:
 
       - name: Extract branch name
         if: steps.client-changes.outputs.client == 'true'
-        shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        run: |
+          {
+            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            echo "branch=${branch}"
+            echo "branch_upper=${branch^^}"
+          } >> $GITHUB_OUTPUT
         id: extract_branch
 
       - name: Copy env variables to docker
         run: |
-          echo "${{ secrets.STAGING_CLIENT_ENV_FILE }}" > client/.env.local
+          echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CLIENT_ENV_FILE || secrets[format('{0}_CLIENT_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > cms/.env
 
       - name: Configure AWS credentials
         if: steps.client-changes.outputs.client == 'true'
@@ -144,14 +148,18 @@ jobs:
 
       - name: Extract branch name
         if: steps.cms-changes.outputs.cms == 'true'
-        shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        run: |
+          {
+            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            echo "branch=${branch}"
+            echo "branch_upper=${branch^^}"
+          } >> $GITHUB_OUTPUT
         id: extract_branch
 
       - name: Copy env variables to docker
         if: steps.cms-changes.outputs.cms == 'true'
         run: |
-          echo "${{ secrets.STAGING_CMS_ENV_FILE }}" > cms/.env
+          echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CMS_ENV_FILE || secrets[format('{0}_CMS_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > cms/.env
 
       - name: Configure AWS credentials
         if: steps.cms-changes.outputs.cms == 'true'
