@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import { ArrowLeft, ExternalLink, Pencil } from 'lucide-react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
@@ -15,6 +15,7 @@ import { NetworkResponse } from '@/hooks/networks';
 
 import { SlidingButton, Button } from '@/components/ui/button';
 
+import { useIsOverTwoLines } from './network-detail-hooks';
 import { getProjectFields, getOrganizationFields } from './network-detail-parsers';
 
 export type ProjectWithType = { type: 'project'; attributes: Project; id: number };
@@ -35,9 +36,17 @@ type Field = {
   label: string;
   value: string | (string | undefined)[] | undefined;
   url?: string | string[];
+  hasEllipsis?: boolean;
 };
 
-const Field = ({ label, value, url, type }: Field & { type: Type }) => {
+const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isOverTwoLines = useIsOverTwoLines(ref, hasEllipsis);
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const renderLink = (url: string | string[]) =>
     Array.isArray(url) ? (
       <div>
@@ -51,7 +60,7 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
                   href={u}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm text-peach-700"
+                  className="text-sm text-peach-700 "
                 >
                   {value[i]}
                 </a>
@@ -60,7 +69,7 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
         )}
       </div>
     ) : (
-      <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
+      <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700 ">
         {value}
       </a>
     );
@@ -75,7 +84,25 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
       >
         {label}
       </div>
-      {url ? renderLink(url) : <div className="text-sm">{value}</div>}
+      {url ? (
+        renderLink(url)
+      ) : (
+        <div>
+          <div
+            ref={ref}
+            className={cn('text-sm', {
+              'line-clamp-2': !isExpanded && isOverTwoLines,
+            })}
+          >
+            {value}
+          </div>
+          {isOverTwoLines && (
+            <button onClick={toggleExpanded} className="text-sm font-semibold text-mod-sc-ev">
+              {isExpanded ? 'Show less' : 'Show more'}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -91,11 +118,10 @@ export default function NetworkDetailPanel({ data }: { data: Data }) {
       closeButtonRef.current.focus();
     }
   }, [data?.id, type]);
-
   if (!data || !type) return null;
   const { attributes } = data || {};
   const { name, description } = attributes || {};
-  let fields: Field[] = [{ label: 'Description', value: description }];
+  let fields: Field[] = [{ label: 'Description', value: description, hasEllipsis: true }];
   const dataWithType = { ...data, type };
   let url;
 
