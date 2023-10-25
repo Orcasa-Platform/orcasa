@@ -29,7 +29,6 @@ module.exports = {
       },
       colors: {
         main: 'hsl(var(--main))',
-        'gray-50': '#F7F7F9',
         yellow: {
           50: '#FFF7E6',
           500: '#FFD500',
@@ -41,6 +40,7 @@ module.exports = {
           500: '#358FE3',
         },
         gray: {
+          50: '#F7F7F9',
           800: '#3C4363',
         },
         peach: {
