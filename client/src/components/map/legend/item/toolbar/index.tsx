@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { PopoverArrow } from '@radix-ui/react-popover';
 import { Eye, EyeOff, X } from 'lucide-react';
+import Opacity from 'public/icons/opacity.svg?sprite';
 
 import { cn } from '@/lib/classnames';
 
@@ -16,7 +17,6 @@ import {
   TooltipPortal,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import Opacity from '@/styles/icons/opacity.svg?sprite';
 
 import Slider from './slider';
 

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
-import Logo from 'public/images/logo.svg';
+import Logo from 'public/images/logo.svg?sprite';
 
 import { cn } from '@/lib/classnames';
 

@@ -1,6 +1,10 @@
 'use client';
 
 import { ChevronRight } from 'lucide-react';
+import CalendarIcon from 'public/icons/calendar.svg?sprite';
+import FolderIcon from 'public/icons/folder.svg?sprite';
+import GlobeIcon from 'public/icons/globe.svg?sprite';
+import OrganizationIcon from 'public/icons/organisation.svg?sprite';
 import { useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
@@ -18,11 +22,6 @@ import {
 import { SlidingButton } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-
-import CalendarIcon from '@/styles/icons/calendar.svg?sprite';
-import FolderIcon from '@/styles/icons/folder.svg?sprite';
-import GlobeIcon from '@/styles/icons/globe.svg?sprite';
-import OrganizationIcon from '@/styles/icons/organisation.svg?sprite';
 
 const Icons = ({
   type,

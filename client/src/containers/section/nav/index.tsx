@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/classnames';
 
-import Logo from '/public/images/logo.svg';
+import Logo from '/public/images/logo.svg?sprite';
 
 import Icon from '@/components/ui/icon';
 
