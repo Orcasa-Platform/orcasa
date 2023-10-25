@@ -62,6 +62,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     isError: organizationIsError,
   } = useGetOrganizations({
     populate: 'country',
+    'pagination[pageSize]': 9999,
   });
 
   const {
@@ -72,6 +73,7 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     isError: projectsIsError,
   } = useGetProjects({
     populate: 'country_of_coordination',
+    'pagination[pageSize]': 9999,
   });
 
   type Data = ProjectListResponse | OrganizationListResponse | undefined;
