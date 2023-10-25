@@ -1252,6 +1252,7 @@ __metadata:
     recoil: ^0.7.7
     recoil-sync: ^0.2.0
     rooks: 7.14.1
+    supercluster: ^8.0.1
     svg-sprite-loader: 6.0.11
     svgo: 3.0.2
     svgo-loader: 3.0.3
