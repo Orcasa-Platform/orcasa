@@ -158,7 +158,7 @@ locals {
     DATABASE_CLIENT                  = "postgres"
     DATABASE_HOST                    = module.staging.postgresql_host
     DATABASE_PORT                    = module.staging.postgresql_port
-    DATABASE_NAME                    = "orcasa_staging"
+    DATABASE_NAME                    = module.staging.postgresql_db_name
     DATABASE_USERNAME                = module.staging.postgresql_username
     DATABASE_PASSWORD                = module.staging.postgresql_password
     DATABASE_SSL                     = true
@@ -192,7 +192,7 @@ locals {
     DATABASE_CLIENT                  = "postgres"
     DATABASE_HOST                    = module.demo.postgresql_host
     DATABASE_PORT                    = module.demo.postgresql_port
-    DATABASE_NAME                    = "orcasa_demo"
+    DATABASE_NAME                    = module.demo.postgresql_db_name
     DATABASE_USERNAME                = module.demo.postgresql_username
     DATABASE_PASSWORD                = module.demo.postgresql_password
     DATABASE_SSL                     = true
