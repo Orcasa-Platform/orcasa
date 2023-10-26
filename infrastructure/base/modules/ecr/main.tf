@@ -1,91 +1,53 @@
-##
-# Module to build the ECR repository
-##
+locals {
+  repository_name = "${var.project_name}-${var.repo_name}"
+}
 
-# TODO: must be a cleaner way to do it than to duplicate the resource
-
-resource "aws_ecr_repository" "cms_ecr" {
-  name                 = "${var.project}-${var.environment}-cms"
+resource "aws_ecr_repository" "ecr_repository" {
+  name                 = local.repository_name
   image_tag_mutability = var.image_mutability
-  tags                 = var.tags
+  tags                 = {
+    project = local.repository_name,
+  }
 
   encryption_configuration {
     encryption_type = var.encrypt_type
   }
 }
 
-resource "aws_ecr_repository" "client_ecr" {
-  name                 = "${var.project}-${var.environment}-client"
-  image_tag_mutability = var.image_mutability
-  tags                 = var.tags
-
-  encryption_configuration {
-    encryption_type = var.encrypt_type
-  }
-}
-
-resource "aws_ecr_repository" "qgis_ecr" {
-  name                 = "${var.project}-${var.environment}-qgis"
-  image_tag_mutability = var.image_mutability
-  tags                 = var.tags
-
-  encryption_configuration {
-    encryption_type = var.encrypt_type
-  }
-}
-
-resource "aws_ecr_lifecycle_policy" "cms_ecr_lifecycle_policy" {
-  repository = aws_ecr_repository.cms_ecr.name
+resource "aws_ecr_lifecycle_policy" "ecr_lifecycle_policy" {
+  repository = aws_ecr_repository.ecr_repository.name
   policy     = <<EOF
 {
     "rules": [
         {
             "rulePriority": 1,
-            "description": "Keep last n cms images",
+            "description": "Keep production image",
             "selection": {
-                "tagStatus": "any",
+                "tagStatus": "tagged",
+                "tagPrefixList": ["production"],
                 "countType": "imageCountMoreThan",
-                "countNumber": 3
+                "countNumber": 1
             },
             "action": {
                 "type": "expire"
             }
-        }
-    ]
-}
-EOF
-}
-
-resource "aws_ecr_lifecycle_policy" "client_ecr_lifecycle_policy" {
-  repository = aws_ecr_repository.client_ecr.name
-  policy     = <<EOF
-{
-    "rules": [
+        },
         {
-            "rulePriority": 1,
-            "description": "Keep last n client images",
+            "rulePriority": 2,
+            "description": "Keep staging image",
             "selection": {
-                "tagStatus": "any",
+                "tagStatus": "tagged",
+                "tagPrefixList": ["staging"],
                 "countType": "imageCountMoreThan",
-                "countNumber": 3
+                "countNumber": 1
             },
             "action": {
                 "type": "expire"
             }
-        }
-    ]
-}
-EOF
-}
-
-resource "aws_ecr_lifecycle_policy" "qgis_ecr_lifecycle_policy" {
-  repository = aws_ecr_repository.qgis_ecr.name
-  policy     = <<EOF
-{
-    "rules": [
+        },
         {
-            "rulePriority": 1,
-            "description": "Keep last n qgis images",
+            "rulePriority": 100,
+            "description": "Delete older than n latest images",
             "selection": {
                 "tagStatus": "any",
                 "countType": "imageCountMoreThan",

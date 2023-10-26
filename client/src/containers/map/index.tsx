@@ -5,7 +5,13 @@ import { useEffect } from 'react';
 
 import dynamic from 'next/dynamic';
 
-import { LngLatBoundsLike, MapLayerMouseEvent, useMap, MapStyle } from 'react-map-gl/maplibre';
+import {
+  LngLatBoundsLike,
+  MapLayerMouseEvent,
+  useMap,
+  MapStyle,
+  GeoJSONSource,
+} from 'react-map-gl/maplibre';
 import { usePreviousImmediate } from 'rooks';
 
 import { getCroppedBounds } from '@/lib/utils/map';
@@ -78,6 +84,34 @@ export default function MapContainer() {
   );
   const { [id]: map } = useMap();
 
+  // Add network icon marker to the map
+  useEffect(() => {
+    // Create a new canvas element
+    const canvas = document.createElement('canvas');
+
+    // Set the size of the image
+    canvas.width = 20;
+    canvas.height = 40;
+
+    // Get the 2D rendering context
+    const ctx = canvas.getContext('2d');
+
+    // Draw a rectangle on the canvas
+    if (!ctx) return;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Get the image data from the canvas
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // Create a Uint8Array from the image data
+    const data = new Uint8Array(imageData.data.buffer);
+
+    if (map) {
+      // sdf is needed to be able to change icon color
+      map.addImage('rect', { width: canvas.width, height: canvas.height, data }, { sdf: true });
+    }
+  }, [map]);
+
   useEffect(() => {
     // We only want to detect changes of padding, not the initial value (when
     // `previousPadding` === `null`) nor when the reference has changed
@@ -124,6 +158,29 @@ export default function MapContainer() {
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
+      // Check if a cluster was clicked
+      const features = map?.queryRenderedFeatures(e.point);
+      if (features?.length && features.some((f) => f.properties.cluster)) {
+        // Get the cluster ID
+        const clusterFeature = features.find((f) => f.properties.cluster_id);
+        const clusterId = clusterFeature?.properties.cluster_id;
+        const id = clusterFeature?.layer?.source;
+
+        // Get the zoom level at which the cluster expands
+        if (map && clusterId && id) {
+          const source = map.getSource(id) as GeoJSONSource;
+          source?.getClusterExpansionZoom(clusterId, function (err, zoom) {
+            if (err || zoom === null || typeof zoom === 'undefined') return;
+            // Zoom in to the cluster
+            map.easeTo({
+              center: e.lngLat,
+              zoom: zoom,
+            });
+          });
+        }
+      }
+
+      // Layer interaction
       if (
         layersInteractive.length &&
         layersInteractiveData?.data &&
@@ -137,7 +194,7 @@ export default function MapContainer() {
         setPopup(p);
       }
     },
-    [layersInteractive, layersInteractiveData, setPopup],
+    [layersInteractive, layersInteractiveData, setPopup, map],
   );
 
   return (

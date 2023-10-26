@@ -5,10 +5,13 @@ on:
   push:
     branches:
       - main
+      - demo
+      - staging
     paths:
-      - 'client/**'
-      - 'cms/**'
       - '.github/workflows/*'
+      - 'client/**'
+      - 'qgis/**'
+      - 'cms/**'
       - 'infrastructure/**'
 
 jobs:
@@ -27,6 +30,12 @@ jobs:
             qgis:
               - 'qgis/**'
               - '.github/workflows/**'
+
+      - name: Extract branch name
+        if: steps.qgis-changes.outputs.qgis == 'true'
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
 
       - name: Configure AWS credentials
         if: steps.qgis-changes.outputs.qgis == 'true'
@@ -56,8 +65,8 @@ jobs:
           file: ./qgis/Dockerfile
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-qgis:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-qgis:latest
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   build_client_image:
     name: Build Client image and push to Amazon ECR
@@ -75,9 +84,20 @@ jobs:
               - 'client/**'
               - '.github/workflows/**'
 
-      - name: Copy env variables to docker
+      - name: Extract branch name
+        if: steps.client-changes.outputs.client == 'true'
         run: |
-          echo "${{ secrets.STAGING_CLIENT_ENV_FILE }}" > client/.env.local
+          {
+            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            echo "branch=${branch}"
+            echo "branch_upper=${branch^^}"
+          } >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Copy env variables to docker
+        if: steps.client-changes.outputs.client == 'true'
+        run: |
+          echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CLIENT_ENV_FILE || secrets[format('{0}_CLIENT_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > client/.env.local
 
       - name: Configure AWS credentials
         if: steps.client-changes.outputs.client == 'true'
@@ -108,8 +128,8 @@ jobs:
           file: ./client/Dockerfile.prod
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-client:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-client:latest
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   build_cms_image:
     name: Build CMS image and push to Amazon ECR
@@ -127,10 +147,20 @@ jobs:
               - 'cms/**'
               - '.github/workflows/**'
 
+      - name: Extract branch name
+        if: steps.cms-changes.outputs.cms == 'true'
+        run: |
+          {
+            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            echo "branch=${branch}"
+            echo "branch_upper=${branch^^}"
+          } >> $GITHUB_OUTPUT
+        id: extract_branch
+
       - name: Copy env variables to docker
         if: steps.cms-changes.outputs.cms == 'true'
         run: |
-          echo "${{ secrets.STAGING_CMS_ENV_FILE }}" > cms/.env
+          echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CMS_ENV_FILE || secrets[format('{0}_CMS_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > cms/.env
 
       - name: Configure AWS credentials
         if: steps.cms-changes.outputs.cms == 'true'
@@ -161,8 +191,8 @@ jobs:
           file: ./cms/Dockerfile.prod
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-cms:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/orcasa-staging-cms:latest
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CMS_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CMS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   deploy:
     name: Deploy Client and CMS to Amazon EB
@@ -186,23 +216,29 @@ jobs:
         with:
           mask-password: 'true'
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
       - name: Generate docker compose file
         working-directory: infrastructure/source_bundle
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY_CLIENT: orcasa-staging-client
-          ECR_REPOSITORY_CMS: orcasa-staging-cms
-          ECR_REPOSITORY_QGIS: orcasa-staging-qgis
+          ECR_REPOSITORY_CLIENT: ${{ secrets.CLIENT_REPOSITORY_NAME }}
+          ECR_REPOSITORY_CMS: ${{ secrets.CMS_REPOSITORY_NAME }}
+          ECR_REPOSITORY_QGIS: ${{ secrets.QGIS_REPOSITORY_NAME }}
+          IMAGE_TAG: ${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
         run: |
           echo "version: '3.3'" > docker-compose.yml
           echo "services:" >> docker-compose.yml
           echo "  client:" >> docker-compose.yml
-          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:latest" >> docker-compose.yml
+          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG" >> docker-compose.yml
           echo "    restart: always" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 3000:3000" >> docker-compose.yml
           echo "  cms:" >> docker-compose.yml
-          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CMS:latest" >> docker-compose.yml
+          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_CMS:$IMAGE_TAG" >> docker-compose.yml
           echo "    restart: always" >> docker-compose.yml
           echo "    ports:" >> docker-compose.yml
           echo "      - 1337:1337" >> docker-compose.yml
@@ -218,7 +254,7 @@ jobs:
           echo "      - cms" >> docker-compose.yml
           echo "      - client" >> docker-compose.yml
           echo "  qgis-server:" >> docker-compose.yml
-          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_QGIS:latest" >> docker-compose.yml
+          echo "    image: $ECR_REGISTRY/$ECR_REPOSITORY_QGIS:$IMAGE_TAG" >> docker-compose.yml
           echo "    restart: always" >> docker-compose.yml
           echo "    volumes:" >> docker-compose.yml
           echo "      - /qgis_data:/data:ro" >> docker-compose.yml
@@ -238,8 +274,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
-          application_name: orcasa-staging
-          environment_name: orcasa-staging-environment
+          application_name: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+          environment_name: orcasa-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}-environment
           region: ${{ vars.AWS_REGION }}
-          version_label: ${{ github.sha }}
+          version_label: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           deployment_package: infrastructure/source_bundle/deploy.zip

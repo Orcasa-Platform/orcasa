@@ -26,30 +26,22 @@ resource "aws_iam_role" "beanstalk_ec2" {
 EOF
 }
 
-resource "aws_iam_policy_attachment" "beanstalk_ec2_worker" {
-  name       = "${var.application_name}-elastic-beanstalk-ec2-worker"
-  roles      = [aws_iam_role.beanstalk_ec2.id]
+resource "aws_iam_role_policy_attachment" "beanstalk_ec2_worker" {
+  role       = aws_iam_role.beanstalk_ec2.id
   policy_arn = "arn:aws:iam::aws:policy/AWSElasticBeanstalkWorkerTier"
 }
 
-resource "aws_iam_policy_attachment" "beanstalk_ec2_web" {
-  name       = "${var.application_name}-elastic-beanstalk-ec2-web"
-  roles      = [aws_iam_role.beanstalk_ec2.id]
+resource "aws_iam_role_policy_attachment" "beanstalk_ec2_web" {
+  role       = aws_iam_role.beanstalk_ec2.id
   policy_arn = "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier"
 }
 
-resource "aws_iam_policy_attachment" "beanstalk_ec2_container" {
-  name       = "${var.application_name}-elastic-beanstalk-ec2-container"
-  roles      = [aws_iam_role.beanstalk_ec2.id]
+resource "aws_iam_role_policy_attachment" "beanstalk_ec2_container" {
+  role       = aws_iam_role.beanstalk_ec2.id
   policy_arn = "arn:aws:iam::aws:policy/AWSElasticBeanstalkMulticontainerDocker"
 }
 
-resource "aws_iam_policy_attachment" "beanstalk_ec2_ecr" {
-  name       = "${var.application_name}-elastic-beanstalk-ec2-ecr"
-  roles      = [aws_iam_role.beanstalk_ec2.id]
+resource "aws_iam_role_policy_attachment" "beanstalk_ec2_ecr" {
+  role       = aws_iam_role.beanstalk_ec2.id
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-}
-
-resource "aws_iam_service_linked_role" "elasticbeanstalk" {
-  aws_service_name = "elasticbeanstalk.amazonaws.com"
 }

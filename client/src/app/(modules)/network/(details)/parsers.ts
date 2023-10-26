@@ -30,7 +30,7 @@ export const getProjectFields = (project: Project) => {
   const fields = [];
 
   if (typeof description !== 'undefined' && description.length > 0) {
-    fields.push({ label: 'Description', value: description });
+    fields.push({ label: 'Description', value: description, hasEllipsis: true });
   }
 
   if (typeof startDate !== 'undefined') {

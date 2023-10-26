@@ -1,13 +1,27 @@
+'use client';
+
+import { useRef, useState } from 'react';
+
 import { cn } from '@/lib/classnames';
+
+import { useIsOverTwoLines } from './hooks';
 
 type Type = 'project' | 'organization';
 type Field = {
   label: string;
   value: string | (string | undefined)[] | undefined;
   url?: string | string[];
+  hasEllipsis?: boolean;
 };
 
-const Field = ({ label, value, url, type }: Field & { type: Type }) => {
+const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isOverTwoLines = useIsOverTwoLines(ref, hasEllipsis);
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const renderLink = (url: string | string[]) =>
     Array.isArray(url) ? (
       <div>
@@ -45,7 +59,25 @@ const Field = ({ label, value, url, type }: Field & { type: Type }) => {
       >
         {label}
       </div>
-      {url ? renderLink(url) : <div className="text-sm">{value}</div>}
+      {url ? (
+        renderLink(url)
+      ) : (
+        <div>
+          <div
+            ref={ref}
+            className={cn('text-sm', {
+              'line-clamp-2': !isExpanded && isOverTwoLines,
+            })}
+          >
+            {value}
+          </div>
+          {isOverTwoLines && (
+            <button onClick={toggleExpanded} className="text-sm font-semibold text-mod-sc-ev">
+              {isExpanded ? 'Show less' : 'Show more'}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

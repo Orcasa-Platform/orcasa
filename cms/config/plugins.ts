@@ -17,6 +17,19 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  'config-sync': {
+    enabled: true,
+    config: {
+      excludedConfig: [
+        "core-store.plugin_users-permissions_grant",
+        "core-store.plugin_upload_metrics",
+        "core-store.strapi_content_types_schema",
+        "core-store.ee_information",
+        "core-store.plugin_users-permissions_email",
+        "core-store.plugin_users-permissions_advanced"
+      ],
+    },
+  },
   'project-change': {
     enabled: true,
     resolve: './src/plugins/project-change'

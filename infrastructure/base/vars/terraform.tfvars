@@ -5,6 +5,7 @@ repo_name          = "orcasa"
 
 # domains managed externally
 staging_domain = "staging.orcasa.dev-vizzuality.com"
+demo_domain    = "demo.orcasa.dev-vizzuality.com"
 
 beanstalk_platform = "64bit Amazon Linux 2023 v4.0.0 running Docker"
 beanstalk_tier     = "WebServer"

@@ -1,5 +1,7 @@
 import { useCallback, useMemo } from 'react';
 
+import { usePathname } from 'next/navigation';
+
 import { cn } from '@/lib/classnames';
 
 import { useLayersSettings, useLayers, DEFAULT_SETTINGS } from '@/store';
@@ -8,9 +10,13 @@ import MapLegendItem from '@/containers/map/legend/item';
 
 import Legend from '@/components/map/legend';
 
+import NetworkLegend from './network-legend';
+
 const MapLegends = ({ className = '' }) => {
   const [layers, setLayers] = useLayers();
   const [layersSettings, setLayersSettings] = useLayersSettings();
+  const pathname = usePathname();
+  const isNetworkPage = pathname.includes('network');
 
   const handleChangeOrder = useCallback(
     (order: string[]) => {
@@ -63,6 +69,10 @@ const MapLegends = ({ className = '' }) => {
   const sortable = layers?.length > 1;
 
   const ITEMS = useMemo(() => {
+    if (isNetworkPage) {
+      return <NetworkLegend />;
+    }
+
     return layers.map((layer) => {
       const settings = layersSettings[layer] ?? { opacity: 1, visibility: true };
 
@@ -87,7 +97,15 @@ const MapLegends = ({ className = '' }) => {
         />
       );
     });
-  }, [layers, layersSettings, sortable, handleChangeOpacity, handleChangeVisibility, handleRemove]);
+  }, [
+    layers,
+    layersSettings,
+    sortable,
+    handleChangeOpacity,
+    handleChangeVisibility,
+    handleRemove,
+    isNetworkPage,
+  ]);
 
   return (
     <div className="absolute bottom-16 right-6 z-10 w-full max-w-xs">

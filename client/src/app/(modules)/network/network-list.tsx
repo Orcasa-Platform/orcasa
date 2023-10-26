@@ -17,7 +17,7 @@ export default function NetworkList({
   isFetched,
   isPlaceholderData,
   isError,
-}: ReturnType<typeof useNetworks>) {
+}: Omit<ReturnType<typeof useNetworks>, 'count'>) {
   return (
     <ContentLoader
       data={networks}
@@ -29,7 +29,7 @@ export default function NetworkList({
       {networks?.map((g) => {
         return (
           <Network
-            key={`${g.type}-${g.id}`}
+            key={`network-${g.type}-${g.id}`}
             {...(g as Required<
               ProjectListResponseDataItem &
                 OrganizationListResponseDataItem & { type: 'project' | 'organization' }

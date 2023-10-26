@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronRight, Calendar, FolderOpen, Globe2 } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
@@ -14,8 +14,13 @@ import {
   Project,
 } from '@/types/generated/strapi.schemas';
 
+import Icon from '@/components/ui/icon';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
+import CalendarIcon from '@/styles/icons/calendar.svg?sprite';
+import FolderIcon from '@/styles/icons/folder.svg?sprite';
+import GlobeIcon from '@/styles/icons/globe.svg?sprite';
+import OrganizationIcon from '@/styles/icons/organisation.svg?sprite';
 
 const Icons = ({
   type,
@@ -38,13 +43,13 @@ const Icons = ({
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         {projectType && (
           <div className="flex gap-2">
-            <FolderOpen className="h-6 w-6" />
+            <Icon icon={FolderIcon} className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">{projectType}</div>
           </div>
         )}
         {startDate && (
           <div className="flex gap-2">
-            <Calendar className="h-6 w-6" />
+            <Icon icon={CalendarIcon} className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               {format({ id: 'formatDate', value: startDate })}
               {endDate ? ` - ${format({ id: 'formatDate', value: endDate })}` : ''}
@@ -53,7 +58,7 @@ const Icons = ({
         )}
         {regionName && (
           <div className="flex gap-2">
-            <Globe2 className="h-6 w-6" />
+            <Icon icon={GlobeIcon} className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               <WithEllipsis text={regionName} />
             </div>
@@ -63,12 +68,23 @@ const Icons = ({
     );
   }
   if (type === 'organization') {
-    const { country } = (attributes as Organization) || {};
+    const { country, organization_type } = (attributes as Organization) || {};
     const countryName = country?.data?.attributes?.name;
+    const organizationTypeName = organization_type?.data?.attributes?.name;
     return (
-      <div className="flex gap-2">
-        <Globe2 className="h-6 w-6" />
-        <div className="text-base text-slate-500">{countryName}</div>
+      <div className="flex flex-wrap gap-x-4 gap-y-2">
+        <div className="flex gap-2">
+          <Icon icon={GlobeIcon} className="h-6 w-6 min-w-min" />
+          <div className="text-base text-slate-500">{countryName}</div>
+        </div>
+        {organization_type && (
+          <div className="flex gap-2">
+            <Icon icon={OrganizationIcon} className="h-6 w-6 min-w-min" />
+            <div className="text-base text-slate-500">
+              {organizationTypeName && <WithEllipsis text={organizationTypeName} />}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
