@@ -2,22 +2,12 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 
-const castToBoolean = (/** @type {unknown} */ value) => {
-  if (value === 'true') {
-    return true;
-  }
-
-  return false;
-};
-
 export const env = createEnv({
   /*
    * Serverside Environment variables, not available on the client.
    * Will throw if you access these variables on the client.
    */
-  server: {
-    RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED: z.preprocess(castToBoolean, z.boolean()),
-  },
+  server: {},
   /*
    * Environment variables available on the client (and server).
    *
@@ -40,8 +30,6 @@ export const env = createEnv({
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
-    RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED:
-      process.env.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED,
   },
 });
 
