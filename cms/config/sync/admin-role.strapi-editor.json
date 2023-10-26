@@ -211,40 +211,24 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::layer.layer",
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::layer.layer",
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::layer.layer",
-      "properties": {
-        "fields": [
-          "title",
-          "type",
-          "config",
-          "params_config",
-          "legend_config",
-          "interaction_config"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -257,7 +241,23 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::layer.layer",
+      "properties": {
+        "fields": [
+          "title",
+          "type",
+          "config",
+          "params_config",
+          "legend_config",
+          "interaction_config"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -714,6 +714,32 @@
           "projects"
         ]
       },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
       "conditions": [],
       "actionParameters": {}
     },
@@ -734,49 +760,68 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.create",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.download",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.update",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.configure-view",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.read",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     }
   ]
 }

@@ -18,7 +18,6 @@ import {
 import { SlidingButton } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-
 import CalendarIcon from '@/styles/icons/calendar.svg?sprite';
 import FolderIcon from '@/styles/icons/folder.svg?sprite';
 import GlobeIcon from '@/styles/icons/globe.svg?sprite';
