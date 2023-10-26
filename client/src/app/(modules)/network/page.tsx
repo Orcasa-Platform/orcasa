@@ -1,11 +1,17 @@
 'use client';
 
+import { useEffect, useLayoutEffect } from 'react';
+
 import { capitalize } from 'lodash';
 import { Filter, Plus } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
+import { useSidebarScroll } from '@/store';
+
 import { useNetworks } from '@/hooks/networks';
+
+import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
@@ -50,6 +56,24 @@ const CategoryButton = ({ category, count }: { category: string; count: number }
 
 export default function NetworkModule() {
   const networks = useNetworks({ page: 1 });
+
+  const [getSidebarScroll, setSidebarScroll] = useSidebarScrollHelpers();
+  const [savedSidebarScroll, setSavedSidebarScroll] = useSidebarScroll();
+
+  // We store the sidebar's scroll position when navigating away from the list view. `useEffect`
+  // can't be used because it would be executed after repainting i.e. after navigating.
+  useLayoutEffect(() => {
+    return () => {
+      setSavedSidebarScroll(getSidebarScroll());
+    };
+  }, [getSidebarScroll, setSavedSidebarScroll]);
+
+  // When navigating to the list view, we restore the sidabar's scroll position
+  useEffect(() => {
+    if (savedSidebarScroll !== 0) {
+      setSidebarScroll(savedSidebarScroll);
+    }
+  }, [savedSidebarScroll, setSidebarScroll]);
 
   return (
     <>

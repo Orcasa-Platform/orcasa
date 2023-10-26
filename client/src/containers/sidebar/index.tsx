@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { ChevronLeft } from 'lucide-react';
 
@@ -15,16 +15,37 @@ import { useTheme } from '@/hooks/ui/theme';
 import { Button } from '@/components/ui/button';
 type OpenerVariant = 'opener-dark' | 'opener-light';
 
-export const useScrollSidebarToTop = () => {
-  useEffect(() => {
-    // NOTE: a ref would be preferable but unfortunately means that the whole file tree needs to be
-    // changed. This hook won't be necessary anymore when Next.js fixes the issues related to the
-    // automatic scroll restoration when navigating.
-    const sidebarScrollContainer = document.querySelector('.js-sidebar-scroll-container');
-    if (sidebarScrollContainer) {
-      sidebarScrollContainer.scrollTo({ top: 0 });
+/**
+ * Get and (immediately) set the scroll position of the sidebar
+ */
+export const useSidebarScrollHelpers = (): [() => number, (scrollTop: number) => void] => {
+  const scrollContainer = useRef<HTMLDivElement | null>(null);
+
+  const getScrollTop = useCallback(() => {
+    if (scrollContainer.current) {
+      return scrollContainer.current.scrollTop;
     }
-  }, []);
+
+    return 0;
+  }, [scrollContainer]);
+
+  const setScrollTop = useCallback(
+    (scrollTop: number) => {
+      if (scrollContainer.current) {
+        scrollContainer.current.scrollTo({ top: scrollTop });
+      }
+    },
+    [scrollContainer],
+  );
+
+  useEffect(() => {
+    const element = document.querySelector<HTMLDivElement>('.js-sidebar-scroll-container');
+    if (element) {
+      scrollContainer.current = element;
+    }
+  }, [scrollContainer]);
+
+  return [getScrollTop, setScrollTop];
 };
 
 export default function Sidebar({

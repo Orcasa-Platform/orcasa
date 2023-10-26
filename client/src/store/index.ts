@@ -117,3 +117,13 @@ export function useSyncLayersAndSettings() {
 
   return null;
 }
+
+// SIDEBAR
+
+const sidebarScrollAtom = atom<number>(0);
+/**
+ * This hook is used to temporarily store the scroll position of the sidebar to restore it later
+ */
+export const useSidebarScroll = () => {
+  return useAtom(sidebarScrollAtom);
+};
