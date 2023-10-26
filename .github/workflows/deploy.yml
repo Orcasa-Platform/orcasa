@@ -95,6 +95,7 @@ jobs:
         id: extract_branch
 
       - name: Copy env variables to docker
+        if: steps.client-changes.outputs.client == 'true'
         run: |
           echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CLIENT_ENV_FILE || secrets[format('{0}_CLIENT_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > client/.env.local
 
