@@ -4,7 +4,7 @@ import { useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { networkDetailAtom } from '@/store';
+import { networkDetailAtom, sidebarOpenAtom } from '@/store';
 
 import { OrganizationProperties, ProjectProperties } from '@/hooks/networks';
 
@@ -26,8 +26,8 @@ type NetworksPopupProps = {
 };
 
 const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
-  const setMapSettings = useSetRecoilState(networkDetailAtom);
-
+  const setDetailPanel = useSetRecoilState(networkDetailAtom);
+  const setSidebarOpen = useSetRecoilState(sidebarOpenAtom);
   if (!popup) return null;
   const {
     type,
@@ -68,7 +68,10 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
                 className={cn('text-left text-base font-semibold', networkClass)}
                 size="asChild"
                 variant="vanilla"
-                onClick={() => setMapSettings({ id, type, name })}
+                onClick={() => {
+                  setDetailPanel({ id, type, name });
+                  setSidebarOpen(true);
+                }}
               >
                 {network.name}
               </Button>
