@@ -14,13 +14,12 @@ import {
   Project,
 } from '@/types/generated/strapi.schemas';
 
-import Icon from '@/components/ui/icon';
-import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-import CalendarIcon from '@/styles/icons/calendar.svg?sprite';
-import FolderIcon from '@/styles/icons/folder.svg?sprite';
-import GlobeIcon from '@/styles/icons/globe.svg?sprite';
-import OrganizationIcon from '@/styles/icons/organisation.svg?sprite';
+
+import CalendarIcon from '@/styles/icons/calendar.svg';
+import FolderIcon from '@/styles/icons/folder.svg';
+import GlobeIcon from '@/styles/icons/globe.svg';
+import OrganizationIcon from '@/styles/icons/organisation.svg';
 
 const Icons = ({
   type,
@@ -43,13 +42,13 @@ const Icons = ({
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         {projectType && (
           <div className="flex gap-2">
-            <Icon icon={FolderIcon} className="h-6 w-6 min-w-min" />
+            <FolderIcon className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">{projectType}</div>
           </div>
         )}
         {startDate && (
           <div className="flex gap-2">
-            <Icon icon={CalendarIcon} className="h-6 w-6 min-w-min" />
+            <CalendarIcon className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               {format({ id: 'formatDate', value: startDate })}
               {endDate ? ` - ${format({ id: 'formatDate', value: endDate })}` : ''}
@@ -58,7 +57,7 @@ const Icons = ({
         )}
         {regionName && (
           <div className="flex gap-2">
-            <Icon icon={GlobeIcon} className="h-6 w-6 min-w-min" />
+            <GlobeIcon className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               <WithEllipsis text={regionName} />
             </div>
@@ -74,12 +73,12 @@ const Icons = ({
     return (
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         <div className="flex gap-2">
-          <Icon icon={GlobeIcon} className="h-6 w-6 min-w-min" />
+          <GlobeIcon className="h-6 w-6 min-w-min" />
           <div className="text-base text-slate-500">{countryName}</div>
         </div>
         {organization_type && (
           <div className="flex gap-2">
-            <Icon icon={OrganizationIcon} className="h-6 w-6 min-w-min" />
+            <OrganizationIcon className="h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               {organizationTypeName && <WithEllipsis text={organizationTypeName} />}
             </div>

@@ -7,7 +7,6 @@ import { cn } from '@/lib/classnames';
 
 import { LegendItemToolbarProps } from '@/components/map/legend/types';
 import { Button } from '@/components/ui/button';
-import Icon from '@/components/ui/icon';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Tooltip,
@@ -16,9 +15,10 @@ import {
   TooltipPortal,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import Opacity from '@/styles/icons/opacity.svg?sprite';
 
 import Slider from './slider';
+
+import Opacity from '@/styles/icons/opacity.svg';
 
 export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
   settings,
@@ -50,7 +50,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                       'pointer-events-none': popoverOpen,
                     })}
                   >
-                    <Icon icon={Opacity} className="flex h-6 w-6" />
+                    <Opacity className="flex h-6 w-6" />
                     <span className="sr-only">Change opacity</span>
                   </Button>
                 </TooltipTrigger>

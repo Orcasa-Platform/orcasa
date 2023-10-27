@@ -7,8 +7,6 @@ import { cn } from '@/lib/classnames';
 
 import { Module, moduleColors, modules } from '@/constants/modules';
 
-import Icon from '@/components/ui/icon';
-
 const LinkBox = ({ href, color, name }: Module) => (
   <Link
     href={href}
@@ -25,7 +23,7 @@ export default async function HomePage() {
   return (
     <div className="h-screen w-screen bg-indigo-950/80">
       <Link href="/">
-        <Icon icon={Logo} className="h-[68px] w-[69px]" />
+        <Logo className="h-[68px] w-[69px]" />
         <span className="sr-only">ORCaSa</span>
       </Link>
       <div className="flex h-[75%] items-center gap-4 p-10">
