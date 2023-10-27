@@ -164,13 +164,16 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
     isFetched: organizationIsFetched,
     isPlaceholderData: organizationIsPlaceholderData,
     isError: organizationIsError,
-  } = useGetOrganizations({
-    populate: '*',
-    'pagination[page]': page,
-    // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
-    'pagination[pageSize]': 1000,
-    sort: 'name:asc',
-  });
+  } = useGetOrganizations(
+    {
+      populate: '*',
+      'pagination[page]': page,
+      // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
+      'pagination[pageSize]': 1000,
+      sort: 'name:asc',
+    },
+    { query: { keepPreviousData: true } },
+  );
 
   const {
     data: projectsData,
@@ -178,13 +181,16 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
     isFetched: projectsIsFetched,
     isPlaceholderData: projectsIsPlaceholderData,
     isError: projectsIsError,
-  } = useGetProjects({
-    populate: '*',
-    'pagination[page]': page,
-    // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
-    'pagination[pageSize]': 1000,
-    sort: 'name:asc',
-  });
+  } = useGetProjects(
+    {
+      populate: '*',
+      'pagination[page]': page,
+      // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
+      'pagination[pageSize]': 1000,
+      sort: 'name:asc',
+    },
+    { query: { keepPreviousData: true } },
+  );
 
   const sortAlphabetically = (
     a: OrganizationListResponseDataItem | ProjectListResponseDataItem,

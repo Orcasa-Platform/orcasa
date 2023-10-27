@@ -3,7 +3,6 @@
 import { PropsWithChildren, useState } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { RecoilRoot } from 'recoil';
 
 import { TooltipProvider } from '@/components/ui/tooltip';
 
@@ -12,9 +11,7 @@ export default function Providers({ children }: PropsWithChildren) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <TooltipProvider>{children}</TooltipProvider>
-      </RecoilRoot>
+      <TooltipProvider>{children}</TooltipProvider>
     </QueryClientProvider>
   );
 }

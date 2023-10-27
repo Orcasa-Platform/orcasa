@@ -1,10 +1,11 @@
+import Link from 'next/link';
+
 import { X } from 'lucide-react';
 import { Popup } from 'react-map-gl/maplibre';
-import { useSetRecoilState } from 'recoil';
 
 import { cn } from '@/lib/classnames';
 
-import { networkDetailAtom, sidebarOpenAtom } from '@/store';
+import { useMapSearchParams, useSidebarOpen } from '@/store';
 
 import { OrganizationProperties, ProjectProperties } from '@/hooks/networks';
 
@@ -26,9 +27,11 @@ type NetworksPopupProps = {
 };
 
 const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
-  const setDetailPanel = useSetRecoilState(networkDetailAtom);
-  const setSidebarOpen = useSetRecoilState(sidebarOpenAtom);
+  const searchParams = useMapSearchParams();
+  const [, setSidebarOpen] = useSidebarOpen();
+
   if (!popup) return null;
+
   const {
     type,
     properties: { countryName, organizations, projects },
@@ -36,6 +39,7 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
 
   const networks = type === 'project' ? projects : organizations;
   const networkClass = type === 'project' ? 'text-peach-700' : 'text-blue-500';
+
   return (
     <Popup
       latitude={popup.latitude}
@@ -60,23 +64,18 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
           <span className="font-semibold">{countryName}</span>
         </header>
         <div className="flex max-h-[232px] flex-col items-start justify-start gap-2 overflow-y-auto">
-          {networks.map((network) => {
-            const { id, name } = network;
-            return (
-              <Button
-                key={network.id}
-                className={cn('text-left text-base font-semibold', networkClass)}
-                size="asChild"
-                variant="vanilla"
-                onClick={() => {
-                  setDetailPanel({ id, type, name });
-                  setSidebarOpen(true);
-                }}
-              >
-                {network.name}
-              </Button>
-            );
-          })}
+          {networks.map(({ id, name, type }) => (
+            <Link
+              key={id}
+              className={cn('text-left text-base font-semibold', networkClass)}
+              href={`/network/${type}/${id}?${searchParams.toString()}`}
+              onClick={() => {
+                setSidebarOpen(true);
+              }}
+            >
+              {name}
+            </Link>
+          ))}
         </div>
       </div>
     </Popup>

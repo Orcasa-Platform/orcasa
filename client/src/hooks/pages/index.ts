@@ -13,8 +13,3 @@ export const usePage = (pageId: number) => {
     layerGroupIds,
   };
 };
-
-export const useDefaultBasemap = (section: Section) => {
-  const pages = useGetPages({ filters: { slug: section } });
-  return pages?.data?.data?.[0]?.attributes?.default_basemap;
-};

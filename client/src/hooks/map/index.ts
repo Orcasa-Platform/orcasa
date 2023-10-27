@@ -1,9 +1,8 @@
 import { useMemo, useEffect, useState } from 'react';
 
 import { debounce } from 'lodash';
-import { useRecoilValue } from 'recoil';
 
-import { sidebarOpenAtom } from '@/store';
+import { useSidebarOpen } from '@/store';
 
 // The values are based on the default size of the sidebar on the Geospatial Data module
 const DEFAULT_NAV_WIDTH = 117;
@@ -28,7 +27,7 @@ const getMapPadding = (sidebarOpen: boolean) => {
 };
 
 export const useMapPadding = () => {
-  const sidebarOpen = useRecoilValue(sidebarOpenAtom);
+  const [sidebarOpen] = useSidebarOpen();
   const [padding, setPadding] = useState(getMapPadding(sidebarOpen));
 
   const updatePadding = useMemo(

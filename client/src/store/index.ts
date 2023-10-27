@@ -1,160 +1,129 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
-import {
-  array,
-  mixed,
-  nullable,
-  number,
-  object,
-  string,
-  tuple,
-  writableDict,
-} from '@recoiljs/refine';
+import { atom, useAtom } from 'jotai';
+import { parseAsJson, useQueryState } from 'next-usequerystate';
 import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
-import { atom, useRecoilCallback, useRecoilValue, useSetRecoilState } from 'recoil';
-import { urlSyncEffect } from 'recoil-sync';
-
-// NETWORK
-
-// Network detail page
-
-interface NetworkDetail {
-  id?: number;
-  type?: 'organization' | 'project';
-  name?: string;
-}
-
-export const networkDetailAtom = atom<NetworkDetail>({
-  key: 'network-detail',
-  default: {
-    id: undefined,
-    type: undefined,
-    name: undefined,
-  },
-});
 
 // MAP
 
 // Map settings
-export const mapSettingsAtom = atom({
-  key: 'map-settings',
-  default: {
-    basemap: 'basemap-satellite',
-    labels: 'labels-dark',
-  },
-  effects: [
-    urlSyncEffect({
-      refine: object({
-        basemap: string(),
-        labels: string(),
-      }),
+export const useMapSettings = () => {
+  return useQueryState(
+    'map-settings',
+    parseAsJson<{ basemap: string; labels: string }>().withDefault({
+      basemap: 'basemap-satellite',
+      labels: 'labels-dark',
     }),
-  ],
-});
+  );
+};
 
 // Map viewport
-export const bboxAtom = atom<readonly [number, number, number, number] | null | undefined>({
-  key: 'bbox',
-  default: null,
-  effects: [
-    urlSyncEffect({
-      refine: nullable(tuple(number(), number(), number(), number())),
-    }),
-  ],
-});
-
-export const tmpBboxAtom = atom<readonly [number, number, number, number] | null>({
-  key: 'tmp-bbox',
-  default: null,
-});
+export const useBbox = () => {
+  return useQueryState('bbox', parseAsJson<[number, number, number, number] | null>());
+};
 
 // Sidebar and menus
-export const sidebarOpenAtom = atom<boolean>({
-  key: 'sidebar-open',
-  default: true,
-});
+const sidebarOpenAtom = atom(true);
+export const useSidebarOpen = () => {
+  return useAtom(sidebarOpenAtom);
+};
 
 // Map layers
-export const layersAtom = atom<readonly number[]>({
-  key: 'layers',
-  default: [],
-  effects: [
-    urlSyncEffect({
-      refine: array(number()),
-    }),
-  ],
-});
+export const useLayers = () => {
+  return useQueryState('layers', parseAsJson<number[]>().withDefault([]));
+};
 
-export const layersSettingsAtom = atom({
-  key: 'layers-settings',
-  default: {},
-  effects: [
-    urlSyncEffect({
-      refine: writableDict(writableDict(mixed())),
-    }),
-  ],
-});
+export const useLayersSettings = () => {
+  return useQueryState(
+    'layers-settings',
+    parseAsJson<Record<string, { opacity?: number; visibility?: boolean }>>().withDefault({}),
+  );
+};
 
-export const layersInteractiveAtom = atom<number[]>({
-  key: 'layers-interactive',
-  default: [],
-});
+export const useMapSearchParams = () => {
+  const [mapSettings] = useMapSettings();
+  const [bbox] = useBbox();
+  const [layers] = useLayers();
+  const [layersSettings] = useLayersSettings();
 
-export const layersInteractiveIdsAtom = atom<string[]>({
-  key: 'layers-interactive-ids',
-  default: [],
-});
+  const searchParams = useMemo(() => {
+    return new URLSearchParams({
+      'map-settings': JSON.stringify(mapSettings),
+      ...(bbox ? { bbox: JSON.stringify(bbox) } : {}),
+      layers: JSON.stringify(layers),
+      'layers-settings': JSON.stringify(layersSettings),
+    });
+  }, [mapSettings, bbox, layers, layersSettings]);
 
-export const popupAtom = atom<MapLayerMouseEvent | null>({
-  key: 'point',
-  default: null,
-  dangerouslyAllowMutability: true,
-});
+  return searchParams;
+};
+
+const layersInteractiveAtom = atom<number[]>([]);
+export const useLayersInteractive = () => {
+  return useAtom(layersInteractiveAtom);
+};
+
+const layersInteractiveIdsAtom = atom<number[]>([]);
+export const useLayersInteractiveIds = () => {
+  return useAtom(layersInteractiveIdsAtom);
+};
+
+const popupAtom = atom<MapLayerMouseEvent | null>(null);
+export const usePopup = () => {
+  return useAtom(popupAtom);
+};
 
 export const DEFAULT_SETTINGS = {};
 
 export function useSyncLayersAndSettings() {
-  const layers = useRecoilValue(layersAtom);
-  const layersSettings = useRecoilValue(layersSettingsAtom);
+  const [layers] = useLayers();
+  const [layersSettings, setLayersSettings] = useLayersSettings();
+  const [layersInteractive, setLayersInteractive] = useLayersInteractive();
 
-  const setPopup = useSetRecoilState(popupAtom);
+  const [, setPopup] = usePopup();
 
-  const syncAtoms = useRecoilCallback(
-    ({ snapshot, set }) =>
-      async () => {
-        const layers = await snapshot.getPromise(layersAtom);
-        const layersSettings = await snapshot.getPromise(layersSettingsAtom);
-        const layersInteractive = await snapshot.getPromise(layersInteractiveAtom);
-        // Reset layersettings that are not in layers
-        Object.keys(layersSettings).forEach((layer) => {
-          if (!layers.includes(parseInt(layer))) {
-            setTimeout(async () => {
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              const { [layer]: _, ...rest } = layersSettings;
-              set(layersSettingsAtom, rest);
-            }, 0);
-          }
-        });
-        // Reset interactive layers
-        // If I don't use setTimeout, the url will not be updated
-        // setTimeout is needed to put this function to the end of the js queue
-        setTimeout(() => {
-          const newLysInteractive = layersInteractive.filter((layer) => layers.includes(layer));
-          set(layersInteractiveAtom, newLysInteractive);
-          if (!newLysInteractive.length) {
-            setPopup(null);
-          }
-        }, 0);
-      },
-    [],
-  );
-
-  // Sync layersettings when layers change
+  // Remove the layer settings for the layers that are not on the map anymore
   useEffect(() => {
-    syncAtoms();
-  }, [layers, layersSettings, syncAtoms]);
+    const removedLayerIds = Object.keys(layersSettings).filter(
+      (id) => !layers.includes(parseInt(id)),
+    );
 
-  return true;
+    if (removedLayerIds.length > 0) {
+      const newLayersSettings = { ...layersSettings };
+      removedLayerIds.forEach((id) => {
+        delete newLayersSettings[id];
+      });
+      setLayersSettings(newLayersSettings);
+    }
+  }, [layers, layersSettings, setLayersSettings]);
+
+  // Remove the layer interactivity of the layers that are not on the map anymore
+  useEffect(() => {
+    const removedLayerIds = layersInteractive.filter((id) => !layers.includes(id));
+
+    if (removedLayerIds.length > 0) {
+      setLayersInteractive(layersInteractive.filter((id) => !removedLayerIds.includes(id)));
+    }
+  }, [layers, layersInteractive, setLayersInteractive]);
+
+  // Reset the popup if there are no interactive layers on the map anymore
+  useEffect(() => {
+    if (layersInteractive.length === 0) {
+      setPopup(null);
+    }
+  }, [layersInteractive, setPopup]);
+
+  return null;
 }
+
+// SIDEBAR
+
+const sidebarScrollAtom = atom<number>(0);
+/**
+ * This hook is used to temporarily store the scroll position of the sidebar to restore it later
+ */
+export const useSidebarScroll = () => {
+  return useAtom(sidebarScrollAtom);
+};
