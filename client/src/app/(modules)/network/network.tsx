@@ -14,6 +14,7 @@ import {
   Project,
 } from '@/types/generated/strapi.schemas';
 
+import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
 
 import CalendarIcon from '@/styles/icons/calendar.svg';
