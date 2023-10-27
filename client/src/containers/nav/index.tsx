@@ -9,8 +9,6 @@ import { cn } from '@/lib/classnames';
 
 import Logo from '/public/images/logo.svg';
 
-import Icon from '@/components/ui/icon';
-
 import { Module, moduleColors, modules } from '@/constants/modules';
 
 type NavLinkProps = PropsWithChildren<Omit<Module, 'name'> & { active?: boolean }>;
@@ -35,12 +33,11 @@ const NavLink = ({ href, children, color, active }: NavLinkProps) => (
 
 export default function Nav() {
   const pathname = usePathname();
-
   return (
     <div className="js-main-nav absolute left-0 z-50 h-full w-[117px]">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-slate-700 py-6">
         <Link href="/">
-          <Icon icon={Logo} className="h-[68px] w-[69px]" />
+          <Logo className="h-[68px] w-[69px]" />
           <span className="sr-only">ORCaSa</span>
         </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">

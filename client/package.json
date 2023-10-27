@@ -73,6 +73,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.35.1",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/typography": "0.5.9",
     "@types/d3-array": "3.0.5",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
@@ -84,9 +85,6 @@
     "lodash": "^4.17.21",
     "orval": "^6.17.0",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0",
-    "svg-sprite-loader": "6.0.11",
-    "svgo": "3.0.2",
-    "svgo-loader": "3.0.3"
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }
