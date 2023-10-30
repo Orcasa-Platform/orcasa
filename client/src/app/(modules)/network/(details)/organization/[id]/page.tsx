@@ -61,7 +61,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
           </a>
         </Button>
       </div>
-      <NetworkDiagram data={organization} id={id} />
+      <NetworkDiagram data={organization} id={id} type="organization" />
     </>
   );
 }
