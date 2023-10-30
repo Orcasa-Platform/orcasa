@@ -78,7 +78,7 @@ export const getProjectFields = (project: Project) => {
 
   if (hasData(countryOfInterventions) && countryOfInterventions?.data?.length) {
     fields.push({
-      label: 'Country of interventions',
+      label: 'Country of intervention',
       value: countryOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
