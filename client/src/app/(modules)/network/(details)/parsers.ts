@@ -101,7 +101,7 @@ export const getProjectFields = (project: Project) => {
     }
 
     fields.push({
-      label: 'Main areas of interventions',
+      label: 'Main areas of intervention',
       value: mainAreaOfInterventions.join(', '),
     });
   }
