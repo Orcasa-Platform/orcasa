@@ -257,6 +257,8 @@ export const useNetworkDiagram = ({
   const getOrganizationData = (
     key: ProjectKey,
     org: ProjectLeadPartnerData | ProjectPartnersDataItem | ProjectFundersDataItem,
+    // Skip the grandparent project so it doesn't show up twice
+    skipProjectId?: number,
   ) => ({
     id: org.id,
     name: org?.attributes?.name,
@@ -265,15 +267,18 @@ export const useNetworkDiagram = ({
     children: ORGANIZATION_KEYS.map((organizationKey: OrganizationKey) => {
       const child = org?.attributes?.[organizationKey]?.data;
       if (!child) return [];
-      return (Array.isArray(child) ? child : [child]).map((c) =>
-        getProjectData(organizationKey, c),
+      return (Array.isArray(child) ? child : [child]).map(
+        (c) => c.id !== skipProjectId && getProjectData(organizationKey, c),
       );
-    }).flat(),
+    })
+      .flat()
+      .filter(Boolean),
   });
 
   const parseOrganization = (organizationData: OrganizationResponse) => {
     if (!organizationData) return [];
-    const { attributes }: OrganizationResponseDataObject = organizationData?.data || {};
+    const { attributes, id: parentId }: OrganizationResponseDataObject =
+      organizationData?.data || {};
 
     return ORGANIZATION_KEYS.map((key) => {
       if (typeof attributes === 'undefined') return null;
@@ -290,10 +295,13 @@ export const useNetworkDiagram = ({
           category: getCategory(key),
           children: PROJECT_KEYS.map((projectKey: ProjectKey) => {
             const child = project?.attributes?.[projectKey]?.data;
-            return (Array.isArray(child) ? child : [child]).map((c) =>
-              getOrganizationData(projectKey, c),
-            );
-          }).flat(),
+            if (!child) return [];
+            return (Array.isArray(child) ? child : [child]).map((c) => {
+              if (c.id !== parentId) return getOrganizationData(projectKey, c);
+            });
+          })
+            .flat()
+            .filter(Boolean),
         }),
       );
     });
@@ -301,16 +309,20 @@ export const useNetworkDiagram = ({
 
   const parseProject = (projectData: ProjectResponse) => {
     if (!projectData) return [];
-    const { attributes }: ProjectResponseDataObject = projectData?.data || {};
+    const { attributes, id: parentProjectId }: ProjectResponseDataObject = projectData?.data || {};
     return PROJECT_KEYS.map((key) => {
       if (typeof attributes === 'undefined') {
         return null;
       }
       if (key === 'lead_partner') {
         if (!attributes[key]?.data) return [];
-        return getOrganizationData(key, attributes[key]?.data as ProjectLeadPartnerData);
+        return getOrganizationData(
+          key,
+          attributes[key]?.data as ProjectLeadPartnerData,
+          parentProjectId,
+        );
       }
-      return attributes[key]?.data?.map((d) => getOrganizationData(key, d));
+      return attributes[key]?.data?.map((d) => getOrganizationData(key, d, parentProjectId));
     });
   };
 
