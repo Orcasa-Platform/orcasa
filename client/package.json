@@ -10,7 +10,7 @@
     "check-types": "tsc",
     "test": "playwright test",
     "types": "orval --config ./orval.config.ts",
-    "postinstall": "cd .. && husky install client/.husky"
+    "prepare": "cd .. && husky install client/.husky"
   },
   "dependencies": {
     "@deck.gl/geo-layers": "8.9.19",
