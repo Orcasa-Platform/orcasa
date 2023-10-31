@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-cd ./client && yarn types && yarn lint --fix && yarn check-types && git add src/types/generated/
-
-cd .. && cd ./cms && yarn config-sync export -y
