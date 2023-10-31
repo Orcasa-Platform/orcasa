@@ -16,7 +16,6 @@ import {
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-
 import CalendarIcon from '@/styles/icons/calendar.svg';
 import FolderIcon from '@/styles/icons/folder.svg';
 import GlobeIcon from '@/styles/icons/globe.svg';
