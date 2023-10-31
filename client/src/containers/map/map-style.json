@@ -97,7 +97,7 @@
         "text-anchor": "center",
         "text-padding": 15,
         "text-font": ["Roboto Slab"],
-        "text-size": 16
+        "text-size": 14
       },
       "source": "labels",
       "metadata": {
@@ -121,7 +121,7 @@
         "text-anchor": "center",
         "text-padding": 15,
         "text-font": ["Roboto Slab"],
-        "text-size": 16
+        "text-size": 14
       },
       "source": "labels",
       "metadata": {
