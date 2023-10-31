@@ -48,12 +48,12 @@
       "layout": { "visibility": "none" }
     },
     "labels": {
-      "data": "https://raw.githubusercontent.com/Orcasa-Platform/orcasa/main/client/public/country_labels.json",
+      "data": "/country_labels.json",
       "type": "geojson"
     }
   },
   "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite",
-  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+  "glyphs": "/assets/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -84,12 +84,20 @@
     {
       "id": "countries-labels",
       "type": "symbol",
+      "paint": {
+        "text-color": "#3C4363",
+        "text-halo-color": "rgba(255, 255, 255, 0.5)",
+        "text-halo-width": 2
+      },
       "layout": {
         "text-field": [
           "get",
           "country_name"
         ],
-        "text-anchor": "top"
+        "text-anchor": "center",
+        "text-padding": 15,
+        "text-font": ["Roboto Slab"],
+        "text-size": 16
       },
       "source": "labels",
       "metadata": {
@@ -101,14 +109,19 @@
       "id": "countries-labels-light",
       "type": "symbol",
       "paint": {
-        "text-color": "#fff"
+        "text-color": "#FFFFFF",
+        "text-halo-color": "rgba(29, 33, 51, 0.75)",
+        "text-halo-width": 1.25
       },
       "layout": {
         "text-field": [
           "get",
           "country_name"
         ],
-        "text-anchor": "top"
+        "text-anchor": "center",
+        "text-padding": 15,
+        "text-font": ["Roboto Slab"],
+        "text-size": 16
       },
       "source": "labels",
       "metadata": {
