@@ -12,7 +12,13 @@ This application is split into several parts, divided into their respective fold
 - `/qgis`: A docker image that contains a QGIS server.
 - `/infrastructure`: A Terraform configuration that deploys the client and CMS applications to AWS.
 
-## Development usage with Docker (recommended)
+## Development usage 
+
+### Native execution (recommended)
+
+Please refer to the README.md on the `client` and `cms` folders respectively for instructions on how to run each application natively.
+
+### Using Docker (experimental)
 
 To run the app with docker, run:
 
@@ -22,6 +28,6 @@ docker-compose up --build
 
 Open the app in http://localhost:3000 for the client and http://localhost:1337 for the CMS.
 
-## Production usage with Docker
+## Production usage
 
 See the respective README.md on each application folder.

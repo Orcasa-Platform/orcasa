@@ -5,19 +5,22 @@
 This platform is built using [Strapi](https://strapi.io/), with the necessary customizations to support the ORCaSa
 project.
 
-## Install & run
+## Dependencies
 
-### Dependencies
-
-- Nodejs v18.17
+- Node.js v18.17
 - Postgres v15.4
 - Yarn v3.6
 
-### Set up
+## Install & run
+
+### Native execution
 
 - Install the necessary dependencies. Create a database for this application using your preferred database client
   application.
 - Set the necessary configuration values - see the [Configuration](#configuration) section below.
+
+Be sure to set the required environment variables before running the application - see
+the [Configuration](#configuration) section below for more details.
 
 To run the application in development mode, use:
 
@@ -34,7 +37,18 @@ yarn start
 
 In both situations, be sure to set the corresponding `NODE_ENV` value.
 
-### Configuration
+
+### Using Docker
+
+This project includes 2 docker configuration files:
+
+- `Dockerfile` aimed at development environments (may require tuning to work on different environments)
+- `Dockerfile.prod` aimed at production environments
+
+You can use either file to build a docker image for this application. Be sure to set the required environment variables
+when running the container - see the [Configuration](#configuration) section below.
+
+## Configuration
 
 Configuration is done using environment variables that manipulate and extend the default Strapi configuration - refer to
 the official Strapi docs for more details on these or other configuration options.
@@ -61,15 +75,6 @@ The following environment variables are used:
 | DATABASE_PASSWORD   |                                                                                                                                                                                               Database password |              
 | DATABASE_SSL        |                                                                                                                                                    If SSL should be used when connecting to the database server |              
 
-### Docker
-
-This project includes 2 docker configuration files:
-
-- `Dockerfile` aimed at development environments (may require tuning to work on different environments)
-- `Dockerfile.prod` aimed at production environments
-
-You can use either file to build a docker image for this application. Be sure to set the required environment variables
-when running the container.
 
 ## Data management
 

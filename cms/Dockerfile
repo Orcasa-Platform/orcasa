@@ -22,8 +22,7 @@ COPY database ./database
 COPY public ./public
 COPY src ./src
 
-COPY .env \
-     .nvmrc \
+COPY .nvmrc \
     .yarnrc.yml \
      favicon.png \
      package.json \

@@ -3,6 +3,8 @@ set -e
 
 case "${NODE_ENV}" in
     development)
+        echo "Import config"
+        yarn config-sync import -y
         echo "Running Development Server"
         exec yarn dev
         ;;

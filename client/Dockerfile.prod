@@ -4,6 +4,7 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y libc6  && \
     apt-get clean
+
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 

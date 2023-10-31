@@ -11,15 +11,18 @@ services:
       - POSTGRES_DB=cms
     volumes:
       - pgdata:/var/lib/postgresql/data
+
   cms:
     build:
-      context: .
-      dockerfile: cms/Dockerfile
+      context: cms
     ports:
       - '1337:1337'
-    env_file:
-      - ./cms/.env
     environment:
+      - APP_KEYS=testAppKey
+      - API_TOKEN_SALT=testToken
+      - TRANSFER_TOKEN_SALT=testTokenSalt
+      - ADMIN_JWT_SECRET=testAdminJwtSecret
+      - JWT_SECRET=testJwtSecret
       - DATABASE_CLIENT=postgres
       - DATABASE_SSL=false
       - DATABASE_URL=postgres://postgres:postgres@db:5432/cms
@@ -29,20 +32,23 @@ services:
       - db
     volumes:
       - ./cms:/app/cms
+
   client:
     build:
-      context: .
-      dockerfile: client/Dockerfile
+      context: client
     ports:
       - '3000:3000'
-    env_file:
-      - ./client/.env.local
     environment:
+      - NODE_ENV=development
       - NEXT_PUBLIC_API_URL=http://localhost:1337/api
+      - NEXT_PUBLIC_URL=http://localhost:3000
+      - NEXT_PUBLIC_ENVIRONMENT=development
+      - NEXT_PUBLIC_GA_TRACKING_ID=someTestValue
     links:
       - cms
     volumes:
       - ./client:/app/client
+
   qgis-server:
     build:
       context: qgis
@@ -57,6 +63,7 @@ services:
       - QGIS_PROJECT_FILE=/data/osm.qgs
       - QGIS_SERVER_LOG_LEVEL=0  # INFO (log all requests)
       - DEBUG=1                  # display env before spawning QGIS Server
+
   nginx:
     image: nginx:latest
     ports:
@@ -65,5 +72,6 @@ services:
       - ./qgis/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - qgis-server
+
 volumes:
   pgdata:

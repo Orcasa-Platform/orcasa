@@ -2,10 +2,37 @@
 
 ## Overview
 
-This platform is built using Nodejs and [Next.js](https://nextjs.org/), with the necessary elements to support the ORCaSa
+This platform is built using Node.js and [Next.js](https://nextjs.org/), with the necessary elements to support the
+ORCaSa
 project.
 
-The repository contains all of ORCaSa's modules but Scientific Evidence which can be found in [Orcasa-Platform/orcasa-review4c](https://github.com/Orcasa-Platform/orcasa-review4c).
+The repository contains all of ORCaSa's modules but Scientific Evidence which can be found
+in [Orcasa-Platform/orcasa-review4c](https://github.com/Orcasa-Platform/orcasa-review4c).
+
+## Dependencies
+
+- Node.js v18.17
+- Yarn v3.6
+
+## Install & run
+
+### Native execution
+
+Be sure to set the required environment variables before running the application - see
+the [Configuration](#configuration) section below for more details.
+
+To run the application in development mode, use:
+
+```bash
+yarn dev
+```
+
+To run the application in production mode, use:
+
+```bash
+yarn build
+yarn start
+```
 
 ### Docker
 
@@ -16,7 +43,6 @@ This project includes 2 docker configuration files:
 
 You can use either file to build a docker image for this application. Be sure to set the required environment variables
 when running the container.
-
 
 ### Configuration
 
