@@ -1,92 +1,13 @@
 'use client';
 import React, { useState } from 'react';
 
-import { CollapsibleContent, Collapsible, CollapsibleTrigger } from '@radix-ui/react-collapsible';
-import { ChevronDown } from 'lucide-react';
-
-import { cn } from '@/lib/classnames';
+import { CollapsibleContent, Collapsible } from '@radix-ui/react-collapsible';
 
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
-import { useNetworkDiagram, Category } from '@/hooks/networks';
+import { useNetworkDiagram } from '@/hooks/networks';
 
-import { SlidingLinkButton } from '../ui/sliding-link-button';
-
-import Document from '@/styles/icons/document.svg';
-
-const Element = ({
-  name,
-  id,
-  type,
-  category,
-  openCollapsibles,
-  setOpenCollapsibles,
-}: Pick<Project | Organization, 'name'> & {
-  id: number;
-  type: 'organization' | 'project';
-  category: Category;
-  openCollapsibles: number[];
-  setOpenCollapsibles: React.Dispatch<React.SetStateAction<number[]>>;
-}) => {
-  const toggleOpenCollapsible = () => {
-    if (openCollapsibles.includes(id)) {
-      setOpenCollapsibles(openCollapsibles.filter((i) => i !== id));
-    } else {
-      setOpenCollapsibles([...openCollapsibles, id]);
-    }
-  };
-  const index = 1;
-  return (
-    <div className="relative -mt-6">
-      {category && (
-        <svg height={`${index * 20}px`} width="8" className="absolute -top-4 left-0">
-          <path
-            d={`M0,0 Q0,${index * 10} 10,${index * 20}`}
-            stroke="black"
-            stroke-width={category === 'coordinator' ? 2 : 1}
-            strokeDasharray={category === 'funder' ? '4' : '0'}
-            fill="transparent"
-          />
-        </svg>
-      )}
-      <div
-        className={cn(
-          'mt-10 flex h-20 w-[450px] items-center justify-between gap-4 border border-slate-700 p-4',
-          {
-            'bg-blue-50': type === 'organization',
-            'bg-peach-50': type === 'project',
-          },
-        )}
-      >
-        <div className="text-sm text-slate-700">{name}</div>
-        {category && (
-          <div className="flex items-center gap-4">
-            <SlidingLinkButton
-              buttonClassName={cn('bg-blue-100 p-0 m-0', {
-                'bg-blue-100': type === 'organization',
-                'bg-peach-100': type === 'project',
-              })}
-              href={`/project/${id}`}
-              position="right"
-              Icon={Document}
-            >
-              Learn more
-            </SlidingLinkButton>
-            {!!setOpenCollapsibles && (
-              <CollapsibleTrigger onClick={toggleOpenCollapsible}>
-                <ChevronDown
-                  className={cn('transform transition-transform', {
-                    'rotate-180': openCollapsibles.includes(id),
-                  })}
-                />
-              </CollapsibleTrigger>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+import Item from './item';
 
 const NetworkDiagram = ({
   data,
@@ -100,35 +21,77 @@ const NetworkDiagram = ({
   const { name } = data;
 
   const [openCollapsibles, setOpenCollapsibles] = useState<number[]>([]);
-  const { data: networks, isError, isFetched } = useNetworkDiagram({ type, id });
+  const {
+    data: networks,
+    isError,
+    isFetched,
+  } = useNetworkDiagram({
+    type,
+    id,
+  });
   if (isFetched && isError) {
     return null;
   }
+  const getIndex = (childIndex: number) => {
+    const openedChildrenBeforeCurrent = networks.filter(
+      (n, nIndex) => n?.id !== undefined && openCollapsibles?.includes(n.id) && nIndex < childIndex,
+    );
+
+    const childIndexOffset = openedChildrenBeforeCurrent.reduce((acc, n) => {
+      const childrenLength = n?.children?.length || 0;
+      const isFirstNetwork = networks[0]?.id === n?.id;
+      return acc + childrenLength - 1 + (isFirstNetwork ? 1 : 0);
+    }, 0);
+
+    return childIndex + childIndexOffset;
+  };
+
   return (
     <div>
       <div className="my-6 border-t border-dashed border-t-gray-200" />
       <div className="mb-6 font-serif text-2xl text-slate-700">Network</div>
-      <div className="flex gap-2">
+      <div className="flex justify-between">
         <div>
-          <Element name={name} id={id} type={type} />
-          {networks.map((network) => {
-            if (!network || typeof network?.name === 'undefined') {
+          <Item name={name} id={id} type={type} hasChildren={networks?.length > 0} />
+          {networks.map((network, childIndex) => {
+            if (
+              !network ||
+              typeof network === 'undefined' ||
+              typeof network.name === 'undefined' ||
+              typeof network.id === 'undefined'
+            ) {
               return null;
             }
+
             return (
-              <Collapsible key={network?.id}>
-                <Element
-                  key={network?.id}
-                  {...network}
+              <Collapsible key={network.id} className="ml-10">
+                <Item
+                  key={network.id}
+                  name={network.name}
+                  type={network.type as 'organization' | 'project'}
+                  category={network.category}
+                  id={network.id}
                   setOpenCollapsibles={setOpenCollapsibles}
                   openCollapsibles={openCollapsibles}
+                  index={getIndex(childIndex)}
+                  hasChildren={network?.children?.length > 0}
                 />
-                <CollapsibleContent>
-                  <div className="ml-10">
-                    {network?.children.map((child) => (
-                      <Element key={child?.id} {...child} />
-                    ))}
-                  </div>
+                <CollapsibleContent className="ml-10">
+                  {network?.children.map(
+                    (child, grandChildIndex) =>
+                      child &&
+                      typeof child.id !== 'undefined' && (
+                        <Item
+                          key={child?.id}
+                          name={child.name}
+                          type={child.type as 'organization' | 'project'}
+                          category={child.category}
+                          id={child?.id}
+                          index={grandChildIndex}
+                          hasChildren={false}
+                        />
+                      ),
+                  )}
                 </CollapsibleContent>
               </Collapsible>
             );
