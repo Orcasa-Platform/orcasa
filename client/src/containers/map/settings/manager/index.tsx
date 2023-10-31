@@ -5,6 +5,8 @@ import { useMap } from 'react-map-gl/maplibre';
 
 import { useMapSettings } from '@/store/index';
 
+import { LABELS } from '@/constants/basemaps';
+
 type AnyLayerWithMetadata = LayerSpecification & {
   metadata: Record<string, unknown>;
 };
@@ -57,7 +59,7 @@ const MapSettingsManager = () => {
 
   const handleStyleLoad = useCallback(() => {
     handleGroup(['basemap'], basemap);
-    handleGroup(['labels'], labels);
+    handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
   }, [basemap, labels, handleGroup]);
 
   // * handle style load
@@ -74,7 +76,7 @@ const MapSettingsManager = () => {
   useEffect(() => {
     if (!mapRef) return;
     handleGroup(['basemap'], basemap);
-    handleGroup(['labels'], labels);
+    handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
   }, [mapRef, loaded, basemap, labels, handleGroup]);
 
   return null;

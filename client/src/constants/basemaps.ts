@@ -4,7 +4,7 @@ export const BASEMAPS = [
     value: 'basemap-satellite',
     preview: `/images/map/satellite.jpg`,
     settings: {
-      labels: 'labels-light',
+      labels: 'light',
     },
   },
   {
@@ -12,26 +12,19 @@ export const BASEMAPS = [
     value: 'basemap-light',
     preview: `/images/map/light.jpg`,
     settings: {
-      labels: 'labels-dark',
+      labels: 'dark',
     },
   },
 ];
 
 export const LABELS = [
   {
-    id: '1059d2b8cfa87b8d894b5373ea556666',
-    label: 'Dark labels',
-    slug: 'labels-dark',
+    label: 'Light',
+    slug: 'light',
   },
   {
-    id: '5924e7eeda116f817dd89f1d8d418721',
-    label: 'Light labels',
-    slug: 'labels-light',
-  },
-  {
-    id: 'asdfasdfasdfasdf',
-    label: 'No labels',
-    slug: 'labels-none',
+    label: 'Dark',
+    slug: 'dark',
   },
 ];
 
