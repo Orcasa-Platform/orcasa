@@ -11,17 +11,28 @@ import { SlidingLinkButton } from '../ui/sliding-link-button';
 
 import Document from '@/styles/icons/document.svg';
 
-const renderPath = (index: number, category: Category, isGranchild = false) => {
-  if (typeof index === 'undefined') return null;
-  const ITEM_HEIGHT = 100;
+type PathProps = {
+  heightIndex: number;
+  category: Category;
+  isGranchild: boolean | undefined;
+  isFirstOfType: boolean | undefined;
+};
+
+const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = false }: PathProps) => {
+  if (typeof heightIndex === 'undefined') return null;
+  const ITEM_HEIGHT = 90;
   const PADDING = 40;
-  const topHeight = index * ITEM_HEIGHT;
+  const additionalHeight = isFirstOfType ? 20 : 0;
+  const topHeight = heightIndex * ITEM_HEIGHT + additionalHeight;
+  const END_LINE_PADDING = 2;
+
   const pathProps = {
     stroke: 'black',
-    strokeWidth: category === 'coordinator' ? 3.5 : 1.5,
-    strokeDasharray: category === 'funder' ? '4' : '0',
+    strokeWidth: category === 'coordinator' ? 3 : 1,
+    strokeDasharray: category === 'funder' ? '3' : '0',
     fill: 'transparent',
   };
+
   return (
     <>
       <svg
@@ -33,14 +44,12 @@ const renderPath = (index: number, category: Category, isGranchild = false) => {
         }}
       >
         <path
-          d={
-            !isGranchild ? `M0,0 L0,${topHeight}` : `M0,${topHeight - ITEM_HEIGHT} L0,${topHeight}`
-          }
+          d={`M0,${isGranchild ? topHeight - ITEM_HEIGHT : '0'} L0,${topHeight + 20}`}
           {...pathProps}
         />
         <path
-          d={`M0,${topHeight} Q0,${PADDING + topHeight} 30,
-        ${PADDING + topHeight}`}
+          d={`M0,${topHeight + 20} Q0,${PADDING + topHeight} 25,
+        ${PADDING + topHeight - END_LINE_PADDING}`}
           {...pathProps}
         />
       </svg>
@@ -48,6 +57,16 @@ const renderPath = (index: number, category: Category, isGranchild = false) => {
   );
 };
 
+type ItemProps = Pick<Project | Organization, 'name'> & {
+  id: number;
+  type: 'organization' | 'project';
+  category?: Category;
+  openCollapsibles?: number[];
+  setOpenCollapsibles?: React.Dispatch<React.SetStateAction<number[]>>;
+  heightIndex?: number;
+  hasChildren: boolean;
+  isFirstOfType?: boolean;
+};
 const Item = ({
   name,
   id,
@@ -55,17 +74,10 @@ const Item = ({
   category,
   openCollapsibles,
   setOpenCollapsibles,
-  index,
+  heightIndex,
   hasChildren,
-}: Pick<Project | Organization, 'name'> & {
-  id: number;
-  type: 'organization' | 'project';
-  category?: Category;
-  openCollapsibles?: number[];
-  setOpenCollapsibles?: React.Dispatch<React.SetStateAction<number[]>>;
-  index?: number;
-  hasChildren: boolean;
-}) => {
+  isFirstOfType,
+}: ItemProps) => {
   const isFirstNode = !category;
   const isGranchild = category && !setOpenCollapsibles;
   const toggleOpenCollapsible = () => {
@@ -88,7 +100,14 @@ const Item = ({
         />
       )}
       {/* PATH */}
-      {!isFirstNode && typeof index !== 'undefined' && renderPath(index, category, isGranchild)}
+      {!isFirstNode && typeof heightIndex !== 'undefined' && (
+        <Path
+          heightIndex={heightIndex}
+          category={category}
+          isGranchild={isGranchild}
+          isFirstOfType={isFirstOfType}
+        />
+      )}
       {/* CONTENT */}
       <div
         className={cn('mt-10 flex h-20 w-[450px] items-center justify-between gap-4 p-4', {

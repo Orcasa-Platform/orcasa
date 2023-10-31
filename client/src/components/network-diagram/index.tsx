@@ -73,8 +73,9 @@ const NetworkDiagram = ({
                   id={network.id}
                   setOpenCollapsibles={setOpenCollapsibles}
                   openCollapsibles={openCollapsibles}
-                  index={getIndex(childIndex)}
+                  heightIndex={getIndex(childIndex)}
                   hasChildren={network?.children?.length > 0}
+                  isFirstOfType={childIndex === 0}
                 />
                 <CollapsibleContent className="ml-10">
                   {network?.children.map(
@@ -87,8 +88,9 @@ const NetworkDiagram = ({
                           type={child.type as 'organization' | 'project'}
                           category={child.category}
                           id={child?.id}
-                          index={grandChildIndex}
+                          heightIndex={grandChildIndex}
                           hasChildren={false}
+                          isFirstOfType={grandChildIndex === 0}
                         />
                       ),
                   )}
