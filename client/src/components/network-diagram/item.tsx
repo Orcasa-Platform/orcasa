@@ -94,11 +94,11 @@ const Item = ({
       {/* DOT */}
       {((isFirstNode && hasChildren) ||
         (hasChildren && category && openCollapsibles?.includes(id))) && (
-        <span
-          className="absolute left-[12.5px] h-2 w-2 rounded-full bg-black"
-          style={{ top: 'calc(100% - 4px)' }}
-        />
-      )}
+          <span
+            className="absolute left-[12.5px] h-2 w-2 rounded-full bg-black"
+            style={{ top: 'calc(100% - 4px)' }}
+          />
+        )}
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
         <Path
@@ -124,7 +124,7 @@ const Item = ({
                 'bg-blue-100': type === 'organization',
                 'bg-peach-100': type === 'project',
               })}
-              href={`/network/project/${id}`}
+              href={`/network/${type}/${id}`}
               position="right"
               Icon={Document}
             >
