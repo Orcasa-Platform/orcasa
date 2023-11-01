@@ -90,6 +90,7 @@
         "text-halo-width": 2
       },
       "layout": {
+        "visibility": "none",
         "text-field": [
           "get",
           "country_name"
@@ -114,6 +115,7 @@
         "text-halo-width": 1.25
       },
       "layout": {
+        "visibility": "none",
         "text-field": [
           "get",
           "country_name"

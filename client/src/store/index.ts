@@ -14,7 +14,7 @@ export const useMapSettings = () => {
     'map-settings',
     parseAsJson<{ basemap: string; labels: string | null }>().withDefault({
       basemap: 'basemap-satellite',
-      labels: 'light',
+      labels: null,
     }),
   );
 };
