@@ -21,6 +21,7 @@ const Search = ({ className, containerClassName, onChange }: SearchProps) => {
     <Input
       containerClassName={containerClassName}
       className={className}
+      containerClassName={containerClassName}
       type="text"
       aria-label="Search by keyword"
       placeholder="Search by keyword"

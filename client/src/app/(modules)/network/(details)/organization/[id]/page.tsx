@@ -43,7 +43,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
 
   return (
     <>
-      <div className="mb-6 mt-10 text-[34px] leading-[50px]">{name}</div>
+      <div className="mb-6 mt-10 text-3.8xl leading-[50px]">{name}</div>
       <div className="flex flex-col gap-4">
         {fields.map((field) => (
           <Field key={field.label} {...field} type="organization" />

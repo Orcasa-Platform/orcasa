@@ -2825,7 +2825,6 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
-    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -8528,7 +8527,6 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataIt
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
-    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -10065,7 +10063,6 @@ export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAt
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
-    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
@@ -10306,7 +10303,6 @@ export type ContinentCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
 
 export type ContinentCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes = {
   action?: string;
-  actionParameters?: unknown;
   subject?: string;
   properties?: unknown;
   conditions?: unknown;
@@ -10541,7 +10537,6 @@ export type AreaOfInterventionCreatedByDataAttributesRolesDataItemAttributesCrea
 export type AreaOfInterventionCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
-    actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;

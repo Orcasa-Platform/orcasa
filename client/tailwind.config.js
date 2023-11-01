@@ -26,6 +26,7 @@ module.exports = {
       },
       fontSize: {
         '3.5xl': ['32px', '48px'],
+        '3.8xl': ['34px', '50px'],
       },
       colors: {
         main: 'hsl(var(--main))',
@@ -41,6 +42,7 @@ module.exports = {
           100: '#EAF1F8',
           // Organizations
           500: '#358FE3',
+          900: '#2A4374',
         },
         gray: {
           50: '#F7F7F9',
