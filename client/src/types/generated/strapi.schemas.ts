@@ -3933,6 +3933,7 @@ export type PageDefaultBasemap = (typeof PageDefaultBasemap)[keyof typeof PageDe
 export const PageDefaultBasemap = {
   'basemap-satellite': 'basemap-satellite',
   'basemap-light': 'basemap-light',
+  'basemap-relief': 'basemap-relief',
 } as const;
 
 export type PageListResponseMetaPagination = {
@@ -3965,6 +3966,7 @@ export type PageRequestDataDefaultBasemap =
 export const PageRequestDataDefaultBasemap = {
   'basemap-satellite': 'basemap-satellite',
   'basemap-light': 'basemap-light',
+  'basemap-relief': 'basemap-relief',
 } as const;
 
 export type PageRequestData = {

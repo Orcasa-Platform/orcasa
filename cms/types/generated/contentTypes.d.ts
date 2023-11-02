@@ -1039,7 +1039,7 @@ export interface ApiPagePage extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     default_basemap: Attribute.Enumeration<
-      ['basemap-satellite', 'basemap-light']
+      ['basemap-satellite', 'basemap-light', 'basemap-relief']
     >;
     layer_groups: Attribute.Relation<
       'api::page.page',

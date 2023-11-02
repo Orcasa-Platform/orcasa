@@ -19,7 +19,8 @@
       "type": "enumeration",
       "enum": [
         "basemap-satellite",
-        "basemap-light"
+        "basemap-light",
+        "basemap-relief"
       ]
     },
     "layer_groups": {
