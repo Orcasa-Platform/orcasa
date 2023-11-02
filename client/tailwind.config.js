@@ -49,9 +49,10 @@ module.exports = {
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',
-          500: '#7C7F8F',
           400: '#8B90A4',
+          500: '#7C7F8F',
           800: '#3C4363',
+          900: '#1D2133',
         },
         peach: {
           50: '#FFF7EF',
