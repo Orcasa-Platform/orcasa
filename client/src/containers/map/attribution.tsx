@@ -25,6 +25,7 @@ const Attribution = () => {
         </>
       );
     }
+
     if (basemap === 'basemap-light') {
       return (
         <>
@@ -49,6 +50,24 @@ const Attribution = () => {
         </>
       );
     }
+
+    if (basemap === 'basemap-relief') {
+      return (
+        <>
+          Tiles ©{' '}
+          <a
+            className="hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://esri.com"
+          >
+            Esri
+          </a>{' '}
+          — Source: Esri
+        </>
+      );
+    }
+
     return null;
   };
 
@@ -59,7 +78,7 @@ const Attribution = () => {
         theme,
         {
           'bg-gray-50/25': basemap === 'basemap-satellite',
-          'bg-gray-50/75': basemap === 'basemap-light',
+          'bg-gray-50/75': basemap === 'basemap-light' || basemap === 'basemap-relief',
         },
       )}
     >

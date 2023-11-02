@@ -2,18 +2,17 @@ export const BASEMAPS = [
   {
     alt: 'Satellite basemap',
     value: 'basemap-satellite',
-    preview: `/images/map/satellite.jpg`,
-    settings: {
-      labels: 'light',
-    },
+    preview: '/assets/images/basemap-satellite.png',
   },
   {
     alt: 'Light basemap',
     value: 'basemap-light',
-    preview: `/images/map/light.jpg`,
-    settings: {
-      labels: 'dark',
-    },
+    preview: '/assets/images/basemap-light.png',
+  },
+  {
+    alt: 'Relief basemap',
+    value: 'basemap-relief',
+    preview: '/assets/images/basemap-relief.png',
   },
 ];
 
