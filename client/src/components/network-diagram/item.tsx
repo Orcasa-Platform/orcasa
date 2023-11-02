@@ -27,12 +27,14 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
   const PADDING = 40;
   const additionalHeight = isFirstOfType ? 20 : 0;
   const topHeight = heightIndex * ITEM_HEIGHT + additionalHeight;
-  const END_LINE_PADDING = 2;
+  // Allow some padding to show the full width of the strokes
+  const STROKE_PADDING = 2;
 
   const pathProps = {
     strokeWidth: category === 'coordinator' ? 3 : 1,
     strokeDasharray: category === 'funder' ? '3' : '0',
   };
+
   return (
     <>
       <svg
@@ -44,12 +46,14 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
         }}
       >
         <path
-          d={`M0,${isGranchild ? topHeight - ITEM_HEIGHT : '0'} L0,${topHeight + 20}`}
+          d={`M${STROKE_PADDING},${
+            isGranchild ? topHeight - ITEM_HEIGHT : '0'
+          } L${STROKE_PADDING},${topHeight + 20}`}
           {...pathProps}
         />
         <path
-          d={`M0,${topHeight + 20} Q0,${PADDING + topHeight} 25,
-        ${PADDING + topHeight - END_LINE_PADDING}`}
+          d={`M${STROKE_PADDING},${topHeight + 20} Q${STROKE_PADDING},${PADDING + topHeight} 25,
+        ${PADDING + topHeight - STROKE_PADDING}`}
           {...pathProps}
         />
       </svg>
@@ -91,7 +95,7 @@ const Item = ({
       {/* DOT */}
       {((isFirstNode && hasChildren) || (hasChildren && category && opened)) && (
         <span
-          className="absolute left-[12.5px] h-2 w-2 rounded-full bg-black"
+          className="absolute left-[14px] h-2 w-2 rounded-full bg-black"
           style={{ top: 'calc(100% - 4px)' }}
         />
       )}
