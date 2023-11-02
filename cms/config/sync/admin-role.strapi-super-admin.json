@@ -1144,20 +1144,6 @@
       "actionParameters": {}
     },
     {
-      "action": "plugin::project-change.accept-changes",
-      "subject": null,
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::project-change.decline-changes",
-      "subject": null,
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},
