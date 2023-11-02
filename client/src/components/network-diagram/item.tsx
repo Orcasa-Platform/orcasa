@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import { ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -7,6 +9,7 @@ import { useMapSearchParams } from '@/store';
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import { Category } from '@/hooks/networks';
+import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
@@ -46,9 +49,8 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
         }}
       >
         <path
-          d={`M${STROKE_PADDING},${
-            isGranchild ? topHeight - ITEM_HEIGHT : '0'
-          } L${STROKE_PADDING},${topHeight + 20}`}
+          d={`M${STROKE_PADDING},${isGranchild ? topHeight - ITEM_HEIGHT : '0'
+            } L${STROKE_PADDING},${topHeight + 20}`}
           {...pathProps}
         />
         <path
@@ -89,6 +91,8 @@ const Item = ({
   const toggleOpenCollapsible = () => {
     onToggle?.(opened);
   };
+  const ref = useRef<HTMLDivElement>(null);
+  const isOverTwoLines = useIsOverTwoLines(ref, true);
 
   return (
     <div className="relative -mt-6">
@@ -110,16 +114,28 @@ const Item = ({
       )}
       {/* CONTENT */}
       <div
-        className={cn('mt-10 flex h-20 w-[450px] items-center justify-between gap-4 p-4', {
-          'border border-slate-700': isFirstNode || opened,
-          'bg-blue-50': type === 'organization',
-          'bg-peach-50': type === 'project',
-        })}
+        className={cn(
+          'mt-10 flex h-20 w-fit min-w-[278px] items-center justify-between gap-8 p-4',
+          {
+            'border border-slate-700': isFirstNode || opened,
+            'bg-blue-50': type === 'organization',
+            'bg-peach-50': type === 'project',
+          },
+        )}
       >
-        <div className="text-sm text-slate-700">{name}</div>
+        <div
+          className={cn('text-sm text-slate-700', {
+            'line-clamp-2': isOverTwoLines,
+          })}
+          ref={ref}
+          {...(isOverTwoLines ? { title: name } : {})}
+        >
+          {name}
+        </div>
         {category && (
           <div className="flex min-w-fit items-center gap-4">
             <SlidingLinkButton
+              isCompact
               buttonClassName={cn('p-0 m-0', {
                 'bg-blue-100': type === 'organization',
                 'bg-peach-100': type === 'project',
