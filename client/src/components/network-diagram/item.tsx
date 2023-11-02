@@ -1,4 +1,3 @@
-import { CollapsibleTrigger } from '@radix-ui/react-collapsible';
 import { ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -7,7 +6,8 @@ import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import { Category } from '@/hooks/networks';
 
-import { SlidingLinkButton } from '../ui/sliding-link-button';
+import { CollapsibleTrigger } from '@/components/ui/collapsible';
+import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 
 import Document from '@/styles/icons/document.svg';
 
@@ -27,10 +27,8 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
   const END_LINE_PADDING = 2;
 
   const pathProps = {
-    stroke: 'black',
     strokeWidth: category === 'coordinator' ? 3 : 1,
     strokeDasharray: category === 'funder' ? '3' : '0',
-    fill: 'transparent',
   };
 
   return (
@@ -38,7 +36,7 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
       <svg
         height={`${PADDING + topHeight}px`}
         width="25"
-        className={`absolute -left-6`}
+        className="absolute -left-6 fill-transparent stroke-primary"
         style={{
           top: `-${topHeight}px`,
         }}
@@ -114,7 +112,7 @@ const Item = ({
         {category && (
           <div className="flex min-w-fit items-center gap-4">
             <SlidingLinkButton
-              buttonClassName={cn('bg-blue-100 p-0 m-0', {
+              buttonClassName={cn('p-0 m-0', {
                 'bg-blue-100': type === 'organization',
                 'bg-peach-100': type === 'project',
               })}

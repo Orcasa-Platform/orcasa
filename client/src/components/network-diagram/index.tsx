@@ -1,11 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 
-import { CollapsibleContent, Collapsible } from '@radix-ui/react-collapsible';
-
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import { useNetworkDiagram } from '@/hooks/networks';
+
+import { CollapsibleContent, Collapsible } from '@/components/ui/collapsible';
 
 import Item from './item';
 
