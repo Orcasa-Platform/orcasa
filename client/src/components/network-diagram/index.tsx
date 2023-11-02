@@ -65,7 +65,7 @@ const NetworkDiagram = ({
       <div className="my-6 border-t border-dashed border-t-gray-200" />
       <div className="mb-6 font-serif text-2xl text-slate-700">Network</div>
       <div className="flex flex-col-reverse justify-between gap-4 xl:flex-row">
-        <div className="-mt-4 flex-shrink overflow-hidden">
+        <div className="-mt-4 flex-grow overflow-hidden">
           <Item name={name} id={id} type={type} hasChildren={networks?.length > 0} />
           {networks.map((network, childIndex) => {
             if (

@@ -95,7 +95,7 @@ const Item = ({
   const isOverTwoLines = useIsOverTwoLines(ref, true);
 
   return (
-    <div className="relative -mt-6">
+    <div className="relative -mt-6 w-full">
       {/* DOT */}
       {((isFirstNode && hasChildren) || (hasChildren && category && opened)) && (
         <span
@@ -114,14 +114,11 @@ const Item = ({
       )}
       {/* CONTENT */}
       <div
-        className={cn(
-          'mt-10 flex h-20 w-fit min-w-[278px] items-center justify-between gap-8 p-4',
-          {
-            'border border-slate-700': isFirstNode || opened,
-            'bg-blue-50': type === 'organization',
-            'bg-peach-50': type === 'project',
-          },
-        )}
+        className={cn('mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-8 p-4', {
+          'border border-slate-700': isFirstNode || opened,
+          'bg-blue-50': type === 'organization',
+          'bg-peach-50': type === 'project',
+        })}
       >
         <div
           className={cn('text-sm text-slate-700', {
