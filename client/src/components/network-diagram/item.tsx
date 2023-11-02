@@ -61,8 +61,8 @@ type ItemProps = Pick<Project | Organization, 'name'> & {
   id: number;
   type: 'organization' | 'project';
   category?: Category;
-  openCollapsibles?: number[];
-  setOpenCollapsibles?: React.Dispatch<React.SetStateAction<number[]>>;
+  opened?: boolean;
+  onToggle?: (opened: boolean) => void;
   heightIndex?: number;
   hasChildren: boolean;
   isFirstOfType?: boolean;
@@ -72,33 +72,27 @@ const Item = ({
   id,
   type,
   category,
-  openCollapsibles,
-  setOpenCollapsibles,
+  opened = false,
+  onToggle,
   heightIndex,
   hasChildren,
   isFirstOfType,
 }: ItemProps) => {
   const isFirstNode = !category;
-  const isGranchild = category && !setOpenCollapsibles;
+  const isGranchild = category && !onToggle;
   const toggleOpenCollapsible = () => {
-    if (setOpenCollapsibles === undefined) return;
-    if (openCollapsibles?.includes(id)) {
-      setOpenCollapsibles(openCollapsibles.filter((i) => i !== id));
-    } else {
-      setOpenCollapsibles([...(openCollapsibles || []), id]);
-    }
+    onToggle?.(opened);
   };
 
   return (
     <div className="relative -mt-6">
       {/* DOT */}
-      {((isFirstNode && hasChildren) ||
-        (hasChildren && category && openCollapsibles?.includes(id))) && (
-          <span
-            className="absolute left-[12.5px] h-2 w-2 rounded-full bg-black"
-            style={{ top: 'calc(100% - 4px)' }}
-          />
-        )}
+      {((isFirstNode && hasChildren) || (hasChildren && category && opened)) && (
+        <span
+          className="absolute left-[12.5px] h-2 w-2 rounded-full bg-black"
+          style={{ top: 'calc(100% - 4px)' }}
+        />
+      )}
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
         <Path
@@ -111,7 +105,7 @@ const Item = ({
       {/* CONTENT */}
       <div
         className={cn('mt-10 flex h-20 w-[450px] items-center justify-between gap-4 p-4', {
-          'border border-slate-700': isFirstNode || openCollapsibles?.includes(id),
+          'border border-slate-700': isFirstNode || opened,
           'bg-blue-50': type === 'organization',
           'bg-peach-50': type === 'project',
         })}
@@ -130,11 +124,11 @@ const Item = ({
             >
               Learn more
             </SlidingLinkButton>
-            {typeof setOpenCollapsibles !== 'undefined' && hasChildren && (
+            {typeof onToggle !== 'undefined' && hasChildren && (
               <CollapsibleTrigger onClick={toggleOpenCollapsible}>
                 <ChevronDown
                   className={cn('transform transition-transform', {
-                    'rotate-180': openCollapsibles?.includes(id),
+                    'rotate-180': opened,
                   })}
                 />
               </CollapsibleTrigger>

@@ -9,6 +9,19 @@ import { useNetworkDiagram } from '@/hooks/networks';
 
 import Item from './item';
 
+const handleOnToggle = (
+  opened: boolean,
+  id: number | undefined,
+  setOpenCollapsibles: React.Dispatch<React.SetStateAction<number[]>>,
+) => {
+  setOpenCollapsibles((collapsibles) => {
+    if (opened) {
+      return collapsibles.filter((collapsibleId) => collapsibleId !== id);
+    }
+    return id ? [...collapsibles, id] : collapsibles;
+  });
+};
+
 const NetworkDiagram = ({
   data,
   id,
@@ -32,6 +45,7 @@ const NetworkDiagram = ({
   if (isFetched && isError) {
     return null;
   }
+
   const getIndex = (childIndex: number) => {
     const openedChildrenBeforeCurrent = networks.filter(
       (n, nIndex) => n?.id !== undefined && openCollapsibles?.includes(n.id) && nIndex < childIndex,
@@ -71,8 +85,8 @@ const NetworkDiagram = ({
                   type={network.type as 'organization' | 'project'}
                   category={network.category}
                   id={network.id}
-                  setOpenCollapsibles={setOpenCollapsibles}
-                  openCollapsibles={openCollapsibles}
+                  onToggle={(open) => handleOnToggle(open, network.id, setOpenCollapsibles)}
+                  opened={openCollapsibles.includes(network.id)}
                   heightIndex={getIndex(childIndex)}
                   hasChildren={network?.children?.length > 0}
                   isFirstOfType={childIndex === 0}
