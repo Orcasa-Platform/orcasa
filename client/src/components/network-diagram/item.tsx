@@ -2,6 +2,8 @@ import { ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
+import { useMapSearchParams } from '@/store';
+
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import { Category } from '@/hooks/networks';
@@ -20,6 +22,7 @@ type PathProps = {
 
 const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = false }: PathProps) => {
   if (typeof heightIndex === 'undefined') return null;
+
   const ITEM_HEIGHT = 90;
   const PADDING = 40;
   const additionalHeight = isFirstOfType ? 20 : 0;
@@ -30,7 +33,6 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
     strokeWidth: category === 'coordinator' ? 3 : 1,
     strokeDasharray: category === 'funder' ? '3' : '0',
   };
-
   return (
     <>
       <svg
@@ -78,6 +80,8 @@ const Item = ({
 }: ItemProps) => {
   const isFirstNode = !category;
   const isGranchild = category && !onToggle;
+  const searchParams = useMapSearchParams();
+
   const toggleOpenCollapsible = () => {
     onToggle?.(opened);
   };
@@ -116,7 +120,7 @@ const Item = ({
                 'bg-blue-100': type === 'organization',
                 'bg-peach-100': type === 'project',
               })}
-              href={`/network/${type}/${id}`}
+              href={`/network/${type}/${id}?${searchParams.toString()}`}
               position="right"
               Icon={Document}
             >
