@@ -30,10 +30,6 @@ module.exports = ({ env }) => ({
       ],
     },
   },
-  'project-change': {
-    enabled: true,
-    resolve: './src/plugins/project-change'
-  },
   documentation: {
     config: {
       "x-strapi-config": {

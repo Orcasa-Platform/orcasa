@@ -18,4 +18,20 @@ export default factories.createCoreController('api::organization.organization', 
 
     return data.map((result) => ({id: result.id, name: result.attributes.name, country: result.attributes.country.data.id}));
   },
+
+  async find(ctx) {
+    ctx.query = { ...ctx.query, publication_status: 'accepted' }
+
+    return await super.find(ctx);
+  },
+
+  async create(ctx) {
+    if (ctx.request.body.data.publication_status) {
+      return ctx.forbidden();
+    }
+
+    ctx.request.body.data.publication_status = "proposed"
+
+    return await super.create(ctx);
+  }
 }));

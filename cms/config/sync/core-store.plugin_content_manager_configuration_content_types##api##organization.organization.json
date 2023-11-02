@@ -195,51 +195,6 @@
           "sortable": false
         }
       },
-      "lead_project_changes": {
-        "edit": {
-          "label": "lead_project_changes",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "lead_project_changes",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "partner_project_changes": {
-        "edit": {
-          "label": "partner_project_changes",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "partner_project_changes",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "funded_project_changes": {
-        "edit": {
-          "label": "funded_project_changes",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "funded_project_changes",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -300,6 +255,11 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "organization_type"
+      ],
       "edit": [
         [
           {
@@ -361,12 +321,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "organization_type",
-        "lead_project_changes"
       ]
     }
   },

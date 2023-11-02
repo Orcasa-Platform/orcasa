@@ -14,8 +14,23 @@ export default factories.createCoreController('api::project.project', () => ({
     ctx.request.query.fields = ['name']
 
     const { data } = await super.find(ctx);
-    // some more logic
 
     return data.map((result) => ({id: result.id, name: result.attributes.name, countries: result.attributes.country_of_interventions.data.map((country) => (country.id))}));
   },
+
+  async find(ctx) {
+    ctx.query = { ...ctx.query, publication_status: 'accepted' }
+
+    return await super.find(ctx);
+  },
+
+  async create(ctx) {
+    if (ctx.request.body.data.publication_status) {
+      return ctx.forbidden();
+    }
+
+    ctx.request.body.data.publication_status = "proposed"
+
+    return await super.create(ctx);
+  }
 }));

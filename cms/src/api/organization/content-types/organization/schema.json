@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -71,23 +71,14 @@
       "target": "api::project.project",
       "mappedBy": "funders"
     },
-    "lead_project_changes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::project-change.project-change",
-      "mappedBy": "lead_partner"
-    },
-    "partner_project_changes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project-change.project-change",
-      "mappedBy": "partners"
-    },
-    "funded_project_changes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project-change.project-change",
-      "mappedBy": "funders"
+    "publication_status": {
+      "type": "enumeration",
+      "enum": [
+        "proposed",
+        "accepted",
+        "declined"
+      ],
+      "default": "accepted"
     }
   }
 }

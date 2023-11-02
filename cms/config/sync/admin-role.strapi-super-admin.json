@@ -97,7 +97,6 @@
           "continent",
           "region",
           "projects",
-          "project_changes",
           "lat",
           "long"
         ]
@@ -126,7 +125,6 @@
           "continent",
           "region",
           "projects",
-          "project_changes",
           "lat",
           "long"
         ]
@@ -148,7 +146,6 @@
           "continent",
           "region",
           "projects",
-          "project_changes",
           "lat",
           "long"
         ]
@@ -406,10 +403,7 @@
           "url",
           "lead_projects",
           "partner_projects",
-          "funded_projects",
-          "lead_project_changes",
-          "partner_project_changes",
-          "funded_project_changes"
+          "funded_projects"
         ]
       },
       "conditions": [],
@@ -445,10 +439,7 @@
           "url",
           "lead_projects",
           "partner_projects",
-          "funded_projects",
-          "lead_project_changes",
-          "partner_project_changes",
-          "funded_project_changes"
+          "funded_projects"
         ]
       },
       "conditions": [],
@@ -470,10 +461,7 @@
           "url",
           "lead_projects",
           "partner_projects",
-          "funded_projects",
-          "lead_project_changes",
-          "partner_project_changes",
-          "funded_project_changes"
+          "funded_projects"
         ]
       },
       "conditions": [],
@@ -543,115 +531,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::project-change.project-change",
-      "properties": {
-        "fields": [
-          "name",
-          "project_type",
-          "start_date",
-          "end_date",
-          "short_description",
-          "description",
-          "country_of_coordination",
-          "region_of_interventions",
-          "country_of_interventions",
-          "website",
-          "project_coordinator_name",
-          "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
-          "main_area_of_intervention",
-          "main_area_of_intervention_other",
-          "secondary_area_of_intervention",
-          "third_area_of_intervention",
-          "sustainable_development_goal",
-          "lead_partner",
-          "partners",
-          "funders",
-          "related_project",
-          "status"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::project-change.project-change",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::project-change.project-change",
-      "properties": {
-        "fields": [
-          "name",
-          "project_type",
-          "start_date",
-          "end_date",
-          "short_description",
-          "description",
-          "country_of_coordination",
-          "region_of_interventions",
-          "country_of_interventions",
-          "website",
-          "project_coordinator_name",
-          "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
-          "main_area_of_intervention",
-          "main_area_of_intervention_other",
-          "secondary_area_of_intervention",
-          "third_area_of_intervention",
-          "sustainable_development_goal",
-          "lead_partner",
-          "partners",
-          "funders",
-          "related_project",
-          "status"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::project-change.project-change",
-      "properties": {
-        "fields": [
-          "name",
-          "project_type",
-          "start_date",
-          "end_date",
-          "short_description",
-          "description",
-          "country_of_coordination",
-          "region_of_interventions",
-          "country_of_interventions",
-          "website",
-          "project_coordinator_name",
-          "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
-          "main_area_of_intervention",
-          "main_area_of_intervention_other",
-          "secondary_area_of_intervention",
-          "third_area_of_intervention",
-          "sustainable_development_goal",
-          "lead_partner",
-          "partners",
-          "funders",
-          "related_project",
-          "status"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
       "subject": "api::project-type.project-type",
       "properties": {
         "fields": [
@@ -716,7 +595,9 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "change_type",
+          "target_change_project"
         ]
       },
       "conditions": [],
@@ -762,7 +643,9 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "change_type",
+          "target_change_project"
         ]
       },
       "conditions": [],
@@ -794,7 +677,9 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "change_type",
+          "target_change_project"
         ]
       },
       "conditions": [],
@@ -806,8 +691,7 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
-          "project_changes"
+          "projects"
         ]
       },
       "conditions": [],
@@ -826,8 +710,7 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
-          "project_changes"
+          "projects"
         ]
       },
       "conditions": [],
@@ -839,8 +722,7 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
-          "project_changes"
+          "projects"
         ]
       },
       "conditions": [],
@@ -852,8 +734,7 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
-          "project_changes"
+          "projects"
         ]
       },
       "conditions": [],
@@ -872,8 +753,7 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
-          "project_changes"
+          "projects"
         ]
       },
       "conditions": [],
@@ -885,8 +765,7 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
-          "project_changes"
+          "projects"
         ]
       },
       "conditions": [],
@@ -1259,6 +1138,20 @@
     },
     {
       "action": "plugin::import-export-entries.import",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::project-change.accept-changes",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::project-change.decline-changes",
       "subject": null,
       "properties": {},
       "conditions": [],

@@ -30,7 +30,8 @@
     "name": "Vizzuality"
   },
   "strapi": {
-    "uuid": "e944e3fc-52a7-457c-83c6-d8eba1ce3ff8"
+    "uuid": "e944e3fc-52a7-457c-83c6-d8eba1ce3ff8",
+    "telemetryDisabled": true
   },
   "engines": {
     "node": "~18.17",

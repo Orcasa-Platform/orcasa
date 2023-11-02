@@ -149,21 +149,6 @@
           "sortable": false
         }
       },
-      "project_changes": {
-        "edit": {
-          "label": "project_changes",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "project_changes",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "lat": {
         "edit": {
           "label": "Latitude",
@@ -252,6 +237,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "capital",
+        "continent"
+      ],
       "edit": [
         [
           {
@@ -309,12 +300,6 @@
             "size": 4
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "capital",
-        "continent"
       ]
     }
   },

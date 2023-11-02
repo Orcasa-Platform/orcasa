@@ -326,7 +326,7 @@
       },
       "funders": {
         "edit": {
-          "label": "funders",
+          "label": "Funders",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -337,6 +337,35 @@
           "label": "funders",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "change_type": {
+        "edit": {
+          "label": "Change Type",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "change_type",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "target_change_project": {
+        "edit": {
+          "label": "Target Change Project",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "target_change_project",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -507,6 +536,16 @@
           },
           {
             "name": "funders",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "target_change_project",
+            "size": 6
+          },
+          {
+            "name": "change_type",
             "size": 6
           }
         ]
