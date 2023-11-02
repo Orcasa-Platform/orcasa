@@ -3,18 +3,13 @@ import Labels from './labels';
 
 const MapSettings = () => {
   return (
-    <div className="space-y-3">
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="h-6 font-serif font-semibold">Map style</h2>
-      </div>
-      <div className="space-y-4">
-        <Basemaps />
+    <div className="flex flex-col gap-y-4">
+      <h1 className="font-serif text-2xl">Map settings</h1>
 
-        <div className="grid grid-flow-col gap-4 pt-5">
-          <div className="col-span-6 border-t border-dashed border-gray-200 pt-2">
-            <Labels />
-          </div>
-        </div>
+      <Basemaps />
+
+      <div className="border-t border-dashed border-gray-200 pt-2">
+        <Labels />
       </div>
     </div>
   );
