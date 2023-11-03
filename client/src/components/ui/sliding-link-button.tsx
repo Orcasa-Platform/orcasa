@@ -36,15 +36,18 @@ const SlidingLinkButton = React.forwardRef<
             })}
           />
           <span
-            className={cn('text-xs opacity-0 transition group-focus:opacity-100', {
-              'min-w-fit duration-500 group-hover:opacity-100': !isCompact,
-              'max-w-0 duration-0 group-hover:max-w-fit group-hover:opacity-100 group-hover:duration-500':
-                isCompact,
-              '-translate-x-1/3 group-hover:translate-x-0 group-focus:translate-x-0':
-                position === 'left',
-              'translate-x-0 group-hover:-translate-x-1/3 group-focus:-translate-x-1/3':
-                position === 'right',
-            })}
+            className={cn(
+              'text-xs opacity-0 transition group-hover:opacity-100 group-focus:opacity-100',
+              {
+                'min-w-fit duration-500': !isCompact,
+                'max-w-0 duration-0 group-hover:max-w-fit group-hover:duration-500 group-focus:max-w-fit group-focus:duration-500':
+                  isCompact,
+                '-translate-x-1/3 group-hover:translate-x-0 group-focus:translate-x-0':
+                  position === 'left',
+                'translate-x-0 group-hover:-translate-x-1/3 group-focus:-translate-x-1/3':
+                  position === 'right',
+              },
+            )}
           >
             {children}
           </span>
