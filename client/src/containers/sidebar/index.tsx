@@ -95,7 +95,7 @@ export default function Sidebar({
       </div>
 
       <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto">
-        <div className="space-y-5 p-5 text-slate-700">{children}</div>
+        <div className="space-y-5 px-12 py-10 text-slate-700">{children}</div>
       </div>
     </div>
   );

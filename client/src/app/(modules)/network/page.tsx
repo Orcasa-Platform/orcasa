@@ -58,17 +58,20 @@ export default function NetworkModule() {
   }, [savedSidebarScroll, setSidebarScroll]);
 
   return (
-    <>
+    <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
         Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
       </h1>
-      <Search
-        onChange={() => {
-          // TODO - search
-        }}
-      />
-      <div className="flex justify-between">
-        <FilterButton text="More filters" />
+      <div className="flex gap-2">
+        <Search
+          containerClassName="flex-1"
+          onChange={() => {
+            // TODO - search
+          }}
+        />
+        <div className="flex justify-between">
+          <FilterButton text="More filters" />
+        </div>
       </div>
       <NetworkList {...networks} />
       <div className="flex items-center justify-between">
@@ -80,6 +83,6 @@ export default function NetworkModule() {
           <AddButton text="Add project" />
         </div>
       </div>
-    </>
+    </div>
   );
 }
