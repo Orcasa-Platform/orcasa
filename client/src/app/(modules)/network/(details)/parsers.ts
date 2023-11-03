@@ -127,7 +127,7 @@ export const getOrganizationFields = (organization: Organization) => {
   const fields = [];
 
   if (typeof description !== 'undefined' && description.length > 0) {
-    fields.push({ label: 'Description', value: description });
+    fields.push({ label: 'Description', value: description, hasEllipsis: true });
   }
 
   if (typeof country !== 'undefined') {
