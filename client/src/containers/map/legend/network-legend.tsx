@@ -3,8 +3,8 @@ const NetworkLegend = () => {
     const legendItem = (text: string) => (
       <div key={text} className="-mt-px flex h-[21px] w-full items-center text-right">
         <span className="mr-[10px] w-[60px]">{text}</span>
-        <span className="h-[6px] w-[8px] rotate-45 bg-gray-300 p-0" />
-        <span className="mr-3 w-full border-t border-dashed border-gray-300" />
+        <span className="h-[6px] w-[8px] rotate-45 bg-gray-200 p-0" />
+        <span className="mr-3 w-full border-t border-dashed border-gray-200" />
       </div>
     );
     return (
@@ -12,10 +12,10 @@ const NetworkLegend = () => {
         <div className="relative h-[110px] w-[274px] text-xs text-slate-500">
           <div className="flex flex-col">{['>100', '50-100', '10-50', '1-10'].map(legendItem)}</div>
           <div className="absolute right-3 top-0">
-            <div className="absolute right-0 top-[70px] h-10 w-5 border border-gray-300" />
-            <div className="absolute right-0 top-[50px] h-[60px] w-10 border border-gray-300" />
+            <div className="absolute right-0 top-[70px] h-10 w-5 border border-gray-200" />
+            <div className="absolute right-0 top-[50px] h-[60px] w-10 border border-gray-200" />
             <div className="absolute right-0 top-[30px] h-20 w-[60px] border border-gray-300" />
-            <div className="absolute right-0 top-[10px] h-[100px] w-20 border border-gray-300" />
+            <div className="absolute right-0 top-[10px] h-[100px] w-20 border border-gray-200" />
           </div>
         </div>
       </div>

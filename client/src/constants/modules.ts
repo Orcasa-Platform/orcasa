@@ -1,7 +1,7 @@
 export const moduleColors = {
-  'dark-yellow': {
-    background: 'bg-yellow-600',
-    border: 'border-yellow-600',
+  brown: {
+    background: 'bg-brown-500',
+    border: 'border-brown-500',
   },
   yellow: {
     background: 'bg-yellow-500',
@@ -15,9 +15,9 @@ export const moduleColors = {
     background: 'bg-blue-500',
     border: 'border-blue-500',
   },
-  indigo: {
-    background: 'bg-indigo-500',
-    border: 'border-indigo-500',
+  purple: {
+    background: 'bg-purple-700',
+    border: 'border-purple-700',
   },
 };
 
@@ -41,7 +41,7 @@ export const modules = [
   {
     name: 'Practices',
     href: '/practices',
-    color: 'dark-yellow',
+    color: 'brown',
   },
   {
     name: 'Network',
@@ -51,6 +51,6 @@ export const modules = [
   {
     name: 'Datasets',
     href: '/datasets',
-    color: 'indigo',
+    color: 'purple',
   },
 ] as const satisfies readonly Module[];

@@ -14,7 +14,7 @@ const buttonVariants = cva(
         primary: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
         // Not reviewed yet
-        default: 'border border-blue-400 px-4 py-2 hover:bg-gray-50 text-sky-700',
+        default: 'border border-blue-500 px-4 py-2 hover:bg-gray-50 text-sky-700',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
@@ -23,7 +23,7 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         icon: '!p-0 !h-6',
         'opener-light':
-          'bg-white border-l border-gray-300 justify-center items-center flex hover:bg-slate-200',
+          'bg-white border-l border-gray-200 justify-center items-center flex hover:bg-slate-200',
         'opener-dark':
           'bg-slate-700 text-white border-l border-gray-300 justify-center items-center flex hover:bg-slate-600',
       },

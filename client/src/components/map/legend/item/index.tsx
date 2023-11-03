@@ -55,7 +55,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
             </Button>
           )}
 
-          <div className="text-base font-semibold text-gray-700">{name}</div>
+          <div className="text-base font-semibold text-gray-800">{name}</div>
         </div>
 
         {/* TOOLBAR */}
