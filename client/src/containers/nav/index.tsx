@@ -16,7 +16,7 @@ type NavLinkProps = PropsWithChildren<Omit<Module, 'name'> & { active?: boolean 
 const NavLink = ({ href, children, color, active }: NavLinkProps) => (
   <Link
     className={cn(
-      'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-6 pr-4 text-sm font-semibold leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
+      'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-4 pr-4 font-serif text-sm leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
       moduleColors[color].border,
       {
         'bg-white': active,
