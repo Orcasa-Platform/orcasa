@@ -72,7 +72,13 @@ const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type })
             {value}
           </div>
           {isOverTwoLines && (
-            <button onClick={toggleExpanded} className="text-sm font-semibold text-mod-sc-ev">
+            <button
+              onClick={toggleExpanded}
+              className={cn('text-sm font-semibold', {
+                'text-blue-500': type === 'organization',
+                'text-peach-700': type === 'project',
+              })}
+            >
               {isExpanded ? 'Show less' : 'Show more'}
             </button>
           )}

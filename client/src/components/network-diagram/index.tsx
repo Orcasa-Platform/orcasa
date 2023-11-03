@@ -113,7 +113,7 @@ const NetworkDiagram = ({
             );
           })}
         </div>
-        <div className="flex h-fit w-[165px] flex-col gap-2 border border-dashed border-gray-300 p-6 text-slate-700">
+        <div className="flex h-fit w-[165px] flex-col gap-2 border border-dashed border-gray-200 p-6 text-slate-700">
           <div className="flex items-center gap-2">
             <span className="h-[3px] w-6 bg-gray-700" />
             <span>Coordinator</span>

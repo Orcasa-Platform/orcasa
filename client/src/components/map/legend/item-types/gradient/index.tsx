@@ -28,7 +28,7 @@ export const LegendTypeGradient: React.FC<LegendTypeProps> = ({ className = '', 
               className={cn({
                 'relative flex-shrink-0 text-xs text-gray-500 before:absolute before:-top-2 before:left-1/2':
                   true,
-                'before:block before:h-1 before:w-px before:bg-gray-700 first-of-type:before:left-0 last-of-type:before:left-auto last-of-type:before:right-0':
+                'before:block before:h-1 before:w-px before:bg-gray-800 first-of-type:before:left-0 last-of-type:before:left-auto last-of-type:before:right-0':
                   value !== undefined && value !== null,
               })}
             >
