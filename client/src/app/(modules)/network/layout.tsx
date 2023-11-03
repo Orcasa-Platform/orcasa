@@ -2,7 +2,7 @@ import Map from '@/containers/map';
 import Sidebar from '@/containers/sidebar';
 
 export const metadata = {
-  title: 'ORCaSa - Network',
+  title: 'Impact4Soil - Network',
 };
 
 export default function NetworkModuleLayout({ children }: { children: React.ReactNode }) {
