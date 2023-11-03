@@ -16,15 +16,16 @@ const RadioGroup = React.forwardRef<
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
 const radioGroupItemVariants = cva(
-  'rounded-full  text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-300',
+  'rounded-full  text-primary ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-300',
   {
     variants: {
       variant: {
         // Regular radio buttons
-        default: 'aspect-square h-4 w-4 border-2 border-primary data-[state=checked]:border-[5px]',
+        default:
+          'aspect-square focus:outline-none h-4 w-4 border-2 border-primary data-[state=checked]:border-[5px]',
         // A simple container for custom radio buttons
         naked:
-          'data-[state=checked]:ring-2 data-[state=checked]:ring-primary data-[state=checked]:ring-offset-4',
+          'data-[state=checked]:ring-2 data-[state=checked]:ring-primary data-[state=checked]:ring-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-ring',
       },
     },
     defaultVariants: {
