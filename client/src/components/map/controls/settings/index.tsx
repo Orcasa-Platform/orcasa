@@ -51,7 +51,7 @@ export const SettingsControl: FC<SettingsControlProps> = ({
             </TooltipContent>
           </TooltipPortal>
 
-          <PopoverContent side="left" align="start" className="w-[310px] px-6 py-4">
+          <PopoverContent side="left" align="start" className="w-[310px] px-6 py-4" sideOffset={16}>
             {children}
             <PopoverClose asChild>
               <Button
@@ -64,7 +64,6 @@ export const SettingsControl: FC<SettingsControlProps> = ({
                 <X className="h-6 w-6" />
               </Button>
             </PopoverClose>
-            <PopoverArrow className="fill-white" width={10} height={5} />
           </PopoverContent>
         </Tooltip>
       </Popover>
