@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 
 import { cn } from '@/lib/classnames';
 
-import { useIsOverTwoLines } from './hooks';
+import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 type Type = 'project' | 'organization';
 type Field = {

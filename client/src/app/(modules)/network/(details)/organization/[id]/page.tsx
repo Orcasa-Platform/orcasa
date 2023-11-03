@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 
 import { getOrganizationsId } from '@/types/generated/organization';
 
+import NetworkDiagram from '@/components/network-diagram';
 import { Button } from '@/components/ui/button';
 
 import Field from '../../field';
@@ -18,7 +19,6 @@ export async function generateMetadata({ params }: OrganizationDetailsProps): Pr
   const id = parseInt(params.id);
   const data = await getOrganizationsId(id, { populate: '*' });
   const organization = data?.data?.attributes;
-
   if (!organization) {
     return {};
   }
@@ -61,6 +61,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
           </a>
         </Button>
       </div>
+      <NetworkDiagram data={organization} id={id} type="organization" />
     </>
   );
 }

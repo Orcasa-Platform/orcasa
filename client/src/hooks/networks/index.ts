@@ -1,12 +1,22 @@
 import { PointFeature } from 'supercluster';
 
-import { useGetOrganizations } from '@/types/generated/organization';
-import { useGetProjects } from '@/types/generated/project';
+import { useGetOrganizationsId, useGetOrganizations } from '@/types/generated/organization';
+import { useGetProjects, useGetProjectsId } from '@/types/generated/project';
 import {
   ProjectListResponseDataItem,
-  ProjectListResponse,
+  ProjectResponse,
+  OrganizationResponse,
   OrganizationListResponse,
+  OrganizationLeadProjectsDataItem,
+  OrganizationPartnerProjectsDataItem,
+  OrganizationFundedProjectsDataItem,
+  ProjectListResponse,
   OrganizationListResponseDataItem,
+  ProjectLeadPartnerData,
+  ProjectPartnersDataItem,
+  ProjectFundersDataItem,
+  OrganizationResponseDataObject,
+  ProjectResponseDataObject,
 } from '@/types/generated/strapi.schemas';
 
 export type NetworkResponse = {
@@ -154,6 +164,179 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,
     isError: organizationIsError || projectsIsError,
+  };
+};
+
+export type Category = 'coordinator' | 'partner' | 'funder';
+
+export const useNetworkDiagram = ({
+  type,
+  id,
+}: {
+  type: 'project' | 'organization';
+  id: number;
+}) => {
+  const useFunction = type === 'organization' ? useGetOrganizationsId : useGetProjectsId;
+  const populate =
+    type === 'organization'
+      ? String([
+          'lead_projects',
+          'lead_projects.lead_partner',
+          'lead_projects.partners',
+          'lead_projects.funders',
+          'partner_projects',
+          'partner_projects.lead_partner',
+          'partner_projects.partners',
+          'partner_projects.funders',
+          'funded_projects',
+          'funded_projects.lead_partner',
+          'funded_projects.partners',
+          'funded_projects.funders',
+        ])
+      : String([
+          'lead_partner',
+          'lead_partner.lead_projects',
+          'lead_partner.partner_projects',
+          'lead_partner.funded_projects',
+          'partners',
+          'partners.lead_projects',
+          'partners.partner_projects',
+          'partners.funded_projects',
+          'funders',
+          'funders.lead_projects',
+          'funders.partner_projects',
+          'funders.funded_projects',
+        ]);
+  const {
+    data,
+    isFetching: organizationIsFetching,
+    isFetched: organizationIsFetched,
+    isPlaceholderData: organizationIsPlaceholderData,
+    isError: organizationIsError,
+  } = useFunction(
+    id,
+    {
+      populate,
+    },
+    { query: { keepPreviousData: true } },
+  );
+
+  type OrganizationKey = 'lead_projects' | 'partner_projects' | 'funded_projects';
+  type ProjectKey = 'lead_partner' | 'partners' | 'funders';
+
+  const ORGANIZATION_KEYS: OrganizationKey[] = [
+    'lead_projects',
+    'partner_projects',
+    'funded_projects',
+  ];
+  const PROJECT_KEYS: ProjectKey[] = ['lead_partner', 'partners', 'funders'];
+
+  const getCategory: (category: ProjectKey | OrganizationKey) => Category = (category) =>
+    ({
+      lead_projects: 'coordinator',
+      partner_projects: 'partner',
+      funded_projects: 'funder',
+      lead_partner: 'coordinator',
+      partners: 'partner',
+      funders: 'funder',
+    }[category] as Category);
+
+  const getProjectData = (
+    key: OrganizationKey,
+    project:
+      | OrganizationLeadProjectsDataItem
+      | OrganizationPartnerProjectsDataItem
+      | OrganizationFundedProjectsDataItem,
+  ) => ({
+    id: project.id,
+    name: project?.attributes?.name,
+    type: 'project',
+    category: getCategory(key),
+  });
+
+  const getOrganizationData = (
+    key: ProjectKey,
+    org: ProjectLeadPartnerData | ProjectPartnersDataItem | ProjectFundersDataItem,
+    // Skip the grandparent project so it doesn't show up twice
+    skipProjectId?: number,
+  ) => ({
+    id: org.id,
+    name: org?.attributes?.name,
+    type: 'organization',
+    category: getCategory(key),
+    children: ORGANIZATION_KEYS.map((organizationKey: OrganizationKey) => {
+      const child = org?.attributes?.[organizationKey]?.data;
+      if (!child) return [];
+      return (Array.isArray(child) ? child : [child]).map(
+        (c) => c.id !== skipProjectId && getProjectData(organizationKey, c),
+      );
+    })
+      .flat()
+      .filter(Boolean),
+  });
+
+  const parseOrganization = (organizationData: OrganizationResponse) => {
+    if (!organizationData) return [];
+    const { attributes, id: parentId }: OrganizationResponseDataObject =
+      organizationData?.data || {};
+
+    return ORGANIZATION_KEYS.map((key) => {
+      if (typeof attributes === 'undefined') return null;
+      return attributes[key]?.data?.map(
+        (
+          project:
+            | OrganizationLeadProjectsDataItem
+            | OrganizationPartnerProjectsDataItem
+            | OrganizationFundedProjectsDataItem,
+        ) => ({
+          id: project.id,
+          name: project?.attributes?.name,
+          type: 'project',
+          category: getCategory(key),
+          children: PROJECT_KEYS.map((projectKey: ProjectKey) => {
+            const child = project?.attributes?.[projectKey]?.data;
+            if (!child) return [];
+            return (Array.isArray(child) ? child : [child]).map((c) => {
+              if (c.id !== parentId) return getOrganizationData(projectKey, c);
+            });
+          })
+            .flat()
+            .filter(Boolean),
+        }),
+      );
+    });
+  };
+
+  const parseProject = (projectData: ProjectResponse) => {
+    if (!projectData) return [];
+    const { attributes, id: parentProjectId }: ProjectResponseDataObject = projectData?.data || {};
+    return PROJECT_KEYS.map((key) => {
+      if (typeof attributes === 'undefined') {
+        return null;
+      }
+      if (key === 'lead_partner') {
+        if (!attributes[key]?.data) return [];
+        return getOrganizationData(
+          key,
+          attributes[key]?.data as ProjectLeadPartnerData,
+          parentProjectId,
+        );
+      }
+      return attributes[key]?.data?.map((d) => getOrganizationData(key, d, parentProjectId));
+    });
+  };
+
+  const parsedData =
+    type === 'organization'
+      ? parseOrganization(data as OrganizationResponse)
+      : parseProject(data as ProjectResponse);
+
+  return {
+    data: parsedData.flat(),
+    isFetching: organizationIsFetching,
+    isFetched: organizationIsFetched,
+    isPlaceholderData: organizationIsPlaceholderData,
+    isError: organizationIsError,
   };
 };
 

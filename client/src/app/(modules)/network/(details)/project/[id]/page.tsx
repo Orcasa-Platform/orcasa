@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 
 import { getProjectsId } from '@/types/generated/project';
 
+import NetworkDiagram from '@/components/network-diagram';
 import { Button } from '@/components/ui/button';
 
 import Field from '../../field';
@@ -61,6 +62,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
           </a>
         </Button>
       </div>
+      <NetworkDiagram data={project} id={id} type="project" />
     </>
   );
 }
