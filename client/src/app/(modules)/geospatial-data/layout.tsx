@@ -2,7 +2,7 @@ import Map from '@/containers/map';
 import Sidebar from '@/containers/sidebar';
 
 export const metadata = {
-  title: 'ORCaSa - Geospatial Data',
+  title: 'Impact4Soil - Geospatial Data',
 };
 
 export default function GeospatialDataModuleLayout({ children }: { children: React.ReactNode }) {
