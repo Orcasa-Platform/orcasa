@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import Link from 'next/link';
-
-import Logo from 'public/images/logo.svg';
 
 import { cn } from '@/lib/classnames';
 
@@ -21,10 +20,10 @@ const LinkBox = ({ href, color, name }: Module) => (
 
 export default async function HomePage() {
   return (
-    <div className="h-screen w-screen bg-indigo-950/80">
+    <div className="h-screen w-screen bg-gray-800">
       <Link href="/">
-        <Logo className="h-[68px] w-[69px]" />
-        <span className="sr-only">ORCaSa</span>
+        <Image src="/images/logo.png" width={58} height={58} alt="Impact4Soil" />
+        <span className="sr-only">Impact4Soil</span>
       </Link>
       <div className="flex h-[75%] items-center gap-4 p-10">
         {modules.map((module) => (

@@ -22,13 +22,15 @@ const robotoSlab = Roboto_Slab({
 
 // TODO: Update metadata
 export const metadata = {
-  title: 'ORCaSa',
+  title: 'Impact4Soil',
+  // TODO: update description
   description:
     'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
-  keywords: 'ORCaSa, Horizon Europe, carbon capture, climate change',
+  keywords: 'Impact4Soil, ORCaSa, Horizon Europe, carbon capture, climate change',
   robots: 'index, follow',
   og: {
-    title: 'ORCaSa - Horizon Europe Initiative',
+    title: 'Impact4Soil - Horizon Europe Initiative',
+    // TODO: update description
     description:
       'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
     // image: 'https://example.com/orcasa-image.jpg',

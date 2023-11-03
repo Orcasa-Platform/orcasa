@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: OrganizationDetailsProps): Pr
   }
 
   return {
-    title: `ORCaSa - ${organization?.name}`,
+    title: `Impact4Soil - ${organization?.name}`,
   };
 }
 

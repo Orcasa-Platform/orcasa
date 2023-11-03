@@ -48,6 +48,7 @@ module.exports = {
           // Disabled for buttons / labels
           300: '#B2B5C5',
           500: '#7C7F8F',
+          400: '#8B90A4',
           800: '#3C4363',
         },
         peach: {

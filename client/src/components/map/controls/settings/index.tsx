@@ -10,6 +10,7 @@ import { cn } from '@/lib/classnames';
 
 import { useTheme } from '@/hooks/ui/theme';
 
+import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger, PopoverClose } from '@/components/ui/popover';
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -45,17 +46,24 @@ export const SettingsControl: FC<SettingsControlProps> = ({
 
           <TooltipPortal>
             <TooltipContent side="left" align="center">
-              <div className="text-xxs font-serif">Map style</div>
+              <div className="text-xxs font-serif">Map settings</div>
               <TooltipArrow className="fill-white" width={10} height={5} />
             </TooltipContent>
           </TooltipPortal>
 
-          <PopoverContent side="left" align="start">
+          <PopoverContent side="left" align="start" className="w-[310px] px-6 py-4" sideOffset={16}>
             {children}
-            <PopoverClose className="absolute right-4 top-4" aria-label="Close">
-              <X className="h-6 w-6" />
+            <PopoverClose asChild>
+              <Button
+                type="button"
+                variant="primary"
+                size="icon"
+                className="absolute right-0 top-0"
+              >
+                <span className="sr-only">Close</span>
+                <X className="h-6 w-6" />
+              </Button>
             </PopoverClose>
-            <PopoverArrow className="fill-white" width={10} height={5} />
           </PopoverContent>
         </Tooltip>
       </Popover>
