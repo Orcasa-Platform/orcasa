@@ -19,6 +19,8 @@ import {
   ProjectResponseDataObject,
 } from '@/types/generated/strapi.schemas';
 
+import { NetworkFilters } from '@/app/(modules)/network/store';
+
 export type NetworkResponse = {
   networks: OrganizationListResponseDataItem[] | ProjectListResponseDataItem[];
   isFetching: boolean;
@@ -340,7 +342,16 @@ export const useNetworkDiagram = ({
   };
 };
 
-export const useNetworks = ({ page = 1 }: { page: number }) => {
+export const useNetworks = ({
+  page = 1,
+  filters = {},
+}: {
+  page: number;
+  filters?: NetworkFilters;
+}) => {
+  const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
+  const loadProjects = !filters.type?.length || filters.type.includes('project');
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
@@ -355,7 +366,13 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
     },
-    { query: { keepPreviousData: true } },
+    {
+      query: {
+        queryKey: ['organization', page, filters],
+        keepPreviousData: true,
+        enabled: loadOrganizations,
+      },
+    },
   );
 
   const {
@@ -372,7 +389,13 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
     },
-    { query: { keepPreviousData: true } },
+    {
+      query: {
+        queryKey: ['project', page, filters],
+        keepPreviousData: true,
+        enabled: loadProjects,
+      },
+    },
   );
 
   const sortAlphabetically = (
@@ -381,20 +404,20 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
   ) => (a.attributes?.name ?? '').localeCompare(b.attributes?.name ?? '');
 
   const networks = [
-    ...(organizationsData?.data?.map((d: OrganizationListResponseDataItem) => ({
-      ...d,
-      type: 'organization',
-    })) || []),
-    ...(projectsData?.data?.map((d: ProjectListResponseDataItem) => ({ ...d, type: 'project' })) ||
-      []),
+    ...(loadOrganizations
+      ? organizationsData?.data?.map((d: OrganizationListResponseDataItem) => ({
+          ...d,
+          type: 'organization',
+        })) ?? []
+      : []),
+    ...(loadProjects
+      ? projectsData?.data?.map((d: ProjectListResponseDataItem) => ({ ...d, type: 'project' })) ??
+        []
+      : []),
   ].sort(sortAlphabetically);
 
   return {
     networks,
-    count: {
-      organizations: organizationsData?.meta?.pagination?.total || 0,
-      projects: projectsData?.meta?.pagination?.total || 0,
-    },
     isFetching: organizationIsFetching || projectsIsFetching,
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,

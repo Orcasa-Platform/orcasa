@@ -17,7 +17,7 @@ export default function NetworkList({
   isFetched,
   isPlaceholderData,
   isError,
-}: Omit<ReturnType<typeof useNetworks>, 'count'>) {
+}: ReturnType<typeof useNetworks>) {
   return (
     <ContentLoader
       data={networks}

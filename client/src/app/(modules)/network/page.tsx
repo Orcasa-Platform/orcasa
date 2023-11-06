@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
 import NetworkList from './network-list';
-import { useFilterSidebarOpen } from './store';
+import { useFilterSidebarOpen, useFilters } from './store';
 
 const AddButton = ({ text }: { text: string }) => (
   <Button
@@ -29,7 +29,8 @@ const AddButton = ({ text }: { text: string }) => (
 );
 
 export default function NetworkModule() {
-  const networks = useNetworks({ page: 1 });
+  const [filters] = useFilters();
+  const networks = useNetworks({ page: 1, filters });
 
   const [filterSidebarOpen, setFilterSidebarOpen] = useFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);

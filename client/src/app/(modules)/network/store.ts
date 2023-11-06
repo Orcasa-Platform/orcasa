@@ -1,7 +1,7 @@
 import { atom, useAtom } from 'jotai';
 
-interface Filters {
-  type: string[];
+export interface NetworkFilters {
+  type?: string[];
 }
 
 const filterSidebarOpenAtom = atom(false);
@@ -9,7 +9,7 @@ export const useFilterSidebarOpen = () => {
   return useAtom(filterSidebarOpenAtom);
 };
 
-const filtersAtom = atom<Filters>({ type: [] });
+const filtersAtom = atom<NetworkFilters>({ type: [] });
 export const useFilters = () => {
   return useAtom(filtersAtom);
 };
