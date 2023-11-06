@@ -8,6 +8,8 @@ import { format } from '@/lib/utils/formats';
 
 import { LayerProps } from '@/types/layers';
 
+import { useFilters } from '@/app/(modules)/network/store';
+
 import { OrganizationProperties, ProjectProperties, useMapNetworks } from '@/hooks/networks';
 
 import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
@@ -99,7 +101,8 @@ const MarkerComponent = ({
 
 const NetworksMarkers = () => {
   const { current: map } = useMap();
-  const { features, isError, isFetched } = useMapNetworks();
+  const [filters] = useFilters();
+  const { features, isError, isFetched } = useMapNetworks({ filters });
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent

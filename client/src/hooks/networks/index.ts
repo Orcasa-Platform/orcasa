@@ -65,17 +65,32 @@ export type NetworkMapResponse = {
   isError: boolean;
 };
 
-export const useMapNetworks: () => NetworkMapResponse = () => {
+export const useMapNetworks = ({
+  filters = {},
+}: {
+  filters?: NetworkFilters;
+}): NetworkMapResponse => {
+  const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
+  const loadProjects = !filters.type?.length || filters.type.includes('project');
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
     isFetched: organizationIsFetched,
     isPlaceholderData: organizationIsPlaceholderData,
     isError: organizationIsError,
-  } = useGetOrganizations({
-    populate: 'country',
-    'pagination[pageSize]': 9999,
-  });
+  } = useGetOrganizations(
+    {
+      populate: 'country',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['map-organization', filters],
+        enabled: loadOrganizations,
+      },
+    },
+  );
 
   const {
     data: projectsData,
@@ -83,10 +98,18 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
     isFetched: projectsIsFetched,
     isPlaceholderData: projectsIsPlaceholderData,
     isError: projectsIsError,
-  } = useGetProjects({
-    populate: 'country_of_coordination',
-    'pagination[pageSize]': 9999,
-  });
+  } = useGetProjects(
+    {
+      populate: 'country_of_coordination',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['map-project', filters],
+        enabled: loadProjects,
+      },
+    },
+  );
 
   type Data = ProjectListResponse | OrganizationListResponse | undefined;
   type ParsedData = {
@@ -122,7 +145,10 @@ export const useMapNetworks: () => NetworkMapResponse = () => {
 
   const parsedOrganizations = parseData(organizationsData, 'organization');
   const parsedProjects = parseData(projectsData, 'project');
-  const networks = [...(parsedOrganizations || []), ...(parsedProjects || [])];
+  const networks = [
+    ...(loadOrganizations ? parsedOrganizations ?? [] : []),
+    ...(loadProjects ? parsedProjects ?? [] : []),
+  ];
 
   const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
     const { countryName } = network;
