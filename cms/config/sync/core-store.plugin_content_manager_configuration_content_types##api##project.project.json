@@ -339,31 +339,16 @@
           "sortable": false
         }
       },
-      "change_type": {
+      "publication_status": {
         "edit": {
-          "label": "Change Type",
+          "label": "publication_status",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "change_type",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "target_change_project": {
-        "edit": {
-          "label": "Target Change Project",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "target_change_project",
+          "label": "publication_status",
           "searchable": true,
           "sortable": true
         }
@@ -428,12 +413,20 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "publication_status"
+      ],
       "edit": [
         [
           {
             "name": "name",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "project_type",
             "size": 6
@@ -541,20 +534,10 @@
         ],
         [
           {
-            "name": "target_change_project",
-            "size": 6
-          },
-          {
-            "name": "change_type",
+            "name": "publication_status",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "project_type",
-        "start_date"
       ]
     }
   },

@@ -96,7 +96,9 @@
           "iso_3",
           "continent",
           "region",
-          "projects"
+          "projects",
+          "lat",
+          "long"
         ]
       },
       "conditions": [],
@@ -122,7 +124,9 @@
           "iso_3",
           "continent",
           "region",
-          "projects"
+          "projects",
+          "lat",
+          "long"
         ]
       },
       "conditions": [],
@@ -141,7 +145,9 @@
           "iso_3",
           "continent",
           "region",
-          "projects"
+          "projects",
+          "lat",
+          "long"
         ]
       },
       "conditions": [],
@@ -153,7 +159,9 @@
       "properties": {
         "fields": [
           "title",
-          "layers"
+          "layers",
+          "order",
+          "description"
         ]
       },
       "conditions": [],
@@ -179,7 +187,9 @@
       "properties": {
         "fields": [
           "title",
-          "layers"
+          "layers",
+          "order",
+          "description"
         ]
       },
       "conditions": [],
@@ -191,7 +201,9 @@
       "properties": {
         "fields": [
           "title",
-          "layers"
+          "layers",
+          "order",
+          "description"
         ]
       },
       "conditions": [],
@@ -207,7 +219,19 @@
           "config",
           "params_config",
           "legend_config",
-          "interaction_config"
+          "interaction_config",
+          "source",
+          "source_url",
+          "description",
+          "license",
+          "citation",
+          "cautions",
+          "related_publications",
+          "resource_contact_name",
+          "resource_contact_url",
+          "metadata_contact_name",
+          "metadata_contact_url",
+          "highlighted_bounds"
         ]
       },
       "conditions": [],
@@ -237,7 +261,19 @@
           "config",
           "params_config",
           "legend_config",
-          "interaction_config"
+          "interaction_config",
+          "source",
+          "source_url",
+          "description",
+          "license",
+          "citation",
+          "cautions",
+          "related_publications",
+          "resource_contact_name",
+          "resource_contact_url",
+          "metadata_contact_name",
+          "metadata_contact_url",
+          "highlighted_bounds"
         ]
       },
       "conditions": [],
@@ -253,7 +289,19 @@
           "config",
           "params_config",
           "legend_config",
-          "interaction_config"
+          "interaction_config",
+          "source",
+          "source_url",
+          "description",
+          "license",
+          "citation",
+          "cautions",
+          "related_publications",
+          "resource_contact_name",
+          "resource_contact_url",
+          "metadata_contact_name",
+          "metadata_contact_url",
+          "highlighted_bounds"
         ]
       },
       "conditions": [],
@@ -355,7 +403,8 @@
           "url",
           "lead_projects",
           "partner_projects",
-          "funded_projects"
+          "funded_projects",
+          "publication_status"
         ]
       },
       "conditions": [],
@@ -363,13 +412,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::organization.organization",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
       "subject": "api::organization.organization",
       "properties": {},
       "conditions": [],
@@ -391,7 +433,8 @@
           "url",
           "lead_projects",
           "partner_projects",
-          "funded_projects"
+          "funded_projects",
+          "publication_status"
         ]
       },
       "conditions": [],
@@ -413,7 +456,8 @@
           "url",
           "lead_projects",
           "partner_projects",
-          "funded_projects"
+          "funded_projects",
+          "publication_status"
         ]
       },
       "conditions": [],
@@ -547,7 +591,8 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "publication_status"
         ]
       },
       "conditions": [],
@@ -555,13 +600,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::project.project",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
       "subject": "api::project.project",
       "properties": {},
       "conditions": [],
@@ -593,7 +631,8 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "publication_status"
         ]
       },
       "conditions": [],
@@ -625,7 +664,8 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "publication_status"
         ]
       },
       "conditions": [],
