@@ -1,5 +1,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 
+import { usePathname } from 'next/navigation';
+
 import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
@@ -8,7 +10,8 @@ import { format } from '@/lib/utils/formats';
 
 import { LayerProps } from '@/types/layers';
 
-import { OrganizationProperties, ProjectProperties, useMapNetworks } from '@/hooks/networks';
+import { useMapNetworks } from '@/hooks/networks';
+import type { OrganizationProperties, ProjectProperties, Filters } from '@/hooks/networks';
 
 import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
 
@@ -99,7 +102,19 @@ const MarkerComponent = ({
 
 const NetworksMarkers = () => {
   const { current: map } = useMap();
-  const { features, isError, isFetched } = useMapNetworks();
+  const pathname = usePathname();
+  const [, , type, id] = pathname.split('/') || [];
+  const getFilters: () => Filters | undefined = () => {
+    if (typeof id !== 'undefined' && (type === 'project' || type === 'organization')) {
+      return {
+        type,
+        id: Number(id),
+      };
+    } else {
+      return undefined;
+    }
+  };
+  const { features, isError, isFetched } = useMapNetworks(getFilters());
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent

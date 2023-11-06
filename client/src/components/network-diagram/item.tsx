@@ -8,7 +8,7 @@ import { useMapSearchParams } from '@/store';
 
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
-import { Category } from '@/hooks/networks';
+import type { Category } from '@/hooks/networks/utils';
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -49,8 +49,8 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
         }}
       >
         <path
-          d={`M${STROKE_PADDING},${isGranchild ? topHeight - ITEM_HEIGHT : '0'
-            } L${STROKE_PADDING},${topHeight + 20}`}
+          d={`M${STROKE_PADDING},${isGranchild ? topHeight - ITEM_HEIGHT : '0'}
+          L${STROKE_PADDING},${topHeight + 20}`}
           {...pathProps}
         />
         <path

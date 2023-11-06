@@ -7,7 +7,7 @@ import { cn } from '@/lib/classnames';
 
 import { useMapSearchParams, useSidebarOpen } from '@/store';
 
-import { OrganizationProperties, ProjectProperties } from '@/hooks/networks';
+import type { OrganizationProperties, ProjectProperties } from '@/hooks/networks';
 
 import { Button } from '@/components/ui/button';
 export type PopupAttributes = {
