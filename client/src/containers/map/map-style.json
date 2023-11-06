@@ -38,8 +38,7 @@
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
       ],
       "maxzoom": 12,
-      "minzoom": 1,
-      "layout": { "visibility": "none" }
+      "minzoom": 1
     },
     "basemap-light": {
       "type": "raster",
@@ -48,8 +47,7 @@
         "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
       ],
       "maxzoom": 12,
-      "minzoom": 1,
-      "layout": { "visibility": "none" }
+      "minzoom": 1
     },
     "basemap-relief": {
       "type": "raster",
@@ -58,8 +56,7 @@
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"
       ],
       "maxzoom": 12,
-      "minzoom": 1,
-      "layout": { "visibility": "none" }
+      "minzoom": 1
     },
     "labels": {
       "data": "/country_labels.json",
@@ -80,19 +77,22 @@
       "id": "basemap-satellite",
       "type": "raster",
       "source": "basemap-satellite",
-      "metadata": {"group": "basemap-satellite"}
+      "metadata": {"group": "basemap-satellite"},
+      "layout": { "visibility": "none" }
     },
     {
       "id": "basemap-light",
       "type": "raster",
       "source": "basemap-light",
-      "metadata": {"group": "basemap-light"}
+      "metadata": {"group": "basemap-light"},
+      "layout": { "visibility": "none" }
     },
     {
       "id": "basemap-relief",
       "type": "raster",
       "source": "basemap-relief",
-      "metadata": {"group": "basemap-relief"}
+      "metadata": {"group": "basemap-relief"},
+      "layout": { "visibility": "none" }
     },
     {
       "id": "custom-layers",
