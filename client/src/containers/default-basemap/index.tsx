@@ -24,9 +24,10 @@ export default function DefaultBasemap() {
 
   // When `basePreviousPathname` equals to `null`, it means that the user directly landed on the
   // page (without any client-side navigation)
-  const hasChangedModule = basePathname !== basePreviousPathname && basePreviousPathname !== null;
+  const isDirectAccess = basePreviousPathname === null;
+  const hasChangedModule = basePathname !== basePreviousPathname && !isDirectAccess;
 
-  const [, setMapSettings] = useMapSettings();
+  const [mapSettings, setMapSettings] = useMapSettings();
 
   useEffect(() => {
     const updateBasemap = async () => {
@@ -46,10 +47,10 @@ export default function DefaultBasemap() {
       }));
     };
 
-    if (hasChangedModule) {
+    if (hasChangedModule || (isDirectAccess && !mapSettings.basemap)) {
       updateBasemap();
     }
-  }, [hasChangedModule, basePathname, setMapSettings]);
+  }, [isDirectAccess, hasChangedModule, basePathname, setMapSettings, mapSettings.basemap]);
 
   return null;
 }
