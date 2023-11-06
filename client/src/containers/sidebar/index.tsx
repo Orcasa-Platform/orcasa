@@ -70,7 +70,7 @@ export default function Sidebar({
   return (
     <div
       className={cn({
-        'js-sidebar absolute left-[117px] top-0 flex h-full w-full flex-col bg-white shadow-lg transition-transform duration-500':
+        'js-sidebar absolute left-[117px] top-0 z-20 flex h-full w-full flex-col bg-white transition-transform duration-500':
           true,
         [widthClassName]: true,
         'translate-x-0': open,
@@ -94,7 +94,7 @@ export default function Sidebar({
         </Button>
       </div>
 
-      <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto">
+      <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto border-r border-gray-200 bg-white">
         <div className="space-y-5 px-12 py-10 text-slate-700">{children}</div>
       </div>
     </div>

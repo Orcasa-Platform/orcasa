@@ -11,8 +11,12 @@ export default function NetworkModuleLayout({ children }: { children: React.Reac
   return (
     <>
       <Map />
-      <Sidebar section="network">{children}</Sidebar>
-      <FiltersSidebar />
+      <Sidebar section="network">
+        {children}
+        <div className="mt-0!">
+          <FiltersSidebar />
+        </div>
+      </Sidebar>
     </>
   );
 }
