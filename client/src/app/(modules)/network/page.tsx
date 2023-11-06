@@ -14,8 +14,9 @@ import { useSidebarScrollHelpers } from '@/containers/sidebar';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
+import { useNetworkFilterSidebarOpen, useNetworkFilters } from '../../../store/network';
+
 import NetworkList from './network-list';
-import { useFilterSidebarOpen, useFilters } from './store';
 
 const AddButton = ({ text }: { text: string }) => (
   <Button
@@ -29,10 +30,10 @@ const AddButton = ({ text }: { text: string }) => (
 );
 
 export default function NetworkModule() {
-  const [filters] = useFilters();
+  const [filters] = useNetworkFilters();
   const networks = useNetworks({ page: 1, filters });
 
-  const [filterSidebarOpen, setFilterSidebarOpen] = useFilterSidebarOpen();
+  const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
   const [getSidebarScroll, setSidebarScroll] = useSidebarScrollHelpers();

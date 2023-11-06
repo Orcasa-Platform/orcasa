@@ -6,9 +6,9 @@ import Supercluster from 'supercluster';
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
 
-import { LayerProps } from '@/types/layers';
+import { useNetworkFilters } from '@/store/network';
 
-import { useFilters } from '@/app/(modules)/network/store';
+import { LayerProps } from '@/types/layers';
 
 import { OrganizationProperties, ProjectProperties, useMapNetworks } from '@/hooks/networks';
 
@@ -101,7 +101,7 @@ const MarkerComponent = ({
 
 const NetworksMarkers = () => {
   const { current: map } = useMap();
-  const [filters] = useFilters();
+  const [filters] = useNetworkFilters();
   const { features, isError, isFetched } = useMapNetworks({ filters });
   const [popup, setPopup] = useState<PopupAttributes>(null);
 

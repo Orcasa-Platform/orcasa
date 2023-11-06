@@ -1,5 +1,7 @@
 import { PointFeature } from 'supercluster';
 
+import { NetworkFilters } from '@/store/network';
+
 import { useGetOrganizationsId, useGetOrganizations } from '@/types/generated/organization';
 import { useGetProjects, useGetProjectsId } from '@/types/generated/project';
 import {
@@ -18,8 +20,6 @@ import {
   OrganizationResponseDataObject,
   ProjectResponseDataObject,
 } from '@/types/generated/strapi.schemas';
-
-import { NetworkFilters } from '@/app/(modules)/network/store';
 
 export type NetworkResponse = {
   networks: OrganizationListResponseDataItem[] | ProjectListResponseDataItem[];

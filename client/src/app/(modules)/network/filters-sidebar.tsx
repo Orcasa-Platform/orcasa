@@ -10,11 +10,11 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 
-import { useFilterSidebarOpen, useFilters } from './store';
+import { useNetworkFilterSidebarOpen, useNetworkFilters } from '../../../store/network';
 
 export default function FiltersSidebar() {
-  const [filterSidebarOpen, setFilterSidebarOpen] = useFilterSidebarOpen();
-  const [filters, setFilters] = useFilters();
+  const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
+  const [filters, setFilters] = useNetworkFilters();
 
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -51,13 +51,13 @@ export default function FiltersSidebar() {
           <div className="flex items-center gap-x-2">
             <Checkbox
               id="filter-organization"
-              checked={filters.type.includes('organization')}
+              checked={filters.type?.includes('organization') ?? false}
               onCheckedChange={(checked) =>
                 setFilters({
                   ...filters,
                   type: checked
-                    ? [...filters.type, 'organization']
-                    : filters.type.filter((filter) => filter !== 'organization'),
+                    ? [...(filters.type ?? []), 'organization']
+                    : (filters.type ?? []).filter((filter) => filter !== 'organization'),
                 })
               }
             />
@@ -66,13 +66,13 @@ export default function FiltersSidebar() {
           <div className="flex items-center gap-x-2">
             <Checkbox
               id="filter-project"
-              checked={filters.type.includes('project')}
+              checked={filters.type?.includes('project') ?? false}
               onCheckedChange={(checked) =>
                 setFilters({
                   ...filters,
                   type: checked
-                    ? [...filters.type, 'project']
-                    : filters.type.filter((filter) => filter !== 'project'),
+                    ? [...(filters.type ?? []), 'project']
+                    : (filters.type ?? []).filter((filter) => filter !== 'project'),
                 })
               }
             />

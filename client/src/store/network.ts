@@ -5,11 +5,11 @@ export interface NetworkFilters {
 }
 
 const filterSidebarOpenAtom = atom(false);
-export const useFilterSidebarOpen = () => {
+export const useNetworkFilterSidebarOpen = () => {
   return useAtom(filterSidebarOpenAtom);
 };
 
 const filtersAtom = atom<NetworkFilters>({ type: [] });
-export const useFilters = () => {
+export const useNetworkFilters = () => {
   return useAtom(filtersAtom);
 };
