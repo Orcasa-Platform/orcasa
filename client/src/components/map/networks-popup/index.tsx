@@ -21,12 +21,36 @@ export type PopupAttributes = {
   };
 } | null;
 
+type Type = 'project' | 'organization';
 type NetworksPopupProps = {
   popup: PopupAttributes;
   setPopup: (popup: PopupAttributes | null) => void;
+  parentType: Type;
+  parentName: string | undefined;
 };
 
-const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
+const networkDetailSentencePart = (parentType: Type, parentName: string, type: Type) => {
+  if (!parentType) return null;
+  const parentSpan = <span className="font-semibold">{parentName}</span>;
+  if (parentType === 'project')
+    return (
+      <span>
+        {type === 'project' ? <> related to {parentSpan}</> : <> participating in {parentSpan}</>}
+      </span>
+    );
+  if (parentType === 'organization')
+    return (
+      <span>
+        {type === 'project' ? (
+          <> in which {parentSpan} participates</>
+        ) : (
+          <> related to {parentSpan}</>
+        )}
+      </span>
+    );
+};
+
+const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopupProps) => {
   const searchParams = useMapSearchParams();
   const [, setSidebarOpen] = useSidebarOpen();
 
@@ -62,6 +86,7 @@ const NetworksPopup = ({ popup, setPopup }: NetworksPopupProps) => {
         <header className="pb-6 text-lg text-slate-700">
           <span>{type === 'project' ? 'Projects coordinated in ' : 'Organisations from '}</span>
           <span className="font-semibold">{countryName}</span>
+          {parentType && parentName && networkDetailSentencePart(parentType, parentName, type)}
         </header>
         <div className="flex max-h-[232px] flex-col items-start justify-start gap-2 overflow-y-auto">
           {networks.map(({ id, name, type }) => (

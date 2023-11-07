@@ -8,6 +8,8 @@ import Supercluster from 'supercluster';
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
 
+import { useGetOrganizationsId } from '@/types/generated/organization';
+import { useGetProjectsId } from '@/types/generated/project';
 import { LayerProps } from '@/types/layers';
 
 import { useMapNetworks } from '@/hooks/networks';
@@ -104,10 +106,11 @@ const NetworksMarkers = () => {
   const { current: map } = useMap();
   const pathname = usePathname();
   const [, , type, id] = pathname.split('/') || [];
+  const typedType: 'organization' | 'project' = type as 'organization' | 'project';
   const getFilters: () => Filters | undefined = () => {
-    if (typeof id !== 'undefined' && (type === 'project' || type === 'organization')) {
+    if (typeof id !== 'undefined' && (typedType === 'project' || typedType === 'organization')) {
       return {
-        type,
+        type: typedType,
         id: Number(id),
       };
     } else {
@@ -115,6 +118,10 @@ const NetworksMarkers = () => {
     }
   };
   const { features, isError, isFetched } = useMapNetworks(getFilters());
+  const { data: parentNetworkData } = (
+    type === 'organization' ? useGetOrganizationsId : useGetProjectsId
+  )(Number(id));
+  const parentNetworkName = parentNetworkData?.data?.attributes?.name;
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent
@@ -153,7 +160,12 @@ const NetworksMarkers = () => {
   // If is a cluster (properties.cluster = true):
   return (
     <>
-      <NetworksPopup popup={popup} setPopup={setPopup} />
+      <NetworksPopup
+        popup={popup}
+        setPopup={setPopup}
+        parentType={typedType}
+        parentName={parentNetworkName}
+      />
       {clusters.map((feature) => {
         const { geometry, properties } = feature;
         const { coordinates } = geometry;
