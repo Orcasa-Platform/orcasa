@@ -31,29 +31,44 @@ module.exports = {
         main: 'hsl(var(--main))',
         yellow: {
           50: '#FFF7E6',
+          // Geospatial data
           500: '#FFD500',
+          // Geospatial data highlighted text
           600: '#FFC200',
         },
         blue: {
           50: '#F2F7FB',
           100: '#EAF1F8',
+          // Organizations
           500: '#358FE3',
         },
         gray: {
           50: '#F7F7F9',
           200: '#CFD1DB',
+          // Disabled for buttons / labels
           300: '#B2B5C5',
+          500: '#7C7F8F',
           400: '#8B90A4',
           800: '#3C4363',
         },
         peach: {
           50: '#FFF7EF',
           100: '#FFECDB',
+          // Projects
           700: '#EF6A4C',
         },
-        'mod-sc-ev': '#2BB3A7',
-        'mod-sc-ev-light': '#CEEEE3',
-        'mod-sc-ev-dark': '#1E6B65',
+        brown: {
+          // Practices
+          500: '#BA7300',
+        },
+        green: {
+          // Scientific evidence
+          700: '#2BB3A7',
+        },
+        purple: {
+          // Datasets
+          700: '#8380BC',
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

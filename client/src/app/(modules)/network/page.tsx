@@ -2,10 +2,7 @@
 
 import { useEffect, useLayoutEffect } from 'react';
 
-import { capitalize } from 'lodash';
 import { Filter, Plus } from 'lucide-react';
-
-import { cn } from '@/lib/classnames';
 
 import { useSidebarScroll } from '@/store';
 
@@ -38,21 +35,6 @@ const FilterButton = ({ text }: { text: string }) => (
     <div className="text-base">{text}</div>
   </Button>
 );
-const CategoryButton = ({ category, count }: { category: string; count: number }) => (
-  <Button
-    className={cn('gap-1 text-base font-semibold', {
-      'bg-sky-700  hover:bg-sky-700/80': category === 'projects',
-      'bg-blue-400 hover:bg-blue-400/80': category === 'organisations',
-    })}
-    variant="button-switch"
-    onClick={() => {
-      // TODO - add elements
-    }}
-  >
-    <span>{capitalize(category)}</span>
-    <span className="font-normal">({count})</span>
-  </Button>
-);
 
 export default function NetworkModule() {
   const networks = useNetworks({ page: 1 });
@@ -76,21 +58,20 @@ export default function NetworkModule() {
   }, [savedSidebarScroll, setSidebarScroll]);
 
   return (
-    <>
+    <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
         Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
       </h1>
-      <Search
-        onChange={() => {
-          // TODO - search
-        }}
-      />
-      <div className="flex justify-between">
-        <div className="flex space-x-4">
-          <CategoryButton category="organisations" count={networks.count.organizations} />
-          <CategoryButton category="projects" count={networks.count.projects} />
+      <div className="flex gap-2">
+        <Search
+          containerClassName="flex-1"
+          onChange={() => {
+            // TODO - search
+          }}
+        />
+        <div className="flex justify-between">
+          <FilterButton text="More filters" />
         </div>
-        <FilterButton text="More filters" />
       </div>
       <NetworkList {...networks} />
       <div className="flex items-center justify-between">
@@ -102,6 +83,6 @@ export default function NetworkModule() {
           <AddButton text="Add project" />
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -13,7 +13,6 @@ import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
-
 import Document from '@/styles/icons/document.svg';
 
 type PathProps = {
@@ -49,8 +48,9 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
         }}
       >
         <path
-          d={`M${STROKE_PADDING},${isGranchild ? topHeight - ITEM_HEIGHT : '0'}
-          L${STROKE_PADDING},${topHeight + 20}`}
+          d={`M${STROKE_PADDING},${
+            isGranchild ? topHeight - ITEM_HEIGHT : '0'
+          } L${STROKE_PADDING},${topHeight + 20}`}
           {...pathProps}
         />
         <path

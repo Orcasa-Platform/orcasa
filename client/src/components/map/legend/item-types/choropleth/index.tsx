@@ -35,7 +35,7 @@ export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({
             key={`${value}`}
             className={cn({
               'relative flex-shrink-0 text-center text-xs text-gray-500': true,
-              'before:absolute before:-top-2 before:left-1/2 before:block before:h-1 before:w-px before:bg-gray-700':
+              'before:absolute before:-top-2 before:left-1/2 before:block before:h-1 before:w-px before:bg-gray-800':
                 value !== undefined && value !== null,
             })}
             style={{
