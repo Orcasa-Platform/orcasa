@@ -24,5 +24,5 @@ export function useTheme(prefix?: string): DefaultVariant | OpenerVariant | Text
   };
   const [{ basemap }] = useMapSettings();
 
-  return variants[basemap][prefix || 'default'];
+  return variants[basemap ?? 'basemap-light'][prefix || 'default'];
 }

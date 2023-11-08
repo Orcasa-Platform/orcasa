@@ -58,7 +58,9 @@ const MapSettingsManager = () => {
   );
 
   const handleStyleLoad = useCallback(() => {
-    handleGroup(['basemap'], basemap);
+    if (basemap) {
+      handleGroup(['basemap'], basemap);
+    }
     handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
   }, [basemap, labels, handleGroup]);
 
@@ -75,7 +77,9 @@ const MapSettingsManager = () => {
   // * handle basemap, labels
   useEffect(() => {
     if (!mapRef) return;
-    handleGroup(['basemap'], basemap);
+    if (basemap) {
+      handleGroup(['basemap'], basemap);
+    }
     handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
   }, [mapRef, loaded, basemap, labels, handleGroup]);
 

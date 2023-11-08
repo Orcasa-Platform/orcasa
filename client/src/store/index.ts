@@ -12,8 +12,7 @@ import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 export const useMapSettings = () => {
   return useQueryState(
     'map-settings',
-    parseAsJson<{ basemap: string; labels: string | null }>().withDefault({
-      basemap: 'basemap-satellite',
+    parseAsJson<{ basemap?: string; labels: string | null }>().withDefault({
       labels: null,
     }),
   );
