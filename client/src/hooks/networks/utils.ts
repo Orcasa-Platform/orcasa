@@ -21,6 +21,28 @@ export type Category = 'coordinator' | 'partner' | 'funder';
 
 type Data = ProjectListResponse | OrganizationListResponse | undefined;
 
+export type ParsedData = {
+  id: number | undefined;
+  type: 'project' | 'organization';
+  name: string | undefined;
+  countryName: string | undefined;
+  countryLat: number;
+  countryLong: number;
+};
+
+// Projects in each organization
+export const ORGANIZATION_KEYS: OrganizationKey[] = [
+  'lead_projects',
+  'partner_projects',
+  'funded_projects',
+];
+type OrganizationKey = 'lead_projects' | 'partner_projects' | 'funded_projects';
+
+// Organizations in each project
+export const PROJECT_KEYS: ProjectKey[] = ['lead_partner', 'partners', 'funders'];
+
+type ProjectKey = 'lead_partner' | 'partners' | 'funders';
+
 export const getPopulateForFilters = (type: 'organization' | 'project' | undefined) =>
   type === 'organization'
     ? String([
@@ -54,6 +76,16 @@ export const getPopulateForFilters = (type: 'organization' | 'project' | undefin
         'funders.funded_projects.country_of_coordination',
       ]);
 
+// Get country data from the organization or project
+export const getCountryData = (
+  d: OrganizationListResponseDataItem | ProjectListResponseDataItem,
+  type: 'organization' | 'project',
+) =>
+  type === 'organization'
+    ? (d as OrganizationListResponseDataItem)?.attributes?.country?.data?.attributes
+    : (d as ProjectListResponseDataItem)?.attributes?.country_of_coordination?.data?.attributes;
+
+// Get only important data for the map
 export const getParsedData: (
   d:
     | OrganizationListResponseDataItem
@@ -66,56 +98,24 @@ export const getParsedData: (
   id: d.id,
   type: type,
   name: d.attributes?.name,
-  countryISO: countryD?.iso_3,
   countryName: countryD?.name,
   countryLat: countryD?.lat || 0,
   countryLong: countryD?.long || 0,
 });
 
-export const parseData = (data: Data, type: string): ParsedData[] => {
+// Parse data for each organization or project arrays
+export const parseData = (data: Data, type: 'organization' | 'project'): ParsedData[] => {
   if (!data?.data) return [];
-  return (
-    data.data &&
-    (Array.isArray(data.data) ? data.data : [data.data])
-      ?.map((d) => {
-        const countryData =
-          type === 'organization'
-            ? (d as OrganizationListResponseDataItem).attributes?.country
-            : (d as ProjectListResponseDataItem).attributes?.country_of_coordination;
-        if (!countryData?.data?.attributes) return null;
-        return {
-          id: d.id,
-          type: type,
-          name: d.attributes?.name,
-          countryName: countryData?.data?.attributes?.name,
-          countryLat: countryData?.data?.attributes?.lat,
-          countryLong: countryData?.data?.attributes?.long,
-        };
-      })
-      .filter((d): d is ParsedData => d !== null)
-  );
+  return (Array.isArray(data.data) ? data.data : [data.data])
+    ?.map((d) => {
+      const countryData = getCountryData(d, type);
+      if (!countryData) return null;
+      return getParsedData(d, type, countryData);
+    })
+    .filter((d): d is ParsedData => d !== null);
 };
 
-export type ParsedData = {
-  id: number | undefined;
-  type: 'project' | 'organization';
-  name: string | undefined;
-  countryISO: string | undefined;
-  countryName: string | undefined;
-  countryLat: number;
-  countryLong: number;
-};
-
-type OrganizationKey = 'lead_projects' | 'partner_projects' | 'funded_projects';
-type ProjectKey = 'lead_partner' | 'partners' | 'funders';
-
-export const ORGANIZATION_KEYS: OrganizationKey[] = [
-  'lead_projects',
-  'partner_projects',
-  'funded_projects',
-];
-export const PROJECT_KEYS: ProjectKey[] = ['lead_partner', 'partners', 'funders'];
-
+// Get the category of the organization or project for the chart
 const getCategory: (category: ProjectKey | OrganizationKey) => Category = (category) =>
   ({
     lead_projects: 'coordinator',

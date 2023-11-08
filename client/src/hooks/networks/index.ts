@@ -8,6 +8,9 @@ import {
   ProjectResponse,
   OrganizationResponse,
   OrganizationListResponseDataItem,
+  OrganizationLeadProjectsDataItem,
+  OrganizationPartnerProjectsDataItem,
+  OrganizationFundedProjectsDataItem,
 } from '@/types/generated/strapi.schemas';
 
 import {
@@ -19,6 +22,7 @@ import {
   ParsedData,
   getPopulateForFilters,
   getParsedData,
+  getCountryData,
 } from '@/hooks/networks/utils';
 
 export type OrganizationProperties = {
@@ -57,7 +61,7 @@ export type NetworkResponse = {
   isError: boolean;
 };
 
-const useGetOrganizationsWithFilters = (filters: Filters | undefined) => {
+const useGetNetworksWithFilters = (filters: Filters | undefined) => {
   const { id, type } = filters || {};
   const useFunction = type === 'organization' ? useGetOrganizationsId : useGetProjectsId;
   const populate = getPopulateForFilters(type);
@@ -78,74 +82,67 @@ const useGetOrganizationsWithFilters = (filters: Filters | undefined) => {
   let organizationsData: ParsedData[] = [];
   let projectsData: ParsedData[] = [];
 
+  const processProjectData = (
+    data:
+      | OrganizationLeadProjectsDataItem
+      | OrganizationPartnerProjectsDataItem
+      | OrganizationFundedProjectsDataItem,
+    iterations: number,
+  ) => {
+    if (!data) return;
+
+    // Add project data to projects in map
+    const projectCountryData = getCountryData(data as ProjectListResponseDataItem, 'project');
+    if (!projectCountryData) return;
+    projectsData.push(getParsedData(data, 'project', projectCountryData));
+
+    if (iterations > 0) {
+      // Handle lead_partner, partners, funders organizations from the main project
+      PROJECT_KEYS.forEach((orgKey) => {
+        const organizationKeyData = data?.attributes?.[orgKey]?.data;
+        if (organizationKeyData) {
+          (Array.isArray(organizationKeyData)
+            ? organizationKeyData
+            : [organizationKeyData]
+          ).forEach((orgData) => {
+            processOrganizationData(orgData, iterations - 1);
+          });
+        }
+      });
+    }
+  };
+
+  const processOrganizationData = (data: OrganizationListResponseDataItem, iterations: number) => {
+    if (!data) return;
+    // Add organization data to organizations in map
+    const countryData = getCountryData(data, 'organization');
+    if (!countryData) return;
+    organizationsData.push(getParsedData(data, 'organization', countryData));
+
+    if (iterations > 0) {
+      // Handle lead_projects, partner_projects, funded_projects from the main organization
+      ORGANIZATION_KEYS.forEach((key) => {
+        data?.attributes?.[key]?.data?.forEach((d) => processProjectData(d, iterations - 1));
+      });
+    }
+  };
+
   if (data) {
     if (type === 'organization') {
       const mainData = data?.data as OrganizationListResponseDataItem;
-      const countryData = mainData?.attributes?.country?.data?.attributes;
-      const handleOrganizationKeys = (
-        mainData: OrganizationListResponseDataItem,
-        organizationsData: ParsedData[],
-        projectsData: ParsedData[],
-      ) =>
-        ORGANIZATION_KEYS.forEach((key) => {
-          mainData?.attributes?.[key]?.data?.forEach((d) => {
-            const projectCountryData = d?.attributes?.country_of_coordination?.data?.attributes;
-            projectsData.push(getParsedData(d, 'project', projectCountryData));
 
-            PROJECT_KEYS.forEach((orgKey) => {
-              const orgsData = d?.attributes?.[orgKey]?.data;
-              if (orgsData) {
-                (Array.isArray(orgsData) ? orgsData : [orgsData]).forEach((orgData) => {
-                  const orgCountryData = orgData.attributes?.country?.data?.attributes;
-                  organizationsData.push(getParsedData(orgData, 'organization', orgCountryData));
-                });
-              }
-            });
-          });
-        });
+      if (mainData) {
+        // Push main organization data and traverse two levels deep
+        processOrganizationData(mainData, 2);
 
-      if (mainData && countryData) {
-        organizationsData.push(getParsedData(mainData, 'organization', countryData));
-        handleOrganizationKeys(mainData, organizationsData, projectsData);
         organizationsData = uniqBy(organizationsData, 'id');
       }
     } else if (type === 'project') {
       const mainData = data?.data as ProjectListResponseDataItem;
-      const countryData = mainData?.attributes?.country_of_coordination?.data?.attributes;
-      const handleProjectKeys = (
-        mainData: ProjectListResponseDataItem,
-        organizationsData: ParsedData[],
-        projectsData: ParsedData[],
-      ) =>
-        PROJECT_KEYS.forEach((key) => {
-          const keyData = mainData?.attributes?.[key]?.data;
-          (Array.isArray(keyData) ? keyData : [keyData]).forEach((organization) => {
-            if (organization) {
-              const orgCountryData = organization?.attributes?.country?.data?.attributes;
-              organizationsData.push(getParsedData(organization, 'organization', orgCountryData));
+      if (mainData) {
+        // Push main project data and traverse two levels deep
+        processProjectData(mainData, 2);
 
-              ORGANIZATION_KEYS.forEach((projectKey) => {
-                const orgProjectsData = organization?.attributes?.[projectKey]?.data;
-                if (orgProjectsData) {
-                  (Array.isArray(orgProjectsData) ? orgProjectsData : [orgProjectsData]).forEach(
-                    (projectData) => {
-                      if (projectData) {
-                        const projectCountryData =
-                          projectData.attributes?.country_of_coordination?.data?.attributes;
-                        projectsData.push(
-                          getParsedData(projectData, 'project', projectCountryData),
-                        );
-                      }
-                    },
-                  );
-                }
-              });
-            }
-          });
-        });
-      if (mainData && countryData) {
-        projectsData.push(getParsedData(mainData, 'project', countryData));
-        handleProjectKeys(mainData, organizationsData, projectsData);
         projectsData = uniqBy(projectsData, 'id');
       }
     }
@@ -217,7 +214,7 @@ const getMapNetworks = ({
   isFetched,
   isPlaceholderData,
   isError,
-}: ReturnType<typeof useGetNetwork | typeof useGetOrganizationsWithFilters>) => {
+}: ReturnType<typeof useGetNetwork | typeof useGetNetworksWithFilters>) => {
   const networks = [...(organizationsData || []), ...(projectsData || [])];
   const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
     const { countryName } = network;
@@ -266,7 +263,7 @@ const getMapNetworks = ({
 
 export const useMapNetworks: () => NetworkMapResponse = () => getMapNetworks(useGetNetwork());
 export const useMapNetworksWithFilters: (filters: Filters) => NetworkMapResponse = (filters) =>
-  getMapNetworks(useGetOrganizationsWithFilters(filters));
+  getMapNetworks(useGetNetworksWithFilters(filters));
 
 export const useNetworkDiagram = ({
   type,
