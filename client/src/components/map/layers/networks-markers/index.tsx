@@ -232,9 +232,8 @@ const NetworkMarkersWithData = ({
   );
 };
 
-const NetworkMarkersMain = () => {
-  return <NetworkMarkersWithData {...useMapNetworks()} />;
-};
+const NetworkMarkersMain = () => <NetworkMarkersWithData {...useMapNetworks()} />;
+
 const NetworkMarkersDetail = (filters: Filters) => (
   <NetworkMarkersWithData {...useMapNetworksWithFilters(filters)} {...filters} />
 );

@@ -13,11 +13,64 @@ import {
   ProjectFundersDataItem,
   OrganizationResponseDataObject,
   ProjectResponseDataObject,
+  ProjectCountryOfCoordinationDataAttributes,
+  OrganizationCountryDataAttributes,
 } from '@/types/generated/strapi.schemas';
 
 export type Category = 'coordinator' | 'partner' | 'funder';
 
 type Data = ProjectListResponse | OrganizationListResponse | undefined;
+
+export const getPopulateForFilters = (type: 'organization' | 'project' | undefined) =>
+  type === 'organization'
+    ? String([
+        'country',
+        'lead_projects.country_of_coordination',
+        'lead_projects.lead_partner.country',
+        'lead_projects.partners.country',
+        'lead_projects.funders.country',
+        'partner_projects.country_of_coordination',
+        'partner_projects.lead_partner.country',
+        'partner_projects.partners.country',
+        'partner_projects.funders.country',
+        'funded_projects.country_of_coordination',
+        'funded_projects.lead_partner.country',
+        'funded_projects.partners.country',
+        'funded_projects.funders.country',
+      ])
+    : String([
+        'country_of_coordination',
+        'lead_partner.country',
+        'lead_partner.lead_projects.country_of_coordination',
+        'lead_partner.partner_projects.country_of_coordination',
+        'lead_partner.funded_projects.country_of_coordination',
+        'partners.country',
+        'partners.lead_project.country_of_coordination',
+        'partners.partner_projects.country_of_coordination',
+        'partners.funded_projects.country_of_coordination',
+        'funders.country',
+        'funders.lead_projects.country_of_coordination',
+        'funders.partner_projects.country_of_coordination',
+        'funders.funded_projects.country_of_coordination',
+      ]);
+
+export const getParsedData: (
+  d:
+    | OrganizationListResponseDataItem
+    | OrganizationLeadProjectsDataItem
+    | ProjectListResponseDataItem
+    | ProjectLeadPartnerData,
+  type: 'organization' | 'project',
+  countryD: OrganizationCountryDataAttributes | ProjectCountryOfCoordinationDataAttributes,
+) => ParsedData = (d, type, countryD) => ({
+  id: d.id,
+  type: type,
+  name: d.attributes?.name,
+  countryISO: countryD?.iso_3,
+  countryName: countryD?.name,
+  countryLat: countryD?.lat || 0,
+  countryLong: countryD?.long || 0,
+});
 
 export const parseData = (data: Data, type: string): ParsedData[] => {
   if (!data?.data) return [];
