@@ -10,7 +10,7 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
   const mapSearchParams = useMapSearchParams();
 
   return (
-    <div className="p-7">
+    <>
       <SlidingLinkButton
         href={`/network?${mapSearchParams.toString()}`}
         Icon={ArrowLeft}
@@ -19,6 +19,6 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
         Back to Results
       </SlidingLinkButton>
       {children}
-    </div>
+    </>
   );
 }

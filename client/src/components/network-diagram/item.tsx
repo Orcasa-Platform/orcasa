@@ -13,6 +13,7 @@ import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
+
 import Document from '@/styles/icons/document.svg';
 
 type PathProps = {
@@ -93,7 +94,8 @@ const Item = ({
   };
   const ref = useRef<HTMLDivElement>(null);
   const isOverTwoLines = useIsOverTwoLines(ref, true);
-
+  const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
+  const canExpandWithoutChildren = typeof onToggle !== 'undefined' && !hasChildren;
   return (
     <div className="relative -mt-6 w-full">
       {/* DOT */}
@@ -114,7 +116,7 @@ const Item = ({
       )}
       {/* CONTENT */}
       <div
-        className={cn('mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-8 p-4', {
+        className={cn('mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-6 p-4', {
           'border border-slate-700': isFirstNode || opened,
           'bg-blue-50': type === 'organization',
           'bg-peach-50': type === 'project',
@@ -130,12 +132,14 @@ const Item = ({
           {name}
         </div>
         {category && (
-          <div className="flex min-w-fit items-center gap-4">
+          <div className="flex min-w-fit max-w-fit items-center gap-4">
             <SlidingLinkButton
               isCompact
               buttonClassName={cn('p-0 m-0', {
                 'bg-blue-100': type === 'organization',
                 'bg-peach-100': type === 'project',
+                // Compensate for the missing button
+                'mr-10': canExpandWithoutChildren,
               })}
               href={`/network/${type}/${id}?${searchParams.toString()}`}
               position="right"
@@ -143,7 +147,7 @@ const Item = ({
             >
               Learn more
             </SlidingLinkButton>
-            {typeof onToggle !== 'undefined' && hasChildren && (
+            {canExpandWithChildren && (
               <CollapsibleTrigger onClick={toggleOpenCollapsible}>
                 <ChevronDown
                   className={cn('transform transition-transform', {
