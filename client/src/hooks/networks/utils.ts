@@ -21,23 +21,26 @@ type Data = ProjectListResponse | OrganizationListResponse | undefined;
 
 export const parseData = (data: Data, type: string): ParsedData[] => {
   if (!data?.data) return [];
-  return data.data
-    ?.map((d) => {
-      const countryData =
-        type === 'organization'
-          ? (d as OrganizationListResponseDataItem).attributes?.country
-          : (d as ProjectListResponseDataItem).attributes?.country_of_coordination;
-      if (!countryData?.data?.attributes) return null;
-      return {
-        id: d.id,
-        type: type,
-        name: d.attributes?.name,
-        countryName: countryData?.data?.attributes?.name,
-        countryLat: countryData?.data?.attributes?.lat,
-        countryLong: countryData?.data?.attributes?.long,
-      };
-    })
-    .filter((d): d is ParsedData => d !== null);
+  return (
+    data.data &&
+    (Array.isArray(data.data) ? data.data : [data.data])
+      ?.map((d) => {
+        const countryData =
+          type === 'organization'
+            ? (d as OrganizationListResponseDataItem).attributes?.country
+            : (d as ProjectListResponseDataItem).attributes?.country_of_coordination;
+        if (!countryData?.data?.attributes) return null;
+        return {
+          id: d.id,
+          type: type,
+          name: d.attributes?.name,
+          countryName: countryData?.data?.attributes?.name,
+          countryLat: countryData?.data?.attributes?.lat,
+          countryLong: countryData?.data?.attributes?.long,
+        };
+      })
+      .filter((d): d is ParsedData => d !== null)
+  );
 };
 
 export type ParsedData = {

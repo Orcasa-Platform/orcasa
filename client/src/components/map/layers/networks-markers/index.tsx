@@ -12,8 +12,13 @@ import { useGetOrganizationsId } from '@/types/generated/organization';
 import { useGetProjectsId } from '@/types/generated/project';
 import { LayerProps } from '@/types/layers';
 
-import { useMapNetworks } from '@/hooks/networks';
-import type { OrganizationProperties, ProjectProperties, Filters } from '@/hooks/networks';
+import { useMapNetworks, useMapNetworksWithFilters } from '@/hooks/networks';
+import type {
+  OrganizationProperties,
+  ProjectProperties,
+  Filters,
+  PointFeatureWithNetworkProperties,
+} from '@/hooks/networks';
 
 import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
 
@@ -102,22 +107,20 @@ const MarkerComponent = ({
   </Marker>
 );
 
-const NetworksMarkers = () => {
+const NetworkMarkersWithData = ({
+  features,
+  isFetched,
+  isError,
+  type,
+  id,
+}: {
+  features: PointFeatureWithNetworkProperties[];
+  isFetched: boolean;
+  isError: boolean;
+  type?: 'organization' | 'project';
+  id?: number;
+}) => {
   const { current: map } = useMap();
-  const pathname = usePathname();
-  const [, , type, id] = pathname.split('/') || [];
-  const typedType: 'organization' | 'project' = type as 'organization' | 'project';
-  const getFilters: () => Filters | undefined = () => {
-    if (typeof id !== 'undefined' && (typedType === 'project' || typedType === 'organization')) {
-      return {
-        type: typedType,
-        id: Number(id),
-      };
-    } else {
-      return undefined;
-    }
-  };
-  const { features, isError, isFetched } = useMapNetworks(getFilters());
   const { data: parentNetworkData } = (
     type === 'organization' ? useGetOrganizationsId : useGetProjectsId
   )(Number(id));
@@ -154,17 +157,13 @@ const NetworksMarkers = () => {
     return null;
   }
 
-  // Convert data to GeoJSON feature array
-
-  // The features on clusters can be a cluster or a point.
-  // If is a cluster (properties.cluster = true):
   return (
     <>
       <NetworksPopup
         popup={popup}
         setPopup={setPopup}
-        parentType={typedType}
         parentName={parentNetworkName}
+        parentType={type}
       />
       {clusters.map((feature) => {
         const { geometry, properties } = feature;
@@ -233,4 +232,22 @@ const NetworksMarkers = () => {
   );
 };
 
+const NetworkMarkersMain = () => {
+  return <NetworkMarkersWithData {...useMapNetworks()} />;
+};
+const NetworkMarkersDetail = (filters: Filters) => (
+  <NetworkMarkersWithData {...useMapNetworksWithFilters(filters)} {...filters} />
+);
+
+const NetworksMarkers = () => {
+  const pathname = usePathname();
+  const [, , type, id] = pathname.split('/') || [];
+  const filters: Filters = {
+    type: type as 'organization' | 'project',
+    id: Number(id),
+  };
+
+  // We need to separate the components to avoid conditional rendering of the hooks
+  return !!type ? <NetworkMarkersDetail {...filters} /> : <NetworkMarkersMain />;
+};
 export default NetworksMarkers;

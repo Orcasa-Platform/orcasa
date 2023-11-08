@@ -25,8 +25,8 @@ type Type = 'project' | 'organization';
 type NetworksPopupProps = {
   popup: PopupAttributes;
   setPopup: (popup: PopupAttributes | null) => void;
-  parentType: Type;
-  parentName: string | undefined;
+  parentType?: Type;
+  parentName?: string | undefined;
 };
 
 const networkDetailSentencePart = (parentType: Type, parentName: string, type: Type) => {

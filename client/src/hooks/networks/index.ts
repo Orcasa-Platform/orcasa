@@ -40,7 +40,7 @@ type NetworkProperties = {
   projects: ProjectProperties[];
 };
 
-type PointFeatureWithNetworkProperties = PointFeature<NetworkProperties>;
+export type PointFeatureWithNetworkProperties = PointFeature<NetworkProperties>;
 
 import {
   ORGANIZATION_KEYS,
@@ -233,12 +233,6 @@ const useGetNetwork = () => {
   };
 };
 
-const useGetMapNetworkData = (filters: Filters | undefined) => {
-  const { type } = filters || {};
-  const getNetworksFunction = !!type ? useGetOrganizationsWithFilters : useGetNetwork;
-  return getNetworksFunction(filters);
-};
-
 type NetworkMapResponse = {
   features: PointFeatureWithNetworkProperties[];
   isFetching: boolean;
@@ -252,10 +246,14 @@ export type Filters = {
   id: number | undefined;
 };
 
-export const useMapNetworks: (filters?: Filters) => NetworkMapResponse = (filters) => {
-  const { projectsData, organizationsData, isFetched, isFetching, isPlaceholderData, isError } =
-    useGetMapNetworkData(filters);
-
+const getMapNetworks = ({
+  projectsData,
+  organizationsData,
+  isFetching,
+  isFetched,
+  isPlaceholderData,
+  isError,
+}: ReturnType<typeof useGetNetwork | typeof useGetOrganizationsWithFilters>) => {
   const networks = [...(organizationsData || []), ...(projectsData || [])];
   const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
     const { countryName } = network;
@@ -301,6 +299,10 @@ export const useMapNetworks: (filters?: Filters) => NetworkMapResponse = (filter
     isPlaceholderData,
   };
 };
+
+export const useMapNetworks: () => NetworkMapResponse = () => getMapNetworks(useGetNetwork());
+export const useMapNetworksWithFilters: (filters: Filters) => NetworkMapResponse = (filters) =>
+  getMapNetworks(useGetOrganizationsWithFilters(filters));
 
 export const useNetworkDiagram = ({
   type,
