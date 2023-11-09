@@ -6,11 +6,11 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
+import { useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
+
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-
-import { useNetworkFilterSidebarOpen, useNetworkFilters } from '../../../store/network';
 
 export default function FiltersSidebar() {
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
@@ -27,7 +27,9 @@ export default function FiltersSidebar() {
 
   return (
     <div
-      tabIndex={filterSidebarOpen ? 0 : -1}
+      // `inert` is not yet supported by React so that's why it is spread below:
+      // https://github.com/facebook/react/issues/17157
+      {...(!filterSidebarOpen ? { inert: '' } : {})}
       className={cn('absolute left-full top-0 -z-10 h-full w-[380px] bg-white duration-500', {
         '-translate-x-full': !filterSidebarOpen,
         'translate-x-0': filterSidebarOpen,

@@ -7,14 +7,14 @@ import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
+import { useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
+
 import { useNetworks } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
-
-import { useNetworkFilterSidebarOpen, useNetworkFilters } from '../../../store/network';
 
 import NetworkList from './network-list';
 

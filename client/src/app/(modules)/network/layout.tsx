@@ -13,7 +13,7 @@ export default function NetworkModuleLayout({ children }: { children: React.Reac
       <Map />
       <Sidebar section="network">
         {children}
-        <div className="mt-0!">
+        <div className="!mt-0">
           <FiltersSidebar />
         </div>
       </Sidebar>
