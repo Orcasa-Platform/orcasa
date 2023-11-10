@@ -8,7 +8,7 @@ import { useMapSearchParams } from '@/store';
 
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
-import { Category } from '@/hooks/networks';
+import type { Category } from '@/hooks/networks/utils';
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';

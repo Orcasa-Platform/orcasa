@@ -1,14 +1,24 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 
+import { usePathname } from 'next/navigation';
+
 import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
 
+import { useGetOrganizationsId } from '@/types/generated/organization';
+import { useGetProjectsId } from '@/types/generated/project';
 import { LayerProps } from '@/types/layers';
 
-import { OrganizationProperties, ProjectProperties, useMapNetworks } from '@/hooks/networks';
+import { useMapNetworks, useMapNetworksWithFilters } from '@/hooks/networks';
+import type {
+  OrganizationProperties,
+  ProjectProperties,
+  Filters,
+  PointFeatureWithNetworkProperties,
+} from '@/hooks/networks';
 
 import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
 
@@ -97,9 +107,21 @@ const MarkerComponent = ({
   </Marker>
 );
 
-const NetworksMarkers = () => {
+const NetworkMarkersWithData = ({
+  features,
+  isFetched,
+  isError,
+  type,
+  id,
+}: {
+  features: PointFeatureWithNetworkProperties[];
+  isFetched: boolean;
+  isError: boolean;
+  type?: 'organization' | 'project';
+  id?: number;
+}) => {
   const { current: map } = useMap();
-  const { features, isError, isFetched } = useMapNetworks();
+
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent
@@ -132,13 +154,21 @@ const NetworksMarkers = () => {
     return null;
   }
 
-  // Convert data to GeoJSON feature array
+  if (typeof id === 'undefined') return;
+  const { data: parentNetworkData } = (
+    type === 'organization' ? useGetOrganizationsId : useGetProjectsId
+  )(id);
 
-  // The features on clusters can be a cluster or a point.
-  // If is a cluster (properties.cluster = true):
+  const parentNetworkName = parentNetworkData?.data?.attributes?.name;
+
   return (
     <>
-      <NetworksPopup popup={popup} setPopup={setPopup} />
+      <NetworksPopup
+        popup={popup}
+        setPopup={setPopup}
+        parentName={parentNetworkName}
+        parentType={type}
+      />
       {clusters.map((feature) => {
         const { geometry, properties } = feature;
         const { coordinates } = geometry;
@@ -206,4 +236,21 @@ const NetworksMarkers = () => {
   );
 };
 
+const NetworkMarkersMain = () => <NetworkMarkersWithData {...useMapNetworks()} />;
+
+const NetworkMarkersDetail = (filters: Filters) => (
+  <NetworkMarkersWithData {...useMapNetworksWithFilters(filters)} {...filters} />
+);
+
+const NetworksMarkers = () => {
+  const pathname = usePathname();
+  const [, , type, id] = pathname.split('/') || [];
+  const filters: Filters = {
+    type: type as 'organization' | 'project',
+    id: Number(id),
+  };
+
+  // We need to separate the components to avoid conditional rendering of the hooks
+  return !!type ? <NetworkMarkersDetail {...filters} /> : <NetworkMarkersMain />;
+};
 export default NetworksMarkers;

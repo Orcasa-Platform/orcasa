@@ -2,7 +2,6 @@
 
 import { FC } from 'react';
 
-import { PopoverArrow } from '@radix-ui/react-popover';
 import { TooltipPortal } from '@radix-ui/react-tooltip';
 import { Settings, X } from 'lucide-react';
 
