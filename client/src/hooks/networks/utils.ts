@@ -116,7 +116,7 @@ export const parseData = (data: Data, type: 'organization' | 'project'): ParsedD
 };
 
 // Get the category of the organization or project for the chart
-const getCategory: (category: ProjectKey | OrganizationKey) => Category = (category) =>
+const getCategory = (category: ProjectKey | OrganizationKey): Category =>
   ({
     lead_projects: 'coordinator',
     partner_projects: 'partner',
