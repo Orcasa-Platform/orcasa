@@ -121,10 +121,7 @@ const NetworkMarkersWithData = ({
   id?: number;
 }) => {
   const { current: map } = useMap();
-  const { data: parentNetworkData } = (
-    type === 'organization' ? useGetOrganizationsId : useGetProjectsId
-  )(Number(id));
-  const parentNetworkName = parentNetworkData?.data?.attributes?.name;
+
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent
@@ -156,6 +153,13 @@ const NetworkMarkersWithData = ({
   if (!features || (isFetched && isError) || typeof map === 'undefined') {
     return null;
   }
+
+  if (typeof id === 'undefined') return;
+  const { data: parentNetworkData } = (
+    type === 'organization' ? useGetOrganizationsId : useGetProjectsId
+  )(id);
+
+  const parentNetworkName = parentNetworkData?.data?.attributes?.name;
 
   return (
     <>
