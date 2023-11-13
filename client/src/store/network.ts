@@ -2,6 +2,7 @@ import { atom, useAtom } from 'jotai';
 
 export interface NetworkFilters {
   type?: string[];
+  // search?: string;
 }
 
 const filterSidebarOpenAtom = atom(false);
