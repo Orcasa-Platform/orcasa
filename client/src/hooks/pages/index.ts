@@ -1,5 +1,4 @@
-import { Section } from '@/types/app';
-import { useGetPagesId, useGetPages } from '@/types/generated/page';
+import { useGetPagesId } from '@/types/generated/page';
 
 export const usePage = (pageId: number) => {
   const query = useGetPagesId(pageId, { populate: '*' });
