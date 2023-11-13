@@ -1,10 +1,13 @@
 'use client';
 
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 import { Filter, Plus } from 'lucide-react';
+import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
+
+import { useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
 
 import { useNetworks } from '@/hooks/networks';
 
@@ -25,22 +28,18 @@ const AddButton = ({ text }: { text: string }) => (
     <div className="text-base">{text}</div>
   </Button>
 );
-const FilterButton = ({ text }: { text: string }) => (
-  <Button
-    onClick={() => {
-      // TODO - add elements
-    }}
-  >
-    <Filter className="mr-2 h-6 w-6" />
-    <div className="text-base">{text}</div>
-  </Button>
-);
 
 export default function NetworkModule() {
-  const networks = useNetworks({ page: 1 });
+  const [filters] = useNetworkFilters();
+  const networks = useNetworks({ page: 1, filters });
+
+  const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
+  const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
   const [getSidebarScroll, setSidebarScroll] = useSidebarScrollHelpers();
   const [savedSidebarScroll, setSavedSidebarScroll] = useSidebarScroll();
+
+  const filtersButtonRef = useRef<HTMLButtonElement | null>(null);
 
   // We store the sidebar's scroll position when navigating away from the list view. `useEffect`
   // can't be used because it would be executed after repainting i.e. after navigating.
@@ -57,21 +56,36 @@ export default function NetworkModule() {
     }
   }, [savedSidebarScroll, setSidebarScroll]);
 
+  // Focus back on the filters button when the filters sidebar is closed
+  useEffect(() => {
+    if (previousFilterSidebarOpen && !filterSidebarOpen && filtersButtonRef.current) {
+      filtersButtonRef.current.focus();
+    }
+  }, [filterSidebarOpen, previousFilterSidebarOpen]);
+
   return (
     <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
         Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
       </h1>
-      <div className="flex gap-2">
+      <div className="flex justify-between gap-x-4">
         <Search
-          containerClassName="flex-1"
+          containerClassName="basis-full"
           onChange={() => {
             // TODO - search
           }}
         />
-        <div className="flex justify-between">
-          <FilterButton text="More filters" />
-        </div>
+        <Button
+          ref={filtersButtonRef}
+          type="button"
+          variant="primary"
+          className="shrink-0 bg-blue-500 text-base hover:bg-blue-900"
+          aria-pressed={filterSidebarOpen}
+          onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
+        >
+          <Filter className="mr-4 h-6 w-6" />
+          Filters
+        </Button>
       </div>
       <NetworkList {...networks} />
       <div className="flex items-center justify-between">

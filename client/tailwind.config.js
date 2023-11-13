@@ -26,6 +26,7 @@ module.exports = {
       },
       fontSize: {
         '3.5xl': ['32px', '48px'],
+        '3.8xl': ['34px', '50px'],
       },
       colors: {
         main: 'hsl(var(--main))',
@@ -41,15 +42,17 @@ module.exports = {
           100: '#EAF1F8',
           // Organizations
           500: '#358FE3',
+          900: '#2A4374',
         },
         gray: {
           50: '#F7F7F9',
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',
-          500: '#7C7F8F',
           400: '#8B90A4',
+          500: '#7C7F8F',
           800: '#3C4363',
+          900: '#1D2133',
         },
         peach: {
           50: '#FFF7EF',

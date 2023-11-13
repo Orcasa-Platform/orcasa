@@ -8,15 +8,16 @@ import Supercluster from 'supercluster';
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
 
+import { useNetworkFilters } from '@/store/network';
+
 import { useGetOrganizationsId } from '@/types/generated/organization';
 import { useGetProjectsId } from '@/types/generated/project';
 import { LayerProps } from '@/types/layers';
 
-import { useMapNetworks, useMapNetworksWithFilters } from '@/hooks/networks';
+import { useMapNetworks, useMapNetworksRelations } from '@/hooks/networks';
 import type {
   OrganizationProperties,
   ProjectProperties,
-  Filters,
   PointFeatureWithNetworkProperties,
 } from '@/hooks/networks';
 
@@ -121,7 +122,6 @@ const NetworkMarkersWithData = ({
   id?: number;
 }) => {
   const { current: map } = useMap();
-
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent
@@ -154,10 +154,19 @@ const NetworkMarkersWithData = ({
     return null;
   }
 
-  if (typeof id === 'undefined') return;
   const { data: parentNetworkData } = (
     type === 'organization' ? useGetOrganizationsId : useGetProjectsId
-  )(id);
+  )(
+    // We're falling back to 0 just to please the type checker. The query is not run if `id` is
+    // `undefined` (see `enabled` below).
+    id ?? 0,
+    undefined,
+    {
+      query: {
+        enabled: typeof id !== 'undefined',
+      },
+    },
+  );
 
   const parentNetworkName = parentNetworkData?.data?.attributes?.name;
 
@@ -236,21 +245,25 @@ const NetworkMarkersWithData = ({
   );
 };
 
-const NetworkMarkersMain = () => <NetworkMarkersWithData {...useMapNetworks()} />;
+const NetworkMarkersFull = () => {
+  const [filters] = useNetworkFilters();
 
-const NetworkMarkersDetail = (filters: Filters) => (
-  <NetworkMarkersWithData {...useMapNetworksWithFilters(filters)} {...filters} />
+  return <NetworkMarkersWithData {...useMapNetworks({ filters })} />;
+};
+
+const NetworkMarkerRelations = (network: Parameters<typeof useMapNetworksRelations>[0]) => (
+  <NetworkMarkersWithData {...useMapNetworksRelations(network)} {...network} />
 );
 
 const NetworksMarkers = () => {
   const pathname = usePathname();
   const [, , type, id] = pathname.split('/') || [];
-  const filters: Filters = {
+  const network = {
     type: type as 'organization' | 'project',
     id: Number(id),
   };
 
   // We need to separate the components to avoid conditional rendering of the hooks
-  return !!type ? <NetworkMarkersDetail {...filters} /> : <NetworkMarkersMain />;
+  return !!type ? <NetworkMarkerRelations {...network} /> : <NetworkMarkersFull />;
 };
 export default NetworksMarkers;

@@ -1,6 +1,8 @@
 import { uniqBy } from 'lodash';
 import { PointFeature } from 'supercluster';
 
+import { NetworkFilters } from '@/store/network';
+
 import { useGetOrganizationsId, useGetOrganizations } from '@/types/generated/organization';
 import { useGetProjects, useGetProjectsId } from '@/types/generated/project';
 import {
@@ -51,6 +53,19 @@ type NetworkProperties = {
   projects: ProjectProperties[];
 };
 
+type NetworkMapResponse = {
+  features: PointFeatureWithNetworkProperties[];
+  isFetching: boolean;
+  isFetched: boolean;
+  isPlaceholderData: boolean;
+  isError: boolean;
+};
+
+export type Network = {
+  type: 'organization' | 'project';
+  id: number | undefined;
+};
+
 export type PointFeatureWithNetworkProperties = PointFeature<NetworkProperties>;
 
 export type NetworkResponse = {
@@ -61,8 +76,7 @@ export type NetworkResponse = {
   isError: boolean;
 };
 
-const useGetNetworksWithFilters = (filters: Filters | undefined) => {
-  const { id, type } = filters || {};
+const useGetNetworksRelations = ({ id, type }: Network) => {
   const useFunction = type === 'organization' ? useGetOrganizationsId : useGetProjectsId;
   const populate = getPopulateForFilters(type);
   const {
@@ -158,7 +172,10 @@ const useGetNetworksWithFilters = (filters: Filters | undefined) => {
   };
 };
 
-const useGetNetwork = () => {
+const useGetNetworks = (filters: NetworkFilters) => {
+  const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
+  const loadProjects = !filters.type?.length || filters.type.includes('project');
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
@@ -170,7 +187,13 @@ const useGetNetwork = () => {
       populate: 'country',
       'pagination[pageSize]': 9999,
     },
-    { query: { keepPreviousData: true } },
+    {
+      query: {
+        queryKey: ['map-organization', filters],
+        enabled: loadOrganizations,
+        keepPreviousData: true,
+      },
+    },
   );
 
   const {
@@ -179,32 +202,28 @@ const useGetNetwork = () => {
     isFetched: projectsIsFetched,
     isPlaceholderData: projectsIsPlaceholderData,
     isError: projectsIsError,
-  } = useGetProjects({
-    populate: 'country_of_coordination',
-    'pagination[pageSize]': 9999,
-  });
+  } = useGetProjects(
+    {
+      populate: 'country_of_coordination',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['map-project', filters],
+        enabled: loadProjects,
+        keepPreviousData: true,
+      },
+    },
+  );
 
   return {
-    projectsData: parseData(organizationsData, 'organization'),
-    organizationsData: parseData(projectsData, 'project'),
+    organizationsData: loadOrganizations ? parseData(organizationsData, 'organization') : [],
+    projectsData: loadProjects ? parseData(projectsData, 'project') : [],
     isFetching: organizationIsFetching || projectsIsFetching,
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,
     isError: organizationIsError || projectsIsError,
   };
-};
-
-type NetworkMapResponse = {
-  features: PointFeatureWithNetworkProperties[];
-  isFetching: boolean;
-  isFetched: boolean;
-  isPlaceholderData: boolean;
-  isError: boolean;
-};
-
-export type Filters = {
-  type: 'organization' | 'project';
-  id: number | undefined;
 };
 
 const getMapNetworks = ({
@@ -214,43 +233,51 @@ const getMapNetworks = ({
   isFetched,
   isPlaceholderData,
   isError,
-}: ReturnType<typeof useGetNetwork | typeof useGetNetworksWithFilters>) => {
+}: ReturnType<typeof useGetNetworks | typeof useGetNetworksRelations>) => {
   const networks = [...(organizationsData || []), ...(projectsData || [])];
+
   const groupedNetworks: GroupedNetworks = networks.reduce((acc: GroupedNetworks, network) => {
     const { countryName } = network;
-    if (typeof countryName === 'undefined') return acc;
+
+    if (typeof countryName === 'undefined') {
+      return acc;
+    }
+
     if (!acc[countryName]) {
       acc[countryName] = [];
     }
+
     acc[countryName].push(network);
+
     return acc;
   }, {});
 
-  const features: PointFeatureWithNetworkProperties[] =
-    groupedNetworks &&
-    Object.entries(groupedNetworks)
-      .filter(([, networks]) => networks && networks.length > 0)
-      .map(([countryName, networks]) => {
-        if (!networks || (networks.length === 0 && typeof networks === 'undefined')) {
-          return null;
-        }
-        const organizations = networks?.filter((network) => network?.type === 'organization');
-        const projects = networks?.filter((network) => network?.type === 'project');
+  const features: PointFeatureWithNetworkProperties[] = groupedNetworks
+    ? Object.entries(groupedNetworks)
+        .filter(([, networks]) => networks && networks.length > 0)
+        .map(([countryName, networks]) => {
+          if (!networks || (networks.length === 0 && typeof networks === 'undefined')) {
+            return null;
+          }
 
-        return {
-          type: 'Feature',
-          properties: {
-            countryName,
-            organizations,
-            projects,
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [networks[0]?.countryLong, networks[0]?.countryLat],
-          },
-        };
-      })
-      .filter((feature): feature is PointFeatureWithNetworkProperties => feature !== null);
+          const organizations = networks?.filter((network) => network?.type === 'organization');
+          const projects = networks?.filter((network) => network?.type === 'project');
+
+          return {
+            type: 'Feature',
+            properties: {
+              countryName,
+              organizations,
+              projects,
+            },
+            geometry: {
+              type: 'Point',
+              coordinates: [networks[0]?.countryLong, networks[0]?.countryLat],
+            },
+          };
+        })
+        .filter((feature): feature is PointFeatureWithNetworkProperties => feature !== null)
+    : [];
 
   return {
     features,
@@ -261,9 +288,14 @@ const getMapNetworks = ({
   };
 };
 
-export const useMapNetworks: () => NetworkMapResponse = () => getMapNetworks(useGetNetwork());
-export const useMapNetworksWithFilters: (filters: Filters) => NetworkMapResponse = (filters) =>
-  getMapNetworks(useGetNetworksWithFilters(filters));
+export const useMapNetworks = ({
+  filters = {},
+}: {
+  filters?: NetworkFilters;
+}): NetworkMapResponse => getMapNetworks(useGetNetworks(filters));
+
+export const useMapNetworksRelations = (network: Network): NetworkMapResponse =>
+  getMapNetworks(useGetNetworksRelations(network));
 
 export const useNetworkDiagram = ({
   type,
@@ -331,7 +363,16 @@ export const useNetworkDiagram = ({
   };
 };
 
-export const useNetworks = ({ page = 1 }: { page: number }) => {
+export const useNetworks = ({
+  page = 1,
+  filters = {},
+}: {
+  page: number;
+  filters?: NetworkFilters;
+}) => {
+  const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
+  const loadProjects = !filters.type?.length || filters.type.includes('project');
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
@@ -346,7 +387,13 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
     },
-    { query: { keepPreviousData: true } },
+    {
+      query: {
+        queryKey: ['organization', page, filters],
+        keepPreviousData: true,
+        enabled: loadOrganizations,
+      },
+    },
   );
 
   const {
@@ -363,7 +410,13 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
     },
-    { query: { keepPreviousData: true } },
+    {
+      query: {
+        queryKey: ['project', page, filters],
+        keepPreviousData: true,
+        enabled: loadProjects,
+      },
+    },
   );
 
   const sortAlphabetically = (
@@ -372,20 +425,20 @@ export const useNetworks = ({ page = 1 }: { page: number }) => {
   ) => (a.attributes?.name ?? '').localeCompare(b.attributes?.name ?? '');
 
   const networks = [
-    ...(organizationsData?.data?.map((d: OrganizationListResponseDataItem) => ({
-      ...d,
-      type: 'organization',
-    })) || []),
-    ...(projectsData?.data?.map((d: ProjectListResponseDataItem) => ({ ...d, type: 'project' })) ||
-      []),
+    ...(loadOrganizations
+      ? organizationsData?.data?.map((d: OrganizationListResponseDataItem) => ({
+          ...d,
+          type: 'organization',
+        })) ?? []
+      : []),
+    ...(loadProjects
+      ? projectsData?.data?.map((d: ProjectListResponseDataItem) => ({ ...d, type: 'project' })) ??
+        []
+      : []),
   ].sort(sortAlphabetically);
 
   return {
     networks,
-    count: {
-      organizations: organizationsData?.meta?.pagination?.total || 0,
-      projects: projectsData?.meta?.pagination?.total || 0,
-    },
     isFetching: organizationIsFetching || projectsIsFetching,
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,

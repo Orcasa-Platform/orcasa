@@ -19,8 +19,8 @@ const Search = ({ className, containerClassName, onChange }: SearchProps) => {
 
   return (
     <Input
-      containerClassName={containerClassName}
       className={className}
+      containerClassName={containerClassName}
       type="text"
       aria-label="Search by keyword"
       placeholder="Search by keyword"
