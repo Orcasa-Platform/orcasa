@@ -1,5 +1,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 
+import { usePathname } from 'next/navigation';
+
 import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
@@ -8,9 +10,16 @@ import { format } from '@/lib/utils/formats';
 
 import { useNetworkFilters } from '@/store/network';
 
+import { useGetOrganizationsId } from '@/types/generated/organization';
+import { useGetProjectsId } from '@/types/generated/project';
 import { LayerProps } from '@/types/layers';
 
-import { OrganizationProperties, ProjectProperties, useMapNetworks } from '@/hooks/networks';
+import { useMapNetworks, useMapNetworksRelations } from '@/hooks/networks';
+import type {
+  OrganizationProperties,
+  ProjectProperties,
+  PointFeatureWithNetworkProperties,
+} from '@/hooks/networks';
 
 import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
 
@@ -99,10 +108,20 @@ const MarkerComponent = ({
   </Marker>
 );
 
-const NetworksMarkers = () => {
+const NetworkMarkersWithData = ({
+  features,
+  isFetched,
+  isError,
+  type,
+  id,
+}: {
+  features: PointFeatureWithNetworkProperties[];
+  isFetched: boolean;
+  isError: boolean;
+  type?: 'organization' | 'project';
+  id?: number;
+}) => {
   const { current: map } = useMap();
-  const [filters] = useNetworkFilters();
-  const { features, isError, isFetched } = useMapNetworks({ filters });
   const [popup, setPopup] = useState<PopupAttributes>(null);
 
   // Close popup on map click. Important stopPropagation() in MarkerComponent
@@ -135,13 +154,30 @@ const NetworksMarkers = () => {
     return null;
   }
 
-  // Convert data to GeoJSON feature array
+  const { data: parentNetworkData } = (
+    type === 'organization' ? useGetOrganizationsId : useGetProjectsId
+  )(
+    // We're falling back to 0 just to please the type checker. The query is not run if `id` is
+    // `undefined` (see `enabled` below).
+    id ?? 0,
+    undefined,
+    {
+      query: {
+        enabled: typeof id !== 'undefined',
+      },
+    },
+  );
 
-  // The features on clusters can be a cluster or a point.
-  // If is a cluster (properties.cluster = true):
+  const parentNetworkName = parentNetworkData?.data?.attributes?.name;
+
   return (
     <>
-      <NetworksPopup popup={popup} setPopup={setPopup} />
+      <NetworksPopup
+        popup={popup}
+        setPopup={setPopup}
+        parentName={parentNetworkName}
+        parentType={type}
+      />
       {clusters.map((feature) => {
         const { geometry, properties } = feature;
         const { coordinates } = geometry;
@@ -209,4 +245,25 @@ const NetworksMarkers = () => {
   );
 };
 
+const NetworkMarkersFull = () => {
+  const [filters] = useNetworkFilters();
+
+  return <NetworkMarkersWithData {...useMapNetworks({ filters })} />;
+};
+
+const NetworkMarkerRelations = (network: Parameters<typeof useMapNetworksRelations>[0]) => (
+  <NetworkMarkersWithData {...useMapNetworksRelations(network)} {...network} />
+);
+
+const NetworksMarkers = () => {
+  const pathname = usePathname();
+  const [, , type, id] = pathname.split('/') || [];
+  const network = {
+    type: type as 'organization' | 'project',
+    id: Number(id),
+  };
+
+  // We need to separate the components to avoid conditional rendering of the hooks
+  return !!type ? <NetworkMarkerRelations {...network} /> : <NetworkMarkersFull />;
+};
 export default NetworksMarkers;

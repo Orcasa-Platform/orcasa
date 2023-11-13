@@ -41,7 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <Providers>
       <html lang="en">
-        <body className={cn(roboto.variable, robotoSlab.variable, 'font-sans text-default')}>
+        <body
+          className={cn(
+            roboto.variable,
+            robotoSlab.variable,
+            'overflow-hidden font-sans text-default',
+          )}
+        >
           <DefaultBasemap />
           {children}
         </body>

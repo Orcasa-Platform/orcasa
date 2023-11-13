@@ -195,6 +195,20 @@
           "sortable": false
         }
       },
+      "publication_status": {
+        "edit": {
+          "label": "publication_status",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "publication_status",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -258,14 +272,16 @@
       "list": [
         "id",
         "name",
-        "organization_type"
+        "publication_status"
       ],
       "edit": [
         [
           {
             "name": "name",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "organization_type",
             "size": 6
@@ -318,6 +334,12 @@
           },
           {
             "name": "funded_projects",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "publication_status",
             "size": 6
           }
         ]
