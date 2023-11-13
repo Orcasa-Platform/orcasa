@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 
 import { Filter, Plus } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
@@ -32,6 +32,25 @@ const AddButton = ({ text }: { text: string }) => (
 export default function NetworkModule() {
   const [filters] = useNetworkFilters();
   const networks = useNetworks({ page: 1, filters });
+
+  const filtersCount = useMemo(
+    () =>
+      Object.keys(filters).filter((key) => {
+        const value = filters[key as keyof typeof filters];
+
+        const isSearchFilter = key === 'search';
+        let hasValue = true;
+        if (Array.isArray(value) || typeof value === 'string') {
+          hasValue = value.length > 0;
+        } else {
+          hasValue = value !== null && value !== undefined;
+        }
+
+        // The keywords search is not counted because it's shown in the main sidebar
+        return !isSearchFilter && hasValue;
+      }).length,
+    [filters],
+  );
 
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
@@ -79,12 +98,17 @@ export default function NetworkModule() {
           ref={filtersButtonRef}
           type="button"
           variant="primary"
-          className="shrink-0 bg-blue-500 text-base hover:bg-blue-900"
+          className="group shrink-0 bg-blue-500 text-base hover:bg-blue-900"
           aria-pressed={filterSidebarOpen}
           onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
         >
           <Filter className="mr-4 h-6 w-6" />
           Filters
+          {filtersCount > 0 && (
+            <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-blue-800 font-semibold transition group-hover:bg-gray-900">
+              {filtersCount}
+            </span>
+          )}
         </Button>
       </div>
       <NetworkList {...networks} />

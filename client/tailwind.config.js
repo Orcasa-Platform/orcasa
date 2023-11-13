@@ -42,6 +42,7 @@ module.exports = {
           100: '#EAF1F8',
           // Organizations
           500: '#358FE3',
+          800: '#0765BD',
           900: '#2A4374',
         },
         gray: {
