@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { PropsWithChildren } from 'react';
+import { HTMLAttributeAnchorTarget, PropsWithChildren } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,9 +11,11 @@ import { cn } from '@/lib/classnames';
 
 import { Module, moduleColors, modules } from '@/constants/modules';
 
-type NavLinkProps = PropsWithChildren<Omit<Module, 'name'> & { active?: boolean }>;
+type NavLinkProps = PropsWithChildren<
+  Omit<Module, 'name'> & { active?: boolean; target?: HTMLAttributeAnchorTarget }
+>;
 
-const NavLink = ({ href, children, color, active }: NavLinkProps) => (
+const NavLink = ({ href, children, color, active, ...rest }: NavLinkProps) => (
   <Link
     className={cn(
       'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-4 pr-4 font-serif text-sm leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
@@ -26,6 +28,7 @@ const NavLink = ({ href, children, color, active }: NavLinkProps) => (
       },
     )}
     href={href}
+    {...rest}
   >
     {children}
   </Link>
@@ -42,9 +45,15 @@ export default function Nav() {
         </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">
           {modules.map((module) => {
-            const { href, color, name } = module;
+            const { href, openNewTab, color, name } = module as Module;
             return (
-              <NavLink key={href} href={href} color={color} active={pathname === href}>
+              <NavLink
+                key={href}
+                href={href}
+                target={openNewTab ? '_blank' : undefined}
+                color={color}
+                active={pathname === href}
+              >
                 {name}
               </NavLink>
             );
