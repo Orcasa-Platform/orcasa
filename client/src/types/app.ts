@@ -1,3 +1,5 @@
 import { modules } from '@/constants/modules';
 
-export type Section = (typeof modules)[number]['href'] extends `/${infer slug}` ? slug : never;
+type ExtractSlug<T extends string> = T extends `/${infer slug}` ? slug : never;
+
+export type Section = ExtractSlug<(typeof modules)[number]['href']>;
