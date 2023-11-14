@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 import { Filter, Plus } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
-import { useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
+import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
 
 import { useNetworks } from '@/hooks/networks';
 
@@ -32,25 +32,8 @@ const AddButton = ({ text }: { text: string }) => (
 export default function NetworkModule() {
   const [filters] = useNetworkFilters();
   const networks = useNetworks({ page: 1, filters });
-
-  const filtersCount = useMemo(
-    () =>
-      Object.keys(filters).filter((key) => {
-        const value = filters[key as keyof typeof filters];
-
-        const isSearchFilter = key === 'search';
-        let hasValue = true;
-        if (Array.isArray(value) || typeof value === 'string') {
-          hasValue = value.length > 0;
-        } else {
-          hasValue = value !== null && value !== undefined;
-        }
-
-        // The keywords search is not counted because it's shown in the main sidebar
-        return !isSearchFilter && hasValue;
-      }).length,
-    [filters],
-  );
+  // The keywords search is not counted because it's shown in the main sidebar
+  const filtersCount = useFiltersCount(filters, ['search']);
 
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);

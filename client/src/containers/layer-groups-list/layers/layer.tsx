@@ -93,7 +93,7 @@ export default function Layer({ id, attributes }: LayerGroupLayersDataItem) {
         <div className="flex items-center gap-4 pt-1">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="vanilla" size="asChild" className={cn({ 'text-white': isActive })}>
+              <Button variant="vanilla" size="auto" className={cn({ 'text-white': isActive })}>
                 <span className="sr-only">Info button</span>
                 <Info className="h-6 w-6" />
               </Button>
