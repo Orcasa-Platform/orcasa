@@ -32,13 +32,13 @@ jobs:
               - '.github/workflows/**'
 
       - name: Extract branch name
-        # if: steps.qgis-changes.outputs.qgis == 'true'
+        if: steps.qgis-changes.outputs.qgis == 'true'
         shell: bash
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
       - name: Configure AWS credentials
-        # if: steps.qgis-changes.outputs.qgis == 'true'
+        if: steps.qgis-changes.outputs.qgis == 'true'
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
@@ -46,7 +46,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
 
       - name: Login to Amazon ECR
-        # if: steps.qgis-changes.outputs.qgis == 'true'
+        if: steps.qgis-changes.outputs.qgis == 'true'
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
         with:
@@ -56,7 +56,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build, tag, and push QGIS image to Amazon ECR
-        # if: steps.qgis-changes.outputs.qgis == 'true'
+        if: steps.qgis-changes.outputs.qgis == 'true'
         uses: docker/build-push-action@v5
         with:
           context: ./qgis
