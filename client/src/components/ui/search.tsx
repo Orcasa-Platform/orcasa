@@ -3,12 +3,13 @@ import { useDebounce } from 'rooks';
 
 import { Input } from '@/components/ui/input';
 type SearchProps = {
+  defaultValue?: string;
   className?: string;
   containerClassName?: string;
   onChange: (newValue: string) => void;
 };
 
-const Search = ({ className, containerClassName, onChange }: SearchProps) => {
+const Search = ({ defaultValue, className, containerClassName, onChange }: SearchProps) => {
   const debouncedOnChange = useDebounce((newValue: string) => {
     onChange(newValue);
   }, 250);
@@ -25,6 +26,7 @@ const Search = ({ className, containerClassName, onChange }: SearchProps) => {
       aria-label="Search by keyword"
       placeholder="Search by keyword"
       icon={<SearchIcon />}
+      defaultValue={defaultValue}
       onChange={handleInputChange}
     />
   );

@@ -30,7 +30,7 @@ const AddButton = ({ text }: { text: string }) => (
 );
 
 export default function NetworkModule() {
-  const [filters] = useNetworkFilters();
+  const [filters, setFilters] = useNetworkFilters();
   const networks = useNetworks({ page: 1, filters });
   // The keywords search is not counted because it's shown in the main sidebar
   const filtersCount = useFiltersCount(filters, ['search']);
@@ -73,9 +73,8 @@ export default function NetworkModule() {
       <div className="flex justify-between gap-x-4">
         <Search
           containerClassName="basis-full"
-          onChange={() => {
-            // TODO - search
-          }}
+          defaultValue={filters.search}
+          onChange={(keywords) => setFilters({ ...filters, search: keywords })}
         />
         <Button
           ref={filtersButtonRef}

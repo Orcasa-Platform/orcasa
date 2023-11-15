@@ -26,6 +26,11 @@ export default function NetworkList({
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
+      {!networks?.length && (
+        <p className="py-8 text-center font-semibold text-slate-500">
+          No results based on your search criteria
+        </p>
+      )}
       {networks?.map((g) => {
         return (
           <Network

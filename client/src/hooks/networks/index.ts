@@ -373,6 +373,30 @@ export const useNetworks = ({
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadProjects = !filters.type?.length || filters.type.includes('project');
 
+  const queryFilters = {
+    ...(typeof filters.search !== 'undefined' && filters.search.length > 0
+      ? {
+          $or: [
+            {
+              name: {
+                $containsi: filters.search,
+              },
+            },
+            {
+              short_description: {
+                $containsi: filters.search,
+              },
+            },
+            {
+              description: {
+                $containsi: filters.search,
+              },
+            },
+          ],
+        }
+      : {}),
+  };
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
@@ -386,6 +410,7 @@ export const useNetworks = ({
       // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
+      filters: queryFilters,
     },
     {
       query: {
@@ -409,6 +434,7 @@ export const useNetworks = ({
       // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
+      filters: queryFilters,
     },
     {
       query: {
