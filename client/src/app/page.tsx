@@ -6,9 +6,10 @@ import { cn } from '@/lib/classnames';
 
 import { Module, moduleColors, modules } from '@/constants/modules';
 
-const LinkBox = ({ href, color, name }: Module) => (
+const LinkBox = ({ href, openNewTab, color, name }: Module) => (
   <Link
     href={href}
+    target={openNewTab ? '_blank' : undefined}
     className={cn(
       'relative flex h-[279px] w-[308px] items-center justify-center',
       moduleColors[color].background,

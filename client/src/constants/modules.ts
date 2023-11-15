@@ -24,6 +24,7 @@ export const moduleColors = {
 export interface Module {
   name: string;
   href: string;
+  openNewTab?: boolean;
   color: keyof typeof moduleColors;
 }
 
@@ -40,7 +41,9 @@ export const modules = [
   },
   {
     name: 'Practices',
-    href: '/practices',
+    // NOTE: temporal URL
+    href: 'http://orcasa.ekoal.org/',
+    openNewTab: true,
     color: 'brown',
   },
   {
