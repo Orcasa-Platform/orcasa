@@ -60,6 +60,7 @@ module.exports = {
           100: '#FFECDB',
           // Projects
           700: '#EF6A4C',
+          900: '#CA3412',
         },
         brown: {
           // Practices
