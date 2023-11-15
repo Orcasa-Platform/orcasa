@@ -8,6 +8,7 @@ import { HomeStat } from '@/types/generated/strapi.schemas';
 
 import Stats from '@/components/home/stats';
 import { Button } from '@/components/ui/button';
+
 import ArrowDownLong from '@/styles/icons/arrow-down-long.svg';
 
 const HeroSection = ({ stats }: { stats: HomeStat[] | undefined }) => (
