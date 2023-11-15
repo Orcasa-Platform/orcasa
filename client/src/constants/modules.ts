@@ -42,9 +42,7 @@ export const modules = [
   },
   {
     name: 'Practices',
-    // NOTE: temporal URL
-    href: 'http://orcasa.ekoal.org/',
-    openNewTab: true,
+    href: '/practices',
     color: 'brown',
   },
   {
@@ -54,7 +52,9 @@ export const modules = [
   },
   {
     name: 'Datasets',
-    href: '/datasets',
+    // NOTE: temporal URL
+    href: 'http://orcasa.ekoal.org/',
+    openNewTab: true,
     color: 'purple',
   },
 ] as const satisfies readonly Module[];

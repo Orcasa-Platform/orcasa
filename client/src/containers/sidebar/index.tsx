@@ -61,8 +61,7 @@ export default function Sidebar({
   const widthClassName = useMemo(() => {
     const sectionMaxWidth: Partial<Record<Section, string>> = {
       'geospatial-data': 'w-[min(35%,_490px)]',
-      // NOTE: add back the next line when the external link is removed
-      // practices: 'w-[min(45%,_820px)]',
+      practices: 'w-[min(45%,_820px)]',
       network: 'w-[min(45%,_860px)]',
     };
     return sectionMaxWidth[section] ?? '';
