@@ -11,10 +11,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // From the UI kit
+        default: 'bg-gray-100 hover:bg-gray-200',
         primary: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
         // Not reviewed yet
-        default: 'border border-blue-500 px-4 py-2 hover:bg-gray-50 text-sky-700',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50',

@@ -4,13 +4,12 @@ import { cn } from '@/lib/classnames';
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   icon?: React.ReactNode;
-  containerClassName?: string;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, icon, containerClassName, ...props }, ref) => {
+  ({ className, type, icon, ...props }, ref) => {
     return (
-      <div className={cn('relative', containerClassName)}>
+      <div className="relative">
         <div className="absolute left-4 top-4">{icon}</div>
         <input
           type={type}
