@@ -14,14 +14,18 @@ import {
   useNetworkProjectFilters,
 } from '@/store/network';
 
+import { useNetworkOrganizationFiltersOptions } from '@/hooks/networks';
+
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { MultiCombobox } from '@/components/ui/multi-combobox';
 
 export default function FiltersSidebar() {
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const [filters, setFilters] = useNetworkFilters();
   const [organizationFilters] = useNetworkOrganizationFilters();
+  const organizationFiltersOptions = useNetworkOrganizationFiltersOptions();
   const [projectFilters] = useNetworkProjectFilters();
   const organizationFiltersCount = useFiltersCount(organizationFilters);
   const projectFiltersCount = useFiltersCount(projectFilters);
@@ -103,14 +107,37 @@ export default function FiltersSidebar() {
               onClick={() =>
                 setFilters({
                   ...filters,
-                  organizationType: null,
-                  mainThematic: null,
-                  country: null,
+                  organizationType: [],
+                  thematic: [],
+                  country: [],
                 })
               }
             >
               Reset all
             </Button>
+            <div className="space-y-4">
+              <MultiCombobox
+                name="Organisation type"
+                variant="network-organization"
+                value={filters.organizationType ?? []}
+                options={organizationFiltersOptions.organizationType}
+                onChange={(value) => setFilters({ ...filters, organizationType: value })}
+              />
+              <MultiCombobox
+                name="Thematic"
+                variant="network-organization"
+                value={filters.thematic ?? []}
+                options={organizationFiltersOptions.thematic}
+                onChange={(value) => setFilters({ ...filters, thematic: value })}
+              />
+              <MultiCombobox
+                name="Country"
+                variant="network-organization"
+                value={filters.country ?? []}
+                options={organizationFiltersOptions.country}
+                onChange={(value) => setFilters({ ...filters, country: value })}
+              />
+            </div>
           </fieldset>
           <fieldset className="relative">
             <legend className="mb-4 font-semibold">Project</legend>
