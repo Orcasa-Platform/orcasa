@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import defaultTheme from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 module.exports = {
   darkMode: ['class'],
@@ -47,6 +48,7 @@ module.exports = {
         },
         gray: {
           50: '#F7F7F9',
+          100: '#F0F0F5',
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',
@@ -135,5 +137,11 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+    plugin(({ addVariant }) => {
+      addVariant('search-cancel', '&::-webkit-search-cancel-button');
+    }),
+  ],
 };

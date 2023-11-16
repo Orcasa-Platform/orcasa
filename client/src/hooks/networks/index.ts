@@ -76,6 +76,32 @@ export type NetworkResponse = {
   isError: boolean;
 };
 
+const getQueryFilters = (filters: NetworkFilters) => {
+  return {
+    ...(typeof filters.search !== 'undefined' && filters.search.length > 0
+      ? {
+          $or: [
+            {
+              name: {
+                $containsi: filters.search,
+              },
+            },
+            {
+              short_description: {
+                $containsi: filters.search,
+              },
+            },
+            {
+              description: {
+                $containsi: filters.search,
+              },
+            },
+          ],
+        }
+      : {}),
+  };
+};
+
 const useGetNetworksRelations = ({ id, type }: Network) => {
   const useFunction = type === 'organization' ? useGetOrganizationsId : useGetProjectsId;
   const populate = getPopulateForFilters(type);
@@ -176,6 +202,8 @@ const useGetNetworks = (filters: NetworkFilters) => {
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadProjects = !filters.type?.length || filters.type.includes('project');
 
+  const queryFilters = getQueryFilters(filters);
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
@@ -186,6 +214,7 @@ const useGetNetworks = (filters: NetworkFilters) => {
     {
       populate: 'country',
       'pagination[pageSize]': 9999,
+      filters: queryFilters,
     },
     {
       query: {
@@ -206,6 +235,7 @@ const useGetNetworks = (filters: NetworkFilters) => {
     {
       populate: 'country_of_coordination',
       'pagination[pageSize]': 9999,
+      filters: queryFilters,
     },
     {
       query: {
@@ -373,6 +403,8 @@ export const useNetworks = ({
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadProjects = !filters.type?.length || filters.type.includes('project');
 
+  const queryFilters = getQueryFilters(filters);
+
   const {
     data: organizationsData,
     isFetching: organizationIsFetching,
@@ -386,6 +418,7 @@ export const useNetworks = ({
       // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
+      filters: queryFilters,
     },
     {
       query: {
@@ -409,6 +442,7 @@ export const useNetworks = ({
       // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
+      filters: queryFilters,
     },
     {
       query: {
