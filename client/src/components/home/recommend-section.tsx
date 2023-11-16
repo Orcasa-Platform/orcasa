@@ -37,7 +37,7 @@ const RecommendSection = () => (
           </Button>
         </div>
         <div className="relative mt-10">
-          <div className="absolute -left-10 -top-10 flex flex-col items-start justify-start gap-2 bg-white px-4 shadow-2xl">
+          <div className="absolute -left-8 -top-8 flex flex-col items-start justify-start gap-2 bg-white px-4 shadow-2xl">
             <img
               className="h-[84px] w-[169px]"
               src="/images/ejp-logo.png"

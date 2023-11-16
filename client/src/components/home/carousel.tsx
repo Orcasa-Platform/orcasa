@@ -114,10 +114,18 @@ const Carousel = () => {
         </motion.div>
       </div>
       <div className="mt-6 flex gap-1">
-        <Button variant="default" className="px-3 py-0" onClick={prevCard}>
+        <Button
+          variant="default"
+          className="px-3 py-0 hover:bg-slate-700 hover:text-white"
+          onClick={prevCard}
+        >
           <ArrowLeft className="h-4 w-4" />
         </Button>
-        <Button variant="default" className="px-3 py-0" onClick={nextCard}>
+        <Button
+          variant="default"
+          className="px-3 py-0 hover:bg-slate-700 hover:text-white"
+          onClick={nextCard}
+        >
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>

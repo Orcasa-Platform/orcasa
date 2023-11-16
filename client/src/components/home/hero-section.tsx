@@ -56,7 +56,7 @@ const HeroSection = ({ stats }: { stats: HomeStat[] | undefined }) => (
         />
         {stats && <Stats className="-mt-10 ml-16" stats={stats} />}
       </div>
-      <div className="absolute bottom-4 flex items-center">
+      <div className="absolute bottom-4 flex items-center shadow-2xl">
         <a
           href="#modules"
           className="flex h-14 w-[34px] items-center justify-center rounded-[40px] bg-white shadow"
