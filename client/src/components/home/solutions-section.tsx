@@ -1,15 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
+import Carousel from './carousel';
 
 const SolutionsSection = () => (
   <div className="relative h-[700px]">
     <div className={`absolute flex h-full w-full items-center justify-center p-10 pt-0`}>
       <img src="/images/shape2.svg" className="h-[700px] w-full" alt="" />
     </div>
-    <div
-      className={`absolute flex h-full w-full flex-wrap items-center justify-center gap-[100px]`}
-    >
-      <div>
-        <div className="inline-flex w-[374px] flex-col gap-12">
+    <div className={`absolute flex h-full w-full flex-wrap items-center justify-center`}>
+      <div className="w-[70%]">
+        <div className="flex w-[374px] flex-col gap-12">
           <div className="flex flex-col gap-6">
             <div className="text-sm uppercase leading-[14px] tracking-wider text-gray-400">
               solutions for soil carbon experts
@@ -32,7 +31,9 @@ const SolutionsSection = () => (
           </div>
         </div>
       </div>
-      <div className="relative">Carousel</div>
+      <div className="absolute left-1/2">
+        <Carousel />
+      </div>
     </div>
   </div>
 );
