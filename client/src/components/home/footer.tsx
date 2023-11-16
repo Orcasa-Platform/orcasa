@@ -11,7 +11,7 @@ const Footer = () => (
   <div id="about">
     <div className="flex w-full flex-col items-center justify-center gap-[20px] bg-gray-850 px-10 py-[74px]">
       <Link
-        className="flex items-center justify-center gap-2.5"
+        className="flex items-center justify-center gap-2.5 hover:opacity-90"
         href="https://irc-orcasa.eu/"
         target="_blank"
       >
@@ -51,18 +51,18 @@ const Footer = () => (
             <span className="sr-only">LinkedIn</span>
           </Link>
           <Link href="#" target="_blank">
-            <MailIcon className="min-w-5 h-4 w-5" />
+            <MailIcon className="min-w-5 h-4 w-5 hover:opacity-90" />
           </Link>
         </div>
         <div className="flex items-center justify-start gap-4">
           <Link
             href="#"
             target="_blank"
-            className="border-r border-white border-opacity-20 px-5 text-sm text-white"
+            className="border-r border-white border-opacity-20 px-5 text-sm text-white hover:text-gray-100"
           >
             Legal Details
           </Link>
-          <Link href="#" className="text-sm text-white">
+          <Link href="#" className="text-sm text-white hover:text-gray-100">
             Personal Data Protection
           </Link>
         </div>

@@ -59,10 +59,10 @@ const HeroSection = ({ stats }: { stats: HomeStat[] | undefined }) => (
       <div className="absolute bottom-4 flex items-center shadow-2xl">
         <a
           href="#modules"
-          className="flex h-14 w-[34px] items-center justify-center rounded-[40px] bg-white shadow"
+          className="group flex h-14 w-[34px] items-center justify-center rounded-[40px] bg-white shadow"
           onClick={handleSmoothScroll}
         >
-          <ArrowDownLong className="text-slate-700" />
+          <ArrowDownLong className="group-hover:opacity-80" />
         </a>
       </div>
     </div>
