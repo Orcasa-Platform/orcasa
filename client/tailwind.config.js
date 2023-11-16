@@ -20,6 +20,9 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    transitionDuration: {
+      2000: '2000ms',
+    },
     extend: {
       fontFamily: {
         sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
