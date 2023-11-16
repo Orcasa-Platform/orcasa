@@ -8,7 +8,7 @@ import XIcon from 'public/images/x-icon.svg';
 
 /* eslint-disable @next/next/no-img-element */
 const Footer = () => (
-  <div>
+  <div id="about">
     <div className="flex w-full flex-col items-center justify-center gap-[20px] bg-gray-850 px-10 py-[74px]">
       <Link
         className="flex items-center justify-center gap-2.5"
@@ -39,25 +39,28 @@ const Footer = () => (
       </div>
       <div className="flex">
         <div className="flex items-center gap-6 border-r border-white border-opacity-20 pr-5">
-          <Link href="" target="_blank">
+          <Link href="https://twitter.com/IRC_ORCaSa" target="_blank">
             <XIcon className="min-w-4 h-4 w-4" />
           </Link>
-          <Link href="" target="_blank">
+          <Link
+            href="https://www.linkedin.com/showcase/orcasa-project-irc/?viewAsMember=true"
+            target="_blank"
+          >
             <LinkedinIcon className="min-w-4 h-4 w-4" />
           </Link>
-          <Link href="" target="_blank">
+          <Link href="#" target="_blank">
             <MailIcon className="min-w-5 h-4 w-5" />
           </Link>
         </div>
         <div className="flex items-center justify-start gap-4">
           <Link
-            href=""
+            href="#"
             target="_blank"
             className="border-r border-white border-opacity-20 px-5 text-sm text-white"
           >
             Legal Details
           </Link>
-          <Link href="" className="text-sm text-white">
+          <Link href="#" className="text-sm text-white">
             Personal Data Protection
           </Link>
         </div>

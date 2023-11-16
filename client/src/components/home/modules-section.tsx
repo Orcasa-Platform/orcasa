@@ -262,7 +262,7 @@ const Card = ({
 };
 
 const ModulesSection = () => (
-  <div>
+  <div id="modules" className="scroll-mt-[100px]">
     <div className="mb-[120px] flex items-center justify-center">
       <div className="flex flex-col items-center gap-6">
         <div className="text-center font-serif text-sm uppercase leading-[14px] tracking-wider text-gray-400">

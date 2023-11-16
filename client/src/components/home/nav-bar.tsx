@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { modules } from '@/constants/modules';
+import { handleSmoothScroll } from '@/lib/utils/ui';
 
+import { modules } from '@/constants/modules';
 const NavBar = () => {
   return (
     <div className="fixed z-20 flex h-[72px] w-full items-center justify-between gap-10 bg-white bg-opacity-80 px-10 backdrop-blur-[20px]">
@@ -19,9 +22,14 @@ const NavBar = () => {
             </Link>
           );
         })}
-        <Link key="about-link" href="/#about" className="hover:text-gray-300">
+        <a
+          key="about-link"
+          onClick={handleSmoothScroll}
+          href="#about"
+          className="hover:text-gray-300"
+        >
           <div className="border-l border-gray-500 px-10">About the project</div>
-        </Link>
+        </a>
       </div>
     </div>
   );

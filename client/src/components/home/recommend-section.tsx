@@ -9,7 +9,7 @@ import { Button } from '../ui/button';
 const RecommendSection = () => (
   <div className="relative h-[700px]">
     <div className={`absolute flex h-full w-full items-center justify-center p-10 pt-0`}>
-      <img src="/images/shape3.svg" className="h-[700px] w-full" alt="" />
+      <img src="/images/shape3.svg" className="h-[564px] w-full" alt="" />
     </div>
     <div
       className={`absolute flex h-full w-full flex-wrap items-center justify-center gap-[100px]`}
@@ -26,25 +26,25 @@ const RecommendSection = () => (
             Carbon Schemes Inventories, or C.S.I., is a new web platform dedicated to providing
             detailed information about carbon farming schemes in Europe and around the world.
           </div>
-          <Button
-            variant="link"
-            className="flex h-fit w-[173px] cursor-pointer gap-4 border border-slate-700 p-5"
-            asChild
-          >
-            <Link href={'https://ejpsoil.eu/'} target="_blank">
+          <Button variant="default" className="flex w-[173px] px-0 pt-2" asChild>
+            <Link
+              href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
+              target="_blank"
+            >
               Visit EJP soil
               <ExternalLink className="ml-6" />
             </Link>
           </Button>
         </div>
-        <div className="relative">
-          <div className="flex flex-col items-start justify-start gap-2 bg-white px-4 shadow">
+        <div className="relative mt-10">
+          <div className="absolute -left-10 -top-10 flex flex-col items-start justify-start gap-2 bg-white px-4 shadow-2xl">
             <img
               className="h-[84px] w-[169px]"
               src="/images/ejp-logo.png"
               alt="Road4Schemes logo"
             />
           </div>
+          <img src="/images/ejpsoil.png" className="w-[480px] shadow-2xl" alt="Road4Schemes demo" />
         </div>
       </div>
     </div>

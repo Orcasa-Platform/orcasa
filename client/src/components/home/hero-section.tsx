@@ -1,8 +1,12 @@
+'use client';
+
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { ArrowRight } from 'lucide-react';
+
+import { handleSmoothScroll } from '@/lib/utils/ui';
 
 import { HomeStat } from '@/types/generated/strapi.schemas';
 
@@ -53,12 +57,13 @@ const HeroSection = ({ stats }: { stats: HomeStat[] | undefined }) => (
         {stats && <Stats className="-mt-10 ml-16" stats={stats} />}
       </div>
       <div className="absolute bottom-4 flex items-center">
-        <button
-          type="button"
+        <a
+          href="#modules"
           className="flex h-14 w-[34px] items-center justify-center rounded-[40px] bg-white shadow"
+          onClick={handleSmoothScroll}
         >
           <ArrowDownLong className="text-slate-700" />
-        </button>
+        </a>
       </div>
     </div>
   </div>
