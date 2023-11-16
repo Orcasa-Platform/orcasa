@@ -26,7 +26,7 @@ const RecommendSection = () => (
             Carbon Schemes Inventories, or C.S.I., is a new web platform dedicated to providing
             detailed information about carbon farming schemes in Europe and around the world.
           </div>
-          <Button variant="default" className="flex w-[173px] px-0 pt-2" asChild>
+          <Button variant="outline" className="flex w-[173px] px-0 pt-2" asChild>
             <Link
               href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
               target="_blank"
