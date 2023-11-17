@@ -1906,7 +1906,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:1.7.17":
+"@headlessui/react@npm:^1.7.17":
   version: 1.7.17
   resolution: "@headlessui/react@npm:1.7.17"
   dependencies:
@@ -2662,7 +2662,7 @@ __metadata:
     "@dnd-kit/modifiers": 6.0.0
     "@dnd-kit/sortable": 7.0.1
     "@dnd-kit/utilities": 3.2.0
-    "@headlessui/react": 1.7.17
+    "@headlessui/react": ^1.7.17
     "@hookform/resolvers": ^3.1.1
     "@playwright/test": ^1.35.1
     "@radix-ui/react-accordion": ^1.1.2
