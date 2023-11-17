@@ -1,7 +1,16 @@
 import { cn } from '@/lib/classnames';
 
-import { HomeStat } from '@/types/generated/strapi.schemas';
-const Stats = ({ stats, className }: { stats: HomeStat[]; className: string }) => {
+import { getHomeStats } from '@/types/generated/home-stat';
+
+export default async function Stats({ className }: { className: string }) {
+  const data = await getHomeStats({ populate: '*' });
+  const stats = data?.data?.map((item) => ({
+    title: item?.attributes?.title,
+    value: item?.attributes?.value,
+    class: item?.attributes?.class,
+  }));
+  if (!data || !stats) return null;
+
   if (!stats) return null;
   return (
     <div className={cn('flex drop-shadow-2xl', className)}>
@@ -17,6 +26,4 @@ const Stats = ({ stats, className }: { stats: HomeStat[]; className: string }) =
       ))}
     </div>
   );
-};
-
-export default Stats;
+}

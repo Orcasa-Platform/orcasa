@@ -13,7 +13,7 @@ const images = [
   },
   {
     src: '/images/se.jpg',
-    alt: 'Scientific evidence demo',
+    alt: 'Scientific Evidence demo',
   },
   {
     src: '/images/network.jpg',

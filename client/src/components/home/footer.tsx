@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ExternalLink } from 'lucide-react';
@@ -6,7 +7,6 @@ import LinkedinIcon from 'public/images/linkedin-icon.svg';
 import MailIcon from 'public/images/mail-icon.svg';
 import XIcon from 'public/images/x-icon.svg';
 
-/* eslint-disable @next/next/no-img-element */
 const Footer = () => (
   <div id="about">
     <div className="flex w-full flex-col items-center justify-center gap-[20px] bg-gray-850 px-10 py-[74px]">
@@ -21,11 +21,7 @@ const Footer = () => (
         <ExternalLink className="relative h-6 w-6 text-green-700" />
       </Link>
       <Link href="https://irc-orcasa.eu/" target="_blank">
-        <img
-          className="h-[77px] w-[255px]"
-          src="/images/orcasa-logo-with-text.png"
-          alt="Orcasa logo"
-        />
+        <Image src="/images/orcasa-logo-with-text.png" alt="ORCaSa logo" width={255} height={77} />
       </Link>
     </div>
     <div className="flex w-full items-center justify-between bg-gray-800 px-10 py-8">

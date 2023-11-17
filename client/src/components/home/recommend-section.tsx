@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ExternalLink } from 'lucide-react';
@@ -38,13 +38,15 @@ const RecommendSection = () => (
         </div>
         <div className="relative mt-10">
           <div className="absolute -left-8 -top-8 flex flex-col items-start justify-start gap-2 bg-white px-4 shadow-2xl">
-            <img
-              className="h-[84px] w-[169px]"
-              src="/images/ejp-logo.png"
-              alt="Road4Schemes logo"
-            />
+            <Image src="/images/ejp-logo.png" alt="Road4Schemes logo" width={169} height={84} />
           </div>
-          <img src="/images/ejpsoil.png" className="w-[480px] shadow-2xl" alt="Road4Schemes demo" />
+          <Image
+            src="/images/ejpsoil.png"
+            className="shadow-2xl"
+            alt="Road4Schemes demo"
+            width={480}
+            height={275}
+          />
         </div>
       </div>
     </div>
