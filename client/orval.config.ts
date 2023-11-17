@@ -43,7 +43,16 @@ export default {
       target:
         '../cms/dist/src/extensions/documentation/documentation/1.0.0/full_documentation.json',
       filters: {
-        tags: ['Page', 'Layer-group', 'Layer', 'Organization', 'Project'],
+        tags: [
+          'Page',
+          'Layer-group',
+          'Layer',
+          'Organization',
+          'Project',
+          'Country',
+          'Organization-type',
+          'Organization-theme',
+        ],
       },
     },
   },

@@ -1,9 +1,14 @@
+import { useMemo } from 'react';
+
 import { uniqBy } from 'lodash';
 import { PointFeature } from 'supercluster';
 
-import { NetworkFilters } from '@/store/network';
+import { NetworkFilters, NetworkOrganizationFilters } from '@/store/network';
 
+import { useGetCountries } from '@/types/generated/country';
 import { useGetOrganizationsId, useGetOrganizations } from '@/types/generated/organization';
+import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
+import { useGetOrganizationTypes } from '@/types/generated/organization-type';
 import { useGetProjects, useGetProjectsId } from '@/types/generated/project';
 import {
   ProjectListResponseDataItem,
@@ -77,28 +82,92 @@ export type NetworkResponse = {
 };
 
 const getQueryFilters = (filters: NetworkFilters) => {
+  const generalFilters =
+    typeof filters.search !== 'undefined' && filters.search.length > 0
+      ? [
+          {
+            $or: [
+              {
+                name: {
+                  $containsi: filters.search,
+                },
+              },
+              {
+                short_description: {
+                  $containsi: filters.search,
+                },
+              },
+              {
+                description: {
+                  $containsi: filters.search,
+                },
+              },
+            ],
+          },
+        ]
+      : [];
+
+  const organizationFilters = [
+    ...(filters.organizationType.length > 0
+      ? [
+          {
+            $or: filters.organizationType.map((id) => ({
+              organization_type: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.thematic.length > 0
+      ? [
+          {
+            $or: filters.thematic
+              .map((id) => [
+                {
+                  main_organization_theme: {
+                    id: {
+                      $eq: id,
+                    },
+                  },
+                },
+                {
+                  secondary_organization_theme: {
+                    id: {
+                      $eq: id,
+                    },
+                  },
+                },
+              ])
+              .flat(),
+          },
+        ]
+      : []),
+    ...(filters.country.length > 0
+      ? [
+          {
+            $or: filters.country.map((id) => ({
+              country: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+  ];
+
   return {
-    ...(typeof filters.search !== 'undefined' && filters.search.length > 0
-      ? {
-          $or: [
-            {
-              name: {
-                $containsi: filters.search,
-              },
-            },
-            {
-              short_description: {
-                $containsi: filters.search,
-              },
-            },
-            {
-              description: {
-                $containsi: filters.search,
-              },
-            },
-          ],
-        }
-      : {}),
+    organization: {
+      $and: [...generalFilters, ...organizationFilters],
+    },
+    project: {
+      $and: [],
+      // $and: [...generalFilters, ...projectFilters],
+    },
   };
 };
 
@@ -214,7 +283,7 @@ const useGetNetworks = (filters: NetworkFilters) => {
     {
       populate: 'country',
       'pagination[pageSize]': 9999,
-      filters: queryFilters,
+      filters: queryFilters.organization,
     },
     {
       query: {
@@ -235,7 +304,7 @@ const useGetNetworks = (filters: NetworkFilters) => {
     {
       populate: 'country_of_coordination',
       'pagination[pageSize]': 9999,
-      filters: queryFilters,
+      filters: queryFilters.project,
     },
     {
       query: {
@@ -318,11 +387,8 @@ const getMapNetworks = ({
   };
 };
 
-export const useMapNetworks = ({
-  filters = {},
-}: {
-  filters?: NetworkFilters;
-}): NetworkMapResponse => getMapNetworks(useGetNetworks(filters));
+export const useMapNetworks = ({ filters }: { filters: NetworkFilters }): NetworkMapResponse =>
+  getMapNetworks(useGetNetworks(filters));
 
 export const useMapNetworksRelations = (network: Network): NetworkMapResponse =>
   getMapNetworks(useGetNetworksRelations(network));
@@ -393,13 +459,7 @@ export const useNetworkDiagram = ({
   };
 };
 
-export const useNetworks = ({
-  page = 1,
-  filters = {},
-}: {
-  page: number;
-  filters?: NetworkFilters;
-}) => {
+export const useNetworks = ({ page = 1, filters }: { page: number; filters: NetworkFilters }) => {
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadProjects = !filters.type?.length || filters.type.includes('project');
 
@@ -418,7 +478,7 @@ export const useNetworks = ({
       // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
-      filters: queryFilters,
+      filters: queryFilters.organization,
     },
     {
       query: {
@@ -442,7 +502,7 @@ export const useNetworks = ({
       // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
       'pagination[pageSize]': 1000,
       sort: 'name:asc',
-      filters: queryFilters,
+      filters: queryFilters.project,
     },
     {
       query: {
@@ -477,5 +537,82 @@ export const useNetworks = ({
     isFetched: organizationIsFetched || projectsIsFetched,
     isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,
     isError: organizationIsError || projectsIsError,
+  };
+};
+
+export const useNetworkOrganizationFiltersOptions = (): Record<
+  keyof NetworkOrganizationFilters,
+  { label: string; value: number }[]
+> => {
+  const { data: countryData } = useGetCountries(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['countries'],
+      },
+    },
+  );
+
+  const country = useMemo(
+    () =>
+      countryData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          countryData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [countryData],
+  );
+
+  const { data: organizationTypeData } = useGetOrganizationTypes(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['organization-types'],
+      },
+    },
+  );
+
+  const organizationType = useMemo(
+    () =>
+      organizationTypeData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          organizationTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [organizationTypeData],
+  );
+
+  const { data: organizationThemeData } = useGetOrganizationThemes(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['organization-themes'],
+      },
+    },
+  );
+
+  const thematic = useMemo(
+    () =>
+      organizationThemeData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          organizationThemeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [organizationThemeData],
+  );
+
+  return {
+    organizationType,
+    thematic,
+    country,
   };
 };

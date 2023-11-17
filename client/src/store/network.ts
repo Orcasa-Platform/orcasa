@@ -8,9 +8,9 @@ export interface NetworkGeneralFilters {
 }
 
 export interface NetworkOrganizationFilters {
-  organizationType?: unknown;
-  mainThematic?: unknown;
-  country?: unknown;
+  organizationType: number[];
+  thematic: number[];
+  country: number[];
 }
 
 export interface NetworkProjectFilters {
@@ -28,7 +28,7 @@ export type NetworkFilters = NetworkGeneralFilters &
 
 const organizationFiltersKeys: (keyof NetworkOrganizationFilters)[] = [
   'organizationType',
-  'mainThematic',
+  'thematic',
   'country',
 ];
 
@@ -46,7 +46,12 @@ export const useNetworkFilterSidebarOpen = () => {
   return useAtom(filterSidebarOpenAtom);
 };
 
-const filtersAtom = atom<NetworkFilters>({ type: [] });
+const filtersAtom = atom<NetworkFilters>({
+  type: [],
+  organizationType: [],
+  thematic: [],
+  country: [],
+});
 export const useNetworkFilters = () => {
   return useAtom(filtersAtom);
 };
@@ -54,7 +59,7 @@ export const useNetworkFilters = () => {
 export const useNetworkOrganizationFilters = () => {
   const [filters, setFilters] = useNetworkFilters();
 
-  const organizationFilters: NetworkOrganizationFilters = useMemo(
+  const organizationFilters = useMemo(
     () =>
       Object.entries(filters)
         .filter(([key]) =>
@@ -73,7 +78,7 @@ export const useNetworkOrganizationFilters = () => {
     [setFilters],
   );
 
-  return [organizationFilters, setOrganizationFilters] as const;
+  return [organizationFilters as NetworkOrganizationFilters, setOrganizationFilters] as const;
 };
 
 export const useNetworkProjectFilters = () => {
@@ -99,8 +104,10 @@ export const useNetworkProjectFilters = () => {
   return [projectFilters, setProjectFilters] as const;
 };
 
-export const useFiltersCount = (
-  filters: NetworkFilters,
+export const useFiltersCount = <
+  T extends NetworkOrganizationFilters | NetworkProjectFilters | NetworkFilters,
+>(
+  filters: T,
   ignoreFiltersKeys: (keyof NetworkFilters)[] = [],
 ) => {
   return Object.keys(filters).filter((key) => {
@@ -108,11 +115,11 @@ export const useFiltersCount = (
       return false;
     }
 
-    const value = filters[key as keyof NetworkFilters];
+    const value = filters[key as keyof T];
 
     let hasValue = true;
     if (Array.isArray(value) || typeof value === 'string') {
-      hasValue = value.length > 0;
+      hasValue = (value as string | unknown[]).length > 0;
     } else {
       hasValue = value !== null && value !== undefined;
     }
