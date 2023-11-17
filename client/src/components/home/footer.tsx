@@ -47,6 +47,7 @@ const Footer = () => (
             target="_blank"
           >
             <LinkedinIcon className="min-w-4 h-4 w-4" />
+            <span className="sr-only">LinkedIn</span>
           </Link>
           <Link href="#" target="_blank">
             <MailIcon className="min-w-5 h-4 w-5" />
