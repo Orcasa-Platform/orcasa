@@ -27,38 +27,38 @@ const cards = [
     name: 'Julien Demenois, France',
     role: 'Senior Researcher',
   },
-  {
-    id: 2,
-    Icon: Scale,
-    content:
-      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-    name: 'Julien Demenois, France',
-    role: 'Policymaker',
-  },
-  {
-    id: 3,
-    Icon: Landmark,
-    content:
-      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-    name: 'Julien Demenois, France',
-    role: 'Funding agency',
-  },
-  {
-    id: 4,
-    Icon: Factory,
-    content:
-      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-    name: 'Julien Demenois, France',
-    role: 'Company',
-  },
-  {
-    id: 5,
-    Icon: HeartHandshake,
-    content:
-      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-    name: 'Julien Demenois, France',
-    role: 'NGO',
-  },
+  // {
+  //   id: 2,
+  //   Icon: Scale,
+  //   content:
+  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+  //   name: 'Julien Demenois, France',
+  //   role: 'Policymaker',
+  // },
+  // {
+  //   id: 3,
+  //   Icon: Landmark,
+  //   content:
+  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+  //   name: 'Julien Demenois, France',
+  //   role: 'Funding agency',
+  // },
+  // {
+  //   id: 4,
+  //   Icon: Factory,
+  //   content:
+  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+  //   name: 'Julien Demenois, France',
+  //   role: 'Company',
+  // },
+  // {
+  //   id: 5,
+  //   Icon: HeartHandshake,
+  //   content:
+  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+  //   name: 'Julien Demenois, France',
+  //   role: 'NGO',
+  // },
 ];
 
 const cardVariants = {
