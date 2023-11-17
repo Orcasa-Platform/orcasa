@@ -22,6 +22,12 @@
       "action": "api::country.country.findOne"
     },
     {
+      "action": "api::home-stat.home-stat.find"
+    },
+    {
+      "action": "api::home-stat.home-stat.findOne"
+    },
+    {
       "action": "api::organization-theme.organization-theme.find"
     },
     {

@@ -51,6 +51,7 @@
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
     "express": "^4.17.2",
+    "framer-motion": "^10.16.4",
     "jotai": "^2.4.3",
     "lucide-react": "^0.252.0",
     "maplibre-gl": "3.3.0",

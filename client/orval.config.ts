@@ -52,6 +52,7 @@ export default {
           'Country',
           'Organization-type',
           'Organization-theme',
+          'Home-stat',
         ],
       },
     },
