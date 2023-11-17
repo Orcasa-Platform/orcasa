@@ -6,10 +6,9 @@ import HeroSection from './hero-section';
 import ModulesSection from './modules-section';
 import RecommendSection from './recommend-section';
 import SolutionsSection from './solutions-section';
-
 export default function HomePage() {
   return (
-    <div className="h-screen w-screen overflow-x-hidden bg-white">
+    <div className="h-screen w-screen overflow-x-hidden bg-white" id="main-scroll">
       <HomeNavBar />
       <div className="mt-[72px] space-y-[120px] bg-white">
         <HeroSection />

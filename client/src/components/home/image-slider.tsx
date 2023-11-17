@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 import Image from 'next/image';
 
@@ -33,15 +33,29 @@ const INITIAL_X = 100;
 const IMAGE_WIDTH = 463;
 
 const ImageSlider = () => {
-  const { scrollYProgress } = useScroll();
-  const ref = useRef(null);
+  const mainScrollElement = useRef<HTMLElement | null>(null);
 
+  const ref = useRef(null);
   const inView = useInView(ref);
-  const x = useTransform(scrollYProgress, [0, 1], [INITIAL_X, -(images.length - 3) * IMAGE_WIDTH]);
+  useEffect(() => {
+    const mainScroll = document.getElementById('main-scroll');
+    mainScrollElement.current = mainScroll;
+  }, []);
+  const { scrollYProgress } = useScroll({
+    container: mainScrollElement,
+    layoutEffect: false,
+  });
+
+  const x = useTransform(
+    scrollYProgress,
+    [0.1, 0.2],
+    [INITIAL_X, -(images.length - 3) * IMAGE_WIDTH],
+  );
+
   return (
     <motion.div className="overflow-x-hidden" ref={ref}>
       <motion.div
-        className="flex transform items-center justify-center gap-10 transition-transform duration-2000"
+        className="flex items-center justify-center gap-10"
         style={{ x: inView ? x : INITIAL_X, width: images.length * IMAGE_WIDTH }}
       >
         {images.map((image) => (
