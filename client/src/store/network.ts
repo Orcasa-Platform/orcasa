@@ -14,12 +14,12 @@ export interface NetworkOrganizationFilters {
 }
 
 export interface NetworkProjectFilters {
-  projectType?: unknown;
-  status?: unknown;
-  coordinationCountry?: unknown;
-  interventionRegion?: unknown;
-  interventionCountry?: unknown;
-  interventionArea?: unknown;
+  projectType: number[];
+  status: number[];
+  coordinationCountry: number[];
+  interventionRegion: number[];
+  interventionCountry: number[];
+  interventionArea: number[];
 }
 
 export type NetworkFilters = NetworkGeneralFilters &
@@ -51,6 +51,12 @@ const filtersAtom = atom<NetworkFilters>({
   organizationType: [],
   thematic: [],
   country: [],
+  projectType: [],
+  status: [],
+  coordinationCountry: [],
+  interventionRegion: [],
+  interventionCountry: [],
+  interventionArea: [],
 });
 export const useNetworkFilters = () => {
   return useAtom(filtersAtom);
@@ -84,7 +90,7 @@ export const useNetworkOrganizationFilters = () => {
 export const useNetworkProjectFilters = () => {
   const [filters, setFilters] = useNetworkFilters();
 
-  const projectFilters: NetworkProjectFilters = useMemo(
+  const projectFilters = useMemo(
     () =>
       Object.entries(filters)
         .filter(([key]) => projectFiltersKeys.includes(key as keyof NetworkProjectFilters))
@@ -101,7 +107,7 @@ export const useNetworkProjectFilters = () => {
     [setFilters],
   );
 
-  return [projectFilters, setProjectFilters] as const;
+  return [projectFilters as NetworkProjectFilters, setProjectFilters] as const;
 };
 
 export const useFiltersCount = <

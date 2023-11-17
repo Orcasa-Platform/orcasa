@@ -14,7 +14,10 @@ import {
   useNetworkProjectFilters,
 } from '@/store/network';
 
-import { useNetworkOrganizationFiltersOptions } from '@/hooks/networks';
+import {
+  useNetworkOrganizationFiltersOptions,
+  useNetworkProjectFiltersOptions,
+} from '@/hooks/networks';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -26,10 +29,12 @@ export default function FiltersSidebar() {
   const [filters, setFilters] = useNetworkFilters();
   const [organizationFilters] = useNetworkOrganizationFilters();
   const organizationFiltersOptions = useNetworkOrganizationFiltersOptions();
+  const projectFiltersOptions = useNetworkProjectFiltersOptions();
   const [projectFilters] = useNetworkProjectFilters();
   const organizationFiltersCount = useFiltersCount(organizationFilters);
   const projectFiltersCount = useFiltersCount(projectFilters);
 
+  const scrollableContainerRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   // Move the focus to the close button when the sidebar is opened
@@ -38,6 +43,13 @@ export default function FiltersSidebar() {
       closeButtonRef.current.focus();
     }
   }, [filterSidebarOpen]);
+
+  // When the user reopens the sidebar, make sure it's scrolled to the top
+  useEffect(() => {
+    if (filterSidebarOpen && scrollableContainerRef.current) {
+      scrollableContainerRef.current.scrollTo({ top: 0 });
+    }
+  }, [filterSidebarOpen, scrollableContainerRef]);
 
   return (
     <div
@@ -49,7 +61,10 @@ export default function FiltersSidebar() {
         'translate-x-0': filterSidebarOpen,
       })}
     >
-      <div className="flex h-full flex-col gap-y-10 p-12">
+      <div
+        ref={scrollableContainerRef}
+        className="flex h-full flex-col gap-y-10 overflow-y-auto p-12"
+      >
         <Button
           ref={closeButtonRef}
           type="button"
@@ -150,17 +165,61 @@ export default function FiltersSidebar() {
               onClick={() =>
                 setFilters({
                   ...filters,
-                  projectType: null,
-                  status: null,
-                  coordinationCountry: null,
-                  interventionRegion: null,
-                  interventionCountry: null,
-                  interventionArea: null,
+                  projectType: [],
+                  status: [],
+                  coordinationCountry: [],
+                  interventionRegion: [],
+                  interventionCountry: [],
+                  interventionArea: [],
                 })
               }
             >
               Reset all
             </Button>
+            <div className="space-y-4">
+              <MultiCombobox
+                name="Project type"
+                variant="network-project"
+                value={filters.projectType ?? []}
+                options={projectFiltersOptions.projectType}
+                onChange={(value) => setFilters({ ...filters, projectType: value })}
+              />
+              <MultiCombobox
+                name="Status"
+                variant="network-project"
+                value={filters.status ?? []}
+                options={projectFiltersOptions.status}
+                onChange={(value) => setFilters({ ...filters, status: value })}
+              />
+              <MultiCombobox
+                name="Country of coordination"
+                variant="network-project"
+                value={filters.coordinationCountry ?? []}
+                options={projectFiltersOptions.coordinationCountry}
+                onChange={(value) => setFilters({ ...filters, coordinationCountry: value })}
+              />
+              <MultiCombobox
+                name="Region of intervention"
+                variant="network-project"
+                value={filters.interventionRegion ?? []}
+                options={projectFiltersOptions.interventionRegion}
+                onChange={(value) => setFilters({ ...filters, interventionRegion: value })}
+              />
+              <MultiCombobox
+                name="Country of intervention"
+                variant="network-project"
+                value={filters.interventionCountry ?? []}
+                options={projectFiltersOptions.interventionCountry}
+                onChange={(value) => setFilters({ ...filters, interventionCountry: value })}
+              />
+              <MultiCombobox
+                name="Area of intervention"
+                variant="network-project"
+                value={filters.interventionArea ?? []}
+                options={projectFiltersOptions.interventionArea}
+                onChange={(value) => setFilters({ ...filters, interventionArea: value })}
+              />
+            </div>
           </fieldset>
         </div>
       </div>
