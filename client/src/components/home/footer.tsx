@@ -22,6 +22,7 @@ const Footer = () => (
       </Link>
       <Link href="https://irc-orcasa.eu/" target="_blank">
         <Image src="/images/orcasa-logo-with-text.png" alt="ORCaSa logo" width={255} height={77} />
+        <span className="sr-only">ORCaSa</span>
       </Link>
     </div>
     <div className="flex w-full items-center justify-between bg-gray-800 px-10 py-8">
