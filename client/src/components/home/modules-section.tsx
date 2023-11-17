@@ -1,8 +1,6 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
-
 import { Globe2, BarChart, Users2, FileSpreadsheet, ArrowRight, CheckCircle } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -160,44 +158,35 @@ type Slug = keyof typeof modulesInfo;
 
 type HoverTooltipProps = {
   children: React.ReactNode;
-  tooltipOpen: boolean;
-  setTooltipOpen: (open: boolean) => void;
   intro: React.ReactNode;
   slug: Slug;
   colorClass: string;
 };
 
-const HoverTooltip = ({
-  children,
-  tooltipOpen,
-  setTooltipOpen,
-  intro,
-  slug,
-  colorClass,
-}: HoverTooltipProps) => {
+const HoverTooltip = ({ children, intro, slug, colorClass }: HoverTooltipProps) => {
   return (
-    <div onMouseEnter={() => setTooltipOpen(true)} onMouseLeave={() => setTooltipOpen(false)}>
-      <Tooltip open={tooltipOpen}>
-        <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipPortal>
-          <TooltipContent
-            className={cn(
-              'absolute -left-[162.5px] -top-[63px] z-50 flex h-[292px] w-[325px]  cursor-pointer flex-col gap-4 p-6',
-              colorClass,
-            )}
-          >
-            {intro}
-            <div className=" text-sm leading-normal text-gray-700">
-              {modulesInfo[slug].tooltipText}
-            </div>
-            <div className="mt-auto flex items-center justify-end">
-              Learn more
-              <ArrowRight className="ml-6" />
-            </div>
-          </TooltipContent>
-        </TooltipPortal>
-      </Tooltip>
-    </div>
+    <Tooltip delayDuration={0}>
+      <TooltipTrigger asChild>{children}</TooltipTrigger>
+      <TooltipPortal>
+        <TooltipContent
+          // The props below makes sure that the tooltip is always centered on the trigger
+          avoidCollisions={false}
+          className={cn(
+            'absolute -left-[162.5px] -top-[63px] z-50 flex h-[292px] w-[325px]  cursor-pointer flex-col gap-4 p-6',
+            colorClass,
+          )}
+        >
+          {intro}
+          <div className="text-sm leading-normal text-gray-700 ">
+            {modulesInfo[slug].tooltipText}
+          </div>
+          <div className="mt-auto flex items-center justify-end">
+            Learn more
+            <ArrowRight className="ml-6" />
+          </div>
+        </TooltipContent>
+      </TooltipPortal>
+    </Tooltip>
   );
 };
 const Card = ({
@@ -213,7 +202,6 @@ const Card = ({
   bgColorClass: string;
   textColorClass: string;
 }) => {
-  const [tooltipOpen, setTooltipOpen] = useState<boolean>(false);
   const intro = (
     <>
       <Icon className="min-h-6 min-w-6 h-6 w-6" />
@@ -224,13 +212,7 @@ const Card = ({
   return (
     <Dialog>
       <DialogTrigger>
-        <HoverTooltip
-          tooltipOpen={tooltipOpen}
-          setTooltipOpen={setTooltipOpen}
-          colorClass={bgColorClass}
-          intro={intro}
-          slug={slug}
-        >
+        <HoverTooltip colorClass={bgColorClass} intro={intro} slug={slug}>
           <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
         </HoverTooltip>
       </DialogTrigger>
