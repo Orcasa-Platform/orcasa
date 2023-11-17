@@ -41,6 +41,7 @@ const Footer = () => (
         <div className="flex items-center gap-6 border-r border-white border-opacity-20 pr-5">
           <Link href="https://twitter.com/IRC_ORCaSa" target="_blank">
             <XIcon className="min-w-4 h-4 w-4" />
+            <span className="sr-only">X</span>
           </Link>
           <Link
             href="https://www.linkedin.com/showcase/orcasa-project-irc/?viewAsMember=true"
