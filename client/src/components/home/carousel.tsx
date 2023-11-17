@@ -23,40 +23,40 @@ const cards = [
     id: 1,
     Icon: Microscope,
     content:
-      '"In my daily activities, I encounter difficulties in my bibliographical research, due to the huge amount of information from different sources and the lack of time to read and organize relevant papers. Impact4Soil is a great help to easily access information, transfer knowledge and experiences, and, in the end, produce faster and longer-term solutions on the subject against climate change."',
-    name: 'Jane Doe, United Kingdom',
+      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+    name: 'Julien Demenois, France',
     role: 'Senior Researcher',
   },
   {
     id: 2,
     Icon: Scale,
     content:
-      '"In my daily activities, I encounter difficulties in my bibliographical research, due to the huge amount of information from different sources and the lack of time to read and organize relevant papers. Impact4Soil is a great help to easily access information, transfer knowledge and experiences, and, in the end, produce faster and longer-term solutions on the subject against climate change."',
-    name: 'Joane Doe, United Kingdom',
+      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+    name: 'Julien Demenois, France',
     role: 'Policymaker',
   },
   {
     id: 3,
     Icon: Landmark,
     content:
-      '"In my daily activities, I encounter difficulties in my bibliographical research, due to the huge amount of information from different sources and the lack of time to read and organize relevant papers. Impact4Soil is a great help to easily access information, transfer knowledge and experiences, and, in the end, produce faster and longer-term solutions on the subject against climate change."',
-    name: 'Jim Doe, United Kingdom',
+      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+    name: 'Julien Demenois, France',
     role: 'Funding agency',
   },
   {
     id: 4,
     Icon: Factory,
     content:
-      '"In my daily activities, I encounter difficulties in my bibliographical research, due to the huge amount of information from different sources and the lack of time to read and organize relevant papers. Impact4Soil is a great help to easily access information, transfer knowledge and experiences, and, in the end, produce faster and longer-term solutions on the subject against climate change."',
-    name: 'June Doe, United Kingdom',
+      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+    name: 'Julien Demenois, France',
     role: 'Company',
   },
   {
     id: 5,
     Icon: HeartHandshake,
     content:
-      '"In my daily activities, I encounter difficulties in my bibliographical research, due to the huge amount of information from different sources and the lack of time to read and organize relevant papers. Impact4Soil is a great help to easily access information, transfer knowledge and experiences, and, in the end, produce faster and longer-term solutions on the subject against climate change."',
-    name: 'Joe Doe, United Kingdom',
+      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
+    name: 'Julien Demenois, France',
     role: 'NGO',
   },
 ];
