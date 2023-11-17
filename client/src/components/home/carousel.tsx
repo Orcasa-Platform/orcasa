@@ -7,10 +7,10 @@ import {
   ArrowLeft,
   ArrowRight,
   Microscope,
-  Scale,
-  Landmark,
-  Factory,
-  HeartHandshake,
+  // Scale,
+  // Landmark,
+  // Factory,
+  // HeartHandshake,
 } from 'lucide-react';
 
 import { Button } from '../ui/button';
@@ -75,7 +75,7 @@ const Card = ({ card }: CardProps) => {
   return (
     <motion.div
       key={card.id}
-      className="flex h-[444px] min-w-[373px] flex-col justify-between gap-6 border-b-8 border-yellow-500 bg-white p-10 shadow"
+      className="flex h-[444px] min-w-[373px] max-w-[373px] flex-col justify-between gap-6 border-b-8 border-yellow-500 bg-white p-10 shadow"
       variants={cardVariants}
     >
       <div className="flex h-12 w-12 items-center justify-center bg-gray-700 p-2">
