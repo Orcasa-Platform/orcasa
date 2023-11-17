@@ -99,7 +99,6 @@ export const MultiCombobox = ({
     <div ref={containerRef} className="relative text-base">
       <ComboboxPrimitive multiple value={value} onChange={onChange}>
         {!open && (
-          //
           <Button
             id={id}
             type="button"
