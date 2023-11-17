@@ -14,142 +14,102 @@ import Tractor from '@/styles/icons/tractor.svg';
 const modulesInfo = {
   'geospatial-data': {
     tooltipText:
-      'Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut imperdiet arcu pellentesque.',
+      'Identify areas of interest for your research or interventions using global and local data on soil carbon from trusted sources: Soils Revealed, FAO, Soils Grids, Global Forest Watch, and others.',
     modalText: (
-      <>
-        <div className="text-base">
-          Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in
-          adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut
-          imperdiet arcu pellentesque.
-        </div>
-        <div className="text-sm">
-          Lorem ipsum dolor sit amet consectetur. Proin id massa consequat cursus nulla pharetra.
-          Adipiscing non lobortis risus quam feugiat feugiat. Suspendisse proin donec turpis augue
-          non congue neque nec amet. Interdum blandit lacus vivamus amet cursus. Eget nisl est
-          feugiat sit. Leo a lectus sagittis id dolor amet vitae orci massa. Nunc id congue lacus
-          molestie vel. Ullamcorper risus fermentum curabitur consequat arcu convallis. Eget velit
-          purus auctor adipiscing nulla lacinia semper hendrerit sociis.
-        </div>
-      </>
+      <div className="text-base">
+        Identify areas of interest for your research or interventions using global and local data on
+        soil carbon from trusted sources: Soils Revealed, FAO, Soils Grids, Global Forest Watch, and
+        others.
+      </div>
     ),
     modalList: [
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
+      'Soil carbon stock evolution',
+      'Soil properties',
+      'Annual carbon budget components',
+      'Contextual data',
     ],
   },
   'scientific-evidence': {
     tooltipText:
-      'Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut imperdiet arcu pellentesque.',
+      'Understand the impact of climate change, land use change, and land management practices on soil carbon based on a comprehensive global analysis of over 25 thousand peer-reviewed scientific papers from trusted sources, such as the Web of Science or Scopus.',
     modalText: (
       <>
         <div className="text-base">
-          Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in
-          adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut
-          imperdiet arcu pellentesque.
+          Understand the impact of climate change, land use change, and land management practices on
+          soil carbon based on a comprehensive global analysis of over 25 thousand peer-reviewed
+          scientific papers from trusted sources, such as the Web of Science or Scopus.
         </div>
         <div className="text-sm">
-          Lorem ipsum dolor sit amet consectetur. Proin id massa consequat cursus nulla pharetra.
-          Adipiscing non lobortis risus quam feugiat feugiat. Suspendisse proin donec turpis augue
-          non congue neque nec amet. Interdum blandit lacus vivamus amet cursus. Eget nisl est
-          feugiat sit. Leo a lectus sagittis id dolor amet vitae orci massa. Nunc id congue lacus
-          molestie vel. Ullamcorper risus fermentum curabitur consequat arcu convallis. Eget velit
-          purus auctor adipiscing nulla lacinia semper hendrerit sociis.
+          The power of Scientific evidence is a semi-automated scraping, screening and
+          characterization of published publications on soil carbon based on scientific standards,
+          which makes it a reliable and real-time updated tool.
         </div>
       </>
     ),
     modalList: [
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
+      '13 146 primary publications',
+      '217 meta-analyses publications',
+      'Quickly identify relevant scientific publications',
+      'Measure global practices&apos; impact with data-driven graphs',
     ],
   },
   network: {
     tooltipText:
-      'Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut imperdiet arcu pellentesque.',
+      'Find synergies and promote cooperation between heterogeneous actors and initiatives within the soil carbon field.',
     modalText: (
       <>
         <div className="text-base">
-          Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in
-          adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut
-          imperdiet arcu pellentesque.
+          Find synergies and promote cooperation between heterogeneous actors and initiatives within
+          the soil carbon field.
         </div>
         <div className="text-sm">
-          Lorem ipsum dolor sit amet consectetur. Proin id massa consequat cursus nulla pharetra.
-          Adipiscing non lobortis risus quam feugiat feugiat. Suspendisse proin donec turpis augue
-          non congue neque nec amet. Interdum blandit lacus vivamus amet cursus. Eget nisl est
-          feugiat sit. Leo a lectus sagittis id dolor amet vitae orci massa. Nunc id congue lacus
-          molestie vel. Ullamcorper risus fermentum curabitur consequat arcu convallis. Eget velit
-          purus auctor adipiscing nulla lacinia semper hendrerit sociis.
+          The current network was created during the foundations of the Soil Carbon International
+          Research Consortium. Help us extend it by suggesting new projects and organizations to be
+          added.
         </div>
       </>
     ),
     modalList: [
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
+      'Worldwide network',
+      'Research, Universities, Private Sector, Public and Private Funders, Policymakers, Environmental Agencies, NGOs and more',
+      'Discover potential partners',
+      'Become part of the network',
     ],
   },
   practices: {
     tooltipText:
-      'Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut imperdiet arcu pellentesque.',
+      'Have a real view of concrete land-management practices that generate a positive impact on soil carbon.',
     modalText: (
       <>
         <div className="text-base">
-          Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in
-          adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut
-          imperdiet arcu pellentesque.
+          Have a real view of concrete land-management practices that generate a positive impact on
+          soil carbon.
         </div>
         <div className="text-sm">
-          Lorem ipsum dolor sit amet consectetur. Proin id massa consequat cursus nulla pharetra.
-          Adipiscing non lobortis risus quam feugiat feugiat. Suspendisse proin donec turpis augue
-          non congue neque nec amet. Interdum blandit lacus vivamus amet cursus. Eget nisl est
-          feugiat sit. Leo a lectus sagittis id dolor amet vitae orci massa. Nunc id congue lacus
-          molestie vel. Ullamcorper risus fermentum curabitur consequat arcu convallis. Eget velit
-          purus auctor adipiscing nulla lacinia semper hendrerit sociis.
+          From the outputs of the comprehensive global analysis of Scientific evidence, Impact4Soil
+          will question and select the most relevant existing practices related to soil carbon.
         </div>
       </>
     ),
     modalList: [
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
+      'Trusted sources such as WOCAT',
+      'Ground-level practices',
+      'Classification by land use type and location',
     ],
   },
   datasets: {
     tooltipText:
-      'Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut imperdiet arcu pellentesque.',
+      'Explore datasets on Soil Organic carbon from diverse trusted sources to find the correct information for your activities.',
     modalText: (
-      <>
-        <div className="text-base">
-          Lorem ipsum dolor sit amet consectetur. Sit blandit a mauris varius id. In leo in
-          adipiscing in. Aliquet fringilla tortor faucibus elementum. Iaculis consequat et turpis ut
-          imperdiet arcu pellentesque.
-        </div>
-        <div className="text-sm">
-          Lorem ipsum dolor sit amet consectetur. Proin id massa consequat cursus nulla pharetra.
-          Adipiscing non lobortis risus quam feugiat feugiat. Suspendisse proin donec turpis augue
-          non congue neque nec amet. Interdum blandit lacus vivamus amet cursus. Eget nisl est
-          feugiat sit. Leo a lectus sagittis id dolor amet vitae orci massa. Nunc id congue lacus
-          molestie vel. Ullamcorper risus fermentum curabitur consequat arcu convallis. Eget velit
-          purus auctor adipiscing nulla lacinia semper hendrerit sociis.
-        </div>
-      </>
+      <div className="text-base">
+        Explore datasets on Soil Organic carbon from diverse trusted sources to find the correct
+        information for your activities.
+      </div>
     ),
     modalList: [
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
-      'Lorem Ipsum ...',
+      'High quality, consolidated and open-access data',
+      'Harvard Dataverse, CIRAD Dataverse, INRAE Dataverse, Joint Research Centre Data Catalogue and ZENODO',
+      'Strengthen your activities',
     ],
   },
 };
@@ -231,7 +191,7 @@ const Card = ({
             <ul className="flex flex-col gap-4">
               {modulesInfo[slug].modalList.map((listElement) => (
                 <li key={listElement} className="flex gap-2 text-sm">
-                  <CheckCircle />
+                  <CheckCircle className="h-4 w-4 min-w-fit" />
                   {listElement}
                 </li>
               ))}
