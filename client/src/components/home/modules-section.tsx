@@ -231,7 +231,7 @@ const Card = ({
           intro={intro}
           slug={slug}
         >
-          <div className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</div>
+          <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
         </HoverTooltip>
       </DialogTrigger>
       <DialogContent
@@ -269,9 +269,9 @@ const ModulesSection = () => (
           5 modules for climate impact
         </div>
         <div className="flex flex-col items-center gap-8">
-          <div className="font-serif text-[32px] font-semibold text-gray-700">
+          <h2 className="font-serif text-[32px] font-semibold text-gray-700">
             What can Impact4Soil do for me?
-          </div>
+          </h2>
           <div className="h-2 w-20 bg-teal-500" />
           <div className="w-[600px] text-center text-gray-700">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings

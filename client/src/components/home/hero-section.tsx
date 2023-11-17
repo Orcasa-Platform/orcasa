@@ -20,9 +20,9 @@ const HeroSection = () => {
         className={`absolute flex h-full w-full flex-wrap items-center justify-center gap-[100px]`}
       >
         <div>
-          <div className="mb-6 w-[476px] font-serif text-[40px] text-slate-700">
+          <h2 className="mb-6 w-[476px] font-serif text-[40px] text-slate-700">
             Making an impact on the planet&apos;s soils.
-          </div>
+          </h2>
           <div className="w-[476px]">
             <span className="text-base leading-normal text-slate-700">
               Currently, one-third of the global soils are degraded and depleted in carbon. This is

@@ -83,8 +83,8 @@ const Card = ({ card }: CardProps) => {
       </div>
       <p className="text-sm leading-6 text-gray-700">{content}</p>
       <div>
-        <h3 className="text-base text-gray-700">{name}</h3>
-        <h3 className="text-lg font-semibold">{role}</h3>
+        <div className="text-base text-gray-700">{name}</div>
+        <div className="text-lg font-semibold">{role}</div>
       </div>
     </motion.div>
   );
