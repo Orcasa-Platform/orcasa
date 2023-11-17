@@ -83,8 +83,8 @@ const Card = ({ card }: CardProps) => {
       </div>
       <p className="text-sm leading-6 text-gray-700">{content}</p>
       <div>
-        <div className="text-base text-gray-700">{name}</div>
-        <div className="text-lg font-semibold">{role}</div>
+        <div className="text-gray-700">{name}</div>
+        <div className="font-semibold">{role}</div>
       </div>
     </motion.div>
   );
@@ -116,9 +116,11 @@ const Carousel = () => {
       <div className="mt-6 flex gap-1">
         <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
           <ArrowLeft className="h-4 w-4" />
+          <span className="sr-only">Previous testimony</span>
         </Button>
         <Button variant="outline" className="px-3 py-0" onClick={nextCard}>
           <ArrowRight className="h-4 w-4" />
+          <span className="sr-only">Next testimony</span>
         </Button>
       </div>
     </>

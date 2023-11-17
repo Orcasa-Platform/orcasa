@@ -11,7 +11,6 @@ export default async function Stats({ className }: { className: string }) {
   }));
   if (!data || !stats) return null;
 
-  if (!stats) return null;
   return (
     <div className={cn('flex drop-shadow-2xl', className)}>
       {stats.map(({ title, value, class: itemClassName }) => (

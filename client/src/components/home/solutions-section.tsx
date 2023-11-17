@@ -10,11 +10,11 @@ const SolutionsSection = () => (
       <div className="w-[70%]">
         <div className="flex w-[374px] flex-col gap-12">
           <div className="flex flex-col gap-6">
-            <div className="text-sm uppercase leading-[14px] tracking-wider text-gray-400">
-              solutions for soil carbon experts
+            <div className="font-serif text-sm uppercase leading-[14px] tracking-wider text-gray-400">
+              Solutions for soil carbon experts
             </div>
             <div className="flex flex-col gap-8">
-              <h2 className="text-[32px] font-semibold text-slate-700">
+              <h2 className="font-serif text-[32px] font-semibold text-slate-700">
                 Hear from Impact4Soil users
               </h2>
               <div className="h-2 w-20 bg-green-700" />
