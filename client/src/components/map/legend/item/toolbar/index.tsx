@@ -15,10 +15,9 @@ import {
   TooltipPortal,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import Opacity from '@/styles/icons/opacity.svg';
 
 import Slider from './slider';
-
-import Opacity from '@/styles/icons/opacity.svg';
 
 export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
   settings,
