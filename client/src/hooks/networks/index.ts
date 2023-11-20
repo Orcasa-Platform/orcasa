@@ -3,13 +3,16 @@ import { useMemo } from 'react';
 import { uniqBy } from 'lodash';
 import { PointFeature } from 'supercluster';
 
-import { NetworkFilters, NetworkOrganizationFilters } from '@/store/network';
+import { NetworkFilters, NetworkOrganizationFilters, NetworkProjectFilters } from '@/store/network';
 
+import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
 import { useGetOrganizationsId, useGetOrganizations } from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
 import { useGetOrganizationTypes } from '@/types/generated/organization-type';
 import { useGetProjects, useGetProjectsId } from '@/types/generated/project';
+import { useGetProjectTypes } from '@/types/generated/project-type';
+import { useGetRegions } from '@/types/generated/region';
 import {
   ProjectListResponseDataItem,
   ProjectResponse,
@@ -80,6 +83,12 @@ export type NetworkResponse = {
   isPlaceholderData: boolean;
   isError: boolean;
 };
+
+export enum NetworkProjectStatusFilter {
+  Active,
+  Finished,
+  NotStarted,
+}
 
 const getQueryFilters = (filters: NetworkFilters) => {
   const generalFilters =
@@ -160,13 +169,152 @@ const getQueryFilters = (filters: NetworkFilters) => {
       : []),
   ];
 
+  const projectFilters = [
+    ...(filters.projectType.length > 0
+      ? [
+          {
+            $or: filters.projectType.map((id) => ({
+              project_type: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.status.length > 0
+      ? [
+          {
+            $or: filters.status.map((id) => {
+              if (id === NetworkProjectStatusFilter.Active) {
+                return {
+                  $and: [
+                    {
+                      start_date: {
+                        $lte: new Date().toISOString().split('T')[0],
+                      },
+                    },
+                    {
+                      $or: [
+                        {
+                          end_date: {
+                            $null: true,
+                          },
+                        },
+                        {
+                          end_date: {
+                            $gt: new Date().toISOString().split('T')[0],
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                };
+              } else if (id === NetworkProjectStatusFilter.Finished) {
+                return {
+                  $and: [
+                    {
+                      end_date: {
+                        $notNull: true,
+                      },
+                    },
+                    {
+                      end_date: {
+                        $lte: new Date().toISOString().split('T')[0],
+                      },
+                    },
+                  ],
+                };
+              } else if (id === NetworkProjectStatusFilter.NotStarted) {
+                return {
+                  start_date: {
+                    $gt: new Date().toISOString().split('T')[0],
+                  },
+                };
+              }
+            }),
+          },
+        ]
+      : []),
+    ...(filters.coordinationCountry.length > 0
+      ? [
+          {
+            $or: filters.coordinationCountry.map((id) => ({
+              country_of_coordination: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.interventionRegion.length > 0
+      ? [
+          {
+            $or: filters.interventionRegion.map((id) => ({
+              region_of_interventions: {
+                id: {
+                  $in: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.interventionCountry.length > 0
+      ? [
+          {
+            $or: filters.interventionCountry.map((id) => ({
+              country_of_interventions: {
+                id: {
+                  $in: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.interventionArea.length > 0
+      ? [
+          {
+            $or: filters.interventionArea
+              .map((id) => [
+                {
+                  main_area_of_intervention: {
+                    id: {
+                      $eq: id,
+                    },
+                  },
+                },
+                {
+                  secondary_area_of_intervention: {
+                    id: {
+                      $eq: id,
+                    },
+                  },
+                },
+                {
+                  third_area_of_intervention: {
+                    id: {
+                      $eq: id,
+                    },
+                  },
+                },
+              ])
+              .flat(),
+          },
+        ]
+      : []),
+  ];
+
   return {
     organization: {
       $and: [...generalFilters, ...organizationFilters],
     },
     project: {
-      $and: [],
-      // $and: [...generalFilters, ...projectFilters],
+      $and: [...generalFilters, ...projectFilters],
     },
   };
 };
@@ -614,5 +762,111 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
     organizationType,
     thematic,
     country,
+  };
+};
+
+export const useNetworkProjectFiltersOptions = (): Record<
+  keyof NetworkProjectFilters,
+  { label: string; value: number }[]
+> => {
+  const { data: countryData } = useGetCountries(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['countries'],
+      },
+    },
+  );
+
+  const country = useMemo(
+    () =>
+      countryData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          countryData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [countryData],
+  );
+
+  const { data: projectTypeData } = useGetProjectTypes(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['project-types'],
+      },
+    },
+  );
+
+  const projectType = useMemo(
+    () =>
+      projectTypeData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          projectTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [projectTypeData],
+  );
+
+  const { data: regionData } = useGetRegions(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['regions'],
+      },
+    },
+  );
+
+  const region = useMemo(
+    () =>
+      regionData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          regionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [regionData],
+  );
+
+  const { data: interventionAreaData } = useGetAreaOfInterventions(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['intervention-areas'],
+      },
+    },
+  );
+
+  const interventionArea = useMemo(
+    () =>
+      interventionAreaData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          interventionAreaData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [interventionAreaData],
+  );
+
+  return {
+    coordinationCountry: country,
+    interventionCountry: country,
+    interventionRegion: region,
+    interventionArea,
+    projectType,
+    status: [
+      { label: 'Active', value: NetworkProjectStatusFilter.Active },
+      { label: 'Finished', value: NetworkProjectStatusFilter.Finished },
+      { label: 'Not started', value: NetworkProjectStatusFilter.NotStarted },
+    ],
   };
 };
