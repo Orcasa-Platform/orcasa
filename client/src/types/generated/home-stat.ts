@@ -4,13 +4,15 @@
  * DOCUMENTATION
  * OpenAPI spec version: 1.0.0
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
   UseQueryOptions,
+  UseInfiniteQueryOptions,
   UseMutationOptions,
   QueryFunction,
   MutationFunction,
   UseQueryResult,
+  UseInfiniteQueryResult,
   QueryKey,
 } from '@tanstack/react-query';
 import type {
@@ -30,6 +32,50 @@ export const getHomeStats = (params?: GetHomeStatsParams, signal?: AbortSignal) 
 
 export const getGetHomeStatsQueryKey = (params?: GetHomeStatsParams) =>
   [`/home-stats`, ...(params ? [params] : [])] as const;
+
+export const getGetHomeStatsInfiniteQueryOptions = <
+  TData = Awaited<ReturnType<typeof getHomeStats>>,
+  TError = ErrorType<Error>,
+>(
+  params?: GetHomeStatsParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getHomeStats>>, TError, TData>;
+  },
+): UseInfiniteQueryOptions<Awaited<ReturnType<typeof getHomeStats>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetHomeStatsQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getHomeStats>>> = ({ signal }) =>
+    getHomeStats(params, signal);
+
+  return { queryKey, queryFn, ...queryOptions };
+};
+
+export type GetHomeStatsInfiniteQueryResult = NonNullable<Awaited<ReturnType<typeof getHomeStats>>>;
+export type GetHomeStatsInfiniteQueryError = ErrorType<Error>;
+
+export const useGetHomeStatsInfinite = <
+  TData = Awaited<ReturnType<typeof getHomeStats>>,
+  TError = ErrorType<Error>,
+>(
+  params?: GetHomeStatsParams,
+  options?: {
+    query?: UseInfiniteQueryOptions<Awaited<ReturnType<typeof getHomeStats>>, TError, TData>;
+  },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getGetHomeStatsInfiniteQueryOptions(params, options);
+
+  const query = useInfiniteQuery(queryOptions) as UseInfiniteQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+};
 
 export const getGetHomeStatsQueryOptions = <
   TData = Awaited<ReturnType<typeof getHomeStats>>,
