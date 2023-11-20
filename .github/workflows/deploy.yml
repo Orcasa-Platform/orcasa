@@ -68,69 +68,6 @@ jobs:
             ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ github.sha }}
             ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
-  build_client_image:
-    name: Build Client image and push to Amazon ECR
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - uses: dorny/paths-filter@v2
-        id: client-changes
-        with:
-          filters: |
-            client:
-              - 'client/**'
-              - '.github/workflows/**'
-
-      - name: Extract branch name
-        if: steps.client-changes.outputs.client == 'true'
-        run: |
-          {
-            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-            echo "branch=${branch}"
-            echo "branch_upper=${branch^^}"
-          } >> $GITHUB_OUTPUT
-        id: extract_branch
-
-      - name: Copy env variables to docker
-        if: steps.client-changes.outputs.client == 'true'
-        run: |
-          echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CLIENT_ENV_FILE || secrets[format('{0}_CLIENT_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > client/.env.local
-
-      - name: Configure AWS credentials
-        if: steps.client-changes.outputs.client == 'true'
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
-          aws-region: ${{ vars.AWS_REGION }}
-
-      - name: Login to Amazon ECR
-        if: steps.client-changes.outputs.client == 'true'
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          mask-password: 'true'
-
-      - name: Set up Docker Buildx
-        if: steps.client-changes.outputs.client == 'true'
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build, tag, and push Client image to Amazon ECR
-        if: steps.client-changes.outputs.client == 'true'
-        uses: docker/build-push-action@v5
-        with:
-          context: ./client
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          file: ./client/Dockerfile.prod
-          push: true
-          tags: |
-            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
-
   build_cms_image:
     name: Build CMS image and push to Amazon ECR
     runs-on: ubuntu-22.04
@@ -193,6 +130,69 @@ jobs:
           tags: |
             ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CMS_REPOSITORY_NAME }}:${{ github.sha }}
             ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CMS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+
+  build_client_image:
+    name: Build Client image and push to Amazon ECR
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: dorny/paths-filter@v2
+        id: client-changes
+        with:
+          filters: |
+            client:
+              - 'client/**'
+              - '.github/workflows/**'
+
+      - name: Extract branch name
+        if: steps.client-changes.outputs.client == 'true'
+        run: |
+          {
+            branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+            echo "branch=${branch}"
+            echo "branch_upper=${branch^^}"
+          } >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Copy env variables to docker
+        if: steps.client-changes.outputs.client == 'true'
+        run: |
+          echo "${{ steps.extract_branch.outputs.branch == 'main' && secrets.PRODUCTION_CLIENT_ENV_FILE || secrets[format('{0}_CLIENT_ENV_FILE', steps.extract_branch.outputs.branch_upper)] }}" > client/.env.local
+
+      - name: Configure AWS credentials
+        if: steps.client-changes.outputs.client == 'true'
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        if: steps.client-changes.outputs.client == 'true'
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          mask-password: 'true'
+
+      - name: Set up Docker Buildx
+        if: steps.client-changes.outputs.client == 'true'
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build, tag, and push Client image to Amazon ECR
+        if: steps.client-changes.outputs.client == 'true'
+        uses: docker/build-push-action@v5
+        with:
+          context: ./client
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          file: ./client/Dockerfile.prod
+          push: true
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.CLIENT_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   deploy:
     name: Deploy Client and CMS to Amazon EB
