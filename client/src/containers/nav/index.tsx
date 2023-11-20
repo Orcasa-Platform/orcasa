@@ -18,7 +18,7 @@ type NavLinkProps = PropsWithChildren<
 const NavLink = ({ href, children, color, active, ...rest }: NavLinkProps) => (
   <Link
     className={cn(
-      'duration-200 flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-4 pr-4 font-serif text-sm leading-tight transition-colors hover:bg-white hover:text-slate-700',
+      'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-4 pr-4 font-serif text-sm leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
       moduleColors[color].border,
       {
         'bg-white': active,
