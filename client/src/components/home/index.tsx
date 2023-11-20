@@ -8,7 +8,10 @@ import RecommendSection from './recommend-section';
 import SolutionsSection from './solutions-section';
 export default function HomePage() {
   return (
-    <div className="h-screen w-screen overflow-x-hidden bg-white" id="main-scroll">
+    <div
+      className="fixed h-screen w-screen overflow-x-hidden overflow-y-scroll bg-white"
+      id="main-scroll"
+    >
       <HomeNavBar />
       <div className="mt-[72px] space-y-[120px] bg-white">
         <HeroSection />
