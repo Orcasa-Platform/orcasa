@@ -1,10 +1,15 @@
 'use client';
 
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
+
 import { Globe2, BarChart, Users2, FileSpreadsheet, ArrowRight, CheckCircle } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
+import { modules } from '@/constants/modules';
+
+import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
 
@@ -168,7 +173,7 @@ const Card = ({
       <div className="text-left font-serif text-2xl text-gray-700">{title}</div>
     </>
   );
-
+  const cardModule = modules.find((module) => module.slug === slug);
   return (
     <Dialog>
       <DialogTrigger>
@@ -187,7 +192,7 @@ const Card = ({
             <div className="font-serif text-2xl leading-10">{title}</div>
             <div className="flex flex-col gap-4">{modulesInfo[slug].modalText}</div>
           </div>
-          <div className="flex h-full w-1/2 flex-1 border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-[160px]">
+          <div className="flex h-full  w-1/2 flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-[160px]">
             <ul className="flex flex-col gap-4">
               {modulesInfo[slug].modalList.map((listElement) => (
                 <li key={listElement} className="flex gap-2 text-sm">
@@ -196,6 +201,12 @@ const Card = ({
                 </li>
               ))}
             </ul>
+            <Button variant="outline" asChild disabled={cardModule?.disabled}>
+              <Link href={(!cardModule?.disabled && cardModule?.href) || '#'}>
+                Go to {cardModule?.name}
+                <ArrowRight className="ml-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </DialogContent>
