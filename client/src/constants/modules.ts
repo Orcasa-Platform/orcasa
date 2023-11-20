@@ -26,6 +26,7 @@ export interface Module {
   href: string;
   openNewTab?: boolean;
   color: keyof typeof moduleColors;
+  disabled: boolean; // NOTE: temporal. Remove when all the modules are ready
 }
 
 export const modules = [
@@ -33,22 +34,26 @@ export const modules = [
     name: 'Geospatial Data',
     href: '/geospatial-data',
     color: 'yellow',
+    disabled: false,
   },
   {
     name: 'Scientific Evidence',
     // NOTE: temporal URL
     href: 'http://ns3192284.ip-5-39-73.eu/scientific_evidence/',
     color: 'teal',
+    disabled: false,
   },
   {
     name: 'Practices',
     href: '/practices',
     color: 'brown',
+    disabled: true,
   },
   {
     name: 'Network',
     href: '/network',
     color: 'blue',
+    disabled: false,
   },
   {
     name: 'Datasets',
@@ -56,5 +61,6 @@ export const modules = [
     href: 'http://orcasa.ekoal.org/',
     openNewTab: true,
     color: 'purple',
+    disabled: true,
   },
 ] as const satisfies readonly Module[];
