@@ -36,6 +36,13 @@ export default {
               signal: true,
             },
           },
+          'get/home-stats': {
+            query: {
+              useQuery: true,
+              useInfinite: true,
+              signal: true,
+            },
+          },
         },
       },
     },
