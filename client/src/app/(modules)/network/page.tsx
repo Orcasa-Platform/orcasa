@@ -1,13 +1,16 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Filter, Plus } from 'lucide-react';
+import {
+  Filter,
+  //  Plus
+} from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
-import { useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
+import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
 
 import { useNetworks } from '@/hooks/networks';
 
@@ -18,39 +21,22 @@ import { Search } from '@/components/ui/search';
 
 import NetworkList from './network-list';
 
-const AddButton = ({ text }: { text: string }) => (
-  <Button
-    onClick={() => {
-      // TODO - add elements
-    }}
-  >
-    <Plus className="mr-2 h-6 w-6" />
-    <div className="text-base">{text}</div>
-  </Button>
-);
+// const AddButton = ({ text }: { text: string }) => (
+//   <Button
+//     onClick={() => {
+//       // TODO - add elements
+//     }}
+//   >
+//     <Plus className="mr-2 h-6 w-6" />
+//     <div className="text-base">{text}</div>
+//   </Button>
+// );
 
 export default function NetworkModule() {
-  const [filters] = useNetworkFilters();
+  const [filters, setFilters] = useNetworkFilters();
   const networks = useNetworks({ page: 1, filters });
-
-  const filtersCount = useMemo(
-    () =>
-      Object.keys(filters).filter((key) => {
-        const value = filters[key as keyof typeof filters];
-
-        const isSearchFilter = key === 'search';
-        let hasValue = true;
-        if (Array.isArray(value) || typeof value === 'string') {
-          hasValue = value.length > 0;
-        } else {
-          hasValue = value !== null && value !== undefined;
-        }
-
-        // The keywords search is not counted because it's shown in the main sidebar
-        return !isSearchFilter && hasValue;
-      }).length,
-    [filters],
-  );
+  // The keywords search is not counted because it's shown in the main sidebar
+  const filtersCount = useFiltersCount(filters, ['search']);
 
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
@@ -85,14 +71,13 @@ export default function NetworkModule() {
   return (
     <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
-        Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
+        Discover <span className="font-semibold text-blue-500">who does what</span> on soil carbon.
       </h1>
       <div className="flex justify-between gap-x-4">
         <Search
           containerClassName="basis-full"
-          onChange={() => {
-            // TODO - search
-          }}
+          defaultValue={filters.search}
+          onChange={(keywords) => setFilters({ ...filters, search: keywords })}
         />
         <Button
           ref={filtersButtonRef}
@@ -112,7 +97,8 @@ export default function NetworkModule() {
         </Button>
       </div>
       <NetworkList {...networks} />
-      <div className="flex items-center justify-between">
+      {/* TODO: Recover form buttons */}
+      {/* <div className="flex items-center justify-between">
         <div className="font-serif text-xl font-semibold leading-[30px]">
           Help us building the soil-carbon network
         </div>
@@ -120,7 +106,7 @@ export default function NetworkModule() {
           <AddButton text="Add organisation" />
           <AddButton text="Add project" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

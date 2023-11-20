@@ -23,34 +23,50 @@ export const moduleColors = {
 
 export interface Module {
   name: string;
+  slug: string;
   href: string;
+  openNewTab?: boolean;
   color: keyof typeof moduleColors;
+  disabled: boolean; // NOTE: temporal. Remove when all the modules are ready
 }
 
 export const modules = [
   {
     name: 'Geospatial Data',
+    slug: 'geospatial-data',
     href: '/geospatial-data',
     color: 'yellow',
+    disabled: false,
   },
   {
     name: 'Scientific Evidence',
-    href: '/scientific-evidence',
+    slug: 'scientific-evidence',
+    // NOTE: temporal URL
+    href: 'http://ns3192284.ip-5-39-73.eu/scientific_evidence/',
     color: 'teal',
+    disabled: false,
   },
   {
     name: 'Practices',
+    slug: 'practices',
     href: '/practices',
     color: 'brown',
+    disabled: true,
   },
   {
     name: 'Network',
+    slug: 'network',
     href: '/network',
     color: 'blue',
+    disabled: false,
   },
   {
     name: 'Datasets',
-    href: '/datasets',
+    slug: 'datasets',
+    // NOTE: temporal URL
+    href: 'http://orcasa.ekoal.org/',
+    openNewTab: true,
     color: 'purple',
+    disabled: true,
   },
 ] as const satisfies readonly Module[];

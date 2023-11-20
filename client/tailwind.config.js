@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import defaultTheme from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 module.exports = {
   darkMode: ['class'],
@@ -47,12 +48,14 @@ module.exports = {
         },
         gray: {
           50: '#F7F7F9',
+          100: '#F0F0F5',
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',
           400: '#8B90A4',
           500: '#7C7F8F',
           800: '#3C4363',
+          850: '#2C324B',
           900: '#1D2133',
         },
         peach: {
@@ -60,6 +63,7 @@ module.exports = {
           100: '#FFECDB',
           // Projects
           700: '#EF6A4C',
+          900: '#CA3412',
         },
         brown: {
           // Practices
@@ -134,5 +138,11 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+    plugin(({ addVariant }) => {
+      addVariant('search-cancel', '&::-webkit-search-cancel-button');
+    }),
+  ],
 };
