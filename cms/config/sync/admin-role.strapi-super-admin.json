@@ -155,6 +155,59 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::home-stat.home-stat",
+      "properties": {
+        "fields": [
+          "title",
+          "value",
+          "class"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::home-stat.home-stat",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::home-stat.home-stat",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::home-stat.home-stat",
+      "properties": {
+        "fields": [
+          "title",
+          "value",
+          "class"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::home-stat.home-stat",
+      "properties": {
+        "fields": [
+          "title",
+          "value",
+          "class"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::layer-group.layer-group",
       "properties": {
         "fields": [

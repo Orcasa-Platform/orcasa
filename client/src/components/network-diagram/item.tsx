@@ -13,6 +13,7 @@ import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
+
 import Document from '@/styles/icons/document.svg';
 
 type PathProps = {

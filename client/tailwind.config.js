@@ -20,6 +20,9 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    transitionDuration: {
+      2000: '2000ms',
+    },
     extend: {
       fontFamily: {
         sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
@@ -55,6 +58,7 @@ module.exports = {
           400: '#8B90A4',
           500: '#7C7F8F',
           800: '#3C4363',
+          850: '#2C324B',
           900: '#1D2133',
         },
         peach: {

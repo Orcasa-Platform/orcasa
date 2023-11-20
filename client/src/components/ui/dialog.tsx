@@ -33,8 +33,10 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    contentClassName?: string;
+  }
+>(({ className, contentClassName, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -45,9 +47,11 @@ const DialogContent = React.forwardRef<
       )}
       {...props}
     >
-      <div className="flex  flex-col gap-6 overflow-y-auto p-12">{children}</div>
+      <div className={cn('flex flex-col gap-6 overflow-y-auto p-12', contentClassName)}>
+        {children}
+      </div>
       <DialogPrimitive.Close className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center bg-slate-700 text-sm font-medium text-white transition-colors hover:bg-slate-500 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="h-4 w-4" />
+        <X className="h-6 w-6" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>

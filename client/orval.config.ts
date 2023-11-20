@@ -55,6 +55,7 @@ export default {
           'Project-type',
           'Region',
           'Area-of-intervention',
+          'Home-stat',
         ],
       },
     },
