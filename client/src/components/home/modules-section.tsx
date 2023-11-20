@@ -50,7 +50,7 @@ const modulesInfo = {
       '13 146 primary publications',
       '217 meta-analyses publications',
       'Quickly identify relevant scientific publications',
-      'Measure global practices&apos; impact with data-driven graphs',
+      "Measure global practices' impact with data-driven graphs",
     ],
   },
   network: {
