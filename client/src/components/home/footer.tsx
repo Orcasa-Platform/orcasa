@@ -47,14 +47,13 @@ const Footer = () => (
             <LinkedinIcon className="min-w-4 h-4 w-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="#" target="_blank">
+          <Link href="#">
             <MailIcon className="min-w-5 h-4 w-5 hover:opacity-90" />
           </Link>
         </div>
         <div className="flex items-center justify-start gap-4">
           <Link
             href="#"
-            target="_blank"
             className="border-r border-white border-opacity-20 px-5 text-sm text-white hover:text-gray-100"
           >
             Legal Details

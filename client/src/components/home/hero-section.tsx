@@ -12,7 +12,7 @@ import ArrowDownLong from '@/styles/icons/arrow-down-long.svg';
 
 const HeroSection = () => {
   return (
-    <div className={`relative h-[calc(100vh-72px)] min-h-[calc(100vh-72px)]`}>
+    <div id="hero" className="relative h-[calc(100vh-72px)] min-h-[calc(100vh-72px)] scroll-mt-12">
       <div className={`absolute flex h-full w-full items-center justify-center p-10 pt-0`}>
         <img src="/images/shape.svg" className="h-[616px] w-full" alt="" />
       </div>

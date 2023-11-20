@@ -2,7 +2,10 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Filter, Plus } from 'lucide-react';
+import {
+  Filter,
+  //  Plus
+} from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
@@ -18,16 +21,16 @@ import { Search } from '@/components/ui/search';
 
 import NetworkList from './network-list';
 
-const AddButton = ({ text }: { text: string }) => (
-  <Button
-    onClick={() => {
-      // TODO - add elements
-    }}
-  >
-    <Plus className="mr-2 h-6 w-6" />
-    <div className="text-base">{text}</div>
-  </Button>
-);
+// const AddButton = ({ text }: { text: string }) => (
+//   <Button
+//     onClick={() => {
+//       // TODO - add elements
+//     }}
+//   >
+//     <Plus className="mr-2 h-6 w-6" />
+//     <div className="text-base">{text}</div>
+//   </Button>
+// );
 
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
@@ -68,7 +71,7 @@ export default function NetworkModule() {
   return (
     <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
-        Discover <span className="font-semibold text-blue-500">who does what</span> on soils carbon.
+        Discover <span className="font-semibold text-blue-500">who does what</span> on soil carbon.
       </h1>
       <div className="flex justify-between gap-x-4">
         <Search
@@ -94,7 +97,8 @@ export default function NetworkModule() {
         </Button>
       </div>
       <NetworkList {...networks} />
-      <div className="flex items-center justify-between">
+      {/* TODO: Recover form buttons */}
+      {/* <div className="flex items-center justify-between">
         <div className="font-serif text-xl font-semibold leading-[30px]">
           Help us building the soil-carbon network
         </div>
@@ -102,7 +106,7 @@ export default function NetworkModule() {
           <AddButton text="Add organisation" />
           <AddButton text="Add project" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

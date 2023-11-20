@@ -12,13 +12,13 @@ import { cn } from '@/lib/classnames';
 import { Module, moduleColors, modules } from '@/constants/modules';
 
 type NavLinkProps = PropsWithChildren<
-  Omit<Module, 'name'> & { active?: boolean; target?: HTMLAttributeAnchorTarget }
+  Omit<Module, 'name' | 'slug'> & { active?: boolean; target?: HTMLAttributeAnchorTarget }
 >;
 
 const NavLink = ({ href, children, color, active, ...rest }: NavLinkProps) => (
   <Link
     className={cn(
-      'flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-4 pr-4 font-serif text-sm leading-tight transition-colors duration-200 hover:bg-white hover:text-slate-700',
+      'duration-200 flex h-[68px] cursor-pointer items-center justify-start border-l-8 py-4 pl-4 pr-4 font-serif text-sm leading-tight transition-colors hover:bg-white hover:text-slate-700',
       moduleColors[color].border,
       {
         'bg-white': active,
@@ -45,14 +45,15 @@ export default function Nav() {
         </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">
           {modules.map((module) => {
-            const { href, openNewTab, color, name } = module as Module;
+            const { href, openNewTab, color, name, disabled } = module as Module;
             return (
               <NavLink
                 key={href}
-                href={href}
-                target={openNewTab ? '_blank' : undefined}
+                href={disabled ? '#' : href}
+                target={openNewTab && !disabled ? '_blank' : undefined}
                 color={color}
                 active={pathname === href}
+                disabled={disabled}
               >
                 {name}
               </NavLink>
