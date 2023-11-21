@@ -12,7 +12,10 @@ import { cn } from '@/lib/classnames';
 import { Module, moduleColors, modules } from '@/constants/modules';
 
 type NavLinkProps = PropsWithChildren<
-  Omit<Module, 'name' | 'slug'> & { active?: boolean; target?: HTMLAttributeAnchorTarget }
+  Omit<Module, 'name' | 'slug' | 'openNewTab'> & {
+    active?: boolean;
+    target?: HTMLAttributeAnchorTarget;
+  }
 >;
 
 const NavLink = ({ href, children, color, active, ...rest }: NavLinkProps) => (
