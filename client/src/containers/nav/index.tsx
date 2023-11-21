@@ -53,7 +53,7 @@ export default function Nav() {
                 key={href}
                 href={disabled ? '#' : href}
                 color={color}
-                active={pathname === href}
+                active={pathname.startsWith(href)}
                 disabled={disabled}
               >
                 {name}

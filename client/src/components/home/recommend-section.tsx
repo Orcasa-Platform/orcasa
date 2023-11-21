@@ -19,7 +19,7 @@ const RecommendSection = () => (
           <div className="h-8 w-[143px] rounded-lg bg-green-700 px-2 py-1.5 text-center text-sm font-semibold uppercase leading-normal tracking-wider text-white">
             we recommend
           </div>
-          <h2 className="w-[504px] font-serif text-[32px] leading-[48px] text-gray-700">
+          <h2 className="w-[504px] font-serif text-3.5xl leading-[48px] text-gray-700">
             Carbon schemes inventory platform
           </h2>
           <div className="w-[374px] text-base text-gray-700">

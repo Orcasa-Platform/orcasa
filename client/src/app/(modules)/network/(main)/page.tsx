@@ -2,6 +2,8 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
+import Link from 'next/link';
+
 import { Filter, Plus, Users2 } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
@@ -17,17 +19,6 @@ import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
 import NetworkList from './network-list';
-
-const AddButton = ({ text }: { text: string }) => (
-  <Button
-    onClick={() => {
-      // TODO - add elements
-    }}
-  >
-    <Plus className="mr-2 h-6 w-6" />
-    <div className="text-base">{text}</div>
-  </Button>
-);
 
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
@@ -72,8 +63,20 @@ export default function NetworkModule() {
         Help us building the soil-carbon network
       </div>
       <div className="ml-4 space-x-4">
-        <AddButton text="Organisation" />
-        <AddButton text="Project" />
+        <Button asChild>
+          <Link href="/network/new/organisation">
+            <Plus className="mr-2 h-6 w-6" />
+            <div className="text-base">Organisation</div>
+          </Link>
+        </Button>
+        <Button
+          onClick={() => {
+            // TODO - add elements
+          }}
+        >
+          <Plus className="mr-2 h-6 w-6" />
+          <div className="text-base">Project</div>
+        </Button>
       </div>
     </div>
   );
