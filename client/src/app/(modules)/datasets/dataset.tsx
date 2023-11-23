@@ -86,10 +86,7 @@ export default function Dataset({ _id, ...attributes }: DatasetListResponseDataI
               className="gap-x-1 text-base font-semibold text-purple-700"
               asChild
             >
-              <a
-                href={doi?.startsWith('http') ? doi : `https://doi.org/${doi?.replace('doi:', '')}`}
-                target="_blank"
-              >
+              <a href={`https://doi.org/${doi?.replace('doi:', '')}`} target="_blank">
                 DOI
                 <ArrowRight />
               </a>
