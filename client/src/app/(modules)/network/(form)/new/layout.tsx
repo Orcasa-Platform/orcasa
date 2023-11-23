@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function NetworkModuleLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="absolute top-0 z-10 flex h-screen w-screen justify-center bg-white">
+    <div className="absolute left-[117px] top-0 z-10 flex h-screen w-[calc(100%-117px)] justify-center overflow-auto bg-white">
       <div className="mt-10">
         <SlidingLinkButton href="/network" Icon={ArrowLeft} scroll={false}>
           Go back
