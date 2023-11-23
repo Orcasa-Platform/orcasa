@@ -202,10 +202,7 @@ const Card = ({
               ))}
             </ul>
             <Button variant="outline" asChild disabled={cardModule?.disabled}>
-              <Link
-                href={(!cardModule?.disabled && cardModule?.href) || '#'}
-                target={cardModule?.openNewTab ? '_blank' : undefined}
-              >
+              <Link href={(!cardModule?.disabled && cardModule?.href) || '#'}>
                 Go to {cardModule?.name}
                 <ArrowRight className="ml-4" />
               </Link>
