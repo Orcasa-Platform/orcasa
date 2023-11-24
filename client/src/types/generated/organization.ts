@@ -132,54 +132,53 @@ export const postOrganizations = (organizationRequest: OrganizationRequest) => {
   });
 };
 
-export const getPostOrganizationsMutationOptions = <
+export const getPostOrganizationsQueryKey = (organizationRequest: OrganizationRequest) =>
+  [`/organizations`, organizationRequest] as const;
+
+export const getPostOrganizationsQueryOptions = <
+  TData = Awaited<ReturnType<typeof postOrganizations>>,
   TError = ErrorType<Error>,
-  TContext = unknown,
->(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof postOrganizations>>,
-    TError,
-    { data: OrganizationRequest },
-    TContext
-  >;
-}): UseMutationOptions<
-  Awaited<ReturnType<typeof postOrganizations>>,
-  TError,
-  { data: OrganizationRequest },
-  TContext
-> => {
-  const { mutation: mutationOptions } = options ?? {};
+>(
+  organizationRequest: OrganizationRequest,
+  options?: {
+    query?: UseQueryOptions<Awaited<ReturnType<typeof postOrganizations>>, TError, TData>;
+  },
+): UseQueryOptions<Awaited<ReturnType<typeof postOrganizations>>, TError, TData> & {
+  queryKey: QueryKey;
+} => {
+  const { query: queryOptions } = options ?? {};
 
-  const mutationFn: MutationFunction<
-    Awaited<ReturnType<typeof postOrganizations>>,
-    { data: OrganizationRequest }
-  > = (props) => {
-    const { data } = props ?? {};
+  const queryKey = queryOptions?.queryKey ?? getPostOrganizationsQueryKey(organizationRequest);
 
-    return postOrganizations(data);
-  };
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof postOrganizations>>> = () =>
+    postOrganizations(organizationRequest);
 
-  return { mutationFn, ...mutationOptions };
+  return { queryKey, queryFn, ...queryOptions };
 };
 
-export type PostOrganizationsMutationResult = NonNullable<
+export type PostOrganizationsQueryResult = NonNullable<
   Awaited<ReturnType<typeof postOrganizations>>
 >;
-export type PostOrganizationsMutationBody = OrganizationRequest;
-export type PostOrganizationsMutationError = ErrorType<Error>;
+export type PostOrganizationsQueryError = ErrorType<Error>;
 
-export const usePostOrganizations = <TError = ErrorType<Error>, TContext = unknown>(options?: {
-  mutation?: UseMutationOptions<
-    Awaited<ReturnType<typeof postOrganizations>>,
-    TError,
-    { data: OrganizationRequest },
-    TContext
-  >;
-}) => {
-  const mutationOptions = getPostOrganizationsMutationOptions(options);
+export const usePostOrganizations = <
+  TData = Awaited<ReturnType<typeof postOrganizations>>,
+  TError = ErrorType<Error>,
+>(
+  organizationRequest: OrganizationRequest,
+  options?: {
+    query?: UseQueryOptions<Awaited<ReturnType<typeof postOrganizations>>, TError, TData>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getPostOrganizationsQueryOptions(organizationRequest, options);
 
-  return useMutation(mutationOptions);
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
 };
+
 export const getOrganizationsId = (
   id: number,
   params?: GetOrganizationsIdParams,

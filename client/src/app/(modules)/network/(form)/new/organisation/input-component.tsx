@@ -2,8 +2,6 @@ import { ControllerRenderProps, UseFormWatch } from 'react-hook-form';
 
 import { cn } from '@/lib/classnames';
 
-import { type Field } from '@/hooks/networks/forms';
-
 import { Input } from '@/components/ui/input';
 import {
   Select,
@@ -14,12 +12,15 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
+import { type Field } from './page';
+
 const InputComponent = ({
   field,
   type,
   options,
   watch,
   maxSize,
+  placeholder,
 }: {
   field: ControllerRenderProps<
     {
@@ -29,14 +30,15 @@ const InputComponent = ({
   >;
   type: Field['type'];
   options?: Field['options'];
+  maxSize?: Field['maxSize'];
+  placeholder?: Field['placeholder'];
   watch: UseFormWatch<{
     [x: string]: string | undefined;
   }>;
-  maxSize?: number;
 }) => {
   if (type === 'select') {
     return (
-      <Select {...field} onValueChange={field.onChange} defaultValue={field.value}>
+      <Select name={field.name} onValueChange={field.onChange} defaultValue={field.value}>
         <SelectTrigger>
           <div className="max-w-full truncate">
             <SelectValue />
@@ -56,7 +58,7 @@ const InputComponent = ({
     const watchField = watch(field.name);
     return (
       <>
-        <Textarea {...field} />
+        <Textarea {...field} value={field.value ?? ''} />
         {maxSize && (
           <div
             className={cn('flex justify-end text-sm text-gray-500', {
@@ -69,7 +71,7 @@ const InputComponent = ({
       </>
     );
   }
-  return <Input {...field} />;
+  return <Input {...field} value={field.value ?? ''} placeholder={placeholder} />;
 };
 
 export default InputComponent;
