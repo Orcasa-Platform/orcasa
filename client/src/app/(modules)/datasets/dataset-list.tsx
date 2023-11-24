@@ -37,7 +37,7 @@ export default function DatasetList({
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
-      {!data?.pages.length && (
+      {(!data?.pages.length || (data.pages.length === 1 && !data.pages[0].data.length)) && (
         <p className="py-8 text-center font-semibold text-slate-500">
           No results based on your search criteria
         </p>
