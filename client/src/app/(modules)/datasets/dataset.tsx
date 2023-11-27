@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ArrowRight } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import striptags from 'striptags';
 
 import { format } from '@/lib/utils/formats';
@@ -10,50 +10,48 @@ import { Dataset, DatasetListResponseDataItem, DatasetSource } from '@/types/dat
 import { Button } from '@/components/ui/button';
 import CalendarIcon from '@/styles/icons/calendar.svg';
 
-const sourceToLogo: Record<
+export const sourceToLogo: Record<
   DatasetSource,
   { src: string; alt: string; width: number; height: number }
 > = {
+  INRAE: {
+    src: '/assets/logos/inrae.svg',
+    alt: 'INRAE',
+    width: 54,
+    height: 12,
+  },
   CIRAD: {
     src: '/assets/logos/cirad.svg',
     alt: 'CIRAD',
-    width: 85,
-    height: 32,
+    width: 64,
+    height: 24,
   },
   HARVARD: {
     src: '/assets/logos/harvard.svg',
     alt: 'Harvard University',
-    width: 101,
-    height: 25,
-  },
-  INRAE: {
-    src: '/assets/logos/inrae.svg',
-    alt: 'INRAE',
-    width: 86,
-    height: 19,
-  },
-  JRC: {
-    src: '/assets/logos/jrc.svg',
-    alt: 'Joint Research Centre',
-    width: 86,
-    height: 59,
+    width: 81,
+    height: 20,
   },
   ZENODO: {
     src: '/assets/logos/zenodo.svg',
     alt: 'Zenodo',
-    width: 86,
-    height: 25,
+    width: 55,
+    height: 16,
+  },
+  JRC: {
+    src: '/assets/logos/jrc.svg',
+    alt: 'Joint Research Centre',
+    width: 58,
+    height: 40,
   },
 };
 
 const Icons = ({ source, publication_date }: Omit<Dataset, '_id'>) => {
   return (
     <div className="relative flex flex-wrap gap-x-4 gap-y-2">
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2 text-xs text-gray-800">
         <CalendarIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base text-slate-500">
-          {format({ id: 'formatDate', value: publication_date })}
-        </div>
+        {format({ id: 'formatDate', value: publication_date })}
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image className="absolute right-0 top-0" {...sourceToLogo[source]} />
       </div>
@@ -65,42 +63,36 @@ export default function Dataset({ _id, ...attributes }: DatasetListResponseDataI
   const { title, authors, short_description, url, doi } = attributes;
 
   return (
-    <li key={_id} className="mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50">
-      <div className="flex w-full flex-col justify-between gap-6 px-12 py-10 text-base text-slate-500">
-        <header className="flex flex-col gap-6">
+    <li key={_id} className="mb-2 flex min-h-[240px] w-full bg-gray-50">
+      <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-gray-800">
+        <header className="flex flex-col gap-4">
           <Icons {...attributes} />
-          <div className="font-serif text-2xl leading-10">{title}</div>
-          {!!authors && <p>{Array.isArray(authors) ? authors.join(', ') : authors}</p>}
+          <div className="font-serif text-lg leading-10">{title}</div>
+          {!!authors && authors.length > 0 && (
+            <p className="text-xs italic">
+              {Array.isArray(authors) ? authors.join(', ') : authors}
+            </p>
+          )}
           <p
-            className="line-clamp-2"
+            className="mt-4 line-clamp-2 text-sm text-gray-500"
             // Even if the content is not HTML anymore after the tags have been stripped, there are
             // still characters such as `&apos;` in the text
             dangerouslySetInnerHTML={{ __html: striptags(short_description) }}
           />
         </header>
-        <div className="flex items-center justify-end gap-x-4">
+        <div className="mt-1 flex items-center justify-end gap-x-4">
           {!!doi && (
-            <Button
-              variant="vanilla"
-              size="auto"
-              className="gap-x-1 text-base font-semibold text-purple-700"
-              asChild
-            >
+            <Button className="gap-x-4 text-base" asChild>
               <a href={`https://doi.org/${doi?.replace('doi:', '')}`} target="_blank">
                 DOI
-                <ArrowRight />
+                <ExternalLink />
               </a>
             </Button>
           )}
-          <Button
-            variant="vanilla"
-            size="auto"
-            className="gap-x-1 text-base font-semibold text-purple-700"
-            asChild
-          >
+          <Button className="gap-x-4 text-base" asChild>
             <a href={url} target="_blank">
-              Access dataset
-              <ArrowRight />
+              Dataset
+              <ExternalLink />
             </a>
           </Button>
         </div>
