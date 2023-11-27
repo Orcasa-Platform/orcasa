@@ -57,12 +57,16 @@ export default function NetworkModule() {
   }, [filterSidebarOpen, previousFilterSidebarOpen]);
 
   const renderFormButtons = (
-    <div className="fixed bottom-0 -ml-12 flex items-center justify-between bg-white p-6">
-      <Users2 className="mr-2 h-7 w-10 text-blue-400" />
-      <div className="font-serif text-base font-semibold">
-        Help us building the soil-carbon network
+    <div className="fixed bottom-0 -ml-12 flex w-full flex-wrap items-center justify-between bg-white px-4 py-6 lg:flex-nowrap">
+      <div className="flex">
+        <Users2 className="mr-2 h-8 w-10 min-w-fit whitespace-nowrap text-blue-400" />
+        <div className="flex-shrink font-serif text-base font-semibold">
+          Help us building the soil-
+          <wbr />
+          carbon network
+        </div>
       </div>
-      <div className="ml-4 space-x-4">
+      <div className="mt-2 min-w-fit space-x-4 lg:ml-2 lg:mt-0">
         <Button asChild>
           <Link href="/network/new/organisation">
             <Plus className="mr-2 h-6 w-6" />
