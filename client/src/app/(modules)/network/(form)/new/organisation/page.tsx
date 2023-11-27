@@ -4,8 +4,11 @@ import { useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { useRouter } from 'next/navigation';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Check } from 'lucide-react';
+import { AxiosError } from 'axios';
+import { Check, CircleSlash } from 'lucide-react';
 import { z } from 'zod';
 
 import { postOrganizations } from '@/types/generated/organization';
@@ -47,22 +50,16 @@ export default function OrganisationForm() {
   const { organizationTypes, organizationThemes, countries } = useFormGetFields() || {};
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
   const hasData = organizationTypes && organizationThemes && countries;
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<AxiosError | undefined>();
   const fields: { [key: string]: Field } | undefined = hasData && {
     user_email: {
       label: 'User email',
       required: true,
-      zod: z
-        .string()
-        .nonempty('User email is mandatory.')
-        .max(150, {
-          message: 'User email is limited to 150 characters.',
-        })
-        .regex(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, {
-          message: 'Please, enter a valid email.',
-        }),
-      description: 'Please, add your email so we can get back to you.',
+      zod: z.string().nonempty('User email').email('Please, enter a valid email.').max(150, {
+        message: 'Email is limited to 150 characters.',
+      }),
       type: 'text',
+      maxSize: 150,
     },
     name: {
       label: 'Organisation name',
@@ -76,9 +73,7 @@ export default function OrganisationForm() {
     organization_type: {
       label: 'Organisation type',
       required: true,
-      zod: z
-        .enum(organizationTypes?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.enum(organizationTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
       options: organizationTypes.map((type) => ({
         label: type.name,
@@ -193,6 +188,8 @@ export default function OrganisationForm() {
     resolver: zodResolver(formSchema),
   });
 
+  const router = useRouter();
+
   if (!hasData || !fields) {
     return null;
   }
@@ -201,8 +198,8 @@ export default function OrganisationForm() {
     postOrganizations({
       data,
     } as unknown as OrganizationRequest)
-      .then((res) => {
-        return res;
+      .then(() => {
+        router.push(`/network/new/organisation/thank-you`);
       })
       .catch((err) => {
         setError(err);
@@ -212,24 +209,6 @@ export default function OrganisationForm() {
 
   return (
     <>
-      {error && (
-        <div className="inline-flex h-[88px] w-[632px] flex-col items-start justify-start gap-2.5">
-          <div className="inline-flex items-center justify-start gap-3 self-stretch rounded-md bg-pink-50 p-4">
-            <div className="flex w-5 items-start justify-start gap-2.5 self-stretch">
-              <div className="relative h-5 w-5" />
-            </div>
-            <div className="inline-flex shrink grow basis-0 flex-col items-start justify-start gap-2">
-              <div className="w-[832px] font-['Roboto'] text-sm font-semibold leading-normal text-red-700">
-                Something went wrong
-              </div>
-              <div className="self-stretch font-['Roboto'] text-sm font-normal leading-normal text-slate-600">
-                {error}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      {/* <ErrorMessage errors={errors} name="singleErrorInput" /> */}
       <Form {...form}>
         <form className="min-w-[632px] max-w-[632px]" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="mb-2 flex w-full items-center justify-between border-b border-dashed border-gray-300 pb-6">
@@ -240,6 +219,15 @@ export default function OrganisationForm() {
             </Button>
           </div>
           <div className="space-y-6">
+            {!!error && (
+              <div className="mt-3 flex w-full gap-3 rounded-md bg-pink-50 p-4 text-red-700">
+                <CircleSlash className="relative h-5 w-5" />
+                <div className="text-sm">
+                  <div className="mb-2 font-semibold">Something went wrong</div>
+                  <div className="text-gray-600">{error?.message}</div>
+                </div>
+              </div>
+            )}
             <div className="font-serif text-2xl leading-10 text-gray-700">
               Organisation information
             </div>
