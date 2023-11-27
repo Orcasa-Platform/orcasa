@@ -19,9 +19,14 @@ const NavBar = () => {
       </a>
       <nav className="flex items-center justify-center gap-10 font-serif text-base text-gray-500">
         {modules.map((module) => {
-          const { href, name, disabled } = module;
+          const { href, name, disabled, openNewTab } = module;
           return (
-            <Link key={href} href={disabled ? '#' : href} className="hover:text-gray-300">
+            <Link
+              key={href}
+              href={disabled ? '#' : href}
+              target={openNewTab ? '_blank' : undefined}
+              className="hover:text-gray-300"
+            >
               {name}
             </Link>
           );
