@@ -29,7 +29,7 @@ export const getProjectFields = (project: Project) => {
 
   const fields = [];
 
-  if (typeof description !== 'undefined' && description.length > 0) {
+  if (description && typeof description !== 'undefined' && description.length > 0) {
     fields.push({ label: 'Description', value: description, hasEllipsis: true });
   }
 
@@ -126,15 +126,15 @@ export const getOrganizationFields = (organization: Organization) => {
   } = organization;
   const fields = [];
 
-  if (typeof description !== 'undefined' && description.length > 0) {
+  if (description && typeof description !== 'undefined' && description.length > 0) {
     fields.push({ label: 'Description', value: description, hasEllipsis: true });
   }
 
-  if (typeof country !== 'undefined') {
+  if (country && typeof country !== 'undefined') {
     fields.push({ label: 'Country', value: country?.data?.attributes?.name });
   }
 
-  if (typeof thematic !== 'undefined') {
+  if (thematic && typeof thematic !== 'undefined') {
     const thematics = `${thematic?.data?.attributes?.name}${
       secondaryThematic?.data?.attributes?.name
         ? `, ${secondaryThematic?.data?.attributes?.name}`
