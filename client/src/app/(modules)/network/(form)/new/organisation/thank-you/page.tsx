@@ -1,6 +1,6 @@
 import { Upload, Glasses, CheckCircle } from 'lucide-react';
 
-import NewButtons from './new-buttons';
+import NewButtons from '@/components/new-buttons';
 
 export default async function ThankYouPage() {
   return (
@@ -29,9 +29,6 @@ export default async function ThankYouPage() {
           </div>
           <div className="text-sm text-gray-700">Published</div>
         </div>
-      </div>
-      <div className="text-base leading-normal text-gray-700">
-        Your data is going to be revised and validated, this process can take some days.
       </div>
       <div className="flex items-center justify-between border-t border-dashed border-gray-300 py-10">
         <div className="w-[290px] font-serif text-2xl leading-10 text-gray-700">

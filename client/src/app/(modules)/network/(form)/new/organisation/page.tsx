@@ -53,7 +53,7 @@ export default function OrganisationForm() {
   const [error, setError] = useState<AxiosError | undefined>();
   const fields: { [key: string]: Field } | undefined = hasData && {
     user_email: {
-      label: 'User email',
+      label: 'Email',
       required: true,
       zod: z.string().nonempty('User email').email('Please, enter a valid email.').max(150, {
         message: 'Email is limited to 150 characters.',
@@ -207,10 +207,49 @@ export default function OrganisationForm() {
       });
   };
 
+  const renderField = (key: string) => {
+    const { label, required, type, options, placeholder, maxSize, description } = fields[key];
+    return (
+      <FormField
+        key={key}
+        name={key}
+        control={form.control}
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="flex justify-between">
+              <span>
+                {label}
+                {required && (
+                  <>
+                    {' '}
+                    <span className="text-red-700">*</span>
+                  </>
+                )}
+              </span>
+              {!required && <span className="text-sm text-gray-700">Optional</span>}
+            </FormLabel>
+            <FormControl>
+              <InputComponent
+                field={field}
+                type={type}
+                options={options}
+                watch={form.watch}
+                maxSize={maxSize}
+                placeholder={placeholder}
+              />
+            </FormControl>
+            <FormDescription className="text-sm text-slate-500">{description}</FormDescription>
+            <FormMessage className="max-w-[632px]" />
+          </FormItem>
+        )}
+      />
+    );
+  };
+
   return (
     <>
       <Form {...form}>
-        <form className="min-w-[632px] max-w-[632px]" onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="min-w-[632px] max-w-[632px] pb-10" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="mb-2 flex w-full items-center justify-between border-b border-dashed border-gray-300 pb-6">
             <h1 className="font-serif text-3.5xl text-blue-500">New Organisation</h1>
             <Button type="submit" variant="primary" className="gap-2 bg-blue-500">
@@ -236,56 +275,29 @@ export default function OrganisationForm() {
               <span className="text-red-700">*</span>
               <span> are mandatory.</span>
             </div>
-            {Object.keys(fields).map((key) => {
-              if (
-                key === 'organization_type_other' &&
-                form.watch('organization_type') !== OtherId
-              ) {
-                return null;
-              }
-              const { label, required, type, options, placeholder, maxSize, description } =
-                fields[key];
-              return (
-                <FormField
-                  key={key}
-                  name={key}
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex justify-between">
-                        <span>
-                          {label}
-                          {required && (
-                            <>
-                              {' '}
-                              <span className="text-red-700">*</span>
-                            </>
-                          )}
-                        </span>
-                        {!required && <span className="text-sm text-gray-700">Optional</span>}
-                      </FormLabel>
-                      <FormControl>
-                        <InputComponent
-                          field={field}
-                          type={type}
-                          options={options}
-                          watch={form.watch}
-                          maxSize={maxSize}
-                          placeholder={placeholder}
-                        />
-                      </FormControl>
-                      <FormDescription className="text-sm text-slate-500">
-                        {description}
-                      </FormDescription>
-                      <FormMessage className="max-w-[632px]" />
-                    </FormItem>
-                  )}
-                />
-              );
-            })}
+            {Object.keys(fields)
+              .filter((f) => f !== 'user_email')
+              .map((key) => {
+                if (
+                  key === 'organization_type_other' &&
+                  form.watch('organization_type') !== OtherId
+                ) {
+                  return null;
+                }
+                return renderField(key);
+              })}
             <div>Fields</div>
             <div className="mt-10 font-serif text-2xl text-gray-700">Organisation network</div>
             <div>Network Fields</div>
+            <div className="space-y-6 border-t border-dashed border-gray-300">
+              <div className="mt-6 font-serif text-2xl text-gray-700">Contact Information</div>
+              <div className="text-gray-700">
+                The information you have added is going to be revised and validated. This process
+                could require clarifications form our team, please enter your email so we can
+                contact for it.
+              </div>
+              {renderField('user_email')}
+            </div>
           </div>
         </form>
       </Form>

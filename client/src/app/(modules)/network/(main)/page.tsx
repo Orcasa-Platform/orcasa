@@ -2,9 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import Link from 'next/link';
-
-import { Filter, Plus, Users2 } from 'lucide-react';
+import { Filter, Users2 } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
@@ -15,6 +13,7 @@ import { useNetworks } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
+import NewButtons from '@/components/new-buttons';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
@@ -66,22 +65,7 @@ export default function NetworkModule() {
           carbon network
         </div>
       </div>
-      <div className="mt-2 min-w-fit space-x-4 lg:ml-2 lg:mt-0">
-        <Button asChild>
-          <Link href="/network/new/organisation">
-            <Plus className="mr-2 h-6 w-6" />
-            <div className="text-base">Organisation</div>
-          </Link>
-        </Button>
-        <Button
-          onClick={() => {
-            // TODO - add elements
-          }}
-        >
-          <Plus className="mr-2 h-6 w-6" />
-          <div className="text-base">Project</div>
-        </Button>
-      </div>
+      <NewButtons className="mt-2 min-w-fit space-x-4 lg:ml-2 lg:mt-0" />
     </div>
   );
 
