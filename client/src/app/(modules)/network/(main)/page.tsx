@@ -58,8 +58,8 @@ export default function NetworkModule() {
 
   const renderFormButtons = (
     <div className="fixed bottom-0 -ml-12 flex w-full flex-wrap items-center justify-between bg-white px-4 py-6 lg:flex-nowrap">
-      <div className="flex">
-        <Users2 className="mr-2 h-8 w-10 min-w-fit whitespace-nowrap text-blue-400" />
+      <div className="flex items-center">
+        <Users2 className="mb-1 mr-2 h-7 w-10 min-w-fit whitespace-nowrap text-blue-400" />
         <div className="flex-shrink font-serif text-base font-semibold">
           Help us building the soil-
           <wbr />
