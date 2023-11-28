@@ -874,7 +874,6 @@ export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribute
   partner_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
   funded_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
   publication_status?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-  user_email?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
@@ -1898,7 +1897,6 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributes = {
   partner_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
   funded_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
   publication_status?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-  user_email?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
@@ -3324,7 +3322,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     partner_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
     funded_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
     publication_status?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-    user_email?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
@@ -4857,7 +4854,6 @@ export interface Organization {
   partner_projects?: OrganizationPartnerProjects;
   funded_projects?: OrganizationFundedProjects;
   publication_status?: OrganizationPublicationStatus;
-  user_email?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationCreatedBy;
@@ -5147,7 +5143,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     partner_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
     funded_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
     publication_status?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-    user_email?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
@@ -5873,7 +5868,6 @@ export type OrganizationRequestData = {
   partner_projects?: OrganizationRequestDataPartnerProjectsItem[];
   funded_projects?: OrganizationRequestDataFundedProjectsItem[];
   publication_status?: OrganizationRequestDataPublicationStatus;
-  user_email?: string;
 };
 
 export interface OrganizationRequest {
@@ -6960,7 +6954,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
   partner_projects?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
   funded_projects?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
   publication_status?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-  user_email?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
