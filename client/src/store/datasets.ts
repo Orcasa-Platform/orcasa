@@ -3,7 +3,9 @@ import { atom, useAtom } from 'jotai';
 export interface DatasetsFilters {
   search?: string;
   source: string[];
+  /** Format: YYYY-MM-DD */
   minDate?: string;
+  /** Format: YYYY-MM-DD */
   maxDate?: string;
 }
 

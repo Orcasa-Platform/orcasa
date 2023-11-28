@@ -2,7 +2,9 @@
 
 import Image from 'next/image';
 
-import { Filter } from 'lucide-react';
+import { Filter, ChevronDown } from 'lucide-react';
+
+import { format } from '@/lib/utils/formats';
 
 import { useDatasetsFilters, useFiltersCount } from '@/store/datasets';
 
@@ -11,8 +13,10 @@ import { DatasetSource } from '@/types/datasets';
 import { useGetDatasetsInfinite } from '@/hooks/datasets';
 
 import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Search } from '@/components/ui/search';
 
 import { sourceToLogo } from './dataset';
@@ -90,7 +94,7 @@ export default function DatasetsModule() {
               >
                 Reset all
               </Button>
-              <div className="mt-4 space-y-4">
+              <div className="mt-4 grid grid-cols-3 gap-4">
                 <MultiCombobox
                   name="Source"
                   variant="datasets"
@@ -104,6 +108,98 @@ export default function DatasetsModule() {
                   ]}
                   onChange={(value) => setFilters({ ...filters, source: value })}
                 />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="vanilla"
+                      size="auto"
+                      className="relative w-full justify-start border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px] data-[state=open]:border-gray-400"
+                    >
+                      {filters.minDate ? (
+                        format({ id: 'formatDate', value: filters.minDate })
+                      ) : (
+                        <span>From date</span>
+                      )}
+                      <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                    side="bottom"
+                    sideOffset={-1}
+                    align="start"
+                  >
+                    <Calendar
+                      initialFocus
+                      mode="single"
+                      captionLayout="dropdown-buttons"
+                      defaultMonth={filters.minDate ? new Date(filters.minDate) : undefined}
+                      // `fromYear` and `toDate` are required to allow the user to quickly jump
+                      // between years and months (see the `captionLayout` prop)
+                      fromYear={2000}
+                      toDate={filters.maxDate ? new Date(filters.maxDate) : new Date()}
+                      selected={filters.minDate ? new Date(filters.minDate) : undefined}
+                      onSelect={(date) =>
+                        setFilters({
+                          ...filters,
+                          minDate: date
+                            ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
+                                2,
+                                '0',
+                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                            : undefined,
+                        })
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="vanilla"
+                      size="auto"
+                      className="relative w-full justify-start border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px] data-[state=open]:border-gray-400"
+                    >
+                      {filters.maxDate ? (
+                        format({ id: 'formatDate', value: filters.maxDate })
+                      ) : (
+                        <span>To date</span>
+                      )}
+                      <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                    side="bottom"
+                    sideOffset={-1}
+                    align="start"
+                  >
+                    <Calendar
+                      initialFocus
+                      mode="single"
+                      captionLayout="dropdown-buttons"
+                      defaultMonth={filters.maxDate ? new Date(filters.maxDate) : undefined}
+                      // `fromDate` and `toDate` are required to allow the user to quickly jump
+                      // between years and months (see the `captionLayout` prop)
+                      fromDate={
+                        filters.minDate ? new Date(filters.minDate) : new Date('2000-01-01')
+                      }
+                      toDate={new Date()}
+                      selected={filters.maxDate ? new Date(filters.maxDate) : undefined}
+                      onSelect={(date) =>
+                        setFilters({
+                          ...filters,
+                          maxDate: date
+                            ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
+                                2,
+                                '0',
+                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                            : undefined,
+                        })
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             </fieldset>
           </DialogContent>
