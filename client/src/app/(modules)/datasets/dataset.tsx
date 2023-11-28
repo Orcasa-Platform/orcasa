@@ -72,7 +72,7 @@ export default function Dataset({ _id, ...attributes }: DatasetListResponseDataI
           {!!authors && authors.length > 0 && (
             <TooltipProvider>
               <Tooltip>
-                <TooltipTrigger className="line-clamp-1 text-left text-xs italic">
+                <TooltipTrigger className="line-clamp-1 cursor-pointer text-left text-xs italic">
                   {Array.isArray(authors) ? authors.join(', ') : authors}
                 </TooltipTrigger>
                 <TooltipContent align="start" className="max-w-[450px]">
