@@ -249,11 +249,11 @@ export default function OrganisationForm() {
 
   const formFieldsSchema = fields
     ? Object.keys(fields).reduce((acc: { [key: string]: Field['zod'] }, field) => {
-        if (fields) {
-          acc[field] = fields[field].zod;
-        }
-        return acc;
-      }, {})
+      if (fields) {
+        acc[field] = fields[field].zod;
+      }
+      return acc;
+    }, {})
     : {};
 
   const formSchema = z.object({
