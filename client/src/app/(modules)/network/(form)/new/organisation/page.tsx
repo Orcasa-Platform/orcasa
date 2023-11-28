@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
-import { Check, CircleSlash } from 'lucide-react';
+import { Check, CircleSlash, AlertCircle } from 'lucide-react';
 import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
@@ -317,6 +317,13 @@ export default function OrganisationForm() {
                 return renderField(key);
               })}
             <h2 className="mt-10 font-serif text-2xl text-gray-700">Organisation network</h2>
+            <div className="flex w-full gap-3 rounded-md bg-peach-50 p-4">
+              <AlertCircle className="w-min-fit h-5 w-5 pt-0.5 text-peach-700" />
+              <div className="flex font-serif text-sm leading-6 text-gray-600">
+                If the project you are looking for is not on the list, please use the project form
+                after you submit this organisation form.
+              </div>
+            </div>
             <div>Network Fields</div>
             <div className="space-y-6 border-t border-dashed border-gray-300">
               <h2 className="mt-6 font-serif text-2xl text-gray-700">Contact Information</h2>
