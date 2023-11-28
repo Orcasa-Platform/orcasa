@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { HTMLAttributeAnchorTarget, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,9 +12,8 @@ import { cn } from '@/lib/classnames';
 import { Module, moduleColors, modules } from '@/constants/modules';
 
 type NavLinkProps = PropsWithChildren<
-  Omit<Module, 'name' | 'slug' | 'openNewTab'> & {
+  Omit<Module, 'name' | 'slug'> & {
     active?: boolean;
-    target?: HTMLAttributeAnchorTarget;
   }
 >;
 
@@ -48,12 +47,11 @@ export default function Nav() {
         </Link>
         <div className="flex flex-col gap-px bg-slate-600 py-px">
           {modules.map((module) => {
-            const { href, openNewTab, color, name, disabled } = module as Module;
+            const { href, color, name, disabled } = module as Module;
             return (
               <NavLink
                 key={href}
                 href={disabled ? '#' : href}
-                target={openNewTab && !disabled ? '_blank' : undefined}
                 color={color}
                 active={pathname === href}
                 disabled={disabled}
