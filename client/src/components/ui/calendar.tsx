@@ -4,6 +4,7 @@ import { ComponentProps, ReactElement, ChangeEvent, Children, useMemo } from 're
 
 import { CaptionLabel, DayPicker } from 'react-day-picker';
 
+import { VariantProps } from 'class-variance-authority';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -15,11 +16,18 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  contentVariants,
 } from '@/components/ui/select';
 
-export type CalendarProps = ComponentProps<typeof DayPicker>;
+export type CalendarProps = ComponentProps<typeof DayPicker> & VariantProps<typeof contentVariants>;
 
-function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
+function Calendar({
+  className,
+  classNames,
+  showOutsideDays = true,
+  variant,
+  ...props
+}: CalendarProps) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -83,6 +91,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
               }
             >
               <SelectTrigger
+                variant={variant}
                 className={cn({
                   'h-10 p-2': true,
                   'min-w-[80px]': name === 'months',
@@ -95,12 +104,14 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
                     : selectedValue?.children}
                 </SelectValue>
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent variant={variant}>
                 {Children.map(
                   typedChildren,
                   (child) =>
                     !!child?.props && (
-                      <SelectItem value={`${child.props.value}`}>{child.props.children}</SelectItem>
+                      <SelectItem variant={variant} value={`${child.props.value}`}>
+                        {child.props.children}
+                      </SelectItem>
                     ),
                 )}
               </SelectContent>

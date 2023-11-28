@@ -2,10 +2,57 @@
 
 import * as React from 'react';
 
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 import * as SelectPrimitive from '@radix-ui/react-select';
+import { VariantProps, cva } from 'class-variance-authority';
 import { Check, ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
+
+export const triggerVariants = cva(
+  'flex h-14 w-full items-center justify-between border border-gray-300 bg-transparent p-4 text-base ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50  [&[data-state=open]>svg]:rotate-180',
+  {
+    variants: {
+      variant: {
+        default: '',
+        filter: 'data-[state=open]:border-gray-400',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+export const contentVariants = cva(
+  'relative z-50 min-w-[8rem] overflow-hidden border bg-popover data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+  {
+    variants: {
+      variant: {
+        default: 'shadow-md',
+        filter: 'border-gray-400',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+export const itemVariants = cva(
+  'relative flex cursor-default select-none items-center p-4 pl-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+  {
+    variants: {
+      variant: {
+        default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
+        filter: '',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
 
 const Select = SelectPrimitive.Root;
 
@@ -15,19 +62,17 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> &
+    VariantProps<typeof triggerVariants>
+>(({ className, children, variant, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
-    className={cn(
-      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-      className,
-    )}
+    className={cn(triggerVariants({ variant }), className)}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      <ChevronDown className="h-6 w-6 transform data-[state=open]:rotate-180" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -35,29 +80,41 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = 'popper', ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> &
+    VariantProps<typeof contentVariants>
+>(({ className, children, position = 'popper', variant, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        'relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-        position === 'popper' &&
-          'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+        contentVariants({ variant }),
+        {
+          'data-[side=right]}:translate-x-1 data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=top]:-translate-y-1':
+            position === 'popper' && variant !== 'filter',
+          'data-[side=right]}:-translate-x-px data-[side=bottom]:-translate-y-px data-[side=left]:translate-x-px data-[side=top]:translate-y-px':
+            position === 'popper' && variant === 'filter',
+        },
         className,
       )}
       position={position}
       {...props}
     >
-      <SelectPrimitive.Viewport
-        className={cn(
-          'p-1',
-          position === 'popper' &&
-            'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
-        )}
-      >
-        {children}
-      </SelectPrimitive.Viewport>
+      <ScrollArea.Root className="h-full w-full" type="auto">
+        <SelectPrimitive.Viewport asChild>
+          <ScrollArea.Viewport
+            className={cn(
+              'p-1',
+              position === 'popper' &&
+                'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
+            )}
+          >
+            {children}
+          </ScrollArea.Viewport>
+        </SelectPrimitive.Viewport>
+        <ScrollArea.Scrollbar className="w-4 px-1 py-[5px]" orientation="vertical">
+          <ScrollArea.Thumb className="rounded-md bg-black opacity-20" />
+        </ScrollArea.Scrollbar>
+      </ScrollArea.Root>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
 ));
@@ -77,16 +134,9 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Item
-    ref={ref}
-    className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      className,
-    )}
-    {...props}
-  >
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & VariantProps<typeof itemVariants>
+>(({ className, children, variant, ...props }, ref) => (
+  <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <Check className="h-4 w-4" />
