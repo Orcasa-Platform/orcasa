@@ -41,8 +41,8 @@ export const sourceToLogo: Record<
   JRC: {
     src: '/assets/logos/jrc.svg',
     alt: 'Joint Research Centre',
-    width: 58,
-    height: 40,
+    width: 97,
+    height: 24,
   },
 };
 
