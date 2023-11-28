@@ -17,6 +17,7 @@ import { type Field } from './page';
 const InputComponent = ({
   field,
   type,
+  required,
   options,
   watch,
   maxSize,
@@ -29,6 +30,7 @@ const InputComponent = ({
     string
   >;
   type: Field['type'];
+  required?: Field['required'];
   options?: Field['options'];
   maxSize?: Field['maxSize'];
   placeholder?: Field['placeholder'];
@@ -38,10 +40,15 @@ const InputComponent = ({
 }) => {
   if (type === 'select') {
     return (
-      <Select name={field.name} onValueChange={field.onChange} defaultValue={field.value}>
+      <Select
+        name={field.name}
+        onValueChange={field.onChange}
+        defaultValue={field.value}
+        required={required}
+      >
         <SelectTrigger>
           <div className="max-w-full truncate">
-            <SelectValue />
+            <SelectValue placeholder={placeholder || 'Select'} />
           </div>
         </SelectTrigger>
         <SelectContent className="max-w-[632px]">
@@ -56,13 +63,22 @@ const InputComponent = ({
   }
   if (type === 'textarea') {
     const watchField = watch(field.name);
+    const counterId = `${field.name}-counter`;
+    const hasError: boolean = !!watchField && !!maxSize && watchField.length > maxSize;
     return (
       <>
-        <Textarea {...field} value={field.value ?? ''} />
+        <Textarea
+          {...field}
+          value={field.value ?? ''}
+          aria-describedby={counterId}
+          required={required}
+          error={hasError}
+        />
         {maxSize && (
           <div
+            id={counterId}
             className={cn('flex justify-end text-sm text-gray-500', {
-              'text-red-500': watchField && watchField.length > maxSize,
+              'text-destructive': hasError,
             })}
           >
             {watchField ? watchField.length : '0'} / {maxSize}
@@ -71,7 +87,15 @@ const InputComponent = ({
       </>
     );
   }
-  return <Input {...field} value={field.value ?? ''} placeholder={placeholder} />;
+  return (
+    <Input
+      {...field}
+      value={field.value ?? ''}
+      type={type}
+      placeholder={placeholder}
+      required={required}
+    />
+  );
 };
 
 export default InputComponent;

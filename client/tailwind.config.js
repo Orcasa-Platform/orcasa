@@ -110,6 +110,7 @@ module.exports = {
       },
       textColor: {
         default: 'hsl(var(--main))',
+        destructive: '#BD272F',
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -20,7 +20,7 @@ export default async function ThankYouPage() {
           <div className="flex h-14 w-14 items-center gap-2 bg-gray-100 p-4">
             <Glasses className="h-6 w-6 text-gray-300" />
           </div>
-          <div className="text-sm text-gray-700">Revised</div>
+          <div className="text-sm text-gray-700">Reviewed</div>
         </div>
         <div className="-mt-8 h-px w-[198px] border-t border-dashed border-gray-300" />
         <div className="flex flex-col items-center gap-2.5">

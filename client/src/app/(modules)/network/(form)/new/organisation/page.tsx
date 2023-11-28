@@ -39,8 +39,8 @@ export type Field = {
   label: string;
   required?: boolean;
   zod: ZodField;
-  description?: string;
-  type: 'text' | 'textarea' | 'select' | 'multiselect';
+  description?: string | React.ReactNode;
+  type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email';
   options?: { label: string; value: string }[];
   maxSize?: number;
   placeholder?: string;
@@ -55,17 +55,16 @@ export default function OrganisationForm() {
     user_email: {
       label: 'Email',
       required: true,
-      zod: z.string().nonempty('User email').email('Please, enter a valid email.').max(150, {
-        message: 'Email is limited to 150 characters.',
+      zod: z.string().nonempty('User email').email('Please, enter a valid email.').max(255, {
+        message: 'Email is limited to 255 characters.',
       }),
-      type: 'text',
-      maxSize: 150,
+      type: 'email',
     },
     name: {
       label: 'Organisation name',
       required: true,
-      zod: z.string().nonempty('Organisation name is mandatory.').max(150, {
-        message: 'Organisation name is limited to 150 characters.',
+      zod: z.string().nonempty('Organisation name is mandatory.').max(255, {
+        message: 'Organisation name is limited to 255 characters.',
       }),
       description: "Please, add the acronym first. E.g. CEA - Commissariat à l'Energie Atomique.",
       type: 'text',
@@ -86,12 +85,12 @@ export default function OrganisationForm() {
       placeholder: 'Please, specify a type',
       zod: z
         .string()
-        .max(150, {
-          message: 'Organisation type: Other is limited to 150 characters.',
+        .max(255, {
+          message: 'Organisation type: Other is limited to 255 characters.',
         })
         .optional(),
       type: 'text',
-      maxSize: 150,
+      maxSize: 255,
     },
     main_organization_theme: {
       label: 'Main thematic',
@@ -162,6 +161,16 @@ export default function OrganisationForm() {
         .optional(),
       type: 'text',
       maxSize: 255,
+      description: (
+        <div className="leading-normal text-gray-500">
+          Accepted URLs format:
+          <ul className="ml-4 list-disc">
+            <li>https://irc-orcasa.eu/ or https://www.irc-orcasa.eu/</li>
+            <li>www.irc-orcasa.eu/</li>
+            <li>irc-orcasa.eu/</li>
+          </ul>
+        </div>
+      ),
     },
   };
   const formSchema = z
@@ -195,8 +204,12 @@ export default function OrganisationForm() {
   }
 
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = (data) => {
+    const normalizedData = {
+      ...data,
+      url: data.url && data.url.startsWith('http') ? data.url : `https://${data.url}`,
+    };
     postOrganizations({
-      data,
+      data: normalizedData,
     } as unknown as OrganizationRequest)
       .then(() => {
         router.push(`/network/new/organisation/thank-you`);
@@ -232,6 +245,7 @@ export default function OrganisationForm() {
               <InputComponent
                 field={field}
                 type={type}
+                required={required}
                 options={options}
                 watch={form.watch}
                 maxSize={maxSize}
@@ -286,15 +300,14 @@ export default function OrganisationForm() {
                 }
                 return renderField(key);
               })}
-            <div>Fields</div>
             <div className="mt-10 font-serif text-2xl text-gray-700">Organisation network</div>
             <div>Network Fields</div>
             <div className="space-y-6 border-t border-dashed border-gray-300">
               <div className="mt-6 font-serif text-2xl text-gray-700">Contact Information</div>
               <div className="text-gray-700">
-                The information you have added is going to be revised and validated. This process
-                could require clarifications form our team, please enter your email so we can
-                contact for it.
+                The information you have added is going to be reviewed and validated. This process
+                could require clarifications from our team, please enter your email so we can
+                contact you about it.
               </div>
               {renderField('user_email')}
             </div>
