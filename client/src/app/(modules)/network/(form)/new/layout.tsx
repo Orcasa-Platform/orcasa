@@ -9,7 +9,12 @@ export default function NetworkModuleLayout({ children }: { children: React.Reac
   return (
     <div className="absolute left-[117px] top-0 z-10 flex h-screen w-[calc(100%-117px)] justify-center overflow-auto bg-white">
       <div className="mt-10 min-w-[632px]">
-        <SlidingLinkButton href="/network" Icon={ArrowLeft} scroll={false}>
+        <SlidingLinkButton
+          href="/network"
+          Icon={ArrowLeft}
+          scroll={false}
+          className="fixed top-5 z-40"
+        >
           Go back
         </SlidingLinkButton>
         <div className="mt-10">{children}</div>

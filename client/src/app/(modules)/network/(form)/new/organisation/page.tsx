@@ -11,6 +11,8 @@ import { AxiosError } from 'axios';
 import { Check, CircleSlash } from 'lucide-react';
 import { z } from 'zod';
 
+import { cn } from '@/lib/classnames';
+
 import { postOrganizations } from '@/types/generated/organization';
 import { OrganizationRequest } from '@/types/generated/strapi.schemas';
 
@@ -205,7 +207,7 @@ export default function OrganisationForm() {
 
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = (data) => {
     const normalizedData = {
-      ...data,
+      // ...data,
       url: data.url && data.url.startsWith('http') ? data.url : `https://${data.url}`,
     };
     postOrganizations({
@@ -264,14 +266,14 @@ export default function OrganisationForm() {
     <>
       <Form {...form}>
         <form className="min-w-[632px] max-w-[632px] pb-10" onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="mb-2 flex w-full items-center justify-between border-b border-dashed border-gray-300 pb-6">
-            <h1 className="font-serif text-3.5xl text-blue-500">New Organisation</h1>
-            <Button type="submit" variant="primary" className="gap-2 bg-blue-500">
-              <Check className="h-6 w-6" />
-              <div>Submit</div>
-            </Button>
-          </div>
-          <div className="space-y-6">
+          <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
+            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300  pb-6 pt-20">
+              <h1 className="font-serif text-3.5xl text-blue-500">New Organisation</h1>
+              <Button type="submit" variant="primary" className="gap-2 bg-blue-500">
+                <Check className="h-6 w-6" />
+                <div>Submit</div>
+              </Button>
+            </div>
             {!!error && (
               <div className="mt-3 flex w-full gap-3 rounded-md bg-pink-50 p-4 text-red-700">
                 <CircleSlash className="relative h-5 w-5" />
@@ -281,6 +283,13 @@ export default function OrganisationForm() {
                 </div>
               </div>
             )}
+          </div>
+          <div
+            className={cn('space-y-6', {
+              'mt-36': !error,
+              'mt-56': !!error,
+            })}
+          >
             <div className="font-serif text-2xl leading-10 text-gray-700">
               Organisation information
             </div>
