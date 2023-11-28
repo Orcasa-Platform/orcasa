@@ -8,6 +8,7 @@ import { format } from '@/lib/utils/formats';
 import { Dataset, DatasetListResponseDataItem, DatasetSource } from '@/types/datasets';
 
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import CalendarIcon from '@/styles/icons/calendar.svg';
 
 export const sourceToLogo: Record<
@@ -67,11 +68,20 @@ export default function Dataset({ _id, ...attributes }: DatasetListResponseDataI
       <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-gray-800">
         <header className="flex flex-col gap-4">
           <Icons {...attributes} />
-          <div className="font-serif text-lg leading-10">{title}</div>
+          <div className="font-serif text-lg">{title}</div>
           {!!authors && authors.length > 0 && (
-            <p className="text-xs italic">
-              {Array.isArray(authors) ? authors.join(', ') : authors}
-            </p>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger className="line-clamp-1 text-left text-xs italic">
+                  {Array.isArray(authors) ? authors.join(', ') : authors}
+                </TooltipTrigger>
+                <TooltipContent align="start" className="max-w-[450px]">
+                  <p className="text-xs italic">
+                    {Array.isArray(authors) ? authors.join(', ') : authors}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           )}
           <p
             className="mt-4 line-clamp-2 text-sm text-gray-500"
