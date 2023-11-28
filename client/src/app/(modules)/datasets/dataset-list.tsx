@@ -42,13 +42,15 @@ export default function DatasetList({
           No results based on your search criteria
         </p>
       )}
-      {data?.pages.map((page, index) => (
-        <Fragment key={index}>
-          {page.data.map((dataset) => (
-            <Dataset key={dataset._id} {...dataset} />
-          ))}
-        </Fragment>
-      ))}
+      <ul>
+        {data?.pages.map((page, index) => (
+          <Fragment key={index}>
+            {page.data.map((dataset) => (
+              <Dataset key={dataset._id} {...dataset} />
+            ))}
+          </Fragment>
+        ))}
+      </ul>
       <Button
         ref={ref}
         onClick={() => fetchNextPage()}
