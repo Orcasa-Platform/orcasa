@@ -40,7 +40,7 @@ type ZodField =
 export type Field = {
   label: string;
   required?: boolean;
-  zod: ZodField;
+  zod: ZodField | z.ZodEffects<z.ZodOptional<z.ZodString>, string | undefined, string | undefined>;
   description?: string | React.ReactNode;
   type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email';
   options?: { label: string; value: string }[];
@@ -188,6 +188,7 @@ export default function OrganisationForm() {
       ),
     },
   };
+
   const formSchema = z.object(
     (fields ? Object.keys(fields) : []).reduce((acc: { [key: string]: Field['zod'] }, field) => {
       if (fields) {
@@ -196,19 +197,6 @@ export default function OrganisationForm() {
       return acc;
     }, {}),
   );
-  // .superRefine(({ organization_type, organization_type_other }, refinementContext) => {
-  //   if (
-  //     organization_type === OtherId &&
-  //     (typeof organization_type_other === 'undefined' || organization_type_other.length === 0)
-  //   ) {
-  //     return refinementContext.addIssue({
-  //       code: z.ZodIssueCode.custom,
-  //       message: 'Organisation type: Other is mandatory when the organisation type is Other.',
-  //       path: ['organization_type_other'],
-  //     });
-  //   }
-  //   return refinementContext;
-  // });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
