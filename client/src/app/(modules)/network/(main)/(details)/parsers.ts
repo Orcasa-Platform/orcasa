@@ -29,11 +29,11 @@ export const getProjectFields = (project: Project) => {
 
   const fields = [];
 
-  if (description && typeof description !== 'undefined' && description.length > 0) {
+  if (description && description.length > 0) {
     fields.push({ label: 'Description', value: description, hasEllipsis: true });
   }
 
-  if (typeof startDate !== 'undefined') {
+  if (startDate) {
     const formatDate = (date: string) =>
       format({
         id: 'formatDate',
@@ -126,15 +126,15 @@ export const getOrganizationFields = (organization: Organization) => {
   } = organization;
   const fields = [];
 
-  if (description && typeof description !== 'undefined' && description.length > 0) {
+  if (description && description.length > 0) {
     fields.push({ label: 'Description', value: description, hasEllipsis: true });
   }
 
-  if (country && typeof country !== 'undefined') {
+  if (country) {
     fields.push({ label: 'Country', value: country?.data?.attributes?.name });
   }
 
-  if (thematic && typeof thematic !== 'undefined') {
+  if (thematic) {
     const thematics = `${thematic?.data?.attributes?.name}${
       secondaryThematic?.data?.attributes?.name
         ? `, ${secondaryThematic?.data?.attributes?.name}`
@@ -143,7 +143,7 @@ export const getOrganizationFields = (organization: Organization) => {
     fields.push({ label: 'Thematic', value: thematics });
   }
 
-  if (typeof organizationType !== 'undefined') {
+  if (organizationType) {
     fields.push({
       label: 'Type of organisation',
       value: organizationType?.data?.attributes?.name,

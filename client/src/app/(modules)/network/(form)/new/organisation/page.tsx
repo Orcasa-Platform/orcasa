@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -185,7 +185,10 @@ export default function OrganisationForm() {
       }, {}),
     )
     .superRefine(({ organization_type, organization_type_other }, refinementContext) => {
-      if (organization_type === OtherId && typeof organization_type_other === 'undefined') {
+      if (
+        organization_type === OtherId &&
+        (typeof organization_type_other === 'undefined' || organization_type_other.length === 0)
+      ) {
         return refinementContext.addIssue({
           code: 'custom',
           message: 'Organisation type: Other is mandatory when the organisation type is Other.',
@@ -207,7 +210,7 @@ export default function OrganisationForm() {
 
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = (data) => {
     const normalizedData = {
-      ...data,
+      // ...data,
       url: !data.url || data.url.startsWith('http') ? data.url : `https://${data.url}`,
     };
     postOrganizations({
@@ -281,7 +284,7 @@ export default function OrganisationForm() {
             {!!error && (
               <div className="mt-3 flex w-full gap-3 rounded-md bg-pink-50 p-4 text-red-700">
                 <CircleSlash className="relative h-5 w-5" />
-                <div className="text-sm">
+                <div className="text-sm" aria-live="polite">
                   <div className="mb-2 font-semibold">Something went wrong</div>
                   <div className="text-gray-600">{error?.message}</div>
                 </div>
@@ -294,9 +297,9 @@ export default function OrganisationForm() {
               'mt-56': !!error,
             })}
           >
-            <div className="font-serif text-2xl leading-10 text-gray-700">
+            <h2 className="font-serif text-2xl leading-10 text-gray-700">
               Organisation information
-            </div>
+            </h2>
             <div className="text-gray-700">
               <span>Fields marked with </span>
               <span className="text-red-700">*</span>
@@ -313,10 +316,10 @@ export default function OrganisationForm() {
                 }
                 return renderField(key);
               })}
-            <div className="mt-10 font-serif text-2xl text-gray-700">Organisation network</div>
+            <h2 className="mt-10 font-serif text-2xl text-gray-700">Organisation network</h2>
             <div>Network Fields</div>
             <div className="space-y-6 border-t border-dashed border-gray-300">
-              <div className="mt-6 font-serif text-2xl text-gray-700">Contact Information</div>
+              <h2 className="mt-6 font-serif text-2xl text-gray-700">Contact Information</h2>
               <div className="text-gray-700">
                 The information you have added is going to be reviewed and validated. This process
                 could require clarifications from our team, please enter your email so we can

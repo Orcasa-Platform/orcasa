@@ -5,7 +5,7 @@ import NewButtons from '@/components/new-buttons';
 export default async function ThankYouPage() {
   return (
     <div className="flex w-[632px] flex-col space-y-4">
-      <h2 className="w-[632px] font-serif text-[32px] leading-[48px] text-blue-500">
+      <h2 className="w-[632px] font-serif text-3.5xl text-blue-500">
         Organisation successfully submitted!
       </h2>
       <div className="flex w-full items-center justify-between pb-16 pt-20">
@@ -32,7 +32,7 @@ export default async function ThankYouPage() {
       </div>
       <div className="flex items-center justify-between border-t border-dashed border-gray-300 py-10">
         <div className="w-[290px] font-serif text-2xl leading-10 text-gray-700">
-          Want to keep building the network?{' '}
+          Want to keep building the network?
         </div>
         <NewButtons />
       </div>
