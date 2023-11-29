@@ -6,7 +6,7 @@ export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const Textarea = React.forwardRef<
   HTMLTextAreaElement,
-  TextareaProps & { error: boolean; 'aria-invalid': boolean }
+  TextareaProps & { error: boolean; 'aria-invalid'?: boolean }
 >(({ className, error, 'aria-invalid': ariaInvalid, ...props }, ref) => {
   return (
     <textarea

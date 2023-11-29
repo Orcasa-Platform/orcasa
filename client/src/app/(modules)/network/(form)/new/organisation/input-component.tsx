@@ -52,7 +52,7 @@ const InputComponent = ({
         defaultValue={field.value}
         required={required}
       >
-        <SelectTrigger id={id} aria-describedby={ariaDescribedBy} aria-invalid={ariaInvalid}>
+        <SelectTrigger id={id} aria-describedby={ariaDescribedBy} aria-invalid={!!ariaInvalid}>
           <span className="max-w-full truncate">
             <SelectValue placeholder={placeholder || 'Select'} />
           </span>

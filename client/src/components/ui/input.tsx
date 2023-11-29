@@ -5,7 +5,7 @@ import { cn } from '@/lib/classnames';
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   icon?: React.ReactNode;
   error?: boolean;
-  'aria-invalid': boolean;
+  'aria-invalid'?: boolean;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(

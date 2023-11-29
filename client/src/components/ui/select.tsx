@@ -18,7 +18,7 @@ const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
     error?: boolean;
-    'aria-invalid': boolean;
+    'aria-invalid'?: boolean;
   }
 >(({ className, children, error, 'aria-invalid': ariaInvalid, ...props }, ref) => (
   <SelectPrimitive.Trigger
