@@ -44,7 +44,6 @@ const InputComponent = ({
   'aria-describedby'?: string;
   'aria-invalid'?: boolean;
 }) => {
-  console.log('field', ariaDescribedBy, ariaInvalid);
   if (type === 'select') {
     return (
       <Select
