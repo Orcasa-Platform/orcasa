@@ -53,6 +53,8 @@ const SelectContent = React.forwardRef<
       <ScrollArea.Root className="h-full w-full" type="auto">
         <SelectPrimitive.Viewport asChild>
           <ScrollArea.Viewport
+            // Remove overflowY to avoid conflicting property https://github.com/radix-ui/primitives/issues/2059#issuecomment-1492071891
+            style={{ overflowY: undefined }}
             className={cn(
               'p-1',
               position === 'popper' &&
