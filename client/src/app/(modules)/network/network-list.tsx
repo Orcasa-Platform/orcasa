@@ -11,8 +11,8 @@ import {
 
 import type { useNetworks } from '@/hooks/networks';
 
-import { Button } from '@/components/ui/button';
 import ContentLoader from '@/components/ui/loader';
+import { Skeleton } from '@/components/ui/skeleton';
 
 import Network from './network';
 
@@ -23,7 +23,6 @@ export default function NetworkList({
   isPlaceholderData,
   isError,
   hasNextPage,
-  isFetchingNextPage,
   fetchNextPage,
 }: ReturnType<typeof useNetworks>) {
   const { ref, inView } = useInView();
@@ -60,18 +59,7 @@ export default function NetworkList({
           );
         })}
       </ul>
-      <Button
-        ref={ref}
-        onClick={() => fetchNextPage()}
-        disabled={!hasNextPage || isFetchingNextPage}
-        className="mx-auto mt-8 flex"
-      >
-        {isFetchingNextPage
-          ? 'Loading more...'
-          : hasNextPage
-          ? 'Load more'
-          : 'Nothing more to load'}
-      </Button>
+      {hasNextPage && <Skeleton ref={ref} className="h-[240px] w-full" />}
     </ContentLoader>
   );
 }
