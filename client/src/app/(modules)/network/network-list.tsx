@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+
+import { useInView } from 'react-intersection-observer';
+
 import {
   ProjectListResponseDataItem,
   OrganizationListResponseDataItem,
@@ -7,6 +11,7 @@ import {
 
 import type { useNetworks } from '@/hooks/networks';
 
+import { Button } from '@/components/ui/button';
 import ContentLoader from '@/components/ui/loader';
 
 import Network from './network';
@@ -17,7 +22,18 @@ export default function NetworkList({
   isFetched,
   isPlaceholderData,
   isError,
+  hasNextPage,
+  isFetchingNextPage,
+  fetchNextPage,
 }: ReturnType<typeof useNetworks>) {
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView, fetchNextPage]);
+
   return (
     <ContentLoader
       data={networks}
@@ -31,17 +47,31 @@ export default function NetworkList({
           No results based on your search criteria
         </p>
       )}
-      {networks?.map((g) => {
-        return (
-          <Network
-            key={`network-${g.type}-${g.id}`}
-            {...(g as Required<
-              ProjectListResponseDataItem &
-                OrganizationListResponseDataItem & { type: 'project' | 'organization' }
-            >)}
-          />
-        );
-      })}
+      <ul>
+        {networks?.map((g) => {
+          return (
+            <Network
+              key={`network-${g.type}-${g.id}`}
+              {...(g as Required<
+                ProjectListResponseDataItem &
+                  OrganizationListResponseDataItem & { type: 'project' | 'organization' }
+              >)}
+            />
+          );
+        })}
+      </ul>
+      <Button
+        ref={ref}
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+        className="mx-auto mt-8 flex"
+      >
+        {isFetchingNextPage
+          ? 'Loading more...'
+          : hasNextPage
+          ? 'Load more'
+          : 'Nothing more to load'}
+      </Button>
     </ContentLoader>
   );
 }

@@ -27,14 +27,14 @@ import NetworkList from './network-list';
 //       // TODO - add elements
 //     }}
 //   >
-//     <Plus className="mr-2 h-6 w-6" />
+//     <Plus className="w-6 h-6 mr-2" />
 //     <div className="text-base">{text}</div>
 //   </Button>
 // );
 
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
-  const networks = useNetworks({ page: 1, filters });
+  const networks = useNetworks({ filters });
   // The keywords search is not counted because it's shown in the main sidebar
   const filtersCount = useFiltersCount(filters, ['search']);
 
