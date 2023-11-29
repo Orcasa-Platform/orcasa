@@ -90,7 +90,20 @@ export default function OrganisationForm() {
         .max(255, {
           message: 'Organisation type: Other is limited to 255 characters.',
         })
-        .optional(),
+        .optional()
+        .superRefine((organizationTypeOther, refinementContext) => {
+          const organizationType = form.watch('organization_type');
+          if (
+            organizationType === OtherId &&
+            (typeof organizationTypeOther === 'undefined' || organizationTypeOther.length === 0)
+          ) {
+            return refinementContext.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: 'Organisation type: Other is mandatory when the organisation type is Other.',
+            });
+          }
+          return refinementContext;
+        }),
       type: 'text',
       maxSize: 255,
     },
@@ -175,28 +188,27 @@ export default function OrganisationForm() {
       ),
     },
   };
-  const formSchema = z
-    .object(
-      (fields ? Object.keys(fields) : []).reduce((acc: { [key: string]: Field['zod'] }, field) => {
-        if (fields) {
-          acc[field] = fields[field].zod;
-        }
-        return acc;
-      }, {}),
-    )
-    .superRefine(({ organization_type, organization_type_other }, refinementContext) => {
-      if (
-        organization_type === OtherId &&
-        (typeof organization_type_other === 'undefined' || organization_type_other.length === 0)
-      ) {
-        return refinementContext.addIssue({
-          code: 'custom',
-          message: 'Organisation type: Other is mandatory when the organisation type is Other.',
-          path: ['organization_type_other'],
-        });
+  const formSchema = z.object(
+    (fields ? Object.keys(fields) : []).reduce((acc: { [key: string]: Field['zod'] }, field) => {
+      if (fields) {
+        acc[field] = fields[field].zod;
       }
-      return refinementContext;
-    });
+      return acc;
+    }, {}),
+  );
+  // .superRefine(({ organization_type, organization_type_other }, refinementContext) => {
+  //   if (
+  //     organization_type === OtherId &&
+  //     (typeof organization_type_other === 'undefined' || organization_type_other.length === 0)
+  //   ) {
+  //     return refinementContext.addIssue({
+  //       code: z.ZodIssueCode.custom,
+  //       message: 'Organisation type: Other is mandatory when the organisation type is Other.',
+  //       path: ['organization_type_other'],
+  //     });
+  //   }
+  //   return refinementContext;
+  // });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
