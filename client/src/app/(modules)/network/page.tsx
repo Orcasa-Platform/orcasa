@@ -34,6 +34,8 @@ import NetworkList from './network-list';
 
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
+  const previousFilters = usePreviousImmediate(filters);
+
   const networks = useNetworks({ filters });
   // The keywords search is not counted because it's shown in the main sidebar
   const filtersCount = useFiltersCount(filters, ['search']);
@@ -54,7 +56,7 @@ export default function NetworkModule() {
     };
   }, [getSidebarScroll, setSavedSidebarScroll]);
 
-  // When navigating to the list view, we restore the sidabar's scroll position
+  // When navigating to the list view, we restore the sidebar's scroll position
   useEffect(() => {
     if (savedSidebarScroll !== 0) {
       setSidebarScroll(savedSidebarScroll);
@@ -67,6 +69,13 @@ export default function NetworkModule() {
       filtersButtonRef.current.focus();
     }
   }, [filterSidebarOpen, previousFilterSidebarOpen]);
+
+  // When the user adds or removes filters, we scroll to the top of the list
+  useEffect(() => {
+    if (previousFilters && previousFilters !== filters) {
+      setSidebarScroll(0);
+    }
+  }, [filters, previousFilters, setSidebarScroll]);
 
   return (
     <div className="space-y-10">
