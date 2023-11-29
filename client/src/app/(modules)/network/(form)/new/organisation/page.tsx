@@ -207,8 +207,8 @@ export default function OrganisationForm() {
 
   const onSubmit: SubmitHandler<z.infer<typeof formSchema>> = (data) => {
     const normalizedData = {
-      // ...data,
-      url: data.url && data.url.startsWith('http') ? data.url : `https://${data.url}`,
+      ...data,
+      url: !data.url || data.url.startsWith('http') ? data.url : `https://${data.url}`,
     };
     postOrganizations({
       data: normalizedData,
