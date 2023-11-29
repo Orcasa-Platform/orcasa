@@ -22,6 +22,7 @@ const InputComponent = ({
   watch,
   maxSize,
   placeholder,
+  id,
 }: {
   field: ControllerRenderProps<
     {
@@ -37,6 +38,7 @@ const InputComponent = ({
   watch: UseFormWatch<{
     [x: string]: string | undefined;
   }>;
+  id?: string;
 }) => {
   if (type === 'select') {
     return (
@@ -46,7 +48,7 @@ const InputComponent = ({
         defaultValue={field.value}
         required={required}
       >
-        <SelectTrigger>
+        <SelectTrigger id={id}>
           <span className="max-w-full truncate">
             <SelectValue placeholder={placeholder || 'Select'} />
           </span>
@@ -74,6 +76,7 @@ const InputComponent = ({
           required={required}
           error={hasError}
           className={cn({ 'min-h-[172px]': maxSize && maxSize > 350 })}
+          id={id}
         />
         {maxSize && (
           <div
@@ -95,6 +98,7 @@ const InputComponent = ({
       type={type}
       placeholder={placeholder}
       required={required}
+      id={id}
     />
   );
 };
