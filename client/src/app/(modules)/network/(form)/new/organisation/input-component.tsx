@@ -47,9 +47,9 @@ const InputComponent = ({
         required={required}
       >
         <SelectTrigger>
-          <div className="max-w-full truncate">
+          <span className="max-w-full truncate">
             <SelectValue placeholder={placeholder || 'Select'} />
-          </div>
+          </span>
         </SelectTrigger>
         <SelectContent className="max-w-[632px]">
           {options?.map(({ label, value }) => (
@@ -73,6 +73,7 @@ const InputComponent = ({
           aria-describedby={counterId}
           required={required}
           error={hasError}
+          className={cn({ 'min-h-[172px]': maxSize && maxSize > 350 })}
         />
         {maxSize && (
           <div
