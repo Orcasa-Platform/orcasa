@@ -265,7 +265,11 @@ export default function OrganisationForm() {
   return (
     <>
       <Form {...form}>
-        <form className="min-w-[632px] max-w-[632px] pb-10" onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          noValidate
+          className="min-w-[632px] max-w-[632px] pb-10"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
             <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300  pb-6 pt-20">
               <h1 className="font-serif text-3.5xl text-blue-500">New Organisation</h1>
