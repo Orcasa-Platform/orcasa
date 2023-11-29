@@ -30,6 +30,8 @@ import {
   OrganizationLeadProjectsDataItem,
   OrganizationPartnerProjectsDataItem,
   OrganizationFundedProjectsDataItem,
+  ProjectListResponse,
+  OrganizationListResponse,
 } from '@/types/generated/strapi.schemas';
 
 import {
@@ -622,6 +624,14 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
 
   const queryFilters = getQueryFilters(filters);
 
+  const getNextPageParam = (lastPage: OrganizationListResponse | ProjectListResponse) => {
+    const page = lastPage.meta?.pagination?.page ?? 1;
+    const pageSize = Math.floor(size / 2);
+    const total = lastPage.meta?.pagination?.total ?? Infinity;
+
+    return page * pageSize < total ? page + 1 : undefined;
+  };
+
   const {
     data: organizationsData,
     isFetching: organizationsIsFetching,
@@ -643,13 +653,7 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
         queryKey: ['organization', filters],
         keepPreviousData: true,
         enabled: loadOrganizations,
-        getNextPageParam: (lastPage) => {
-          const page = lastPage.meta?.pagination?.page ?? 1;
-          const pageSize = Math.floor(size / 2);
-          const total = lastPage.meta?.pagination?.total ?? Infinity;
-
-          return page * pageSize < total ? page + 1 : undefined;
-        },
+        getNextPageParam,
       },
     },
   );
@@ -675,13 +679,7 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
         queryKey: ['project', filters],
         keepPreviousData: true,
         enabled: loadProjects,
-        getNextPageParam: (lastPage) => {
-          const page = lastPage.meta?.pagination?.page ?? 1;
-          const pageSize = Math.floor(size / 2);
-          const total = lastPage.meta?.pagination?.total ?? Infinity;
-
-          return page * pageSize < total ? page + 1 : undefined;
-        },
+        getNextPageParam,
       },
     },
   );
