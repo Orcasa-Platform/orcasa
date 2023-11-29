@@ -5,9 +5,9 @@ import NewButtons from '@/components/new-buttons';
 export default async function ThankYouPage() {
   return (
     <div className="flex w-[632px] flex-col space-y-4">
-      <h2 className="w-[632px] font-serif text-3.5xl text-blue-500">
+      <h1 className="w-[632px] font-serif text-3.5xl text-blue-500">
         Organisation successfully submitted!
-      </h2>
+      </h1>
       <div className="flex w-full items-center justify-between pb-16 pt-20">
         <div className="flex flex-col items-center gap-2.5">
           <div className="flex h-14 w-14 items-center gap-2 bg-blue-500 p-4">
