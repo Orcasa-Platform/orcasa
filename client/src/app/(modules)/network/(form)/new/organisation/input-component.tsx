@@ -23,6 +23,8 @@ const InputComponent = ({
   maxSize,
   placeholder,
   id,
+  'aria-describedby': ariaDescribedBy,
+  'aria-invalid': ariaInvalid,
 }: {
   field: ControllerRenderProps<
     {
@@ -39,7 +41,10 @@ const InputComponent = ({
     [x: string]: string | undefined;
   }>;
   id?: string;
+  'aria-describedby'?: string;
+  'aria-invalid'?: boolean;
 }) => {
+  console.log('field', ariaDescribedBy, ariaInvalid);
   if (type === 'select') {
     return (
       <Select
@@ -48,7 +53,7 @@ const InputComponent = ({
         defaultValue={field.value}
         required={required}
       >
-        <SelectTrigger id={id}>
+        <SelectTrigger id={id} aria-describedby={ariaDescribedBy} aria-invalid={ariaInvalid}>
           <span className="max-w-full truncate">
             <SelectValue placeholder={placeholder || 'Select'} />
           </span>
@@ -72,11 +77,12 @@ const InputComponent = ({
         <Textarea
           {...field}
           value={field.value ?? ''}
-          aria-describedby={counterId}
           required={required}
           error={hasError}
           className={cn({ 'min-h-[172px]': maxSize && maxSize > 350 })}
           id={id}
+          aria-describedby={ariaDescribedBy ? `${ariaDescribedBy} ${counterId}` : counterId}
+          aria-invalid={ariaInvalid}
         />
         {maxSize && (
           <div
@@ -99,6 +105,8 @@ const InputComponent = ({
       placeholder={placeholder}
       required={required}
       id={id}
+      aria-describedby={ariaDescribedBy}
+      aria-invalid={ariaInvalid}
     />
   );
 };
