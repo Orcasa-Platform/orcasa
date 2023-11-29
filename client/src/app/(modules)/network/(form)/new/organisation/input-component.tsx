@@ -81,7 +81,7 @@ const InputComponent = ({
           className={cn({ 'min-h-[172px]': maxSize && maxSize > 350 })}
           id={id}
           aria-describedby={ariaDescribedBy ? `${ariaDescribedBy} ${counterId}` : counterId}
-          aria-invalid={ariaInvalid}
+          aria-invalid={!!ariaInvalid}
         />
         {maxSize && (
           <div
@@ -105,7 +105,7 @@ const InputComponent = ({
       required={required}
       id={id}
       aria-describedby={ariaDescribedBy}
-      aria-invalid={ariaInvalid}
+      aria-invalid={!!ariaInvalid}
     />
   );
 };
