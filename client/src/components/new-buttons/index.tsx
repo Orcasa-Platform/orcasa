@@ -17,6 +17,7 @@ const NewButtons = ({ className }: { className?: string }) => (
       </Link>
     </Button>
     <Button
+      disabled
       onClick={() => {
         // TODO - add elements
       }}

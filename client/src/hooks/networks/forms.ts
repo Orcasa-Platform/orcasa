@@ -50,7 +50,8 @@ export const useFormGetFields = () => {
             id: d.id,
           },
       )
-      .filter((d): d is { name: string; id: number } => typeof d !== 'undefined');
+      .filter((d): d is { name: string; id: number } => typeof d !== 'undefined')
+      .sort((a, b) => a.name.localeCompare(b.name));
   };
   const organizationTypes = parseData(organizationTypesData);
   return {
