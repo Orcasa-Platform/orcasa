@@ -978,6 +978,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       ['proposed', 'accepted', 'declined']
     > &
       Attribute.DefaultTo<'accepted'>;
+    user_email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

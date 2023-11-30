@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { Check, ChevronDown } from 'lucide-react';
 
@@ -15,19 +16,23 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+    error?: boolean;
+    'aria-invalid'?: boolean;
+  }
+>(({ className, children, error, 'aria-invalid': ariaInvalid, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+      'flex h-14 w-full items-center justify-between border border-gray-300 bg-transparent p-4 text-base ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
       className,
+      { 'border-destructive': error || ariaInvalid },
     )}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      <ChevronDown className="h-6 w-6 transform data-[state=open]:rotate-180" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -41,23 +46,32 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        'relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        'relative z-50 min-w-[8rem] overflow-hidden border bg-popover shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
         position === 'popper' &&
-          'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+        'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
         className,
       )}
       position={position}
       {...props}
     >
-      <SelectPrimitive.Viewport
-        className={cn(
-          'p-1',
-          position === 'popper' &&
-            'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
-        )}
-      >
-        {children}
-      </SelectPrimitive.Viewport>
+      <ScrollArea.Root className="h-full w-full" type="auto">
+        <SelectPrimitive.Viewport asChild>
+          <ScrollArea.Viewport
+            // Remove overflowY to avoid conflicting property https://github.com/radix-ui/primitives/issues/2059#issuecomment-1492071891
+            style={{ overflowY: undefined }}
+            className={cn(
+              'p-1',
+              position === 'popper' &&
+              'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
+            )}
+          >
+            {children}
+          </ScrollArea.Viewport>
+        </SelectPrimitive.Viewport>
+        <ScrollArea.Scrollbar className="w-4 px-1 py-[5px]" orientation="vertical">
+          <ScrollArea.Thumb className="rounded-md bg-black opacity-20" />
+        </ScrollArea.Scrollbar>
+      </ScrollArea.Root>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
 ));
@@ -82,7 +96,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-[calc(var(--radix-select-trigger-width)-1.25rem)] cursor-default select-none items-center p-4 pl-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     {...props}
