@@ -363,7 +363,6 @@ export default function OrganisationForm() {
     const field = isProject ? (projectFields?.[key] as Field) : fields[key];
     if (!isProject && !field) return null;
     const { label, required, type, options, placeholder, maxSize, description } = field;
-    console.log(isProject ? `projects.${projectNumber}.${key}` : key);
     return (
       <FormField
         key={id || key}
