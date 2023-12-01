@@ -16,7 +16,7 @@ import { cn } from '@/lib/classnames';
 import { postOrganizations } from '@/types/generated/organization';
 import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/strapi.schemas';
 
-import { useFormGetFields } from '@/hooks/networks/forms';
+import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -55,7 +55,8 @@ const projectRoleOptions = [
 ];
 
 export default function OrganisationForm() {
-  const { organizationTypes, organizationThemes, countries, projects } = useFormGetFields() || {};
+  const { organizationTypes, organizationThemes, countries, projects } =
+    useOrganizationGetFormFields() || {};
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
   const hasData = organizationTypes && organizationThemes && countries && projects;
   const [error, setError] = useState<AxiosError | undefined>();
