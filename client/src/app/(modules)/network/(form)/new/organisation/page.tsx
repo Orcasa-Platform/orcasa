@@ -283,14 +283,6 @@ export default function OrganisationForm() {
   } = useFieldArray<FormType>({
     name: 'projects',
     control,
-    rules: {
-      validate: (value) => {
-        if (value.length < 2) {
-          return 'More values please';
-        }
-        return true;
-      },
-    },
   });
 
   const router = useRouter();
@@ -328,7 +320,7 @@ export default function OrganisationForm() {
       },
     );
 
-    // clean projects attribute from normalizedData
+    // Clean projects attribute from normalizedData
     delete (normalizedData as typeof data).projects;
 
     const dataWithProjects = {
