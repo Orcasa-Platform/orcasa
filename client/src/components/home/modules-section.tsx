@@ -222,7 +222,7 @@ const ModulesSection = () => (
           5 modules for climate impact
         </div>
         <div className="flex flex-col items-center gap-8">
-          <h2 className="font-serif text-[32px] font-semibold text-gray-700">
+          <h2 className="font-serif text-3.5xl font-semibold text-gray-700">
             What can Impact4Soil do for me?
           </h2>
           <div className="h-2 w-20 bg-teal-500" />

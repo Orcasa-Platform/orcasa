@@ -62,12 +62,19 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> &
-    VariantProps<typeof triggerVariants>
->(({ className, children, variant, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
+    error?: boolean;
+    'aria-invalid'?: boolean;
+  } & VariantProps<typeof triggerVariants>
+>(({ className, children, error, 'aria-invalid': ariaInvalid, variant, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
-    className={cn(triggerVariants({ variant }), className)}
+    className={cn(
+      'flex h-14 w-full items-center justify-between border border-gray-300 bg-transparent p-4 text-base ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&[data-state=open]>svg]:rotate-180',
+      triggerVariants({ variant }),
+      className,
+      { 'border-destructive': error || ariaInvalid },
+    )}
     {...props}
   >
     {children}
@@ -89,9 +96,9 @@ const SelectContent = React.forwardRef<
       className={cn(
         contentVariants({ variant }),
         {
-          'data-[side=right]}:translate-x-1 data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=top]:-translate-y-1':
+          'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1':
             position === 'popper' && variant !== 'filter',
-          'data-[side=right]}:-translate-x-px data-[side=bottom]:-translate-y-px data-[side=left]:translate-x-px data-[side=top]:translate-y-px':
+          'data-[side=bottom]:-translate-y-px data-[side=left]:translate-x-px data-[side=right]:-translate-x-px data-[side=top]:translate-y-px':
             position === 'popper' && variant === 'filter',
         },
         className,
@@ -102,6 +109,8 @@ const SelectContent = React.forwardRef<
       <ScrollArea.Root className="h-full w-full" type="auto">
         <SelectPrimitive.Viewport asChild>
           <ScrollArea.Viewport
+            // Remove overflowY to avoid conflicting property https://github.com/radix-ui/primitives/issues/2059#issuecomment-1492071891
+            style={{ overflowY: undefined }}
             className={cn(
               'p-1',
               position === 'popper' &&

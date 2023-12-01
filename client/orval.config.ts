@@ -36,6 +36,17 @@ export default {
               signal: true,
             },
           },
+          'get/organization-types': {
+            query: {
+              useQuery: true,
+              signal: true,
+            },
+          },
+          'post/organizations': {
+            query: {
+              useQuery: true,
+            },
+          },
         },
       },
     },
