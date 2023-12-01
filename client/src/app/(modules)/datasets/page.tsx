@@ -138,7 +138,13 @@ export default function DatasetsModule() {
                       // `fromYear` and `toDate` are required to allow the user to quickly jump
                       // between years and months (see the `captionLayout` prop)
                       fromYear={2000}
-                      toDate={filters.maxDate ? new Date(filters.maxDate) : new Date()}
+                      toDate={
+                        filters.maxDate
+                          ? // We're making sure the user can't select the same date in both date
+                            // pickers because the API considers the max date as exclusive
+                            new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
+                          : new Date()
+                      }
                       selected={filters.minDate ? new Date(filters.minDate) : undefined}
                       onSelect={(date) =>
                         setFilters({
@@ -184,7 +190,11 @@ export default function DatasetsModule() {
                       // `fromDate` and `toDate` are required to allow the user to quickly jump
                       // between years and months (see the `captionLayout` prop)
                       fromDate={
-                        filters.minDate ? new Date(filters.minDate) : new Date('2000-01-01')
+                        filters.minDate
+                          ? // We're making sure the user can't select the same date in both date
+                            // pickers because the API considers the max date as exclusive
+                            new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
+                          : new Date('2000-01-01')
                       }
                       toDate={new Date()}
                       selected={filters.maxDate ? new Date(filters.maxDate) : undefined}
