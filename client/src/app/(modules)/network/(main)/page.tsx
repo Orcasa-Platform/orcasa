@@ -2,10 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import {
-  Filter,
-  //  Plus
-} from 'lucide-react';
+import { Filter, Users2 } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
@@ -16,21 +13,11 @@ import { useNetworks } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
+import NewButtons from '@/components/new-buttons';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
 import NetworkList from './network-list';
-
-// const AddButton = ({ text }: { text: string }) => (
-//   <Button
-//     onClick={() => {
-//       // TODO - add elements
-//     }}
-//   >
-//     <Plus className="w-6 h-6 mr-2" />
-//     <div className="text-base">{text}</div>
-//   </Button>
-// );
 
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
@@ -77,6 +64,20 @@ export default function NetworkModule() {
     }
   }, [filters, previousFilters, setSidebarScroll]);
 
+  const renderFormButtons = (
+    <div className="fixed bottom-0 left-0 flex w-full flex-wrap items-center justify-between border-r border-gray-200 bg-white px-4 py-6 lg:flex-nowrap">
+      <div className="flex items-center">
+        <Users2 className="mb-1 mr-2 h-7 w-10 min-w-fit whitespace-nowrap text-blue-400" />
+        <div className="flex-shrink font-serif text-base font-semibold">
+          Help us building the soil-
+          <wbr />
+          carbon network
+        </div>
+      </div>
+      <NewButtons className="mt-2 min-w-fit space-x-4 lg:ml-2 lg:mt-0" />
+    </div>
+  );
+
   return (
     <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
@@ -106,16 +107,7 @@ export default function NetworkModule() {
         </Button>
       </div>
       <NetworkList {...networks} />
-      {/* TODO: Recover form buttons */}
-      {/* <div className="flex items-center justify-between">
-        <div className="font-serif text-xl font-semibold leading-[30px]">
-          Help us building the soil-carbon network
-        </div>
-        <div className="space-x-4">
-          <AddButton text="Add organisation" />
-          <AddButton text="Add project" />
-        </div>
-      </div> */}
+      {renderFormButtons}
     </div>
   );
 }
