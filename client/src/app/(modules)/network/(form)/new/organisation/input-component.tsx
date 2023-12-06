@@ -1,4 +1,4 @@
-import { ControllerRenderProps, UseFormWatch } from 'react-hook-form';
+import { ControllerRenderProps, UseFormWatch, UseFormRegister } from 'react-hook-form';
 
 import { cn } from '@/lib/classnames';
 
@@ -23,8 +23,10 @@ const InputComponent = ({
   maxSize,
   placeholder,
   id,
+  index,
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
+  register,
 }: {
   field: ControllerRenderProps<
     {
@@ -37,19 +39,23 @@ const InputComponent = ({
   options?: Field['options'];
   maxSize?: Field['maxSize'];
   placeholder?: Field['placeholder'];
-  watch: UseFormWatch<{
-    [x: string]: string | undefined;
-  }>;
+  watch: UseFormWatch<{ [K in string | `projects.${string}`]?: unknown }>;
   id?: string;
   'aria-describedby'?: string;
   'aria-invalid'?: boolean;
+  register: UseFormRegister<{ [K in `projects.${string}`]?: unknown }>;
+  index?: number;
+  name: string;
 }) => {
+  const { name, onChange, value } = field;
   if (type === 'select') {
+    const registerProjectsField = id && register(`projects.${index}.${name}`);
     return (
       <Select
-        name={field.name}
-        onValueChange={field.onChange}
-        defaultValue={field.value}
+        name={name}
+        onValueChange={onChange}
+        defaultValue={value}
+        {...registerProjectsField}
         required={required}
       >
         <SelectTrigger id={id} aria-describedby={ariaDescribedBy} aria-invalid={!!ariaInvalid}>
@@ -68,14 +74,14 @@ const InputComponent = ({
     );
   }
   if (type === 'textarea') {
-    const watchField = watch(field.name);
-    const counterId = `${field.name}-counter`;
+    const watchField = watch(name) as string;
+    const counterId = `${name}-counter`;
     const hasError: boolean = !!watchField && !!maxSize && watchField.length > maxSize;
     return (
       <>
         <Textarea
           {...field}
-          value={field.value ?? ''}
+          value={value ?? ''}
           required={required}
           error={hasError}
           className={cn({ 'min-h-[172px]': maxSize && maxSize > 350 })}
@@ -99,7 +105,7 @@ const InputComponent = ({
   return (
     <Input
       {...field}
-      value={field.value ?? ''}
+      value={value ?? ''}
       type={type}
       placeholder={placeholder}
       required={required}
