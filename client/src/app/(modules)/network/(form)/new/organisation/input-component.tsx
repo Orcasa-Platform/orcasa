@@ -75,7 +75,7 @@ const InputComponent = ({
   }
   if (type === 'textarea') {
     const watchField = watch(name) as string;
-    const counterId = `${name} - counter`;
+    const counterId = `${name}-counter`;
     const hasError: boolean = !!watchField && !!maxSize && watchField.length > maxSize;
     return (
       <>
