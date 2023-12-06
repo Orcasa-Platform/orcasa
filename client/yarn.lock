@@ -1459,6 +1459,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.21.0":
+  version: 7.23.4
+  resolution: "@babel/runtime@npm:7.23.4"
+  dependencies:
+    regenerator-runtime: ^0.14.0
+  checksum: 8eb6a6b2367f7d60e7f7dd83f477cc2e2fdb169e5460694d7614ce5c730e83324bcf29251b70940068e757ad1ee56ff8073a372260d90cad55f18a825caf97cd
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.8.4":
   version: 7.23.2
   resolution: "@babel/runtime@npm:7.23.2"
@@ -2695,6 +2704,7 @@ __metadata:
     class-variance-authority: ^0.6.0
     clsx: ^1.2.1
     d3-array: 3.2.4
+    date-fns: ^2.30.0
     deck.gl: 8.9.19
     eslint: 8.42.0
     eslint-config-next: 13.4.5
@@ -2718,6 +2728,7 @@ __metadata:
     prettier: ^2.8.8
     prettier-plugin-tailwindcss: ^0.3.0
     react: 18.2.0
+    react-day-picker: ^8.9.1
     react-dom: 18.2.0
     react-hook-form: ^7.45.0
     react-intersection-observer: ^9.5.3
@@ -5987,6 +5998,15 @@ __metadata:
   version: 2.0.2
   resolution: "data-uri-to-buffer@npm:2.0.2"
   checksum: 152bec5e77513ee253a7c686700a1723246f582dad8b614e8eaaaba7fa45a15c8671ae4b8f4843f4f3a002dae1d3e7a20f852f7d7bdc8b4c15cfe7adfdfb07f8
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^2.30.0":
+  version: 2.30.0
+  resolution: "date-fns@npm:2.30.0"
+  dependencies:
+    "@babel/runtime": ^7.21.0
+  checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
   languageName: node
   linkType: hard
 
@@ -10544,6 +10564,16 @@ __metadata:
     iconv-lite: 0.4.24
     unpipe: 1.0.0
   checksum: 5362adff1575d691bb3f75998803a0ffed8c64eabeaa06e54b4ada25a0cd1b2ae7f4f5ec46565d1bec337e08b5ac90c76eaa0758de6f72a633f025d754dec29e
+  languageName: node
+  linkType: hard
+
+"react-day-picker@npm:^8.9.1":
+  version: 8.9.1
+  resolution: "react-day-picker@npm:8.9.1"
+  peerDependencies:
+    date-fns: ^2.28.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 1a609bd3621f66fd93c58635990246c6129e57ea33d05345256bdd561f56035a04b201213a279aa37129dbbe149ae5f0f15259a9d06309910d1c9a6bb6c0eccc
   languageName: node
   linkType: hard
 

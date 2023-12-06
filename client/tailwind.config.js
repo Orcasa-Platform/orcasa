@@ -72,7 +72,9 @@ module.exports = {
         },
         purple: {
           // Datasets
+          50: '#F0EBF4',
           700: '#8380BC',
+          900: '#584484',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

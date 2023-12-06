@@ -7,16 +7,22 @@ import { cn } from '@/lib/classnames';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-
 import Cross from '@/styles/icons/cross.svg';
 type SearchProps = {
   defaultValue?: string;
   className?: string;
   containerClassName?: string;
+  placeholder?: string;
   onChange: (newValue: string) => void;
 };
 
-const Search = ({ defaultValue = '', className, containerClassName, onChange }: SearchProps) => {
+const Search = ({
+  defaultValue = '',
+  className,
+  containerClassName,
+  placeholder = 'Search by keyword',
+  onChange,
+}: SearchProps) => {
   const [value, setValue] = useState(defaultValue);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -46,8 +52,8 @@ const Search = ({ defaultValue = '', className, containerClassName, onChange }: 
         ref={inputRef}
         className={cn('pr-14 search-cancel:hidden', className)}
         type="search"
-        aria-label="Search by keyword"
-        placeholder="Search by keyword"
+        aria-label={placeholder}
+        placeholder={placeholder}
         icon={<SearchIcon />}
         value={value}
         onChange={onChangeInput}
