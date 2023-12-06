@@ -21,7 +21,9 @@ import NetworkList from './network-list';
 
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
-  const networks = useNetworks({ page: 1, filters });
+  const previousFilters = usePreviousImmediate(filters);
+
+  const networks = useNetworks({ filters });
   // The keywords search is not counted because it's shown in the main sidebar
   const filtersCount = useFiltersCount(filters, ['search']);
 
@@ -41,7 +43,7 @@ export default function NetworkModule() {
     };
   }, [getSidebarScroll, setSavedSidebarScroll]);
 
-  // When navigating to the list view, we restore the sidabar's scroll position
+  // When navigating to the list view, we restore the sidebar's scroll position
   useEffect(() => {
     if (savedSidebarScroll !== 0) {
       setSidebarScroll(savedSidebarScroll);
@@ -55,8 +57,15 @@ export default function NetworkModule() {
     }
   }, [filterSidebarOpen, previousFilterSidebarOpen]);
 
+  // When the user adds or removes filters, we scroll to the top of the list
+  useEffect(() => {
+    if (previousFilters && previousFilters !== filters) {
+      setSidebarScroll(0);
+    }
+  }, [filters, previousFilters, setSidebarScroll]);
+
   const renderFormButtons = (
-    <div className="fixed bottom-0 left-0 flex w-full flex-wrap  items-center justify-between border-r border-gray-200 bg-white px-4 py-6 lg:flex-nowrap">
+    <div className="fixed bottom-0 left-0 flex w-full flex-wrap items-center justify-between border-r border-gray-200 bg-white px-4 py-6 lg:flex-nowrap">
       <div className="flex items-center">
         <Users2 className="mb-1 mr-2 h-7 w-10 min-w-fit whitespace-nowrap text-blue-400" />
         <div className="flex-shrink font-serif text-base font-semibold">

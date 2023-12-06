@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+
+import { useInView } from 'react-intersection-observer';
+
 import {
   ProjectListResponseDataItem,
   OrganizationListResponseDataItem,
@@ -8,6 +12,7 @@ import {
 import type { useNetworks } from '@/hooks/networks';
 
 import ContentLoader from '@/components/ui/loader';
+import { Skeleton } from '@/components/ui/skeleton';
 
 import Network from './network';
 
@@ -17,7 +22,17 @@ export default function NetworkList({
   isFetched,
   isPlaceholderData,
   isError,
+  hasNextPage,
+  fetchNextPage,
 }: ReturnType<typeof useNetworks>) {
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage();
+    }
+  }, [inView, fetchNextPage]);
+
   return (
     <ContentLoader
       data={networks}
@@ -31,17 +46,20 @@ export default function NetworkList({
           No results based on your search criteria
         </p>
       )}
-      {networks?.map((g) => {
-        return (
-          <Network
-            key={`network-${g.type}-${g.id}`}
-            {...(g as Required<
-              ProjectListResponseDataItem &
-                OrganizationListResponseDataItem & { type: 'project' | 'organization' }
-            >)}
-          />
-        );
-      })}
+      <ul>
+        {networks?.map((g) => {
+          return (
+            <Network
+              key={`network-${g.type}-${g.id}`}
+              {...(g as Required<
+                ProjectListResponseDataItem &
+                  OrganizationListResponseDataItem & { type: 'project' | 'organization' }
+              >)}
+            />
+          );
+        })}
+      </ul>
+      {hasNextPage && <Skeleton ref={ref} className="h-[240px] w-full" />}
     </ContentLoader>
   );
 }

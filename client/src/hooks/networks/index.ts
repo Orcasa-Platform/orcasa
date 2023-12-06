@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 
+import { FetchNextPageOptions } from '@tanstack/react-query';
 import { uniqBy } from 'lodash';
 import { PointFeature } from 'supercluster';
 
@@ -7,10 +8,18 @@ import { NetworkFilters, NetworkOrganizationFilters, NetworkProjectFilters } fro
 
 import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
-import { useGetOrganizationsId, useGetOrganizations } from '@/types/generated/organization';
+import {
+  useGetOrganizationsId,
+  useGetOrganizations,
+  useGetOrganizationsInfinite,
+} from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
 import { useGetOrganizationTypes } from '@/types/generated/organization-type';
-import { useGetProjects, useGetProjectsId } from '@/types/generated/project';
+import {
+  useGetProjects,
+  useGetProjectsId,
+  useGetProjectsInfinite,
+} from '@/types/generated/project';
 import { useGetProjectTypes } from '@/types/generated/project-type';
 import { useGetRegions } from '@/types/generated/region';
 import {
@@ -21,6 +30,8 @@ import {
   OrganizationLeadProjectsDataItem,
   OrganizationPartnerProjectsDataItem,
   OrganizationFundedProjectsDataItem,
+  ProjectListResponse,
+  OrganizationListResponse,
 } from '@/types/generated/strapi.schemas';
 
 import {
@@ -616,32 +627,42 @@ export const useNetworkDiagram = ({
   };
 };
 
-export const useNetworks = ({ page = 1, filters }: { page: number; filters: NetworkFilters }) => {
+export const useNetworks = ({ size = 20, filters }: { size?: number; filters: NetworkFilters }) => {
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadProjects = !filters.type?.length || filters.type.includes('project');
 
   const queryFilters = getQueryFilters(filters);
 
+  const getNextPageParam = (lastPage: OrganizationListResponse | ProjectListResponse) => {
+    const page = lastPage.meta?.pagination?.page ?? 1;
+    const pageSize = Math.floor(size / 2);
+    const total = lastPage.meta?.pagination?.total ?? Infinity;
+
+    return page * pageSize < total ? page + 1 : undefined;
+  };
+
   const {
     data: organizationsData,
-    isFetching: organizationIsFetching,
-    isFetched: organizationIsFetched,
-    isPlaceholderData: organizationIsPlaceholderData,
-    isError: organizationIsError,
-  } = useGetOrganizations(
+    isFetching: organizationsIsFetching,
+    isFetched: organizationsIsFetched,
+    isPlaceholderData: organizationsIsPlaceholderData,
+    isError: organizationsIsError,
+    hasNextPage: organizationsHasNextPage,
+    isFetchingNextPage: organizationsIsFetchingNextPage,
+    fetchNextPage: organizationsFetchNextPage,
+  } = useGetOrganizationsInfinite(
     {
       populate: '*',
-      'pagination[page]': page,
-      // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
-      'pagination[pageSize]': 1000,
+      'pagination[pageSize]': Math.floor(size / 2),
       sort: 'name:asc',
       filters: queryFilters.organization,
     },
     {
       query: {
-        queryKey: ['organization', page, filters],
+        queryKey: ['organization', filters],
         keepPreviousData: true,
         enabled: loadOrganizations,
+        getNextPageParam,
       },
     },
   );
@@ -652,48 +673,80 @@ export const useNetworks = ({ page = 1, filters }: { page: number; filters: Netw
     isFetched: projectsIsFetched,
     isPlaceholderData: projectsIsPlaceholderData,
     isError: projectsIsError,
-  } = useGetProjects(
+    hasNextPage: projectsHasNextPage,
+    isFetchingNextPage: projectsIsFetchingNextPage,
+    fetchNextPage: projectsFetchNextPage,
+  } = useGetProjectsInfinite(
     {
       populate: '*',
-      'pagination[page]': page,
-      // TODO: This is a hack to get all organizations for demo purposes. Remember to put it back to 5.
-      'pagination[pageSize]': 1000,
+      'pagination[pageSize]': Math.floor(size / 2),
       sort: 'name:asc',
       filters: queryFilters.project,
     },
     {
       query: {
-        queryKey: ['project', page, filters],
+        queryKey: ['project', filters],
         keepPreviousData: true,
         enabled: loadProjects,
+        getNextPageParam,
       },
     },
   );
 
-  const sortAlphabetically = (
-    a: OrganizationListResponseDataItem | ProjectListResponseDataItem,
-    b: OrganizationListResponseDataItem | ProjectListResponseDataItem,
-  ) => (a.attributes?.name ?? '').localeCompare(b.attributes?.name ?? '');
+  const networks = useMemo(() => {
+    type Networks = (
+      | (OrganizationListResponseDataItem & { type: 'organization' })
+      | (ProjectListResponseDataItem & { type: 'project' })
+    )[];
 
-  const networks = [
-    ...(loadOrganizations
-      ? organizationsData?.data?.map((d: OrganizationListResponseDataItem) => ({
-          ...d,
-          type: 'organization',
-        })) ?? []
-      : []),
-    ...(loadProjects
-      ? projectsData?.data?.map((d: ProjectListResponseDataItem) => ({ ...d, type: 'project' })) ??
-        []
-      : []),
-  ].sort(sortAlphabetically);
+    const sortAlphabetically = (a: Networks[0], b: Networks[0]) =>
+      (a.attributes?.name ?? '').localeCompare(b.attributes?.name ?? '');
+
+    // Maximum number of pages of results
+    const maxPagesCounts = Math.max(
+      loadOrganizations ? organizationsData?.pages.length ?? 0 : 0,
+      loadProjects ? projectsData?.pages.length ?? 0 : 0,
+    );
+
+    let res: Networks = [];
+
+    for (let i = 0, j = maxPagesCounts; i < j; i++) {
+      const organizations = loadOrganizations ? organizationsData?.pages?.[i]?.data ?? [] : [];
+      const projects = loadProjects ? projectsData?.pages?.[i]?.data ?? [] : [];
+
+      // We sort the results page by page so that the sorting is stable when new pages are fetched
+      res = [
+        ...res,
+        ...[
+          ...(organizations.map((organization) => ({
+            ...organization,
+            type: 'organization',
+          })) as Networks),
+          ...(projects.map((project) => ({ ...project, type: 'project' })) as Networks),
+        ].sort(sortAlphabetically),
+      ];
+    }
+
+    return res;
+  }, [organizationsData, projectsData, loadOrganizations, loadProjects]);
 
   return {
     networks,
-    isFetching: organizationIsFetching || projectsIsFetching,
-    isFetched: organizationIsFetched || projectsIsFetched,
-    isPlaceholderData: organizationIsPlaceholderData || projectsIsPlaceholderData,
-    isError: organizationIsError || projectsIsError,
+    fetchNextPage: (options?: FetchNextPageOptions) => {
+      if (organizationsHasNextPage && loadOrganizations) {
+        organizationsFetchNextPage(options);
+      }
+
+      if (projectsHasNextPage && loadProjects) {
+        projectsFetchNextPage(options);
+      }
+    },
+    hasNextPage: organizationsHasNextPage || projectsHasNextPage,
+    isFetchingNextPage: organizationsIsFetchingNextPage || projectsIsFetchingNextPage,
+    isFetching: organizationsIsFetching || projectsIsFetching,
+    isFetched: organizationsIsFetched || projectsIsFetched,
+    isPlaceholderData: organizationsIsPlaceholderData || projectsIsPlaceholderData,
+    isError: organizationsIsError || projectsIsError,
   };
 };
 
