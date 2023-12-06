@@ -23,7 +23,7 @@ export function formatDate(value: string, options?: Intl.DateTimeFormatOptions) 
     day: 'numeric',
   });
 
-  return formatter.format(dateValue).replace(/\s/g, '/');
+  return formatter.format(dateValue);
 }
 
 const formatNumber = (value: number) => {
