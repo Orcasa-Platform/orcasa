@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { Key, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Combobox as ComboboxPrimitive } from '@headlessui/react';
 import { type VariantProps, cva } from 'class-variance-authority';
@@ -17,6 +17,7 @@ const optionVariants = cva('py-4 px-3 flex items-start gap-x-2 group', {
       default: '',
       'network-organization': 'hover:bg-blue-50 data-[headlessui-state*=active]:bg-blue-50',
       'network-project': 'hover:bg-peach-50 data-[headlessui-state*=active]:bg-peach-50',
+      datasets: 'hover:bg-purple-50 data-[headlessui-state*=active]:bg-purple-50',
     },
   },
   defaultVariants: {
@@ -30,6 +31,7 @@ const buttonVariants = cva('text-base font-semibold disabled:text-gray-300 disab
       default: '',
       'network-organization': 'text-blue-500 hover:text-blue-800',
       'network-project': 'text-peach-700 hover:text-peach-900',
+      datasets: 'text-purple-700 hover:text-purple-900',
     },
   },
   defaultVariants: {
@@ -37,17 +39,17 @@ const buttonVariants = cva('text-base font-semibold disabled:text-gray-300 disab
   },
 });
 
-export interface ComboboxProps {
+export interface ComboboxProps<T> {
   id?: string;
   name?: string;
   variant?: VariantProps<typeof optionVariants>['variant'];
-  value: number[];
-  options: { label: string; value: number }[];
-  onChange: (value: number[]) => void;
+  value: T[];
+  options: { label: string; value: T }[];
+  onChange: (value: T[]) => void;
   disabled?: boolean;
 }
 
-export const MultiCombobox = ({
+export const MultiCombobox = <T extends NonNullable<unknown>>({
   id,
   name = 'Select',
   variant,
@@ -55,7 +57,7 @@ export const MultiCombobox = ({
   options,
   onChange,
   disabled = false,
-}: ComboboxProps) => {
+}: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -170,7 +172,7 @@ export const MultiCombobox = ({
                 <ComboboxPrimitive.Options static>
                   {filteredOptions.map((option) => (
                     <ComboboxPrimitive.Option
-                      key={option.value}
+                      key={option.value as Key}
                       value={option.value}
                       className={cn(optionVariants({ variant }))}
                     >
