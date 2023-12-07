@@ -55,7 +55,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
           <Pencil className="mr-2 h-6 w-6" />
           Suggest changes
         </Button>
-        <Button asChild variant="secondary">
+        <Button asChild variant="secondary" disabled={!website}>
           <a href={website} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-6 w-6" />
             Visit Website
