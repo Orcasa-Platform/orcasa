@@ -10,6 +10,7 @@ const hasData = (field: Project[keyof Project]) => {
 
 export const getProjectFields = (project: Project) => {
   const {
+    short_description: shortDescription,
     description,
     start_date: startDate,
     end_date: endDate,
@@ -19,6 +20,7 @@ export const getProjectFields = (project: Project) => {
     second_project_coordinator_name: secondProjectCoordinatorName,
     second_project_coordinator_email: secondProjectCoordinatorEmail,
     project_type: projectType,
+    region_of_interventions: regionOfInterventions,
     country_of_interventions: countryOfInterventions,
     main_area_of_intervention: mainAreaOfIntervention,
     secondary_area_of_intervention: secondaryAreaOfIntervention,
@@ -29,8 +31,12 @@ export const getProjectFields = (project: Project) => {
 
   const fields = [];
 
+  if (shortDescription && shortDescription.length > 0) {
+    fields.push({ label: 'Short description', value: shortDescription });
+  }
+
   if (description && description.length > 0) {
-    fields.push({ label: 'Description', value: description, hasEllipsis: true });
+    fields.push({ label: 'Description and outcomes', value: description, hasEllipsis: true });
   }
 
   if (startDate) {
@@ -76,9 +82,16 @@ export const getProjectFields = (project: Project) => {
     });
   }
 
+  if (hasData(regionOfInterventions) && regionOfInterventions?.data?.length) {
+    fields.push({
+      label: 'Regions of intervention',
+      value: regionOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
+    });
+  }
+
   if (hasData(countryOfInterventions) && countryOfInterventions?.data?.length) {
     fields.push({
-      label: 'Country of intervention',
+      label: 'Countries of intervention',
       value: countryOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
@@ -118,16 +131,22 @@ export const getProjectFields = (project: Project) => {
 
 export const getOrganizationFields = (organization: Organization) => {
   const {
+    short_description: shortDescription,
     description,
     country,
     main_organization_theme: thematic,
     secondary_organization_theme: secondaryThematic,
     organization_type: organizationType,
   } = organization;
+
   const fields = [];
 
+  if (shortDescription && shortDescription.length > 0) {
+    fields.push({ label: 'Short description', value: shortDescription });
+  }
+
   if (description && description.length > 0) {
-    fields.push({ label: 'Description', value: description, hasEllipsis: true });
+    fields.push({ label: 'Description and outcomes', value: description, hasEllipsis: true });
   }
 
   if (country) {
