@@ -46,7 +46,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
 
   return (
     <>
-      <div className="mb-6 mt-10 text-3.8xl leading-[50px]">{name}</div>
+      <div className="mb-6 mt-10 font-serif text-3.8xl leading-[50px]">{name}</div>
       <div className="flex flex-col gap-4">
         {fields.map((field) => (
           <Field key={field.label} {...field} type="project" />
@@ -67,7 +67,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
             Suggest changes
           </a>
         </Button>
-        <Button asChild variant="secondary">
+        <Button asChild variant="secondary" disabled={!website}>
           <a href={website} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-6 w-6" />
             Visit Website

@@ -167,7 +167,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                   </Button>
                 </div>
                 {filteredOptions.length === 0 && search.length > 0 && (
-                  <p className="py-8 text-center font-semibold text-slate-500">No results</p>
+                  <p className="py-8 text-center text-gray-700">No results</p>
                 )}
                 <ComboboxPrimitive.Options static>
                   {filteredOptions.map((option) => (
