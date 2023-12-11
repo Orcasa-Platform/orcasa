@@ -18,6 +18,7 @@ import { ProjectRequest, ProjectRequestData } from '@/types/generated/strapi.sch
 
 import { useProjectFormGetFields } from '@/hooks/networks/forms';
 
+import InputComponent from '@/components/form/input-component';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -29,21 +30,19 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-import InputComponent from './input-component';
-
 type ZodField =
   | z.ZodString
   | z.ZodEnum<[string, ...string[]]>
   | z.ZodOptional<z.ZodString>
-  | z.ZodOptional<z.ZodEnum<[string, ...string[]]>>;
+  | z.ZodOptional<z.ZodEnum<[string, ...string[]]>>
+  | z.ZodOptional<z.ZodDate>
+  | z.ZodEffects<z.ZodOptional<z.ZodString>, string | undefined, string | undefined>
+  | z.ZodDate;
 
 export type Field = {
   label: string;
   required?: boolean;
-  zod:
-  | ZodField
-  | z.ZodEffects<z.ZodOptional<z.ZodString>, string | undefined, string | undefined>
-  | z.ZodDate;
+  zod: ZodField;
   description?: string | React.ReactNode;
   type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email' | 'date';
   options?: { label: string; value: string }[];
@@ -64,7 +63,7 @@ export default function ProjectForm() {
   const hasData =
     countries && organizations && regions && areasOfIntervention && sustainableDevelopmentGoals;
   const [error, setError] = useState<AxiosError | undefined>();
-  const fields: { [key: string]: Field } | undefined = hasData && {
+  const fieldValues: { [key: string]: Field } = {
     lead_partner: {
       label: 'Coordinator',
       required: true,
@@ -220,7 +219,7 @@ export default function ProjectForm() {
         .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: countries.map((country) => ({
+      options: countries?.map((country) => ({
         label: country?.name,
         value: country?.id?.toString(),
       })),
@@ -229,7 +228,7 @@ export default function ProjectForm() {
       label: 'Regions of intervention',
       zod: z.enum(regions?.map((type) => type?.id?.toString()) as [string, ...string[]]).optional(),
       type: 'multiselect',
-      options: regions.map((region) => ({
+      options: regions?.map((region) => ({
         label: region?.name,
         value: region?.id?.toString(),
       })),
@@ -240,7 +239,7 @@ export default function ProjectForm() {
         .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'multiselect',
-      options: countries.map((country) => ({
+      options: countries?.map((country) => ({
         label: country?.name,
         value: country?.id?.toString(),
       })),
@@ -251,7 +250,7 @@ export default function ProjectForm() {
         .enum(areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: areasOfIntervention.map((area) => ({
+      options: areasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
       })),
@@ -267,7 +266,7 @@ export default function ProjectForm() {
         })
         .optional()
         .superRefine((mainAreaOther, refinementContext) => {
-          const mainArea = watch('main_area_of_intervention') as string | undefined;
+          const mainArea = watch('main_area_of_intervention');
           if (
             mainArea === OtherId &&
             (typeof mainAreaOther === 'undefined' || mainAreaOther.length === 0)
@@ -289,7 +288,7 @@ export default function ProjectForm() {
         .enum(areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'multiselect',
-      options: areasOfIntervention.map((area) => ({
+      options: areasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
       })),
@@ -300,7 +299,7 @@ export default function ProjectForm() {
         .enum(areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'multiselect',
-      options: areasOfIntervention.map((area) => ({
+      options: areasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
       })),
@@ -313,7 +312,7 @@ export default function ProjectForm() {
         )
         .optional(),
       type: 'multiselect',
-      options: sustainableDevelopmentGoals.map((sdg) => ({
+      options: sustainableDevelopmentGoals?.map((sdg) => ({
         label: sdg?.name,
         value: sdg?.id?.toString(),
       })),
@@ -328,22 +327,20 @@ export default function ProjectForm() {
       type: 'email',
     },
   };
+  const fields: { [key: string]: Field } | undefined = hasData && fieldValues;
+  const formSchema = z.object(
+    Object.keys(fieldValues).reduce((acc: { [key: string]: Field['zod'] }, field) => {
+      if (field in fieldValues) {
+        acc[field] = fieldValues[field].zod;
+      }
+      return acc;
+    }, {}),
+  );
 
-  const formSchema = fields
-    ? z.object(
-      Object.keys(fields).reduce((acc: { [key: string]: Field['zod'] }, field) => {
-        if (field in fields) {
-          acc[field] = fields[field].zod;
-        }
-        return acc;
-      }, {}),
-    )
-    : z.object({});
+  type FormValues = z.infer<typeof formSchema>;
 
-  type FormType = z.infer<typeof formSchema>;
-
-  const form = useForm<FormType>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(fields ? formSchema : z.object({})),
   });
   const { handleSubmit, watch } = form;
 
@@ -352,7 +349,7 @@ export default function ProjectForm() {
   if (!hasData || !fields) {
     return null;
   }
-  const onSubmit: SubmitHandler<FormType> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     const typedData: ProjectRequestData = data as unknown as ProjectRequestData;
     const normalizedData = {
       ...typedData,
@@ -412,10 +409,9 @@ export default function ProjectForm() {
                   type={type}
                   required={required}
                   options={options}
-                  watch={watch}
+                  form={form}
                   maxSize={maxSize}
                   placeholder={placeholder}
-                  register={form.register}
                 />
               </FormControl>
               <FormDescription className="text-sm text-slate-500">{description}</FormDescription>

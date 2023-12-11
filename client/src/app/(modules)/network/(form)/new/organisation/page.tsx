@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 
-import { SubmitHandler, useForm, useFieldArray, ControllerRenderProps } from 'react-hook-form';
+import {
+  SubmitHandler,
+  useForm,
+  UseFormReturn,
+  useFieldArray,
+  ControllerRenderProps,
+} from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
 
@@ -18,6 +24,7 @@ import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/
 
 import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
+import InputComponent from '@/components/form/input-component';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -28,8 +35,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-
-import InputComponent from './input-component';
 
 type ZodField =
   | z.ZodString
@@ -60,7 +65,7 @@ export default function OrganisationForm() {
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
   const hasData = organizationTypes && organizationThemes && countries && projects;
   const [error, setError] = useState<AxiosError | undefined>();
-  const fields: { [key: string]: Field } | undefined = hasData && {
+  const fieldValues: { [key: string]: Field } = {
     name: {
       label: 'Organisation name',
       required: true,
@@ -75,7 +80,7 @@ export default function OrganisationForm() {
       required: true,
       zod: z.enum(organizationTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
-      options: organizationTypes.map((type) => ({
+      options: organizationTypes?.map((type) => ({
         label: type.name,
         value: type.id.toString(),
       })),
@@ -112,7 +117,7 @@ export default function OrganisationForm() {
         .enum(organizationThemes?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: organizationThemes.map((theme) => ({
+      options: organizationThemes?.map((theme) => ({
         label: theme?.name,
         value: theme?.id?.toString(),
       })),
@@ -123,7 +128,7 @@ export default function OrganisationForm() {
         .enum(organizationThemes?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: organizationThemes.map((theme) => ({
+      options: organizationThemes?.map((theme) => ({
         label: theme?.name,
         value: theme?.id?.toString(),
       })),
@@ -154,7 +159,7 @@ export default function OrganisationForm() {
         .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: countries.map((country) => ({
+      options: countries?.map((country) => ({
         label: country?.name,
         value: country?.id?.toString(),
       })),
@@ -248,17 +253,15 @@ export default function OrganisationForm() {
     }),
   );
 
-  const formFieldsSchema = fields
-    ? Object.keys(fields).reduce((acc: { [key: string]: Field['zod'] }, field) => {
-      if (fields) {
-        acc[field] = fields[field].zod;
-      }
-      return acc;
-    }, {})
-    : {};
+  const fields: { [key: string]: Field } | undefined = hasData && fieldValues;
 
   const formSchema = z.object({
-    ...formFieldsSchema,
+    ...Object.keys(fieldValues).reduce((acc: { [key: string]: Field['zod'] }, field) => {
+      if (fieldValues) {
+        acc[field] = fieldValues[field].zod;
+      }
+      return acc;
+    }, {}),
     ...(fields ? { projects: projectsArraySchema } : {}),
   });
 
@@ -391,10 +394,15 @@ export default function OrganisationForm() {
                   type={type}
                   required={required}
                   options={options}
-                  watch={watch}
                   maxSize={maxSize}
                   placeholder={placeholder}
-                  register={form.register}
+                  form={
+                    form as UseFormReturn<
+                      { [x: string]: string | Date | undefined },
+                      string,
+                      undefined
+                    >
+                  }
                 />
               </FormControl>
               <FormDescription className="text-sm text-slate-500">{description}</FormDescription>

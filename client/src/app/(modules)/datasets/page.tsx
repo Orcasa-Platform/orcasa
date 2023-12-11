@@ -141,8 +141,8 @@ export default function DatasetsModule() {
                       toDate={
                         filters.maxDate
                           ? // We're making sure the user can't select the same date in both date
-                            // pickers because the API considers the max date as exclusive
-                            new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
+                          // pickers because the API considers the max date as exclusive
+                          new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
                           : new Date()
                       }
                       selected={filters.minDate ? new Date(filters.minDate) : undefined}
@@ -151,9 +151,9 @@ export default function DatasetsModule() {
                           ...filters,
                           minDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                                2,
-                                '0',
-                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                              2,
+                              '0',
+                            )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }
@@ -192,8 +192,8 @@ export default function DatasetsModule() {
                       fromDate={
                         filters.minDate
                           ? // We're making sure the user can't select the same date in both date
-                            // pickers because the API considers the max date as exclusive
-                            new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
+                          // pickers because the API considers the max date as exclusive
+                          new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
                           : new Date('2000-01-01')
                       }
                       toDate={new Date()}
@@ -203,9 +203,9 @@ export default function DatasetsModule() {
                           ...filters,
                           maxDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                                2,
-                                '0',
-                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                              2,
+                              '0',
+                            )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }

@@ -1,4 +1,4 @@
-import { ControllerRenderProps, UseFormWatch, UseFormRegister } from 'react-hook-form';
+import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
 
 import { cn } from '@/lib/classnames';
 
@@ -12,21 +12,20 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
-import { type Field } from './page';
+import { type Field } from './types';
 
 const InputComponent = ({
   field,
   type,
   required,
   options,
-  watch,
   maxSize,
   placeholder,
   id,
   index,
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
-  register,
+  form,
 }: {
   field: ControllerRenderProps<
     {
@@ -39,17 +38,21 @@ const InputComponent = ({
   options?: Field['options'];
   maxSize?: Field['maxSize'];
   placeholder?: Field['placeholder'];
-  watch: UseFormWatch<{ [K in string | `projects.${string}`]?: unknown }>;
   id?: string;
   'aria-describedby'?: string;
   'aria-invalid'?: boolean;
-  register: UseFormRegister<{ [K in `projects.${string}`]?: unknown }>;
   index?: number;
   name: string;
+  form: UseFormReturn<
+    { [K in string | `projects.${string}` | 'projects']?: string | Date | undefined },
+    string,
+    undefined
+  >;
 }) => {
+  const { watch, register } = form;
   const { name, onChange, value } = field;
   if (type === 'select') {
-    const registerProjectsField = id && register(`projects.${index}.${name}`);
+    const registerProjectsField = id ? register(`projects.${index}.${name}`) : undefined;
     return (
       <Select
         name={name}
