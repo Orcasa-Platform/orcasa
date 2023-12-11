@@ -2,6 +2,8 @@ import '@/styles/globals.css';
 
 import { Roboto_Slab, Roboto } from 'next/font/google';
 
+import { Metadata } from 'next';
+
 import { cn } from '@/lib/classnames';
 
 import Providers from '@/app/layout-providers';
@@ -21,19 +23,22 @@ const robotoSlab = Roboto_Slab({
 });
 
 // TODO: Update metadata
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Impact4Soil',
   // TODO: update description
   description:
     'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
   keywords: 'Impact4Soil, ORCaSa, Horizon Europe, carbon capture, climate change',
   robots: 'index, follow',
-  og: {
+  openGraph: {
     title: 'Impact4Soil - Horizon Europe Initiative',
     // TODO: update description
     description:
       'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
     // image: 'https://example.com/orcasa-image.jpg',
+  },
+  viewport: {
+    width: 1200,
   },
 };
 
