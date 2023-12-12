@@ -197,7 +197,7 @@
       },
       "publication_status": {
         "edit": {
-          "label": "publication_status",
+          "label": "Publication Status",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -205,6 +205,20 @@
         },
         "list": {
           "label": "publication_status",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "user_email": {
+        "edit": {
+          "label": "User Email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "user_email",
           "searchable": true,
           "sortable": true
         }
@@ -269,11 +283,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "publication_status"
-      ],
       "edit": [
         [
           {
@@ -341,8 +350,17 @@
           {
             "name": "publication_status",
             "size": 6
+          },
+          {
+            "name": "user_email",
+            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "publication_status"
       ]
     }
   },
