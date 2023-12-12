@@ -31,15 +31,15 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-const projectRoleOptions = [
-  { label: 'Coordinator', value: 'lead_projects' },
-  { label: 'Partner', value: 'partner_projects' },
-  { label: 'Funder', value: 'funded_projects' },
-];
-
 export default function ProjectForm() {
-  const { countries, organizations, regions, areasOfIntervention, sustainableDevelopmentGoals } =
-    useProjectFormGetFields() || {};
+  const {
+    countries,
+    organizations,
+    regions,
+    areasOfIntervention,
+    sustainableDevelopmentGoals,
+    projectTypes,
+  } = useProjectFormGetFields() || {};
   const otherId = areasOfIntervention
     ?.find((type) => type?.name === 'Other (to be specified)')
     ?.id?.toString();
@@ -184,9 +184,12 @@ export default function ProjectForm() {
     },
     project_type: {
       label: 'Project type',
-      zod: z.enum(projectRoleOptions.map((type) => type.value) as [string, ...string[]]),
+      zod: z.enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]]),
       type: 'select',
-      options: projectRoleOptions,
+      options: projectTypes?.map((type) => ({
+        label: type.name,
+        value: type.id.toString(),
+      })),
     },
     start_date: {
       label: 'Start date',

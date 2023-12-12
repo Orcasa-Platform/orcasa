@@ -4,12 +4,14 @@ import { useGetOrganizations } from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
 import { useGetOrganizationTypes } from '@/types/generated/organization-type';
 import { useGetProjects } from '@/types/generated/project';
+import { useGetProjectTypes } from '@/types/generated/project-type';
 import { useGetRegions } from '@/types/generated/region';
 import {
   OrganizationThemeListResponse,
   OrganizationTypeListResponse,
   CountryListResponse,
   ProjectListResponse,
+  ProjectTypeListResponse,
 } from '@/types/generated/strapi.schemas';
 import { useGetSustainableDevGoals } from '@/types/generated/sustainable-dev-goal';
 
@@ -119,12 +121,19 @@ export const useProjectFormGetFields = () => {
     },
   });
 
+  const { data: projectTypes } = useGetProjectTypes(requestObject, {
+    query: {
+      queryKey: ['project-types'],
+    },
+  });
+
   if (
     typeof regions === 'undefined' ||
     typeof areasOfIntervention === 'undefined' ||
     typeof sustainableDevelopmentGoals === 'undefined' ||
     typeof countryData === 'undefined' ||
-    typeof organizations === 'undefined'
+    typeof organizations === 'undefined' ||
+    typeof projectTypes === 'undefined'
   ) {
     return;
   }
@@ -133,7 +142,8 @@ export const useProjectFormGetFields = () => {
       | OrganizationTypeListResponse
       | OrganizationThemeListResponse
       | CountryListResponse
-      | ProjectListResponse,
+      | ProjectListResponse
+      | ProjectTypeListResponse,
   ) => {
     return data?.data
       ?.map(
@@ -153,5 +163,6 @@ export const useProjectFormGetFields = () => {
     countries: parseData(countryData),
     organizations: parseData(organizations),
     sustainableDevelopmentGoals: parseData(sustainableDevelopmentGoals),
+    projectTypes: parseData(projectTypes),
   };
 };
