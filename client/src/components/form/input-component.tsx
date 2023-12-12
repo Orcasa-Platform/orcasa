@@ -1,9 +1,15 @@
 import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
 
-import { cn } from '@/lib/classnames';
+import { ChevronDown } from 'lucide-react';
 
+import { cn } from '@/lib/classnames';
+import { format } from '@/lib/utils/formats';
+
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import { Input } from '@/components/ui/input';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Select,
   SelectItem,
@@ -122,6 +128,69 @@ const InputComponent = ({
         variant={variant}
         options={options ?? []}
       />
+    );
+  }
+  if (type === 'date') {
+    const startDate = form.watch('start_date');
+    const endDate = form.watch('end_date');
+    return (
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="vanilla"
+            size="auto"
+            className="relative w-full justify-start border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px] data-[state=open]:border-gray-400"
+          >
+            {value ? (
+              format({ id: 'formatDate', value })
+            ) : (
+              <span>{name === 'start_date' ? 'From' : 'To'} date</span>
+            )}
+            <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent
+          className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+          side="bottom"
+          sideOffset={-1}
+          align="start"
+        >
+          <Calendar
+            initialFocus
+            variant="filter"
+            mode="single"
+            captionLayout="dropdown-buttons"
+            defaultMonth={value ? new Date(value as string) : undefined}
+            // `fromDate` and `toDate` are required to allow the user to quickly jump
+            // between years and months (see the `captionLayout` prop)
+            fromDate={
+              name === 'start_date' || !startDate
+                ? new Date('2000-01-01')
+                : // We're making sure the user can't select the same date in both date
+                // pickers because the API considers the max date as exclusive
+                new Date(+new Date(startDate) + 24 * 3600 * 1000)
+            }
+            toDate={
+              name === 'end_date' || !endDate
+                ? new Date()
+                : // We're making sure the user can't select the same date in both date
+                // pickers because the API considers the max date as exclusive
+                new Date(+new Date(endDate) - 24 * 3600 * 1000)
+            }
+            selected={value ? new Date(value as string) : undefined}
+            onSelect={(date: Date | undefined) =>
+              onChange(
+                date
+                  ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
+                    2,
+                    '0',
+                  )}-${`${date.getDate()}`.padStart(2, '0')}`
+                  : undefined,
+              )
+            }
+          />
+        </PopoverContent>
+      </Popover>
     );
   }
   return (

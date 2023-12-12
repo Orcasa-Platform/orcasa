@@ -186,12 +186,12 @@ export default function ProjectForm() {
     start_date: {
       label: 'Start date',
       required: true,
-      zod: z.date(),
+      zod: z.string(),
       type: 'date',
     },
     end_date: {
       label: 'End date',
-      zod: z.date().optional(),
+      zod: z.string().optional(),
       type: 'date',
     },
     country_of_coordination: {
