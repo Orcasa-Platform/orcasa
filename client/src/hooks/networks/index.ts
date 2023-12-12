@@ -32,6 +32,7 @@ import {
   OrganizationFundedProjectsDataItem,
   ProjectListResponse,
   OrganizationListResponse,
+  AreaOfInterventionListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
 import {
@@ -913,8 +914,12 @@ export const useNetworkProjectFiltersOptions = (): Record<
   const interventionArea = useMemo(
     () =>
       interventionAreaData?.data
-        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          interventionAreaData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        ? interventionAreaData.data.map((d: AreaOfInterventionListResponseDataItem) => ({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            label: d.attributes!.name,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            value: d.id!,
+          }))
         : [],
     [interventionAreaData],
   );
