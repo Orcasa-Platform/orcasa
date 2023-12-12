@@ -1,14 +1,17 @@
+import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
 import { useGetOrganizations } from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
 import { useGetOrganizationTypes } from '@/types/generated/organization-type';
 import { useGetProjects } from '@/types/generated/project';
+import { useGetRegions } from '@/types/generated/region';
 import {
   OrganizationThemeListResponse,
   OrganizationTypeListResponse,
   CountryListResponse,
   ProjectListResponse,
 } from '@/types/generated/strapi.schemas';
+import { useGetSustainableDevGoals } from '@/types/generated/sustainable-dev-goal';
 
 export const useOrganizationGetFormFields = () => {
   const requestObject = {
@@ -87,18 +90,18 @@ export const useProjectFormGetFields = () => {
     'pagination[pageSize]': 9999,
   };
 
-  const { data: regions } = useGetOrganizationTypes(requestObject, {
+  const { data: regions } = useGetRegions(requestObject, {
     query: {
       queryKey: ['regions'],
     },
   });
 
-  const { data: areasOfIntervention } = useGetOrganizationThemes(requestObject, {
+  const { data: areasOfIntervention } = useGetAreaOfInterventions(requestObject, {
     query: {
       queryKey: ['areas-of-intervention'],
     },
   });
-  const { data: sustainableDevelopmentGoals } = useGetOrganizationThemes(requestObject, {
+  const { data: sustainableDevelopmentGoals } = useGetSustainableDevGoals(requestObject, {
     query: {
       queryKey: ['sustainable-development-goals'],
     },

@@ -40,10 +40,15 @@ const projectRoleOptions = [
 export default function ProjectForm() {
   const { countries, organizations, regions, areasOfIntervention, sustainableDevelopmentGoals } =
     useProjectFormGetFields() || {};
-  const OtherId = areasOfIntervention?.find((type) => type?.name === 'Other')?.id?.toString();
+  const otherId = areasOfIntervention
+    ?.find((type) => type?.name === 'Other (to be specified)')
+    ?.id?.toString();
   const hasData =
     countries && organizations && regions && areasOfIntervention && sustainableDevelopmentGoals;
   const [error, setError] = useState<AxiosError | undefined>();
+  const secondaryAreasOfIntervention = areasOfIntervention?.filter(
+    (type) => type?.id?.toString() !== otherId,
+  );
   const fieldValues: { [key: string]: Field } = {
     lead_partner: {
       label: 'Coordinator',
@@ -249,7 +254,7 @@ export default function ProjectForm() {
         .superRefine((mainAreaOther, refinementContext) => {
           const mainArea = watch('main_area_of_intervention');
           if (
-            mainArea === OtherId &&
+            mainArea === otherId &&
             (typeof mainAreaOther === 'undefined' || mainAreaOther.length === 0)
           ) {
             return refinementContext.addIssue({
@@ -266,10 +271,15 @@ export default function ProjectForm() {
     secondary_area_of_intervention: {
       label: 'Secondary area of intervention',
       zod: z
-        .enum(areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]])
+        .enum(
+          secondaryAreasOfIntervention?.map((type) => type?.id?.toString()) as [
+            string,
+            ...string[],
+          ],
+        )
         .optional(),
       type: 'multiselect',
-      options: areasOfIntervention?.map((area) => ({
+      options: secondaryAreasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
       })),
@@ -277,10 +287,15 @@ export default function ProjectForm() {
     third_area_of_intervention: {
       label: 'Third area of intervention',
       zod: z
-        .enum(areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]])
+        .enum(
+          secondaryAreasOfIntervention?.map((type) => type?.id?.toString()) as [
+            string,
+            ...string[],
+          ],
+        )
         .optional(),
       type: 'multiselect',
-      options: areasOfIntervention?.map((area) => ({
+      options: secondaryAreasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
       })),
@@ -293,10 +308,17 @@ export default function ProjectForm() {
         )
         .optional(),
       type: 'multiselect',
-      options: sustainableDevelopmentGoals?.map((sdg) => ({
-        label: sdg?.name,
-        value: sdg?.id?.toString(),
-      })),
+      options: sustainableDevelopmentGoals
+        ?.sort((a, b) => {
+          // Sort by the SDG number
+          const numA = parseInt(a?.name?.match(/\d+/)?.[0] || '0', 10);
+          const numB = parseInt(b?.name?.match(/\d+/)?.[0] || '0', 10);
+          return numA - numB;
+        })
+        .map((sdg) => ({
+          label: sdg?.name,
+          value: sdg?.id?.toString(),
+        })),
     },
 
     user_email: {
@@ -475,6 +497,9 @@ export default function ProjectForm() {
               'regions_of_intervention',
               'countries_of_intervention',
               'main_area_of_intervention',
+              ...(watch('main_area_of_intervention') === otherId
+                ? ['main_area_of_intervention_other']
+                : []),
               'secondary_area_of_intervention',
               'third_area_of_intervention',
               'sustainable_development_goal',
