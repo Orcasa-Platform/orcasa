@@ -62,9 +62,11 @@ export default function ProjectForm() {
     },
     partners: {
       label: 'Partners',
-      zod: z
-        .enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.array(
+        z
+          .enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]])
+          .optional(),
+      ),
       type: 'multiselect',
       options: organizations?.map((type) => ({
         label: type.name,
@@ -73,9 +75,11 @@ export default function ProjectForm() {
     },
     funders: {
       label: 'Funders',
-      zod: z
-        .enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.array(
+        z
+          .enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]])
+          .optional(),
+      ),
       type: 'multiselect',
       options: organizations?.map((type) => ({
         label: type.name,
@@ -215,7 +219,9 @@ export default function ProjectForm() {
     },
     regions_of_intervention: {
       label: 'Regions of intervention',
-      zod: z.enum(regions?.map((type) => type?.id?.toString()) as [string, ...string[]]).optional(),
+      zod: z.array(
+        z.enum(regions?.map((type) => type?.id?.toString()) as [string, ...string[]]).optional(),
+      ),
       type: 'multiselect',
       options: regions?.map((region) => ({
         label: region?.name,
@@ -225,7 +231,7 @@ export default function ProjectForm() {
     countries_of_intervention: {
       label: 'Countries of intervention',
       zod: z
-        .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
+        .array(z.enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]]))
         .optional(),
       type: 'multiselect',
       options: countries?.map((country) => ({
@@ -281,7 +287,7 @@ export default function ProjectForm() {
           ],
         )
         .optional(),
-      type: 'multiselect',
+      type: 'select',
       options: secondaryAreasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
@@ -297,7 +303,7 @@ export default function ProjectForm() {
           ],
         )
         .optional(),
-      type: 'multiselect',
+      type: 'select',
       options: secondaryAreasOfIntervention?.map((area) => ({
         label: area?.name,
         value: area?.id?.toString(),
@@ -310,7 +316,7 @@ export default function ProjectForm() {
           sustainableDevelopmentGoals?.map((type) => type?.id?.toString()) as [string, ...string[]],
         )
         .optional(),
-      type: 'multiselect',
+      type: 'select',
       options: sustainableDevelopmentGoals
         ?.sort((a, b) => {
           // Sort by the SDG number
