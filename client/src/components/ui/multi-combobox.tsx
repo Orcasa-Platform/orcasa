@@ -186,8 +186,16 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                       className={cn(optionVariants({ variant }))}
                     >
                       <Checkbox
+                        // For some reason, the `MultiCombobox` component initiates an infinite loop
+                        // when used inside a React Hook Form if this checkbox has a `checked`
+                        // property.
+                        // The workaround here is to:
+                        // 1. Use `defaultChecked` instead of `checked`
+                        // 2. Mount/unmount the checkbox when the check status has changed (using
+                        // the `key` property).
+                        key={`${value.findIndex((value) => value === option.value) !== -1}`}
                         id={`multi-combobox-option-${option.value}`}
-                        checked={value.includes(option.value)}
+                        defaultChecked={value.findIndex((value) => value === option.value) !== -1}
                         className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
                       />
                       <Label
