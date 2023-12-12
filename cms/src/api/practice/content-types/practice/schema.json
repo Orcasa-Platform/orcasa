@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "practices",
+  "info": {
+    "singularName": "practice",
+    "pluralName": "practices",
+    "displayName": "Practice"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "source_name": {
+      "type": "enumeration",
+      "enum": [
+        "WOCAT"
+      ],
+      "required": true
+    },
+    "source_id": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "text"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "country": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    }
+  }
+}

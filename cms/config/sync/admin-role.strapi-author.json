@@ -475,6 +475,58 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "country",
+          "language"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "country",
+          "language"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "country",
+          "language"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::project-type.project-type",
       "properties": {
         "fields": [

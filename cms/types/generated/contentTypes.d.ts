@@ -1092,6 +1092,40 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPracticePractice extends Schema.CollectionType {
+  collectionName: 'practices';
+  info: {
+    singularName: 'practice';
+    pluralName: 'practices';
+    displayName: 'Practice';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    source_name: Attribute.Enumeration<['WOCAT']> & Attribute.Required;
+    source_id: Attribute.String & Attribute.Required;
+    title: Attribute.Text;
+    short_description: Attribute.Text;
+    country: Attribute.String;
+    language: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::practice.practice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::practice.practice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -1325,6 +1359,7 @@ declare module '@strapi/types' {
       'api::organization-theme.organization-theme': ApiOrganizationThemeOrganizationTheme;
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;
       'api::page.page': ApiPagePage;
+      'api::practice.practice': ApiPracticePractice;
       'api::project.project': ApiProjectProject;
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;
