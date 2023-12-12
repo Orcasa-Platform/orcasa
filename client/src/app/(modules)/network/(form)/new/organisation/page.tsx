@@ -25,6 +25,7 @@ import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/
 import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
 import InputComponent from '@/components/form/input-component';
+import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -35,23 +36,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-
-type ZodField =
-  | z.ZodString
-  | z.ZodEnum<[string, ...string[]]>
-  | z.ZodOptional<z.ZodString>
-  | z.ZodOptional<z.ZodEnum<[string, ...string[]]>>;
-
-export type Field = {
-  label: string;
-  required?: boolean;
-  zod?: ZodField | z.ZodEffects<z.ZodOptional<z.ZodString>, string | undefined, string | undefined>;
-  description?: string | React.ReactNode;
-  type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email';
-  options?: { label: string; value: string }[];
-  maxSize?: number;
-  placeholder?: string;
-};
 
 const projectRoleOptions = [
   { label: 'Coordinator', value: 'lead_projects' },
@@ -201,7 +185,7 @@ export default function OrganisationForm() {
     },
   };
 
-  const projectFields: { [key: string]: Field } | undefined = hasData && {
+  const projectFields: { [key: string]: Omit<Field, 'zod'> } | undefined = hasData && {
     project: {
       label: 'Project',
       // zod will be added from projectsArraySchema
@@ -384,7 +368,7 @@ export default function OrganisationForm() {
                 <InputComponent
                   field={
                     field as unknown as ControllerRenderProps<
-                      { [x: string]: string | undefined },
+                      { [x: string]: string | string[] | undefined },
                       string
                     >
                   }

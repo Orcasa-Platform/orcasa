@@ -47,6 +47,8 @@ export interface ComboboxProps<T> {
   options: { label: string; value: T }[];
   onChange: (value: T[]) => void;
   disabled?: boolean;
+  ariaDescribedBy?: string;
+  ariaInvalid?: boolean;
 }
 
 export const MultiCombobox = <T extends NonNullable<unknown>>({
@@ -57,6 +59,8 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   options,
   onChange,
   disabled = false,
+  ariaDescribedBy,
+  ariaInvalid,
 }: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -68,11 +72,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
       search.length === 0
         ? options
         : options.filter((option) =>
-            option.label
-              .toLowerCase()
-              .replace(/\s+/g, '')
-              .includes(search.toLowerCase().replace(/\s+/g, '')),
-          ),
+          option.label
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(search.toLowerCase().replace(/\s+/g, '')),
+        ),
     [options, search],
   );
 
@@ -98,7 +102,12 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   }, [containerRef, setOpen]);
 
   return (
-    <div ref={containerRef} className="relative text-base">
+    <div
+      ref={containerRef}
+      className="relative text-base"
+      aria-describedby={ariaDescribedBy}
+      aria-invalid={ariaInvalid}
+    >
       <ComboboxPrimitive multiple value={value} onChange={onChange}>
         {!open && (
           <Button

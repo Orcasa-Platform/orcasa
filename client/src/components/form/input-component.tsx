@@ -3,6 +3,7 @@ import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
 import { cn } from '@/lib/classnames';
 
 import { Input } from '@/components/ui/input';
+import { MultiCombobox } from '@/components/ui/multi-combobox';
 import {
   Select,
   SelectItem,
@@ -26,10 +27,12 @@ const InputComponent = ({
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
   form,
+  variant,
+  label,
 }: {
   field: ControllerRenderProps<
     {
-      [x: string]: string | undefined;
+      [x: string]: string | string[] | undefined;
     },
     string
   >;
@@ -43,11 +46,13 @@ const InputComponent = ({
   'aria-invalid'?: boolean;
   index?: number;
   name: string;
+  label?: string;
   form: UseFormReturn<
     { [K in string | `projects.${string}` | 'projects']?: string | Date | undefined },
     string,
     undefined
   >;
+  variant?: 'network-organization' | 'network-project';
 }) => {
   const { watch, register } = form;
   const { name, onChange, value } = field;
@@ -57,7 +62,7 @@ const InputComponent = ({
       <Select
         name={name}
         onValueChange={onChange}
-        defaultValue={value}
+        defaultValue={value as string | undefined}
         {...registerProjectsField}
         required={required}
       >
@@ -103,6 +108,20 @@ const InputComponent = ({
           </div>
         )}
       </>
+    );
+  }
+  if (type === 'multiselect') {
+    return (
+      <MultiCombobox
+        id={id}
+        name={label}
+        value={(value as string[]) ?? []}
+        ariaDescribedBy={ariaDescribedBy}
+        ariaInvalid={!!ariaInvalid}
+        onChange={onChange}
+        variant={variant}
+        options={options ?? []}
+      />
     );
   }
   return (
