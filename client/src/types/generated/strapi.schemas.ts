@@ -886,6 +886,32 @@ export const SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribut
     declined: 'declined',
   } as const;
 
+export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributes = {
+  name?: string;
+  organization_type?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+  secondary_organization_theme?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+  short_description?: string;
+  description?: string;
+  country?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+  url?: string;
+  lead_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+  partner_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+  funded_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+  publication_status?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+  updatedBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+};
+
+export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerData = {
+  id?: number;
+  attributes?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributes;
+};
+
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
   { [key: string]: any };
 
@@ -1917,6 +1943,27 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganiz
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme = {
   data?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
+};
+
+export type RegionProjectsDataItemAttributesLeadPartnerDataAttributes = {
+  name?: string;
+  organization_type?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+  secondary_organization_theme?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+  short_description?: string;
+  description?: string;
+  country?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+  url?: string;
+  lead_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+  partner_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+  funded_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+  publication_status?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
 };
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
@@ -3338,6 +3385,28 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
   {
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
+  };
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+  {
+    name?: string;
+    organization_type?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type_other?: string;
+    main_organization_theme?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    short_description?: string;
+    description?: string;
+    country?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    url?: string;
+    lead_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    user_email?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
@@ -5120,6 +5189,27 @@ export const OrganizationPublicationStatus = {
   accepted: 'accepted',
   declined: 'declined',
 } as const;
+
+export interface Organization {
+  name: string;
+  organization_type?: OrganizationOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: OrganizationMainOrganizationTheme;
+  secondary_organization_theme?: OrganizationSecondaryOrganizationTheme;
+  short_description: string;
+  description?: string;
+  country?: OrganizationCountry;
+  url?: string;
+  lead_projects?: OrganizationLeadProjects;
+  partner_projects?: OrganizationPartnerProjects;
+  funded_projects?: OrganizationFundedProjects;
+  publication_status?: OrganizationPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationCreatedBy;
+  updatedBy?: OrganizationUpdatedBy;
+}
 
 export type OrganizationFundedProjectsDataItemAttributes = { [key: string]: any };
 
@@ -7223,6 +7313,27 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
   };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes = {
+  name?: string;
+  organization_type?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+  secondary_organization_theme?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+  short_description?: string;
+  description?: string;
+  country?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+  url?: string;
+  lead_projects?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+  partner_projects?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+  funded_projects?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+  publication_status?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+  updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+};
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };

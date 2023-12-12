@@ -72,11 +72,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
       search.length === 0
         ? options
         : options.filter((option) =>
-          option.label
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(search.toLowerCase().replace(/\s+/g, '')),
-        ),
+            option.label
+              .toLowerCase()
+              .replace(/\s+/g, '')
+              .includes(search.toLowerCase().replace(/\s+/g, '')),
+          ),
     [options, search],
   );
 
