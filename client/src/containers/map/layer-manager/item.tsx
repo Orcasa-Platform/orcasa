@@ -2,6 +2,8 @@
 
 import { useCallback } from 'react';
 
+import { Layer } from '@deck.gl/core/typed';
+
 import { parseConfig } from '@/lib/json-converter';
 
 import { useLayersInteractive, useLayersInteractiveIds } from '@/store';
@@ -102,7 +104,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       config,
       params_config,
       settings,
-    });
+    }) as Layer<{ beforeId: string }>;
 
     return <DeckGLLayer id={`${id}-layer`} beforeId={beforeId} config={c} />;
   }
