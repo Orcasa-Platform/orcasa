@@ -62,11 +62,9 @@ export default function ProjectForm() {
     },
     partners: {
       label: 'Partners',
-      zod: z.array(
-        z
-          .enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]])
-          .optional(),
-      ),
+      zod: z
+        .array(z.enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]]))
+        .optional(),
       type: 'multiselect',
       options: organizations?.map((type) => ({
         label: type.name,
@@ -75,11 +73,9 @@ export default function ProjectForm() {
     },
     funders: {
       label: 'Funders',
-      zod: z.array(
-        z
-          .enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]])
-          .optional(),
-      ),
+      zod: z
+        .array(z.enum(organizations?.map((type) => type?.id?.toString()) as [string, ...string[]]))
+        .optional(),
       type: 'multiselect',
       options: organizations?.map((type) => ({
         label: type.name,
@@ -188,7 +184,9 @@ export default function ProjectForm() {
     },
     project_type: {
       label: 'Project type',
-      zod: z.enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]]),
+      zod: z
+        .enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]])
+        .optional(),
       type: 'select',
       options: projectTypes?.map((type) => ({
         label: type.name,
@@ -219,9 +217,9 @@ export default function ProjectForm() {
     },
     regions_of_intervention: {
       label: 'Regions of intervention',
-      zod: z.array(
-        z.enum(regions?.map((type) => type?.id?.toString()) as [string, ...string[]]).optional(),
-      ),
+      zod: z
+        .array(z.enum(regions?.map((type) => type?.id?.toString()) as [string, ...string[]]))
+        .optional(),
       type: 'multiselect',
       options: regions?.map((region) => ({
         label: region?.name,
