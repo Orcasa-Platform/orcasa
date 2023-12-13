@@ -176,24 +176,24 @@ const InputComponent = ({
               name === 'start_date' || !startDate
                 ? new Date(+new Date() - 100 * 365 * 24 * 3600 * 1000)
                 : // We're making sure the user can't select the same date in both date
-                // pickers because the API considers the max date as exclusive
-                new Date(+new Date(startDate) + 24 * 3600 * 1000)
+                  // pickers because the API considers the max date as exclusive
+                  new Date(+new Date(startDate) + 24 * 3600 * 1000)
             }
             toDate={
               name === 'end_date' || !endDate
                 ? new Date(+new Date() + 100 * 365 * 24 * 3600 * 1000)
                 : // We're making sure the user can't select the same date in both date
-                // pickers because the API considers the max date as exclusive
-                new Date(+new Date(endDate) - 24 * 3600 * 1000)
+                  // pickers because the API considers the max date as exclusive
+                  new Date(+new Date(endDate) - 24 * 3600 * 1000)
             }
             selected={value ? new Date(value as string) : undefined}
             onSelect={(date: Date | undefined) =>
               onChange(
                 date
                   ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                    2,
-                    '0',
-                  )}-${`${date.getDate()}`.padStart(2, '0')}`
+                      2,
+                      '0',
+                    )}-${`${date.getDate()}`.padStart(2, '0')}`
                   : undefined,
               )
             }

@@ -494,7 +494,7 @@ export default function ProjectForm() {
                     <span className="sr-only">Coordinator contact details info</span>
                     <Info />
                   </TooltipTrigger>
-                  <TooltipContent>
+                  <TooltipContent variant="blue">
                     <p>Contact details of the person responsible of project coordination.</p>
                   </TooltipContent>
                 </Tooltip>

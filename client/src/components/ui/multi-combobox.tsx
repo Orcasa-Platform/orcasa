@@ -11,8 +11,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
-import { WithEllipsis } from './with-ellipsis';
-
 const optionVariants = cva('py-4 px-3 flex items-start gap-x-2 group', {
   variants: {
     variant: {
