@@ -11,6 +11,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
+import { WithEllipsis } from './with-ellipsis';
+
 const optionVariants = cva('py-4 px-3 flex items-start gap-x-2 group', {
   variants: {
     variant: {
@@ -49,6 +51,7 @@ export interface ComboboxProps<T> {
   disabled?: boolean;
   ariaDescribedBy?: string;
   ariaInvalid?: boolean;
+  showSelected?: boolean;
 }
 
 export const MultiCombobox = <T extends NonNullable<unknown>>({
@@ -61,6 +64,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   disabled = false,
   ariaDescribedBy,
   ariaInvalid,
+  showSelected = false,
 }: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -72,11 +76,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
       search.length === 0
         ? options
         : options.filter((option) =>
-          option.label
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(search.toLowerCase().replace(/\s+/g, '')),
-        ),
+            option.label
+              .toLowerCase()
+              .replace(/\s+/g, '')
+              .includes(search.toLowerCase().replace(/\s+/g, '')),
+          ),
     [options, search],
   );
 
@@ -100,6 +104,13 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
 
     return () => document.removeEventListener('click', onClickDocument, { capture: true });
   }, [containerRef, setOpen]);
+  const selectedLabels =
+    value.length === 0
+      ? 'Select'
+      : options
+          .filter((option) => value.includes(option.value))
+          .map((option) => option.label)
+          .join(', ');
   return (
     <div
       ref={containerRef}
@@ -115,11 +126,15 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             role="combobox"
             variant="vanilla"
             size="auto"
-            className="relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]"
+            className="focus-visible:ring-offset-[3px]', relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring"
             onClick={() => setOpen(true)}
             disabled={disabled}
           >
-            {`${name}${value.length > 0 ? ` (${value.length})` : ''}`}
+            {showSelected ? (
+              <WithEllipsis text={selectedLabels} maxLength={78} />
+            ) : (
+              `${name}${value.length > 0 ? ` (${value.length})` : ''}`
+            )}
             <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
           </Button>
         )}

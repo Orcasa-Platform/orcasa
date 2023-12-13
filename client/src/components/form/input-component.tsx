@@ -127,6 +127,7 @@ const InputComponent = ({
         onChange={onChange}
         variant={variant}
         options={options ?? []}
+        showSelected
       />
     );
   }
