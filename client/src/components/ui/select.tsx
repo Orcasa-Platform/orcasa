@@ -47,8 +47,8 @@ export const itemVariants = cva(
     variants: {
       variant: {
         default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
-        project: '',
-        dataset: '',
+        'project-date': '',
+        'dataset-date': '',
       },
     },
     defaultVariants: {
