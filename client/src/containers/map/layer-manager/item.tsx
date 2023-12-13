@@ -2,6 +2,8 @@
 
 import { useCallback } from 'react';
 
+import { Layer } from '@deck.gl/core/typed';
+
 import { parseConfig } from '@/lib/json-converter';
 
 import { useLayersInteractive, useLayersInteractiveIds } from '@/store';
@@ -11,7 +13,7 @@ import { LayerResponseDataObject } from '@/types/generated/strapi.schemas';
 import { Config, LayerTyped } from '@/types/layers';
 
 import BoundsLayer from '@/components/map/layers/bounds-layer';
-import DeckJsonLayer from '@/components/map/layers/deck-json-layer';
+import DeckGLLayer from '@/components/map/layers/deckgl-layer';
 import MapboxLayer from '@/components/map/layers/mapbox-layer';
 
 interface LayerManagerItemProps extends Required<Pick<LayerResponseDataObject, 'id'>> {
@@ -102,9 +104,9 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       config,
       params_config,
       settings,
-    });
+    }) as Layer<{ beforeId: string }>;
 
-    return <DeckJsonLayer id={`${id}-layer`} beforeId={beforeId} config={c} />;
+    return <DeckGLLayer id={`${id}-layer`} beforeId={beforeId} config={c} />;
   }
 };
 
