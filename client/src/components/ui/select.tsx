@@ -15,7 +15,8 @@ export const triggerVariants = cva(
     variants: {
       variant: {
         default: '',
-        filter: 'data-[state=open]:border-gray-400',
+        'dataset-date': 'data-[state=open]:border-gray-400',
+        'project-date': 'data-[state=open]:border-gray-400',
       },
     },
     defaultVariants: {
@@ -30,7 +31,8 @@ export const contentVariants = cva(
     variants: {
       variant: {
         default: 'shadow-md',
-        filter: 'border-gray-400',
+        'dataset-date': 'border-gray-400',
+        'project-date': 'border-gray-400',
       },
     },
     defaultVariants: {
@@ -45,7 +47,8 @@ export const itemVariants = cva(
     variants: {
       variant: {
         default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
-        filter: '',
+        project: '',
+        dataset: '',
       },
     },
     defaultVariants: {
@@ -88,7 +91,7 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> &
-    VariantProps<typeof contentVariants>
+  VariantProps<typeof contentVariants>
 >(({ className, children, position = 'popper', variant, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
@@ -97,9 +100,9 @@ const SelectContent = React.forwardRef<
         contentVariants({ variant }),
         {
           'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1':
-            position === 'popper' && variant !== 'filter',
+            position === 'popper' && variant && !['dataset', 'project'].includes(variant),
           'data-[side=bottom]:-translate-y-px data-[side=left]:translate-x-px data-[side=right]:-translate-x-px data-[side=top]:translate-y-px':
-            position === 'popper' && variant === 'filter',
+            position === 'popper' && variant && !['dataset', 'project'].includes(variant),
         },
         className,
       )}
@@ -114,7 +117,7 @@ const SelectContent = React.forwardRef<
             className={cn(
               'p-1',
               position === 'popper' &&
-                'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
+              'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
             )}
           >
             {children}

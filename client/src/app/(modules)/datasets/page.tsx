@@ -124,14 +124,14 @@ export default function DatasetsModule() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent
-                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                    className="w-[330px] overflow-y-auto rounded-none p-0 text-base shadow-md"
                     side="bottom"
                     sideOffset={-1}
                     align="start"
                   >
                     <Calendar
                       initialFocus
-                      variant="filter"
+                      variant="dataset-date"
                       mode="single"
                       captionLayout="dropdown-buttons"
                       defaultMonth={filters.minDate ? new Date(filters.minDate) : undefined}
@@ -141,8 +141,8 @@ export default function DatasetsModule() {
                       toDate={
                         filters.maxDate
                           ? // We're making sure the user can't select the same date in both date
-                            // pickers because the API considers the max date as exclusive
-                            new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
+                          // pickers because the API considers the max date as exclusive
+                          new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
                           : new Date()
                       }
                       selected={filters.minDate ? new Date(filters.minDate) : undefined}
@@ -151,9 +151,9 @@ export default function DatasetsModule() {
                           ...filters,
                           minDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                                2,
-                                '0',
-                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                              2,
+                              '0',
+                            )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }
@@ -176,14 +176,14 @@ export default function DatasetsModule() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent
-                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                    className="w-[330px] overflow-y-auto rounded-none p-0 text-base shadow-md"
                     side="bottom"
                     sideOffset={-1}
                     align="start"
                   >
                     <Calendar
                       initialFocus
-                      variant="filter"
+                      variant="dataset-date"
                       mode="single"
                       captionLayout="dropdown-buttons"
                       defaultMonth={filters.maxDate ? new Date(filters.maxDate) : undefined}
@@ -192,8 +192,8 @@ export default function DatasetsModule() {
                       fromDate={
                         filters.minDate
                           ? // We're making sure the user can't select the same date in both date
-                            // pickers because the API considers the max date as exclusive
-                            new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
+                          // pickers because the API considers the max date as exclusive
+                          new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
                           : new Date('2000-01-01')
                       }
                       toDate={new Date()}
@@ -203,9 +203,9 @@ export default function DatasetsModule() {
                           ...filters,
                           maxDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                                2,
-                                '0',
-                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                              2,
+                              '0',
+                            )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }

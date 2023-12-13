@@ -1,6 +1,6 @@
 import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
 
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
@@ -144,23 +144,26 @@ const InputComponent = ({
               { 'border-destructive': ariaInvalid },
             )}
           >
-            {value ? (
-              format({ id: 'formatDate', value })
-            ) : (
-              <span>{name === 'start_date' ? 'From' : 'To'} date</span>
-            )}
+            <span className="flex items-center gap-2">
+              <CalendarIcon />
+              {value ? (
+                format({ id: 'formatDate', value })
+              ) : (
+                <span className="text-gray-500">Select date</span>
+              )}
+            </span>
             <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+          className="w-[330px] overflow-y-auto rounded-none p-0 text-base shadow-md"
           side="bottom"
           sideOffset={-1}
           align="start"
         >
           <Calendar
             initialFocus
-            variant="filter"
+            variant="project-date"
             mode="single"
             captionLayout="dropdown-buttons"
             defaultMonth={value ? new Date(value as string) : undefined}
@@ -170,24 +173,24 @@ const InputComponent = ({
               name === 'start_date' || !startDate
                 ? new Date('2000-01-01')
                 : // We're making sure the user can't select the same date in both date
-                // pickers because the API considers the max date as exclusive
-                new Date(+new Date(startDate) + 24 * 3600 * 1000)
+                  // pickers because the API considers the max date as exclusive
+                  new Date(+new Date(startDate) + 24 * 3600 * 1000)
             }
             toDate={
               name === 'end_date' || !endDate
                 ? new Date()
                 : // We're making sure the user can't select the same date in both date
-                // pickers because the API considers the max date as exclusive
-                new Date(+new Date(endDate) - 24 * 3600 * 1000)
+                  // pickers because the API considers the max date as exclusive
+                  new Date(+new Date(endDate) - 24 * 3600 * 1000)
             }
             selected={value ? new Date(value as string) : undefined}
             onSelect={(date: Date | undefined) =>
               onChange(
                 date
                   ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                    2,
-                    '0',
-                  )}-${`${date.getDate()}`.padStart(2, '0')}`
+                      2,
+                      '0',
+                    )}-${`${date.getDate()}`.padStart(2, '0')}`
                   : undefined,
               )
             }
