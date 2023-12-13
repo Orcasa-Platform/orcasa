@@ -139,7 +139,10 @@ const InputComponent = ({
           <Button
             variant="vanilla"
             size="auto"
-            className="relative w-full justify-start border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px] data-[state=open]:border-gray-400"
+            className={cn(
+              'relative w-full justify-start border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px] data-[state=open]:border-gray-400',
+              { 'border-destructive': ariaInvalid },
+            )}
           >
             {value ? (
               format({ id: 'formatDate', value })
