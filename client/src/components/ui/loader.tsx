@@ -28,17 +28,15 @@ const ContentLoader = ({
     <div className="relative">
       {isFetching && !isFetched && <Skeleton className={cn('h-20 w-full', skeletonClassName)} />}
 
-      {/* <Loading
-        className="absolute z-10 flex h-full w-full items-center justify-center bg-white/50 py-2"
-        iconClassName="w-5 h-5"
-        visible={isFetching && !isPlaceholderData}
-      /> */}
-
-      {isError && isFetched && !isFetching && 'Error'}
+      {isError && isFetched && !isFetching && (
+        <p className="py-8 text-center font-semibold text-slate-500">An error occurred</p>
+      )}
 
       {!isPlaceholderData && !isError && isFetched && !!data && children}
 
-      {!isPlaceholderData && !isError && isFetched && !data && 'No data'}
+      {!isPlaceholderData && !isError && isFetched && !data && (
+        <p className="py-8 text-center font-semibold text-slate-500">No data</p>
+      )}
     </div>
   );
 };

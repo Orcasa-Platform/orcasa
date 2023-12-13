@@ -1,4 +1,4 @@
-FROM node:18.17-bullseye-slim
+FROM node:20.10-bullseye-slim
 # Install dependencies
 RUN apt-get update -y && \
     apt-get upgrade -y && \

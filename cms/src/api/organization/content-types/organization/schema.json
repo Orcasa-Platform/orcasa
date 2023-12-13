@@ -79,6 +79,10 @@
         "declined"
       ],
       "default": "accepted"
+    },
+    "user_email": {
+      "type": "email",
+      "required": false
     }
   }
 }

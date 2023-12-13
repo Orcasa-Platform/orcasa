@@ -53,7 +53,6 @@ const networkDetailSentencePart = (parentType: Type, parentName: string, type: T
 const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopupProps) => {
   const searchParams = useMapSearchParams();
   const [, setSidebarOpen] = useSidebarOpen();
-
   if (!popup) return null;
 
   const {

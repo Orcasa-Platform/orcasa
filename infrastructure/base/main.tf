@@ -172,11 +172,13 @@ locals {
     SMTP_PASSWORD = module.staging.smtp_password
   }
   staging_client_env = {
-    NEXT_PUBLIC_URL            = "https://${var.staging_domain}"
-    NEXT_PUBLIC_ENVIRONMENT    = "production"
-    NEXT_PUBLIC_API_URL        = "https://${var.staging_domain}/cms/api"
-    NEXT_PUBLIC_GA_TRACKING_ID = var.ga_tracking_id
-    LOG_LEVEL                  = "info"
+    NEXT_PUBLIC_URL                                 = "https://${var.staging_domain}"
+    NEXT_PUBLIC_ENVIRONMENT                         = "production"
+    NEXT_PUBLIC_API_URL                             = "https://${var.staging_domain}/cms/api"
+    NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "emilie.vrot@cirad.fr,mathieu.nogues@inrae.fr,carla.biscotti@vizzuality.com"
+    NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
+    LOG_LEVEL                                       = "info"
   }
   demo_cms_env = {
     HOST                = "0.0.0.0"
@@ -206,11 +208,13 @@ locals {
     SMTP_PASSWORD = module.demo.smtp_password
   }
   demo_client_env = {
-    NEXT_PUBLIC_URL            = "https://${var.demo_domain}"
-    NEXT_PUBLIC_ENVIRONMENT    = "production"
-    NEXT_PUBLIC_API_URL        = "https://${var.demo_domain}/cms/api"
-    NEXT_PUBLIC_GA_TRACKING_ID = var.ga_tracking_id
-    LOG_LEVEL                  = "info"
+    NEXT_PUBLIC_URL                                 = "https://${var.demo_domain}"
+    NEXT_PUBLIC_ENVIRONMENT                         = "production"
+    NEXT_PUBLIC_API_URL                             = "https://${var.demo_domain}/cms/api"
+    NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "emilie.vrot@cirad.fr,mathieu.nogues@inrae.fr"
+    NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
+    LOG_LEVEL                                       = "info"
   }
 }
 

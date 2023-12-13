@@ -14,7 +14,7 @@ const SolutionsSection = () => (
               Solutions for soil carbon experts
             </div>
             <div className="flex flex-col gap-8">
-              <h2 className="font-serif text-[32px] font-semibold text-slate-700">
+              <h2 className="font-serif text-3.5xl font-semibold text-slate-700">
                 Hear from Impact4Soil users
               </h2>
               <div className="h-2 w-20 bg-green-700" />

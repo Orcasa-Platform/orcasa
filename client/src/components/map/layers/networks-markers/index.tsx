@@ -264,6 +264,11 @@ const NetworksMarkers = () => {
   };
 
   // We need to separate the components to avoid conditional rendering of the hooks
-  return !!type ? <NetworkMarkerRelations {...network} /> : <NetworkMarkersFull />;
+  // Also avoid fetching for a singular network if we are on one form page ('new')
+  return !!type && type !== 'new' ? (
+    <NetworkMarkerRelations {...network} />
+  ) : (
+    <NetworkMarkersFull />
+  );
 };
 export default NetworksMarkers;

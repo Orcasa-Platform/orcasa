@@ -17,6 +17,8 @@ export const env = createEnv({
     NEXT_PUBLIC_ENVIRONMENT: z.enum(['development', 'staging', 'production']).optional(),
     NEXT_PUBLIC_URL: z.string().url(),
     NEXT_PUBLIC_API_URL: z.string().url(),
+    NEXT_PUBLIC_DATASETS_API_URL: z.string().url(),
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS: z.string(),
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
   },
   /*
@@ -29,6 +31,9 @@ export const env = createEnv({
     NEXT_PUBLIC_ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT,
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_DATASETS_API_URL: process.env.NEXT_PUBLIC_DATASETS_API_URL,
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS:
+      process.env.NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
   },
 });

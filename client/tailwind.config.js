@@ -15,10 +15,6 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
     },
     extend: {
       fontFamily: {
@@ -41,6 +37,7 @@ module.exports = {
         blue: {
           50: '#F2F7FB',
           100: '#EAF1F8',
+          400: '#4BA1F1',
           // Organizations
           500: '#358FE3',
           800: '#0765BD',
@@ -75,7 +72,9 @@ module.exports = {
         },
         purple: {
           // Datasets
+          50: '#F0EBF4',
           700: '#8380BC',
+          900: '#584484',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
