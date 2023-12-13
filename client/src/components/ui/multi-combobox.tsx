@@ -72,11 +72,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
       search.length === 0
         ? options
         : options.filter((option) =>
-            option.label
-              .toLowerCase()
-              .replace(/\s+/g, '')
-              .includes(search.toLowerCase().replace(/\s+/g, '')),
-          ),
+          option.label
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(search.toLowerCase().replace(/\s+/g, '')),
+        ),
     [options, search],
   );
 
@@ -100,7 +100,6 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
 
     return () => document.removeEventListener('click', onClickDocument, { capture: true });
   }, [containerRef, setOpen]);
-
   return (
     <div
       ref={containerRef}
@@ -179,33 +178,38 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                   <p className="py-8 text-center text-gray-700">No results</p>
                 )}
                 <ComboboxPrimitive.Options static>
-                  {filteredOptions.map((option) => (
-                    <ComboboxPrimitive.Option
-                      key={option.value as Key}
-                      value={option.value}
-                      className={cn(optionVariants({ variant }))}
-                    >
-                      <Checkbox
-                        // For some reason, the `MultiCombobox` component initiates an infinite loop
-                        // when used inside a React Hook Form if this checkbox has a `checked`
-                        // property.
-                        // The workaround here is to:
-                        // 1. Use `defaultChecked` instead of `checked`
-                        // 2. Mount/unmount the checkbox when the check status has changed (using
-                        // the `key` property).
-                        key={`${value.findIndex((value) => value === option.value) !== -1}`}
-                        id={`multi-combobox-option-${option.value}`}
-                        defaultChecked={value.findIndex((value) => value === option.value) !== -1}
-                        className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
-                      />
-                      <Label
-                        htmlFor={`multi-combobox-option-${option.value}`}
-                        className="pointer-events-none leading-normal"
+                  {filteredOptions.map((option) => {
+                    const isDefaultChecked =
+                      value.findIndex((value) => value === option.value) !== -1;
+
+                    return (
+                      <ComboboxPrimitive.Option
+                        key={option.value as Key}
+                        value={option.value}
+                        className={cn(optionVariants({ variant }))}
                       >
-                        {option.label}
-                      </Label>
-                    </ComboboxPrimitive.Option>
-                  ))}
+                        <Checkbox
+                          // For some reason, the `MultiCombobox` component initiates an infinite loop
+                          // when used inside a React Hook Form if this checkbox has a `checked`
+                          // property.
+                          // The workaround here is to:
+                          // 1. Use `defaultChecked` instead of `checked`
+                          // 2. Mount/unmount the checkbox when the check status has changed (using
+                          // the `key` property).
+                          key={`${isDefaultChecked}-${option.value}`}
+                          id={`multi-combobox-option-${option.value}`}
+                          defaultChecked={isDefaultChecked}
+                          className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
+                        />
+                        <Label
+                          htmlFor={`multi-combobox-option-${option.value}`}
+                          className="pointer-events-none leading-normal"
+                        >
+                          {option.label}
+                        </Label>
+                      </ComboboxPrimitive.Option>
+                    );
+                  })}
                 </ComboboxPrimitive.Options>
               </TooltipContent>
             </Tooltip>
