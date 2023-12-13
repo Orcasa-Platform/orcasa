@@ -11,7 +11,7 @@ in [Orcasa-Platform/orcasa-review4c](https://github.com/Orcasa-Platform/orcasa-r
 
 ## Dependencies
 
-- Node.js v18.17
+- Node.js v20.10
 - Yarn v3.6
 
 ## Install & run
