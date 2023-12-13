@@ -63,7 +63,8 @@ const InputComponent = ({
   const { watch, register } = form;
   const { name, onChange, value } = field;
   if (type === 'select') {
-    const registerProjectsField = id ? register(`projects.${index}.${name}`) : undefined;
+    const registerProjectsField =
+      id && variant === 'network-organization' ? register(`projects.${index}.${name}`) : undefined;
     return (
       <Select
         name={name}
@@ -172,14 +173,14 @@ const InputComponent = ({
             // between years and months (see the `captionLayout` prop)
             fromDate={
               name === 'start_date' || !startDate
-                ? new Date('2000-01-01')
+                ? new Date(+new Date() - 100 * 365 * 24 * 3600 * 1000)
                 : // We're making sure the user can't select the same date in both date
                   // pickers because the API considers the max date as exclusive
                   new Date(+new Date(startDate) + 24 * 3600 * 1000)
             }
             toDate={
               name === 'end_date' || !endDate
-                ? new Date()
+                ? new Date(+new Date() + 100 * 365 * 24 * 3600 * 1000)
                 : // We're making sure the user can't select the same date in both date
                   // pickers because the API considers the max date as exclusive
                   new Date(+new Date(endDate) - 24 * 3600 * 1000)

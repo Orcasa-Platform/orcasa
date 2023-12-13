@@ -15,8 +15,7 @@ export const triggerVariants = cva(
     variants: {
       variant: {
         default: '',
-        'dataset-date': 'data-[state=open]:border-gray-400',
-        'project-date': 'data-[state=open]:border-gray-400',
+        'date-picker': 'data-[state=open]:border-gray-400',
       },
     },
     defaultVariants: {
@@ -91,7 +90,7 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> &
-  VariantProps<typeof contentVariants>
+    VariantProps<typeof contentVariants>
 >(({ className, children, position = 'popper', variant, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
@@ -117,7 +116,7 @@ const SelectContent = React.forwardRef<
             className={cn(
               'p-1',
               position === 'popper' &&
-              'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
+                'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
             )}
           >
             {children}

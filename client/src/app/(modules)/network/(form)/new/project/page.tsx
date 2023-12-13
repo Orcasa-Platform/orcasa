@@ -7,8 +7,9 @@ import { SubmitHandler, useForm, ControllerRenderProps } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Tooltip } from '@radix-ui/react-tooltip';
 import { AxiosError } from 'axios';
-import { Check, CircleSlash, AlertCircle } from 'lucide-react';
+import { Check, CircleSlash, AlertCircle, Info } from 'lucide-react';
 import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
@@ -30,6 +31,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 export default function ProjectForm() {
   const {
@@ -215,8 +217,8 @@ export default function ProjectForm() {
         value: country?.id?.toString(),
       })),
     },
-    regions_of_intervention: {
-      label: 'Regions of intervention',
+    region_of_interventions: {
+      label: 'Region of intervention',
       zod: z
         .array(z.enum(regions?.map((type) => type?.id?.toString()) as [string, ...string[]]))
         .optional(),
@@ -226,8 +228,8 @@ export default function ProjectForm() {
         value: region?.id?.toString(),
       })),
     },
-    countries_of_intervention: {
-      label: 'Countries of intervention',
+    country_of_interventions: {
+      label: 'Country of intervention',
       zod: z
         .array(z.enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]]))
         .optional(),
@@ -484,10 +486,25 @@ export default function ProjectForm() {
               </div>
             </div>
             {renderFields(['lead_partner', 'partners', 'funders'])}
-            <h2 className="mt-10 font-serif text-2xl text-gray-700">Coordinator contact details</h2>
-            <h3 className="mt-10 font-serif text-base text-gray-700">Project coordinator:</h3>
+            <h2 className="mt-10 flex gap-2 font-serif text-2xl text-gray-700">
+              Coordinator contact details
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <span className="sr-only">Coordinator contact details info</span>
+                    <Info />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Contact details of the person responsible of project coordination.</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </h2>
+            <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
+              Project coordinator:
+            </h3>
             {renderFields(['project_coordinator_name', 'project_coordinator_email'])}
-            <h3 className="mt-10 font-serif text-base text-gray-700">
+            <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
               Second project coordinator:
             </h3>
             {renderFields(['second_project_coordinator_name', 'second_project_coordinator_email'])}
@@ -501,8 +518,8 @@ export default function ProjectForm() {
               'start_date',
               'end_date',
               'country_of_coordination',
-              'regions_of_intervention',
-              'countries_of_intervention',
+              'region_of_interventions',
+              'country_of_interventions',
               'main_area_of_intervention',
               ...(watch('main_area_of_intervention') === otherId
                 ? ['main_area_of_intervention_other']

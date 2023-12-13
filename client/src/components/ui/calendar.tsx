@@ -100,7 +100,7 @@ function Calendar({
               }
             >
               <SelectTrigger
-                variant={variant}
+                variant="date-picker"
                 className={cn({
                   'h-10 p-2': true,
                   'min-w-[80px]': name === 'months',
@@ -129,7 +129,7 @@ function Calendar({
         },
         CaptionLabel: (captionLabelProps) =>
           props.captionLayout === 'dropdown' ||
-            props.captionLayout === 'dropdown-buttons' ? null : (
+          props.captionLayout === 'dropdown-buttons' ? null : (
             <CaptionLabel {...captionLabelProps} />
           ),
       }}
