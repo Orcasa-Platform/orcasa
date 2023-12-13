@@ -1,4 +1,4 @@
-FROM node:20.5-bullseye-slim
+FROM node:20.10-bullseye-slim
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y libc6  && \

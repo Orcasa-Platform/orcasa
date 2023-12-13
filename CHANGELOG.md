@@ -1,0 +1,3 @@
+- Update Strapi version to 4.15.5
+- Update Client and CMS node.js versions to 20.10
+- Update Client and CMS yarn versions to 4.0.2
