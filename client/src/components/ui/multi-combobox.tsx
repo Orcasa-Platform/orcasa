@@ -126,12 +126,17 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             role="combobox"
             variant="vanilla"
             size="auto"
-            className="focus-visible:ring-offset-[3px]', relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring"
+            className={cn(
+              'relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]',
+            )}
+            title={selectedLabels}
             onClick={() => setOpen(true)}
             disabled={disabled}
           >
             {showSelected ? (
-              <WithEllipsis text={selectedLabels} maxLength={78} />
+              <span className={cn({ 'max-h-14 max-w-full truncate': showSelected })}>
+                {selectedLabels}
+              </span>
             ) : (
               `${name}${value.length > 0 ? ` (${value.length})` : ''}`
             )}
