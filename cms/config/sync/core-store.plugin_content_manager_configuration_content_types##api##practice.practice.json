@@ -76,20 +76,6 @@
           "sortable": true
         }
       },
-      "country": {
-        "edit": {
-          "label": "Country",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "country",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "language": {
         "edit": {
           "label": "Language",
@@ -100,6 +86,21 @@
         },
         "list": {
           "label": "language",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "country": {
+        "edit": {
+          "label": "Country",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "country",
           "searchable": true,
           "sortable": true
         }
@@ -164,6 +165,10 @@
       }
     },
     "layouts": {
+      "list": [
+        "source_name",
+        "title"
+      ],
       "edit": [
         [
           {
@@ -195,10 +200,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "source_name",
-        "title"
       ]
     }
   },

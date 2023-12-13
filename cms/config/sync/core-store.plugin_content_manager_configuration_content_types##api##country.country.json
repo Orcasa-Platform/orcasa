@@ -177,6 +177,21 @@
           "sortable": true
         }
       },
+      "practices": {
+        "edit": {
+          "label": "practices",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "source_id"
+        },
+        "list": {
+          "label": "practices",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -298,6 +313,12 @@
           {
             "name": "long",
             "size": 4
+          }
+        ],
+        [
+          {
+            "name": "practices",
+            "size": 6
           }
         ]
       ]

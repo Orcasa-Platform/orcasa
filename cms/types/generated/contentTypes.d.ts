@@ -773,6 +773,11 @@ export interface ApiCountryCountry extends Schema.CollectionType {
     >;
     lat: Attribute.Float;
     long: Attribute.Float;
+    practices: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1098,6 +1103,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     singularName: 'practice';
     pluralName: 'practices';
     displayName: 'Practice';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1107,8 +1113,12 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     source_id: Attribute.String & Attribute.Required;
     title: Attribute.Text;
     short_description: Attribute.Text;
-    country: Attribute.String;
     language: Attribute.String;
+    country: Attribute.Relation<
+      'api::practice.practice',
+      'manyToOne',
+      'api::country.country'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

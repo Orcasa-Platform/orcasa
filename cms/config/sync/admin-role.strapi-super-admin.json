@@ -99,7 +99,8 @@
           "region",
           "projects",
           "lat",
-          "long"
+          "long",
+          "practices"
         ]
       },
       "conditions": []
@@ -127,7 +128,8 @@
           "region",
           "projects",
           "lat",
-          "long"
+          "long",
+          "practices"
         ]
       },
       "conditions": []
@@ -148,7 +150,8 @@
           "region",
           "projects",
           "lat",
-          "long"
+          "long",
+          "practices"
         ]
       },
       "conditions": []
@@ -591,8 +594,8 @@
           "source_id",
           "title",
           "short_description",
-          "country",
-          "language"
+          "language",
+          "country"
         ]
       },
       "conditions": []
@@ -614,8 +617,8 @@
           "source_id",
           "title",
           "short_description",
-          "country",
-          "language"
+          "language",
+          "country"
         ]
       },
       "conditions": []
@@ -630,8 +633,8 @@
           "source_id",
           "title",
           "short_description",
-          "country",
-          "language"
+          "language",
+          "country"
         ]
       },
       "conditions": []
