@@ -21,7 +21,7 @@ import {
 
 export type CalendarProps = ComponentProps<typeof DayPicker> & VariantProps<typeof contentVariants>;
 
-const calendarDayVariants = cva('text-white hover:bg-blue-500 hover:text-white focus:text-white', {
+const calendarDayVariants = cva('text-white hover:text-white focus:text-white', {
   variants: {
     variant: {
       default: 'bg-blue-500 focus:bg-blue-500',
