@@ -124,7 +124,7 @@ export default function DatasetsModule() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent
-                    className="w-[330px] overflow-y-auto rounded-none p-0 text-base shadow-md"
+                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
                     side="bottom"
                     sideOffset={-1}
                     align="start"
@@ -176,7 +176,7 @@ export default function DatasetsModule() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent
-                    className="w-[330px] overflow-y-auto rounded-none p-0 text-base shadow-md"
+                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
                     side="bottom"
                     sideOffset={-1}
                     align="start"
