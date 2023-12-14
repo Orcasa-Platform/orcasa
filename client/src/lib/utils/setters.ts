@@ -17,7 +17,7 @@ export const setOpacity = ({ o = 1, base = 1 }: SetOpacityProps) => {
  * @param {String} type
  * @returns {String | Boolean} visibility
  */
-type SetVisibilityProps = { v: boolean; type: 'mapbox' | 'deck' };
+type SetVisibilityProps = { v: boolean; type: 'mapbox' | 'deckgl' };
 export const setVisibility = ({ v = true, type = 'mapbox' }: SetVisibilityProps) => {
   if (type === 'mapbox') {
     return v ? 'visible' : 'none';

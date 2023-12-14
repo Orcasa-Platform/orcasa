@@ -4,7 +4,8 @@
   "info": {
     "singularName": "practice",
     "pluralName": "practices",
-    "displayName": "Practice"
+    "displayName": "Practice",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -28,11 +29,14 @@
     "short_description": {
       "type": "text"
     },
-    "country": {
-      "type": "string"
-    },
     "language": {
       "type": "string"
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "practices"
     }
   }
 }
