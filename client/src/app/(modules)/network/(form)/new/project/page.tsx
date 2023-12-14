@@ -31,7 +31,12 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function ProjectForm() {
   const {
@@ -449,7 +454,7 @@ export default function ProjectForm() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
-            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300  pb-6 pt-20">
+            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300 pb-6 pt-20">
               <h1 className="font-serif text-3.5xl text-peach-700">New Project</h1>
               <Button type="submit" variant="primary" className="gap-2 bg-peach-700">
                 <Check className="h-6 w-6" />
@@ -486,16 +491,19 @@ export default function ProjectForm() {
               </div>
             </div>
             {renderFields(['lead_partner', 'partners', 'funders'])}
-            <h2 className="mt-10 flex gap-2 font-serif text-2xl text-gray-700">
+            <h2 className="mt-10 flex items-center gap-2 font-serif text-2xl text-gray-700">
               Coordinator contact details
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
-                    <span className="sr-only">Coordinator contact details info</span>
-                    <Info />
+                  <TooltipTrigger asChild>
+                    <Button type="button" size="auto" variant="icon">
+                      <span className="sr-only">Coordinator contact details info</span>
+                      <Info />
+                    </Button>
                   </TooltipTrigger>
-                  <TooltipContent variant="blue">
+                  <TooltipContent variant="dark" className="max-w-[227px] font-sans">
                     <p>Contact details of the person responsible of project coordination.</p>
+                    <TooltipArrow variant="dark" />
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
