@@ -456,7 +456,11 @@ export default function ProjectForm() {
           <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
             <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300 pb-6 pt-20">
               <h1 className="font-serif text-3.5xl text-peach-700">New Project</h1>
-              <Button type="submit" variant="primary" className="gap-2 bg-peach-700">
+              <Button
+                type="submit"
+                variant="primary"
+                className="gap-2 bg-peach-700 hover:bg-peach-900"
+              >
                 <Check className="h-6 w-6" />
                 <div>Submit</div>
               </Button>
