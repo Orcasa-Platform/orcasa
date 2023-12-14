@@ -16,14 +16,11 @@ const NewButtons = ({ className }: { className?: string }) => (
         <div className="text-base">Organisation</div>
       </Link>
     </Button>
-    <Button
-      disabled
-      onClick={() => {
-        // TODO - add elements
-      }}
-    >
-      <Plus className="mr-2 h-6 w-6" />
-      <div className="text-base">Project</div>
+    <Button asChild>
+      <Link href="/network/new/project">
+        <Plus className="mr-2 h-6 w-6" />
+        <div className="text-base">Project</div>
+      </Link>
     </Button>
   </div>
 );

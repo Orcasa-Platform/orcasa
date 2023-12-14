@@ -66,6 +66,7 @@ export default {
           'Project-type',
           'Region',
           'Area-of-intervention',
+          'Sustainable-dev-goal',
           'Home-stat',
         ],
       },
