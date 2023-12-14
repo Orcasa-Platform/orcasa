@@ -179,7 +179,7 @@ export default function ProjectForm() {
       maxSize: 350,
     },
     description: {
-      label: 'Description',
+      label: 'Extended description and outcomes',
       zod: z
         .string()
         .max(3000, {
