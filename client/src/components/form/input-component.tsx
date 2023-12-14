@@ -8,7 +8,7 @@ import { format } from '@/lib/utils/formats';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Input } from '@/components/ui/input';
-import { MultiCombobox } from '@/components/ui/multi-combobox';
+import { ComboboxProps, MultiCombobox } from '@/components/ui/multi-combobox';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Select,
@@ -58,13 +58,14 @@ const InputComponent = ({
     string,
     undefined
   >;
-  variant?: 'network-organization' | 'network-project';
+  variant?: ComboboxProps<unknown>['variant'];
 }) => {
   const { watch, register } = form;
   const { name, onChange, value } = field;
   if (type === 'select') {
     const registerProjectsField =
       id && variant === 'network-organization' ? register(`projects.${index}.${name}`) : undefined;
+
     return (
       <Select
         name={name}
@@ -80,7 +81,7 @@ const InputComponent = ({
         </SelectTrigger>
         <SelectContent className="max-w-[632px]">
           {options?.map(({ label, value }) => (
-            <SelectItem key={value} value={value}>
+            <SelectItem key={value} value={value} variant={variant}>
               {label}
             </SelectItem>
           ))}
@@ -159,14 +160,14 @@ const InputComponent = ({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[330px] overflow-y-auto rounded-none p-0 text-base shadow-md"
+          className="w-[330px] overflow-y-auto rounded-none border p-0 text-base shadow-md"
           side="bottom"
-          sideOffset={-1}
+          sideOffset={4}
           align="start"
         >
           <Calendar
             initialFocus
-            variant="project-date"
+            variant={variant}
             mode="single"
             captionLayout="dropdown-buttons"
             defaultMonth={value ? new Date(value as string) : undefined}

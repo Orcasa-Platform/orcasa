@@ -16,20 +16,24 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  contentVariants,
 } from '@/components/ui/select';
-
-export type CalendarProps = ComponentProps<typeof DayPicker> & VariantProps<typeof contentVariants>;
 
 const calendarDayVariants = cva('text-white hover:text-white focus:text-white', {
   variants: {
     variant: {
       default: 'bg-blue-500 focus:bg-blue-500',
-      'project-date': 'bg-peach-700 focus:bg-peach-700',
-      'dataset-date': 'bg-purple-700 focus:bg-purple-700',
+      'network-organization': 'bg-blue-500 focus:bg-blue-500',
+      'network-project': 'bg-peach-700 focus:bg-peach-700',
+      datasets: 'bg-purple-700 focus:bg-purple-700',
     },
   },
+  defaultVariants: {
+    variant: 'default',
+  },
 });
+
+export type CalendarProps = ComponentProps<typeof DayPicker> &
+  VariantProps<typeof calendarDayVariants>;
 
 function Calendar({
   className,
@@ -100,7 +104,6 @@ function Calendar({
               }
             >
               <SelectTrigger
-                variant="date-picker"
                 className={cn({
                   'h-10 p-2': true,
                   'min-w-[80px]': name === 'months',
@@ -113,7 +116,7 @@ function Calendar({
                     : selectedValue?.children}
                 </SelectValue>
               </SelectTrigger>
-              <SelectContent variant={variant}>
+              <SelectContent>
                 {Children.map(
                   typedChildren,
                   (child) =>

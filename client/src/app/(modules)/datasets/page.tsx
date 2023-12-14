@@ -131,7 +131,7 @@ export default function DatasetsModule() {
                   >
                     <Calendar
                       initialFocus
-                      variant="dataset-date"
+                      variant="datasets"
                       mode="single"
                       captionLayout="dropdown-buttons"
                       defaultMonth={filters.minDate ? new Date(filters.minDate) : undefined}
@@ -183,7 +183,7 @@ export default function DatasetsModule() {
                   >
                     <Calendar
                       initialFocus
-                      variant="dataset-date"
+                      variant="datasets"
                       mode="single"
                       captionLayout="dropdown-buttons"
                       defaultMonth={filters.maxDate ? new Date(filters.maxDate) : undefined}

@@ -372,6 +372,7 @@ export default function OrganisationForm() {
                       string
                     >
                   }
+                  variant="network-organization"
                   key={id}
                   index={index}
                   name={key}
@@ -407,7 +408,7 @@ export default function OrganisationForm() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
-            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300  pb-6 pt-20">
+            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300 pb-6 pt-20">
               <h1 className="font-serif text-3.5xl text-blue-500">New Organisation</h1>
               <Button type="submit" variant="primary" className="gap-2 bg-blue-500">
                 <Check className="h-6 w-6" />
