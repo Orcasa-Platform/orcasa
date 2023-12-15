@@ -1,11 +1,15 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 import type {
   LayerGroupLayers,
   LayerGroupLayersDataItemAttributes,
 } from '@/types/generated/strapi.schemas';
 
-import Layer from './layer';
+const Layer = dynamic(() => import('./layer'), {
+  ssr: false,
+});
 
 export default function Layers({
   data,

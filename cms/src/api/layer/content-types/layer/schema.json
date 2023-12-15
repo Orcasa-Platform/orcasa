@@ -75,6 +75,9 @@
     },
     "highlighted_bounds": {
       "type": "json"
+    },
+    "ui_settings": {
+      "type": "json"
     }
   }
 }
