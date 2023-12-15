@@ -24,8 +24,8 @@ const NavLink = ({ href, children, color, active, ...rest }: NavLinkProps) => (
       moduleColors[color].border,
       {
         'bg-white': active,
-        'text-slate-700': active,
-        'bg-slate-700': !active,
+        'text-gray-700': active,
+        'bg-gray-700': !active,
         'text-white': !active,
       },
     )}
@@ -40,12 +40,15 @@ export default function Nav() {
   const pathname = usePathname();
   return (
     <div className="js-main-nav absolute left-0 z-50 h-full w-[117px]">
-      <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-slate-700 py-6">
-        <Link href="/">
+      <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-gray-700 py-6">
+        <Link href="/" className="flex flex-col-reverse items-center justify-center gap-3">
           <Image src="/images/logo.png" width={58} height={58} alt="Impact4Soil" priority />
           <span className="sr-only">Impact4Soil</span>
+          <span className="rounded bg-gray-800 px-2 py-[3px] font-sans text-xs font-normal text-white">
+            Beta
+          </span>
         </Link>
-        <div className="flex flex-col gap-px bg-slate-600 py-px">
+        <div className="flex flex-col gap-px bg-gray-600 py-px">
           {modules.map((module) => {
             const { href, color, name, disabled } = module as Module;
             return (

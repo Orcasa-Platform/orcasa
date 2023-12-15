@@ -50,7 +50,7 @@ export const sourceToLogo: Record<
 const Icons = ({ source, publication_date }: Omit<Dataset, '_id'>) => {
   return (
     <div className="relative flex flex-wrap gap-x-4 gap-y-2">
-      <div className="flex items-center gap-2 text-xs text-gray-800">
+      <div className="flex items-center gap-2 text-xs text-gray-700">
         <CalendarIcon className="h-6 w-6 min-w-min" />
         {format({ id: 'formatDate', value: publication_date })}
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -65,7 +65,7 @@ export default function Dataset({ _id, ...attributes }: DatasetListResponseDataI
 
   return (
     <li key={_id} className="mb-2 flex min-h-[240px] w-full bg-gray-50">
-      <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-gray-800">
+      <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-gray-700">
         <header className="flex flex-col gap-4">
           <Icons {...attributes} />
           <div className="font-serif text-lg">{title}</div>

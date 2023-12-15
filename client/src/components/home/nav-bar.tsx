@@ -17,6 +17,9 @@ const NavBar = () => {
       >
         <Image src="/images/logo.png" width={30} height={30} alt="Impact4Soil" />
         <h1 className="font-serif text-xl font-semibold text-gray-700">Impact4Soil</h1>
+        <span className="rounded bg-gray-100 px-2 py-[3px] font-sans text-xs font-normal text-gray-700">
+          Beta
+        </span>
       </a>
       <nav className="flex h-full items-center justify-center gap-10 font-serif text-base text-gray-500">
         {modules.map((module) => {
