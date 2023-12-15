@@ -65,6 +65,8 @@ module.exports = {
         brown: {
           // Practices
           500: '#BA7300',
+          800: '#744800',
+          900: '#5D3A00',
         },
         green: {
           // Scientific evidence

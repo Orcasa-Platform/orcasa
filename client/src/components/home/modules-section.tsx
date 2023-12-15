@@ -201,8 +201,8 @@ const Card = ({
                 </li>
               ))}
             </ul>
-            <Button variant="outline" asChild disabled={cardModule?.disabled}>
-              <Link href={(!cardModule?.disabled && cardModule?.href) || '#'}>
+            <Button variant="outline" asChild>
+              <Link href={cardModule?.href ?? '#'}>
                 Go to {cardModule?.name}
                 <ArrowRight className="ml-4" />
               </Link>
