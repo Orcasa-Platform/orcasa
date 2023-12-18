@@ -197,6 +197,7 @@ export default function ProjectForm() {
         label: type.name,
         value: type.id.toString(),
       })),
+      required: true,
     },
     start_date: {
       label: 'Start date',
@@ -213,6 +214,7 @@ export default function ProjectForm() {
       label: 'Country of coordination',
       zod: z.enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
+      required: true,
       options: countries?.map((country) => ({
         label: country?.name,
         value: country?.id?.toString(),
@@ -250,6 +252,7 @@ export default function ProjectForm() {
         label: area?.name,
         value: area?.id?.toString(),
       })),
+      required: true,
     },
     main_area_of_intervention_other: {
       label: 'Main area of intervention: Other',
