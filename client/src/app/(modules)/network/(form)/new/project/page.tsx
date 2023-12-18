@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { SubmitHandler, useForm, ControllerRenderProps } from 'react-hook-form';
 
@@ -191,9 +191,7 @@ export default function ProjectForm() {
     },
     project_type: {
       label: 'Project type',
-      zod: z
-        .enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]]),
       type: 'select',
       options: projectTypes?.map((type) => ({
         label: type.name,
@@ -213,9 +211,7 @@ export default function ProjectForm() {
     },
     country_of_coordination: {
       label: 'Country of coordination',
-      zod: z
-        .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
       options: countries?.map((country) => ({
         label: country?.name,
@@ -246,9 +242,9 @@ export default function ProjectForm() {
     },
     main_area_of_intervention: {
       label: 'Main area of intervention',
-      zod: z
-        .enum(areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.enum(
+        areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]],
+      ),
       type: 'select',
       options: areasOfIntervention?.map((area) => ({
         label: area?.name,
@@ -358,8 +354,32 @@ export default function ProjectForm() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(fields ? formSchema : z.object({})),
+    // Use custom useEffect to set focus and scroll to the first error as the order was failing
+    shouldFocusError: false,
   });
-  const { handleSubmit, watch } = form;
+  const {
+    handleSubmit,
+    watch,
+    setFocus,
+    formState: { errors },
+  } = form;
+
+  useEffect(() => {
+    const firstError = (Object.keys(errors) as Array<keyof typeof errors>).reduce<
+      keyof typeof errors | null
+    >((field, a) => {
+      const fieldKey = field as keyof typeof errors;
+      return !!errors[fieldKey] ? fieldKey : a;
+    }, null);
+
+    if (firstError) {
+      setFocus(String(firstError));
+      const field = document.querySelector(`[name="${firstError}"]`);
+      if (field) {
+        field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [errors, setFocus]);
 
   const router = useRouter();
 
