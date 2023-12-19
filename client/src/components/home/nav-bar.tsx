@@ -23,11 +23,11 @@ const NavBar = () => {
       </a>
       <nav className="flex h-full items-center justify-center gap-10 font-serif text-base text-gray-500">
         {modules.map((module) => {
-          const { href, name, disabled, color } = module;
+          const { href, name, color } = module;
           return (
             <Link
               key={href}
-              href={disabled ? '#' : href}
+              href={href}
               className={cn(
                 'box-border flex h-full items-center border-t-8 border-t-transparent',
                 moduleColors[color].hoverBorder,

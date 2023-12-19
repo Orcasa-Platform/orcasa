@@ -50,15 +50,9 @@ export default function Nav() {
         </Link>
         <div className="flex flex-col gap-px bg-gray-600 py-px">
           {modules.map((module) => {
-            const { href, color, name, disabled } = module as Module;
+            const { href, color, name } = module as Module;
             return (
-              <NavLink
-                key={href}
-                href={disabled ? '#' : href}
-                color={color}
-                active={pathname.startsWith(href)}
-                disabled={disabled}
-              >
+              <NavLink key={href} href={href} color={color} active={pathname.startsWith(href)}>
                 {name}
               </NavLink>
             );
