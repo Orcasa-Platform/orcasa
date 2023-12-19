@@ -9,7 +9,7 @@ import XIcon from 'public/images/x-icon.svg';
 
 const Footer = () => (
   <div id="about">
-    <div className="flex w-full flex-col items-center justify-center gap-[20px] bg-gray-850 px-10 py-[74px]">
+    <div className="flex w-full flex-col items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px]">
       <Link
         className="flex items-center justify-center gap-2.5 hover:opacity-90"
         href="https://irc-orcasa.eu/"
@@ -25,7 +25,7 @@ const Footer = () => (
         <span className="sr-only">ORCaSa</span>
       </Link>
     </div>
-    <div className="flex w-full items-center justify-between bg-gray-800 px-10 py-8">
+    <div className="flex w-full items-center justify-between bg-gray-700 px-10 py-8">
       <div className="flex items-center justify-center gap-4">
         <EuropeFlag className="h-[48px] min-w-[72px]" />
         <div className="max-w-[543px] text-xs leading-[18px] text-gray-300">
