@@ -859,6 +859,7 @@ export interface ApiLayerLayer extends Schema.CollectionType {
     metadata_contact_name: Attribute.String;
     metadata_contact_url: Attribute.String;
     highlighted_bounds: Attribute.JSON;
+    ui_settings: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
