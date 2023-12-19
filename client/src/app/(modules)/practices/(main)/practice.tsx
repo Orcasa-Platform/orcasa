@@ -48,7 +48,7 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
         <header className="flex flex-col gap-6">
           <Icons attributes={attributes} />
           <div className="font-serif text-2xl leading-10 text-gray-700">{title}</div>
-          <p>{shortDescription}</p>
+          <p className="leading-7">{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
           {/* <SlidingLinkButton
