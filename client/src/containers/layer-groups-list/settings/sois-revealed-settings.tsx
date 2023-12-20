@@ -23,11 +23,13 @@ export interface SoilsRevealedSettings {
   scenarios: Record<string, string>;
   onChangeSettings: (settings: Record<string, unknown>) => unknown;
   sourceLink: JSX.Element;
+  tilesURL: string[];
 }
 
 const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
-  timeFrame,
   depth,
+  timeFrame,
+  tilesURL,
   tabs,
   scenarios,
   onChangeSettings,
@@ -40,7 +42,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
         .sort((a, b) => a[0].localeCompare(b[0]))
         .map(([label, value]) => ({
           label: label,
-          value: value,
+          value: value?.[0],
         })),
     [tabs],
   );
@@ -51,7 +53,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
         .sort((a, b) => a[0].localeCompare(b[0]))
         .map(([label, value]) => ({
           label: label,
-          value: value,
+          value: value?.[0],
         })),
     [scenarios],
   );
@@ -61,7 +63,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
       <div className="flex items-center justify-between gap-x-4">
         {tabs && (
           <Tabs
-            defaultValue={tabOptions[0].value}
+            defaultValue={tilesURL?.[0]}
             onValueChange={(value) => onChangeSettings({ tilesURL: [value] })}
           >
             <TabsList>
@@ -75,7 +77,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
         )}
         {scenarios && (
           <Select
-            value={scenarioOptions[0].value}
+            value={tilesURL?.[0]}
             onValueChange={(value) => onChangeSettings({ tilesURL: [value] })}
           >
             <SelectTrigger id="scenarios" className="h-12 w-auto">
