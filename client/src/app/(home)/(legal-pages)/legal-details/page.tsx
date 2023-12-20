@@ -1,3 +1,3 @@
 export default async function LegalDetails() {
-  return 'Legal';
+  return <>Legal details</>;
 }

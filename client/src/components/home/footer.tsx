@@ -58,7 +58,7 @@ const Footer = () => (
           >
             Legal Details
           </Link>
-          <Link href="/personal-data" className="text-sm text-white hover:text-gray-100">
+          <Link href="/personal-data-protection" className="text-sm text-white hover:text-gray-100">
             Personal Data Protection
           </Link>
         </div>
