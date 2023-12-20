@@ -40,7 +40,7 @@ const NavBar = () => {
         <a
           key="about-link"
           onClick={handleSmoothScroll}
-          href="#about"
+          href="/#about"
           className="hover:text-gray-300"
         >
           <div className="border-l border-gray-500 px-10">About the project</div>
