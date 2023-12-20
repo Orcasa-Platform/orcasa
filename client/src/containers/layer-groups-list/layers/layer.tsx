@@ -159,7 +159,11 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
           />
         </div>
       </header>
-      {isActive ? layerSettings : <div className="flex justify-end">{sourceLink}</div>}
+      {isActive && layerSettings ? (
+        layerSettings
+      ) : (
+        <div className="flex justify-end">{sourceLink}</div>
+      )}
     </li>
   );
 }
