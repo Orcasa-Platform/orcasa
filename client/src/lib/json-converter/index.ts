@@ -7,6 +7,7 @@ import FUNCTIONS from '@/lib/utils';
 
 import { ParamsConfig } from '@/types/layers';
 
+import SoilsRevealedSettings from '@/containers/layer-groups-list/settings/sois-revealed-settings';
 import TreeCoverLossSettings from '@/containers/layer-groups-list/settings/tree-cover-loss';
 
 import DecodeLayer from '@/components/map/layers/decode-layer';
@@ -26,6 +27,7 @@ export const JSON_CONFIGURATION = new JSONConfiguration({
     LegendTypeChoropleth,
     LegendTypeGradient,
     TreeCoverLossSettings,
+    SoilsRevealedSettings,
   },
 });
 

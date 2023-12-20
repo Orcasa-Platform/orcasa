@@ -80,10 +80,12 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
     const bounds = highlighted_bounds as number[][] | null;
 
     if (!c) return null;
-
+    // We need to add a key when we replace the tiles only for raster layers as it will fail on source change
+    const keyProp = c.source.type === 'raster' ? { key: c.source.tiles?.toString() } : {};
     return (
       <>
         <MapboxLayer
+          {...keyProp}
           id={`${id}-layer`}
           beforeId={beforeId}
           config={c}

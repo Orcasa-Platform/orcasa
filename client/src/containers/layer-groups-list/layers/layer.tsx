@@ -81,6 +81,23 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
     }
   }, [id, layers, setLayers]);
 
+  const isActive = id && layers.includes(id);
+
+  const sourceLink = (
+    <a
+      href={attributes.source_url}
+      target="_blank"
+      rel="noreferrer"
+      className={cn({
+        'font-semibold hover:underline': true,
+        'text-yellow-600': !isActive,
+        'text-white': isActive,
+      })}
+    >
+      {attributes.source}
+    </a>
+  );
+
   const layerSettings = useMemo(() => {
     if (!id || !attributes.ui_settings) {
       return null;
@@ -95,6 +112,7 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
     if (component) {
       return cloneElement(component, {
         paramsConfig: attributes.params_config,
+        sourceLink,
         onChangeSettings: (settings: Record<string, unknown>) =>
           setLayersSettings((previousSettings) => ({
             ...previousSettings,
@@ -107,14 +125,10 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
     }
 
     return component;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attributes, id, layersSettings, setLayersSettings]);
 
-  if (!id) {
-    return null;
-  }
-
-  const isActive = layers.includes(id);
-
+  if (!id) return null;
   return (
     <li
       key={id}
@@ -145,21 +159,11 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
           />
         </div>
       </header>
-      {isActive && layerSettings}
-      <div className="flex justify-end">
-        <a
-          href={attributes.source_url}
-          target="_blank"
-          rel="noreferrer"
-          className={cn({
-            'font-semibold hover:underline': true,
-            'text-yellow-600': !isActive,
-            'text-white': isActive,
-          })}
-        >
-          {attributes.source}
-        </a>
-      </div>
+      {isActive && layerSettings ? (
+        layerSettings
+      ) : (
+        <div className="flex justify-end">{sourceLink}</div>
+      )}
     </li>
   );
 }
