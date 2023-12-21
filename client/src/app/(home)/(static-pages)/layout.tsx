@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Breadcrumb />
-      {children}
+      <div className="px-[242px]">{children}</div>
     </>
   );
 }
