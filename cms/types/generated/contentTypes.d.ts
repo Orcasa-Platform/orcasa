@@ -1308,6 +1308,39 @@ export interface ApiRegionRegion extends Schema.CollectionType {
   };
 }
 
+export interface ApiStaticPageStaticPage extends Schema.CollectionType {
+  collectionName: 'static_pages';
+  info: {
+    singularName: 'static-page';
+    pluralName: 'static-pages';
+    displayName: 'Static page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    content: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::static-page.static-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::static-page.static-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSustainableDevGoalSustainableDevGoal
   extends Schema.CollectionType {
   collectionName: 'sustainable_dev_goals';
@@ -1374,6 +1407,7 @@ declare module '@strapi/types' {
       'api::project.project': ApiProjectProject;
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;
+      'api::static-page.static-page': ApiStaticPageStaticPage;
       'api::sustainable-dev-goal.sustainable-dev-goal': ApiSustainableDevGoalSustainableDevGoal;
     }
   }

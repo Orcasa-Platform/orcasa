@@ -53,12 +53,12 @@ const Footer = () => (
         </div>
         <div className="flex items-center justify-start gap-4">
           <Link
-            href="#"
+            href="/legal-details"
             className="border-r border-white border-opacity-20 px-5 text-sm text-white hover:text-gray-100"
           >
             Legal Details
           </Link>
-          <Link href="#" className="text-sm text-white hover:text-gray-100">
+          <Link href="/personal-data-protection" className="text-sm text-white hover:text-gray-100">
             Personal Data Protection
           </Link>
         </div>

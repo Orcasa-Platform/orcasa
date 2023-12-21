@@ -64,6 +64,7 @@ export default {
       filters: {
         tags: [
           'Page',
+          'Static-page',
           'Layer-group',
           'Layer',
           'Organization',
