@@ -23,4 +23,4 @@ export default async function StaticPageContent({ slug }: { slug: string }) {
   );
 }
 
-export const revalidate = 60 * 60 * 24; // 24 hours
+export const revalidate = 3600;
