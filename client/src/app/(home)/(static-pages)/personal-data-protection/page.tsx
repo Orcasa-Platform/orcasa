@@ -12,5 +12,3 @@ export const metadata: Metadata = {
   description:
     'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
 };
-
-export const revalidate = 600;
