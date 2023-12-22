@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 
 import { cn } from '@/lib/classnames';
 
+import { LegendConfig } from '@/types/layers';
+
 import {
   Select,
   SelectTrigger,
@@ -21,6 +23,7 @@ export interface SoilsRevealedSettings {
   };
   tabs: Record<string, string>;
   scenarios: Record<string, string>;
+  legends?: Record<string, LegendConfig>;
   onChangeSettings: (settings: Record<string, unknown>) => unknown;
   sourceLink: JSX.Element;
   tilesURL: string[];
@@ -32,6 +35,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
   tilesURL,
   tabs,
   scenarios,
+  legends,
   onChangeSettings,
   sourceLink,
 }) => {
@@ -58,14 +62,24 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
     [scenarios],
   );
 
+  const handleValueChange = (value: string) => {
+    const label = (tabOptions || scenarioOptions)?.find(({ value: v }) => v === value)?.label;
+    const legendAttributes = label && {
+      legendType: legends?.[label]?.type,
+      legendUnit: legends?.[label]?.unit,
+      legendItems: legends?.[label]?.items,
+    };
+    onChangeSettings({
+      tilesURL: [value],
+      ...(legends && legendAttributes ? legendAttributes : {}),
+    });
+  };
+
   return (
     <>
       <div className="flex items-center justify-between gap-x-4">
         {tabs && (
-          <Tabs
-            defaultValue={tilesURL?.[0]}
-            onValueChange={(value) => onChangeSettings({ tilesURL: [value] })}
-          >
+          <Tabs defaultValue={tilesURL?.[0]} onValueChange={handleValueChange}>
             <TabsList>
               {tabOptions.map(({ label, value }) => (
                 <TabsTrigger key={value} value={value}>
@@ -76,10 +90,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
           </Tabs>
         )}
         {scenarios && (
-          <Select
-            value={tilesURL?.[0]}
-            onValueChange={(value) => onChangeSettings({ tilesURL: [value] })}
-          >
+          <Select value={tilesURL?.[0]} onValueChange={handleValueChange}>
             <SelectTrigger id="scenarios" className="h-12 w-auto">
               <SelectValue />
             </SelectTrigger>
