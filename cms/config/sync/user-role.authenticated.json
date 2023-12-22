@@ -40,6 +40,12 @@
       "action": "api::organization.organization.findOne"
     },
     {
+      "action": "api::practice.practice.find"
+    },
+    {
+      "action": "api::practice.practice.findOne"
+    },
+    {
       "action": "api::project-type.project-type.find"
     },
     {
