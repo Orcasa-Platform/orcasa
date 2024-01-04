@@ -1883,7 +1883,8 @@ export type StaticPageCreatedBy = {
 
 export interface StaticPage {
   title: string;
-  content: unknown;
+  slug: string;
+  content: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -2088,7 +2089,8 @@ export interface StaticPageListResponseDataItem {
 
 export type StaticPageRequestData = {
   title: string;
-  content: unknown;
+  slug: string;
+  content: string;
 };
 
 export interface StaticPageRequest {
