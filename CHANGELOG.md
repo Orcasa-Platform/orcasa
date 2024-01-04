@@ -1,5 +1,11 @@
 # Unreleased
 
+# v2
+
+- [Network] Ability to upload new projects
+- Indicate the new platform is a beta version
+- Enhancements on the homepage (Animated stats, Colors in nav menu)
+
 # v1
 
 - Update Strapi version to 4.15.5
