@@ -2,6 +2,8 @@
 
 # v2
 
+CMS Breaking changes: A new “Page” has to be created on Strapi to configure the map of the Practices module
+
 - [Network] Ability to upload new projects
 - Indicate the new platform is a beta version
 - Enhancements on the homepage (Animated stats, Colors in nav menu)
