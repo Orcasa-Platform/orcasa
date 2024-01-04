@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 
-import { SubmitHandler, useForm, useFieldArray, ControllerRenderProps } from 'react-hook-form';
+import {
+  SubmitHandler,
+  useForm,
+  UseFormReturn,
+  useFieldArray,
+  ControllerRenderProps,
+} from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
 
@@ -16,8 +22,10 @@ import { cn } from '@/lib/classnames';
 import { postOrganizations } from '@/types/generated/organization';
 import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/strapi.schemas';
 
-import { useFormGetFields } from '@/hooks/networks/forms';
+import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
+import InputComponent from '@/components/form/input-component';
+import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -29,25 +37,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-import InputComponent from './input-component';
-
-type ZodField =
-  | z.ZodString
-  | z.ZodEnum<[string, ...string[]]>
-  | z.ZodOptional<z.ZodString>
-  | z.ZodOptional<z.ZodEnum<[string, ...string[]]>>;
-
-export type Field = {
-  label: string;
-  required?: boolean;
-  zod?: ZodField | z.ZodEffects<z.ZodOptional<z.ZodString>, string | undefined, string | undefined>;
-  description?: string | React.ReactNode;
-  type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email';
-  options?: { label: string; value: string }[];
-  maxSize?: number;
-  placeholder?: string;
-};
-
 const projectRoleOptions = [
   { label: 'Coordinator', value: 'lead_projects' },
   { label: 'Partner', value: 'partner_projects' },
@@ -55,11 +44,12 @@ const projectRoleOptions = [
 ];
 
 export default function OrganisationForm() {
-  const { organizationTypes, organizationThemes, countries, projects } = useFormGetFields() || {};
+  const { organizationTypes, organizationThemes, countries, projects } =
+    useOrganizationGetFormFields() || {};
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
   const hasData = organizationTypes && organizationThemes && countries && projects;
   const [error, setError] = useState<AxiosError | undefined>();
-  const fields: { [key: string]: Field } | undefined = hasData && {
+  const fieldValues: { [key: string]: Field } = {
     name: {
       label: 'Organisation name',
       required: true,
@@ -74,7 +64,7 @@ export default function OrganisationForm() {
       required: true,
       zod: z.enum(organizationTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
-      options: organizationTypes.map((type) => ({
+      options: organizationTypes?.map((type) => ({
         label: type.name,
         value: type.id.toString(),
       })),
@@ -111,7 +101,7 @@ export default function OrganisationForm() {
         .enum(organizationThemes?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: organizationThemes.map((theme) => ({
+      options: organizationThemes?.map((theme) => ({
         label: theme?.name,
         value: theme?.id?.toString(),
       })),
@@ -122,7 +112,7 @@ export default function OrganisationForm() {
         .enum(organizationThemes?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: organizationThemes.map((theme) => ({
+      options: organizationThemes?.map((theme) => ({
         label: theme?.name,
         value: theme?.id?.toString(),
       })),
@@ -153,7 +143,7 @@ export default function OrganisationForm() {
         .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
         .optional(),
       type: 'select',
-      options: countries.map((country) => ({
+      options: countries?.map((country) => ({
         label: country?.name,
         value: country?.id?.toString(),
       })),
@@ -195,7 +185,7 @@ export default function OrganisationForm() {
     },
   };
 
-  const projectFields: { [key: string]: Field } | undefined = hasData && {
+  const projectFields: { [key: string]: Omit<Field, 'zod'> } | undefined = hasData && {
     project: {
       label: 'Project',
       // zod will be added from projectsArraySchema
@@ -247,17 +237,15 @@ export default function OrganisationForm() {
     }),
   );
 
-  const formFieldsSchema = fields
-    ? Object.keys(fields).reduce((acc: { [key: string]: Field['zod'] }, field) => {
-        if (fields) {
-          acc[field] = fields[field].zod;
-        }
-        return acc;
-      }, {})
-    : {};
+  const fields: { [key: string]: Field } | undefined = hasData && fieldValues;
 
   const formSchema = z.object({
-    ...formFieldsSchema,
+    ...Object.keys(fieldValues).reduce((acc: { [key: string]: Field['zod'] }, field) => {
+      if (fieldValues) {
+        acc[field] = fieldValues[field].zod;
+      }
+      return acc;
+    }, {}),
     ...(fields ? { projects: projectsArraySchema } : {}),
   });
 
@@ -380,20 +368,26 @@ export default function OrganisationForm() {
                 <InputComponent
                   field={
                     field as unknown as ControllerRenderProps<
-                      { [x: string]: string | undefined },
+                      { [x: string]: string | string[] | undefined },
                       string
                     >
                   }
+                  variant="network-organization"
                   key={id}
                   index={index}
                   name={key}
                   type={type}
                   required={required}
                   options={options}
-                  watch={watch}
                   maxSize={maxSize}
                   placeholder={placeholder}
-                  register={form.register}
+                  form={
+                    form as UseFormReturn<
+                      { [x: string]: string | Date | undefined },
+                      string,
+                      undefined
+                    >
+                  }
                 />
               </FormControl>
               <FormDescription className="text-sm text-slate-500">{description}</FormDescription>
@@ -414,7 +408,7 @@ export default function OrganisationForm() {
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
-            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300  pb-6 pt-20">
+            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300 pb-6 pt-20">
               <h1 className="font-serif text-3.5xl text-blue-500">New Organisation</h1>
               <Button type="submit" variant="primary" className="gap-2 bg-blue-500">
                 <Check className="h-6 w-6" />

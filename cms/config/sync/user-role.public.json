@@ -100,6 +100,12 @@
       "action": "api::region.region.findOne"
     },
     {
+      "action": "api::static-page.static-page.find"
+    },
+    {
+      "action": "api::static-page.static-page.findOne"
+    },
+    {
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"
     },
     {

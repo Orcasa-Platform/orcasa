@@ -773,6 +773,11 @@ export interface ApiCountryCountry extends Schema.CollectionType {
     >;
     lat: Attribute.Float;
     long: Attribute.Float;
+    practices: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -854,6 +859,7 @@ export interface ApiLayerLayer extends Schema.CollectionType {
     metadata_contact_name: Attribute.String;
     metadata_contact_url: Attribute.String;
     highlighted_bounds: Attribute.JSON;
+    ui_settings: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1098,6 +1104,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     singularName: 'practice';
     pluralName: 'practices';
     displayName: 'Practice';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1107,8 +1114,12 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     source_id: Attribute.String & Attribute.Required;
     title: Attribute.Text;
     short_description: Attribute.Text;
-    country: Attribute.String;
     language: Attribute.String;
+    country: Attribute.Relation<
+      'api::practice.practice',
+      'manyToOne',
+      'api::country.country'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1297,6 +1308,39 @@ export interface ApiRegionRegion extends Schema.CollectionType {
   };
 }
 
+export interface ApiStaticPageStaticPage extends Schema.CollectionType {
+  collectionName: 'static_pages';
+  info: {
+    singularName: 'static-page';
+    pluralName: 'static-pages';
+    displayName: 'Static page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    content: Attribute.RichText & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::static-page.static-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::static-page.static-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSustainableDevGoalSustainableDevGoal
   extends Schema.CollectionType {
   collectionName: 'sustainable_dev_goals';
@@ -1363,6 +1407,7 @@ declare module '@strapi/types' {
       'api::project.project': ApiProjectProject;
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;
+      'api::static-page.static-page': ApiStaticPageStaticPage;
       'api::sustainable-dev-goal.sustainable-dev-goal': ApiSustainableDevGoalSustainableDevGoal;
     }
   }

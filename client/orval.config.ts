@@ -47,6 +47,14 @@ export default {
               useQuery: true,
             },
           },
+          'get/practices': {
+            query: {
+              useQuery: true,
+              useInfinite: true,
+              useInfiniteQueryParam: "'pagination[page]'",
+              signal: true,
+            },
+          },
         },
       },
     },
@@ -56,6 +64,7 @@ export default {
       filters: {
         tags: [
           'Page',
+          'Static-page',
           'Layer-group',
           'Layer',
           'Organization',
@@ -66,7 +75,9 @@ export default {
           'Project-type',
           'Region',
           'Area-of-intervention',
+          'Sustainable-dev-goal',
           'Home-stat',
+          'Practice',
         ],
       },
     },

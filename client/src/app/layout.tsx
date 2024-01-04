@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 
+import { Suspense } from 'react';
+
 import { Roboto_Slab, Roboto } from 'next/font/google';
 
 import { Metadata } from 'next';
@@ -53,7 +55,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             'overflow-hidden font-sans text-default',
           )}
         >
-          <DefaultBasemap />
+          {/* Use suspense to render client component without deopting pages
+          https://nextjs.org/docs/messages/deopted-into-client-rendering */}
+          <Suspense fallback={null}>
+            <DefaultBasemap />
+          </Suspense>
           {children}
         </body>
       </html>

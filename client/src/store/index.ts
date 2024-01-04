@@ -37,7 +37,9 @@ export const useLayers = () => {
 export const useLayersSettings = () => {
   return useQueryState(
     'layers-settings',
-    parseAsJson<Record<string, { opacity?: number; visibility?: boolean }>>().withDefault({}),
+    parseAsJson<
+      Record<string, { opacity?: number; visibility?: boolean; [key: string]: unknown }>
+    >().withDefault({}),
   );
 };
 

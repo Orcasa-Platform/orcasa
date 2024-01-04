@@ -47,6 +47,9 @@ export interface ComboboxProps<T> {
   options: { label: string; value: T }[];
   onChange: (value: T[]) => void;
   disabled?: boolean;
+  ariaDescribedBy?: string;
+  ariaInvalid?: boolean;
+  showSelected?: boolean;
 }
 
 export const MultiCombobox = <T extends NonNullable<unknown>>({
@@ -57,6 +60,9 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   options,
   onChange,
   disabled = false,
+  ariaDescribedBy,
+  ariaInvalid,
+  showSelected = false,
 }: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -96,9 +102,20 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
 
     return () => document.removeEventListener('click', onClickDocument, { capture: true });
   }, [containerRef, setOpen]);
-
+  const selectedLabels =
+    value.length === 0
+      ? 'Select'
+      : options
+          .filter((option) => value.includes(option.value))
+          .map((option) => option.label)
+          .join(', ');
   return (
-    <div ref={containerRef} className="relative text-base">
+    <div
+      ref={containerRef}
+      className="relative text-base"
+      aria-describedby={ariaDescribedBy}
+      aria-invalid={ariaInvalid}
+    >
       <ComboboxPrimitive multiple value={value} onChange={onChange}>
         {!open && (
           <Button
@@ -107,11 +124,20 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             role="combobox"
             variant="vanilla"
             size="auto"
-            className="relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]"
+            className={cn(
+              'relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]',
+            )}
+            title={selectedLabels}
             onClick={() => setOpen(true)}
             disabled={disabled}
           >
-            {`${name}${value.length > 0 ? ` (${value.length})` : ''}`}
+            {showSelected ? (
+              <span className={cn({ 'max-h-14 max-w-full truncate': showSelected })}>
+                {selectedLabels}
+              </span>
+            ) : (
+              `${name}${value.length > 0 ? ` (${value.length})` : ''}`
+            )}
             <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
           </Button>
         )}
@@ -170,25 +196,38 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                   <p className="py-8 text-center text-gray-700">No results</p>
                 )}
                 <ComboboxPrimitive.Options static>
-                  {filteredOptions.map((option) => (
-                    <ComboboxPrimitive.Option
-                      key={option.value as Key}
-                      value={option.value}
-                      className={cn(optionVariants({ variant }))}
-                    >
-                      <Checkbox
-                        id={`multi-combobox-option-${option.value}`}
-                        checked={value.includes(option.value)}
-                        className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
-                      />
-                      <Label
-                        htmlFor={`multi-combobox-option-${option.value}`}
-                        className="pointer-events-none leading-normal"
+                  {filteredOptions.map((option) => {
+                    const isDefaultChecked =
+                      value.findIndex((value) => value === option.value) !== -1;
+
+                    return (
+                      <ComboboxPrimitive.Option
+                        key={option.value as Key}
+                        value={option.value}
+                        className={cn(optionVariants({ variant }))}
                       >
-                        {option.label}
-                      </Label>
-                    </ComboboxPrimitive.Option>
-                  ))}
+                        <Checkbox
+                          // For some reason, the `MultiCombobox` component initiates an infinite loop
+                          // when used inside a React Hook Form if this checkbox has a `checked`
+                          // property.
+                          // The workaround here is to:
+                          // 1. Use `defaultChecked` instead of `checked`
+                          // 2. Mount/unmount the checkbox when the check status has changed (using
+                          // the `key` property).
+                          key={`${isDefaultChecked}-${option.value}`}
+                          id={`multi-combobox-option-${option.value}`}
+                          defaultChecked={isDefaultChecked}
+                          className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
+                        />
+                        <Label
+                          htmlFor={`multi-combobox-option-${option.value}`}
+                          className="pointer-events-none leading-normal"
+                        >
+                          {option.label}
+                        </Label>
+                      </ComboboxPrimitive.Option>
+                    );
+                  })}
                 </ComboboxPrimitive.Options>
               </TooltipContent>
             </Tooltip>

@@ -7,6 +7,9 @@ import FUNCTIONS from '@/lib/utils';
 
 import { ParamsConfig } from '@/types/layers';
 
+import SoilsRevealedSettings from '@/containers/layer-groups-list/settings/sois-revealed-settings';
+import TreeCoverLossSettings from '@/containers/layer-groups-list/settings/tree-cover-loss';
+
 import DecodeLayer from '@/components/map/layers/decode-layer';
 import {
   LegendTypeBasic,
@@ -16,19 +19,15 @@ import {
 
 export const JSON_CONFIGURATION = new JSONConfiguration({
   React,
-  classes: Object.assign(
-    //
-    {},
-    require('@deck.gl/layers'),
-    require('@deck.gl/aggregation-layers'),
-    { DecodeLayer },
-  ),
+  classes: Object.assign({}, { DecodeLayer }),
   functions: FUNCTIONS,
   enumerations: {},
   reactComponents: {
     LegendTypeBasic,
     LegendTypeChoropleth,
     LegendTypeGradient,
+    TreeCoverLossSettings,
+    SoilsRevealedSettings,
   },
 });
 

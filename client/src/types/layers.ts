@@ -1,16 +1,13 @@
-import { MapStyle } from 'react-map-gl/maplibre';
+import { AnySource } from 'react-map-gl';
 
-interface SourceData {
-  id: string;
-  type: 'vector' | 'raster' | 'raster-dem' | 'geojson' | 'image' | 'video';
-}
+import { MapStyle } from 'react-map-gl/maplibre';
 
 import { FormatProps } from '@/lib/utils/formats';
 
 import type { Layer } from '@/types/generated/strapi.schemas';
 
 export type Config = {
-  source: SourceData;
+  source: AnySource;
   styles: MapStyle['layers'];
 };
 
@@ -19,7 +16,7 @@ export type ParamsConfigValue = {
   default: unknown;
 };
 
-export type ParamsConfig = Record<string, ParamsConfigValue>[];
+export type ParamsConfig = ParamsConfigValue[];
 
 export type LegendConfig = {
   type: 'basic' | 'gradient' | 'choropleth';

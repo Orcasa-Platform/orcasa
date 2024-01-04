@@ -53,6 +53,12 @@
     },
     "long": {
       "type": "float"
+    },
+    "practices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::practice.practice",
+      "mappedBy": "country"
     }
   }
 }

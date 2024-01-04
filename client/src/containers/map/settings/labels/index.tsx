@@ -35,7 +35,7 @@ const Labels = () => {
     <>
       <div className="mb-4 flex items-center justify-between">
         <Label htmlFor="labels-switch" className="font-serif text-lg">
-          Labels
+          Country labels
         </Label>
         <Switch id="labels-switch" checked={labels !== null} onCheckedChange={onToggle} />
       </div>

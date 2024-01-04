@@ -78,7 +78,7 @@ const MarkerComponent = ({
           className={cn(
             'flex origin-left items-center justify-center bg-blue-500',
             getSize(organizations?.length),
-            { 'border-2 border-gray-800': !isCluster },
+            { 'border-2 border-gray-700': !isCluster },
           )}
         >
           <div className="text-sm text-white">
@@ -96,7 +96,7 @@ const MarkerComponent = ({
           className={cn(
             'flex origin-left items-center justify-center bg-peach-700',
             getSize(projects?.length),
-            { 'border-2 border-gray-800': !isCluster },
+            { 'border-2 border-gray-700': !isCluster },
           )}
         >
           <div className="text-sm text-white">

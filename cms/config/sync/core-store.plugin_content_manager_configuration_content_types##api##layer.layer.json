@@ -272,6 +272,20 @@
           "sortable": false
         }
       },
+      "ui_settings": {
+        "edit": {
+          "label": "ui_settings",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "ui_settings",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -431,6 +445,12 @@
         [
           {
             "name": "highlighted_bounds",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "ui_settings",
             "size": 12
           }
         ]

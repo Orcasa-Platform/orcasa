@@ -51,8 +51,9 @@ module.exports = {
           300: '#B2B5C5',
           400: '#8B90A4',
           500: '#7C7F8F',
-          800: '#3C4363',
-          850: '#2C324B',
+          600: '#565D79',
+          700: '#3C4363',
+          800: '#2C324B',
           900: '#1D2133',
         },
         peach: {
@@ -65,6 +66,8 @@ module.exports = {
         brown: {
           // Practices
           500: '#BA7300',
+          800: '#744800',
+          900: '#5D3A00',
         },
         green: {
           // Scientific evidence
