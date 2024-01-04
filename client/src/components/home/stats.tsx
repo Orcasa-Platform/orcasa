@@ -5,7 +5,7 @@ import { getHomeStats } from '@/types/generated/home-stat';
 import Counter from './counter';
 
 export default async function Stats({ className }: { className: string }) {
-  const data = await getHomeStats({ populate: '*' });
+  const data = await getHomeStats({ populate: '*', sort: 'id' });
   const stats = data?.data?.map((item) => ({
     title: item?.attributes?.title,
     value: item?.attributes?.value,
