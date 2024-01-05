@@ -9,6 +9,7 @@ import { useLayers, useLayersSettings } from '@/store';
 import LayerManagerItem from '@/containers/map/layer-manager/item';
 
 import NetworksMarkers from '@/components/map/layers/networks-markers';
+import PracticesMarkers from '@/components/map/layers/practices-markers';
 import { DeckMapboxOverlayProvider } from '@/components/map/provider';
 
 const LayerManager = () => {
@@ -16,6 +17,7 @@ const LayerManager = () => {
   const [layersSettings] = useLayersSettings();
   const pathname = usePathname();
   const isNetworkPage = pathname.includes('network');
+  const isPracticesPage = pathname.includes('practices');
 
   return (
     <DeckMapboxOverlayProvider>
@@ -55,6 +57,7 @@ const LayerManager = () => {
         })}
 
         {isNetworkPage && <NetworksMarkers />}
+        {isPracticesPage && <PracticesMarkers />}
       </>
     </DeckMapboxOverlayProvider>
   );
