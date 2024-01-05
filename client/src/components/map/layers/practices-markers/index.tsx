@@ -22,23 +22,23 @@ export type PracticesLayerProps = LayerProps & {
 };
 
 const sizes = {
-  '1-10': 'h-[40px] w-[20px]',
-  '10-50': 'h-[60px] w-[40px]',
-  '50-100': 'h-[80px] w-[60px]',
-  '>100': 'h-[100px] w-[80px]',
+  '1-100': 'h-[20px] w-[20px]',
+  '100-500': 'h-[40px] w-[40px]',
+  '500-1k': 'h-[60px] w-[60px]',
+  '>1k': 'h-[80px] w-[80px]',
 };
 
 const getSize = (size: number) => {
-  if (size < 10) {
-    return sizes['1-10'];
-  }
-  if (size < 50) {
-    return sizes['10-50'];
-  }
   if (size < 100) {
-    return sizes['50-100'];
+    return sizes['1-100'];
   }
-  return sizes['>100'];
+  if (size < 500) {
+    return sizes['100-500'];
+  }
+  if (size < 1000) {
+    return sizes['500-1k'];
+  }
+  return sizes['>1k'];
 };
 
 type MarkerProps = {
