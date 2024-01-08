@@ -53,7 +53,7 @@ const Field = ({ label, value, url, hasEllipsis, logo }: Field) => {
   const renderField = () => {
     if (logo) {
       if (value === 'WOCAT')
-        return <img className="h-6 w-[110.18px]" src="/assets/logos/wocat.png" alt="WOCAT logo" />;
+        return <img className="h-6 w-[110px]" src="/assets/logos/wocat.png" alt="WOCAT logo" />;
     }
 
     return url ? (
