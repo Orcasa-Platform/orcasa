@@ -11,12 +11,14 @@ import MapLegendItem from '@/containers/map/legend/item';
 import Legend from '@/components/map/legend';
 
 import NetworkLegend from './network-legend';
+import PracticesLegend from './practices-legend';
 
 const MapLegends = ({ className = '' }) => {
   const [layers, setLayers] = useLayers();
   const [layersSettings, setLayersSettings] = useLayersSettings();
   const pathname = usePathname();
   const isNetworkPage = pathname.includes('network');
+  const isPracticesPage = pathname.includes('practice');
 
   const handleChangeOrder = useCallback(
     (order: string[]) => {
@@ -72,6 +74,9 @@ const MapLegends = ({ className = '' }) => {
     if (isNetworkPage) {
       return <NetworkLegend />;
     }
+    if (isPracticesPage) {
+      return <PracticesLegend />;
+    }
 
     return layers.map((layer) => {
       const settings = layersSettings[layer] ?? { opacity: 1, visibility: true };
@@ -105,6 +110,7 @@ const MapLegends = ({ className = '' }) => {
     handleChangeVisibility,
     handleRemove,
     isNetworkPage,
+    isPracticesPage,
   ]);
 
   return (
