@@ -8,4 +8,9 @@ export default ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
+  wocat: {
+    // email: env('WOCAT_EMAIL', null),
+    // password: env('WOCAT_PASSWORD', null),
+    token: env('WOCAT_TOKEN', null),
+  }
 });
