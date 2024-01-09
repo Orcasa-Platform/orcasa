@@ -53,11 +53,12 @@ export default function OrganisationForm() {
     name: {
       label: 'Organisation name',
       required: true,
-      zod: z.string().nonempty('Organisation name is mandatory.').max(255, {
-        message: 'Organisation name is limited to 255 characters.',
+      zod: z.string().nonempty('Organisation name is mandatory.').max(150, {
+        message: 'Organisation name is limited to 150 characters.',
       }),
       description: "Please, add the acronym first. E.g. CEA - Commissariat à l'Energie Atomique.",
       type: 'text',
+      maxSize: 150,
     },
     organization_type: {
       label: 'Organisation type',
@@ -97,14 +98,13 @@ export default function OrganisationForm() {
     },
     main_organization_theme: {
       label: 'Main thematic',
-      zod: z
-        .enum(organizationThemes?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.enum(organizationThemes?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
       options: organizationThemes?.map((theme) => ({
         label: theme?.name,
         value: theme?.id?.toString(),
       })),
+      required: true,
     },
     secondary_organization_theme: {
       label: 'Secondary thematic',
@@ -155,15 +155,15 @@ export default function OrganisationForm() {
         .max(255, {
           message: 'Organisation name is limited to 255 characters.',
         })
-        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+$'), {
+        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
           message: 'Please, enter a valid URL.',
         })
         .max(255, {
           message: 'Website is limited to 255 characters.',
-        })
-        .optional(),
+        }),
       type: 'text',
       maxSize: 255,
+      required: true,
       description: (
         <div className="leading-normal text-gray-500">
           Accepted URLs format:
