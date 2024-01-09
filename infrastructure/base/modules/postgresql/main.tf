@@ -22,6 +22,8 @@ resource "aws_db_instance" "postgresql" {
   vpc_security_group_ids = [
     aws_security_group.postgresql.id
   ]
+
+  ca_cert_identifier = "rds-ca-rsa2048-g1"
 }
 
 resource "random_password" "postgresql_superuser" {

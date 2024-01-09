@@ -51,7 +51,8 @@
       "target": "api::country.country"
     },
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lead_projects": {
       "type": "relation",
