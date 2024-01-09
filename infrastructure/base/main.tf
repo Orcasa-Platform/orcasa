@@ -176,7 +176,7 @@ locals {
     NEXT_PUBLIC_ENVIRONMENT                         = "production"
     NEXT_PUBLIC_API_URL                             = "https://${var.staging_domain}/cms/api"
     NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
-    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "emilie.vrot@cirad.fr,mathieu.nogues@inrae.fr,carla.biscotti@vizzuality.com"
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr,carla.biscotti@vizzuality.com"
     NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
     LOG_LEVEL                                       = "info"
   }
@@ -212,7 +212,7 @@ locals {
     NEXT_PUBLIC_ENVIRONMENT                         = "production"
     NEXT_PUBLIC_API_URL                             = "https://${var.demo_domain}/cms/api"
     NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
-    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "emilie.vrot@cirad.fr,mathieu.nogues@inrae.fr"
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr"
     NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
     LOG_LEVEL                                       = "info"
   }
