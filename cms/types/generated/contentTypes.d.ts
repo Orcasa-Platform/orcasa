@@ -1055,7 +1055,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       'oneToOne',
       'api::country.country'
     >;
-    url: Attribute.String;
+    url: Attribute.String & Attribute.Required;
     lead_projects: Attribute.Relation<
       'api::organization.organization',
       'oneToMany',

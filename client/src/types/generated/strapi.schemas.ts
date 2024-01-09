@@ -6515,7 +6515,7 @@ export interface Organization {
   short_description: string;
   description?: string;
   country?: OrganizationCountry;
-  url?: string;
+  url: string;
   lead_projects?: OrganizationLeadProjects;
   partner_projects?: OrganizationPartnerProjects;
   funded_projects?: OrganizationFundedProjects;
@@ -7601,7 +7601,7 @@ export type OrganizationRequestData = {
   short_description: string;
   description?: string;
   country?: OrganizationRequestDataCountry;
-  url?: string;
+  url: string;
   lead_projects?: OrganizationRequestDataLeadProjectsItem[];
   partner_projects?: OrganizationRequestDataPartnerProjectsItem[];
   funded_projects?: OrganizationRequestDataFundedProjectsItem[];
