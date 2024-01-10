@@ -1,6 +1,10 @@
 import { atom, useAtom } from 'jotai';
 
-export interface PracticesFilters {
+export interface PracticesDropdownFilters {
+  country: number[];
+}
+
+export interface PracticesFilters extends PracticesDropdownFilters {
   search?: string;
 }
 
@@ -9,7 +13,7 @@ export const usePracticesFilterSidebarOpen = () => {
   return useAtom(filterSidebarOpenAtom);
 };
 
-const filtersAtom = atom<PracticesFilters>({});
+const filtersAtom = atom<PracticesFilters>({ country: [] });
 export const usePracticesFilters = () => {
   return useAtom(filtersAtom);
 };

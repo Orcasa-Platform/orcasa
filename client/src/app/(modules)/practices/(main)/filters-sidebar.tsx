@@ -6,13 +6,17 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
-import { usePracticesFilterSidebarOpen } from '@/store/practices';
+import { usePracticesFilterSidebarOpen, usePracticesFilters } from '@/store/practices';
+
+import { usePracticesFiltersOptions } from '@/hooks/practices';
 
 import { Button } from '@/components/ui/button';
+import { MultiCombobox } from '@/components/ui/multi-combobox';
 
 export default function FiltersSidebar() {
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
-
+  const practicesFiltersOptions = usePracticesFiltersOptions();
+  const [filters, setFilters] = usePracticesFilters();
   const scrollableContainerRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -56,7 +60,33 @@ export default function FiltersSidebar() {
           <X className="h-6 w-6" />
         </Button>
         <h1 className="font-serif text-3.8xl">Filters</h1>
-        <div className="flex flex-col gap-y-10">Coming soon</div>
+        <div className="flex flex-col gap-y-10">
+          <fieldset className="relative">
+            <Button
+              type="button"
+              variant="vanilla"
+              size="auto"
+              className="absolute bottom-full right-0 -translate-y-4 text-base font-semibold text-blue-500 hover:text-blue-800 disabled:text-gray-300 disabled:opacity-100"
+              onClick={() =>
+                setFilters({
+                  ...filters,
+                  country: [],
+                })
+              }
+            >
+              Reset all
+            </Button>
+            <div className="space-y-4">
+              <MultiCombobox
+                name="Country"
+                variant="network-organization"
+                value={filters.country ?? []}
+                options={practicesFiltersOptions.country}
+                onChange={(value) => setFilters({ ...filters, country: value })}
+              />
+            </div>
+          </fieldset>
+        </div>
       </div>
     </div>
   );

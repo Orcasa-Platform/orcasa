@@ -1,7 +1,10 @@
+import { useMemo } from 'react';
+
 import { PointFeature } from 'supercluster';
 
-import { PracticesFilters } from '@/store/practices';
+import { PracticesDropdownFilters, PracticesFilters } from '@/store/practices';
 
+import { useGetCountries } from '@/types/generated/country';
 import {
   useGetPracticesInfinite,
   useGetPractices,
@@ -64,7 +67,23 @@ const getQueryFilters = (filters: PracticesFilters) => {
         ]
       : [];
 
-  return { $and: generalFilters };
+  const practiceFilters = [
+    ...(filters.country.length > 0
+      ? [
+          {
+            $or: filters.country.map((id) => ({
+              country: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+  ];
+
+  return { $and: [...generalFilters, ...practiceFilters] };
 };
 
 export const usePractices = ({
@@ -277,3 +296,34 @@ export const useMapPractices = ({ filters }: { filters: PracticesFilters }): Pra
 
 export const useMapPractice = (practice: Practice): PracticeMapResponse =>
   getMapPractices(useGetPractice(practice));
+
+export const usePracticesFiltersOptions = (): Record<
+  keyof PracticesDropdownFilters,
+  { label: string; value: number }[]
+> => {
+  const { data: countryData } = useGetCountries(
+    {
+      fields: 'name',
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['countries'],
+      },
+    },
+  );
+
+  const country = useMemo(
+    () =>
+      countryData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          countryData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [countryData],
+  );
+
+  return {
+    country,
+  };
+};

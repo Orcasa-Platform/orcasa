@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 
 import { atom, useAtom } from 'jotai';
 
-export interface NetworkGeneralFilters {
+interface NetworkGeneralFilters {
   type?: string[];
   search?: string;
 }
