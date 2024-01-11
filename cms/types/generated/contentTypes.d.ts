@@ -1211,6 +1211,38 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       'manyToOne',
       'api::country.country'
     >;
+    detailed_description: Attribute.Text;
+    project_fund: Attribute.Text;
+    institution_funding: Attribute.Text;
+    state_province: Attribute.Text;
+    further_location: Attribute.Text;
+    map_location: Attribute.Text;
+    implem_date: Attribute.Text;
+    publication_date: Attribute.Date;
+    implem_decade: Attribute.Text;
+    main_purposes: Attribute.Text;
+    has_changed: Attribute.Boolean;
+    land_use_has_changed: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    land_use_prior: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    degradation_assessed: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

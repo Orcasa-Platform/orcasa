@@ -37,6 +37,60 @@
       "relation": "manyToOne",
       "target": "api::country.country",
       "inversedBy": "practices"
+    },
+    "detailed_description": {
+      "type": "text"
+    },
+    "project_fund": {
+      "type": "text"
+    },
+    "institution_funding": {
+      "type": "text"
+    },
+    "state_province": {
+      "type": "text"
+    },
+    "further_location": {
+      "type": "text"
+    },
+    "map_location": {
+      "type": "text"
+    },
+    "implem_date": {
+      "type": "text"
+    },
+    "publication_date": {
+      "type": "date"
+    },
+    "implem_decade": {
+      "type": "text"
+    },
+    "main_purposes": {
+      "type": "text"
+    },
+    "has_changed": {
+      "type": "boolean"
+    },
+    "land_use_has_changed": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
+    },
+    "land_use_prior": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
+    },
+    "degradation_assessed": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
     }
   }
 }
