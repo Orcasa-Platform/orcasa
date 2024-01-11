@@ -1,4 +1,7 @@
 module.exports = ({ env }) => ({
+  "string-array": {
+    enabled: true,
+  },
   email: {
     config: {
       provider: 'nodemailer',

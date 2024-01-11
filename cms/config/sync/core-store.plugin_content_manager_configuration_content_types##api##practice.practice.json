@@ -105,6 +105,202 @@
           "sortable": true
         }
       },
+      "detailed_description": {
+        "edit": {
+          "label": "detailed_description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "detailed_description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "project_fund": {
+        "edit": {
+          "label": "project_fund",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "project_fund",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "institution_funding": {
+        "edit": {
+          "label": "institution_funding",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "institution_funding",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "state_province": {
+        "edit": {
+          "label": "state_province",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "state_province",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "further_location": {
+        "edit": {
+          "label": "further_location",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "further_location",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "map_location": {
+        "edit": {
+          "label": "map_location",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "map_location",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "implem_date": {
+        "edit": {
+          "label": "implem_date",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "implem_date",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "publication_date": {
+        "edit": {
+          "label": "publication_date",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "publication_date",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "implem_decade": {
+        "edit": {
+          "label": "implem_decade",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "implem_decade",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "main_purposes": {
+        "edit": {
+          "label": "main_purposes",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "main_purposes",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "has_changed": {
+        "edit": {
+          "label": "has_changed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "has_changed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "land_use_has_changed": {
+        "edit": {
+          "label": "land_use_has_changed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "land_use_has_changed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "land_use_prior": {
+        "edit": {
+          "label": "land_use_prior",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "land_use_prior",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "degradation_assessed": {
+        "edit": {
+          "label": "degradation_assessed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "degradation_assessed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -167,7 +363,9 @@
     "layouts": {
       "list": [
         "source_name",
-        "title"
+        "title",
+        "detailed_description",
+        "project_fund"
       ],
       "edit": [
         [
@@ -197,6 +395,76 @@
           },
           {
             "name": "language",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "detailed_description",
+            "size": 6
+          },
+          {
+            "name": "project_fund",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "institution_funding",
+            "size": 6
+          },
+          {
+            "name": "state_province",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "further_location",
+            "size": 6
+          },
+          {
+            "name": "map_location",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "implem_date",
+            "size": 6
+          },
+          {
+            "name": "publication_date",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "implem_decade",
+            "size": 6
+          },
+          {
+            "name": "main_purposes",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "has_changed",
+            "size": 4
+          },
+          {
+            "name": "land_use_has_changed",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "land_use_prior",
+            "size": 6
+          },
+          {
+            "name": "degradation_assessed",
             "size": 6
           }
         ]
