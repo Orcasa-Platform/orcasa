@@ -338,7 +338,14 @@ export default class WocatConnector {
     );
 
     if (practices.length > 1) {
-      throw new Error(`Multiple practices found for source_name ${wocatPractice.source_name} and source_id ${wocatPractice.source_id}`);
+      strapi.log.warn(`Multiple practices found for source_name ${wocatPractice.source_name} and source_id ${wocatPractice.source_id}`);
+
+      await Promise.all(practices.map(async (practice) => {
+        strapi.log.warn(`Deleting practice ${practice.id} with source_name ${wocatPractice.source_name} and source_id ${wocatPractice.source_id}`);
+        await strapi.entityService.delete('api::practice.practice', practice.id);
+      }))
+
+      practices.length = 0;
     }
 
     if (wocatPractice.country) {
