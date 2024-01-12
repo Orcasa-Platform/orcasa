@@ -37,6 +37,8 @@ export type InteractionConfig = {
       format?: FormatProps;
     }[];
   }[];
+  url?: string;
+  layer?: string;
 };
 
 export type LayerProps = {

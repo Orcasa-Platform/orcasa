@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { Feature } from 'geojson';
+import type { GeoJsonProperties } from 'geojson';
 import { useMap } from 'react-map-gl/maplibre';
 
 import { format } from '@/lib/utils/formats';
@@ -28,42 +29,69 @@ const PopupItem = ({ id }: PopupItemProps) => {
     populate: 'metadata',
   });
 
+  const [featuresData, setfeaturesData] = useState<GeoJsonProperties | undefined>();
   const attributes = data?.data?.attributes as LayerTyped;
   const source = attributes.config.source;
   const click = attributes.interaction_config.events.find((ev) => ev.type === 'click');
+  const fetchLayer = attributes.interaction_config?.layer?.trim();
+  const url = attributes.interaction_config?.url?.trim();
 
-  const DATA = useMemo(() => {
-    if (source.type === 'vector' && rendered && popup && map) {
-      const point = map.project(popup.lngLat);
-
-      // check if the point is outside the canvas
-      if (
-        point.x < 0 ||
-        point.x > map.getCanvas().width ||
-        point.y < 0 ||
-        point.y > map.getCanvas().height
-      ) {
-        return DATA_REF.current;
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!rendered || !popup || !map) return;
+      if (['raster', 'vector'].includes(source.type)) {
+        const point = map.project(popup.lngLat);
+        // check if the point is outside the canvas
+        if (
+          point.x < 0 ||
+          point.x > map.getCanvas().width ||
+          point.y < 0 ||
+          point.y > map.getCanvas().height
+        ) {
+          setfeaturesData(DATA_REF.current);
+          return;
+        }
       }
-      const query = map.queryRenderedFeatures(point, {
-        layers: layersInteractiveIds.map((id) => id.toString()),
-      });
+      if (source.type === 'raster') {
+        const point = map.project(popup.lngLat);
+        const bounds = map.getBounds();
+        const bbox = `${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()},${bounds.getNorth()}`;
+        const width = map.getContainer().clientWidth;
+        const height = map.getContainer().clientHeight;
+        const x = Math.round(point.x);
+        const y = Math.round(point.y);
+        const response = await fetch(
+          // Projection should be included in the url: ?crs=EPSG:4326
+          `${url}&request=GetFeatureInfo&transparent=true&format=image/png&exceptions=application/vnd.ogc.se_xml&styles=&feature_count=10&service=WMS&version=1.1.1&layers=${fetchLayer}&QUERY_LAYERS=${fetchLayer}&x=${x}&y=${y}&bbox=${bbox}&width=${width}&height=${height}&info_format=application/json
+          `,
+        );
+        const featureCollection = await response.json();
+        const d = featureCollection?.features?.[0]?.properties;
+        DATA_REF.current = d;
 
-      const d = query.find((d) => {
-        return d.source === source.id;
-      })?.properties;
+        setfeaturesData(DATA_REF.current);
+        return;
+      } else if (source.type === 'vector') {
+        const point = map.project(popup.lngLat);
+        const query = map.queryRenderedFeatures(point, {
+          layers: layersInteractiveIds.map((id) => id.toString()),
+        });
 
-      DATA_REF.current = d;
+        const d = query.find((d) => {
+          return d.source === source.id;
+        })?.properties;
 
-      if (d) {
-        return DATA_REF.current;
+        DATA_REF.current = d;
+
+        if (d) {
+          setfeaturesData(DATA_REF.current);
+        }
       }
-    }
+    };
 
-    return DATA_REF.current;
-  }, [popup, source, layersInteractiveIds, map, rendered]);
+    fetchData();
+  }, [popup, source, layersInteractiveIds, map, rendered, fetchLayer, url]);
 
-  // handle renderer
   const handleMapRender = useCallback(() => {
     setRendered(!!map?.loaded() && !!map?.areTilesLoaded());
   }, [map]);
@@ -89,9 +117,13 @@ const PopupItem = ({ id }: PopupItemProps) => {
           isPlaceholderData={isPlaceholderData}
           skeletonClassName="h-20 w-[250px]"
         >
+          <div>
+            <span className="font-semibold">Coordinates:</span> {popup?.lngLat.lng.toFixed(4)},{' '}
+            {popup?.lngLat.lat.toFixed(4)}
+          </div>
           <dl className="space-y-2">
             {click &&
-              !!DATA &&
+              !!featuresData &&
               click.values.map((v) => {
                 return (
                   <div key={v.key}>
@@ -99,14 +131,14 @@ const PopupItem = ({ id }: PopupItemProps) => {
                     <dd className="text-sm">
                       {format({
                         id: v.format?.id,
-                        value: DATA[v.key],
+                        value: featuresData[v.key],
                         options: v.format?.options,
                       })}
                     </dd>
                   </div>
                 );
               })}
-            {click && !DATA && <div className="text-xs">No data</div>}
+            {click && !featuresData && <div className="text-xs">No data</div>}
           </dl>
         </ContentLoader>
       </div>

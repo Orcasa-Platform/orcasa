@@ -42,7 +42,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
         }
 
         setLayersInteractive((prev) => [...prev, id]);
-        setLayersInteractiveIds((prev) => [...prev, ...ids.map((id) => parseInt(id))]);
+        setLayersInteractiveIds((prev) => [...prev, ...ids.map((id) => +id)]);
       }
     },
     [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds],
