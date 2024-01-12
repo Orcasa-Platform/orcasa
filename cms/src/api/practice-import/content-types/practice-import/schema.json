@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "practice_imports",
+  "info": {
+    "singularName": "practice-import",
+    "pluralName": "practice-imports",
+    "displayName": "Practice Import"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "start": {
+      "type": "datetime",
+      "required": true
+    },
+    "finished": {
+      "type": "datetime"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "started",
+        "finished",
+        "error"
+      ]
+    },
+    "output": {
+      "type": "json"
+    }
+  }
+}

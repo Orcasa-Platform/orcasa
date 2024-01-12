@@ -1260,6 +1260,38 @@ export interface ApiPracticePractice extends Schema.CollectionType {
   };
 }
 
+export interface ApiPracticeImportPracticeImport extends Schema.CollectionType {
+  collectionName: 'practice_imports';
+  info: {
+    singularName: 'practice-import';
+    pluralName: 'practice-imports';
+    displayName: 'Practice Import';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    start: Attribute.DateTime & Attribute.Required;
+    finished: Attribute.DateTime;
+    status: Attribute.Enumeration<['started', 'finished', 'error']>;
+    output: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::practice-import.practice-import',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::practice-import.practice-import',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -1529,6 +1561,7 @@ declare module '@strapi/types' {
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;
       'api::page.page': ApiPagePage;
       'api::practice.practice': ApiPracticePractice;
+      'api::practice-import.practice-import': ApiPracticeImportPracticeImport;
       'api::project.project': ApiProjectProject;
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;
