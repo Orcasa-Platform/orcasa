@@ -153,6 +153,7 @@ locals {
     TRANSFER_TOKEN_SALT = random_password.staging_transfer_token_salt.result
     JWT_SECRET          = random_password.staging_jwt_secret.result
     CMS_URL             = "https://${var.staging_domain}/cms/"
+    WOCAT_TOKEN         = var.wocat_token
 
     # Database
     DATABASE_CLIENT                  = "postgres"
@@ -189,6 +190,7 @@ locals {
     TRANSFER_TOKEN_SALT = random_password.demo_transfer_token_salt.result
     JWT_SECRET          = random_password.demo_jwt_secret.result
     CMS_URL             = "https://${var.demo_domain}/cms/"
+    WOCAT_TOKEN         = var.wocat_token
 
     # Database
     DATABASE_CLIENT                  = "postgres"

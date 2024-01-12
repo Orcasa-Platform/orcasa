@@ -27,6 +27,10 @@ variable "demo_domain" {
   type = string
 }
 
+variable "wocat_token" {
+  type = string
+}
+
 #
 # Elastic Beanstalk configuration
 # concepts: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.html
