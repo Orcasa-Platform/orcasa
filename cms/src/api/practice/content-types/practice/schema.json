@@ -29,9 +29,6 @@
     "short_description": {
       "type": "text"
     },
-    "language": {
-      "type": "string"
-    },
     "country": {
       "type": "relation",
       "relation": "manyToOne",
@@ -86,6 +83,20 @@
       "customField": "plugin::string-array.input"
     },
     "degradation_assessed": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
+    },
+    "land_use_types": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
+    },
+    "language": {
       "type": "customField",
       "options": {
         "separator": "semicolon"

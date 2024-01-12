@@ -646,7 +646,6 @@
           "source_id",
           "title",
           "short_description",
-          "language",
           "country",
           "detailed_description",
           "project_fund",
@@ -661,7 +660,9 @@
           "has_changed",
           "land_use_has_changed",
           "land_use_prior",
-          "degradation_assessed"
+          "degradation_assessed",
+          "land_use_types",
+          "language"
         ]
       },
       "conditions": []
@@ -683,7 +684,6 @@
           "source_id",
           "title",
           "short_description",
-          "language",
           "country",
           "detailed_description",
           "project_fund",
@@ -698,7 +698,9 @@
           "has_changed",
           "land_use_has_changed",
           "land_use_prior",
-          "degradation_assessed"
+          "degradation_assessed",
+          "land_use_types",
+          "language"
         ]
       },
       "conditions": []
@@ -713,7 +715,6 @@
           "source_id",
           "title",
           "short_description",
-          "language",
           "country",
           "detailed_description",
           "project_fund",
@@ -728,7 +729,9 @@
           "has_changed",
           "land_use_has_changed",
           "land_use_prior",
-          "degradation_assessed"
+          "degradation_assessed",
+          "land_use_types",
+          "language"
         ]
       },
       "conditions": []

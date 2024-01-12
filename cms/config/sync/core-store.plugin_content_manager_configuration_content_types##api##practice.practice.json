@@ -301,6 +301,20 @@
           "sortable": true
         }
       },
+      "land_use_types": {
+        "edit": {
+          "label": "land_use_types",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "land_use_types",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -465,6 +479,12 @@
           },
           {
             "name": "degradation_assessed",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "land_use_types",
             "size": 6
           }
         ]

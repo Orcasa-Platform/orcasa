@@ -1205,7 +1205,6 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     source_id: Attribute.String & Attribute.Required;
     title: Attribute.Text;
     short_description: Attribute.Text;
-    language: Attribute.String;
     country: Attribute.Relation<
       'api::practice.practice',
       'manyToOne',
@@ -1237,6 +1236,20 @@ export interface ApiPracticePractice extends Schema.CollectionType {
         }
       >;
     degradation_assessed: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    land_use_types: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    language: Attribute.Text &
       Attribute.CustomField<
         'plugin::string-array.input',
         {
