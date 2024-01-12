@@ -590,6 +590,55 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
