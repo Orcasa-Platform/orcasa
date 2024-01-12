@@ -54,12 +54,11 @@ const getQueryFilters = (filters: PracticesFilters) => {
                   $containsi: filters.search,
                 },
               },
-              // TODO: search the description when it's added in Strapi
-              // {
-              //   description: {
-              //     $containsi: filters.search,
-              //   },
-              // },
+              {
+                detailed_description: {
+                  $containsi: filters.search,
+                },
+              },
             ],
           },
         ]
