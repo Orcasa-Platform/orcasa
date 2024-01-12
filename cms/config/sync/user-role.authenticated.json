@@ -40,15 +40,6 @@
       "action": "api::organization.organization.findOne"
     },
     {
-      "action": "api::practice-import.practice-import.find"
-    },
-    {
-      "action": "api::practice-import.practice-import.findOne"
-    },
-    {
-      "action": "api::practice-import.practice-import.import"
-    },
-    {
       "action": "api::practice.practice.find"
     },
     {
