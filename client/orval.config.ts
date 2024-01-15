@@ -65,6 +65,7 @@ export default {
         tags: [
           'Page',
           'Static-page',
+          'Land-use-type',
           'Layer-group',
           'Layer',
           'Organization',

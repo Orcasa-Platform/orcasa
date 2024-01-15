@@ -2,7 +2,7 @@ import { atom, useAtom } from 'jotai';
 
 export interface PracticesDropdownFilters {
   country: number[];
-  landUseType: string[];
+  landUseType: number[];
 }
 
 export interface PracticesFilters extends PracticesDropdownFilters {

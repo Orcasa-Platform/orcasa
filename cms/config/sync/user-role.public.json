@@ -28,12 +28,6 @@
       "action": "api::home-stat.home-stat.findOne"
     },
     {
-      "action": "api::land-use-type.land-use-type.find"
-    },
-    {
-      "action": "api::land-use-type.land-use-type.findOne"
-    },
-    {
       "action": "api::layer-group.layer-group.find"
     },
     {
@@ -76,15 +70,6 @@
       "action": "api::page.page.findOne"
     },
     {
-      "action": "api::practice-import.practice-import.find"
-    },
-    {
-      "action": "api::practice-import.practice-import.findOne"
-    },
-    {
-      "action": "api::practice-import.practice-import.import"
-    },
-    {
       "action": "api::practice.practice.find"
     },
     {
@@ -113,6 +98,12 @@
     },
     {
       "action": "api::region.region.findOne"
+    },
+    {
+      "action": "api::static-page.static-page.find"
+    },
+    {
+      "action": "api::static-page.static-page.findOne"
     },
     {
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"

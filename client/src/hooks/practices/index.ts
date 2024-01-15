@@ -5,6 +5,7 @@ import { PointFeature } from 'supercluster';
 import { PracticesDropdownFilters, PracticesFilters } from '@/store/practices';
 
 import { useGetCountries } from '@/types/generated/country';
+import { useGetLandUseTypes } from '@/types/generated/land-use-type';
 import {
   useGetPracticesInfinite,
   useGetPractices,
@@ -66,7 +67,6 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : [];
-
   const practiceFilters = [
     ...(filters.country.length > 0
       ? [
@@ -84,13 +84,13 @@ const getQueryFilters = (filters: PracticesFilters) => {
     ...(filters.landUseType.length > 0
       ? [
           {
-            $or: [
-              {
-                land_use_types: {
-                  $containsi: filters.landUseType,
+            $or: filters.landUseType.map((id) => ({
+              land_use_types: {
+                id: {
+                  $eq: id,
                 },
               },
-            ],
+            })),
           },
         ]
       : []),
@@ -326,6 +326,16 @@ export const usePracticesFiltersOptions = (): Record<
       },
     },
   );
+  const { data: landUseTypeData } = useGetLandUseTypes(
+    {
+      fields: 'name',
+    },
+    {
+      query: {
+        queryKey: ['land-use-types'],
+      },
+    },
+  );
 
   const country = useMemo(
     () =>
@@ -336,13 +346,14 @@ export const usePracticesFiltersOptions = (): Record<
     [countryData],
   );
 
-  const landUseType = [
-    { label: 'Cropland', value: 'Cropland' },
-    { label: 'Forest Land', value: 'Forest Land' },
-    { label: 'Grassland', value: 'Grassland' },
-    { label: 'Wetlands', value: 'Wetlands' },
-    { label: 'Other Land', value: 'Other Land' },
-  ];
+  const landUseType = useMemo(
+    () =>
+      landUseTypeData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          landUseTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [landUseTypeData],
+  );
 
   return {
     country,

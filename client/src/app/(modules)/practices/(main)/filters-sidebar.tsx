@@ -89,7 +89,7 @@ export default function FiltersSidebar() {
                 variant="network-organization"
                 value={filters.landUseType ?? []}
                 options={practicesFiltersOptions.landUseType}
-                onChange={(value) => setFilters({ ...filters, landUseType: value as string[] })}
+                onChange={(value) => setFilters({ ...filters, landUseType: value as number[] })}
               />
             </div>
           </fieldset>
