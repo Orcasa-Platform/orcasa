@@ -219,7 +219,7 @@ export default class WocatConnector {
     const landUseKeys: string[] = Object.keys(get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children'));
 
     if (landUseKeys.length > 0) {
-      const lands: string[] = get(questionnaire, `section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children.${landUseKeys[0]}.value[0].values`, ['No information']);
+      const lands: string[] = get(questionnaire, `section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children.${landUseKeys[0]}.value[0].values`, []);
       return lands.map(l => this.mapWithDictionary(this.landUseMap, l[0]));
     } else {
       return [];
@@ -328,7 +328,8 @@ export default class WocatConnector {
 
   async convertToPractice(wocatPractice: WocatPractice): Promise<Record<string, any>> {
     let practice;
-    let country
+    let country = null;
+    let land_use_types = null;
 
     const practices = await strapi.entityService.findMany(
       'api::practice.practice',
@@ -355,8 +356,15 @@ export default class WocatConnector {
           filters: { name: wocatPractice.country },
         }
       ))[0];
-    } else {
-      country = null;
+    }
+
+    if (wocatPractice.land_use_types) {
+      land_use_types = (await strapi.entityService.findMany(
+        'api::land-use-type.land-use-type',
+        {
+          filters: { name: { $in: wocatPractice.land_use_types } },
+        }
+      ));
     }
 
     if (practices.length === 0) {
@@ -378,20 +386,24 @@ export default class WocatConnector {
           publication_date: wocatPractice.publication_date,
           implem_decade: wocatPractice.implem_decade,
           main_purposes: wocatPractice.main_purposes,
-          land_use_types: wocatPractice.land_use_types.join(';'),
           land_use_has_changed: wocatPractice.land_use_has_changed.join(';'),
           has_changed: wocatPractice.has_changed,
           land_use_prior: wocatPractice.land_use_prior.join(';'),
           degradation_assessed: wocatPractice.degradation_assessed.join(';'),
-          prevention_restoration: wocatPractice.prevention_restoration,
-          agroclimatic_zone: wocatPractice.agroclimatic_zone,
           language: wocatPractice.language.join(';'),
+          sync: true,
+          show: true,
 
+          land_use_types,
           country,
         },
-        populate: ['country'],
+        populate: ['country', 'land_use_types']
       });
     } else {
+      if (practices[0].sync === false) {
+        strapi.log.info(`Wocat convertToPractice - practice ${practices[0].id} from Wocat flagged for no sync, skipping...`);
+        return practices[0];
+      }
       strapi.log.info(`Wocat convertToPractice - updating practice ${practices[0].id} from Wocat questionnaire id ${wocatPractice.source_id}`);
 
       practice = await strapi.entityService.update('api::practice.practice', practices[0].id, {
@@ -411,18 +423,18 @@ export default class WocatConnector {
           publication_date: wocatPractice.publication_date,
           implem_decade: wocatPractice.implem_decade,
           main_purposes: wocatPractice.main_purposes,
-          land_use_types: wocatPractice.land_use_types.join(';'),
           land_use_has_changed: wocatPractice.land_use_has_changed.join(';'),
           has_changed: wocatPractice.has_changed,
           land_use_prior: wocatPractice.land_use_prior.join(';'),
           degradation_assessed: wocatPractice.degradation_assessed.join(';'),
-          prevention_restoration: wocatPractice.prevention_restoration,
-          agroclimatic_zone: wocatPractice.agroclimatic_zone,
           language: wocatPractice.language.join(';'),
+          sync: true,
+          show: practices[0].show === null ? true : practices[0].show,
 
+          land_use_types,
           country,
         },
-        populate: ['country'],
+        populate: ['country', 'land_use_types']
       });
     }
 

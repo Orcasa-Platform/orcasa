@@ -89,19 +89,31 @@
       },
       "customField": "plugin::string-array.input"
     },
-    "land_use_types": {
-      "type": "customField",
-      "options": {
-        "separator": "semicolon"
-      },
-      "customField": "plugin::string-array.input"
-    },
     "language": {
       "type": "customField",
       "options": {
         "separator": "semicolon"
       },
       "customField": "plugin::string-array.input"
+    },
+    "land_use_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::land-use-type.land-use-type",
+      "inversedBy": "practices"
+    },
+    "sync": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "show": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "practice_url": {
+      "type": "text"
     }
   }
 }

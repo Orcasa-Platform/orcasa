@@ -483,7 +483,9 @@
           "title",
           "short_description",
           "country",
-          "language"
+          "language",
+          "sync",
+          "show"
         ]
       },
       "conditions": []
@@ -499,7 +501,9 @@
           "title",
           "short_description",
           "country",
-          "language"
+          "language",
+          "sync",
+          "show"
         ]
       },
       "conditions": [
@@ -517,7 +521,9 @@
           "title",
           "short_description",
           "country",
-          "language"
+          "language",
+          "sync",
+          "show"
         ]
       },
       "conditions": [

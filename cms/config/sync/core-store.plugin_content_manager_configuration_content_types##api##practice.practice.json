@@ -76,20 +76,6 @@
           "sortable": true
         }
       },
-      "language": {
-        "edit": {
-          "label": "Language",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "language",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "country": {
         "edit": {
           "label": "Country",
@@ -301,16 +287,73 @@
           "sortable": true
         }
       },
-      "land_use_types": {
+      "language": {
         "edit": {
-          "label": "land_use_types",
+          "label": "Language",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
+          "label": "language",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "land_use_types": {
+        "edit": {
           "label": "land_use_types",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "land_use_types",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "sync": {
+        "edit": {
+          "label": "sync",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sync",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "show": {
+        "edit": {
+          "label": "show",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "show",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "practice_url": {
+        "edit": {
+          "label": "practice_url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "practice_url",
           "searchable": true,
           "sortable": true
         }
@@ -485,6 +528,20 @@
         [
           {
             "name": "land_use_types",
+            "size": 6
+          },
+          {
+            "name": "sync",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "show",
+            "size": 4
+          },
+          {
+            "name": "practice_url",
             "size": 6
           }
         ]

@@ -591,8 +591,10 @@
           "source_id",
           "title",
           "short_description",
+          "country",
           "language",
-          "country"
+          "sync",
+          "show"
         ]
       },
       "conditions": []
@@ -614,8 +616,10 @@
           "source_id",
           "title",
           "short_description",
+          "country",
           "language",
-          "country"
+          "sync",
+          "show"
         ]
       },
       "conditions": []
@@ -630,8 +634,10 @@
           "source_id",
           "title",
           "short_description",
+          "country",
           "language",
-          "country"
+          "sync",
+          "show"
         ]
       },
       "conditions": []

@@ -212,6 +212,49 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
+      "properties": {
+        "fields": [
+          "name",
+          "practices"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
+      "properties": {
+        "fields": [
+          "name",
+          "practices"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
+      "properties": {
+        "fields": [
+          "name",
+          "practices"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::layer-group.layer-group",
       "properties": {
         "fields": [
@@ -661,8 +704,11 @@
           "land_use_has_changed",
           "land_use_prior",
           "degradation_assessed",
+          "language",
           "land_use_types",
-          "language"
+          "sync",
+          "show",
+          "practice_url"
         ]
       },
       "conditions": []
@@ -699,8 +745,11 @@
           "land_use_has_changed",
           "land_use_prior",
           "degradation_assessed",
+          "language",
           "land_use_types",
-          "language"
+          "sync",
+          "show",
+          "practice_url"
         ]
       },
       "conditions": []
@@ -730,8 +779,11 @@
           "land_use_has_changed",
           "land_use_prior",
           "degradation_assessed",
+          "language",
           "land_use_types",
-          "language"
+          "sync",
+          "show",
+          "practice_url"
         ]
       },
       "conditions": []

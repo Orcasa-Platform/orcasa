@@ -918,6 +918,40 @@ export interface ApiHomeStatHomeStat extends Schema.CollectionType {
   };
 }
 
+export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
+  collectionName: 'land_use_types';
+  info: {
+    singularName: 'land-use-type';
+    pluralName: 'land-use-types';
+    displayName: 'Land use type';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    practices: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'manyToMany',
+      'api::practice.practice'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLayerLayer extends Schema.CollectionType {
   collectionName: 'layers';
   info: {
@@ -1242,13 +1276,6 @@ export interface ApiPracticePractice extends Schema.CollectionType {
           separator: 'semicolon';
         }
       >;
-    land_use_types: Attribute.Text &
-      Attribute.CustomField<
-        'plugin::string-array.input',
-        {
-          separator: 'semicolon';
-        }
-      >;
     language: Attribute.Text &
       Attribute.CustomField<
         'plugin::string-array.input',
@@ -1256,6 +1283,14 @@ export interface ApiPracticePractice extends Schema.CollectionType {
           separator: 'semicolon';
         }
       >;
+    land_use_types: Attribute.Relation<
+      'api::practice.practice',
+      'manyToMany',
+      'api::land-use-type.land-use-type'
+    >;
+    sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    show: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    practice_url: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1567,6 +1602,7 @@ declare module '@strapi/types' {
       'api::continent.continent': ApiContinentContinent;
       'api::country.country': ApiCountryCountry;
       'api::home-stat.home-stat': ApiHomeStatHomeStat;
+      'api::land-use-type.land-use-type': ApiLandUseTypeLandUseType;
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
       'api::organization.organization': ApiOrganizationOrganization;
