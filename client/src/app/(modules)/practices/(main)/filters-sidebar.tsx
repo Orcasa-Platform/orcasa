@@ -82,7 +82,14 @@ export default function FiltersSidebar() {
                 variant="network-organization"
                 value={filters.country ?? []}
                 options={practicesFiltersOptions.country}
-                onChange={(value) => setFilters({ ...filters, country: value })}
+                onChange={(value) => setFilters({ ...filters, country: value as number[] })}
+              />
+              <MultiCombobox
+                name="Land use types"
+                variant="network-organization"
+                value={filters.landUseType ?? []}
+                options={practicesFiltersOptions.landUseType}
+                onChange={(value) => setFilters({ ...filters, landUseType: value as string[] })}
               />
             </div>
           </fieldset>

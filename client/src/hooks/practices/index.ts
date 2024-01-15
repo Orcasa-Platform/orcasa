@@ -81,6 +81,19 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
+    ...(filters.landUseType.length > 0
+      ? [
+          {
+            $or: [
+              {
+                land_use_types: {
+                  $containsi: filters.landUseType,
+                },
+              },
+            ],
+          },
+        ]
+      : []),
   ];
 
   return { $and: [...generalFilters, ...practiceFilters] };
@@ -299,7 +312,7 @@ export const useMapPractice = (practice: Practice): PracticeMapResponse =>
 
 export const usePracticesFiltersOptions = (): Record<
   keyof PracticesDropdownFilters,
-  { label: string; value: number }[]
+  { label: string; value: number | string }[]
 > => {
   const { data: countryData } = useGetCountries(
     {
@@ -323,7 +336,16 @@ export const usePracticesFiltersOptions = (): Record<
     [countryData],
   );
 
+  const landUseType = [
+    { label: 'Cropland', value: 'Cropland' },
+    { label: 'Forest Land', value: 'Forest Land' },
+    { label: 'Grassland', value: 'Grassland' },
+    { label: 'Wetlands', value: 'Wetlands' },
+    { label: 'Other Land', value: 'Other Land' },
+  ];
+
   return {
     country,
+    landUseType,
   };
 };
