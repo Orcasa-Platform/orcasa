@@ -1,37 +1,68 @@
-// import { format } from '@/lib/utils/formats';
+import { FormatProps } from '@/lib/utils/formats';
 
 import { Practice } from '@/types/generated/strapi.schemas';
 
-// const hasData = (field: Practice[keyof Practice]) => {
-//   if (!field || field === '') return false;
-//   if (typeof field === 'string') return true;
-//   return typeof field !== 'undefined' && field?.data;
-// };
+import type { FieldType } from './field';
 
-export const getPracticeFields = (practice: Practice) => {
+export const getPracticeFields = (practice: Practice): FieldType[] => {
   const {
     short_description: shortDescription,
     source_name: source,
-    // country, language
+    language,
+    publication_date: publicationDate,
+    project_fund: projectName,
+    institution_funding: institutionName,
   } = practice;
 
   const fields = [];
 
-  if (shortDescription && shortDescription.length > 0) {
-    fields.push({ label: 'Description', value: shortDescription });
+  if (publicationDate) {
+    fields.push({
+      label: 'Publication Date',
+      value: publicationDate,
+      formatId: 'formatDate' as FormatProps['id'],
+    });
+  }
+
+  if (language) {
+    fields.push({ label: 'Language', value: language });
   }
 
   if (source && source.length > 0) {
     fields.push({ label: 'Source', value: source, logo: true });
   }
 
-  // if (description && description.length > 0) {
-  //   fields.push({ label: 'Description and outcomes', value: description, hasEllipsis: true });
-  // }
+  if (shortDescription && shortDescription.length > 0) {
+    fields.push({ label: 'Description', value: shortDescription });
+  }
 
-  // if (country) {
-  //   fields.push({ label: 'Country', value: country?.data?.attributes?.name });
-  // }
+  if (institutionName) {
+    fields.push({ label: 'Institutions', value: institutionName });
+  }
+
+  if (projectName) {
+    fields.push({ label: 'Project Name', value: projectName });
+  }
+
+  return fields;
+};
+
+export const getPracticeImplementationFields = (practice: Practice): FieldType[] => {
+  const { country, implem_date: implementationDate } = practice;
+
+  const fields = [];
+
+  if (country) {
+    fields.push({ label: 'Country', value: country?.data?.attributes?.name });
+  }
+
+  if (implementationDate) {
+    fields.push({
+      label: 'Implementation Date',
+      value: implementationDate,
+      formatId: 'formatDate' as FormatProps['id'],
+    });
+  }
 
   return fields;
 };

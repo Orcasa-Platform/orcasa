@@ -4,18 +4,20 @@
 import { useRef, useState } from 'react';
 
 import { cn } from '@/lib/classnames';
+import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
-type Field = {
+export type FieldType = {
   label: string;
   value: string | (string | undefined)[] | undefined;
   url?: string | string[];
   hasEllipsis?: boolean;
   logo?: boolean;
+  formatId?: FormatProps['id'];
 };
 
-const Field = ({ label, value, url, hasEllipsis, logo }: Field) => {
+const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const isOverTwoLines = useIsOverTwoLines(ref, hasEllipsis);
@@ -46,7 +48,7 @@ const Field = ({ label, value, url, hasEllipsis, logo }: Field) => {
       </div>
     ) : (
       <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
-        {value}
+        {formatId ? formatFunction({ id: formatId, value }) : value}
       </a>
     );
 
@@ -66,7 +68,7 @@ const Field = ({ label, value, url, hasEllipsis, logo }: Field) => {
             'line-clamp-2': !isExpanded && isOverTwoLines,
           })}
         >
-          {value}
+          {formatId ? formatFunction({ id: formatId, value }) : value}
         </div>
         {isOverTwoLines && (
           <button onClick={toggleExpanded} className="text-sm font-semibold text-brown-500">
