@@ -93,7 +93,7 @@
       },
       "detailed_description": {
         "edit": {
-          "label": "detailed_description",
+          "label": "Detailed Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,7 +107,7 @@
       },
       "project_fund": {
         "edit": {
-          "label": "project_fund",
+          "label": "Project Fund",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -121,7 +121,7 @@
       },
       "institution_funding": {
         "edit": {
-          "label": "institution_funding",
+          "label": "Institution Funding",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -135,7 +135,7 @@
       },
       "state_province": {
         "edit": {
-          "label": "state_province",
+          "label": "State/Province",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -149,7 +149,7 @@
       },
       "further_location": {
         "edit": {
-          "label": "further_location",
+          "label": "Further Location",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -163,7 +163,7 @@
       },
       "map_location": {
         "edit": {
-          "label": "map_location",
+          "label": "Map Location",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -177,7 +177,7 @@
       },
       "implem_date": {
         "edit": {
-          "label": "implem_date",
+          "label": "Implementation Date",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -191,7 +191,7 @@
       },
       "publication_date": {
         "edit": {
-          "label": "publication_date",
+          "label": "Publication Date",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -205,7 +205,7 @@
       },
       "implem_decade": {
         "edit": {
-          "label": "implem_decade",
+          "label": "Implementation Decade",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -219,7 +219,7 @@
       },
       "main_purposes": {
         "edit": {
-          "label": "main_purposes",
+          "label": "Main Purposes",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -233,7 +233,7 @@
       },
       "has_changed": {
         "edit": {
-          "label": "has_changed",
+          "label": "Has Changed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -247,7 +247,7 @@
       },
       "land_use_has_changed": {
         "edit": {
-          "label": "land_use_has_changed",
+          "label": "Land Use Has Changed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -261,7 +261,7 @@
       },
       "land_use_prior": {
         "edit": {
-          "label": "land_use_prior",
+          "label": "Land Use Prior",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -275,7 +275,7 @@
       },
       "degradation_assessed": {
         "edit": {
-          "label": "degradation_assessed",
+          "label": "Degradation Assessed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -303,7 +303,7 @@
       },
       "land_use_types": {
         "edit": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -318,7 +318,7 @@
       },
       "sync": {
         "edit": {
-          "label": "sync",
+          "label": "Sync",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -332,7 +332,7 @@
       },
       "show": {
         "edit": {
-          "label": "show",
+          "label": "Show",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -346,7 +346,7 @@
       },
       "practice_url": {
         "edit": {
-          "label": "practice_url",
+          "label": "Practice Url",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -418,12 +418,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "source_name",
-        "title",
-        "detailed_description",
-        "project_fund"
-      ],
       "edit": [
         [
           {
@@ -531,8 +525,8 @@
             "size": 6
           },
           {
-            "name": "sync",
-            "size": 4
+            "name": "practice_url",
+            "size": 6
           }
         ],
         [
@@ -541,10 +535,16 @@
             "size": 4
           },
           {
-            "name": "practice_url",
-            "size": 6
+            "name": "sync",
+            "size": 4
           }
         ]
+      ],
+      "list": [
+        "source_name",
+        "title",
+        "detailed_description",
+        "project_fund"
       ]
     }
   },

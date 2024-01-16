@@ -1,5 +1,6 @@
 import { get, isEmpty, range, reject } from "lodash";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { ConvertToPracticeResult } from "./practice-import";
 
 type Questionnaire = {
   code: string;
@@ -91,6 +92,14 @@ export default class WocatConnector {
     'Syrian Arab Republic': 'Syria',
     'Tanzania, United Republic of': 'Tanzania',
     'Viet Nam': 'Vietnam'
+  }
+
+  landUseTypesMap: Record<string, string> = {
+    'Grassland': 'Grassland',
+    'Cropland': 'Cropland',
+    'Forestland': 'Forest Land',
+    'Wetland': 'Wetlands',
+    'Other': 'Other Land',
   }
 
   private async listQuestionnaires(page: number = 1): Promise<Record<string, any>> {
@@ -214,13 +223,12 @@ export default class WocatConnector {
     );
   }
 
-
   private getLandUseType(questionnaire: Questionnaire): string[] {
     const landUseKeys: string[] = Object.keys(get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children'));
 
     if (landUseKeys.length > 0) {
       const lands: string[] = get(questionnaire, `section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children.${landUseKeys[0]}.value[0].values`, []);
-      return lands.map(l => this.mapWithDictionary(this.landUseMap, l[0]));
+      return lands.map(l => this.mapWithDictionary(this.landUseTypesMap, l[0]));
     } else {
       return [];
     }
@@ -326,7 +334,7 @@ export default class WocatConnector {
     }))
   }
 
-  async convertToPractice(wocatPractice: WocatPractice): Promise<Record<string, any>> {
+  async convertToPractice(wocatPractice: WocatPractice): Promise<ConvertToPracticeResult> {
     let practice;
     let country = null;
     let land_use_types = null;
@@ -402,7 +410,10 @@ export default class WocatConnector {
     } else {
       if (practices[0].sync === false) {
         strapi.log.info(`Wocat convertToPractice - practice ${practices[0].id} from Wocat flagged for no sync, skipping...`);
-        return practices[0];
+        return {
+          practice: practices[0],
+          status: 'skipped',
+        };
       }
       strapi.log.info(`Wocat convertToPractice - updating practice ${practices[0].id} from Wocat questionnaire id ${wocatPractice.source_id}`);
 
@@ -438,7 +449,10 @@ export default class WocatConnector {
       });
     }
 
-    return practice;
+    return {
+      practice,
+      status: practices.length === 0 ? 'created' : 'updated',
+    };
   }
 }
 
