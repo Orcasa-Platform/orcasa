@@ -25,7 +25,8 @@ export default factories.createCoreService('api::practice-import.practice-import
     try {
       wocatImporter.import()
         .then(async (practices) => {
-          return Promise.all(practices.map(wocatImporter.convertToPractice))
+          return wocatImporter.convertToPractices(practices);
+          // return Promise.all(practices.map(wocatImporter.convertToPractice))
         })
         .then(async (results: Array<ConvertToPracticeResult>) => {
           strapi.entityService.update('api::practice-import.practice-import', practiceImport.id, {

@@ -454,5 +454,9 @@ export default class WocatConnector {
       status: practices.length === 0 ? 'created' : 'updated',
     };
   }
+
+  async convertToPractices(wocatPractices: Array<WocatPractice>): Promise<Array<ConvertToPracticeResult>> {
+    return this.loadAll(wocatPractices, this.convertToPractice, 15);
+  }
 }
 
