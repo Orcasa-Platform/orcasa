@@ -98,9 +98,8 @@
     },
     "land_use_types": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::land-use-type.land-use-type",
-      "inversedBy": "practices"
+      "relation": "oneToMany",
+      "target": "api::land-use-type.land-use-type"
     },
     "sync": {
       "type": "boolean",

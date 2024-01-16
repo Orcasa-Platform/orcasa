@@ -930,11 +930,6 @@ export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    practices: Attribute.Relation<
-      'api::land-use-type.land-use-type',
-      'manyToMany',
-      'api::practice.practice'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1285,7 +1280,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       >;
     land_use_types: Attribute.Relation<
       'api::practice.practice',
-      'manyToMany',
+      'oneToMany',
       'api::land-use-type.land-use-type'
     >;
     sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;

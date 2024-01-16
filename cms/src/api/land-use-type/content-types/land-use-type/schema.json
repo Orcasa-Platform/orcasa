@@ -15,12 +15,6 @@
       "type": "string",
       "required": true,
       "unique": true
-    },
-    "practices": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::practice.practice",
-      "mappedBy": "land_use_types"
     }
   }
 }
