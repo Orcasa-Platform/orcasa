@@ -40,7 +40,7 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
                   rel="noreferrer"
                   className="text-sm text-brown-500"
                 >
-                  {value[i]}
+                  {formatId ? formatFunction({ id: formatId, value: value[i] }) : value[i]}
                 </a>
               </>
             ),

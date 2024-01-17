@@ -6,15 +6,15 @@ import { ArrowLeft } from 'lucide-react';
 
 import { useMapSearchParams } from '@/store';
 
-import { useNetworkFilterSidebarOpen } from '@/store/network';
+import { usePracticesFilterSidebarOpen } from '@/store/practices';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 
 export default function PracticeDetailsLayout({ children }: { children: React.ReactNode }) {
   const mapSearchParams = useMapSearchParams();
-  const [, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
+  const [, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
 
-  // We close the filter sidebar when navigating to a network's detailed view
+  // We close the filter sidebar when navigating to a practices's detailed view
   useEffect(() => {
     setFilterSidebarOpen(false);
   }, [setFilterSidebarOpen]);

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
-export default function OrganizationDetailsLayout({
+export default function PracticeDetailsLayout({
   children,
   params,
 }: {
