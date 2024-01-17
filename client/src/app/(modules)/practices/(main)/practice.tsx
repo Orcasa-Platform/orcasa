@@ -2,7 +2,13 @@
 
 import Image from 'next/image';
 
+import { ChevronRight } from 'lucide-react';
+
+import { useMapSearchParams } from '@/store';
+
 import { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
+
+import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 
 import GlobeIcon from '@/styles/icons/globe.svg';
 import LanguageIcon from '@/styles/icons/language.svg';
@@ -40,7 +46,7 @@ const Icons = ({ attributes }: { attributes: Practice | undefined }) => {
 
 export default function Practice({ id, attributes }: PracticeListResponseDataItem) {
   const { title, short_description: shortDescription } = attributes || {};
-  // const searchParams = useMapSearchParams();
+  const searchParams = useMapSearchParams();
 
   return (
     <li key={id} className="mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50">
@@ -51,7 +57,7 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
           <p className="leading-7">{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
-          {/* <SlidingLinkButton
+          <SlidingLinkButton
             Icon={ChevronRight}
             position="right"
             href={`/practices/${id}?${searchParams.toString()}`}
@@ -63,7 +69,7 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
             scroll={false}
           >
             Learn more
-          </SlidingLinkButton> */}
+          </SlidingLinkButton>
         </div>
       </div>
     </li>
