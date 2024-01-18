@@ -5,6 +5,8 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Filter, Users2 } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
+import env from '@/env.mjs';
+
 import { useSidebarScroll } from '@/store';
 
 import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
@@ -107,7 +109,7 @@ export default function NetworkModule() {
         </Button>
       </div>
       <NetworkList {...networks} />
-      {renderFormButtons}
+      {env.NEXT_PUBLIC_SHOW_NETWORK_FORMS === 'true' && renderFormButtons}
     </div>
   );
 }
