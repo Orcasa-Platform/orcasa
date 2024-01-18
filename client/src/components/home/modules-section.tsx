@@ -215,8 +215,8 @@ const Card = ({
 };
 
 const ModulesSection = () => (
-  <div id="modules" className="scroll-mt-[100px]">
-    <div className="mb-[120px] flex items-center justify-center">
+  <div id="modules" className="scroll-mt-[100px] px-4 lg:px-0">
+    <div className="flex items-center justify-center pb-6 lg:mb-[120px]">
       <div className="flex flex-col items-center gap-6">
         <div className="text-center font-serif text-sm uppercase leading-[14px] tracking-wider text-gray-400">
           5 modules for climate impact
@@ -226,7 +226,7 @@ const ModulesSection = () => (
             What can Impact4Soil do for me?
           </h2>
           <div className="h-2 w-20 bg-teal-500" />
-          <div className="w-[600px] text-center text-gray-700">
+          <div className="text-center text-gray-700 lg:w-[600px]">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
             altogether actors and experts of the soil carbon community.
             <br />
@@ -236,12 +236,12 @@ const ModulesSection = () => (
         </div>
       </div>
     </div>
-    <div className="relative flex min-h-[616px] items-center justify-center">
+    <div className="relative flex min-h-[980px] items-center justify-center lg:min-h-[616px]">
       <div className="absolute top-0">
         <img src="/images/map.png" className="h-[616px] w-full" alt="" />
       </div>
-      <div className="absolute top-0 z-10 flex h-[616px] flex-col justify-center">
-        <div className="flex gap-24">
+      <div className="absolute top-0 z-10 flex flex-col items-center pt-10 lg:h-[616px] lg:pt-0">
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-24">
           <Card
             title="Geospatial Data"
             slug="geospatial-data"
@@ -264,7 +264,7 @@ const ModulesSection = () => (
             textColorClass="text-blue-500"
           />
         </div>
-        <div className="mt-24 flex justify-center gap-24">
+        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-24 lg:flex-row lg:gap-24">
           <Card
             title="Practices"
             slug="practices"
