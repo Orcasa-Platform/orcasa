@@ -109,7 +109,7 @@ export default function NetworkModule() {
         </Button>
       </div>
       <NetworkList {...networks} />
-      {env.NEXT_PUBLIC_SHOW_NETWORK_FORMS === 'true' && renderFormButtons}
+      {env.NEXT_PUBLIC_HIDE_NETWORK_FORMS !== 'true' && renderFormButtons}
     </div>
   );
 }
