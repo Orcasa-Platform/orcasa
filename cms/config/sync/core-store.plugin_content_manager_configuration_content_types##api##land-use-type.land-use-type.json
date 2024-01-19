@@ -104,10 +104,6 @@
           {
             "name": "name",
             "size": 6
-          },
-          {
-            "name": "practices",
-            "size": 6
           }
         ]
       ]

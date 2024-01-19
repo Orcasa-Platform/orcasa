@@ -28,6 +28,12 @@
       "action": "api::home-stat.home-stat.findOne"
     },
     {
+      "action": "api::land-use-type.land-use-type.find"
+    },
+    {
+      "action": "api::land-use-type.land-use-type.findOne"
+    },
+    {
       "action": "api::layer-group.layer-group.find"
     },
     {
