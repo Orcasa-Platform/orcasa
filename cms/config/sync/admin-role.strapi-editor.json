@@ -709,8 +709,7 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -749,8 +748,7 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -782,8 +780,7 @@
           "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []

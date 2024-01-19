@@ -72,7 +72,7 @@
           "editable": true
         },
         "list": {
-          "label": "end_date",
+          "label": "End Date",
           "searchable": true,
           "sortable": true
         }
@@ -86,7 +86,7 @@
           "editable": true
         },
         "list": {
-          "label": "short_description",
+          "label": "Short Description",
           "searchable": true,
           "sortable": true
         }
@@ -100,7 +100,7 @@
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": true,
           "sortable": true
         }
@@ -115,7 +115,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country_of_coordination",
+          "label": "Country of Coordination",
           "searchable": true,
           "sortable": true
         }
@@ -130,7 +130,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "region_of_interventions",
+          "label": "Regions of Intervention",
           "searchable": false,
           "sortable": false
         }
@@ -145,7 +145,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country_of_interventions",
+          "label": "Countries of Intervention",
           "searchable": false,
           "sortable": false
         }
@@ -159,7 +159,7 @@
           "editable": true
         },
         "list": {
-          "label": "website",
+          "label": "Website",
           "searchable": true,
           "sortable": true
         }
@@ -173,7 +173,7 @@
           "editable": true
         },
         "list": {
-          "label": "project_coordinator_name",
+          "label": "Project Coordinator Name",
           "searchable": true,
           "sortable": true
         }
@@ -187,7 +187,7 @@
           "editable": true
         },
         "list": {
-          "label": "project_coordinator_email",
+          "label": "Project Coordinator Email",
           "searchable": true,
           "sortable": true
         }
@@ -201,7 +201,7 @@
           "editable": true
         },
         "list": {
-          "label": "second_project_coordinator_name",
+          "label": "Second Project Coordinator Name",
           "searchable": true,
           "sortable": true
         }
@@ -215,7 +215,7 @@
           "editable": true
         },
         "list": {
-          "label": "second_project_coordinator_email",
+          "label": "Second Project Coordinator Email",
           "searchable": true,
           "sortable": true
         }
@@ -230,7 +230,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "main_area_of_intervention",
+          "label": "Main Area of Intervention",
           "searchable": true,
           "sortable": true
         }
@@ -244,7 +244,7 @@
           "editable": true
         },
         "list": {
-          "label": "main_area_of_intervention_other",
+          "label": "Main Area of Intervention - Other",
           "searchable": true,
           "sortable": true
         }
@@ -259,7 +259,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "secondary_area_of_intervention",
+          "label": "Secondary Area of Intervention",
           "searchable": true,
           "sortable": true
         }
@@ -274,7 +274,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "third_area_of_intervention",
+          "label": "Third Area of Intervention",
           "searchable": true,
           "sortable": true
         }
@@ -289,7 +289,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "sustainable_development_goal",
+          "label": "Sustainable Development Goal",
           "searchable": true,
           "sortable": true
         }
@@ -304,7 +304,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "lead_partner",
+          "label": "Lead Partner",
           "searchable": true,
           "sortable": true
         }
@@ -319,7 +319,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "partners",
+          "label": "Partners",
           "searchable": false,
           "sortable": false
         }
@@ -334,7 +334,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "funders",
+          "label": "Funders",
           "searchable": false,
           "sortable": false
         }

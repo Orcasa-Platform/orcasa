@@ -5,10 +5,16 @@ repo_name          = "orcasa"
 
 # domains managed externally
 staging_domain = "staging.orcasa.dev-vizzuality.com"
+staging_ec2_instance_type  = "c5a.xlarge"
+staging_rds_engine_version = "15.4"
+staging_rds_instance_class = "db.t3.micro"
+staging_rds_backup_retention_period = 7
+
 demo_domain    = "demo.orcasa.dev-vizzuality.com"
+demo_ec2_instance_type  = "c5a.xlarge"
+demo_rds_engine_version = "15.4"
+demo_rds_instance_class = "db.t3.micro"
+demo_rds_backup_retention_period = 30
 
 beanstalk_platform = "64bit Amazon Linux 2023 v4.0.0 running Docker"
 beanstalk_tier     = "WebServer"
-ec2_instance_type  = "c5a.xlarge"
-rds_engine_version = "15.4"
-rds_instance_class = "db.t3.micro"
