@@ -2,10 +2,6 @@ import Sidebar from '@/containers/sidebar';
 
 import PracticesSidebar from './filters-sidebar';
 
-export const metadata = {
-  title: 'Impact4Soil - Practices',
-};
-
 export default function PracticesModuleLayout({ children }: { children: React.ReactNode }) {
   return (
     <>

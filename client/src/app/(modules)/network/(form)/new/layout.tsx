@@ -1,9 +1,6 @@
 import { ArrowLeft } from 'lucide-react';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
-export const metadata = {
-  title: 'Impact4Soil - Network',
-};
 
 export default function NetworkModuleLayout({ children }: { children: React.ReactNode }) {
   return (

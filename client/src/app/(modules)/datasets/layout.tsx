@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Impact4Soil - Datasets',
+  title: 'Datasets',
 };
 
 export default function DatasetsModuleLayout({ children }: { children: React.ReactNode }) {

@@ -24,23 +24,48 @@ const robotoSlab = Roboto_Slab({
   variable: '--font-roboto-slab',
 });
 
-// TODO: Update metadata
 export const metadata: Metadata = {
-  title: 'Impact4Soil',
-  // TODO: update description
+  title: { template: 'Impact4Soil - %s', default: 'Impact4Soil' },
   description:
-    'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
+    'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.',
   keywords: 'Impact4Soil, ORCaSa, Horizon Europe, carbon capture, climate change',
   robots: 'index, follow',
+  authors: { name: 'Vizzuality', url: 'https://vizzuality.com' },
+  viewport: {
+    width: 1200,
+  },
   openGraph: {
     title: 'Impact4Soil - Horizon Europe Initiative',
     // TODO: update description
     description:
-      'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
-    // image: 'https://example.com/orcasa-image.jpg',
+      'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.',
+    type: 'website',
+    // TODO: update url
+    url: 'https://irc-orcasa.eu/',
+    locale: 'en_US',
+    images: [{ url: '/metadata/1200x630.png' }],
+    siteName: 'ORCaSa',
   },
-  viewport: {
-    width: 1200,
+  twitter: {
+    card: 'summary_large_image',
+    images: '/metadata/1200x630.png',
+    title: 'ORCaSa',
+    // TODO: update description
+    description:
+      'ORCaSa is a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.',
+    site: '@IRC_ORCaSa',
+    creator: '@Vizzuality',
+  },
+  themeColor: '#ffffff',
+  // TODO: update url
+  metadataBase: new URL('https://irc-orcasa.eu/'),
+  alternates: {
+    canonical: `/`,
+  },
+  manifest: '/metadata/manifest.json',
+  icons: {
+    icon: '/metadata/favicon_48x48.png',
+    apple: '/metadata/apple-touch-icon-180x180.png',
   },
 };
 
