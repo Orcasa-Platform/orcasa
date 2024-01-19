@@ -66,11 +66,12 @@ export default function FiltersSidebar() {
               type="button"
               variant="vanilla"
               size="auto"
-              className="absolute bottom-full right-0 -translate-y-4 text-base font-semibold text-blue-500 hover:text-blue-800 disabled:text-gray-300 disabled:opacity-100"
+              className="absolute bottom-full right-0 -translate-y-4 text-base font-semibold text-brown-500 hover:text-brown-800 disabled:text-gray-300 disabled:opacity-100"
               onClick={() =>
                 setFilters({
                   ...filters,
                   country: [],
+                  landUseType: [],
                 })
               }
             >
@@ -78,18 +79,18 @@ export default function FiltersSidebar() {
             </Button>
             <div className="space-y-4">
               <MultiCombobox
-                name="Country"
-                variant="network-organization"
-                value={filters.country ?? []}
-                options={practicesFiltersOptions.country}
-                onChange={(value) => setFilters({ ...filters, country: value as number[] })}
-              />
-              <MultiCombobox
-                name="Land use types"
-                variant="network-organization"
+                name="Land use type"
+                variant="practices"
                 value={filters.landUseType ?? []}
                 options={practicesFiltersOptions.landUseType}
                 onChange={(value) => setFilters({ ...filters, landUseType: value as number[] })}
+              />
+              <MultiCombobox
+                name="Country"
+                variant="practices"
+                value={filters.country ?? []}
+                options={practicesFiltersOptions.country}
+                onChange={(value) => setFilters({ ...filters, country: value as number[] })}
               />
             </div>
           </fieldset>
