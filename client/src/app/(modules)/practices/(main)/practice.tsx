@@ -30,7 +30,6 @@ const Icons = ({ attributes }: { attributes: Practice | undefined }) => {
         <LanguageIcon className="h-6 w-6 min-w-min" />
         <div className="text-base uppercase text-slate-500">{language}</div>
       </div>
-
       {source_name === 'WOCAT' && (
         <Image
           src="/assets/logos/wocat.png"

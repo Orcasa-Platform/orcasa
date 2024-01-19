@@ -16,6 +16,7 @@ const optionVariants = cva('py-4 px-3 flex items-start gap-x-2 group', {
     variant: {
       default: '',
       'network-organization': 'hover:bg-blue-50 data-[headlessui-state*=active]:bg-blue-50',
+      practices: 'text-gray-700 hover:text-gray-800',
       'network-project': 'hover:bg-peach-50 data-[headlessui-state*=active]:bg-peach-50',
       datasets: 'hover:bg-purple-50 data-[headlessui-state*=active]:bg-purple-50',
     },
@@ -30,6 +31,7 @@ const buttonVariants = cva('text-base font-semibold disabled:text-gray-300 disab
     variant: {
       default: '',
       'network-organization': 'text-blue-500 hover:text-blue-800',
+      practices: 'text-brown-500 hover:text-brown-800',
       'network-project': 'text-peach-700 hover:text-peach-900',
       datasets: 'text-purple-700 hover:text-purple-900',
     },
