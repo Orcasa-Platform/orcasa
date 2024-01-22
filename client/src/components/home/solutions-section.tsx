@@ -20,7 +20,7 @@ const SolutionsSection = () => (
               <div className="h-2 w-20 bg-green-700" />
             </div>
           </div>
-          <div className="w-[374px]">
+          <div className="px-4 lg:w-[374px] lg:px-0">
             <span className="text-slate-700">
               Impact4Soil is a meeting point for the research and funding soil carbon communities to
               go further and faster as a collective. It is designed for different types of users:{' '}

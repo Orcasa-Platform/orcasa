@@ -2850,6 +2850,7 @@ __metadata:
     d3-array: "npm:3.2.4"
     date-fns: "npm:^2.30.0"
     deck.gl: "npm:8.9.19"
+    embla-carousel-react: "npm:^8.0.0-rc19"
     eslint: "npm:8.42.0"
     eslint-config-next: "npm:13.4.5"
     eslint-config-prettier: "npm:^8.8.0"
@@ -6624,6 +6625,34 @@ __metadata:
   version: 1.4.568
   resolution: "electron-to-chromium@npm:1.4.568"
   checksum: 508b301febec730b41691a36c382b985d1d9bb391295e26a18362caf4a6f145ee149b2819fd6f884bd74a3e8825f7b36bfec1993f97eca652439b112139a04b2
+  languageName: node
+  linkType: hard
+
+"embla-carousel-react@npm:^8.0.0-rc19":
+  version: 8.0.0-rc19
+  resolution: "embla-carousel-react@npm:8.0.0-rc19"
+  dependencies:
+    embla-carousel: "npm:8.0.0-rc19"
+    embla-carousel-reactive-utils: "npm:8.0.0-rc19"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0
+  checksum: 61f690f4c8180d88f075289742982df0e8ca21a02ec80778b21a570f5ac093f3e2a833a9ada542f401b9383bf4209b32d9cca3fd03bd889d1404499c02707c42
+  languageName: node
+  linkType: hard
+
+"embla-carousel-reactive-utils@npm:8.0.0-rc19":
+  version: 8.0.0-rc19
+  resolution: "embla-carousel-reactive-utils@npm:8.0.0-rc19"
+  peerDependencies:
+    embla-carousel: 8.0.0-rc19
+  checksum: 4fec08d661e75b941e6c1b7261b69ea2397a1c5b44dde5fbe6a51e5af756a46143903b1c8edfb6ad99eaaec32cf1be9087a8421dfb6c1206879c6103921858dd
+  languageName: node
+  linkType: hard
+
+"embla-carousel@npm:8.0.0-rc19":
+  version: 8.0.0-rc19
+  resolution: "embla-carousel@npm:8.0.0-rc19"
+  checksum: 02248eb882aa1dc0e65b9b7a34b499eb83138eec4417f818e41ad755fd1030a927fba7fdbbcc8b917792811bb31d54329379a5c38cae4d9e9d48d2060df83c6e
   languageName: node
   linkType: hard
 
