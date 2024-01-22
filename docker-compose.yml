@@ -47,6 +47,7 @@ services:
       - NEXT_PUBLIC_ENVIRONMENT=development
       - NEXT_PUBLIC_GA_TRACKING_ID=someTestValue
       - NEXT_PUBLIC_HIDE_NETWORK_FORMS=false
+      - NEXT_PUBLIC_ENABLE_RESPONSIVE=true
     links:
       - cms
     volumes:
