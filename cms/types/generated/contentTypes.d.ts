@@ -971,7 +971,7 @@ export interface ApiLayerLayer extends Schema.CollectionType {
     source_url: Attribute.String;
     description: Attribute.Text;
     license: Attribute.String;
-    citation: Attribute.String;
+    citation: Attribute.Text;
     cautions: Attribute.Text;
     related_publications: Attribute.Text;
     resource_contact_name: Attribute.String;
