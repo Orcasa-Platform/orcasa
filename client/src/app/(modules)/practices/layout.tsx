@@ -1,7 +1,7 @@
 import Map from '@/containers/map';
 
 export const metadata = {
-  title: 'Impact4Soil - Practices',
+  title: 'Practices',
 };
 
 export default function PracticesModuleLayout({ children }: { children: React.ReactNode }) {
