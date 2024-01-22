@@ -11,6 +11,7 @@ import { modules } from '@/constants/modules';
 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
 
 // Module '"lucide-react"' has no exported member 'Tractor'
@@ -154,6 +155,7 @@ const HoverTooltip = ({ children, intro, slug, colorClass }: HoverTooltipProps) 
     </Tooltip>
   );
 };
+
 const Card = ({
   title,
   slug,
@@ -173,44 +175,63 @@ const Card = ({
       <div className="text-left font-serif text-2xl text-gray-700">{title}</div>
     </>
   );
+
   const cardModule = modules.find((module) => module.slug === slug);
+  const content = (
+    <div className="flex h-full max-h-[90vh] w-full flex-col justify-between overflow-auto lg:flex-row">
+      <div className="h-full flex-1 space-y-6 p-10 pb-4 lg:w-1/2 lg:pb-10">
+        <Icon className={cn('currentColor h-fit w-[48px] min-w-[48px]', textColorClass)} />
+        <div className="font-serif text-2xl leading-10">{title}</div>
+        <div className="flex flex-col gap-4">{modulesInfo[slug].modalText}</div>
+      </div>
+      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 lg:w-1/2 lg:pt-[160px]">
+        <ul className="flex flex-col gap-4 pb-6 lg:pb-0">
+          {modulesInfo[slug].modalList.map((listElement) => (
+            <li key={listElement} className="flex gap-2 text-sm">
+              <CheckCircle className="h-4 w-4 min-w-fit" />
+              {listElement}
+            </li>
+          ))}
+        </ul>
+        <Button variant="outline" asChild>
+          <Link href={cardModule?.href ?? '#'}>
+            Go to {cardModule?.name}
+            <ArrowRight className="ml-4" />
+          </Link>
+        </Button>
+      </div>
+    </div>
+  );
+  const card = (
+    <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
+  );
   return (
-    <Dialog>
-      <DialogTrigger>
-        <HoverTooltip colorClass={bgColorClass} intro={intro} slug={slug}>
-          <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
-        </HoverTooltip>
-      </DialogTrigger>
-      <DialogContent
-        onCloseAutoFocus={(e) => e.preventDefault()}
-        contentClassName="p-0"
-        className="!w-[792px] !max-w-[792px]"
-      >
-        <div className="flex h-full w-full justify-between">
-          <div className="h-full w-1/2 flex-1 space-y-6 p-10">
-            <Icon className={cn('currentColor h-fit w-[48px] min-w-[48px]', textColorClass)} />
-            <div className="font-serif text-2xl leading-10">{title}</div>
-            <div className="flex flex-col gap-4">{modulesInfo[slug].modalText}</div>
-          </div>
-          <div className="flex h-full  w-1/2 flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-[160px]">
-            <ul className="flex flex-col gap-4">
-              {modulesInfo[slug].modalList.map((listElement) => (
-                <li key={listElement} className="flex gap-2 text-sm">
-                  <CheckCircle className="h-4 w-4 min-w-fit" />
-                  {listElement}
-                </li>
-              ))}
-            </ul>
-            <Button variant="outline" asChild>
-              <Link href={cardModule?.href ?? '#'}>
-                Go to {cardModule?.name}
-                <ArrowRight className="ml-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+    <>
+      {/* All from lg */}
+      <div className="hidden lg:block">
+        <Dialog>
+          <DialogTrigger>
+            <HoverTooltip colorClass={bgColorClass} intro={intro} slug={slug}>
+              {card}
+            </HoverTooltip>
+          </DialogTrigger>
+          <DialogContent
+            onCloseAutoFocus={(e) => e.preventDefault()}
+            contentClassName="p-0"
+            className="!w-[792px] !max-w-[792px]"
+          >
+            {content}
+          </DialogContent>
+        </Dialog>
+      </div>
+      {/* Mobile */}
+      <div className="block lg:hidden">
+        <Drawer>
+          <DrawerTrigger>{card}</DrawerTrigger>
+          <DrawerContent>{content}</DrawerContent>
+        </Drawer>
+      </div>
+    </>
   );
 };
 
