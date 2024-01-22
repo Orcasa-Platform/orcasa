@@ -102,9 +102,9 @@ const Carousel = () => {
   };
   return (
     <>
-      <div className="max-w-[50vw] overflow-hidden">
+      <div className="overflow-hidden shadow lg:max-w-[50vw] lg:shadow-none">
         <motion.div
-          className="flex w-[50vw] gap-10"
+          className="flex gap-10 lg:w-[50vw]"
           animate={{ x: `-${currentIndex * (CARD_WIDTH + CARD_GAP)}px` }}
           transition={{ ease: 'easeInOut' }}
         >

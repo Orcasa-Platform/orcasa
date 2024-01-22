@@ -236,7 +236,7 @@ const ModulesSection = () => (
         </div>
       </div>
     </div>
-    <div className="relative flex min-h-[980px] items-center justify-center lg:min-h-[616px]">
+    <div className="relative flex min-h-[1040px] items-center justify-center lg:min-h-[616px]">
       <div className="absolute top-0">
         <img src="/images/map.png" className="h-[616px] w-full" alt="" />
       </div>

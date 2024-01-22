@@ -9,7 +9,7 @@ import XIcon from 'public/images/x-icon.svg';
 
 const Footer = () => (
   <div id="about">
-    <div className="flex w-full flex-col items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px]">
+    <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px] text-center lg:flex-col lg:text-left">
       <Link
         className="flex items-center justify-center gap-2.5 hover:opacity-90"
         href="https://irc-orcasa.eu/"
@@ -25,8 +25,8 @@ const Footer = () => (
         <span className="sr-only">ORCaSa</span>
       </Link>
     </div>
-    <div className="flex w-full items-center justify-between bg-gray-700 px-10 py-8">
-      <div className="flex items-center justify-center gap-4">
+    <div className="flex w-full flex-col items-start justify-between space-y-4 bg-gray-700 px-10 py-8 lg:flex-row lg:items-center lg:space-y-0">
+      <div className="flex flex-col items-start justify-center gap-4 lg:flex-row lg:items-center">
         <EuropeFlag className="h-[48px] min-w-[72px]" />
         <div className="max-w-[543px] text-xs leading-[18px] text-gray-300">
           Impact4Soil has been developed in the framework of ORCaSa project which received funding
@@ -34,8 +34,8 @@ const Footer = () => (
           n°101059863.
         </div>
       </div>
-      <div className="flex">
-        <div className="flex items-center gap-6 border-r border-white border-opacity-20 pr-5">
+      <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
+        <div className="flex items-center gap-6 border-white border-opacity-20 pr-5 lg:border-r">
           <Link href="https://twitter.com/IRC_ORCaSa" target="_blank">
             <XIcon className="min-w-4 h-4 w-4" />
             <span className="sr-only">X</span>
@@ -54,7 +54,7 @@ const Footer = () => (
         <div className="flex items-center justify-start gap-4">
           <Link
             href="/legal-details"
-            className="border-r border-white border-opacity-20 px-5 text-sm text-white hover:text-gray-100"
+            className="border-r border-white border-opacity-20 pl-0 pr-5 text-sm text-white hover:text-gray-100 lg:px-5"
           >
             Legal Details
           </Link>
