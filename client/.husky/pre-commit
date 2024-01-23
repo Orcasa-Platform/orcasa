@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd ./client && yarn types && yarn lint --fix && yarn check-types && git add src/types/generated/
+cd ./client && yarn types && yarn lint --fix && yarn check-types && git add -A .
 
 SCRIPT_DIR="$(pwd)"
 CMS_ENV_FILE="$SCRIPT_DIR/../cms/.env"

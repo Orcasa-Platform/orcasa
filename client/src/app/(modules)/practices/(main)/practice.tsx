@@ -9,7 +9,6 @@ import { useMapSearchParams } from '@/store';
 import { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
-
 import GlobeIcon from '@/styles/icons/globe.svg';
 import LanguageIcon from '@/styles/icons/language.svg';
 
