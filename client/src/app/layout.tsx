@@ -25,7 +25,7 @@ const robotoSlab = Roboto_Slab({
   weight: ['400', '600', '700'],
   variable: '--font-roboto-slab',
 });
-console.log(process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE);
+
 export const metadata: Metadata = {
   title: { template: 'Impact4Soil - %s', default: 'Impact4Soil' },
   description:

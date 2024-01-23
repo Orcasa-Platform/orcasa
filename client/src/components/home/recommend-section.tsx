@@ -29,7 +29,7 @@ const RecommendSection = () => {
       </div>
       <Image
         src="/images/ejpsoil.png"
-        className="shadow-2xl"
+        className="shadow-2xl max-w-fit"
         alt="Road4Schemes demo"
         width={480}
         height={275}
@@ -38,12 +38,12 @@ const RecommendSection = () => {
   );
 
   return (
-    <div className="relative mx-4 h-[680px] lg:mx-0 lg:h-[700px]">
+    <div className="relative mx-4 h-[680px] w-full lg:mx-0 lg:h-[700px]">
       <div className="absolute hidden h-full w-full items-center justify-center p-10 pt-0 lg:flex">
         <img src="/images/shape3.svg" className="h-[564px] w-full" alt="" />
       </div>
-      <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex lg:flex-wrap">
-        <div className="flex gap-24">
+      <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex  lg:flex-wrap ">
+        <div className="flex gap-24 lg:w-[80%] xl:w-[1000px]">
           <div className="flex flex-col gap-6">
             <div className="h-8 w-[143px] rounded-lg bg-green-700 px-2 py-1.5 text-center text-sm font-semibold uppercase leading-normal tracking-wider text-white">
               we recommend

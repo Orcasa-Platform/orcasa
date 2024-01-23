@@ -7,7 +7,7 @@ const SolutionsSection = () => (
       <img src="/images/shape2.svg" className="h-[700px] w-full" alt="" />
     </div>
     <div className="absolute flex h-full w-full flex-wrap items-center justify-center">
-      <div className="lg:w-[70%]">
+      <div className="lg:w-[80%] xl:w-[1000px]">
         <div className="flex w-[374px] flex-col gap-12">
           <div className="flex flex-col gap-6">
             <div className="text-center font-serif text-base uppercase leading-[14px] tracking-wider text-gray-400 lg:text-left lg:text-sm">

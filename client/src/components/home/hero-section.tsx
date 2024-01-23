@@ -9,6 +9,7 @@ import { cn } from '@/lib/classnames';
 import Stats from '@/components/home/stats';
 import { Button } from '@/components/ui/button';
 import SmoothScrollLink from '@/components/ui/smooth-scroll-link';
+
 import ArrowDownLong from '@/styles/icons/arrow-down-long.svg';
 
 const HeroSection = () => {
@@ -16,7 +17,7 @@ const HeroSection = () => {
     return (
       <div
         className={cn('relative', {
-          'mb-8 max-w-[463px] pb-20': isMobile,
+          'mb-8 max-w-[463px] pb-20 lg:pb-10': isMobile,
         })}
       >
         <Image
@@ -46,14 +47,10 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-[calc(100vh-72px)] scroll-mt-12 lg:h-[calc(100vh-72px)]"
     >
-      <div
-        className={`absolute hidden h-full w-full items-center justify-center p-10 pt-0 lg:flex`}
-      >
+      <div className="absolute hidden h-full w-full justify-center p-10 pt-0 lg:flex xl:items-center">
         <img src="/images/shape.svg" className="h-[616px] w-full" alt="" />
       </div>
-      <div
-        className={`max-w-screen h-full w-full flex-wrap items-center justify-center gap-[100px] px-4 lg:absolute lg:flex lg:px-0`}
-      >
+      <div className="max-w-screen h-full w-full flex-wrap justify-center gap-[100px] px-4 lg:absolute lg:flex lg:pt-16 xl:items-center xl:px-0 xl:pt-0">
         <div>
           <h2 className="mb-6 font-serif text-[40px] text-slate-700 lg:w-[476px]">
             Making an impact on the planet&apos;s soils.
