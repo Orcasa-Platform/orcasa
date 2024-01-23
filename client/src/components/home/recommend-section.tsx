@@ -29,7 +29,7 @@ const RecommendSection = () => {
       </div>
       <Image
         src="/images/ejpsoil.png"
-        className="shadow-2xl max-w-fit"
+        className="max-w-fit shadow-2xl"
         alt="Road4Schemes demo"
         width={480}
         height={275}
