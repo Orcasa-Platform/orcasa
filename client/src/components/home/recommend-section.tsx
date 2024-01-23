@@ -43,8 +43,8 @@ const RecommendSection = () => {
         <img src="/images/shape3.svg" className="h-[564px] w-full" alt="" />
       </div>
       <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex  lg:flex-wrap ">
-        <div className="flex gap-24 lg:w-[80%] xl:w-[1000px]">
-          <div className="flex flex-col gap-6">
+        <div className="flex w-full gap-24 lg:w-[80%] xl:w-[1000px]">
+          <div className="flex w-full flex-col gap-6">
             <div className="h-8 w-[143px] rounded-lg bg-green-700 px-2 py-1.5 text-center text-sm font-semibold uppercase leading-normal tracking-wider text-white">
               we recommend
             </div>
@@ -52,11 +52,11 @@ const RecommendSection = () => {
               Carbon schemes inventory platform
             </h2>
             {renderImage(true)}
-            <div className="text-base text-gray-700 lg:w-[374px]">
+            <div className="w-[90%] text-base text-gray-700 lg:w-[374px]">
               Carbon Schemes Inventories, or C.S.I., is a new web platform dedicated to providing
               detailed information about carbon farming schemes in Europe and around the world.
             </div>
-            <Button variant="outline" className="flex w-full px-0 pt-2 lg:w-[173px]" asChild>
+            <Button variant="outline" className="flex w-[90%] px-0 pt-2 lg:w-[173px]" asChild>
               <Link
                 href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
                 target="_blank"
