@@ -9,7 +9,6 @@ import { cn } from '@/lib/classnames';
 import Stats from '@/components/home/stats';
 import { Button } from '@/components/ui/button';
 import SmoothScrollLink from '@/components/ui/smooth-scroll-link';
-
 import ArrowDownLong from '@/styles/icons/arrow-down-long.svg';
 
 const HeroSection = () => {
