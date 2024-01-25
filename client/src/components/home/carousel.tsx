@@ -132,9 +132,9 @@ const Carousel = () => {
       </div>
       {/* For mobile */}
       <CarouselComponent className="block lg:hidden">
-        <CarouselContent>
+        <CarouselContent className="p-1">
           {cards.map((card) => (
-            <CarouselItem key={card.id} className="flex justify-center shadow">
+            <CarouselItem key={card.id} className="flex justify-center">
               <Card card={card} />
             </CarouselItem>
           ))}

@@ -44,14 +44,14 @@ const HeroSection = () => {
   return (
     <div
       id="hero"
-      className="relative min-h-[calc(100vh-72px)] scroll-mt-12 lg:h-[calc(100vh-72px)]"
+      className="relative min-h-[calc(100vh-72px)] scroll-mt-12 pt-6 lg:h-[calc(100vh-72px)] lg:pt-0"
     >
       <div className="absolute hidden h-full w-full justify-center p-10 pt-0 lg:flex xl:items-center">
         <img src="/images/shape.svg" className="h-[616px] w-full" alt="" />
       </div>
       <div className="max-w-screen h-full w-full flex-wrap justify-center gap-[100px] px-4 lg:absolute lg:flex lg:pt-16 xl:items-center xl:px-0 xl:pt-0">
         <div>
-          <h2 className="mb-6 font-serif text-[40px] text-slate-700 lg:w-[476px]">
+          <h2 className="mb-6 font-serif text-[32px] text-slate-700 lg:w-[476px] lg:text-[40px]">
             Making an impact on the planet&apos;s soils.
           </h2>
           {renderHeroImage(true)}

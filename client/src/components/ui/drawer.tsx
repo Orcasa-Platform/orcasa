@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
+import CloseDrawer from 'public/images/close-drawer.svg';
 import { Drawer as DrawerPrimitive } from 'vaul';
 
 import { cn } from '@/lib/classnames';
@@ -46,7 +47,7 @@ const DrawerContent = React.forwardRef<
       )}
       {...props}
     >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+      <CloseDrawer className="mx-auto w-fit fill-current text-gray-700" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
