@@ -11,29 +11,27 @@ import { Button } from '../ui/button';
 const RecommendSection = () => {
   const renderImage = (isMobile: boolean) => (
     <div
-      className={cn(
-        'relative mt-10',
-
-        {
-          'hidden lg:flex': !isMobile,
-          'lg:hidden': isMobile,
-        },
-      )}
+      className={cn('relative ml-6 mr-8 mt-10 lg:mx-0', {
+        'hidden lg:flex': !isMobile,
+        'lg:hidden': isMobile,
+      })}
     >
-      <div
-        className={
-          'absolute -left-8 -top-8 flex flex-col items-start justify-start gap-2 bg-white px-4 shadow-2xl'
-        }
-      >
-        <Image src="/images/ejp-logo.png" alt="Road4Schemes logo" width={169} height={84} />
+      <div className="ml-auto lg:ml-0 lg:max-w-none">
+        <Image
+          src="/images/ejp-logo.png"
+          alt="Road4Schemes logo"
+          className="absolute -left-6 -top-8 flex flex-col items-start justify-start gap-2 bg-white px-3 shadow-2xl"
+          width={169}
+          height={66}
+        />
+        <Image
+          src="/images/ejpsoil.png"
+          className="shadow-2xl"
+          alt="Road4Schemes demo"
+          width={480}
+          height={275}
+        />
       </div>
-      <Image
-        src="/images/ejpsoil.png"
-        className="max-w-fit shadow-2xl"
-        alt="Road4Schemes demo"
-        width={480}
-        height={275}
-      />
     </div>
   );
 
@@ -42,13 +40,13 @@ const RecommendSection = () => {
       <div className="absolute hidden h-full w-full items-center justify-center p-10 pt-0 lg:flex">
         <img src="/images/shape3.svg" className="h-[564px] w-full" alt="" />
       </div>
-      <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex  lg:flex-wrap ">
+      <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex  lg:flex-wrap">
         <div className="flex w-full gap-24 lg:w-[80%] xl:w-[1000px]">
-          <div className="flex w-full flex-col gap-6">
+          <div className="flex w-full flex-col gap-6 lg:max-w-[40%]">
             <div className="h-8 w-[143px] rounded-lg bg-green-700 px-2 py-1.5 text-center text-sm font-semibold uppercase leading-normal tracking-wider text-white">
               we recommend
             </div>
-            <h2 className="font-serif text-3.5xl leading-[48px] text-gray-700 lg:w-[504px]">
+            <h2 className="font-serif text-2xl leading-[48px] text-gray-700 lg:text-3.5xl">
               Carbon schemes inventory platform
             </h2>
             {renderImage(true)}

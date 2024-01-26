@@ -12,8 +12,6 @@ import Providers from '@/app/layout-providers';
 
 import DefaultBasemap from '@/containers/default-basemap';
 
-import MobileMenu from '@/components/mobile-menu';
-
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -86,7 +84,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             'overflow-hidden font-sans text-default',
           )}
         >
-          <MobileMenu />
           {/* Use suspense to render client component without deopting pages
           https://nextjs.org/docs/messages/deopted-into-client-rendering */}
           <Suspense fallback={null}>

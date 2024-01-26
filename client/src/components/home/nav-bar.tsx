@@ -8,7 +8,9 @@ import { handleSmoothScroll } from '@/lib/utils/ui';
 
 import { modules, moduleColors } from '@/constants/modules';
 
+import MobileMenu from '@/components/mobile-menu';
 import MobileMenuButton from '@/components/mobile-menu-button';
+import { Dialog } from '@/components/ui/dialog';
 
 const NavBar = () => (
   <div className="fixed z-20 flex h-[72px] w-full items-center justify-between gap-10 border-b border-gray-100 bg-white bg-opacity-80 px-10 backdrop-blur-[20px]">
@@ -23,7 +25,10 @@ const NavBar = () => (
         Beta
       </span>
     </a>
-    <MobileMenuButton />
+    <Dialog>
+      <MobileMenuButton />
+      <MobileMenu />
+    </Dialog>
     <nav className="hidden h-full items-center justify-center gap-10 font-serif text-base text-gray-500 lg:flex">
       {modules.map((module) => {
         const { href, name, color } = module;
