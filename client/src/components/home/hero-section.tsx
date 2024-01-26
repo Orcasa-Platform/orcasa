@@ -9,6 +9,7 @@ import { cn } from '@/lib/classnames';
 import Stats from '@/components/home/stats';
 import { Button } from '@/components/ui/button';
 import SmoothScrollLink from '@/components/ui/smooth-scroll-link';
+
 import ArrowDownLong from '@/styles/icons/arrow-down-long.svg';
 
 const HeroSection = () => {
@@ -50,8 +51,8 @@ const HeroSection = () => {
         <img src="/images/shape.svg" className="h-[616px] w-full" alt="" />
       </div>
       <div className="max-w-screen h-full w-full flex-wrap justify-center gap-[100px] px-4 lg:absolute lg:flex lg:pt-16 xl:items-center xl:px-0 xl:pt-0">
-        <div>
-          <h2 className="mb-6 font-serif text-[32px] text-slate-700 lg:w-[476px] lg:text-[40px]">
+        <div className="md:max-lg:flex md:max-lg:flex-col md:max-lg:items-center">
+          <h2 className="mb-6 font-serif text-[32px] text-slate-700 md:max-lg:text-center lg:w-[476px] lg:text-[40px]">
             Making an impact on the planet&apos;s soils.
           </h2>
           {renderHeroImage(true)}

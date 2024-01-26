@@ -42,7 +42,7 @@ const RecommendSection = () => {
       </div>
       <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex  lg:flex-wrap">
         <div className="flex w-full gap-24 lg:w-[80%] xl:w-[1000px]">
-          <div className="flex w-full flex-col gap-6 lg:max-w-[40%]">
+          <div className="flex w-full flex-col gap-6 md:max-lg:flex-col md:max-lg:items-center lg:max-w-[40%]">
             <div className="h-8 w-[143px] rounded-lg bg-green-700 px-2 py-1.5 text-center text-sm font-semibold uppercase leading-normal tracking-wider text-white">
               we recommend
             </div>
