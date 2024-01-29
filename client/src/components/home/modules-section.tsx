@@ -11,6 +11,7 @@ import { modules } from '@/constants/modules';
 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
 
 // Module '"lucide-react"' has no exported member 'Tractor'
@@ -154,6 +155,7 @@ const HoverTooltip = ({ children, intro, slug, colorClass }: HoverTooltipProps) 
     </Tooltip>
   );
 };
+
 const Card = ({
   title,
   slug,
@@ -173,60 +175,79 @@ const Card = ({
       <div className="text-left font-serif text-2xl text-gray-700">{title}</div>
     </>
   );
+
   const cardModule = modules.find((module) => module.slug === slug);
+  const content = (
+    <div className="flex h-full max-h-[90vh] w-full flex-col justify-between overflow-auto lg:flex-row">
+      <div className="h-full flex-1 space-y-6 p-10 pb-4 lg:w-1/2 lg:pb-10">
+        <Icon className={cn('currentColor h-fit w-[48px] min-w-[48px]', textColorClass)} />
+        <div className="font-serif text-2xl leading-10">{title}</div>
+        <div className="flex flex-col gap-4">{modulesInfo[slug].modalText}</div>
+      </div>
+      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 lg:w-1/2 lg:pt-[160px]">
+        <ul className="flex flex-col gap-4 pb-6 lg:pb-0">
+          {modulesInfo[slug].modalList.map((listElement) => (
+            <li key={listElement} className="flex gap-2 text-sm">
+              <CheckCircle className="h-4 w-4 min-w-fit" />
+              {listElement}
+            </li>
+          ))}
+        </ul>
+        <Button variant="outline" asChild>
+          <Link href={cardModule?.href ?? '#'}>
+            Go to {cardModule?.name}
+            <ArrowRight className="ml-4" />
+          </Link>
+        </Button>
+      </div>
+    </div>
+  );
+  const card = (
+    <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
+  );
   return (
-    <Dialog>
-      <DialogTrigger>
-        <HoverTooltip colorClass={bgColorClass} intro={intro} slug={slug}>
-          <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
-        </HoverTooltip>
-      </DialogTrigger>
-      <DialogContent
-        onCloseAutoFocus={(e) => e.preventDefault()}
-        contentClassName="p-0"
-        className="!w-[792px] !max-w-[792px]"
-      >
-        <div className="flex h-full w-full justify-between">
-          <div className="h-full w-1/2 flex-1 space-y-6 p-10">
-            <Icon className={cn('currentColor h-fit w-[48px] min-w-[48px]', textColorClass)} />
-            <div className="font-serif text-2xl leading-10">{title}</div>
-            <div className="flex flex-col gap-4">{modulesInfo[slug].modalText}</div>
-          </div>
-          <div className="flex h-full  w-1/2 flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-[160px]">
-            <ul className="flex flex-col gap-4">
-              {modulesInfo[slug].modalList.map((listElement) => (
-                <li key={listElement} className="flex gap-2 text-sm">
-                  <CheckCircle className="h-4 w-4 min-w-fit" />
-                  {listElement}
-                </li>
-              ))}
-            </ul>
-            <Button variant="outline" asChild>
-              <Link href={cardModule?.href ?? '#'}>
-                Go to {cardModule?.name}
-                <ArrowRight className="ml-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
+    <>
+      {/* All from lg */}
+      <div className="hidden lg:block">
+        <Dialog>
+          <DialogTrigger>
+            <HoverTooltip colorClass={bgColorClass} intro={intro} slug={slug}>
+              {card}
+            </HoverTooltip>
+          </DialogTrigger>
+          <DialogContent
+            onCloseAutoFocus={(e) => e.preventDefault()}
+            contentClassName="p-0"
+            className="!w-[792px] !max-w-[792px]"
+          >
+            {content}
+          </DialogContent>
+        </Dialog>
+      </div>
+      {/* Mobile */}
+      <div className="block lg:hidden">
+        <Drawer>
+          <DrawerTrigger>{card}</DrawerTrigger>
+          <DrawerContent>{content}</DrawerContent>
+        </Drawer>
+      </div>
+    </>
   );
 };
 
 const ModulesSection = () => (
-  <div id="modules" className="scroll-mt-[100px]">
-    <div className="mb-[120px] flex items-center justify-center">
+  <div id="modules" className="scroll-mt-[100px] px-4 lg:px-0">
+    <div className="flex items-center justify-center pb-6 lg:mb-[120px]">
       <div className="flex flex-col items-center gap-6">
         <div className="text-center font-serif text-sm uppercase leading-[14px] tracking-wider text-gray-400">
           5 modules for climate impact
         </div>
         <div className="flex flex-col items-center gap-8">
-          <h2 className="font-serif text-3.5xl font-semibold text-gray-700">
+          <h2 className="text-center font-serif text-2xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
             What can Impact4Soil do for me?
           </h2>
           <div className="h-2 w-20 bg-teal-500" />
-          <div className="w-[600px] text-center text-gray-700">
+          <div className="text-center text-gray-700 lg:w-[600px]">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
             altogether actors and experts of the soil carbon community.
             <br />
@@ -236,12 +257,12 @@ const ModulesSection = () => (
         </div>
       </div>
     </div>
-    <div className="relative flex min-h-[616px] items-center justify-center">
+    <div className="relative flex min-h-[1040px] items-center justify-center lg:min-h-[616px]">
       <div className="absolute top-0">
-        <img src="/images/map.png" className="h-[616px] w-full" alt="" />
+        <img src="/images/map.png" className="w-[125%] lg:h-[616px] lg:w-full" alt="" />
       </div>
-      <div className="absolute top-0 z-10 flex h-[616px] flex-col justify-center">
-        <div className="flex gap-24">
+      <div className="absolute top-0 z-10 flex flex-col items-center pt-10 lg:h-[616px] lg:pt-0">
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-24">
           <Card
             title="Geospatial Data"
             slug="geospatial-data"
@@ -264,7 +285,7 @@ const ModulesSection = () => (
             textColorClass="text-blue-500"
           />
         </div>
-        <div className="mt-24 flex justify-center gap-24">
+        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-24 lg:flex-row lg:gap-24">
           <Card
             title="Practices"
             slug="practices"

@@ -21,6 +21,7 @@ export const env = createEnv({
     NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS: z.string(),
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
     NEXT_PUBLIC_HIDE_NETWORK_FORMS: z.string().optional(),
+    NEXT_PUBLIC_ENABLE_RESPONSIVE: z.string().optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -37,6 +38,7 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
     NEXT_PUBLIC_HIDE_NETWORK_FORMS: process.env.NEXT_PUBLIC_HIDE_NETWORK_FORMS,
+    NEXT_PUBLIC_ENABLE_RESPONSIVE: process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE,
   },
 });
 

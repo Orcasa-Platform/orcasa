@@ -13,6 +13,12 @@ import {
   // HeartHandshake,
 } from 'lucide-react';
 
+import {
+  Carousel as CarouselComponent,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
+
 import { Button } from '../ui/button';
 
 const CARD_WIDTH = 373;
@@ -102,9 +108,10 @@ const Carousel = () => {
   };
   return (
     <>
-      <div className="max-w-[50vw] overflow-hidden">
+      {/* For lg up */}
+      <div className="hidden overflow-hidden shadow lg:block lg:max-w-[50vw] lg:shadow-none">
         <motion.div
-          className="flex w-[50vw] gap-10"
+          className="flex gap-10 lg:w-[50vw]"
           animate={{ x: `-${currentIndex * (CARD_WIDTH + CARD_GAP)}px` }}
           transition={{ ease: 'easeInOut' }}
         >
@@ -113,7 +120,7 @@ const Carousel = () => {
           ))}
         </motion.div>
       </div>
-      <div className="mt-6 flex gap-1">
+      <div className="mt-6 hidden gap-1 lg:flex">
         <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
           <ArrowLeft className="h-4 w-4" />
           <span className="sr-only">Previous testimony</span>
@@ -123,6 +130,16 @@ const Carousel = () => {
           <span className="sr-only">Next testimony</span>
         </Button>
       </div>
+      {/* For mobile */}
+      <CarouselComponent className="block lg:hidden">
+        <CarouselContent className="p-1">
+          {cards.map((card) => (
+            <CarouselItem key={card.id} className="flex justify-center">
+              <Card card={card} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </CarouselComponent>
     </>
   );
 };

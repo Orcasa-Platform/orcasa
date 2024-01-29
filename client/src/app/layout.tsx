@@ -31,9 +31,13 @@ export const metadata: Metadata = {
   keywords: 'Impact4Soil, ORCaSa, Horizon Europe, carbon capture, climate change',
   robots: 'index, follow',
   authors: { name: 'Vizzuality', url: 'https://vizzuality.com' },
-  viewport: {
-    width: 1200,
-  },
+  ...(process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE !== 'true'
+    ? {
+        viewport: {
+          width: 1200,
+        },
+      }
+    : {}),
   openGraph: {
     title: 'Impact4Soil - Horizon Europe Initiative',
     // TODO: update description

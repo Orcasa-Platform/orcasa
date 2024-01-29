@@ -180,6 +180,7 @@ locals {
     NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr,carla.biscotti@vizzuality.com"
     NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
     NEXT_PUBLIC_HIDE_NETWORK_FORMS                  = "false"
+    NEXT_PUBLIC_ENABLE_RESPONSIVE                   = "true"
     LOG_LEVEL                                       = "info"
   }
   demo_cms_env = {
@@ -218,6 +219,7 @@ locals {
     NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr"
     NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
     NEXT_PUBLIC_HIDE_NETWORK_FORMS                  = "true"
+    NEXT_PUBLIC_ENABLE_RESPONSIVE                   = "false"
     LOG_LEVEL                                       = "info"
   }
 }

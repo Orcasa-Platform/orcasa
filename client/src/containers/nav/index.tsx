@@ -39,7 +39,7 @@ const NavLink = ({ href, children, color, active, ...rest }: NavLinkProps) => (
 export default function Nav() {
   const pathname = usePathname();
   return (
-    <div className="js-main-nav absolute left-0 z-50 h-full w-[117px]">
+    <div className="js-main-nav absolute left-0 z-50 hidden h-full w-[117px] lg:block">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-gray-700 py-6">
         <Link href="/" className="flex flex-col-reverse items-center justify-center gap-3">
           <span className="rounded bg-gray-800 px-2 py-[3px] font-sans text-xs font-normal text-white">

@@ -76,6 +76,12 @@ export const usePopup = () => {
   return useAtom(popupAtom);
 };
 
+// To store the state open/closed of the the mobile menu
+const mobileMenuAtom = atom<boolean>(false);
+export const useMobileMenu = () => {
+  return useAtom(mobileMenuAtom);
+};
+
 export const DEFAULT_SETTINGS = {};
 
 export function useSyncLayersAndSettings() {
