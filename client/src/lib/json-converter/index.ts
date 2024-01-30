@@ -10,12 +10,15 @@ import { ParamsConfig } from '@/types/layers';
 import SoilsRevealedSettings from '@/containers/layer-groups-list/settings/sois-revealed-settings';
 import TreeCoverLossSettings from '@/containers/layer-groups-list/settings/tree-cover-loss';
 
-import DecodeLayer from '@/components/map/layers/decode-layer';
 import {
   LegendTypeBasic,
   LegendTypeChoropleth,
   LegendTypeGradient,
 } from '@/components/map/legend/item-types';
+
+// import DecodeLayer only on client side
+// As is not a react-component we can't use next/dynamic
+const DecodeLayer = typeof window !== 'undefined' && import('@/components/map/layers/decode-layer');
 
 export const JSON_CONFIGURATION = new JSONConfiguration({
   React,

@@ -14,12 +14,14 @@ import {
 } from 'react-map-gl/maplibre';
 import { usePreviousImmediate } from 'rooks';
 
+import { parseConfig } from '@/lib/json-converter';
 import { getCroppedBounds } from '@/lib/utils/map';
 
+import { useLayersSettings } from '@/store';
 import { useBbox, useLayersInteractive, useLayersInteractiveIds, usePopup } from '@/store';
 
 import { useGetLayers } from '@/types/generated/layer';
-import type { LayerTyped } from '@/types/layers';
+import type { InteractionConfig, LayerTyped } from '@/types/layers';
 import { Bbox } from '@/types/map';
 
 import { useMapPadding } from '@/hooks/map';
@@ -78,6 +80,7 @@ export default function MapContainer() {
 
   const [, setPopup] = usePopup();
 
+  const [layersSettings] = useLayersSettings();
   const { id, initialViewState, minZoom, maxZoom } = getMapsDefaultProps(
     bbox as LngLatBoundsLike,
     padding,
@@ -186,7 +189,22 @@ export default function MapContainer() {
         layersInteractiveData?.data &&
         layersInteractiveData?.data.some((l) => {
           const attributes = l.attributes as LayerTyped;
-          return attributes?.interaction_config?.events.some((ev) => ev.type === 'click');
+          const layerSettings = l.id && layersSettings[l.id];
+          const { params_config, interaction_config } = attributes;
+
+          const parsedInteractionConfig = parseConfig<InteractionConfig | null>({
+            config: interaction_config,
+            params_config,
+            settings: layerSettings || {},
+          });
+
+          if (parsedInteractionConfig?.events) {
+            // Complex interaction layers with more than one source and interaction per layer
+            return parsedInteractionConfig.events.some((ev) => ev.type === 'click');
+          } else {
+            // Simple interaction layers
+            return attributes?.interaction_config?.events?.some((ev) => ev.type === 'click');
+          }
         })
       ) {
         const p = Object.assign({}, e, { features: e.features ?? [] });
@@ -194,7 +212,7 @@ export default function MapContainer() {
         setPopup(p);
       }
     },
-    [layersInteractive, layersInteractiveData, setPopup, map],
+    [layersInteractive, layersInteractiveData, setPopup, map, layersSettings],
   );
 
   return (

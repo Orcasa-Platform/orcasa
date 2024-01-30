@@ -4,12 +4,14 @@ import type { Feature } from 'geojson';
 import type { GeoJsonProperties } from 'geojson';
 import { useMap } from 'react-map-gl/maplibre';
 
+import { parseConfig } from '@/lib/json-converter';
 import { format } from '@/lib/utils/formats';
 
+import { useLayersSettings } from '@/store';
 import { useLayersInteractiveIds, usePopup } from '@/store';
 
 import { useGetLayersId } from '@/types/generated/layer';
-import { LayerTyped } from '@/types/layers';
+import { InteractionConfig, LayerTyped } from '@/types/layers';
 
 import ContentLoader from '@/components/ui/loader';
 
@@ -28,13 +30,24 @@ const PopupItem = ({ id }: PopupItemProps) => {
   const { data, isFetching, isFetched, isError, isPlaceholderData } = useGetLayersId(id, {
     populate: 'metadata',
   });
+  const [layersSettings] = useLayersSettings();
 
   const [featuresData, setfeaturesData] = useState<GeoJsonProperties | undefined>();
   const attributes = data?.data?.attributes as LayerTyped;
   const source = attributes.config.source;
-  const click = attributes.interaction_config.events.find((ev) => ev.type === 'click');
-  const fetchLayer = attributes.interaction_config?.layer?.trim();
-  const url = attributes.interaction_config?.url?.trim();
+  const layerSettings = layersSettings[id];
+  const { params_config, interaction_config } = attributes;
+
+  const parsedInteractionConfig = parseConfig<InteractionConfig | null>({
+    config: interaction_config,
+    params_config,
+    settings: layerSettings || {},
+  });
+
+  const click =
+    parsedInteractionConfig?.events.find((ev) => ev.type === 'click') ||
+    attributes.interaction_config.events.find((ev) => ev.type === 'click');
+  const url = parsedInteractionConfig?.url?.trim() || attributes.interaction_config?.url?.trim();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,15 +73,23 @@ const PopupItem = ({ id }: PopupItemProps) => {
         const height = map.getContainer().clientHeight;
         const x = Math.round(point.x);
         const y = Math.round(point.y);
-        const response = await fetch(
-          // Projection should be included in the url: ?crs=EPSG:4326
-          `${url}&request=GetFeatureInfo&transparent=true&format=image/png&exceptions=application/vnd.ogc.se_xml&styles=&feature_count=10&service=WMS&version=1.1.1&layers=${fetchLayer}&QUERY_LAYERS=${fetchLayer}&x=${x}&y=${y}&bbox=${bbox}&width=${width}&height=${height}&info_format=application/json
-          `,
+        const replaceStrings: Record<string, string> = {
+          '{x}': String(x),
+          '{y}': String(y),
+          '{width}': String(width),
+          '{height}': String(height),
+          '{bbox}': bbox,
+        };
+        const regexp = new RegExp(Object.keys(replaceStrings).join('|'), 'gi');
+        const fetchURL = url?.replace(
+          regexp,
+          (matched) => replaceStrings[matched as keyof typeof replaceStrings],
         );
+        if (!fetchURL) return;
+        const response = await fetch(fetchURL);
         const featureCollection = await response.json();
         const d = featureCollection?.features?.[0]?.properties;
         DATA_REF.current = d;
-
         setfeaturesData(DATA_REF.current);
         return;
       } else if (source.type === 'vector') {
@@ -88,9 +109,8 @@ const PopupItem = ({ id }: PopupItemProps) => {
         }
       }
     };
-
     fetchData();
-  }, [popup, source, layersInteractiveIds, map, rendered, fetchLayer, url]);
+  }, [popup, source, layersInteractiveIds, map, rendered, url]);
 
   const handleMapRender = useCallback(() => {
     setRendered(!!map?.loaded() && !!map?.areTilesLoaded());
@@ -131,7 +151,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
                     <dd className="text-sm">
                       {format({
                         id: v.format?.id,
-                        value: featuresData[v.key],
+                        value: v.type === 'number' ? +featuresData[v.key] : featuresData[v.key],
                         options: v.format?.options,
                       })}
                     </dd>

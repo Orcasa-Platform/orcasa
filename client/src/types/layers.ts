@@ -33,6 +33,7 @@ export type InteractionConfig = {
     type: 'click' | 'hover';
     values: {
       key: string;
+      type?: 'string' | 'number';
       label: string;
       format?: FormatProps;
     }[];

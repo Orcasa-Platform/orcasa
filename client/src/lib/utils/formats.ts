@@ -39,6 +39,7 @@ const formatLayerNumber = (value: number) => {
   // separate the decimals e.g. 1 456 357,45
   const formatter = Intl.NumberFormat('fr');
   // To avoid strange behaviour in the map, we don't display numbers that too small
+  if (Number.isNaN(value)) return null;
   if (value < -10000000) return null;
   return formatter.format(value);
 };
