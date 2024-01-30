@@ -1,6 +1,6 @@
 export { permissions };
 
 const permissions = {
-  acceptChanges: [{ action: 'plugin::import-export-entries.export', subject: null }],
-  declineChanges: [{ action: 'plugin::import-export-entries.import', subject: null }],
+  acceptProjectChanges: [{ action: 'plugin::orcasa.project.accept-changes', subject: null }],
+  declineProjectChanges: [{ action: 'plugin::orcasa.project.decline-changes', subject: null }],
 };

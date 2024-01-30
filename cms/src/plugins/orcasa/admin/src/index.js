@@ -1,4 +1,3 @@
-import pluginPkg from '../../package.json';
 import AcceptChangeButton from './components/AcceptChangeButton/acceptChangeButton';
 import DeclineChangeButton from './components/DeclineChangeButton/declineChangeButton';
 

@@ -1616,6 +1616,34 @@
       "conditions": []
     },
     {
+      "action": "plugin::orcasa.organization.accept-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.organization.decline-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.project.accept-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.project.decline-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::upload.assets.copy-link",
       "actionParameters": {},
       "subject": null,

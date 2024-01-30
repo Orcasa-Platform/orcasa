@@ -2,42 +2,61 @@ import { Button } from '@strapi/design-system';
 import { Check } from '@strapi/icons';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { CheckPermissions, useCMEditViewDataManager } from '@strapi/helper-plugin';
+import { CheckPermissions, useCMEditViewDataManager, useNotification } from '@strapi/helper-plugin';
 import { api } from '../../api';
-import { useSlug } from '../../hooks/useSlug';
+import { permissions } from '../../permissions';
+import _ from 'lodash';
+import { useHistory } from "react-router-dom";
 
 const AcceptChangeButton = (props) => {
   const { formatMessage } = useIntl();
-  const { slug } = useSlug();
-  const { allLayoutData, modifiedData } = useCMEditViewDataManager();
+  const toggleNotification = useNotification();
+  const { allLayoutData, initialData, modifiedData } = useCMEditViewDataManager();
   const { uid } = allLayoutData.contentType;
-
-  const allowedUID = ['api::project-change.project-change'];
-  if (!allowedUID.includes(uid)) {
-    return null;
-  }
+  const history = useHistory();
 
   const acceptChanges = async () => {
     try {
-      const res = await api.acceptChanges({
-        slug,
-      });
+      const res = await api.acceptChanges({ id: modifiedData.id });
+      if (res) {
+        history.push(`/content-manager/collection-types/api::project.project/${res.id}`);
+        toggleNotification({
+          type: 'success',
+          message: { id: 'Project change accepted.' },
+        });
+      } else {
+        toggleNotification({
+          type: 'warning',
+          message: { id: 'Project change not accepted.' },
+        });
+      }
     } catch (err) {
-      //TODO: error handling
+      toggleNotification({
+        type: 'warning',
+        message: { id: err.toString() },
+      });
+      console.error('Error accepting project changes', err);
     }
   };
 
+  const allowedUID = ['api::project-change.project-change'];
+  if (!allowedUID.includes(uid) || !initialData.id || modifiedData.publication_status !== 'proposed') {
+    return null;
+  }
+
+  const isModified = !_.isEqual(modifiedData, initialData);
   return (
-    <CheckPermissions permissions={acceptChanges} >
+    <CheckPermissions permissions={permissions.acceptProjectChanges} >
       <Button
+        disabled={isModified}
         startIcon={<Check />}
         style={{ width: '100%' }}
         variant="secondary"
-        onClick={api.acceptChanges}
+        onClick={acceptChanges}
       >
         {formatMessage({
           id: 'link-to-ctb',
-          defaultMessage: 'Accept changes',
+          defaultMessage: isModified ? 'Cannot accept unsaved changes' : 'Accept changes',
         })}
       </Button >
     </CheckPermissions >
