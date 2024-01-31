@@ -2,7 +2,9 @@ import { atom, useAtom } from 'jotai';
 
 export interface PracticesDropdownFilters {
   country: number[];
-  landUseType: number[];
+  landUseType: number | undefined;
+  mainIntervention: number | undefined;
+  subIntervention: number | undefined;
 }
 
 export interface PracticesFilters extends PracticesDropdownFilters {
@@ -14,7 +16,12 @@ export const usePracticesFilterSidebarOpen = () => {
   return useAtom(filterSidebarOpenAtom);
 };
 
-const filtersAtom = atom<PracticesFilters>({ country: [], landUseType: [] });
+const filtersAtom = atom<PracticesFilters>({
+  country: [],
+  landUseType: undefined,
+  mainIntervention: undefined,
+  subIntervention: undefined,
+});
 export const usePracticesFilters = () => {
   return useAtom(filtersAtom);
 };

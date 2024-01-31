@@ -12,6 +12,20 @@ import { usePracticesFiltersOptions } from '@/hooks/practices';
 
 import { Button } from '@/components/ui/button';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipArrow,
+} from '@/components/ui/tooltip';
 
 export default function FiltersSidebar() {
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
@@ -33,6 +47,58 @@ export default function FiltersSidebar() {
       scrollableContainerRef.current.scrollTo({ top: 0 });
     }
   }, [filterSidebarOpen, scrollableContainerRef]);
+  const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+
+  const SelectFilter = ({
+    type,
+    placeholder,
+    disabled,
+  }: {
+    type: keyof typeof practicesFiltersOptions;
+    placeholder: string;
+    disabled?: boolean;
+  }) => {
+    const select = (
+      <Select
+        value={String(filters[type])}
+        onValueChange={(value) => setFilters({ ...filters, [type]: +value })}
+        disabled={disabled}
+      >
+        <SelectTrigger id={toKebabCase(type)} className="h-12 w-full">
+          <SelectValue>
+            <span className="text-sm">
+              {practicesFiltersOptions[type].find(({ value }) => value === filters[type])?.label ||
+                placeholder}
+            </span>
+          </SelectValue>
+        </SelectTrigger>
+        <SelectContent>
+          {practicesFiltersOptions[type].map(({ label, value }) => (
+            <SelectItem key={value} value={String(value)} className="w-full">
+              {label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    );
+
+    return disabled ? (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger className="w-full">{select}</TooltipTrigger>
+          <TooltipContent variant="dark" align="start">
+            <p className="max-w-[268px] text-xs leading-normal">
+              You have to select a <span className="font-semibold">land use type</span> and a{' '}
+              <span className="font-semibold">main intervention</span> first.
+            </p>
+            <TooltipArrow variant="dark" />
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    ) : (
+      select
+    );
+  };
 
   return (
     <div
@@ -71,7 +137,9 @@ export default function FiltersSidebar() {
                 setFilters({
                   ...filters,
                   country: [],
-                  landUseType: [],
+                  landUseType: undefined,
+                  mainIntervention: undefined,
+                  subIntervention: undefined,
                 })
               }
             >
@@ -79,18 +147,18 @@ export default function FiltersSidebar() {
             </Button>
             <div className="space-y-4">
               <MultiCombobox
-                name="Land use type"
-                variant="practices"
-                value={filters.landUseType ?? []}
-                options={practicesFiltersOptions.landUseType}
-                onChange={(value) => setFilters({ ...filters, landUseType: value as number[] })}
-              />
-              <MultiCombobox
                 name="Country"
                 variant="practices"
                 value={filters.country ?? []}
                 options={practicesFiltersOptions.country}
                 onChange={(value) => setFilters({ ...filters, country: value as number[] })}
+              />
+              <SelectFilter type="landUseType" placeholder="Land use type" />
+              <SelectFilter type="mainIntervention" placeholder="Main intervention" />
+              <SelectFilter
+                type="subIntervention"
+                placeholder="Sub intervention"
+                disabled={!filters.landUseType || !filters.mainIntervention}
               />
             </div>
           </fieldset>

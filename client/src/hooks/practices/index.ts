@@ -81,16 +81,14 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.landUseType.length > 0
+    ...(filters.landUseType
       ? [
           {
-            $or: filters.landUseType.map((id) => ({
-              land_use_types: {
-                id: {
-                  $eq: id,
-                },
+            land_use_types: {
+              id: {
+                $eq: filters.landUseType,
               },
-            })),
+            },
           },
         ]
       : []),
@@ -356,9 +354,27 @@ export const usePracticesFiltersOptions = (): Record<
         : [],
     [landUseTypeData],
   );
+  const mainIntervention = useMemo(
+    () =>
+      landUseTypeData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          landUseTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [landUseTypeData],
+  );
+  const subIntervention = useMemo(
+    () =>
+      landUseTypeData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          landUseTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [landUseTypeData],
+  );
 
   return {
     country,
     landUseType,
+    mainIntervention,
+    subIntervention,
   };
 };
