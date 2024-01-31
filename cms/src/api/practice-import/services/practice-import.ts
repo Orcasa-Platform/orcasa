@@ -3,7 +3,8 @@
  */
 
 import { factories } from '@strapi/strapi';
-import WocatConnector from "./wocat-connector";
+import WocatConnector, { DecoratedWocatPractice, WocatPractice } from "./wocat-connector";
+import PracticeDecorator from "./practice-decorator";
 
 export type ConvertToPracticeResult = {
   practice: Record<string, any>,
@@ -11,8 +12,14 @@ export type ConvertToPracticeResult = {
 }
 
 export default factories.createCoreService('api::practice-import.practice-import', ({ strapi }) => ({
+  async decorate(): Promise<Record<string, any>> {
+    const practiceDecorator: PracticeDecorator<WocatPractice, DecoratedWocatPractice> = new PracticeDecorator();
+    return await practiceDecorator.decorate();
+  },
+
   async import(): Promise<Record<string, any>> {
-    const wocatImporter = new WocatConnector();
+    const wocatImporter: WocatConnector = new WocatConnector();
+    const practiceDecorator: PracticeDecorator<WocatPractice, DecoratedWocatPractice> = new PracticeDecorator();
 
     const practiceImport = await strapi.entityService.create('api::practice-import.practice-import', {
       data: {
@@ -23,10 +30,12 @@ export default factories.createCoreService('api::practice-import.practice-import
     });
 
     try {
-      wocatImporter.import()
-        .then(async (practices) => {
+      await wocatImporter.import()
+        .then(async (practices: Array<WocatPractice>) => {
+          return practiceDecorator.decoratePractices(practices);
+        })
+        .then(async (practices: Array<DecoratedWocatPractice>) => {
           return wocatImporter.convertToPractices(practices);
-          // return Promise.all(practices.map(wocatImporter.convertToPractice))
         })
         .then(async (results: Array<ConvertToPracticeResult>) => {
           strapi.entityService.update('api::practice-import.practice-import', practiceImport.id, {
@@ -56,7 +65,7 @@ export default factories.createCoreService('api::practice-import.practice-import
         },
       });
 
-      strapi.log.error(`Import ${practiceImport.id} failed: ${error.toString()}}`);
+      strapi.log.error(`Import ${practiceImport.id} failed: ${error.toString()}`);
     }
 
     return practiceImport;

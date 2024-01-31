@@ -10,4 +10,10 @@ export default factories.createCoreController('api::practice-import.practice-imp
 
     return practiceImport;
   },
+
+  async decorate(ctx) {
+    const practiceImport: Record<string, any> = await strapi.service('api::practice-import.practice-import').decorate();
+
+    return practiceImport;
+  },
 }));

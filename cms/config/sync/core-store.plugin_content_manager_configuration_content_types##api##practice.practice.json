@@ -259,20 +259,6 @@
           "sortable": true
         }
       },
-      "land_use_prior": {
-        "edit": {
-          "label": "Land Use Prior",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "land_use_prior",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "degradation_assessed": {
         "edit": {
           "label": "Degradation Assessed",
@@ -354,6 +340,50 @@
         },
         "list": {
           "label": "practice_url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "practice_intervention": {
+        "edit": {
+          "label": "Practice Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "practice_intervention",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "land_use_prior": {
+        "edit": {
+          "label": "Land Use Prior",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "land_use_prior",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "sub_intervention": {
+        "edit": {
+          "label": "Subintervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sub_intervention",
           "searchable": true,
           "sortable": true
         }
@@ -537,6 +567,16 @@
           {
             "name": "sync",
             "size": 4
+          }
+        ],
+        [
+          {
+            "name": "practice_intervention",
+            "size": 6
+          },
+          {
+            "name": "sub_intervention",
+            "size": 6
           }
         ]
       ],

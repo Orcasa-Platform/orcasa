@@ -1,6 +1,7 @@
 import { get, isEmpty, range, reject } from "lodash";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { ConvertToPracticeResult } from "./practice-import";
+import AsyncService from "./async-service";
 
 type Questionnaire = {
   code: string;
@@ -69,7 +70,13 @@ export type WocatPractice = {
   language: Array<string>,
 }
 
-export default class WocatConnector {
+export type DecoratedWocatPractice = WocatPractice & {
+  show: boolean,
+  intervention: string,
+  sub_intervention: Array<string>,
+}
+
+export default class WocatConnector extends AsyncService {
   landUseMap: Record<string, string> = {
     'Cropland': 'Cropland',
     'Mixed (crops/ grazing/ trees), incl. agroforestry': 'Cropland',
@@ -138,41 +145,6 @@ export default class WocatConnector {
       return questionnaireDetailResponse.data;
     }
   };
-
-  private async worker(gen: Generator<Array<number>>, callFunction: (arg: any) => Promise<Record<string, any>>, result: Array<Record<string, any>>): Promise<void> {
-    for (let [currentValue, index] of gen) {
-      strapi.log.debug(`Worker --- index ${index} item ${currentValue}`)
-      result[index] = await callFunction(currentValue)
-    }
-  }
-
-  private* arrayGenerator(elementList: Array<any>): Generator<Array<number>> {
-    for (let index: number = 0; index < elementList.length; index++) {
-      const currentValue = elementList[index]
-      yield [currentValue, index]
-    }
-  }
-
-  private async loadAll(elementList: Array<any>, callFunction: (arg: any) => Promise<Record<string, any>>, workerCount: number): Promise<Array<any>> {
-    const result: Array<any> = []
-
-    if (elementList.length === 0) {
-      return result
-    }
-
-    const gen: Generator<Array<number>> = this.arrayGenerator(elementList)
-
-    workerCount = Math.min(workerCount, elementList.length)
-
-    const workers: any[] = new Array(workerCount)
-    for (let i = 0; i < workerCount; i++) {
-      workers.push(this.worker(gen, callFunction, result))
-    }
-
-    await Promise.all(workers)
-
-    return result
-  }
 
   private getDegradationAssessed(questionnaire: Questionnaire): string[] {
     const degradationAssessed: string[] = [];
@@ -334,10 +306,12 @@ export default class WocatConnector {
     }))
   }
 
-  async convertToPractice(wocatPractice: WocatPractice): Promise<ConvertToPracticeResult> {
-    let practice;
+  async convertToPractice(wocatPractice: DecoratedWocatPractice): Promise<ConvertToPracticeResult> {
+    let practice: Record<string, any> = null
     let country = null;
     let land_use_types = null;
+    let land_use_prior = null;
+    let practice_intervention = null;
 
     const practices = await strapi.entityService.findMany(
       'api::practice.practice',
@@ -366,11 +340,29 @@ export default class WocatConnector {
       ))[0];
     }
 
+    if (wocatPractice.land_use_prior) {
+      land_use_prior = (await strapi.entityService.findMany(
+        'api::land-use-type.land-use-type',
+        {
+          filters: { name: { $in: wocatPractice.land_use_prior } },
+        }
+      ));
+    }
+
     if (wocatPractice.land_use_types) {
       land_use_types = (await strapi.entityService.findMany(
         'api::land-use-type.land-use-type',
         {
           filters: { name: { $in: wocatPractice.land_use_types } },
+        }
+      ));
+    }
+
+    if (wocatPractice.intervention) {
+      practice_intervention = (await strapi.entityService.findMany(
+        'api::practice-intervention.practice-intervention',
+        {
+          filters: { name: wocatPractice.intervention },
         }
       ));
     }
@@ -396,16 +388,17 @@ export default class WocatConnector {
           main_purposes: wocatPractice.main_purposes,
           land_use_has_changed: wocatPractice.land_use_has_changed.join(';'),
           has_changed: wocatPractice.has_changed,
-          land_use_prior: wocatPractice.land_use_prior.join(';'),
           degradation_assessed: wocatPractice.degradation_assessed.join(';'),
           language: wocatPractice.language.join(';'),
           sync: true,
           show: true,
 
+          land_use_prior,
           land_use_types,
+          practice_intervention,
           country,
         },
-        populate: ['country', 'land_use_types']
+        populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
       });
     } else {
       if (practices[0].sync === false) {
@@ -436,16 +429,17 @@ export default class WocatConnector {
           main_purposes: wocatPractice.main_purposes,
           land_use_has_changed: wocatPractice.land_use_has_changed.join(';'),
           has_changed: wocatPractice.has_changed,
-          land_use_prior: wocatPractice.land_use_prior.join(';'),
           degradation_assessed: wocatPractice.degradation_assessed.join(';'),
           language: wocatPractice.language.join(';'),
           sync: true,
           show: practices[0].show === null ? true : practices[0].show,
 
           land_use_types,
+          land_use_prior,
+          practice_intervention,
           country,
         },
-        populate: ['country', 'land_use_types']
+        populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
       });
     }
 
@@ -455,7 +449,7 @@ export default class WocatConnector {
     };
   }
 
-  async convertToPractices(wocatPractices: Array<WocatPractice>): Promise<Array<ConvertToPracticeResult>> {
+  async convertToPractices(wocatPractices: Array<DecoratedWocatPractice>): Promise<Array<ConvertToPracticeResult>> {
     return this.loadAll(wocatPractices, this.convertToPractice, 15);
   }
 }

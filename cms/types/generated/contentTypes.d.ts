@@ -1270,13 +1270,6 @@ export interface ApiPracticePractice extends Schema.CollectionType {
           separator: 'semicolon';
         }
       >;
-    land_use_prior: Attribute.Text &
-      Attribute.CustomField<
-        'plugin::string-array.input',
-        {
-          separator: 'semicolon';
-        }
-      >;
     degradation_assessed: Attribute.Text &
       Attribute.CustomField<
         'plugin::string-array.input',
@@ -1299,6 +1292,23 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     show: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     practice_url: Attribute.Text;
+    practice_intervention: Attribute.Relation<
+      'api::practice.practice',
+      'manyToOne',
+      'api::practice-intervention.practice-intervention'
+    >;
+    land_use_prior: Attribute.Relation<
+      'api::practice.practice',
+      'oneToMany',
+      'api::land-use-type.land-use-type'
+    >;
+    sub_intervention: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1341,6 +1351,43 @@ export interface ApiPracticeImportPracticeImport extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::practice-import.practice-import',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPracticeInterventionPracticeIntervention
+  extends Schema.CollectionType {
+  collectionName: 'practice_interventions';
+  info: {
+    singularName: 'practice-intervention';
+    pluralName: 'practice-interventions';
+    displayName: 'Practice Intervention';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    practices: Attribute.Relation<
+      'api::practice-intervention.practice-intervention',
+      'oneToMany',
+      'api::practice.practice'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::practice-intervention.practice-intervention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::practice-intervention.practice-intervention',
       'oneToOne',
       'admin::user'
     > &
@@ -1619,6 +1666,7 @@ declare module '@strapi/types' {
       'api::page.page': ApiPagePage;
       'api::practice.practice': ApiPracticePractice;
       'api::practice-import.practice-import': ApiPracticeImportPracticeImport;
+      'api::practice-intervention.practice-intervention': ApiPracticeInterventionPracticeIntervention;
       'api::project.project': ApiProjectProject;
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;

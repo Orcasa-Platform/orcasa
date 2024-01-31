@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::practice-import.practice-import",
+  "key": "plugin_content_manager_configuration_content_types::api::practice-intervention.practice-intervention",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "mainField": "name",
+      "defaultSortBy": "name",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,58 +19,45 @@
           "sortable": true
         }
       },
-      "start": {
+      "name": {
         "edit": {
-          "label": "Start",
+          "label": "name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "start",
+          "label": "name",
           "searchable": true,
           "sortable": true
         }
       },
-      "finished": {
+      "slug": {
         "edit": {
-          "label": "Finished",
+          "label": "slug",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "finished",
+          "label": "slug",
           "searchable": true,
           "sortable": true
         }
       },
-      "status": {
+      "practices": {
         "edit": {
-          "label": "Status",
+          "label": "practices",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "source_id"
         },
         "list": {
-          "label": "status",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "output": {
-        "edit": {
-          "label": "Output",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "output",
+          "label": "practices",
           "searchable": false,
           "sortable": false
         }
@@ -135,38 +122,32 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "slug",
+        "practices"
+      ],
       "edit": [
         [
           {
-            "name": "start",
+            "name": "name",
             "size": 6
           },
           {
-            "name": "finished",
+            "name": "slug",
             "size": 6
           }
         ],
         [
           {
-            "name": "status",
+            "name": "practices",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "output",
-            "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "start",
-        "finished",
-        "status"
       ]
     },
-    "uid": "api::practice-import.practice-import"
+    "uid": "api::practice-intervention.practice-intervention"
   },
   "type": "object",
   "environment": null,

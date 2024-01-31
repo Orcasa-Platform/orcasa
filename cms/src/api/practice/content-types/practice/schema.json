@@ -75,13 +75,6 @@
       },
       "customField": "plugin::string-array.input"
     },
-    "land_use_prior": {
-      "type": "customField",
-      "options": {
-        "separator": "semicolon"
-      },
-      "customField": "plugin::string-array.input"
-    },
     "degradation_assessed": {
       "type": "customField",
       "options": {
@@ -113,6 +106,24 @@
     },
     "practice_url": {
       "type": "text"
+    },
+    "practice_intervention": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::practice-intervention.practice-intervention",
+      "inversedBy": "practices"
+    },
+    "land_use_prior": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::land-use-type.land-use-type"
+    },
+    "sub_intervention": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
     }
   }
 }
