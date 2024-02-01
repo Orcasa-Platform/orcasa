@@ -13,6 +13,7 @@ import {
 } from '@/types/generated/practice';
 import { useGetPracticeInterventions } from '@/types/generated/practice-intervention';
 import {
+  PracticeResponse,
   PracticeListResponse,
   PracticeListResponseDataItem,
   PracticeCountryDataAttributes,
