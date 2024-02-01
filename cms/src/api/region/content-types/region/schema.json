@@ -22,6 +22,12 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "region_of_interventions"
+    },
+    "project_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project-change.project-change",
+      "inversedBy": "region_of_interventions"
     }
   }
 }

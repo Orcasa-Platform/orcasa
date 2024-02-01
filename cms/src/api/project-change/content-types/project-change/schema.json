@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "projects",
+  "collectionName": "project_changes",
   "info": {
-    "singularName": "project",
-    "pluralName": "projects",
-    "displayName": "Project",
+    "singularName": "project-change",
+    "pluralName": "project-changes",
+    "displayName": "Project Change",
     "description": ""
   },
   "options": {
@@ -47,13 +47,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::region.region",
-      "mappedBy": "projects"
+      "mappedBy": "project_changes"
     },
     "country_of_interventions": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::country.country",
-      "mappedBy": "projects"
+      "mappedBy": "project_changes"
     },
     "website": {
       "type": "string",
@@ -93,25 +93,34 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::sustainable-dev-goal.sustainable-dev-goal",
-      "inversedBy": "projects"
+      "inversedBy": "project_changes"
     },
     "lead_partner": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::organization.organization",
-      "inversedBy": "lead_projects"
+      "inversedBy": "lead_project_changes"
     },
     "partners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::organization.organization",
-      "inversedBy": "partner_projects"
+      "inversedBy": "partner_project_changes"
     },
     "funders": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::organization.organization",
-      "inversedBy": "funded_projects"
+      "inversedBy": "funded_project_changes"
+    },
+    "publication_status": {
+      "type": "enumeration",
+      "enum": [
+        "proposed",
+        "accepted",
+        "declined"
+      ],
+      "default": "accepted"
     }
   }
 }

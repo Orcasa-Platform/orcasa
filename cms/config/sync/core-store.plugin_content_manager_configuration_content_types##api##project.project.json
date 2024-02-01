@@ -339,20 +339,6 @@
           "sortable": false
         }
       },
-      "publication_status": {
-        "edit": {
-          "label": "publication_status",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "publication_status",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -416,8 +402,7 @@
       "list": [
         "id",
         "name",
-        "start_date",
-        "publication_status"
+        "start_date"
       ],
       "edit": [
         [
@@ -529,12 +514,6 @@
           },
           {
             "name": "funders",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "publication_status",
             "size": 6
           }
         ]

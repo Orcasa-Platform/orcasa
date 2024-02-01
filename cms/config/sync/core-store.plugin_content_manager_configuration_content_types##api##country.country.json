@@ -192,6 +192,21 @@
           "sortable": false
         }
       },
+      "project_changes": {
+        "edit": {
+          "label": "project_changes",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "project_changes",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -318,6 +333,10 @@
         [
           {
             "name": "practices",
+            "size": 6
+          },
+          {
+            "name": "project_changes",
             "size": 6
           }
         ]
