@@ -11,9 +11,9 @@ import {
   useGetPractices,
   useGetPracticesId,
 } from '@/types/generated/practice';
+import { useGetPracticeInterventions } from '@/types/generated/practice-intervention';
 import {
   PracticeListResponse,
-  PracticeResponse,
   PracticeListResponseDataItem,
   PracticeCountryDataAttributes,
 } from '@/types/generated/strapi.schemas';
@@ -336,7 +336,16 @@ export const usePracticesFiltersOptions = (): Record<
       },
     },
   );
-
+  const { data: practiceInterventionData } = useGetPracticeInterventions(
+    {
+      fields: 'name',
+    },
+    {
+      query: {
+        queryKey: ['practice-interventions'],
+      },
+    },
+  );
   const country = useMemo(
     () =>
       countryData?.data
@@ -354,13 +363,14 @@ export const usePracticesFiltersOptions = (): Record<
         : [],
     [landUseTypeData],
   );
+
   const mainIntervention = useMemo(
     () =>
-      landUseTypeData?.data
+      practiceInterventionData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          landUseTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+          practiceInterventionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
         : [],
-    [landUseTypeData],
+    [practiceInterventionData],
   );
   const subIntervention = useMemo(
     () =>

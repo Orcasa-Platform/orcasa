@@ -73,6 +73,7 @@ export default {
           'Country',
           'Organization-type',
           'Organization-theme',
+          'Practice-intervention',
           'Project-type',
           'Region',
           'Area-of-intervention',
