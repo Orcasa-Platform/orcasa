@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import _ from "lodash";
 
-export default class PracticeDecorator<T extends { source_id: string }, D extends T> {
+export default class WocatPracticeDecorator {
 
   private async loadDecoratorJson(jsonURL: string): Promise<Record<string, any>> {
     strapi.log.info(`Practices import - getting decorator JSON from ${jsonURL}`);
@@ -25,15 +25,15 @@ export default class PracticeDecorator<T extends { source_id: string }, D extend
   }
 
 
-  async decoratePractices(practices: Array<T>): Promise<Array<D>> {
+  async decoratePractices(practices: Array<Record<string, any>>): Promise<Array<Record<string, any>>> {
     const decoratorJson = await this.loadDecoratorJson('https://gist.githubusercontent.com/tiagojsag/e77fade4ff5a59547508a59ae9257253/raw/7c908467154011c9dc8a773d5f4897f51ba7ee40/decorator.json');
 
-    return Promise.all(practices.map(async (practice: Record<string, any>) => {
+    return Promise.all(practices.map(async (practice: Record<string, any>): Promise<Record<string, any>> => {
       if (!decoratorJson[practice.source_id]) {
-        return (practice as D);
+        return practice;
       }
 
-      const decoratedPractice: Record<string, any> = { };
+      const decoratedPractice: Record<string, any> = {};
 
       if (decoratorJson[practice.source_id].land_use_prior) {
         const land_use_prior = (await strapi.entityService.findMany(
@@ -79,18 +79,18 @@ export default class PracticeDecorator<T extends { source_id: string }, D extend
         data: decoratedPractice,
       });
 
-      return decoratedPractice as D;
+      return decoratedPractice;
     }));
 
 
   }
 
-  async decorate(): Promise<Array<D>> {
+  async decorate(): Promise<Array<Record<string, any>>> {
     const practices: Array<Record<string, any>> = await strapi.entityService.findMany('api::practice.practice', {
       populate: ['country', 'land_use_prior', 'land_use_types', 'practice_intervention'],
     });
 
-    return this.decoratePractices(practices as T[]);
+    return this.decoratePractices(practices);
   }
 }
 

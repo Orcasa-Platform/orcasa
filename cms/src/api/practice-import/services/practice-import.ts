@@ -13,13 +13,13 @@ export type ConvertToPracticeResult = {
 
 export default factories.createCoreService('api::practice-import.practice-import', ({ strapi }) => ({
   async decorate(): Promise<Record<string, any>> {
-    const practiceDecorator: PracticeDecorator<WocatPractice, DecoratedWocatPractice> = new PracticeDecorator();
+    const practiceDecorator: PracticeDecorator = new PracticeDecorator();
     return await practiceDecorator.decorate();
   },
 
   async import(): Promise<Record<string, any>> {
     const wocatImporter: WocatConnector = new WocatConnector();
-    const practiceDecorator: PracticeDecorator<WocatPractice, DecoratedWocatPractice> = new PracticeDecorator();
+    const practiceDecorator: PracticeDecorator = new PracticeDecorator();
 
     const practiceImport = await strapi.entityService.create('api::practice-import.practice-import', {
       data: {
