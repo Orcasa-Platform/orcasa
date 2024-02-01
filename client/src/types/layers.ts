@@ -34,7 +34,7 @@ export type InteractionConfig = {
     values: {
       key: string;
       type?: 'string' | 'number';
-      label: string;
+      unit: string;
       format?: FormatProps;
     }[];
   }[];

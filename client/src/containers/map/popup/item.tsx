@@ -123,45 +123,46 @@ const PopupItem = ({ id }: PopupItemProps) => {
       map?.off('render', handleMapRender);
     };
   }, [map, handleMapRender]);
-
   return (
-    <div className="p-4">
-      <div className="space-y-3">
-        <h2 className="text-base font-semibold">{attributes.title}</h2>
-
-        <ContentLoader
-          data={data?.data}
-          isFetching={isFetching || (!rendered && !DATA_REF.current)}
-          isFetched={isFetched && (rendered || !!DATA_REF.current)}
-          isError={isError}
-          isPlaceholderData={isPlaceholderData}
-          skeletonClassName="h-20 w-[250px]"
-        >
-          <div>
-            <span className="font-semibold">Coordinates:</span> {popup?.lngLat.lng.toFixed(4)},{' '}
-            {popup?.lngLat.lat.toFixed(4)}
-          </div>
-          <dl className="space-y-2">
-            {click &&
-              !!featuresData &&
-              click.values.map((v) => {
+    <div className="space-y-3 pt-2 text-gray-700 first:pt-0">
+      <ContentLoader
+        data={data?.data}
+        isFetching={isFetching || (!rendered && !DATA_REF.current)}
+        isFetched={isFetched && (rendered || !!DATA_REF.current)}
+        isError={isError}
+        isPlaceholderData={isPlaceholderData}
+        skeletonClassName="h-20 w-[250px]"
+      >
+        <div>
+          At the Coordinates:{' '}
+          <span className="text-xs font-semibold">
+            {popup?.lngLat.lng.toFixed(4)}, {popup?.lngLat.lat.toFixed(4)}
+          </span>
+        </div>{' '}
+        the <span className="font-semibold">{attributes.title}</span>
+        <dl className="flex items-center space-x-1">
+          {click && !!featuresData && (
+            <>
+              <span>is </span>
+              {click.values.map((v) => {
                 return (
                   <div key={v.key}>
-                    <dt className="text-xs font-semibold uppercase">{v.label || v.key}:</dt>
-                    <dd className="text-sm">
+                    <dd className="text-xs font-semibold">
                       {format({
                         id: v.format?.id,
                         value: v.type === 'number' ? +featuresData[v.key] : featuresData[v.key],
                         options: v.format?.options,
-                      })}
+                      })}{' '}
+                      {v.unit}
                     </dd>
                   </div>
                 );
               })}
-            {click && !featuresData && <div className="text-xs">No data</div>}
-          </dl>
-        </ContentLoader>
-      </div>
+            </>
+          )}
+          {click && !featuresData && <div className="text-xs">has No data</div>}
+        </dl>
+      </ContentLoader>
     </div>
   );
 };
