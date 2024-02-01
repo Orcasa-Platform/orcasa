@@ -61,7 +61,9 @@ export default function FiltersSidebar() {
     const select = (
       <Select
         value={String(filters[type])}
-        onValueChange={(value) => setFilters({ ...filters, [type]: +value })}
+        onValueChange={(value) =>
+          setFilters({ ...filters, [type]: value === 'all' ? undefined : +value })
+        }
         disabled={disabled}
       >
         <SelectTrigger id={toKebabCase(type)} className="h-12 w-full">
@@ -73,6 +75,13 @@ export default function FiltersSidebar() {
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
+          <SelectItem
+            key="all"
+            value="all"
+            className="w-full border-b border-dashed border-gray-300"
+          >
+            All
+          </SelectItem>
           {practicesFiltersOptions[type].map(({ label, value }) => (
             <SelectItem key={value} value={String(value)} className="w-full">
               {label}
