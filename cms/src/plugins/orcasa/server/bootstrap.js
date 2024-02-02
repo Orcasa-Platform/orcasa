@@ -27,6 +27,12 @@ module.exports = async ({ strapi }) => {
       uid: 'organization.decline-changes',
       pluginName: 'orcasa',
     },
+    {
+      section: 'plugins',
+      displayName: 'Allow importing practices',
+      uid: 'practices.import',
+      pluginName: 'orcasa',
+    },
   ];
   await strapi.admin.services.permission.actionProvider.registerMany(actions);
 };

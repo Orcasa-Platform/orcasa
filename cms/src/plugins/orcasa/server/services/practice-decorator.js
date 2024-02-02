@@ -1,22 +1,22 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import _ from "lodash";
+const axios = require('axios');
+const _ = require('lodash');
 
-export default class WocatPracticeDecorator {
+module.exports = class WocatPracticeDecorator {
 
-  private async loadDecoratorJson(jsonURL: string): Promise<Record<string, any>> {
+  async loadDecoratorJson(jsonURL) {
     strapi.log.info(`Practices import - getting decorator JSON from ${jsonURL}`);
-    const decoratorJSONRequestConfig: AxiosRequestConfig = {
+    const decoratorJSONRequestConfig = {
       method: 'GET',
       url: jsonURL,
       headers: {
         'Accept': 'application/json'
       }
     };
-    const decoratorJSONResponse: AxiosResponse<Record<string, any>> = await axios(decoratorJSONRequestConfig);
+    const decoratorJSONResponse = await axios(decoratorJSONRequestConfig);
 
-    const decoratorMap: Record<string, Record<string, any>> = {}
+    const decoratorMap = {}
 
-    for (let decorator of (decoratorJSONResponse.data as Array<Record<string, any>>)) {
+    for (let decorator of decoratorJSONResponse.data) {
       decoratorMap[decorator.code] = _.omitBy(decorator, _.isNull);
       delete decoratorMap[decorator.code].code;
     }
@@ -25,36 +25,32 @@ export default class WocatPracticeDecorator {
   }
 
 
-  async decoratePractices(practices: Array<Record<string, any>>): Promise<Array<Record<string, any>>> {
+  async decoratePractices(practices) {
     const decoratorJson = await this.loadDecoratorJson('https://gist.githubusercontent.com/tiagojsag/e77fade4ff5a59547508a59ae9257253/raw/7c908467154011c9dc8a773d5f4897f51ba7ee40/decorator.json');
 
-    return Promise.all(practices.map(async (practice: Record<string, any>): Promise<Record<string, any>> => {
+    return Promise.all(practices.map(async (practice) => {
       if (!decoratorJson[practice.source_id]) {
         return practice;
       }
 
-      const decoratedPractice: Record<string, any> = {};
+      const decoratedPractice = {};
 
       if (decoratorJson[practice.source_id].land_use_prior) {
-        const land_use_prior = (await strapi.entityService.findMany(
+        decoratedPractice.land_use_prior = (await strapi.entityService.findMany(
           'api::land-use-type.land-use-type',
           {
             filters: { name: { $in: decoratorJson[practice.source_id].land_use_prior } },
           }
         ));
-
-        decoratedPractice.land_use_prior = land_use_prior;
       }
 
       if (decoratorJson[practice.source_id].land_use_types) {
-        const land_use_types = (await strapi.entityService.findMany(
+        decoratedPractice.land_use_types = (await strapi.entityService.findMany(
           'api::land-use-type.land-use-type',
           {
             filters: { name: { $in: decoratorJson[practice.source_id].land_use_types } },
           }
         ));
-
-        decoratedPractice.land_use_types = land_use_types;
       }
 
       if (decoratorJson[practice.source_id].intervention) {
@@ -85,8 +81,8 @@ export default class WocatPracticeDecorator {
 
   }
 
-  async decorate(): Promise<Array<Record<string, any>>> {
-    const practices: Array<Record<string, any>> = await strapi.entityService.findMany('api::practice.practice', {
+  async decorate() {
+    const practices = await strapi.entityService.findMany('api::practice.practice', {
       populate: ['country', 'land_use_prior', 'land_use_types', 'practice_intervention'],
     });
 

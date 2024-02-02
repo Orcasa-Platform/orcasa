@@ -17,7 +17,7 @@ const AcceptChangeButton = (props) => {
 
   const acceptChanges = async () => {
     try {
-      const res = await api.acceptChanges({ id: modifiedData.id });
+      const res = await api.acceptProjectChanges({ id: modifiedData.id });
       if (res) {
         history.push(`/content-manager/collection-types/api::project.project/${res.id}`);
         toggleNotification({

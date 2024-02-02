@@ -1,7 +1,9 @@
 'use strict';
 
-const adminRoutes = require('./admin');
+const practiceImportRoutes = require('./practice-import');
+const projectChangesRoutes = require('./project-changes');
 
 module.exports = {
-  admin: adminRoutes,
+  projectChangesRoutes,
+  practiceImportRoutes
 };

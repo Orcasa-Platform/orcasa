@@ -1,7 +1,13 @@
 'use strict';
 
-const myService = require('./my-service');
+const asyncService = require('./async-service');
+const practiceDecoratorService = require('./practice-decorator');
+const practiceImportService = require('./practice-import');
+const wocatConnectorService = require('./wocat-connector');
 
 module.exports = {
-  myService,
+  asyncService,
+  practiceDecoratorService,
+  practiceImportService,
+  wocatConnectorService
 };

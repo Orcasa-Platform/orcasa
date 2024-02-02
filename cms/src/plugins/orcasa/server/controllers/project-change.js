@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = ({ strapi }) => ({
   async acceptChange(ctx) {
     // ctx.body = 'todo';

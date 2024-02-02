@@ -1,11 +1,35 @@
 import { request } from '@strapi/helper-plugin';
 
 export const api = {
-  acceptChanges,
-  declineChanges,
+  acceptProjectChanges,
+  declineProjectChanges,
+  startPracticesImport,
+  startPracticesDecoration
 };
 
-async function acceptChanges({ id }) {
+async function startPracticesImport() {
+  const data = await request(`/orcasa/practice-import/import`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: {},
+  });
+  return data;
+}
+
+async function startPracticesDecoration() {
+  const data = await request(`/orcasa/practice-import/decorate`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: {},
+  });
+  return data;
+}
+
+async function acceptProjectChanges({ id }) {
   const data = await request(`/orcasa/project-changes/${id}/accept`, {
     headers: {
       'Content-Type': 'application/json',
@@ -16,9 +40,7 @@ async function acceptChanges({ id }) {
   return data;
 }
 
-
-async function declineChanges({ id }) {
-  console.log('declineChanges go brr', id);
+async function declineProjectChanges({ id }) {
   const data = await request(`/orcasa/project-changes/${id}/decline`, {
     headers: {
       'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ const DeclineChangeButton = ({ slug }) => {
 
   const declineChanges = async () => {
     try {
-      const res = await api.declineChanges({ id: modifiedData.id });
+      const res = await api.declineProjectChanges({ id: modifiedData.id });
       if (res.publication_status === 'declined') {
         history.replace(`/content-manager/collection-types/api::project-change.project-change`);
 

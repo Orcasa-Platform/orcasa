@@ -1,83 +1,9 @@
-import { get, isEmpty, range, reject } from "lodash";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { ConvertToPracticeResult } from "./practice-import";
-import AsyncService from "./async-service";
+const AsyncService = require('./async-service');
+const axios = require('axios');
+const { get, isEmpty, range, reject } = require('lodash');
 
-type Questionnaire = {
-  code: string;
-  title: string;
-  translations: Array<[string, string]>;
-  section_specifications: {
-    children: {
-      tech__2: {
-        children: {
-          tech__2__5: {
-            children: {
-              qg_location: {
-                children: {
-                  country: {
-                    value: Array<{ value: string }>;
-                  }
-                }
-              }
-            }
-          },
-          tech__2__2: {
-            children: {
-              tech_qg_2: {
-                children: {
-                  tech_description: {
-                    value: Array<{ value: string }>;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-export type WocatPractice = {
-  source_name: "WOCAT",
-  source_id: string,
-
-  title: string,
-  practice_url: string,
-
-  short_description: string,
-  detailed_description: string,
-  project_fund: string,
-  institution_funding: string,
-  country: string,
-  state_province: string,
-  further_location: string,
-  map_location: string,
-  implem_date: string,
-  publication_date: Date,
-  implem_decade: string,
-  main_purposes: string,
-  land_use_types: Array<string>,
-  land_use_has_changed: Array<string>,
-  has_changed: boolean,
-
-  land_use_prior: Array<string>,
-  degradation_assessed: Array<string>,
-  prevention_restoration: string,
-  agroclimatic_zone: string,
-
-  language: Array<string>,
-}
-
-export type DecoratedWocatPractice = WocatPractice & {
-  show: boolean,
-  intervention: string,
-  sub_intervention: Array<string>,
-}
-
-export default class WocatConnector extends AsyncService {
-  landUseMap: Record<string, string> = {
+module.exports = class WocatConnector extends AsyncService {
+  landUseMap = {
     'Cropland': 'Cropland',
     'Mixed (crops/ grazing/ trees), incl. agroforestry': 'Cropland',
     'Forest/ woodlands': 'Forestland',
@@ -90,7 +16,7 @@ export default class WocatConnector extends AsyncService {
     'No information': ''
   }
 
-  countryMap: Record<string, string> = {
+  countryMap = {
     'Bolivia, Plurinational State of': 'Bolivia',
     "Lao People's Democratic Republic": 'Laos',
     'Moldova, Republic of': 'Moldova',
@@ -101,7 +27,7 @@ export default class WocatConnector extends AsyncService {
     'Viet Nam': 'Vietnam'
   }
 
-  landUseTypesMap: Record<string, string> = {
+  landUseTypesMap = {
     'Grassland': 'Grassland',
     'Cropland': 'Cropland',
     'Forestland': 'Forest Land',
@@ -109,9 +35,9 @@ export default class WocatConnector extends AsyncService {
     'Other': 'Other Land',
   }
 
-  private async listQuestionnaires(page: number = 1): Promise<Record<string, any>> {
+  async listQuestionnaires(page = 1) {
     strapi.log.info(`Practices import - listing questionnaires on page ${page}`);
-    const questionnairesRequestConfig: AxiosRequestConfig = {
+    const questionnairesRequestConfig = {
       method: 'GET',
       baseURL: strapi.config.get('server.wocat.baseUrl'),
       url: `/questionnaires`,
@@ -121,15 +47,15 @@ export default class WocatConnector extends AsyncService {
         'Accept': 'application/json'
       }
     };
-    const questionnairesResponse: AxiosResponse<Record<string, any>> = await axios(questionnairesRequestConfig);
+    const questionnairesResponse = await axios(questionnairesRequestConfig);
 
     return questionnairesResponse.data;
   }
 
-  private getQuestionnaireDetails(questionnaires: Record<string, Questionnaire>) {
-    return async (questionnaireCode: string): Promise<Record<string, any>> => {
+  getQuestionnaireDetails(questionnaires) {
+    return async (questionnaireCode) => {
       strapi.log.info(`Practices import - getting questionnaire details for id ${questionnaireCode}`);
-      const questionnairesRequestConfig: AxiosRequestConfig = {
+      const questionnairesRequestConfig = {
         method: 'GET',
         baseURL: strapi.config.get('server.wocat.baseUrl'),
         url: `/questionnaires/${questionnaireCode}`,
@@ -138,7 +64,7 @@ export default class WocatConnector extends AsyncService {
           'Accept': 'application/json'
         }
       };
-      const questionnaireDetailResponse: AxiosResponse<Record<string, any>> = await axios(questionnairesRequestConfig);
+      const questionnaireDetailResponse = await axios(questionnairesRequestConfig);
 
       questionnaires[questionnaireCode] = { ...questionnaireDetailResponse.data, ...questionnaires[questionnaireCode] };
 
@@ -146,8 +72,8 @@ export default class WocatConnector extends AsyncService {
     }
   };
 
-  private getDegradationAssessed(questionnaire: Questionnaire): string[] {
-    const degradationAssessed: string[] = [];
+  getDegradationAssessed(questionnaire) {
+    const degradationAssessed = [];
 
     degradationAssessed.push(
       get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__7.children.tech_qg_28.children.degradation_erosion_water_sub.value[0].values')
@@ -180,7 +106,7 @@ export default class WocatConnector extends AsyncService {
     return reject(degradationAssessed, isEmpty);
   }
 
-  private mapWithDictionary(map: Record<string, any>, key: string): string {
+  mapWithDictionary(map, key) {
     if (key in map) {
       return map[key];
     } else {
@@ -188,30 +114,30 @@ export default class WocatConnector extends AsyncService {
     }
   }
 
-  private getCountry(questionnaire: Questionnaire): string {
+  getCountry(questionnaire) {
     return this.mapWithDictionary(
       this.countryMap,
       get(questionnaire, 'section_specifications.children.tech__2.children.tech__2__5.children.qg_location.children.country.value[0].value', null)
     );
   }
 
-  private getLandUseType(questionnaire: Questionnaire): string[] {
-    const landUseKeys: string[] = Object.keys(get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children'));
+  getLandUseType(questionnaire) {
+    const landUseKeys = Object.keys(get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children'));
 
     if (landUseKeys.length > 0) {
-      const lands: string[] = get(questionnaire, `section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children.${landUseKeys[0]}.value[0].values`, []);
+      const lands = get(questionnaire, `section_specifications.children.tech__3.children.tech__3__2.children.tech_qg_9.children.${landUseKeys[0]}.value[0].values`, []);
       return lands.map(l => this.mapWithDictionary(this.landUseTypesMap, l[0]));
     } else {
       return [];
     }
   }
 
-  private getLandUsePrior(questionnaire: Questionnaire): string[] {
-    const lands: string[] = get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__3__initial_landuse.children.tech_qg_239.children.tech_landuse_2018.value[0].values', []);
+  getLandUsePrior(questionnaire) {
+    const lands = get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__3__initial_landuse.children.tech_qg_239.children.tech_landuse_2018.value[0].values', []);
     return lands.map(l => this.mapWithDictionary(this.landUseMap, l[0]));
   }
 
-  private getImplementationDate(questionnaire: Questionnaire): string {
+  getImplementationDate(questionnaire) {
     const implementationDate = get(questionnaire, 'section_specifications.children.tech__2.children.tech__2__6.children.tech_qg_160.children.tech_implementation_year.value[0].value', null);
 
     if (Array.isArray(implementationDate)) {
@@ -225,7 +151,7 @@ export default class WocatConnector extends AsyncService {
     return implementationDate.toString();
   }
 
-  private getImplementationDecade(questionnaire: Questionnaire): string {
+  getImplementationDecade(questionnaire) {
     const implementationDecade = get(questionnaire, 'section_specifications.children.tech__2.children.tech__2__6.children.tech_qg_160.children.tech_implementation_decades.value[0].values[0]', null);
 
     if (Array.isArray(implementationDecade)) {
@@ -239,7 +165,7 @@ export default class WocatConnector extends AsyncService {
     return implementationDecade.toString();
   }
 
-  private getMainPurposes(questionnaire: Questionnaire): string {
+  getMainPurposes(questionnaire) {
     const mainPurposes = get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__1.children.tech_qg_6.children.tech_main_purpose.value[0].values', null);
 
     if (Array.isArray(mainPurposes)) {
@@ -253,28 +179,28 @@ export default class WocatConnector extends AsyncService {
     return mainPurposes.toString();
   }
 
-  async import(): Promise<Array<WocatPractice>> {
-    const questionnaires: Record<string, Questionnaire> = {};
+  async import() {
+    const questionnaires = {};
 
-    const questionnairesResponse: Record<string, any> = await this.listQuestionnaires();
+    const questionnairesResponse = await this.listQuestionnaires();
 
-    // const questionnairesCount: number = 2;
-    const questionnairesCount: number = Math.ceil(questionnairesResponse.count / questionnairesResponse.results.length);
+    // const questionnairesCount = 2;
+    const questionnairesCount = Math.ceil(questionnairesResponse.count / questionnairesResponse.results.length);
 
-    questionnairesResponse.results.forEach((result: Questionnaire) => {
+    questionnairesResponse.results.forEach((result) => {
       questionnaires[result.code] = result;
     });
 
     const listQuestionnairesResponses = await this.loadAll(range(2, questionnairesCount), this.listQuestionnaires, 15);
     listQuestionnairesResponses.forEach((questionnairesResponse) => {
-      questionnairesResponse.results.forEach((result: Questionnaire) => {
+      questionnairesResponse.results.forEach((result) => {
         questionnaires[result.code] = result;
       });
     });
 
     await this.loadAll(Object.keys(questionnaires), this.getQuestionnaireDetails(questionnaires), 15);
 
-    return Object.values(questionnaires).map((questionnaire: Questionnaire) => ({
+    return Object.values(questionnaires).map((questionnaire) => ({
       source_name: "WOCAT",
       source_id: questionnaire.code,
 
@@ -306,8 +232,8 @@ export default class WocatConnector extends AsyncService {
     }))
   }
 
-  async convertToPractice(wocatPractice: DecoratedWocatPractice): Promise<ConvertToPracticeResult> {
-    let practice: Record<string, any> = null
+  async convertToPractice(wocatPractice) {
+    let practice = null
     let country = null;
     let land_use_types = null;
     let land_use_prior = null;
@@ -449,7 +375,7 @@ export default class WocatConnector extends AsyncService {
     };
   }
 
-  async convertToPractices(wocatPractices: Array<DecoratedWocatPractice>): Promise<Array<ConvertToPracticeResult>> {
+  async convertToPractices(wocatPractices) {
     return this.loadAll(wocatPractices, this.convertToPractice, 15);
   }
 }

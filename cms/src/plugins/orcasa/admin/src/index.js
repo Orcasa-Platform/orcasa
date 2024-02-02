@@ -1,5 +1,6 @@
 import AcceptChangeButton from './components/AcceptChangeButton/acceptChangeButton';
 import DeclineChangeButton from './components/DeclineChangeButton/declineChangeButton';
+import ImportPracticesButton from './components/ImportPracticesButton/importPracticesButton';
 
 export default {
   register(app) {
@@ -13,6 +14,10 @@ export default {
     app.injectContentManagerComponent('editView', 'right-links', {
       name: `decline-changes`,
       Component: DeclineChangeButton,
+    });
+    app.injectContentManagerComponent('listView', 'actions', {
+      name: `import-practices`,
+      Component: ImportPracticesButton,
     });
   },
 };
