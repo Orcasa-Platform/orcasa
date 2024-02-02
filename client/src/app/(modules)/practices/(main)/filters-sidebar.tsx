@@ -95,8 +95,13 @@ export default function FiltersSidebar() {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger className="w-full">{select}</TooltipTrigger>
-          <TooltipContent variant="dark" align="start">
-            <p className="max-w-[268px] text-xs leading-normal">
+          <TooltipContent
+            sideOffset={20}
+            variant="dark"
+            align="start"
+            className="max-w-[var(--radix-tooltip-trigger-width)]"
+          >
+            <p className="text-xs leading-normal">
               You have to select a <span className="font-semibold">land use type</span> and a{' '}
               <span className="font-semibold">main intervention</span> first.
             </p>
