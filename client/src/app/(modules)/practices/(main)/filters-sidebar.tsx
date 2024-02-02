@@ -58,6 +58,9 @@ export default function FiltersSidebar() {
     placeholder: string;
     disabled?: boolean;
   }) => {
+    const selectedLabel = practicesFiltersOptions[type].find(
+      ({ value }) => value === filters[type],
+    )?.label;
     const select = (
       <Select
         value={String(filters[type])}
@@ -69,8 +72,7 @@ export default function FiltersSidebar() {
         <SelectTrigger id={toKebabCase(type)} className="h-12 w-full">
           <SelectValue>
             <span className="text-sm">
-              {practicesFiltersOptions[type].find(({ value }) => value === filters[type])?.label ||
-                placeholder}
+              {`${placeholder}${selectedLabel ? `: ${selectedLabel}` : ''}`}
             </span>
           </SelectValue>
         </SelectTrigger>
