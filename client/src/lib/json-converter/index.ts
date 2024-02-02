@@ -18,21 +18,32 @@ import {
 
 // import DecodeLayer only on client side
 // As is not a react-component we can't use next/dynamic
-const DecodeLayer = typeof window !== 'undefined' && import('@/components/map/layers/decode-layer');
+let DecodeLayer;
+export let JSON_CONFIGURATION: JSONConfiguration;
 
-export const JSON_CONFIGURATION = new JSONConfiguration({
-  React,
-  classes: Object.assign({}, { DecodeLayer }),
-  functions: FUNCTIONS,
-  enumerations: {},
-  reactComponents: {
-    LegendTypeBasic,
-    LegendTypeChoropleth,
-    LegendTypeGradient,
-    TreeCoverLossSettings,
-    SoilsRevealedSettings,
-  },
-});
+if (typeof window !== 'undefined') {
+  import('@/components/map/layers/decode-layer')
+    .then((module) => {
+      DecodeLayer = module.default;
+      // Move the JSON_CONFIGURATION inside the then() to ensure DecodeLayer is defined
+      JSON_CONFIGURATION = new JSONConfiguration({
+        React,
+        classes: Object.assign({}, { DecodeLayer }),
+        functions: FUNCTIONS,
+        enumerations: {},
+        reactComponents: {
+          LegendTypeBasic,
+          LegendTypeChoropleth,
+          LegendTypeGradient,
+          TreeCoverLossSettings,
+          SoilsRevealedSettings,
+        },
+      });
+    })
+    .catch((error) => {
+      console.error('Error loading DecodeLayer:', error);
+    });
+}
 
 /**
  * *`getParams`*
@@ -69,27 +80,36 @@ interface ParseConfigurationProps {
   config: unknown;
   params_config: unknown;
   settings: Record<string, unknown>;
+  // We need to import the JSONConfiguration as we can only load it without SSR, when DecodeLayer is defined
+  jsonConfiguration: JSONConfiguration;
 }
 export const parseConfig = <T>({
   config,
   params_config,
   settings,
+  jsonConfiguration,
 }: ParseConfigurationProps): T | null => {
   if (!config || !params_config) {
     return null;
   }
 
   const JSON_CONVERTER = new JSONConverter({
-    configuration: JSON_CONFIGURATION,
+    configuration: jsonConfiguration,
   });
 
   const pc = params_config as ParamsConfig;
   const params = getParams({ params_config: pc, settings });
   // Merge enumerations with config
+
+  if (!JSON_CONVERTER) {
+    return null;
+  }
+
   JSON_CONVERTER.mergeConfiguration({
     enumerations: {
       params,
     },
   });
+
   return JSON_CONVERTER.convert(config);
 };

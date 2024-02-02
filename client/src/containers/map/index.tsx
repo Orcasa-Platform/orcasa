@@ -14,7 +14,7 @@ import {
 } from 'react-map-gl/maplibre';
 import { usePreviousImmediate } from 'rooks';
 
-import { parseConfig } from '@/lib/json-converter';
+import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 import { getCroppedBounds } from '@/lib/utils/map';
 
 import { useLayersSettings } from '@/store';
@@ -196,6 +196,7 @@ export default function MapContainer() {
             config: interaction_config,
             params_config,
             settings: layerSettings || {},
+            jsonConfiguration: JSON_CONFIGURATION,
           });
 
           if (parsedInteractionConfig?.events) {

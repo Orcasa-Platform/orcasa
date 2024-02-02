@@ -4,7 +4,7 @@ import type { Feature } from 'geojson';
 import type { GeoJsonProperties } from 'geojson';
 import { useMap } from 'react-map-gl/maplibre';
 
-import { parseConfig } from '@/lib/json-converter';
+import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 import { format } from '@/lib/utils/formats';
 
 import { useLayersSettings } from '@/store';
@@ -42,6 +42,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
     config: interaction_config,
     params_config,
     settings: layerSettings || {},
+    jsonConfiguration: JSON_CONFIGURATION,
   });
 
   const click =
