@@ -17,12 +17,6 @@
       "unique": true,
       "required": true
     },
-    "projects": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::project.project",
-      "mappedBy": "sustainable_development_goal"
-    },
     "project_changes": {
       "type": "relation",
       "relation": "oneToMany",

@@ -109,21 +109,18 @@
     },
     "practice_intervention": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::practice-intervention.practice-intervention",
-      "inversedBy": "practices"
+      "relation": "oneToOne",
+      "target": "api::practice-intervention.practice-intervention"
     },
     "land_use_prior": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::land-use-type.land-use-type"
     },
-    "sub_intervention": {
-      "type": "customField",
-      "options": {
-        "separator": "semicolon"
-      },
-      "customField": "plugin::string-array.input"
+    "subinterventions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subintervention.subintervention"
     }
   }
 }

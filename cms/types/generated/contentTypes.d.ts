@@ -1314,7 +1314,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     practice_url: Attribute.Text;
     practice_intervention: Attribute.Relation<
       'api::practice.practice',
-      'manyToOne',
+      'oneToOne',
       'api::practice-intervention.practice-intervention'
     >;
     land_use_prior: Attribute.Relation<
@@ -1322,13 +1322,11 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       'oneToMany',
       'api::land-use-type.land-use-type'
     >;
-    sub_intervention: Attribute.Text &
-      Attribute.CustomField<
-        'plugin::string-array.input',
-        {
-          separator: 'semicolon';
-        }
-      >;
+    subinterventions: Attribute.Relation<
+      'api::practice.practice',
+      'oneToMany',
+      'api::subintervention.subintervention'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1393,11 +1391,6 @@ export interface ApiPracticeInterventionPracticeIntervention
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    practices: Attribute.Relation<
-      'api::practice-intervention.practice-intervention',
-      'oneToMany',
-      'api::practice.practice'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1480,9 +1473,9 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'oneToOne',
       'api::area-of-intervention.area-of-intervention'
     >;
-    sustainable_development_goal: Attribute.Relation<
+    sustainable_development_goals: Attribute.Relation<
       'api::project.project',
-      'manyToOne',
+      'oneToMany',
       'api::sustainable-dev-goal.sustainable-dev-goal'
     >;
     lead_partner: Attribute.Relation<
@@ -1726,6 +1719,38 @@ export interface ApiStaticPageStaticPage extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubinterventionSubintervention
+  extends Schema.CollectionType {
+  collectionName: 'subinterventions';
+  info: {
+    singularName: 'subintervention';
+    pluralName: 'subinterventions';
+    displayName: 'Subintervention';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subintervention.subintervention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subintervention.subintervention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSustainableDevGoalSustainableDevGoal
   extends Schema.CollectionType {
   collectionName: 'sustainable_dev_goals';
@@ -1740,11 +1765,6 @@ export interface ApiSustainableDevGoalSustainableDevGoal
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    projects: Attribute.Relation<
-      'api::sustainable-dev-goal.sustainable-dev-goal',
-      'oneToMany',
-      'api::project.project'
-    >;
     project_changes: Attribute.Relation<
       'api::sustainable-dev-goal.sustainable-dev-goal',
       'oneToMany',
@@ -1804,6 +1824,7 @@ declare module '@strapi/types' {
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;
       'api::static-page.static-page': ApiStaticPageStaticPage;
+      'api::subintervention.subintervention': ApiSubinterventionSubintervention;
       'api::sustainable-dev-goal.sustainable-dev-goal': ApiSustainableDevGoalSustainableDevGoal;
     }
   }

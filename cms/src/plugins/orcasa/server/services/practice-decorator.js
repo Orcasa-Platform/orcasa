@@ -28,6 +28,32 @@ module.exports = class WocatPracticeDecorator {
   async decoratePractices(practices) {
     const decoratorJson = await this.loadDecoratorJson('https://gist.githubusercontent.com/tiagojsag/e77fade4ff5a59547508a59ae9257253/raw/7c908467154011c9dc8a773d5f4897f51ba7ee40/decorator.json');
 
+    const subInterventionsMap = {};
+    (await strapi.entityService.findMany('api::subintervention.subintervention')).forEach((subIntervention) => {
+      subInterventionsMap[subIntervention.slug] = subIntervention;
+    });
+
+    const subInterventionsSet = new Set();
+    Object.values(decoratorJson).forEach((practice) => {
+      if (!practice.sub_intervention) {
+        return;
+      }
+      practice.sub_intervention.forEach((subinterventionSlug) => {
+        subInterventionsSet.add(subinterventionSlug.trim())
+      })
+    });
+
+    const newInterventions = _.difference(Array.from(subInterventionsSet), Object.keys(subInterventionsMap));
+
+    await Promise.all(newInterventions.map(async (subinterventionSlug) => {
+      subInterventionsMap[subinterventionSlug] = await strapi.entityService.create('api::subintervention.subintervention', {
+        data: {
+          slug: subinterventionSlug,
+          name: subinterventionSlug,
+        },
+      });
+    }));
+
     return Promise.all(practices.map(async (practice) => {
       if (!decoratorJson[practice.source_id]) {
         return practice;
@@ -65,8 +91,9 @@ module.exports = class WocatPracticeDecorator {
       }
 
       if (decoratorJson[practice.source_id].sub_intervention) {
-        decoratedPractice.sub_intervention = decoratorJson[practice.source_id].sub_intervention.join(';');
+        decoratedPractice.subintervention = decoratorJson[practice.source_id].sub_intervention.map(async (subinterventionSlug) => subInterventionsMap[subinterventionSlug.trim()]);
       }
+
       if ('show' in decoratorJson[practice.source_id]) {
         decoratedPractice.show = decoratorJson[practice.source_id].show;
       }
@@ -77,8 +104,6 @@ module.exports = class WocatPracticeDecorator {
 
       return decoratedPractice;
     }));
-
-
   }
 
   async decorate() {
