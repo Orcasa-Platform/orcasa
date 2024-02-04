@@ -591,7 +591,6 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
           "lead_partner",
           "partners",
           "funders"
@@ -623,7 +622,6 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
           "lead_partner",
           "partners",
           "funders"
@@ -657,7 +655,6 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
           "lead_partner",
           "partners",
           "funders"
@@ -713,8 +710,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []
@@ -725,8 +721,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": [
@@ -739,8 +734,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": [

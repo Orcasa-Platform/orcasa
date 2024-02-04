@@ -279,9 +279,9 @@
           "sortable": true
         }
       },
-      "sustainable_development_goal": {
+      "sustainable_development_goals": {
         "edit": {
-          "label": "Sustainable Development Goal",
+          "label": "sustainable_development_goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -289,9 +289,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Sustainable Development Goal",
-          "searchable": true,
-          "sortable": true
+          "label": "sustainable_development_goals",
+          "searchable": false,
+          "sortable": false
         }
       },
       "lead_partner": {
@@ -402,7 +402,8 @@
       "list": [
         "id",
         "name",
-        "start_date"
+        "start_date",
+        "sustainable_development_goals"
       ],
       "edit": [
         [
@@ -499,10 +500,6 @@
         ],
         [
           {
-            "name": "sustainable_development_goal",
-            "size": 6
-          },
-          {
             "name": "lead_partner",
             "size": 6
           }
@@ -514,6 +511,12 @@
           },
           {
             "name": "funders",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "sustainable_development_goals",
             "size": 6
           }
         ]

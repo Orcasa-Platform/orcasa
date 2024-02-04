@@ -374,18 +374,19 @@
           "sortable": false
         }
       },
-      "sub_intervention": {
+      "subinterventions": {
         "edit": {
-          "label": "Subintervention",
+          "label": "subinterventions",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "name"
         },
         "list": {
-          "label": "sub_intervention",
-          "searchable": true,
-          "sortable": true
+          "label": "subinterventions",
+          "searchable": false,
+          "sortable": false
         }
       },
       "createdAt": {
@@ -448,6 +449,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "source_name",
+        "title",
+        "detailed_description",
+        "project_fund"
+      ],
       "edit": [
         [
           {
@@ -575,16 +582,10 @@
             "size": 6
           },
           {
-            "name": "sub_intervention",
+            "name": "subinterventions",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "source_name",
-        "title",
-        "detailed_description",
-        "project_fund"
       ]
     }
   },

@@ -695,8 +695,7 @@
       "properties": {
         "fields": [
           "name",
-          "slug",
-          "practices"
+          "slug"
         ]
       },
       "conditions": []
@@ -715,8 +714,7 @@
       "properties": {
         "fields": [
           "name",
-          "slug",
-          "practices"
+          "slug"
         ]
       },
       "conditions": []
@@ -728,8 +726,7 @@
       "properties": {
         "fields": [
           "name",
-          "slug",
-          "practices"
+          "slug"
         ]
       },
       "conditions": []
@@ -765,7 +762,7 @@
           "practice_url",
           "practice_intervention",
           "land_use_prior",
-          "sub_intervention"
+          "subinterventions"
         ]
       },
       "conditions": []
@@ -808,7 +805,7 @@
           "practice_url",
           "practice_intervention",
           "land_use_prior",
-          "sub_intervention"
+          "subinterventions"
         ]
       },
       "conditions": []
@@ -844,7 +841,7 @@
           "practice_url",
           "practice_intervention",
           "land_use_prior",
-          "sub_intervention"
+          "subinterventions"
         ]
       },
       "conditions": []
@@ -1019,7 +1016,7 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
+          "sustainable_development_goals",
           "lead_partner",
           "partners",
           "funders"
@@ -1058,7 +1055,7 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
+          "sustainable_development_goals",
           "lead_partner",
           "partners",
           "funders"
@@ -1090,7 +1087,7 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
+          "sustainable_development_goals",
           "lead_partner",
           "partners",
           "funders"
@@ -1200,11 +1197,53 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
           "name",
-          "projects",
           "project_changes"
         ]
       },
@@ -1224,7 +1263,6 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
           "project_changes"
         ]
       },
@@ -1237,7 +1275,6 @@
       "properties": {
         "fields": [
           "name",
-          "projects",
           "project_changes"
         ]
       },
@@ -1624,6 +1661,13 @@
     },
     {
       "action": "plugin::orcasa.organization.decline-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.practices.import",
       "actionParameters": {},
       "subject": null,
       "properties": {},

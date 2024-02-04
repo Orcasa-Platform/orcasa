@@ -76,16 +76,10 @@
       "action": "api::page.page.findOne"
     },
     {
-      "action": "api::practice-import.practice-import.decorate"
-    },
-    {
       "action": "api::practice-import.practice-import.find"
     },
     {
       "action": "api::practice-import.practice-import.findOne"
-    },
-    {
-      "action": "api::practice-import.practice-import.import"
     },
     {
       "action": "api::practice-intervention.practice-intervention.find"
