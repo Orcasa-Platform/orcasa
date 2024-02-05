@@ -43,8 +43,7 @@ export const modules = [
   {
     name: 'Scientific Evidence',
     slug: 'scientific-evidence',
-    // NOTE: temporal URL
-    href: 'http://ns3192284.ip-5-39-73.eu/scientific_evidence/',
+    href: '/scientific-evidence',
     color: 'teal',
   },
   {
