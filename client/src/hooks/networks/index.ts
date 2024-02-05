@@ -102,6 +102,15 @@ export enum NetworkProjectStatusFilter {
   NotStarted,
 }
 
+const ACCEPTED_STATUS_FILTER = {
+  $or: [
+    {
+      publication_status: { $eq: 'accepted' },
+    },
+    { publication_status: { $null: true } },
+  ],
+};
+
 const getQueryFilters = (filters: NetworkFilters) => {
   const generalFilters =
     typeof filters.search !== 'undefined' && filters.search.length > 0
@@ -323,10 +332,10 @@ const getQueryFilters = (filters: NetworkFilters) => {
 
   return {
     organization: {
-      $and: [...generalFilters, ...organizationFilters],
+      $and: [...generalFilters, ...organizationFilters, ACCEPTED_STATUS_FILTER],
     },
     project: {
-      $and: [...generalFilters, ...projectFilters],
+      $and: [...generalFilters, ...projectFilters, ACCEPTED_STATUS_FILTER],
     },
   };
 };
