@@ -28,25 +28,3 @@ async function startPracticesDecoration() {
   });
   return data;
 }
-
-async function acceptProjectChanges({ id }) {
-  const data = await request(`/orcasa/project-changes/${id}/accept`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-    body: {},
-  });
-  return data;
-}
-
-async function declineProjectChanges({ id }) {
-  const data = await request(`/orcasa/project-changes/${id}/decline`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-    body: {},
-  });
-  return data;
-}

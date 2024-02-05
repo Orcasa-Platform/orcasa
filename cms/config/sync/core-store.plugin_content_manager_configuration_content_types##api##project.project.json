@@ -339,6 +339,20 @@
           "sortable": false
         }
       },
+      "publication_status": {
+        "edit": {
+          "label": "publication_status",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "publication_status",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -403,7 +417,8 @@
         "id",
         "name",
         "start_date",
-        "sustainable_development_goals"
+        "sustainable_development_goals",
+        "publication_status"
       ],
       "edit": [
         [
@@ -515,6 +530,10 @@
           }
         ],
         [
+          {
+            "name": "sustainable_development_goals",
+            "size": 6
+          },
           {
             "name": "sustainable_development_goals",
             "size": 6

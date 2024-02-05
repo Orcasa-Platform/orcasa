@@ -34,9 +34,9 @@
           "sortable": true
         }
       },
-      "project_changes": {
+      "projects": {
         "edit": {
-          "label": "project_changes",
+          "label": "Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -44,7 +44,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "project_changes",
+          "label": "projects",
           "searchable": false,
           "sortable": false
         }
@@ -119,12 +119,6 @@
         [
           {
             "name": "name",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "project_changes",
             "size": 6
           }
         ]

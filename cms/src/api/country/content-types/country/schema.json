@@ -59,12 +59,6 @@
       "relation": "oneToMany",
       "target": "api::practice.practice",
       "mappedBy": "country"
-    },
-    "project_changes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project-change.project-change",
-      "inversedBy": "country_of_interventions"
     }
   }
 }

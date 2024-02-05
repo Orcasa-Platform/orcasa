@@ -17,10 +17,10 @@
       "unique": true,
       "required": true
     },
-    "project_changes": {
+    "projects": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::project-change.project-change",
+      "target": "api::project.project",
       "mappedBy": "sustainable_development_goal"
     }
   }
