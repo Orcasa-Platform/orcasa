@@ -1,12 +1,21 @@
-# Unreleased
-
 # v2
 
-CMS Breaking changes: A new “Page” has to be created on Strapi to configure the map of the Practices module
-
-- [Network] Ability to upload new projects
+- Enhancements on the homepage (animated stats, colors in the navigation menu)
 - Indicate the new platform is a beta version
-- Enhancements on the homepage (Animated stats, Colors in nav menu)
+- New customizable Legal details and Personal data protection pages
+- Add a favicon and template SEO metadata
+- [Geospatial Data] New land cover layers
+- [Geospatial Data] New Soils Revealed layers
+- [Geospatial Data] [Documentation](https://docs.google.com/document/d/1pEMf8sH-CIM-ZK_bT1U810vBfqtgFw9SiBOO1VINHUU/edit?usp=sharing) of the layers configuration in Strapi
+- [Scientific Evidence] New methodology dialog
+- [Scientific Evidence] Rename publications as primary studies
+- [Practices] Ability to see a list of practices extracted from WOCAT
+- [Practices] Ability to see the detail view of a practice
+- [Practices] Ability to see the practices on a map
+- [Practices] Ability to search practices by keywords
+- [Practices] Ability to filter the practices by country and land use type
+- [Network] Ability to upload new projects
+- [Network] Update the validation/required fields on the forms
 
 # v1
 
