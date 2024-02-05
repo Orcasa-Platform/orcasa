@@ -2,12 +2,9 @@ import { FormatProps } from '@/lib/utils/formats';
 
 import { Practice } from '@/types/generated/strapi.schemas';
 
-import type { FieldType } from './field';
+import { TypedPractice } from '../types';
 
-// Strapi doesn't allow the type to be an array, so we are temporarily asserting it here
-interface TypedPractice extends Omit<Practice, 'language'> {
-  language: string[] | undefined;
-}
+import type { FieldType } from './field';
 
 export const getPracticeFields = (practice: Practice): FieldType[] => {
   const {
