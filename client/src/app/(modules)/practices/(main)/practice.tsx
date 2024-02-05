@@ -32,7 +32,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
         <LanguageIcon className="h-6 w-6 min-w-min" />
         <div className="text-base uppercase text-slate-500">
           {/* TODO: Update this as it will be an iso array when the API is updated */}
-          {language?.sort((lang: string) => lang.length)[0]}
+          {language?.sort((a, b) => a.length - b.length)[0]}
         </div>
       </div>
       {source_name === 'WOCAT' && (
