@@ -28,6 +28,12 @@
       "action": "api::home-stat.home-stat.findOne"
     },
     {
+      "action": "api::land-use-type.land-use-type.find"
+    },
+    {
+      "action": "api::land-use-type.land-use-type.findOne"
+    },
+    {
       "action": "api::layer-group.layer-group.find"
     },
     {
@@ -68,6 +74,18 @@
     },
     {
       "action": "api::page.page.findOne"
+    },
+    {
+      "action": "api::practice-import.practice-import.find"
+    },
+    {
+      "action": "api::practice-import.practice-import.findOne"
+    },
+    {
+      "action": "api::practice-intervention.practice-intervention.find"
+    },
+    {
+      "action": "api::practice-intervention.practice-intervention.findOne"
     },
     {
       "action": "api::practice.practice.find"

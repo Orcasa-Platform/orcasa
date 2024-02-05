@@ -8,4 +8,8 @@ export default ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
+  wocat: {
+    baseUrl: env('WOCAT_BASEURL', 'https://qcat.wocat.net/en/api/v2/'),
+    token: env('WOCAT_TOKEN', null),
+  }
 });

@@ -1,0 +1,545 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::project-change.project-change",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "Name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "project_type": {
+        "edit": {
+          "label": "Project Type",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Project Type",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "start_date": {
+        "edit": {
+          "label": "Start Date",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Start Date",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "end_date": {
+        "edit": {
+          "label": "End Date",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "End Date",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "short_description": {
+        "edit": {
+          "label": "Short Description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Short Description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "Description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "country_of_coordination": {
+        "edit": {
+          "label": "Country of Coordination",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Country of Coordination",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "region_of_interventions": {
+        "edit": {
+          "label": "Regions of Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Regions of Intervention",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "country_of_interventions": {
+        "edit": {
+          "label": "Countries of Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Countries of Intervention",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "website": {
+        "edit": {
+          "label": "Website",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Website",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "project_coordinator_name": {
+        "edit": {
+          "label": "Project Coordinator Name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Project Coordinator Name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "project_coordinator_email": {
+        "edit": {
+          "label": "Project Coordinator Email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Project Coordinator Email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "second_project_coordinator_name": {
+        "edit": {
+          "label": "Second Project Coordinator Name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Second Project Coordinator Name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "second_project_coordinator_email": {
+        "edit": {
+          "label": "Second Project Coordinator Email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Second Project Coordinator Email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "main_area_of_intervention": {
+        "edit": {
+          "label": "Main Area of Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Main Area of Intervention",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "main_area_of_intervention_other": {
+        "edit": {
+          "label": "Main Area of Intervention - Other",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Main Area of Intervention - Other",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "secondary_area_of_intervention": {
+        "edit": {
+          "label": "Secondary Area of Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Secondary Area of Intervention",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "third_area_of_intervention": {
+        "edit": {
+          "label": "Third Area of Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Third Area of Intervention",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "sustainable_development_goal": {
+        "edit": {
+          "label": "Sustainable Development Goal",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Sustainable Development Goal",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lead_partner": {
+        "edit": {
+          "label": "Lead Partner",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Lead Partner",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "partners": {
+        "edit": {
+          "label": "Partners",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Partners",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "funders": {
+        "edit": {
+          "label": "Funders",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Funders",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "publication_status": {
+        "edit": {
+          "label": "Publication Status",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Publication Status",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "name",
+        "project_type",
+        "start_date"
+      ],
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 6
+          },
+          {
+            "name": "project_type",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "start_date",
+            "size": 4
+          },
+          {
+            "name": "end_date",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "short_description",
+            "size": 6
+          },
+          {
+            "name": "description",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "country_of_coordination",
+            "size": 6
+          },
+          {
+            "name": "region_of_interventions",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "country_of_interventions",
+            "size": 6
+          },
+          {
+            "name": "website",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "project_coordinator_name",
+            "size": 6
+          },
+          {
+            "name": "project_coordinator_email",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "second_project_coordinator_name",
+            "size": 6
+          },
+          {
+            "name": "second_project_coordinator_email",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "main_area_of_intervention",
+            "size": 6
+          },
+          {
+            "name": "main_area_of_intervention_other",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "secondary_area_of_intervention",
+            "size": 6
+          },
+          {
+            "name": "third_area_of_intervention",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "sustainable_development_goal",
+            "size": 6
+          },
+          {
+            "name": "lead_partner",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "partners",
+            "size": 6
+          },
+          {
+            "name": "funders",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "publication_status",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "api::project-change.project-change"
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

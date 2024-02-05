@@ -70,7 +70,7 @@ export default function Sidebar({
   return (
     <div
       className={cn({
-        'js-sidebar absolute left-[117px] top-0 z-20 flex h-full w-full flex-col bg-white transition-transform duration-500':
+        'js-sidebar absolute left-[117px] top-0 z-20 hidden h-full w-full flex-col bg-white transition-transform duration-500 lg:flex':
           true,
         [widthClassName]: true,
         'translate-x-0': open,

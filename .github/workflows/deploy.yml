@@ -20,9 +20,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v3
         id: qgis-changes
         with:
           filters: |
@@ -38,7 +38,7 @@ jobs:
 
       - name: Configure AWS credentials
         if: steps.qgis-changes.outputs.qgis == 'true'
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
@@ -47,9 +47,7 @@ jobs:
       - name: Login to Amazon ECR
         if: steps.qgis-changes.outputs.qgis == 'true'
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          mask-password: 'true'
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -73,9 +71,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v3
         id: cms-changes
         with:
           filters: |
@@ -100,7 +98,7 @@ jobs:
 
       - name: Configure AWS credentials
         if: steps.cms-changes.outputs.cms == 'true'
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
@@ -109,9 +107,7 @@ jobs:
       - name: Login to Amazon ECR
         if: steps.cms-changes.outputs.cms == 'true'
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          mask-password: 'true'
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Set up Docker Buildx
         if: steps.cms-changes.outputs.cms == 'true'
@@ -136,9 +132,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: dorny/paths-filter@v2
+      - uses: dorny/paths-filter@v3
         id: client-changes
         with:
           filters: |
@@ -163,7 +159,7 @@ jobs:
 
       - name: Configure AWS credentials
         if: steps.client-changes.outputs.client == 'true'
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
@@ -172,9 +168,7 @@ jobs:
       - name: Login to Amazon ECR
         if: steps.client-changes.outputs.client == 'true'
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          mask-password: 'true'
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Set up Docker Buildx
         if: steps.client-changes.outputs.client == 'true'
@@ -200,10 +194,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
@@ -211,9 +205,7 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          mask-password: 'true'
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Extract branch name
         shell: bash

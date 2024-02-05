@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subinterventions",
+  "info": {
+    "singularName": "subintervention",
+    "pluralName": "subinterventions",
+    "displayName": "Subintervention",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

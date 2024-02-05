@@ -2,12 +2,20 @@
 
 import Image from 'next/image';
 
+import { ChevronRight } from 'lucide-react';
+
+import { useMapSearchParams } from '@/store';
+
 import { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
+
+import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
+
+import { TypedPractice } from './types';
 
 import GlobeIcon from '@/styles/icons/globe.svg';
 import LanguageIcon from '@/styles/icons/language.svg';
 
-const Icons = ({ attributes }: { attributes: Practice | undefined }) => {
+const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   if (!attributes) return null;
 
   const { country, language, source_name } = attributes;
@@ -22,9 +30,11 @@ const Icons = ({ attributes }: { attributes: Practice | undefined }) => {
 
       <div className="flex gap-2">
         <LanguageIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base uppercase text-slate-500">{language}</div>
+        <div className="text-base uppercase text-slate-500">
+          {/* TODO: Update this as it will be an iso array when the API is updated */}
+          {language?.sort((a, b) => a.length - b.length)[0]}
+        </div>
       </div>
-
       {source_name === 'WOCAT' && (
         <Image
           src="/assets/logos/wocat.png"
@@ -40,18 +50,18 @@ const Icons = ({ attributes }: { attributes: Practice | undefined }) => {
 
 export default function Practice({ id, attributes }: PracticeListResponseDataItem) {
   const { title, short_description: shortDescription } = attributes || {};
-  // const searchParams = useMapSearchParams();
+  const searchParams = useMapSearchParams();
 
   return (
     <li key={id} className="mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50">
       <div className="flex w-full flex-col justify-between gap-6 px-12 py-10 text-base text-slate-500">
         <header className="flex flex-col gap-6">
-          <Icons attributes={attributes} />
+          <Icons attributes={attributes as TypedPractice} />
           <div className="font-serif text-2xl leading-10 text-gray-700">{title}</div>
           <p className="leading-7">{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
-          {/* <SlidingLinkButton
+          <SlidingLinkButton
             Icon={ChevronRight}
             position="right"
             href={`/practices/${id}?${searchParams.toString()}`}
@@ -63,7 +73,7 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
             scroll={false}
           >
             Learn more
-          </SlidingLinkButton> */}
+          </SlidingLinkButton>
         </div>
       </div>
     </li>

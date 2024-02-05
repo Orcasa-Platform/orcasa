@@ -1,4 +1,4 @@
-FROM node:20.10-bullseye-slim
+FROM node:20.10-bookworm-slim
 # Install dependencies
 RUN apt-get update -y && \
     apt-get upgrade -y && \

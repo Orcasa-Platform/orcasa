@@ -11,7 +11,7 @@ data "aws_availability_zones" "all_available_azs" {
 data "aws_ec2_instance_type_offerings" "azs_with_ec2_instance_type_offering" {
   filter {
     name   = "instance-type"
-    values = [var.ec2_instance_type]
+    values = [var.demo_ec2_instance_type, var.staging_ec2_instance_type]
   }
 
   filter {
@@ -153,6 +153,7 @@ locals {
     TRANSFER_TOKEN_SALT = random_password.staging_transfer_token_salt.result
     JWT_SECRET          = random_password.staging_jwt_secret.result
     CMS_URL             = "https://${var.staging_domain}/cms/"
+    WOCAT_TOKEN         = var.wocat_token
 
     # Database
     DATABASE_CLIENT                  = "postgres"
@@ -176,9 +177,10 @@ locals {
     NEXT_PUBLIC_ENVIRONMENT                         = "production"
     NEXT_PUBLIC_API_URL                             = "https://${var.staging_domain}/cms/api"
     NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
-    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "emilie.vrot@cirad.fr,mathieu.nogues@inrae.fr,carla.biscotti@vizzuality.com"
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr,carla.biscotti@vizzuality.com"
     NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
     NEXT_PUBLIC_HIDE_NETWORK_FORMS                  = "false"
+    NEXT_PUBLIC_ENABLE_RESPONSIVE                   = "true"
     LOG_LEVEL                                       = "info"
   }
   demo_cms_env = {
@@ -190,6 +192,7 @@ locals {
     TRANSFER_TOKEN_SALT = random_password.demo_transfer_token_salt.result
     JWT_SECRET          = random_password.demo_jwt_secret.result
     CMS_URL             = "https://${var.demo_domain}/cms/"
+    WOCAT_TOKEN         = var.wocat_token
 
     # Database
     DATABASE_CLIENT                  = "postgres"
@@ -213,9 +216,10 @@ locals {
     NEXT_PUBLIC_ENVIRONMENT                         = "production"
     NEXT_PUBLIC_API_URL                             = "https://${var.demo_domain}/cms/api"
     NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
-    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "emilie.vrot@cirad.fr,mathieu.nogues@inrae.fr"
+    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr"
     NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
     NEXT_PUBLIC_HIDE_NETWORK_FORMS                  = "true"
+    NEXT_PUBLIC_ENABLE_RESPONSIVE                   = "false"
     LOG_LEVEL                                       = "info"
   }
 }
@@ -272,37 +276,49 @@ resource "aws_iam_service_linked_role" "elasticbeanstalk" {
 }
 
 module "staging" {
-  source                                        = "./modules/env"
-  domain                                        = var.staging_domain
-  project                                       = var.project_name
-  environment                                   = "staging"
-  aws_region                                    = var.aws_region
-  vpc                                           = data.aws_vpc.default_vpc
-  subnet_ids                                    = local.subnets_with_ec2_instance_type_offering_ids
-  availability_zones                            = data.aws_availability_zones.azs_with_ec2_instance_type_offering.names
-  beanstalk_platform                            = var.beanstalk_platform
-  beanstalk_tier                                = var.beanstalk_tier
-  ec2_instance_type                             = var.ec2_instance_type
-  rds_engine_version                            = var.rds_engine_version
-  rds_instance_class                            = var.rds_instance_class
+  source             = "./modules/env"
+  domain             = var.staging_domain
+  project            = var.project_name
+  environment        = "staging"
+  aws_region         = var.aws_region
+  vpc                = data.aws_vpc.default_vpc
+  subnet_ids         = local.subnets_with_ec2_instance_type_offering_ids
+  availability_zones = data.aws_availability_zones.azs_with_ec2_instance_type_offering.names
+  beanstalk_platform = var.beanstalk_platform
+  beanstalk_tier     = var.beanstalk_tier
+
+  ec2_instance_type  = var.staging_ec2_instance_type
+
+  rds_backup_retention_period = var.staging_rds_backup_retention_period
+  rds_engine_version          = var.staging_rds_engine_version
+  rds_instance_class          = var.staging_rds_instance_class
+  rds_instance_count          = var.staging_rds_instance_count
+  rds_log_retention_period    = var.staging_rds_log_retention_period
+
   data_bucket_name                              = local.bucket_name
   elasticbeanstalk_iam_service_linked_role_name = aws_iam_service_linked_role.elasticbeanstalk.name
 }
 
 module "demo" {
-  source                                        = "./modules/env"
-  domain                                        = var.demo_domain
-  project                                       = var.project_name
-  environment                                   = "demo"
-  aws_region                                    = var.aws_region
-  vpc                                           = data.aws_vpc.default_vpc
-  subnet_ids                                    = local.subnets_with_ec2_instance_type_offering_ids
-  availability_zones                            = data.aws_availability_zones.azs_with_ec2_instance_type_offering.names
-  beanstalk_platform                            = var.beanstalk_platform
-  beanstalk_tier                                = var.beanstalk_tier
-  ec2_instance_type                             = var.ec2_instance_type
-  rds_engine_version                            = var.rds_engine_version
-  rds_instance_class                            = var.rds_instance_class
+  source             = "./modules/env"
+  domain             = var.demo_domain
+  project            = var.project_name
+  environment        = "demo"
+  aws_region         = var.aws_region
+  vpc                = data.aws_vpc.default_vpc
+  subnet_ids         = local.subnets_with_ec2_instance_type_offering_ids
+  availability_zones = data.aws_availability_zones.azs_with_ec2_instance_type_offering.names
+  beanstalk_platform = var.beanstalk_platform
+  beanstalk_tier     = var.beanstalk_tier
+
+  ec2_instance_type  = var.demo_ec2_instance_type
+
+  rds_backup_retention_period = var.demo_rds_backup_retention_period
+  rds_engine_version          = var.demo_rds_engine_version
+  rds_instance_class          = var.demo_rds_instance_class
+  rds_instance_count          = var.demo_rds_instance_count
+  rds_log_retention_period    = var.demo_rds_log_retention_period
+
   data_bucket_name                              = local.bucket_name
   elasticbeanstalk_iam_service_linked_role_name = aws_iam_service_linked_role.elasticbeanstalk.name
 }

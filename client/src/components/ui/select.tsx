@@ -16,6 +16,7 @@ export const itemVariants = cva(
       variant: {
         default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
         'network-organization': 'data-[highlighted]:bg-blue-50 data-[state=checked]:bg-blue-50',
+        practices: 'data-[highlighted]:bg-gray-700 data-[state=checked]:bg-gray-700',
         'network-project': 'data-[highlighted]:bg-peach-50 data-[state=checked]:bg-peach-50',
         datasets: 'data-[highlighted]:bg-purple-50 data-[state=checked]:bg-purple-50',
       },

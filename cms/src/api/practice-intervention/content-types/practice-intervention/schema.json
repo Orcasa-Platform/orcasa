@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "practice_interventions",
+  "info": {
+    "singularName": "practice-intervention",
+    "pluralName": "practice-interventions",
+    "displayName": "Practice Intervention",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

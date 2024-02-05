@@ -403,9 +403,12 @@ export interface PluginUploadFile extends Schema.CollectionType {
     folderPath: Attribute.String &
       Attribute.Required &
       Attribute.Private &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -441,9 +444,12 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     pathId: Attribute.Integer & Attribute.Required & Attribute.Unique;
     parent: Attribute.Relation<
       'plugin::upload.folder',
@@ -462,9 +468,12 @@ export interface PluginUploadFolder extends Schema.CollectionType {
     >;
     path: Attribute.String &
       Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -551,6 +560,7 @@ export interface PluginContentReleasesReleaseAction
       'morphToOne'
     >;
     contentType: Attribute.String & Attribute.Required;
+    locale: Attribute.String;
     release: Attribute.Relation<
       'plugin::content-releases.release-action',
       'manyToOne',
@@ -595,10 +605,13 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 50;
-      }>;
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
     code: Attribute.String & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -869,6 +882,11 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       'oneToMany',
       'api::practice.practice'
     >;
+    project_changes: Attribute.Relation<
+      'api::country.country',
+      'manyToMany',
+      'api::project-change.project-change'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -918,6 +936,35 @@ export interface ApiHomeStatHomeStat extends Schema.CollectionType {
   };
 }
 
+export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
+  collectionName: 'land_use_types';
+  info: {
+    singularName: 'land-use-type';
+    pluralName: 'land-use-types';
+    displayName: 'Land use type';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLayerLayer extends Schema.CollectionType {
   collectionName: 'layers';
   info: {
@@ -942,7 +989,7 @@ export interface ApiLayerLayer extends Schema.CollectionType {
     source_url: Attribute.String;
     description: Attribute.Text;
     license: Attribute.String;
-    citation: Attribute.String;
+    citation: Attribute.Text;
     cautions: Attribute.Text;
     related_publications: Attribute.Text;
     resource_contact_name: Attribute.String;
@@ -1076,6 +1123,21 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'accepted'>;
     user_email: Attribute.Email;
+    lead_project_changes: Attribute.Relation<
+      'api::organization.organization',
+      'oneToMany',
+      'api::project-change.project-change'
+    >;
+    partner_project_changes: Attribute.Relation<
+      'api::organization.organization',
+      'manyToMany',
+      'api::project-change.project-change'
+    >;
+    funded_project_changes: Attribute.Relation<
+      'api::organization.organization',
+      'manyToMany',
+      'api::project-change.project-change'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1205,11 +1267,65 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     source_id: Attribute.String & Attribute.Required;
     title: Attribute.Text;
     short_description: Attribute.Text;
-    language: Attribute.String;
     country: Attribute.Relation<
       'api::practice.practice',
       'manyToOne',
       'api::country.country'
+    >;
+    detailed_description: Attribute.Text;
+    project_fund: Attribute.Text;
+    institution_funding: Attribute.Text;
+    state_province: Attribute.Text;
+    further_location: Attribute.Text;
+    map_location: Attribute.Text;
+    implem_date: Attribute.Text;
+    publication_date: Attribute.Date;
+    implem_decade: Attribute.Text;
+    main_purposes: Attribute.Text;
+    has_changed: Attribute.Boolean;
+    land_use_has_changed: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    degradation_assessed: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    language: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    land_use_types: Attribute.Relation<
+      'api::practice.practice',
+      'oneToMany',
+      'api::land-use-type.land-use-type'
+    >;
+    sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    show: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    practice_url: Attribute.Text;
+    practice_intervention: Attribute.Relation<
+      'api::practice.practice',
+      'oneToOne',
+      'api::practice-intervention.practice-intervention'
+    >;
+    land_use_prior: Attribute.Relation<
+      'api::practice.practice',
+      'oneToMany',
+      'api::land-use-type.land-use-type'
+    >;
+    subinterventions: Attribute.Relation<
+      'api::practice.practice',
+      'oneToMany',
+      'api::subintervention.subintervention'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1221,6 +1337,70 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::practice.practice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPracticeImportPracticeImport extends Schema.CollectionType {
+  collectionName: 'practice_imports';
+  info: {
+    singularName: 'practice-import';
+    pluralName: 'practice-imports';
+    displayName: 'Practice Import';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    start: Attribute.DateTime & Attribute.Required;
+    finished: Attribute.DateTime;
+    status: Attribute.Enumeration<['started', 'finished', 'error']>;
+    output: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::practice-import.practice-import',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::practice-import.practice-import',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPracticeInterventionPracticeIntervention
+  extends Schema.CollectionType {
+  collectionName: 'practice_interventions';
+  info: {
+    singularName: 'practice-intervention';
+    pluralName: 'practice-interventions';
+    displayName: 'Practice Intervention';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::practice-intervention.practice-intervention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::practice-intervention.practice-intervention',
       'oneToOne',
       'admin::user'
     > &
@@ -1293,9 +1473,9 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'oneToOne',
       'api::area-of-intervention.area-of-intervention'
     >;
-    sustainable_development_goal: Attribute.Relation<
+    sustainable_development_goals: Attribute.Relation<
       'api::project.project',
-      'manyToOne',
+      'oneToMany',
       'api::sustainable-dev-goal.sustainable-dev-goal'
     >;
     lead_partner: Attribute.Relation<
@@ -1313,10 +1493,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::organization.organization'
     >;
-    publication_status: Attribute.Enumeration<
-      ['proposed', 'accepted', 'declined']
-    > &
-      Attribute.DefaultTo<'accepted'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1327,6 +1503,112 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectChangeProjectChange extends Schema.CollectionType {
+  collectionName: 'project_changes';
+  info: {
+    singularName: 'project-change';
+    pluralName: 'project-changes';
+    displayName: 'Project Change';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    project_type: Attribute.Relation<
+      'api::project-change.project-change',
+      'oneToOne',
+      'api::project-type.project-type'
+    >;
+    start_date: Attribute.Date & Attribute.Required;
+    end_date: Attribute.Date;
+    short_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 350;
+      }>;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 3000;
+      }>;
+    country_of_coordination: Attribute.Relation<
+      'api::project-change.project-change',
+      'oneToOne',
+      'api::country.country'
+    >;
+    region_of_interventions: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToMany',
+      'api::region.region'
+    >;
+    country_of_interventions: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToMany',
+      'api::country.country'
+    >;
+    website: Attribute.String & Attribute.Required;
+    project_coordinator_name: Attribute.String;
+    project_coordinator_email: Attribute.String;
+    second_project_coordinator_name: Attribute.String;
+    second_project_coordinator_email: Attribute.String;
+    main_area_of_intervention: Attribute.Relation<
+      'api::project-change.project-change',
+      'oneToOne',
+      'api::area-of-intervention.area-of-intervention'
+    >;
+    main_area_of_intervention_other: Attribute.String;
+    secondary_area_of_intervention: Attribute.Relation<
+      'api::project-change.project-change',
+      'oneToOne',
+      'api::area-of-intervention.area-of-intervention'
+    >;
+    third_area_of_intervention: Attribute.Relation<
+      'api::project-change.project-change',
+      'oneToOne',
+      'api::area-of-intervention.area-of-intervention'
+    >;
+    sustainable_development_goal: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToOne',
+      'api::sustainable-dev-goal.sustainable-dev-goal'
+    >;
+    lead_partner: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToOne',
+      'api::organization.organization'
+    >;
+    partners: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToMany',
+      'api::organization.organization'
+    >;
+    funders: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToMany',
+      'api::organization.organization'
+    >;
+    publication_status: Attribute.Enumeration<
+      ['proposed', 'accepted', 'declined']
+    > &
+      Attribute.DefaultTo<'accepted'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project-change.project-change',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project-change.project-change',
       'oneToOne',
       'admin::user'
     > &
@@ -1382,6 +1664,11 @@ export interface ApiRegionRegion extends Schema.CollectionType {
       'manyToMany',
       'api::project.project'
     >;
+    project_changes: Attribute.Relation<
+      'api::region.region',
+      'manyToMany',
+      'api::project-change.project-change'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1432,6 +1719,38 @@ export interface ApiStaticPageStaticPage extends Schema.CollectionType {
   };
 }
 
+export interface ApiSubinterventionSubintervention
+  extends Schema.CollectionType {
+  collectionName: 'subinterventions';
+  info: {
+    singularName: 'subintervention';
+    pluralName: 'subinterventions';
+    displayName: 'Subintervention';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subintervention.subintervention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subintervention.subintervention',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSustainableDevGoalSustainableDevGoal
   extends Schema.CollectionType {
   collectionName: 'sustainable_dev_goals';
@@ -1446,10 +1765,10 @@ export interface ApiSustainableDevGoalSustainableDevGoal
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    projects: Attribute.Relation<
+    project_changes: Attribute.Relation<
       'api::sustainable-dev-goal.sustainable-dev-goal',
       'oneToMany',
-      'api::project.project'
+      'api::project-change.project-change'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1490,6 +1809,7 @@ declare module '@strapi/types' {
       'api::continent.continent': ApiContinentContinent;
       'api::country.country': ApiCountryCountry;
       'api::home-stat.home-stat': ApiHomeStatHomeStat;
+      'api::land-use-type.land-use-type': ApiLandUseTypeLandUseType;
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
       'api::organization.organization': ApiOrganizationOrganization;
@@ -1497,10 +1817,14 @@ declare module '@strapi/types' {
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;
       'api::page.page': ApiPagePage;
       'api::practice.practice': ApiPracticePractice;
+      'api::practice-import.practice-import': ApiPracticeImportPracticeImport;
+      'api::practice-intervention.practice-intervention': ApiPracticeInterventionPracticeIntervention;
       'api::project.project': ApiProjectProject;
+      'api::project-change.project-change': ApiProjectChangeProjectChange;
       'api::project-type.project-type': ApiProjectTypeProjectType;
       'api::region.region': ApiRegionRegion;
       'api::static-page.static-page': ApiStaticPageStaticPage;
+      'api::subintervention.subintervention': ApiSubinterventionSubintervention;
       'api::sustainable-dev-goal.sustainable-dev-goal': ApiSustainableDevGoalSustainableDevGoal;
     }
   }

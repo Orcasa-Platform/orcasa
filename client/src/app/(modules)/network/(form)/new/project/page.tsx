@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 import { SubmitHandler, useForm, ControllerRenderProps } from 'react-hook-form';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -136,11 +137,11 @@ export default function ProjectForm() {
     name: {
       label: 'Name',
       required: true,
-      zod: z.string().nonempty('Field is required').max(255, {
-        message: 'Name is limited to 255 characters.',
+      zod: z.string().nonempty('Field is required').max(150, {
+        message: 'Name is limited to 150 characters.',
       }),
       type: 'text',
-      maxSize: 255,
+      maxSize: 150,
     },
     website: {
       label: 'Website',
@@ -150,7 +151,7 @@ export default function ProjectForm() {
         .max(255, {
           message: 'Website is limited to 255 characters.',
         })
-        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+$'), {
+        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
           message: 'Please, enter a valid URL.',
         }),
       type: 'text',
@@ -512,9 +513,15 @@ export default function ProjectForm() {
             </div>
             <div className="flex w-full gap-3 rounded-md bg-peach-50 p-4">
               <AlertCircle className="w-min-fit h-5 w-5 pt-0.5 text-peach-700" />
-              <div className="flex font-serif text-sm leading-6 text-gray-600">
-                If the organisation you are looking for is not on the list, please use the
-                organisation form to add it first.
+              <div className="font-serif text-sm leading-6 text-gray-600">
+                If the organisation you are looking for is not on the list, please use the{' '}
+                <Link
+                  href="/network/new/organisation"
+                  className="text-sm font-semibold text-peach-700"
+                >
+                  organisation form
+                </Link>{' '}
+                to add it first.
               </div>
             </div>
             {renderFields(['lead_partner', 'partners', 'funders'])}

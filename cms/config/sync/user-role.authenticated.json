@@ -40,6 +40,12 @@
       "action": "api::organization.organization.findOne"
     },
     {
+      "action": "api::practice-intervention.practice-intervention.find"
+    },
+    {
+      "action": "api::practice-intervention.practice-intervention.findOne"
+    },
+    {
       "action": "api::practice.practice.find"
     },
     {
@@ -62,6 +68,12 @@
     },
     {
       "action": "api::region.region.findOne"
+    },
+    {
+      "action": "api::static-page.static-page.find"
+    },
+    {
+      "action": "api::static-page.static-page.findOne"
     },
     {
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"

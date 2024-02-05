@@ -591,8 +591,10 @@
           "source_id",
           "title",
           "short_description",
+          "country",
           "language",
-          "country"
+          "sync",
+          "show"
         ]
       },
       "conditions": []
@@ -614,8 +616,10 @@
           "source_id",
           "title",
           "short_description",
+          "country",
           "language",
-          "country"
+          "sync",
+          "show"
         ]
       },
       "conditions": []
@@ -630,8 +634,10 @@
           "source_id",
           "title",
           "short_description",
+          "country",
           "language",
-          "country"
+          "sync",
+          "show"
         ]
       },
       "conditions": []
@@ -700,11 +706,9 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -740,11 +744,9 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -773,11 +775,9 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
-          "sustainable_development_goal",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -828,64 +828,10 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
-      "subject": "api::static-page.static-page",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::static-page.static-page",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "actionParameters": {},
-      "subject": "api::static-page.static-page",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::static-page.static-page",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::static-page.static-page",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "content"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []
@@ -903,8 +849,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []
@@ -915,8 +860,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []

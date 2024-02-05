@@ -53,7 +53,7 @@
       "type": "string"
     },
     "citation": {
-      "type": "string"
+      "type": "text"
     },
     "cautions": {
       "type": "text"

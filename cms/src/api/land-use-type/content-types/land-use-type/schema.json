@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "land_use_types",
+  "info": {
+    "singularName": "land-use-type",
+    "pluralName": "land-use-types",
+    "displayName": "Land use type"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

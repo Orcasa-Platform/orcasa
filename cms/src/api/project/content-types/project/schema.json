@@ -89,11 +89,10 @@
       "relation": "oneToOne",
       "target": "api::area-of-intervention.area-of-intervention"
     },
-    "sustainable_development_goal": {
+    "sustainable_development_goals": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::sustainable-dev-goal.sustainable-dev-goal",
-      "inversedBy": "projects"
+      "relation": "oneToMany",
+      "target": "api::sustainable-dev-goal.sustainable-dev-goal"
     },
     "lead_partner": {
       "type": "relation",
@@ -112,15 +111,6 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "inversedBy": "funded_projects"
-    },
-    "publication_status": {
-      "type": "enumeration",
-      "enum": [
-        "proposed",
-        "accepted",
-        "declined"
-      ],
-      "default": "accepted"
     }
   }
 }

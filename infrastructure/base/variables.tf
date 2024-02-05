@@ -19,12 +19,89 @@ variable "repo_name" {
   description = "Name of the Github repository where the code is hosted"
 }
 
+variable "wocat_token" {
+  type = string
+}
+
+#
+# Staging configuration
+#
 variable "staging_domain" {
   type = string
 }
 
+variable "staging_ec2_instance_type" {
+  type        = string
+  description = "The type of EC2 instance to launch on the staging environment"
+}
+
+variable "staging_rds_instance_class" {
+  type        = string
+  description = "Instance type of RDS PostgreSQL server on the staging environment"
+}
+
+variable "staging_rds_engine_version" {
+  type        = string
+  description = "RDS Database engine version on the staging environment"
+}
+
+variable "staging_rds_instance_count" {
+  type        = number
+  default     = 1
+  description = "Number of RDS PostgreSQL instances before autoscaling on the staging environment"
+}
+
+variable "staging_rds_log_retention_period" {
+  type        = number
+  default     = 1
+  description = "Time in days to keep log files in cloud watch on the staging environment"
+}
+
+variable "staging_rds_backup_retention_period" {
+  type        = number
+  default     = 7
+  description = "Time in days to keep db backups on the staging environment"
+}
+
+
+#
+# Demo
+#
 variable "demo_domain" {
   type = string
+}
+
+variable "demo_ec2_instance_type" {
+  type        = string
+  description = "The type of EC2 instance to launch on the demo environment"
+}
+
+variable "demo_rds_backup_retention_period" {
+  type        = number
+  default     = 7
+  description = "Time in days to keep db backups on the demo environment"
+}
+
+variable "demo_rds_engine_version" {
+  type        = string
+  description = "RDS Database engine version on the demo environment"
+}
+
+variable "demo_rds_instance_class" {
+  type        = string
+  description = "Instance type of RDS PostgreSQL server on the demo environment"
+}
+
+variable "demo_rds_instance_count" {
+  type        = number
+  default     = 1
+  description = "Number of RDS PostgreSQL instances before autoscaling on the demo environment"
+}
+
+variable "demo_rds_log_retention_period" {
+  type        = number
+  default     = 1
+  description = "Time in days to keep log files in cloud watch on the demo environment"
 }
 
 #
@@ -41,45 +118,6 @@ variable "beanstalk_tier" {
   type        = string
   description = "The Elastic Beanstalk tier to use. This needs to be WebServer"
   default     = "WebServer"
-}
-
-#
-# EC2 configuration
-#
-variable "ec2_instance_type" {
-  type        = string
-  description = "The type of EC2 instance to launch"
-}
-
-#
-# RDS configuration
-#
-variable "rds_instance_class" {
-  type        = string
-  description = "Instance type of Aurora PostgreSQL server"
-}
-
-variable "rds_engine_version" {
-  type        = string
-  description = "RDS Database engine version"
-}
-
-variable "rds_instance_count" {
-  type        = number
-  default     = 1
-  description = "Number of Aurora PostgreSQL instances before autoscaling"
-}
-
-variable "rds_log_retention_period" {
-  type        = number
-  default     = 1
-  description = "Time in days to keep log files in cloud watch"
-}
-
-variable "rds_backup_retention_period" {
-  type        = number
-  default     = 7
-  description = "Time in days to keep db backups"
 }
 
 variable "ga_tracking_id" {

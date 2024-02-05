@@ -1,0 +1,18 @@
+{
+  "name": "Impact4Soil - Horizon Europe Initiative",
+  "short_name": "Impact4Soil",
+  "description": "ORCaSa is a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/metadata/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/metadata/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

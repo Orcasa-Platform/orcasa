@@ -72,7 +72,7 @@
           "editable": true
         },
         "list": {
-          "label": "end_date",
+          "label": "End Date",
           "searchable": true,
           "sortable": true
         }
@@ -86,7 +86,7 @@
           "editable": true
         },
         "list": {
-          "label": "short_description",
+          "label": "Short Description",
           "searchable": true,
           "sortable": true
         }
@@ -100,7 +100,7 @@
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": true,
           "sortable": true
         }
@@ -115,7 +115,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country_of_coordination",
+          "label": "Country of Coordination",
           "searchable": true,
           "sortable": true
         }
@@ -130,7 +130,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "region_of_interventions",
+          "label": "Regions of Intervention",
           "searchable": false,
           "sortable": false
         }
@@ -145,7 +145,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country_of_interventions",
+          "label": "Countries of Intervention",
           "searchable": false,
           "sortable": false
         }
@@ -159,7 +159,7 @@
           "editable": true
         },
         "list": {
-          "label": "website",
+          "label": "Website",
           "searchable": true,
           "sortable": true
         }
@@ -173,7 +173,7 @@
           "editable": true
         },
         "list": {
-          "label": "project_coordinator_name",
+          "label": "Project Coordinator Name",
           "searchable": true,
           "sortable": true
         }
@@ -187,7 +187,7 @@
           "editable": true
         },
         "list": {
-          "label": "project_coordinator_email",
+          "label": "Project Coordinator Email",
           "searchable": true,
           "sortable": true
         }
@@ -201,7 +201,7 @@
           "editable": true
         },
         "list": {
-          "label": "second_project_coordinator_name",
+          "label": "Second Project Coordinator Name",
           "searchable": true,
           "sortable": true
         }
@@ -215,7 +215,7 @@
           "editable": true
         },
         "list": {
-          "label": "second_project_coordinator_email",
+          "label": "Second Project Coordinator Email",
           "searchable": true,
           "sortable": true
         }
@@ -230,7 +230,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "main_area_of_intervention",
+          "label": "Main Area of Intervention",
           "searchable": true,
           "sortable": true
         }
@@ -244,7 +244,7 @@
           "editable": true
         },
         "list": {
-          "label": "main_area_of_intervention_other",
+          "label": "Main Area of Intervention - Other",
           "searchable": true,
           "sortable": true
         }
@@ -259,7 +259,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "secondary_area_of_intervention",
+          "label": "Secondary Area of Intervention",
           "searchable": true,
           "sortable": true
         }
@@ -274,14 +274,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "third_area_of_intervention",
+          "label": "Third Area of Intervention",
           "searchable": true,
           "sortable": true
         }
       },
-      "sustainable_development_goal": {
+      "sustainable_development_goals": {
         "edit": {
-          "label": "Sustainable Development Goal",
+          "label": "sustainable_development_goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -289,9 +289,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "sustainable_development_goal",
-          "searchable": true,
-          "sortable": true
+          "label": "sustainable_development_goals",
+          "searchable": false,
+          "sortable": false
         }
       },
       "lead_partner": {
@@ -304,7 +304,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "lead_partner",
+          "label": "Lead Partner",
           "searchable": true,
           "sortable": true
         }
@@ -319,7 +319,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "partners",
+          "label": "Partners",
           "searchable": false,
           "sortable": false
         }
@@ -334,23 +334,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "funders",
+          "label": "Funders",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "publication_status": {
-        "edit": {
-          "label": "publication_status",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "publication_status",
-          "searchable": true,
-          "sortable": true
         }
       },
       "createdAt": {
@@ -417,7 +403,7 @@
         "id",
         "name",
         "start_date",
-        "publication_status"
+        "sustainable_development_goals"
       ],
       "edit": [
         [
@@ -514,10 +500,6 @@
         ],
         [
           {
-            "name": "sustainable_development_goal",
-            "size": 6
-          },
-          {
             "name": "lead_partner",
             "size": 6
           }
@@ -534,7 +516,7 @@
         ],
         [
           {
-            "name": "publication_status",
+            "name": "sustainable_development_goals",
             "size": 6
           }
         ]

@@ -5,86 +5,87 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::country.country",
       "properties": {
         "fields": [
@@ -99,21 +100,22 @@
           "projects",
           "lat",
           "long",
-          "practices"
+          "practices",
+          "project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::country.country",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::country.country",
       "properties": {
         "fields": [
@@ -128,14 +130,15 @@
           "projects",
           "lat",
           "long",
-          "practices"
+          "practices",
+          "project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::country.country",
       "properties": {
         "fields": [
@@ -150,14 +153,15 @@
           "projects",
           "lat",
           "long",
-          "practices"
+          "practices",
+          "project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::home-stat.home-stat",
       "properties": {
         "fields": [
@@ -166,25 +170,25 @@
           "class"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::home-stat.home-stat",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
       "subject": "api::home-stat.home-stat",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::home-stat.home-stat",
       "properties": {
         "fields": [
@@ -193,11 +197,11 @@
           "class"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::home-stat.home-stat",
       "properties": {
         "fields": [
@@ -206,53 +210,51 @@
           "class"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::layer-group.layer-group",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
       "properties": {
         "fields": [
-          "title",
-          "layers",
-          "order",
-          "description"
+          "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::layer-group.layer-group",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::layer-group.layer-group",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::layer-group.layer-group",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
       "properties": {
         "fields": [
-          "title",
-          "layers",
-          "order",
-          "description"
+          "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::land-use-type.land-use-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::layer-group.layer-group",
       "properties": {
         "fields": [
@@ -262,11 +264,53 @@
           "description"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::layer-group.layer-group",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::layer-group.layer-group",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::layer-group.layer-group",
+      "properties": {
+        "fields": [
+          "title",
+          "layers",
+          "order",
+          "description"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::layer-group.layer-group",
+      "properties": {
+        "fields": [
+          "title",
+          "layers",
+          "order",
+          "description"
+        ]
+      },
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -291,25 +335,25 @@
           "ui_settings"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -334,11 +378,11 @@
           "ui_settings"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -363,91 +407,91 @@
           "ui_settings"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -464,21 +508,24 @@
           "partner_projects",
           "funded_projects",
           "publication_status",
-          "user_email"
+          "user_email",
+          "lead_project_changes",
+          "partner_project_changes",
+          "funded_project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -495,14 +542,17 @@
           "partner_projects",
           "funded_projects",
           "publication_status",
-          "user_email"
+          "user_email",
+          "lead_project_changes",
+          "partner_project_changes",
+          "funded_project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -519,14 +569,17 @@
           "partner_projects",
           "funded_projects",
           "publication_status",
-          "user_email"
+          "user_email",
+          "lead_project_changes",
+          "partner_project_changes",
+          "funded_project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
@@ -538,41 +591,25 @@
           "external_url"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::page.page",
-      "properties": {
-        "fields": [
-          "title",
-          "default_basemap",
-          "layer_groups",
-          "slug",
-          "color",
-          "external_url"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
@@ -584,50 +621,119 @@
           "external_url"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::practice.practice",
-      "properties": {
-        "fields": [
-          "source_name",
-          "source_id",
-          "title",
-          "short_description",
-          "language",
-          "country"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::practice.practice",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::practice.practice",
-      "properties": {
-        "fields": [
-          "source_name",
-          "source_id",
-          "title",
-          "short_description",
-          "language",
-          "country"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "default_basemap",
+          "layer_groups",
+          "slug",
+          "color",
+          "external_url"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::practice-intervention.practice-intervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::practice-intervention.practice-intervention",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::practice-intervention.practice-intervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice-intervention.practice-intervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -635,56 +741,115 @@
           "source_id",
           "title",
           "short_description",
+          "country",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
           "language",
-          "country"
+          "land_use_types",
+          "sync",
+          "show",
+          "practice_url",
+          "practice_intervention",
+          "land_use_prior",
+          "subinterventions"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::project-type.project-type",
-      "properties": {
-        "fields": [
-          "name"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::project-type.project-type",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::project-type.project-type",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
       "properties": {
         "fields": [
-          "name"
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "country",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
+          "language",
+          "land_use_types",
+          "sync",
+          "show",
+          "practice_url",
+          "practice_intervention",
+          "land_use_prior",
+          "subinterventions"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::project-type.project-type",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
       "properties": {
         "fields": [
-          "name"
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "country",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
+          "language",
+          "land_use_types",
+          "sync",
+          "show",
+          "practice_url",
+          "practice_intervention",
+          "land_use_prior",
+          "subinterventions"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::project.project",
+      "actionParameters": {},
+      "subject": "api::project-change.project-change",
       "properties": {
         "fields": [
           "name",
@@ -712,19 +877,19 @@
           "publication_status"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::project.project",
+      "actionParameters": {},
+      "subject": "api::project-change.project-change",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::project.project",
+      "actionParameters": {},
+      "subject": "api::project-change.project-change",
       "properties": {
         "fields": [
           "name",
@@ -752,12 +917,12 @@
           "publication_status"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::project.project",
+      "actionParameters": {},
+      "subject": "api::project-change.project-change",
       "properties": {
         "fields": [
           "name",
@@ -785,54 +950,200 @@
           "publication_status"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::region.region",
+      "actionParameters": {},
+      "subject": "api::project-type.project-type",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::region.region",
+      "actionParameters": {},
+      "subject": "api::project-type.project-type",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::region.region",
+      "actionParameters": {},
+      "subject": "api::project-type.project-type",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::project-type.project-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "name",
+          "project_type",
+          "start_date",
+          "end_date",
+          "short_description",
+          "description",
+          "country_of_coordination",
+          "region_of_interventions",
+          "country_of_interventions",
+          "website",
+          "project_coordinator_name",
+          "project_coordinator_email",
+          "second_project_coordinator_name",
+          "second_project_coordinator_email",
+          "main_area_of_intervention",
+          "main_area_of_intervention_other",
+          "secondary_area_of_intervention",
+          "third_area_of_intervention",
+          "sustainable_development_goals",
+          "lead_partner",
+          "partners",
+          "funders"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::project.project",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "name",
+          "project_type",
+          "start_date",
+          "end_date",
+          "short_description",
+          "description",
+          "country_of_coordination",
+          "region_of_interventions",
+          "country_of_interventions",
+          "website",
+          "project_coordinator_name",
+          "project_coordinator_email",
+          "second_project_coordinator_name",
+          "second_project_coordinator_email",
+          "main_area_of_intervention",
+          "main_area_of_intervention_other",
+          "secondary_area_of_intervention",
+          "third_area_of_intervention",
+          "sustainable_development_goals",
+          "lead_partner",
+          "partners",
+          "funders"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::project.project",
+      "properties": {
+        "fields": [
+          "name",
+          "project_type",
+          "start_date",
+          "end_date",
+          "short_description",
+          "description",
+          "country_of_coordination",
+          "region_of_interventions",
+          "country_of_interventions",
+          "website",
+          "project_coordinator_name",
+          "project_coordinator_email",
+          "second_project_coordinator_name",
+          "second_project_coordinator_email",
+          "main_area_of_intervention",
+          "main_area_of_intervention_other",
+          "secondary_area_of_intervention",
+          "third_area_of_intervention",
+          "sustainable_development_goals",
+          "lead_partner",
+          "partners",
+          "funders"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::region.region",
       "properties": {
         "fields": [
           "name",
-          "projects"
+          "projects",
+          "project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::region.region",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::region.region",
+      "properties": {
+        "fields": [
+          "name",
+          "projects",
+          "project_changes"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::region.region",
+      "properties": {
+        "fields": [
+          "name",
+          "projects",
+          "project_changes"
+        ]
+      },
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::static-page.static-page",
       "properties": {
         "fields": [
@@ -841,25 +1152,25 @@
           "content"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "api::static-page.static-page",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
       "subject": "api::static-page.static-page",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::static-page.static-page",
       "properties": {
         "fields": [
@@ -868,11 +1179,11 @@
           "content"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::static-page.static-page",
       "properties": {
         "fields": [
@@ -881,271 +1192,314 @@
           "content"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
       "properties": {
         "fields": [
           "name",
-          "projects"
+          "slug"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
       "properties": {
         "fields": [
           "name",
-          "projects"
+          "slug"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::subintervention.subintervention",
+      "properties": {
+        "fields": [
+          "name",
+          "slug"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
           "name",
-          "projects"
+          "project_changes"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "properties": {
+        "fields": [
+          "name",
+          "project_changes"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "properties": {
+        "fields": [
+          "name",
+          "project_changes"
+        ]
+      },
+      "conditions": []
     },
     {
       "action": "admin::api-tokens.access",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::api-tokens.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::api-tokens.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::api-tokens.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::api-tokens.regenerate",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::api-tokens.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::marketplace.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::project-settings.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::project-settings.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::roles.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::roles.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::roles.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::roles.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::transfer.tokens.access",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::transfer.tokens.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::transfer.tokens.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::transfer.tokens.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::transfer.tokens.regenerate",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::transfer.tokens.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::users.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::users.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::users.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::users.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::webhooks.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::webhooks.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::webhooks.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "admin::webhooks.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::config-sync.menu-link",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::config-sync.settings.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.collection-types.configure-view",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.components.configure-layout",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "plugin::users-permissions.user",
       "properties": {
         "fields": [
@@ -1160,18 +1514,18 @@
           "role"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
       "subject": "plugin::users-permissions.user",
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "plugin::users-permissions.user",
       "properties": {
         "fields": [
@@ -1186,11 +1540,11 @@
           "role"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "plugin::users-permissions.user",
       "properties": {
         "fields": [
@@ -1205,218 +1559,252 @@
           "role"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.single-types.configure-view",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-type-builder.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::documentation.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::documentation.settings.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::documentation.settings.regenerate",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::documentation.settings.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::email.settings.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::i18n.locale.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::i18n.locale.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::i18n.locale.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::i18n.locale.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::import-export-entries.export",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::import-export-entries.import",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.organization.accept-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.organization.decline-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.practices.import",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.project.accept-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::orcasa.project.decline-changes",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.copy-link",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.download",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.configure-view",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.settings.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.advanced-settings.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.advanced-settings.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.email-templates.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.email-templates.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.providers.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.providers.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.roles.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.roles.delete",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.roles.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::users-permissions.roles.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     }
   ]
 }
