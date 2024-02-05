@@ -26,7 +26,7 @@ export const getProjectFields = (project: Project) => {
     secondary_area_of_intervention: secondaryAreaOfIntervention,
     third_area_of_intervention: thirdAreaOfIntervention,
     main_area_of_intervention_other: mainAreaOfInterventionOther,
-    sustainable_development_goal: sustainableDevelopmentGoal,
+    sustainable_development_goals: sustainableDevelopmentGoals,
   } = project;
 
   const fields = [];
@@ -119,10 +119,10 @@ export const getProjectFields = (project: Project) => {
     });
   }
 
-  if (hasData(sustainableDevelopmentGoal)) {
+  if (hasData(sustainableDevelopmentGoals) && sustainableDevelopmentGoals?.data?.length) {
     fields.push({
-      label: 'Sustainable Development Goal',
-      value: sustainableDevelopmentGoal?.data?.attributes?.name,
+      label: 'Sustainable Development Goals',
+      value: sustainableDevelopmentGoals?.data?.map((sdg) => sdg.attributes?.name).join(', '),
     });
   }
 
