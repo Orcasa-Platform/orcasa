@@ -2,6 +2,8 @@ import { FormatProps } from '@/lib/utils/formats';
 
 import { Practice } from '@/types/generated/strapi.schemas';
 
+import { TypedPractice } from '../types';
+
 import type { FieldType } from './field';
 
 export const getPracticeFields = (practice: Practice): FieldType[] => {
@@ -12,7 +14,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
     publication_date: publicationDate,
     project_fund: projectName,
     institution_funding: institutionName,
-  } = practice;
+  } = practice as TypedPractice;
 
   const fields = [];
 
@@ -25,7 +27,8 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (language) {
-    fields.push({ label: 'Language', value: language });
+    //  TODO: Update this as it will be an iso array when the API is updated
+    fields.push({ label: 'Language', value: language?.sort((a, b) => a.length - b.length)[0] });
   }
 
   if (source && source.length > 0) {
