@@ -10,7 +10,8 @@ import { Button } from '@/components/ui/button';
 const PopupContainer = () => {
   const [popup, setPopup] = usePopup();
   const [layersInteractive] = useLayersInteractive();
-  const lys = [...layersInteractive].reverse();
+  const lastLayerInteractiveId =
+    layersInteractive?.length && layersInteractive[layersInteractive.length - 1];
 
   if (!popup) return null;
 
@@ -24,7 +25,7 @@ const PopupContainer = () => {
       maxWidth="360px"
       onClose={() => setPopup(null)}
     >
-      <div className="p-6 pr-12">
+      <div className="p-6 pr-[60px]">
         <Button
           size="icon"
           onClick={() => setPopup(null)}
@@ -34,9 +35,13 @@ const PopupContainer = () => {
           <span className="sr-only">Close</span>
         </Button>
         <div className="space-y-2 divide-y divide-dashed divide-gray-300">
-          {lys.map((id) => (
-            <PopupItem key={id} id={id} />
-          ))}
+          {lastLayerInteractiveId && (
+            <PopupItem
+              key={lastLayerInteractiveId}
+              id={lastLayerInteractiveId}
+              setPopup={setPopup}
+            />
+          )}
         </div>
       </div>
     </Popup>

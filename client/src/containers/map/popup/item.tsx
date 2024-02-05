@@ -17,7 +17,9 @@ import ContentLoader from '@/components/ui/loader';
 
 export interface PopupItemProps {
   id: number;
+  setPopup: ReturnType<typeof usePopup>[1];
 }
+
 const PopupItem = ({ id }: PopupItemProps) => {
   const [rendered, setRendered] = useState(false);
   const DATA_REF = useRef<Feature['properties'] | undefined>();
@@ -82,6 +84,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
           '{bbox}': bbox,
         };
         const regexp = new RegExp(Object.keys(replaceStrings).join('|'), 'gi');
+
         const fetchURL = url?.replace(
           regexp,
           (matched) => replaceStrings[matched as keyof typeof replaceStrings],
@@ -125,6 +128,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
     };
   }, [map, handleMapRender]);
   const noData = <div className="text-xs">has No data</div>;
+
   return (
     <div className="space-y-3 pt-2 text-gray-700 first:pt-0">
       <ContentLoader
@@ -135,7 +139,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
         isPlaceholderData={isPlaceholderData}
         skeletonClassName="h-20 w-[250px]"
       >
-        {click && !!featuresData && click.values.some((v) => featuresData[v.key]) && (
+        {click && (
           <>
             <div>
               At the Coordinates:{' '}
@@ -167,7 +171,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
                   })}
                 </>
               )}
-              {click && !featuresData && noData}
+              {click && (!featuresData || Object.keys(featuresData).length === 0) && noData}
             </dl>
           </>
         )}
