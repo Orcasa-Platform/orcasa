@@ -46,20 +46,11 @@ const ImportPracticesButton = ({ slug }) => {
         message: { id: 'Practices decoration started. It may take a minute, please wait...' },
       });
       const res = await api.startPracticesDecoration();
-      // if (res.publication_status === 'declined') {
-      //   history.replace(`/content-manager/collection-types/api::project-change.project-change`);
-      console.log(res);
       history.replace(`/content-manager/collection-types/api::practice-import.practice-import`);
         toggleNotification({
           type: 'success',
           message: { id: 'Practices decorated successfully.' },
         });
-      // } else {
-      //   toggleNotification({
-      //     type: 'warning',
-      //     message: { id: 'Practices not decorated' },
-      //   });
-      // }
     } catch (err) {
       toggleNotification({
         type: 'warning',
@@ -69,12 +60,10 @@ const ImportPracticesButton = ({ slug }) => {
     }
   }
 
-  console.log('apiIDFromUrl', apiIDFromUrl);
   if (!allowedUID.includes(apiIDFromUrl)) {
     return null;
   }
 
-  // const isModified = !_.isEqual(modifiedData, initialData);
   return (
     <CheckPermissions permissions={permissions.importPractices} >
       <Button
@@ -86,15 +75,15 @@ const ImportPracticesButton = ({ slug }) => {
           defaultMessage: 'Start practices import',
         })}
       </Button >
-      <Button
-        startIcon={<Blocks />}
-        onClick={decoratePractices}
-      >
-        {formatMessage({
-          id: 'link-to-ctb',
-          defaultMessage: 'Decorate practices',
-        })}
-      </Button >
+      {/*<Button*/}
+      {/*  startIcon={<Blocks />}*/}
+      {/*  onClick={decoratePractices}*/}
+      {/*>*/}
+      {/*  {formatMessage({*/}
+      {/*    id: 'link-to-ctb',*/}
+      {/*    defaultMessage: 'Decorate practices',*/}
+      {/*  })}*/}
+      {/*</Button >*/}
     </CheckPermissions >
   );
 };
