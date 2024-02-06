@@ -449,12 +449,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "source_name",
-        "title",
-        "detailed_description",
-        "project_fund"
-      ],
       "edit": [
         [
           {
@@ -586,6 +580,10 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "source_name",
+        "title"
       ]
     }
   },
