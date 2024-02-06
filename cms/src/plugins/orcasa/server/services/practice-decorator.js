@@ -104,7 +104,7 @@ module.exports = class WocatPracticeDecorator {
       }
 
       if (decoratorJson[practice.source_id].sub_intervention) {
-        decoratedPractice.subintervention = decoratorJson[practice.source_id].sub_intervention.map(async (subinterventionSlug) => subInterventionsMap[subinterventionSlug.trim()]);
+        decoratedPractice.subinterventions = decoratorJson[practice.source_id].sub_intervention.map((subinterventionSlug) => subInterventionsMap[subinterventionSlug.trim()]);
       }
 
       if ('show' in decoratorJson[practice.source_id]) {
@@ -134,7 +134,7 @@ module.exports = class WocatPracticeDecorator {
 
   async decorate() {
     const practices = await strapi.entityService.findMany('api::practice.practice', {
-      populate: ['country', 'land_use_prior', 'land_use_types', 'practice_intervention'],
+      populate: ['country', 'land_use_prior', 'land_use_types', 'practice_intervention', 'subinterventions'],
     });
 
     return this.decoratePractices(practices, true);

@@ -184,6 +184,7 @@ module.exports = class WocatConnector extends AsyncService {
 
     const questionnairesResponse = await this.listQuestionnaires();
 
+    // const questionnairesCount = 4;
     const questionnairesCount = Math.ceil(questionnairesResponse.count / questionnairesResponse.results.length);
 
     questionnairesResponse.results.forEach((result) => {
@@ -237,6 +238,7 @@ module.exports = class WocatConnector extends AsyncService {
     let land_use_types = null;
     let land_use_prior = null;
     let practice_intervention = null;
+    let subinterventions = null;
 
     const practices = await strapi.entityService.findMany(
       'api::practice.practice',
@@ -309,6 +311,10 @@ module.exports = class WocatConnector extends AsyncService {
         practice_intervention = wocatPractice.practice_intervention
     }
 
+    if (wocatPractice.subinterventions) {
+      subinterventions = wocatPractice.subinterventions
+    }
+
     if (practices.length === 0) {
       strapi.log.info(`Wocat convertToPractice - creating practice from Wocat questionnaire id ${wocatPractice.source_id}`);
       practice = await strapi.entityService.create('api::practice.practice', {
@@ -339,6 +345,7 @@ module.exports = class WocatConnector extends AsyncService {
           land_use_types,
           practice_intervention,
           country,
+          subinterventions,
         },
         populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
       });
@@ -381,6 +388,7 @@ module.exports = class WocatConnector extends AsyncService {
             land_use_prior,
             practice_intervention,
             country,
+            subinterventions,
           },
           populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
         });
