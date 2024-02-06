@@ -417,8 +417,7 @@
         "id",
         "name",
         "start_date",
-        "sustainable_development_goals",
-        "publication_status"
+        "sustainable_development_goals"
       ],
       "edit": [
         [
@@ -536,6 +535,12 @@
           },
           {
             "name": "sustainable_development_goals",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "publication_status",
             "size": 6
           }
         ]

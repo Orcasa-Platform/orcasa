@@ -1,8 +1,6 @@
 import { request } from '@strapi/helper-plugin';
 
 export const api = {
-  acceptProjectChanges,
-  declineProjectChanges,
   startPracticesImport,
   startPracticesDecoration
 };

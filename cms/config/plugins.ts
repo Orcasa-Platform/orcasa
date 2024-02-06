@@ -2,6 +2,10 @@ module.exports = ({ env }) => ({
   "string-array": {
     enabled: true,
   },
+  "orcasa": {
+    enabled: true,
+    resolve: "./src/plugins/orcasa",
+  },
   email: {
     config: {
       provider: 'nodemailer',
