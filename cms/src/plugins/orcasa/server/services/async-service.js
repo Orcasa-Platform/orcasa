@@ -7,7 +7,7 @@ module.exports = class AsyncService {
   }
 
   * arrayGenerator(elementList) {
-    for (let indexr = 0; index < elementList.length; index++) {
+    for (let index = 0; index < elementList.length; index++) {
       const currentValue = elementList[index]
       yield [currentValue, index]
     }
