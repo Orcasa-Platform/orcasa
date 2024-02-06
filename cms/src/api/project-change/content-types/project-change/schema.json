@@ -121,6 +121,24 @@
         "declined"
       ],
       "default": "accepted"
+    },
+    "lead_partner_changes": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization-change.organization-change",
+      "inversedBy": "lead_project_changes"
+    },
+    "partners_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization-change.organization-change",
+      "mappedBy": "partner_project_changes"
+    },
+    "funders_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization-change.organization-change",
+      "mappedBy": "funded_project_changes"
     }
   }
 }

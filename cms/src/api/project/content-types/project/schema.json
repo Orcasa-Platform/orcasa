@@ -112,6 +112,24 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "inversedBy": "funded_projects"
+    },
+    "lead_partner_change": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization-change.organization-change",
+      "inversedBy": "lead_projects"
+    },
+    "partners_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization-change.organization-change",
+      "mappedBy": "partner_projects"
+    },
+    "funders_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization-change.organization-change",
+      "mappedBy": "funded_projects"
     }
   }
 }

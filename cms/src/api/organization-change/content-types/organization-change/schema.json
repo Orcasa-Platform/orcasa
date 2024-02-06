@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organization_changes",
+  "info": {
+    "singularName": "organization-change",
+    "pluralName": "organization-changes",
+    "displayName": "Organization Change"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "organization_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization-type.organization-type"
+    },
+    "organization_type_other": {
+      "type": "string"
+    },
+    "main_organization_theme": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization-theme.organization-theme"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "country": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::country.country"
+    },
+    "url": {
+      "type": "string"
+    },
+    "lead_projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "lead_partner_change"
+    },
+    "partner_projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "partners_changes"
+    },
+    "funded_projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "funders_changes"
+    },
+    "publication_status": {
+      "type": "enumeration",
+      "enum": [
+        "proposed",
+        "accepted",
+        "declined"
+      ]
+    },
+    "user_email": {
+      "type": "email"
+    },
+    "lead_project_changes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project-change.project-change",
+      "mappedBy": "lead_partner_changes"
+    },
+    "partner_project_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project-change.project-change",
+      "inversedBy": "partners_changes"
+    },
+    "funded_project_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project-change.project-change",
+      "inversedBy": "funders_changes"
+    }
+  }
+}

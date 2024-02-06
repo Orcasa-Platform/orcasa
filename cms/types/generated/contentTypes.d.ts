@@ -1155,6 +1155,90 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
   };
 }
 
+export interface ApiOrganizationChangeOrganizationChange
+  extends Schema.CollectionType {
+  collectionName: 'organization_changes';
+  info: {
+    singularName: 'organization-change';
+    pluralName: 'organization-changes';
+    displayName: 'Organization Change';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    organization_type: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToOne',
+      'api::organization-type.organization-type'
+    >;
+    organization_type_other: Attribute.String;
+    main_organization_theme: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToOne',
+      'api::organization-theme.organization-theme'
+    >;
+    short_description: Attribute.Text;
+    description: Attribute.Text;
+    country: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToOne',
+      'api::country.country'
+    >;
+    url: Attribute.String;
+    lead_projects: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToMany',
+      'api::project.project'
+    >;
+    partner_projects: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'manyToMany',
+      'api::project.project'
+    >;
+    funded_projects: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'manyToMany',
+      'api::project.project'
+    >;
+    publication_status: Attribute.Enumeration<
+      ['proposed', 'accepted', 'declined']
+    >;
+    user_email: Attribute.Email;
+    lead_project_changes: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToMany',
+      'api::project-change.project-change'
+    >;
+    partner_project_changes: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'manyToMany',
+      'api::project-change.project-change'
+    >;
+    funded_project_changes: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'manyToMany',
+      'api::project-change.project-change'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::organization-change.organization-change',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrganizationThemeOrganizationTheme
   extends Schema.CollectionType {
   collectionName: 'organization_themes';
@@ -1500,6 +1584,21 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::organization.organization'
     >;
+    lead_partner_change: Attribute.Relation<
+      'api::project.project',
+      'manyToOne',
+      'api::organization-change.organization-change'
+    >;
+    partners_changes: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::organization-change.organization-change'
+    >;
+    funders_changes: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::organization-change.organization-change'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1606,6 +1705,21 @@ export interface ApiProjectChangeProjectChange extends Schema.CollectionType {
       ['proposed', 'accepted', 'declined']
     > &
       Attribute.DefaultTo<'accepted'>;
+    lead_partner_changes: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToOne',
+      'api::organization-change.organization-change'
+    >;
+    partners_changes: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToMany',
+      'api::organization-change.organization-change'
+    >;
+    funders_changes: Attribute.Relation<
+      'api::project-change.project-change',
+      'manyToMany',
+      'api::organization-change.organization-change'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1793,6 +1907,7 @@ declare module '@strapi/types' {
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
       'api::organization.organization': ApiOrganizationOrganization;
+      'api::organization-change.organization-change': ApiOrganizationChangeOrganizationChange;
       'api::organization-theme.organization-theme': ApiOrganizationThemeOrganizationTheme;
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;
       'api::page.page': ApiPagePage;
