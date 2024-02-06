@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "projects",
+  "collectionName": "project_changes",
   "info": {
-    "singularName": "project",
-    "pluralName": "projects",
-    "displayName": "Project",
+    "singularName": "project-change",
+    "pluralName": "project-changes",
+    "displayName": "Project Change",
     "description": ""
   },
   "options": {
@@ -47,13 +47,13 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::region.region",
-      "mappedBy": "projects"
+      "mappedBy": "project_changes"
     },
     "country_of_interventions": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::country.country",
-      "mappedBy": "projects"
+      "mappedBy": "project_changes"
     },
     "website": {
       "type": "string",
@@ -89,46 +89,29 @@
       "relation": "oneToOne",
       "target": "api::area-of-intervention.area-of-intervention"
     },
-    "sustainable_development_goals": {
+    "sustainable_development_goal": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sustainable-dev-goal.sustainable-dev-goal"
+      "relation": "manyToOne",
+      "target": "api::sustainable-dev-goal.sustainable-dev-goal",
+      "inversedBy": "project_changes"
     },
     "lead_partner": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::organization.organization",
-      "inversedBy": "lead_projects"
+      "inversedBy": "lead_project_changes"
     },
     "partners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::organization.organization",
-      "inversedBy": "partner_projects"
+      "inversedBy": "partner_project_changes"
     },
     "funders": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::organization.organization",
-      "inversedBy": "funded_projects"
-    },
-    "lead_partner_change": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::organization-change.organization-change",
-      "inversedBy": "lead_projects"
-    },
-    "partners_changes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::organization-change.organization-change",
-      "mappedBy": "partner_projects"
-    },
-    "funders_changes": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::organization-change.organization-change",
-      "mappedBy": "funded_projects"
+      "inversedBy": "funded_project_changes"
     },
     "publication_status": {
       "type": "enumeration",
@@ -138,6 +121,24 @@
         "declined"
       ],
       "default": "accepted"
+    },
+    "lead_partner_changes": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::organization-change.organization-change",
+      "inversedBy": "lead_project_changes"
+    },
+    "partners_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization-change.organization-change",
+      "mappedBy": "partner_project_changes"
+    },
+    "funders_changes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization-change.organization-change",
+      "mappedBy": "funded_project_changes"
     }
   }
 }
