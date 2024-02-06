@@ -62,6 +62,7 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
 
   const networks = type === 'project' ? projects : organizations;
   const networkClass = type === 'project' ? 'text-peach-700' : 'text-blue-500';
+  const listDiscClass = type === 'project' ? 'marker:text-peach-700' : 'marker:text-blue-500';
 
   return (
     <Popup
@@ -73,7 +74,7 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
       maxWidth="332px"
       className="gap- z-50 flex h-[332px] w-[332px] flex-col p-0 font-serif"
     >
-      <div className="p-6 pr-12">
+      <div className="p-6 pr-4">
         <Button
           size="icon"
           onClick={() => setPopup(null)}
@@ -87,20 +88,21 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
           <span className="font-semibold">{countryName}</span>
           {parentType && parentName && networkDetailSentencePart(parentType, parentName, type)}
         </header>
-        <div className="flex max-h-[232px] flex-col items-start justify-start gap-2 overflow-y-auto">
+        <ul className="flex max-h-[232px] list-inside list-disc flex-col items-start justify-start gap-2 overflow-y-auto">
           {networks.map(({ id, name, type }) => (
-            <Link
-              key={id}
-              className={cn('text-left text-base font-semibold', networkClass)}
-              href={`/network/${type}/${id}?${searchParams.toString()}`}
-              onClick={() => {
-                setSidebarOpen(true);
-              }}
-            >
-              {name}
-            </Link>
+            <li key={id} className={listDiscClass}>
+              <Link
+                className={cn('text-left text-base font-semibold', networkClass)}
+                href={`/network/${type}/${id}?${searchParams.toString()}`}
+                onClick={() => {
+                  setSidebarOpen(true);
+                }}
+              >
+                {name}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </Popup>
   );
