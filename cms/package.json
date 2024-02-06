@@ -39,9 +39,9 @@
     "telemetryDisabled": true
   },
   "engines": {
-    "node": "~20.10",
+    "node": "~20.11",
     "npm": ">=6.0.0"
   },
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.0",
   "license": "MIT"
 }
