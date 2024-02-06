@@ -314,14 +314,19 @@ export default function ProjectForm() {
         value: area?.id?.toString(),
       })),
     },
-    sustainable_development_goal: {
-      label: 'Sustainable development goal',
+    sustainable_development_goals: {
+      label: 'Sustainable development goals',
       zod: z
-        .enum(
-          sustainableDevelopmentGoals?.map((type) => type?.id?.toString()) as [string, ...string[]],
+        .array(
+          z.enum(
+            sustainableDevelopmentGoals?.map((type) => type?.id?.toString()) as [
+              string,
+              ...string[],
+            ],
+          ),
         )
         .optional(),
-      type: 'select',
+      type: 'multiselect',
       options: sustainableDevelopmentGoals
         ?.sort((a, b) => {
           // Sort by the SDG number
@@ -568,7 +573,7 @@ export default function ProjectForm() {
                 : []),
               'secondary_area_of_intervention',
               'third_area_of_intervention',
-              'sustainable_development_goal',
+              'sustainable_development_goals',
             ])}
 
             <div className="space-y-6 border-t border-dashed border-gray-300">
