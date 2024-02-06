@@ -184,7 +184,6 @@ module.exports = class WocatConnector extends AsyncService {
 
     const questionnairesResponse = await this.listQuestionnaires();
 
-    // const questionnairesCount = 2;
     const questionnairesCount = Math.ceil(questionnairesResponse.count / questionnairesResponse.results.length);
 
     questionnairesResponse.results.forEach((result) => {
@@ -266,31 +265,48 @@ module.exports = class WocatConnector extends AsyncService {
       ))[0];
     }
 
-    if (wocatPractice.land_use_prior && wocatPractice.land_use_prior.length > 0 && wocatPractice.land_use_prior[0] instanceof String) {
-      land_use_prior = (await strapi.entityService.findMany(
-        'api::land-use-type.land-use-type',
-        {
-          filters: { name: { $in: wocatPractice.land_use_prior } },
-        }
-      ));
+    if (wocatPractice.land_use_prior) {
+      if (wocatPractice.land_use_prior.length > 0 && typeof wocatPractice.land_use_prior[0] === 'string') {
+        land_use_prior = (await strapi.entityService.findMany(
+          'api::land-use-type.land-use-type',
+          {
+            filters: { name: { $in: wocatPractice.land_use_prior } },
+          }
+        ));
+      } else {
+        land_use_prior = wocatPractice.land_use_prior
+      }
+
     }
 
-    if (wocatPractice.land_use_types && wocatPractice.land_use_types.length > 0 && wocatPractice.land_use_types[0] instanceof String) {
-      land_use_types = (await strapi.entityService.findMany(
-        'api::land-use-type.land-use-type',
-        {
-          filters: { name: { $in: wocatPractice.land_use_types } },
-        }
-      ));
+    if (wocatPractice.land_use_types) {
+      if (wocatPractice.land_use_types.length > 0 && typeof wocatPractice.land_use_types[0] === 'string') {
+        land_use_types = (await strapi.entityService.findMany(
+          'api::land-use-type.land-use-type',
+          {
+            filters: { name: { $in: wocatPractice.land_use_types } },
+          }
+        ));
+      } else {
+        land_use_types = wocatPractice.land_use_types
+      }
     }
 
-    if (wocatPractice.intervention && wocatPractice.intervention instanceof String) {
-      practice_intervention = (await strapi.entityService.findMany(
-        'api::practice-intervention.practice-intervention',
-        {
-          filters: { name: wocatPractice.intervention },
-        }
-      ));
+    if (wocatPractice.intervention) {
+      if (typeof wocatPractice.intervention === 'string') {
+        practice_intervention = (await strapi.entityService.findMany(
+          'api::practice-intervention.practice-intervention',
+          {
+            filters: { name: wocatPractice.intervention },
+          }
+        ));
+      } else {
+        practice_intervention = wocatPractice.intervention
+      }
+    }
+
+    if (wocatPractice.practice_intervention) {
+        practice_intervention = wocatPractice.practice_intervention
     }
 
     if (practices.length === 0) {
@@ -336,37 +352,42 @@ module.exports = class WocatConnector extends AsyncService {
       }
       strapi.log.info(`Wocat convertToPractice - updating practice ${practices[0].id} from Wocat questionnaire id ${wocatPractice.source_id}`);
 
-      practice = await strapi.entityService.update('api::practice.practice', practices[0].id, {
-        data: {
-          source_name: wocatPractice.source_name,
-          source_id: wocatPractice.source_id,
-          title: wocatPractice.title,
-          practice_url: wocatPractice.practice_url,
-          short_description: wocatPractice.short_description,
-          detailed_description: wocatPractice.detailed_description,
-          project_fund: wocatPractice.project_fund,
-          institution_funding: wocatPractice.institution_funding,
-          state_province: wocatPractice.state_province,
-          further_location: wocatPractice.further_location,
-          map_location: wocatPractice.map_location,
-          implem_date: wocatPractice.implem_date,
-          publication_date: wocatPractice.publication_date,
-          implem_decade: wocatPractice.implem_decade,
-          main_purposes: wocatPractice.main_purposes,
-          land_use_has_changed: wocatPractice.land_use_has_changed.join(';'),
-          has_changed: wocatPractice.has_changed,
-          degradation_assessed: wocatPractice.degradation_assessed.join(';'),
-          language: wocatPractice.language.join(';'),
-          sync: true,
-          show: practices[0].show === null ? true : practices[0].show,
+      try {
+        practice = await strapi.entityService.update('api::practice.practice', practices[0].id, {
+          data: {
+            source_name: wocatPractice.source_name,
+            source_id: wocatPractice.source_id,
+            title: wocatPractice.title,
+            practice_url: wocatPractice.practice_url,
+            short_description: wocatPractice.short_description,
+            detailed_description: wocatPractice.detailed_description,
+            project_fund: wocatPractice.project_fund,
+            institution_funding: wocatPractice.institution_funding,
+            state_province: wocatPractice.state_province,
+            further_location: wocatPractice.further_location,
+            map_location: wocatPractice.map_location,
+            implem_date: wocatPractice.implem_date,
+            publication_date: wocatPractice.publication_date,
+            implem_decade: wocatPractice.implem_decade,
+            main_purposes: wocatPractice.main_purposes,
+            land_use_has_changed: wocatPractice.land_use_has_changed.join(';'),
+            has_changed: wocatPractice.has_changed,
+            degradation_assessed: wocatPractice.degradation_assessed.join(';'),
+            language: wocatPractice.language.join(';'),
+            sync: true,
+            show: practices[0].show === null ? true : practices[0].show,
 
-          land_use_types,
-          land_use_prior,
-          practice_intervention,
-          country,
-        },
-        populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
-      });
+            land_use_types,
+            land_use_prior,
+            practice_intervention,
+            country,
+          },
+          populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
+        });
+      } catch (error) {
+        throw error;
+      }
+
     }
 
     return {
