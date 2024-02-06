@@ -51,6 +51,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
     parsedInteractionConfig?.events.find((ev) => ev.type === 'click') ||
     attributes.interaction_config.events.find((ev) => ev.type === 'click');
   const url = parsedInteractionConfig?.url?.trim() || attributes.interaction_config?.url?.trim();
+  const bboxAPI = parsedInteractionConfig?.bboxAPI;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,7 +72,17 @@ const PopupItem = ({ id }: PopupItemProps) => {
       if (source.type === 'raster') {
         const point = map.project(popup.lngLat);
         const bounds = map.getBounds();
-        const bbox = `${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()},${bounds.getNorth()}`;
+
+        const bboxAPIs = {
+          // Nominatim API bbox is in the format: south,north,west,east
+          nominatim: `${bounds.getSouth()},${bounds.getNorth()},${bounds.getWest()},${bounds.getEast()}`,
+          // Overpass API bbox is in the format: south,west,north,east (Used for maps.isric.org/mapserv server for example)
+          overpass: `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`,
+          default: `${bounds.getWest()},${bounds.getSouth()},${bounds.getEast()},${bounds.getNorth()}`,
+        };
+
+        const bbox = bboxAPIs[bboxAPI as keyof typeof bboxAPIs] || bboxAPIs.default;
+
         const width = map.getContainer().clientWidth;
         const height = map.getContainer().clientHeight;
         const x = Math.round(point.x);
@@ -89,6 +100,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
           regexp,
           (matched) => replaceStrings[matched as keyof typeof replaceStrings],
         );
+
         if (!fetchURL) return;
         const response = await fetch(fetchURL);
         const featureCollection = await response.json();
@@ -114,7 +126,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
       }
     };
     fetchData();
-  }, [popup, source, layersInteractiveIds, map, rendered, url]);
+  }, [popup, source, layersInteractiveIds, map, rendered, url, bboxAPI]);
 
   const handleMapRender = useCallback(() => {
     setRendered(!!map?.loaded() && !!map?.areTilesLoaded());

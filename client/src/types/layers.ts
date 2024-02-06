@@ -39,6 +39,7 @@ export type InteractionConfig = {
     }[];
   }[];
   url?: string;
+  bboxAPI?: 'nominatim' | 'overpass' | 'default';
   layer?: string;
 };
 
