@@ -1535,6 +1535,13 @@
       "conditions": []
     },
     {
+      "action": "plugin::orcasa.practices.import",
+      "actionParameters": {},
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
       "action": "plugin::upload.assets.copy-link",
       "actionParameters": {},
       "subject": null,

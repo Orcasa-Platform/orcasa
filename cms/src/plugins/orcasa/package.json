@@ -1,10 +1,10 @@
 {
   "name": "orcasa",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "version": "1.0.0",
+  "description": "Customizations for the Orcasa project.",
   "strapi": {
     "name": "orcasa",
-    "description": "Description of Orcasa plugin",
+    "description": "Customizations for the Orcasa project",
     "kind": "plugin",
     "displayName": "Orcasa"
   },

@@ -36,7 +36,7 @@
       },
       "projects": {
         "edit": {
-          "label": "Projects",
+          "label": "projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -119,6 +119,10 @@
         [
           {
             "name": "name",
+            "size": 6
+          },
+          {
+            "name": "projects",
             "size": 6
           }
         ]

@@ -69,6 +69,7 @@ const ImportPracticesButton = ({ slug }) => {
     }
   }
 
+  console.log('apiIDFromUrl', apiIDFromUrl);
   if (!allowedUID.includes(apiIDFromUrl)) {
     return null;
   }
