@@ -25,7 +25,7 @@ module.exports = class WocatPracticeDecorator {
   }
 
 
-  async decoratePractices(practices) {
+  async decoratePractices(practices, save = false) {
     const decoratorJson = await this.loadDecoratorJson('https://gist.githubusercontent.com/tiagojsag/e77fade4ff5a59547508a59ae9257253/raw/7c908467154011c9dc8a773d5f4897f51ba7ee40/decorator.json');
 
     const subInterventionsMap = {};
@@ -61,33 +61,46 @@ module.exports = class WocatPracticeDecorator {
 
       const decoratedPractice = {};
 
-      if (decoratorJson[practice.source_id].land_use_prior) {
-        decoratedPractice.land_use_prior = (await strapi.entityService.findMany(
-          'api::land-use-type.land-use-type',
-          {
-            filters: { name: { $in: decoratorJson[practice.source_id].land_use_prior } },
-          }
-        ));
+      try {
+        if (decoratorJson[practice.source_id].land_use_prior) {
+          decoratedPractice.land_use_prior = (await strapi.entityService.findMany(
+            'api::land-use-type.land-use-type',
+            {
+              filters: { name: { $in: decoratorJson[practice.source_id].land_use_prior } },
+            }
+          ));
+        }
+      } catch (error) {
+        throw error;
       }
 
-      if (decoratorJson[practice.source_id].land_use_types) {
-        decoratedPractice.land_use_types = (await strapi.entityService.findMany(
-          'api::land-use-type.land-use-type',
-          {
-            filters: { name: { $in: decoratorJson[practice.source_id].land_use_types } },
-          }
-        ));
+      try {
+
+        if (decoratorJson[practice.source_id].land_use_types) {
+          decoratedPractice.land_use_types = (await strapi.entityService.findMany(
+            'api::land-use-type.land-use-type',
+            {
+              filters: { name: { $in: decoratorJson[practice.source_id].land_use_types } },
+            }
+          ));
+        }
+      } catch (error) {
+        throw error;
       }
 
-      if (decoratorJson[practice.source_id].intervention) {
-        const practice_intervention = (await strapi.entityService.findMany(
-          'api::practice-intervention.practice-intervention',
-          {
-            filters: { slug: decoratorJson[practice.source_id].intervention },
-          }
-        ));
+      try {
+        if (decoratorJson[practice.source_id].intervention) {
+          const practice_intervention = (await strapi.entityService.findMany(
+            'api::practice-intervention.practice-intervention',
+            {
+              filters: { slug: decoratorJson[practice.source_id].intervention },
+            }
+          ));
 
-        decoratedPractice.practice_intervention = practice_intervention[0];
+          decoratedPractice.practice_intervention = practice_intervention[0];
+        }
+      } catch (error) {
+        throw error;
       }
 
       if (decoratorJson[practice.source_id].sub_intervention) {
@@ -98,11 +111,24 @@ module.exports = class WocatPracticeDecorator {
         decoratedPractice.show = decoratorJson[practice.source_id].show;
       }
 
-      await strapi.entityService.update('api::practice.practice', practice.id, {
-        data: decoratedPractice,
-      });
+      if (decoratorJson[practice.source_id].language) {
+        decoratedPractice.language = decoratorJson[practice.source_id].language.filter((language) => language.length > 2);
+      }
 
-      return decoratedPractice;
+      if (practice.id && save) {
+        try {
+          await strapi.entityService.update('api::practice.practice', practice.id, {
+            data: decoratedPractice,
+          });
+        } catch (error) {
+          throw error;
+        }
+      }
+
+      return {
+        ...practice,
+        ...decoratedPractice
+      };
     }));
   }
 
@@ -111,7 +137,7 @@ module.exports = class WocatPracticeDecorator {
       populate: ['country', 'land_use_prior', 'land_use_types', 'practice_intervention'],
     });
 
-    return this.decoratePractices(practices);
+    return this.decoratePractices(practices, true);
   }
 }
 

@@ -88,6 +88,9 @@
       "action": "api::practice-intervention.practice-intervention.findOne"
     },
     {
+      "action": "api::practice.practice.filters"
+    },
+    {
       "action": "api::practice.practice.find"
     },
     {

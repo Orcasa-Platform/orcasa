@@ -266,7 +266,7 @@ module.exports = class WocatConnector extends AsyncService {
       ))[0];
     }
 
-    if (wocatPractice.land_use_prior) {
+    if (wocatPractice.land_use_prior && wocatPractice.land_use_prior.length > 0 && wocatPractice.land_use_prior[0] instanceof String) {
       land_use_prior = (await strapi.entityService.findMany(
         'api::land-use-type.land-use-type',
         {
@@ -275,7 +275,7 @@ module.exports = class WocatConnector extends AsyncService {
       ));
     }
 
-    if (wocatPractice.land_use_types) {
+    if (wocatPractice.land_use_types && wocatPractice.land_use_types.length > 0 && wocatPractice.land_use_types[0] instanceof String) {
       land_use_types = (await strapi.entityService.findMany(
         'api::land-use-type.land-use-type',
         {
@@ -284,7 +284,7 @@ module.exports = class WocatConnector extends AsyncService {
       ));
     }
 
-    if (wocatPractice.intervention) {
+    if (wocatPractice.intervention && wocatPractice.intervention instanceof String) {
       practice_intervention = (await strapi.entityService.findMany(
         'api::practice-intervention.practice-intervention',
         {
