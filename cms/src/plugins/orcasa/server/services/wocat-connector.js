@@ -204,7 +204,7 @@ module.exports = class WocatConnector extends AsyncService {
       source_name: "WOCAT",
       source_id: questionnaire.code,
 
-      title: get(questionnaire, 'section_general_information.children.tech__1.children.tech__1__1.children.qg_name.children.name.value[0].value', null),
+      title: get(questionnaire, 'section_general_information.children.tech__1.children.tech__1__1.children.qg_name.children.name.value[0].value', 'Untitled'),
       practice_url: `https://qcat.wocat.net/en/wocat/technologies/view/${questionnaire.code}`,
 
       short_description: get(questionnaire, 'section_specifications.children.tech__2.children.tech__2__1.children.tech_qg_1.children.tech_definition.value[0].value', null),
