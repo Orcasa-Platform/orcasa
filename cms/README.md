@@ -7,7 +7,7 @@ project.
 
 ## Dependencies
 
-- Node.js v20.10
+- Node.js v20.11
 - Postgres v15.4
 - Yarn v3.6
 

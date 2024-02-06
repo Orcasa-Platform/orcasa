@@ -1,5 +1,5 @@
 # Build all the things
-FROM node:20.10-bookworm-slim as build
+FROM node:20.11-bookworm-slim as build
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y \
@@ -39,7 +39,7 @@ RUN yarn strapi ts:generate-types
 RUN yarn build
 
 # Copy only the built files into the final image
-FROM node:20.10-bookworm-slim AS runner
+FROM node:20.11-bookworm-slim AS runner
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y libvips-dev && \
