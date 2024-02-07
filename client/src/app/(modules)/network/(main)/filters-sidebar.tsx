@@ -167,6 +167,7 @@ export default function FiltersSidebar() {
                   ...filters,
                   projectType: [],
                   status: [],
+                  year: [],
                   coordinationCountry: [],
                   interventionRegion: [],
                   interventionCountry: [],
@@ -190,6 +191,13 @@ export default function FiltersSidebar() {
                 value={filters.status ?? []}
                 options={projectFiltersOptions.status}
                 onChange={(value) => setFilters({ ...filters, status: value })}
+              />
+              <MultiCombobox
+                name="Active on year"
+                variant="network-project"
+                value={filters.year ?? []}
+                options={projectFiltersOptions.year}
+                onChange={(value) => setFilters({ ...filters, year: value })}
               />
               <MultiCombobox
                 name="Country of coordination"

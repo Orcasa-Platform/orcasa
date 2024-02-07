@@ -16,6 +16,7 @@ export interface NetworkOrganizationFilters {
 export interface NetworkProjectFilters {
   projectType: number[];
   status: number[];
+  year: number[];
   coordinationCountry: number[];
   interventionRegion: number[];
   interventionCountry: number[];
@@ -35,6 +36,7 @@ const organizationFiltersKeys: (keyof NetworkOrganizationFilters)[] = [
 const projectFiltersKeys: (keyof NetworkProjectFilters)[] = [
   'projectType',
   'status',
+  'year',
   'coordinationCountry',
   'interventionRegion',
   'interventionCountry',
@@ -53,6 +55,7 @@ const filtersAtom = atom<NetworkFilters>({
   country: [],
   projectType: [],
   status: [],
+  year: [],
   coordinationCountry: [],
   interventionRegion: [],
   interventionCountry: [],
