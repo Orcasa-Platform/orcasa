@@ -166,10 +166,9 @@ export const getOrganizationFields = (organization: Organization) => {
   if (organizationType) {
     fields.push({
       label: 'Type of organisation',
-      value:
-        organizationType?.data?.attributes?.name || otherOrganizationType
-          ? `Other (${otherOrganizationType})`
-          : '',
+      value: otherOrganizationType
+        ? `Other (${otherOrganizationType})`
+        : organizationType?.data?.attributes?.name,
     });
   }
 
