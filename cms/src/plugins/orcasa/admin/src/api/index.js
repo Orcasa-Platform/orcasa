@@ -4,7 +4,9 @@ export const api = {
   acceptProjectChanges,
   declineProjectChanges,
   startPracticesImport,
-  startPracticesDecoration
+  startPracticesDecoration,
+  acceptOrganizationChanges,
+  declineOrganizationChanges,
 };
 
 async function startPracticesImport() {
@@ -42,6 +44,28 @@ async function acceptProjectChanges({ id }) {
 
 async function declineProjectChanges({ id }) {
   const data = await request(`/orcasa/project-changes/${id}/decline`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: {},
+  });
+  return data;
+}
+
+async function acceptOrganizationChanges({ id }) {
+  const data = await request(`/orcasa/organization-changes/${id}/accept`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: {},
+  });
+  return data;
+}
+
+async function declineOrganizationChanges({ id }) {
+  const data = await request(`/orcasa/organization-changes/${id}/decline`, {
     headers: {
       'Content-Type': 'application/json',
     },
