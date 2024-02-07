@@ -48,6 +48,8 @@ export default function ProjectForm() {
     sustainableDevelopmentGoals,
     projectTypes,
   } = useProjectFormGetFields() || {};
+  const [openInfo, setInfoOpen] = useState(false);
+  const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
   const otherId = areasOfIntervention
     ?.find((type) => type?.name === 'Other (to be specified)')
     ?.id?.toString();
@@ -533,8 +535,8 @@ export default function ProjectForm() {
             <h2 className="mt-10 flex items-center gap-2 font-serif text-2xl text-gray-700">
               Coordinator contact details
               <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
+                <Tooltip delayDuration={0} open={openInfo} onOpenChange={setInfoOpen}>
+                  <TooltipTrigger asChild onClick={handleInfoClick}>
                     <Button type="button" size="auto" variant="icon">
                       <span className="sr-only">Coordinator contact details info</span>
                       <Info />
