@@ -137,6 +137,7 @@ export const getOrganizationFields = (organization: Organization) => {
     main_organization_theme: thematic,
     secondary_organization_theme: secondaryThematic,
     organization_type: organizationType,
+    organization_type_other: otherOrganizationType,
   } = organization;
 
   const fields = [];
@@ -165,7 +166,9 @@ export const getOrganizationFields = (organization: Organization) => {
   if (organizationType) {
     fields.push({
       label: 'Type of organisation',
-      value: organizationType?.data?.attributes?.name,
+      value: otherOrganizationType
+        ? `Other (${otherOrganizationType})`
+        : organizationType?.data?.attributes?.name,
     });
   }
 
