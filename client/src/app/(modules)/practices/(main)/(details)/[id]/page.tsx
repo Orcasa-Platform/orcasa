@@ -18,7 +18,9 @@ export async function generateMetadata({ params }: PracticeDetailsProps): Promis
   const id = parseInt(params.id);
   const data = await getPracticesId(id);
   const practice = data?.data?.attributes;
-  if (!practice) {
+
+  // If we couldn't find the practice or it is not relevant, we don't return any metadata
+  if (!practice || !practice.show) {
     return {};
   }
 
@@ -32,7 +34,8 @@ export default async function PracticeDetails({ params }: PracticeDetailsProps) 
   const data = await getPracticesId(id, { populate: '*' });
   const practice = data?.data?.attributes;
 
-  if (!practice) {
+  // If we couldn't find the practice or it is not relevant, we display a 404
+  if (!practice || !practice.show) {
     notFound();
   }
 

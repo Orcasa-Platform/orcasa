@@ -96,7 +96,18 @@ const getQueryFilters = (filters: PracticesFilters) => {
       : []),
   ];
 
-  return { $and: [...generalFilters, ...practiceFilters] };
+  return {
+    $and: [
+      // We filter out non-relevant practices
+      {
+        show: {
+          $eq: true,
+        },
+      },
+      ...generalFilters,
+      ...practiceFilters,
+    ],
+  };
 };
 
 export const usePractices = ({
