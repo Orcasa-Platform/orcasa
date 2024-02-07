@@ -21,6 +21,12 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "practices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::practice.practice",
+      "mappedBy": "subinterventions"
     }
   }
 }

@@ -943,6 +943,11 @@ export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
+    practices: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'oneToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1071,7 +1076,8 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       'api::organization.organization',
       'oneToOne',
       'api::organization-type.organization-type'
-    >;
+    > &
+      Attribute.Required;
     organization_type_other: Attribute.String;
     main_organization_theme: Attribute.Relation<
       'api::organization.organization',
@@ -1284,9 +1290,9 @@ export interface ApiPracticePractice extends Schema.CollectionType {
           separator: 'semicolon';
         }
       >;
-    land_use_types: Attribute.Relation<
+    land_use_type: Attribute.Relation<
       'api::practice.practice',
-      'oneToMany',
+      'manyToOne',
       'api::land-use-type.land-use-type'
     >;
     sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
@@ -1294,17 +1300,17 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     practice_url: Attribute.Text;
     practice_intervention: Attribute.Relation<
       'api::practice.practice',
-      'oneToOne',
+      'manyToOne',
       'api::practice-intervention.practice-intervention'
     >;
     land_use_prior: Attribute.Relation<
       'api::practice.practice',
-      'oneToMany',
+      'manyToOne',
       'api::land-use-type.land-use-type'
     >;
     subinterventions: Attribute.Relation<
       'api::practice.practice',
-      'oneToMany',
+      'manyToMany',
       'api::subintervention.subintervention'
     >;
     createdAt: Attribute.DateTime;
@@ -1371,6 +1377,11 @@ export interface ApiPracticeInterventionPracticeIntervention
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    practices: Attribute.Relation<
+      'api::practice-intervention.practice-intervention',
+      'oneToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1607,6 +1618,11 @@ export interface ApiSubinterventionSubintervention
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    practices: Attribute.Relation<
+      'api::subintervention.subintervention',
+      'manyToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

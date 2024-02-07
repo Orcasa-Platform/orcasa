@@ -287,9 +287,9 @@
           "sortable": true
         }
       },
-      "land_use_types": {
+      "land_use_type": {
         "edit": {
-          "label": "Land Use Types",
+          "label": "Land Use Type",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -297,9 +297,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_types",
-          "searchable": false,
-          "sortable": false
+          "label": "land_use_type",
+          "searchable": true,
+          "sortable": true
         }
       },
       "sync": {
@@ -376,7 +376,7 @@
       },
       "subinterventions": {
         "edit": {
-          "label": "subinterventions",
+          "label": "Subinterventions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -517,7 +517,7 @@
           },
           {
             "name": "publication_date",
-            "size": 4
+            "size": 6
           }
         ],
         [
@@ -533,7 +533,7 @@
         [
           {
             "name": "has_changed",
-            "size": 4
+            "size": 6
           },
           {
             "name": "land_use_has_changed",
@@ -546,13 +546,13 @@
             "size": 6
           },
           {
-            "name": "degradation_assessed",
+            "name": "land_use_type",
             "size": 6
           }
         ],
         [
           {
-            "name": "land_use_types",
+            "name": "degradation_assessed",
             "size": 6
           },
           {
@@ -562,28 +562,30 @@
         ],
         [
           {
-            "name": "show",
-            "size": 4
+            "name": "subinterventions",
+            "size": 6
           },
           {
-            "name": "sync",
-            "size": 4
+            "name": "practice_intervention",
+            "size": 6
           }
         ],
         [
           {
-            "name": "practice_intervention",
+            "name": "sync",
             "size": 6
           },
           {
-            "name": "subinterventions",
+            "name": "show",
             "size": 6
           }
         ]
       ],
       "list": [
         "source_name",
-        "title"
+        "title",
+        "land_use_type",
+        "practice_intervention"
       ]
     }
   },

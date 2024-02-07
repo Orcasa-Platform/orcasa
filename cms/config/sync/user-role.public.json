@@ -88,9 +88,6 @@
       "action": "api::practice-intervention.practice-intervention.findOne"
     },
     {
-      "action": "api::practice.practice.filters"
-    },
-    {
       "action": "api::practice.practice.find"
     },
     {
@@ -125,6 +122,12 @@
     },
     {
       "action": "api::static-page.static-page.findOne"
+    },
+    {
+      "action": "api::subintervention.subintervention.find"
+    },
+    {
+      "action": "api::subintervention.subintervention.findOne"
     },
     {
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"

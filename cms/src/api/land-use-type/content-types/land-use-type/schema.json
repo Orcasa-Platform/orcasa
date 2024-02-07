@@ -15,6 +15,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "practices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::practice.practice",
+      "mappedBy": "land_use_prior"
     }
   }
 }

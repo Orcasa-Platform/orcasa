@@ -89,10 +89,11 @@
       },
       "customField": "plugin::string-array.input"
     },
-    "land_use_types": {
+    "land_use_type": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::land-use-type.land-use-type"
+      "relation": "manyToOne",
+      "target": "api::land-use-type.land-use-type",
+      "inversedBy": "practices"
     },
     "sync": {
       "type": "boolean",
@@ -109,18 +110,21 @@
     },
     "practice_intervention": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::practice-intervention.practice-intervention"
+      "relation": "manyToOne",
+      "target": "api::practice-intervention.practice-intervention",
+      "inversedBy": "practices"
     },
     "land_use_prior": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::land-use-type.land-use-type"
+      "relation": "manyToOne",
+      "target": "api::land-use-type.land-use-type",
+      "inversedBy": "practices"
     },
     "subinterventions": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::subintervention.subintervention"
+      "relation": "manyToMany",
+      "target": "api::subintervention.subintervention",
+      "inversedBy": "practices"
     }
   }
 }

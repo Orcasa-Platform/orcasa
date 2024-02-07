@@ -741,11 +741,9 @@
           "land_use_has_changed",
           "degradation_assessed",
           "language",
-          "land_use_types",
           "sync",
           "show",
           "practice_url",
-          "practice_intervention",
           "land_use_prior",
           "subinterventions"
         ]
@@ -784,11 +782,9 @@
           "land_use_has_changed",
           "degradation_assessed",
           "language",
-          "land_use_types",
           "sync",
           "show",
           "practice_url",
-          "practice_intervention",
           "land_use_prior",
           "subinterventions"
         ]
@@ -820,11 +816,9 @@
           "land_use_has_changed",
           "degradation_assessed",
           "language",
-          "land_use_types",
           "sync",
           "show",
           "practice_url",
-          "practice_intervention",
           "land_use_prior",
           "subinterventions"
         ]
