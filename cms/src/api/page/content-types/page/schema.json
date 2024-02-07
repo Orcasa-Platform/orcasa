@@ -36,6 +36,9 @@
     },
     "external_url": {
       "type": "string"
+    },
+    "intro": {
+      "type": "richtext"
     }
   }
 }

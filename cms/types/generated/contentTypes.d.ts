@@ -1226,6 +1226,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     slug: Attribute.String;
     color: Attribute.String;
     external_url: Attribute.String;
+    intro: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
