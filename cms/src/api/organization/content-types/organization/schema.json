@@ -20,6 +20,7 @@
     },
     "organization_type": {
       "type": "relation",
+      "required": true,
       "relation": "oneToOne",
       "target": "api::organization-type.organization-type"
     },
