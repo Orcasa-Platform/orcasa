@@ -89,9 +89,9 @@
       },
       "customField": "plugin::string-array.input"
     },
-    "land_use_type": {
+    "land_use_types": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::land-use-type.land-use-type",
       "inversedBy": "practices"
     },
@@ -114,9 +114,9 @@
       "target": "api::practice-intervention.practice-intervention",
       "inversedBy": "practices"
     },
-    "land_use_prior": {
+    "land_use_priors": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::land-use-type.land-use-type",
       "inversedBy": "practices"
     },

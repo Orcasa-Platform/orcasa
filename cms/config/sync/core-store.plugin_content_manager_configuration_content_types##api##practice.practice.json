@@ -287,9 +287,9 @@
           "sortable": true
         }
       },
-      "land_use_type": {
+      "land_use_types": {
         "edit": {
-          "label": "Land Use Type",
+          "label": "Land Use Types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -297,9 +297,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_type",
-          "searchable": true,
-          "sortable": true
+          "label": "land_use_types",
+          "searchable": false,
+          "sortable": false
         }
       },
       "sync": {
@@ -359,9 +359,9 @@
           "sortable": true
         }
       },
-      "land_use_prior": {
+      "land_use_priors": {
         "edit": {
-          "label": "Land Use Prior",
+          "label": "Land Use Priors",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -369,7 +369,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_prior",
+          "label": "land_use_priors",
           "searchable": false,
           "sortable": false
         }
@@ -542,16 +542,6 @@
         ],
         [
           {
-            "name": "land_use_prior",
-            "size": 6
-          },
-          {
-            "name": "land_use_type",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "degradation_assessed",
             "size": 6
           },
@@ -579,13 +569,23 @@
             "name": "show",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "land_use_priors",
+            "size": 6
+          },
+          {
+            "name": "land_use_types",
+            "size": 6
+          }
         ]
       ],
       "list": [
         "source_name",
         "title",
-        "land_use_type",
-        "practice_intervention"
+        "practice_intervention",
+        "land_use_types"
       ]
     }
   },

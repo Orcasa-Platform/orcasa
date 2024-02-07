@@ -228,15 +228,15 @@ module.exports = class WocatConnector extends AsyncService {
       prevention_restoration: get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__8.children.tech_qg_35.children.tech_prevention.value[0].values', null),
       agroclimatic_zone: get(questionnaire, 'section_specifications.children.tech__5.children.tech__5__1.children.tech_qg_55.children.tech_agroclimatic_zone.value[0].values', null),
 
-      language: questionnaire.translations[0],
+      language: questionnaire.translations[0].filter(language => language.length === 2),
     }))
   }
 
   async convertToPractice(wocatPractice) {
     let practice = null
     let country = null;
-    let land_use_types = null;
-    let land_use_prior = null;
+    let land_use_types = [];
+    let land_use_priors = [];
     let practice_intervention = null;
     let subinterventions = null;
 
@@ -267,16 +267,16 @@ module.exports = class WocatConnector extends AsyncService {
       ))[0];
     }
 
-    if (wocatPractice.land_use_prior) {
-      if (wocatPractice.land_use_prior.length > 0 && typeof wocatPractice.land_use_prior[0] === 'string') {
-        land_use_prior = (await strapi.entityService.findMany(
+    if (wocatPractice.land_use_priors) {
+      if (wocatPractice.land_use_priors.length > 0 && typeof wocatPractice.land_use_priors[0] === 'string') {
+        land_use_priors = (await strapi.entityService.findMany(
           'api::land-use-type.land-use-type',
           {
-            filters: { name: { $in: wocatPractice.land_use_prior } },
+            filters: { name: { $in: wocatPractice.land_use_priors } },
           }
         ));
       } else {
-        land_use_prior = wocatPractice.land_use_prior
+        land_use_priors = wocatPractice.land_use_priors
       }
 
     }
@@ -341,8 +341,8 @@ module.exports = class WocatConnector extends AsyncService {
           sync: true,
           show: true,
 
-          land_use_prior,
           land_use_types,
+          land_use_priors,
           practice_intervention,
           country,
           subinterventions,
@@ -385,7 +385,7 @@ module.exports = class WocatConnector extends AsyncService {
             show: practices[0].show === null ? true : practices[0].show,
 
             land_use_types,
-            land_use_prior,
+            land_use_priors,
             practice_intervention,
             country,
             subinterventions,

@@ -61,8 +61,10 @@ module.exports = class WocatPracticeDecorator {
 
       const decoratedPractice = {};
 
-      try {
-        if (decoratorJson[practice.source_id].land_use_prior) {
+      if ('land_use_prior' in decoratorJson[practice.source_id]) {
+        if (decoratorJson[practice.source_id].land_use_prior === null) {
+          decoratedPractice.land_use_prior = [];
+        } else {
           decoratedPractice.land_use_prior = (await strapi.entityService.findMany(
             'api::land-use-type.land-use-type',
             {
@@ -70,13 +72,12 @@ module.exports = class WocatPracticeDecorator {
             }
           ));
         }
-      } catch (error) {
-        throw error;
       }
 
-      try {
-
-        if (decoratorJson[practice.source_id].land_use_types) {
+      if ('land_use_types' in decoratorJson[practice.source_id]) {
+        if (decoratorJson[practice.source_id].land_use_types === null) {
+          decoratedPractice.land_use_types = [];
+        } else {
           decoratedPractice.land_use_types = (await strapi.entityService.findMany(
             'api::land-use-type.land-use-type',
             {
@@ -84,12 +85,12 @@ module.exports = class WocatPracticeDecorator {
             }
           ));
         }
-      } catch (error) {
-        throw error;
       }
 
-      try {
-        if (decoratorJson[practice.source_id].intervention) {
+      if ('intervention' in decoratorJson[practice.source_id]) {
+        if (decoratorJson[practice.source_id].intervention === null) {
+          decoratedPractice.practice_intervention = null;
+        } else {
           const practice_intervention = (await strapi.entityService.findMany(
             'api::practice-intervention.practice-intervention',
             {
@@ -99,8 +100,6 @@ module.exports = class WocatPracticeDecorator {
 
           decoratedPractice.practice_intervention = practice_intervention[0];
         }
-      } catch (error) {
-        throw error;
       }
 
       if (decoratorJson[practice.source_id].sub_intervention) {

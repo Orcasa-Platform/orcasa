@@ -945,7 +945,7 @@ export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     practices: Attribute.Relation<
       'api::land-use-type.land-use-type',
-      'oneToMany',
+      'manyToMany',
       'api::practice.practice'
     >;
     createdAt: Attribute.DateTime;
@@ -1076,8 +1076,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       'api::organization.organization',
       'oneToOne',
       'api::organization-type.organization-type'
-    > &
-      Attribute.Required;
+    >;
     organization_type_other: Attribute.String;
     main_organization_theme: Attribute.Relation<
       'api::organization.organization',
@@ -1290,9 +1289,9 @@ export interface ApiPracticePractice extends Schema.CollectionType {
           separator: 'semicolon';
         }
       >;
-    land_use_type: Attribute.Relation<
+    land_use_types: Attribute.Relation<
       'api::practice.practice',
-      'manyToOne',
+      'manyToMany',
       'api::land-use-type.land-use-type'
     >;
     sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
@@ -1303,9 +1302,9 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       'manyToOne',
       'api::practice-intervention.practice-intervention'
     >;
-    land_use_prior: Attribute.Relation<
+    land_use_priors: Attribute.Relation<
       'api::practice.practice',
-      'manyToOne',
+      'manyToMany',
       'api::land-use-type.land-use-type'
     >;
     subinterventions: Attribute.Relation<
