@@ -89,11 +89,10 @@
       "relation": "oneToOne",
       "target": "api::area-of-intervention.area-of-intervention"
     },
-    "sustainable_development_goal": {
+    "sustainable_development_goals": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::sustainable-dev-goal.sustainable-dev-goal",
-      "inversedBy": "project_changes"
+      "relation": "oneToMany",
+      "target": "api::sustainable-dev-goal.sustainable-dev-goal"
     },
     "lead_partner": {
       "type": "relation",

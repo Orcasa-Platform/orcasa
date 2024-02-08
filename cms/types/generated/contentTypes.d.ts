@@ -882,11 +882,6 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       'oneToMany',
       'api::practice.practice'
     >;
-    project_changes: Attribute.Relation<
-      'api::country.country',
-      'manyToMany',
-      'api::project-change.project-change'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1564,6 +1559,10 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::organization-change.organization-change'
     >;
+    publication_status: Attribute.Enumeration<
+      ['proposed', 'accepted', 'declined']
+    > &
+      Attribute.DefaultTo<'accepted'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1646,9 +1645,9 @@ export interface ApiProjectChangeProjectChange extends Schema.CollectionType {
       'oneToOne',
       'api::area-of-intervention.area-of-intervention'
     >;
-    sustainable_development_goal: Attribute.Relation<
+    sustainable_development_goals: Attribute.Relation<
       'api::project-change.project-change',
-      'manyToOne',
+      'oneToMany',
       'api::sustainable-dev-goal.sustainable-dev-goal'
     >;
     lead_partner: Attribute.Relation<
@@ -1749,11 +1748,6 @@ export interface ApiRegionRegion extends Schema.CollectionType {
       'api::region.region',
       'manyToMany',
       'api::project.project'
-    >;
-    project_changes: Attribute.Relation<
-      'api::region.region',
-      'manyToMany',
-      'api::project-change.project-change'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1860,11 +1854,6 @@ export interface ApiSustainableDevGoalSustainableDevGoal
       'api::sustainable-dev-goal.sustainable-dev-goal',
       'oneToMany',
       'api::project.project'
-    >;
-    project_changes: Attribute.Relation<
-      'api::sustainable-dev-goal.sustainable-dev-goal',
-      'oneToMany',
-      'api::project-change.project-change'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
