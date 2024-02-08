@@ -2879,6 +2879,7 @@ __metadata:
     react-intersection-observer: "npm:^9.5.3"
     react-map-gl: "npm:7.1.6"
     react-markdown: "npm:^9.0.1"
+    react-render-markup: "npm:^3.6.1"
     rooks: "npm:7.14.1"
     striptags: "npm:^3.2.0"
     supercluster: "npm:^8.0.1"
@@ -6230,6 +6231,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"css-to-style@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "css-to-style@npm:1.4.0"
+  checksum: 10/b6ca9fa122861330ef6c5636f48d992550a005ddfcbf7e6f27fab834c89a43b7332013762379d471d871718609a6e2031d1013cce4a2fe9fa28f2ca64d5e2dab
+  languageName: node
+  linkType: hard
+
 "css-tree@npm:^2.2.1":
   version: 2.3.1
   resolution: "css-tree@npm:2.3.1"
@@ -6254,6 +6262,13 @@ __metadata:
   version: 6.1.0
   resolution: "css-what@npm:6.1.0"
   checksum: 10/c67a3a2d0d81843af87f8bf0a4d0845b0f952377714abbb2884e48942409d57a2110eabee003609d02ee487b054614bdfcfc59ee265728ff105bd5aa221c1d0e
+  languageName: node
+  linkType: hard
+
+"css.escape@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "css.escape@npm:1.5.1"
+  checksum: 10/f6d38088d870a961794a2580b2b2af1027731bb43261cfdce14f19238a88664b351cc8978abc20f06cc6bbde725699dec8deb6fe9816b139fc3f2af28719e774
   languageName: node
   linkType: hard
 
@@ -6638,6 +6653,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom-parse@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "dom-parse@npm:3.0.0"
+  dependencies:
+    happy-dom: "npm:9"
+  checksum: 10/9b804abef9c74bba16d6f862a97511c056b8dd4d5b2fadf6d9dba6c51a3a3bf1196cc4cf72276fffded6e579d497ee0cabd55cb7e5540afb1ab4f675c994a3d8
+  languageName: node
+  linkType: hard
+
 "dom-serializer@npm:^2.0.0":
   version: 2.0.0
   resolution: "dom-serializer@npm:2.0.0"
@@ -6815,7 +6839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^4.2.0, entities@npm:^4.4.0":
+"entities@npm:^4.2.0, entities@npm:^4.4.0, entities@npm:^4.5.0":
   version: 4.5.0
   resolution: "entities@npm:4.5.0"
   checksum: 10/ede2a35c9bce1aeccd055a1b445d41c75a14a2bb1cd22e242f20cf04d236cdcd7f9c859eb83f76885327bfae0c25bf03303665ee1ce3d47c5927b98b0e3e3d48
@@ -8341,6 +8365,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"happy-dom@npm:9":
+  version: 9.20.3
+  resolution: "happy-dom@npm:9.20.3"
+  dependencies:
+    css.escape: "npm:^1.5.1"
+    entities: "npm:^4.5.0"
+    iconv-lite: "npm:^0.6.3"
+    webidl-conversions: "npm:^7.0.0"
+    whatwg-encoding: "npm:^2.0.0"
+    whatwg-mimetype: "npm:^3.0.0"
+  checksum: 10/70a4407ef14e924f3227bbe87235caaaa30bc3fc557c0f25619412166ea24a49d5f8ee1b799c8e55dd050da43dc69f47113a6b144bf436037b6b0c77c76917a2
+  languageName: node
+  linkType: hard
+
 "has-bigints@npm:^1.0.1, has-bigints@npm:^1.0.2":
   version: 1.0.2
   resolution: "has-bigints@npm:1.0.2"
@@ -8577,7 +8615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:^0.6.2":
+"iconv-lite@npm:0.6.3, iconv-lite@npm:^0.6.2, iconv-lite@npm:^0.6.3":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
   dependencies:
@@ -11613,6 +11651,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-render-markup@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "react-render-markup@npm:3.6.1"
+  dependencies:
+    css-to-style: "npm:^1.4.0"
+    dom-parse: "npm:^3.0.0"
+    prop-types: "npm:^15.8.1"
+    tiny-invariant: "npm:^1.2.0"
+  peerDependencies:
+    react: ^16.6.0 || 17 || 18
+  checksum: 10/e507c6750832fbd2c63a47695c2aa07e751121609b43784586df2788a167c46cb863bd678c45efe8d0973f2bb1ff814128f240a10144365605b472d7bc65dca8
+  languageName: node
+  linkType: hard
+
 "react-style-singleton@npm:^2.2.1":
   version: 2.2.1
   resolution: "react-style-singleton@npm:2.2.1"
@@ -12862,6 +12914,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-invariant@npm:^1.2.0":
+  version: 1.3.1
+  resolution: "tiny-invariant@npm:1.3.1"
+  checksum: 10/872dbd1ff20a21303a2fd20ce3a15602cfa7fcf9b228bd694a52e2938224313b5385a1078cb667ed7375d1612194feaca81c4ecbe93121ca1baebe344de4f84c
+  languageName: node
+  linkType: hard
+
 "tinyqueue@npm:^2.0.3":
   version: 2.0.3
   resolution: "tinyqueue@npm:2.0.3"
@@ -13435,6 +13494,29 @@ __metadata:
   version: 3.0.1
   resolution: "webidl-conversions@npm:3.0.1"
   checksum: 10/b65b9f8d6854572a84a5c69615152b63371395f0c5dcd6729c45789052296df54314db2bc3e977df41705eacb8bc79c247cee139a63fa695192f95816ed528ad
+  languageName: node
+  linkType: hard
+
+"webidl-conversions@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "webidl-conversions@npm:7.0.0"
+  checksum: 10/4c4f65472c010eddbe648c11b977d048dd96956a625f7f8b9d64e1b30c3c1f23ea1acfd654648426ce5c743c2108a5a757c0592f02902cf7367adb7d14e67721
+  languageName: node
+  linkType: hard
+
+"whatwg-encoding@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "whatwg-encoding@npm:2.0.0"
+  dependencies:
+    iconv-lite: "npm:0.6.3"
+  checksum: 10/162d712d88fd134a4fe587e53302da812eb4215a1baa4c394dfd86eff31d0a079ff932c05233857997de07481093358d6e7587997358f49b8a580a777be22089
+  languageName: node
+  linkType: hard
+
+"whatwg-mimetype@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "whatwg-mimetype@npm:3.0.0"
+  checksum: 10/96f9f628c663c2ae05412c185ca81b3df54bcb921ab52fe9ebc0081c1720f25d770665401eb2338ab7f48c71568133845638e18a81ed52ab5d4dcef7d22b40ef
   languageName: node
   linkType: hard
 

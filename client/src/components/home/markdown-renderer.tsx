@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Markdown, { Components } from 'react-markdown';
+import { Markup } from 'react-render-markup';
 
 import { cn } from '@/lib/classnames';
 
@@ -17,15 +18,14 @@ const Renderer = ({
   variant?: 'page-intro';
   textClass?: string;
 }) => {
-  const pageIntroComponents = {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    p: ({ node, ...rest }: Component) => <p {...rest} className="mb-4" />,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    strong: ({ node, ...rest }: Component) => (
-      <b {...rest} className={cn('font-semibold', textClass)} />
-    ),
+  // Replace components for Markup
+  const replace = {
+    p: <p className="mb-4 text-lg" />,
+    strong: <b className={cn('text-lg font-semibold', textClass)} />,
   };
-  const defaultComponents = {
+
+  // Replace components for Markdown
+  const components = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     h2({ node, ...rest }: Component) {
       return <h2 className="font-serif text-2xl text-gray-700" {...rest} />;
@@ -52,8 +52,9 @@ const Renderer = ({
       );
     },
   };
-  const components = variant === 'page-intro' ? pageIntroComponents : defaultComponents;
-  return (
+  return variant === 'page-intro' ? (
+    <Markup markup={content} replace={replace} />
+  ) : (
     <Markdown className="whitespace-pre-wrap" components={components as Components}>
       {content}
     </Markdown>
