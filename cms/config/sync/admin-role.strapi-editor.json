@@ -676,49 +676,6 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
-      "subject": "api::practice-intervention.practice-intervention",
-      "properties": {
-        "fields": [
-          "name",
-          "slug"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::practice-intervention.practice-intervention",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::practice-intervention.practice-intervention",
-      "properties": {
-        "fields": [
-          "name",
-          "slug"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::practice-intervention.practice-intervention",
-      "properties": {
-        "fields": [
-          "name",
-          "slug"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -744,7 +701,8 @@
           "sync",
           "show",
           "practice_url",
-          "subinterventions"
+          "subinterventions",
+          "practice_intervention"
         ]
       },
       "conditions": []
@@ -784,7 +742,8 @@
           "sync",
           "show",
           "practice_url",
-          "subinterventions"
+          "subinterventions",
+          "practice_intervention"
         ]
       },
       "conditions": []
@@ -817,7 +776,8 @@
           "sync",
           "show",
           "practice_url",
-          "subinterventions"
+          "subinterventions",
+          "practice_intervention"
         ]
       },
       "conditions": []

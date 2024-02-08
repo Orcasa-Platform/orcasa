@@ -308,7 +308,20 @@ module.exports = class WocatConnector extends AsyncService {
     }
 
     if (wocatPractice.practice_intervention) {
-      practice_intervention = wocatPractice.practice_intervention
+      const interventionsMap = {
+        management: 'Management',
+        luc: 'Land Use Change',
+      };
+
+      if (wocatPractice.practice_intervention in interventionsMap) {
+        practice_intervention = interventionsMap[wocatPractice.practice_intervention];
+      } else if (Object.values(interventionsMap).includes(wocatPractice.practice_intervention)) {
+        practice_intervention = wocatPractice.practice_intervention
+      } else {
+        practice_intervention = 'None';
+      }
+    } else {
+      practice_intervention = 'None';
     }
 
     if (wocatPractice.subinterventions) {

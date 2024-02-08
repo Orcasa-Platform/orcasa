@@ -82,12 +82,6 @@
       "action": "api::practice-import.practice-import.findOne"
     },
     {
-      "action": "api::practice-intervention.practice-intervention.find"
-    },
-    {
-      "action": "api::practice-intervention.practice-intervention.findOne"
-    },
-    {
       "action": "api::practice.practice.find"
     },
     {

@@ -485,7 +485,8 @@
           "country",
           "language",
           "sync",
-          "show"
+          "show",
+          "practice_intervention"
         ]
       },
       "conditions": []
@@ -503,7 +504,8 @@
           "country",
           "language",
           "sync",
-          "show"
+          "show",
+          "practice_intervention"
         ]
       },
       "conditions": [
@@ -523,7 +525,8 @@
           "country",
           "language",
           "sync",
-          "show"
+          "show",
+          "practice_intervention"
         ]
       },
       "conditions": [

@@ -108,12 +108,6 @@
     "practice_url": {
       "type": "text"
     },
-    "practice_intervention": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::practice-intervention.practice-intervention",
-      "inversedBy": "practices"
-    },
     "land_use_priors": {
       "type": "relation",
       "relation": "manyToMany",
@@ -125,6 +119,15 @@
       "relation": "manyToMany",
       "target": "api::subintervention.subintervention",
       "inversedBy": "practices"
+    },
+    "practice_intervention": {
+      "type": "enumeration",
+      "enum": [
+        "Management",
+        "Land Use Change",
+        "None"
+      ],
+      "required": true
     }
   }
 }

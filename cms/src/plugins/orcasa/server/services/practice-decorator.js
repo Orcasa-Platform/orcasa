@@ -28,6 +28,12 @@ module.exports = class WocatPracticeDecorator {
   async decoratePractices(practices, save = false) {
     const decoratorJson = await this.loadDecoratorJson('https://gist.githubusercontent.com/tiagojsag/e77fade4ff5a59547508a59ae9257253/raw/7c908467154011c9dc8a773d5f4897f51ba7ee40/decorator.json');
 
+
+    const interventionsMap = {
+      management: 'Management',
+      luc: 'Land Use Change',
+    };
+
     const subInterventionsMap = {};
     (await strapi.entityService.findMany('api::subintervention.subintervention')).forEach((subIntervention) => {
       subInterventionsMap[subIntervention.slug] = subIntervention;
@@ -90,17 +96,11 @@ module.exports = class WocatPracticeDecorator {
       }
 
       if ('intervention' in decoratorJson[practice.source_id]) {
-        if (decoratorJson[practice.source_id].intervention === null) {
-          decoratedPractice.practice_intervention = null;
-        } else {
-          const practice_intervention = (await strapi.entityService.findMany(
-            'api::practice-intervention.practice-intervention',
-            {
-              filters: { slug: decoratorJson[practice.source_id].intervention },
-            }
-          ));
-
-          decoratedPractice.practice_intervention = practice_intervention[0];
+        if (decoratorJson[practice.source_id].intervention !== null) {
+          decoratedPractice.practice_intervention = interventionsMap[decoratorJson[practice.source_id].intervention];
+        }
+        if (!decoratedPractice.practice_intervention) {
+          decoratedPractice.practice_intervention = 'None';
         }
       }
 

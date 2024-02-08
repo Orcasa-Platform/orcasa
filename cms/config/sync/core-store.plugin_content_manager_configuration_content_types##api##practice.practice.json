@@ -344,21 +344,6 @@
           "sortable": true
         }
       },
-      "practice_intervention": {
-        "edit": {
-          "label": "Practice Intervention",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "practice_intervention",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "land_use_priors": {
         "edit": {
           "label": "Land Use Priors",
@@ -387,6 +372,20 @@
           "label": "subinterventions",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "practice_intervention": {
+        "edit": {
+          "label": "Practice Intervention",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Practice Intervention",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {

@@ -879,23 +879,14 @@ export interface UploadFile {
 
 export type SustainableDevGoalResponseMeta = { [key: string]: any };
 
-export interface SustainableDevGoalResponse {
-  data?: SustainableDevGoalResponseDataObject;
-  meta?: SustainableDevGoalResponseMeta;
-}
-
-export interface SustainableDevGoal {
-  name: string;
-  projects?: SustainableDevGoalProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SustainableDevGoalCreatedBy;
-  updatedBy?: SustainableDevGoalUpdatedBy;
-}
-
 export interface SustainableDevGoalResponseDataObject {
   id?: number;
   attributes?: SustainableDevGoal;
+}
+
+export interface SustainableDevGoalResponse {
+  data?: SustainableDevGoalResponseDataObject;
+  meta?: SustainableDevGoalResponseMeta;
 }
 
 export type SustainableDevGoalUpdatedByDataAttributes = { [key: string]: any };
@@ -909,6 +900,15 @@ export type SustainableDevGoalUpdatedBy = {
   data?: SustainableDevGoalUpdatedByData;
 };
 
+export interface SustainableDevGoal {
+  name: string;
+  projects?: SustainableDevGoalProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SustainableDevGoalCreatedBy;
+  updatedBy?: SustainableDevGoalUpdatedBy;
+}
+
 export type SustainableDevGoalCreatedByDataAttributes = { [key: string]: any };
 
 export type SustainableDevGoalCreatedByData = {
@@ -918,19 +918,6 @@ export type SustainableDevGoalCreatedByData = {
 
 export type SustainableDevGoalCreatedBy = {
   data?: SustainableDevGoalCreatedByData;
-};
-
-export type SustainableDevGoalProjectsDataItemAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type SustainableDevGoalProjectsDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: SustainableDevGoalProjectsDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type SustainableDevGoalProjectsDataItemAttributesUpdatedBy = {
-  data?: SustainableDevGoalProjectsDataItemAttributesUpdatedByData;
 };
 
 export type SustainableDevGoalProjectsDataItemAttributes = {
@@ -970,6 +957,19 @@ export type SustainableDevGoalProjectsDataItem = {
 
 export type SustainableDevGoalProjects = {
   data?: SustainableDevGoalProjectsDataItem[];
+};
+
+export type SustainableDevGoalProjectsDataItemAttributesUpdatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type SustainableDevGoalProjectsDataItemAttributesUpdatedByData = {
+  id?: number;
+  attributes?: SustainableDevGoalProjectsDataItemAttributesUpdatedByDataAttributes;
+};
+
+export type SustainableDevGoalProjectsDataItemAttributesUpdatedBy = {
+  data?: SustainableDevGoalProjectsDataItemAttributesUpdatedByData;
 };
 
 export type SustainableDevGoalProjectsDataItemAttributesCreatedByDataAttributes = {
@@ -1060,6 +1060,32 @@ export const SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribut
     declined: 'declined',
   } as const;
 
+export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributes = {
+  name?: string;
+  organization_type?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+  secondary_organization_theme?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+  short_description?: string;
+  description?: string;
+  country?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+  url?: string;
+  lead_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+  partner_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+  funded_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+  publication_status?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+  updatedBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+};
+
+export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerData = {
+  id?: number;
+  attributes?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributes;
+};
+
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
   { [key: string]: any };
 
@@ -1097,32 +1123,6 @@ export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribute
 
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects = {
   data?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
-};
-
-export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributes = {
-  name?: string;
-  organization_type?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
-  organization_type_other?: string;
-  main_organization_theme?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-  secondary_organization_theme?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
-  short_description?: string;
-  description?: string;
-  country?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
-  url?: string;
-  lead_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-  partner_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-  funded_projects?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-  publication_status?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-  user_email?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-  updatedBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
-};
-
-export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerData = {
-  id?: number;
-  attributes?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributes;
 };
 
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
@@ -1224,6 +1224,15 @@ export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribute
     data?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
   };
 
+export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
+  };
+
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -1236,15 +1245,6 @@ export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribute
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem = {
@@ -1268,6 +1268,16 @@ export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGo
 export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
+  };
+
+export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+  {
+    name?: string;
+    projects?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
@@ -1296,16 +1306,6 @@ export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGo
 export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
-  {
-    name?: string;
-    projects?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes = {
@@ -1404,6 +1404,25 @@ export type SustainableDevGoalProjectsDataItemAttributesRegionOfInterventions = 
   data?: SustainableDevGoalProjectsDataItemAttributesRegionOfInterventionsDataItem[];
 };
 
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributes = {
+  name?: string;
+  capital?: string;
+  code?: number;
+  fips?: string;
+  iso_2?: string;
+  iso_3?: string;
+  continent?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinent;
+  region?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
+  projects?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
+  lat?: number;
+  long?: number;
+  practices?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPractices;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
+  updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedBy;
+};
+
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationData = {
   id?: number;
   attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
@@ -1441,6 +1460,40 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedByData;
   };
 
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributes =
+  {
+    source_name?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName;
+    source_id?: string;
+    title?: string;
+    short_description?: string;
+    country?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
+    detailed_description?: string;
+    project_fund?: string;
+    institution_funding?: string;
+    state_province?: string;
+    further_location?: string;
+    map_location?: string;
+    implem_date?: string;
+    publication_date?: string;
+    implem_decade?: string;
+    main_purposes?: string;
+    has_changed?: boolean;
+    land_use_has_changed?: string;
+    degradation_assessed?: string;
+    language?: string;
+    land_use_types?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes;
+    sync?: boolean;
+    show?: boolean;
+    practice_url?: string;
+    land_use_priors?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
+    subinterventions?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
+    practice_intervention?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedBy;
+  };
+
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItem =
   {
     id?: number;
@@ -1451,25 +1504,6 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
   {
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItem[];
   };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributes = {
-  name?: string;
-  capital?: string;
-  code?: number;
-  fips?: string;
-  iso_2?: string;
-  iso_3?: string;
-  continent?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinent;
-  region?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
-  projects?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
-  lat?: number;
-  long?: number;
-  practices?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
-  updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedBy;
-};
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -1499,60 +1533,20 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedByData;
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
-  };
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention];
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
   {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
-  };
+    Management: 'Management',
+    Land_Use_Change: 'Land Use Change',
+    None: 'None',
+  } as const;
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem[];
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributes =
-  {
-    source_name?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName;
-    source_id?: string;
-    title?: string;
-    short_description?: string;
-    country?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
-    detailed_description?: string;
-    project_fund?: string;
-    institution_funding?: string;
-    state_province?: string;
-    further_location?: string;
-    map_location?: string;
-    implem_date?: string;
-    publication_date?: string;
-    implem_decade?: string;
-    main_purposes?: string;
-    has_changed?: boolean;
-    land_use_has_changed?: string;
-    degradation_assessed?: string;
-    language?: string;
-    land_use_types?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes;
-    sync?: boolean;
-    show?: boolean;
-    practice_url?: string;
-    practice_intervention?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
-    land_use_priors?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
-    subinterventions?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedBy;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes =
@@ -1597,6 +1591,23 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem[];
   };
 
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
+  {
+    name?: string;
+    slug?: string;
+    practices?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
+  };
+
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
+  {
+    id?: number;
+    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
+  };
+
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes =
   { [key: string]: any };
 
@@ -1609,70 +1620,6 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
-  {
-    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
@@ -1775,6 +1722,21 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItem[];
   };
 
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedBy =
+  {
+    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedByData;
+  };
+
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributes =
+  {
+    name?: string;
+    projects?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedBy;
+  };
+
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionData =
   {
     id?: number;
@@ -1793,11 +1755,6 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
   {
     id?: number;
     attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedBy =
-  {
-    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedByData;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesCreatedByDataAttributes =
@@ -1828,14 +1785,19 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItem[];
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributes =
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributes =
   {
     name?: string;
-    projects?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedBy;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributesUpdatedBy;
+  };
+
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentData =
+  {
+    id?: number;
+    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributes;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinent =
@@ -1871,20 +1833,14 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributesCreatedByData;
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributesUpdatedBy;
-  };
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeData = {
+  id?: number;
+  attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributes;
+};
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentData =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinentDataAttributes;
-  };
+export type SustainableDevGoalProjectsDataItemAttributesProjectType = {
+  data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeData;
+};
 
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -1906,14 +1862,23 @@ export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttribute
   updatedBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
 };
 
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeData = {
-  id?: number;
-  attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributes;
-};
-
-export type SustainableDevGoalProjectsDataItemAttributesProjectType = {
-  data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeData;
-};
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
+  {
+    firstname?: string;
+    lastname?: string;
+    username?: string;
+    email?: string;
+    resetPasswordToken?: string;
+    registrationToken?: string;
+    isActive?: boolean;
+    roles?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles;
+    blocked?: boolean;
+    preferedLanguage?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesCreatedBy;
+    updatedBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesUpdatedBy;
+  };
 
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData = {
   id?: number;
@@ -1952,27 +1917,15 @@ export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttribute
     data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesCreatedByData;
   };
 
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem =
+  {
+    id?: number;
+    attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+  };
+
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem[];
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
-  {
-    firstname?: string;
-    lastname?: string;
-    username?: string;
-    email?: string;
-    resetPasswordToken?: string;
-    registrationToken?: string;
-    isActive?: boolean;
-    roles?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles;
-    blocked?: boolean;
-    preferedLanguage?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesCreatedBy;
-    updatedBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesUpdatedBy;
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
@@ -1989,29 +1942,9 @@ export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttribute
     data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
-  };
-
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
   {
     data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
-  {
-    id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-  };
-
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
-  {
-    data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
@@ -2027,10 +1960,24 @@ export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttribute
     updatedBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem =
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+    attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
+  };
+
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
+  {
+    id?: number;
+    attributes?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+  };
+
+export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
+  {
+    data?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -2137,11 +2084,6 @@ export interface SustainableDevGoalRequest {
 
 export type SubinterventionResponseMeta = { [key: string]: any };
 
-export interface SubinterventionResponseDataObject {
-  id?: number;
-  attributes?: Subintervention;
-}
-
 export interface SubinterventionResponse {
   data?: SubinterventionResponseDataObject;
   meta?: SubinterventionResponseMeta;
@@ -2169,15 +2111,6 @@ export type SubinterventionCreatedBy = {
   data?: SubinterventionCreatedByData;
 };
 
-export type SubinterventionPracticesDataItem = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributes;
-};
-
-export type SubinterventionPractices = {
-  data?: SubinterventionPracticesDataItem[];
-};
-
 export interface Subintervention {
   name: string;
   slug: string;
@@ -2188,9 +2121,10 @@ export interface Subintervention {
   updatedBy?: SubinterventionUpdatedBy;
 }
 
-export type SubinterventionPracticesDataItemAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
+export interface SubinterventionResponseDataObject {
+  id?: number;
+  attributes?: Subintervention;
+}
 
 export type SubinterventionPracticesDataItemAttributesUpdatedByData = {
   id?: number;
@@ -2199,38 +2133,6 @@ export type SubinterventionPracticesDataItemAttributesUpdatedByData = {
 
 export type SubinterventionPracticesDataItemAttributesUpdatedBy = {
   data?: SubinterventionPracticesDataItemAttributesUpdatedByData;
-};
-
-export type SubinterventionPracticesDataItemAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type SubinterventionPracticesDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCreatedByDataAttributes;
-};
-
-export type SubinterventionPracticesDataItemAttributesCreatedBy = {
-  data?: SubinterventionPracticesDataItemAttributesCreatedByData;
-};
-
-export type SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributes = {
-  name?: string;
-  slug?: string;
-  practices?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-  updatedBy?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
-};
-
-export type SubinterventionPracticesDataItemAttributesSubinterventionsDataItem = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributes;
-};
-
-export type SubinterventionPracticesDataItemAttributesSubinterventions = {
-  data?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItem[];
 };
 
 export type SubinterventionPracticesDataItemAttributes = {
@@ -2257,13 +2159,68 @@ export type SubinterventionPracticesDataItemAttributes = {
   sync?: boolean;
   show?: boolean;
   practice_url?: string;
-  practice_intervention?: SubinterventionPracticesDataItemAttributesPracticeIntervention;
   land_use_priors?: SubinterventionPracticesDataItemAttributesLandUsePriors;
   subinterventions?: SubinterventionPracticesDataItemAttributesSubinterventions;
+  practice_intervention?: SubinterventionPracticesDataItemAttributesPracticeIntervention;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: SubinterventionPracticesDataItemAttributesCreatedBy;
   updatedBy?: SubinterventionPracticesDataItemAttributesUpdatedBy;
+};
+
+export type SubinterventionPracticesDataItem = {
+  id?: number;
+  attributes?: SubinterventionPracticesDataItemAttributes;
+};
+
+export type SubinterventionPractices = {
+  data?: SubinterventionPracticesDataItem[];
+};
+
+export type SubinterventionPracticesDataItemAttributesUpdatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type SubinterventionPracticesDataItemAttributesCreatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type SubinterventionPracticesDataItemAttributesCreatedByData = {
+  id?: number;
+  attributes?: SubinterventionPracticesDataItemAttributesCreatedByDataAttributes;
+};
+
+export type SubinterventionPracticesDataItemAttributesCreatedBy = {
+  data?: SubinterventionPracticesDataItemAttributesCreatedByData;
+};
+
+export type SubinterventionPracticesDataItemAttributesPracticeIntervention =
+  (typeof SubinterventionPracticesDataItemAttributesPracticeIntervention)[keyof typeof SubinterventionPracticesDataItemAttributesPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const SubinterventionPracticesDataItemAttributesPracticeIntervention = {
+  Management: 'Management',
+  Land_Use_Change: 'Land Use Change',
+  None: 'None',
+} as const;
+
+export type SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributes = {
+  name?: string;
+  slug?: string;
+  practices?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
+  updatedBy?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
+};
+
+export type SubinterventionPracticesDataItemAttributesSubinterventionsDataItem = {
+  id?: number;
+  attributes?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributes;
+};
+
+export type SubinterventionPracticesDataItemAttributesSubinterventions = {
+  data?: SubinterventionPracticesDataItemAttributesSubinterventionsDataItem[];
 };
 
 export type SubinterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes =
@@ -2319,67 +2276,6 @@ export type SubinterventionPracticesDataItemAttributesLandUsePriorsDataItem = {
 
 export type SubinterventionPracticesDataItemAttributesLandUsePriors = {
   data?: SubinterventionPracticesDataItemAttributesLandUsePriorsDataItem[];
-};
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionData = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributes;
-};
-
-export type SubinterventionPracticesDataItemAttributesPracticeIntervention = {
-  data?: SubinterventionPracticesDataItemAttributesPracticeInterventionData;
-};
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-  };
-
-export type SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributes = {
-  name?: string;
-  slug?: string;
-  practices?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-  updatedBy?: SubinterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
 };
 
 export type SubinterventionPracticesDataItemAttributesLandUseTypesDataItem = {
@@ -2439,25 +2335,6 @@ export type SubinterventionPracticesDataItemAttributesLandUseTypesDataItemAttrib
   updatedBy?: SubinterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributes = {
-  name?: string;
-  capital?: string;
-  code?: number;
-  fips?: string;
-  iso_2?: string;
-  iso_3?: string;
-  continent?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinent;
-  region?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegion;
-  projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesProjects;
-  lat?: number;
-  long?: number;
-  practices?: SubinterventionPracticesDataItemAttributesCountryDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy;
-  updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedBy;
-};
-
 export type SubinterventionPracticesDataItemAttributesCountryData = {
   id?: number;
   attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributes;
@@ -2479,16 +2356,35 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdat
   data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByData;
 };
 
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy = {
+  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData;
+};
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributes = {
+  name?: string;
+  capital?: string;
+  code?: number;
+  fips?: string;
+  iso_2?: string;
+  iso_3?: string;
+  continent?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinent;
+  region?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegion;
+  projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesProjects;
+  lat?: number;
+  long?: number;
+  practices?: SubinterventionPracticesDataItemAttributesCountryDataAttributesPractices;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy;
+  updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedBy;
+};
+
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData = {
   id?: number;
   attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes;
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData;
 };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes =
@@ -2513,15 +2409,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesProje
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesProjects = {
   data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItem[];
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributes = {
-  name?: string;
-  projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
 };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionData = {
@@ -2561,37 +2448,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
-  {
-    name?: string;
-    project_type?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
-    start_date?: string;
-    end_date?: string;
-    short_description?: string;
-    description?: string;
-    country_of_coordination?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-    region_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-    country_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
-    website?: string;
-    project_coordinator_name?: string;
-    project_coordinator_email?: string;
-    second_project_coordinator_name?: string;
-    second_project_coordinator_email?: string;
-    main_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
-    main_area_of_intervention_other?: string;
-    secondary_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-    third_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-    sustainable_development_goals?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-    lead_partner?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-    partners?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
-    funders?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
-    publication_status?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
-  };
-
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem =
   {
     id?: number;
@@ -2602,6 +2458,15 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem[];
   };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributes = {
+  name?: string;
+  projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
+  updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
+};
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -2670,15 +2535,35 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
   {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
+    name?: string;
+    project_type?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
+    start_date?: string;
+    end_date?: string;
+    short_description?: string;
+    description?: string;
+    country_of_coordination?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
+    region_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
+    country_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
+    website?: string;
+    project_coordinator_name?: string;
+    project_coordinator_email?: string;
+    second_project_coordinator_name?: string;
+    second_project_coordinator_email?: string;
+    main_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
+    main_area_of_intervention_other?: string;
+    secondary_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
+    third_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
+    sustainable_development_goals?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
+    lead_partner?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
+    partners?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
+    funders?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
+    publication_status?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
@@ -2715,6 +2600,17 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     updatedAt?: string;
     createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
     updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
@@ -2860,15 +2756,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
-  };
-
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
   {
     id?: number;
@@ -2894,6 +2781,15 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
   };
 
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
+  };
+
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -2906,6 +2802,12 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
@@ -2925,6 +2827,16 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+  {
+    name?: string;
+    projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
@@ -2953,22 +2865,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
-  {
-    name?: string;
-    projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
@@ -3024,15 +2920,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
-  };
-
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -3045,6 +2932,15 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
@@ -3089,6 +2985,26 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
   };
 
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+  };
+
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
   {
     id?: number;
@@ -3103,17 +3019,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
-  };
-
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -3126,15 +3031,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentData = {
@@ -3160,6 +3056,33 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData;
   };
 
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
+  {
+    firstname?: string;
+    lastname?: string;
+    username?: string;
+    email?: string;
+    resetPasswordToken?: string;
+    registrationToken?: string;
+    isActive?: boolean;
+    roles?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
+    blocked?: boolean;
+    preferedLanguage?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
+  };
+
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData =
   {
     id?: number;
@@ -3169,15 +3092,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
@@ -3217,24 +3131,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles =
   {
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
-  {
-    firstname?: string;
-    lastname?: string;
-    username?: string;
-    email?: string;
-    resetPasswordToken?: string;
-    registrationToken?: string;
-    isActive?: boolean;
-    roles?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
-    blocked?: boolean;
-    preferedLanguage?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
   };
 
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
@@ -3303,6 +3199,20 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -3331,25 +3241,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
     data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
-  };
-
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
 
@@ -3357,6 +3248,11 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
   {
     id?: number;
     attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
   };
 
 export type SubinterventionPracticesDataItemAttributesSourceName =
@@ -3402,17 +3298,6 @@ export interface SubinterventionRequest {
 
 export type StaticPageResponseMeta = { [key: string]: any };
 
-export interface StaticPage {
-  title: string;
-  slug: string;
-  content: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: StaticPageCreatedBy;
-  updatedBy?: StaticPageUpdatedBy;
-}
-
 export interface StaticPageResponseDataObject {
   id?: number;
   attributes?: StaticPage;
@@ -3434,6 +3319,37 @@ export type StaticPageUpdatedBy = {
   data?: StaticPageUpdatedByData;
 };
 
+export type StaticPageCreatedByData = {
+  id?: number;
+  attributes?: StaticPageCreatedByDataAttributes;
+};
+
+export type StaticPageCreatedBy = {
+  data?: StaticPageCreatedByData;
+};
+
+export interface StaticPage {
+  title: string;
+  slug: string;
+  content: string;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: StaticPageCreatedBy;
+  updatedBy?: StaticPageUpdatedBy;
+}
+
+export type StaticPageCreatedByDataAttributesUpdatedByDataAttributes = { [key: string]: any };
+
+export type StaticPageCreatedByDataAttributesUpdatedByData = {
+  id?: number;
+  attributes?: StaticPageCreatedByDataAttributesUpdatedByDataAttributes;
+};
+
+export type StaticPageCreatedByDataAttributesUpdatedBy = {
+  data?: StaticPageCreatedByDataAttributesUpdatedByData;
+};
+
 export type StaticPageCreatedByDataAttributes = {
   firstname?: string;
   lastname?: string;
@@ -3451,26 +3367,6 @@ export type StaticPageCreatedByDataAttributes = {
   updatedBy?: StaticPageCreatedByDataAttributesUpdatedBy;
 };
 
-export type StaticPageCreatedByData = {
-  id?: number;
-  attributes?: StaticPageCreatedByDataAttributes;
-};
-
-export type StaticPageCreatedBy = {
-  data?: StaticPageCreatedByData;
-};
-
-export type StaticPageCreatedByDataAttributesUpdatedByDataAttributes = { [key: string]: any };
-
-export type StaticPageCreatedByDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: StaticPageCreatedByDataAttributesUpdatedByDataAttributes;
-};
-
-export type StaticPageCreatedByDataAttributesUpdatedBy = {
-  data?: StaticPageCreatedByDataAttributesUpdatedByData;
-};
-
 export type StaticPageCreatedByDataAttributesCreatedByDataAttributes = { [key: string]: any };
 
 export type StaticPageCreatedByDataAttributesCreatedByData = {
@@ -3480,18 +3376,6 @@ export type StaticPageCreatedByDataAttributesCreatedByData = {
 
 export type StaticPageCreatedByDataAttributesCreatedBy = {
   data?: StaticPageCreatedByDataAttributesCreatedByData;
-};
-
-export type StaticPageCreatedByDataAttributesRolesDataItemAttributes = {
-  name?: string;
-  code?: string;
-  description?: string;
-  users?: StaticPageCreatedByDataAttributesRolesDataItemAttributesUsers;
-  permissions?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-  updatedBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
 };
 
 export type StaticPageCreatedByDataAttributesRolesDataItem = {
@@ -3516,6 +3400,18 @@ export type StaticPageCreatedByDataAttributesRolesDataItemAttributesUpdatedBy = 
   data?: StaticPageCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
 };
 
+export type StaticPageCreatedByDataAttributesRolesDataItemAttributes = {
+  name?: string;
+  code?: string;
+  description?: string;
+  users?: StaticPageCreatedByDataAttributesRolesDataItemAttributesUsers;
+  permissions?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissions;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+  updatedBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+};
+
 export type StaticPageCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes = {
   [key: string]: any;
 };
@@ -3528,20 +3424,6 @@ export type StaticPageCreatedByDataAttributesRolesDataItemAttributesCreatedByDat
 export type StaticPageCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
   data?: StaticPageCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
 };
-
-export type StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
 
 export type StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
   id?: number;
@@ -3564,6 +3446,20 @@ export type StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsD
 export type StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+  };
+
+export type StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type StaticPageCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -3672,6 +3568,36 @@ export type RegionCreatedBy = {
   data?: RegionCreatedByData;
 };
 
+export type RegionProjectsDataItemAttributes = {
+  name?: string;
+  project_type?: RegionProjectsDataItemAttributesProjectType;
+  start_date?: string;
+  end_date?: string;
+  short_description?: string;
+  description?: string;
+  country_of_coordination?: RegionProjectsDataItemAttributesCountryOfCoordination;
+  region_of_interventions?: RegionProjectsDataItemAttributesRegionOfInterventions;
+  country_of_interventions?: RegionProjectsDataItemAttributesCountryOfInterventions;
+  website?: string;
+  project_coordinator_name?: string;
+  project_coordinator_email?: string;
+  second_project_coordinator_name?: string;
+  second_project_coordinator_email?: string;
+  main_area_of_intervention?: RegionProjectsDataItemAttributesMainAreaOfIntervention;
+  main_area_of_intervention_other?: string;
+  secondary_area_of_intervention?: RegionProjectsDataItemAttributesSecondaryAreaOfIntervention;
+  third_area_of_intervention?: RegionProjectsDataItemAttributesThirdAreaOfIntervention;
+  sustainable_development_goals?: RegionProjectsDataItemAttributesSustainableDevelopmentGoals;
+  lead_partner?: RegionProjectsDataItemAttributesLeadPartner;
+  partners?: RegionProjectsDataItemAttributesPartners;
+  funders?: RegionProjectsDataItemAttributesFunders;
+  publication_status?: RegionProjectsDataItemAttributesPublicationStatus;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesUpdatedBy;
+};
+
 export type RegionProjectsDataItem = {
   id?: number;
   attributes?: RegionProjectsDataItemAttributes;
@@ -3744,34 +3670,13 @@ export type RegionProjectsDataItemAttributesPartners = {
   data?: RegionProjectsDataItemAttributesPartnersDataItem[];
 };
 
-export type RegionProjectsDataItemAttributes = {
-  name?: string;
-  project_type?: RegionProjectsDataItemAttributesProjectType;
-  start_date?: string;
-  end_date?: string;
-  short_description?: string;
-  description?: string;
-  country_of_coordination?: RegionProjectsDataItemAttributesCountryOfCoordination;
-  region_of_interventions?: RegionProjectsDataItemAttributesRegionOfInterventions;
-  country_of_interventions?: RegionProjectsDataItemAttributesCountryOfInterventions;
-  website?: string;
-  project_coordinator_name?: string;
-  project_coordinator_email?: string;
-  second_project_coordinator_name?: string;
-  second_project_coordinator_email?: string;
-  main_area_of_intervention?: RegionProjectsDataItemAttributesMainAreaOfIntervention;
-  main_area_of_intervention_other?: string;
-  secondary_area_of_intervention?: RegionProjectsDataItemAttributesSecondaryAreaOfIntervention;
-  third_area_of_intervention?: RegionProjectsDataItemAttributesThirdAreaOfIntervention;
-  sustainable_development_goals?: RegionProjectsDataItemAttributesSustainableDevelopmentGoals;
-  lead_partner?: RegionProjectsDataItemAttributesLeadPartner;
-  partners?: RegionProjectsDataItemAttributesPartners;
-  funders?: RegionProjectsDataItemAttributesFunders;
-  publication_status?: RegionProjectsDataItemAttributesPublicationStatus;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesUpdatedBy;
+export type RegionProjectsDataItemAttributesLeadPartnerData = {
+  id?: number;
+  attributes?: RegionProjectsDataItemAttributesLeadPartnerDataAttributes;
+};
+
+export type RegionProjectsDataItemAttributesLeadPartner = {
+  data?: RegionProjectsDataItemAttributesLeadPartnerData;
 };
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes = {
@@ -3785,36 +3690,6 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDa
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy = {
   data?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
-};
-
-export type RegionProjectsDataItemAttributesLeadPartnerDataAttributes = {
-  name?: string;
-  organization_type?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
-  organization_type_other?: string;
-  main_organization_theme?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-  secondary_organization_theme?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
-  short_description?: string;
-  description?: string;
-  country?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
-  url?: string;
-  lead_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-  partner_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-  funded_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-  publication_status?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-  user_email?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
-};
-
-export type RegionProjectsDataItemAttributesLeadPartnerData = {
-  id?: number;
-  attributes?: RegionProjectsDataItemAttributesLeadPartnerDataAttributes;
-};
-
-export type RegionProjectsDataItemAttributesLeadPartner = {
-  data?: RegionProjectsDataItemAttributesLeadPartnerData;
 };
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes = {
@@ -3911,6 +3786,27 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganiz
   data?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
 };
 
+export type RegionProjectsDataItemAttributesLeadPartnerDataAttributes = {
+  name?: string;
+  organization_type?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+  secondary_organization_theme?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+  short_description?: string;
+  description?: string;
+  country?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+  url?: string;
+  lead_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+  partner_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+  funded_projects?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+  publication_status?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+};
+
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -3924,9 +3820,6 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganiz
   {
     data?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
   };
-
-export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
   {
@@ -3948,14 +3841,8 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganiz
     updatedBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
   };
 
-export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
-  };
+export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
+  { [key: string]: any };
 
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData = {
   id?: number;
@@ -3980,6 +3867,15 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizatio
     data?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
   };
 
+export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
+  };
+
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -3993,6 +3889,15 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizatio
   {
     data?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
   };
+
+export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes = {
+  name?: string;
+  projects?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
+};
 
 export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem = {
   id?: number;
@@ -4017,20 +3922,6 @@ export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemA
     data?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
   };
 
-export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
-  {
-    data?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
-  };
-
-export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes = {
-  name?: string;
-  projects?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
-};
-
 export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -4038,6 +3929,11 @@ export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemA
   {
     id?: number;
     attributes?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
+  };
+
+export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
+  {
+    data?: RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
   };
 
 export type RegionProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
@@ -4080,14 +3976,6 @@ export type RegionProjectsDataItemAttributesSecondaryAreaOfIntervention = {
   data?: RegionProjectsDataItemAttributesSecondaryAreaOfInterventionData;
 };
 
-export type RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributes = {
-  name?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
-};
-
 export type RegionProjectsDataItemAttributesMainAreaOfInterventionData = {
   id?: number;
   attributes?: RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
@@ -4107,6 +3995,14 @@ export type RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributes
 
 export type RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy = {
   data?: RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
+};
+
+export type RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributes = {
+  name?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
 };
 
 export type RegionProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
@@ -4147,25 +4043,6 @@ export type RegionProjectsDataItemAttributesRegionOfInterventions = {
   data?: RegionProjectsDataItemAttributesRegionOfInterventionsDataItem[];
 };
 
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributes = {
-  name?: string;
-  capital?: string;
-  code?: number;
-  fips?: string;
-  iso_2?: string;
-  iso_3?: string;
-  continent?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinent;
-  region?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
-  projects?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
-  lat?: number;
-  long?: number;
-  practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedBy;
-};
-
 export type RegionProjectsDataItemAttributesCountryOfCoordinationData = {
   id?: number;
   attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
@@ -4187,6 +4064,25 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesU
   data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedByData;
 };
 
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributes = {
+  name?: string;
+  capital?: string;
+  code?: number;
+  fips?: string;
+  iso_2?: string;
+  iso_3?: string;
+  continent?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesContinent;
+  region?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegion;
+  projects?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects;
+  lat?: number;
+  long?: number;
+  practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPractices;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedBy;
+};
+
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -4198,40 +4094,6 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesC
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy = {
   data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedByData;
 };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributes =
-  {
-    source_name?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName;
-    source_id?: string;
-    title?: string;
-    short_description?: string;
-    country?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
-    detailed_description?: string;
-    project_fund?: string;
-    institution_funding?: string;
-    state_province?: string;
-    further_location?: string;
-    map_location?: string;
-    implem_date?: string;
-    publication_date?: string;
-    implem_decade?: string;
-    main_purposes?: string;
-    has_changed?: boolean;
-    land_use_has_changed?: string;
-    degradation_assessed?: string;
-    language?: string;
-    land_use_types?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes;
-    sync?: boolean;
-    show?: boolean;
-    practice_url?: string;
-    practice_intervention?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
-    land_use_priors?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
-    subinterventions?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedBy;
-  };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItem = {
   id?: number;
@@ -4268,6 +4130,62 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy =
   {
     data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedByData;
+  };
+
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  {
+    Management: 'Management',
+    Land_Use_Change: 'Land Use Change',
+    None: 'None',
+  } as const;
+
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributes =
+  {
+    source_name?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName;
+    source_id?: string;
+    title?: string;
+    short_description?: string;
+    country?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
+    detailed_description?: string;
+    project_fund?: string;
+    institution_funding?: string;
+    state_province?: string;
+    further_location?: string;
+    map_location?: string;
+    implem_date?: string;
+    publication_date?: string;
+    implem_decade?: string;
+    main_purposes?: string;
+    has_changed?: boolean;
+    land_use_has_changed?: string;
+    degradation_assessed?: string;
+    language?: string;
+    land_use_types?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes;
+    sync?: boolean;
+    show?: boolean;
+    practice_url?: string;
+    land_use_priors?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
+    subinterventions?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
+    practice_intervention?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
+    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedBy;
+  };
+
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
+  {
+    name?: string;
+    slug?: string;
+    practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
+    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
   };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
@@ -4323,17 +4241,6 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
     data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem[];
   };
 
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
-  };
-
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes =
   { [key: string]: any };
 
@@ -4346,80 +4253,6 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors =
   {
     data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData =
-  {
-    id?: number;
-    attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
-  {
-    data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-  };
-
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
-  {
-    name?: string;
-    practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
@@ -4445,6 +4278,16 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
   {
     data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
+  };
+
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
+  {
+    name?: string;
+    practices?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+    updatedBy?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
@@ -4498,16 +4341,16 @@ export const RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributes
     WOCAT: 'WOCAT',
   } as const;
 
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects = {
-  data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItem[];
-};
-
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItem = {
   id?: number;
   attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItemAttributes;
+};
+
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjects = {
+  data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItem[];
 };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesRegionData = {
@@ -4639,31 +4482,6 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
   data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
 };
 
-export type RegionProjectsDataItemAttributesProjectTypeDataAttributes = {
-  name?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
-};
-
-export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesUpdatedBy;
-};
-
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData = {
   id?: number;
   attributes?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
@@ -4671,6 +4489,14 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
 
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy = {
   data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
+};
+
+export type RegionProjectsDataItemAttributesProjectTypeDataAttributes = {
+  name?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
 };
 
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
@@ -4701,6 +4527,34 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
     data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesCreatedByData;
   };
 
+export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem =
+  {
+    id?: number;
+    attributes?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+  };
+
+export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles =
+  {
+    data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem[];
+  };
+
+export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesCreatedBy;
+  updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesUpdatedBy;
+};
+
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -4713,30 +4567,6 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
     data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
-  };
-
-export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-  };
-
-export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem =
-  {
-    id?: number;
-    attributes?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
-  };
-
-export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRoles =
-  {
-    data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem[];
   };
 
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
@@ -4753,6 +4583,20 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
     data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
+export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -4762,6 +4606,19 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
     data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+  };
+
+export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -4776,20 +4633,6 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDa
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
-  };
-
-export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -4868,6 +4711,11 @@ export interface RegionRequest {
 
 export type ProjectTypeResponseMeta = { [key: string]: any };
 
+export interface ProjectTypeResponse {
+  data?: ProjectTypeResponseDataObject;
+  meta?: ProjectTypeResponseMeta;
+}
+
 export interface ProjectType {
   name: string;
   createdAt?: string;
@@ -4879,11 +4727,6 @@ export interface ProjectType {
 export interface ProjectTypeResponseDataObject {
   id?: number;
   attributes?: ProjectType;
-}
-
-export interface ProjectTypeResponse {
-  data?: ProjectTypeResponseDataObject;
-  meta?: ProjectTypeResponseMeta;
 }
 
 export type ProjectTypeUpdatedByDataAttributes = { [key: string]: any };
@@ -4915,23 +4758,6 @@ export type ProjectTypeCreatedByDataAttributesUpdatedByData = {
 
 export type ProjectTypeCreatedByDataAttributesUpdatedBy = {
   data?: ProjectTypeCreatedByDataAttributesUpdatedByData;
-};
-
-export type ProjectTypeCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: ProjectTypeCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ProjectTypeCreatedByDataAttributesCreatedBy;
-  updatedBy?: ProjectTypeCreatedByDataAttributesUpdatedBy;
 };
 
 export type ProjectTypeCreatedByDataAttributesCreatedByDataAttributes = { [key: string]: any };
@@ -4966,6 +4792,23 @@ export type ProjectTypeCreatedByDataAttributesRoles = {
   data?: ProjectTypeCreatedByDataAttributesRolesDataItem[];
 };
 
+export type ProjectTypeCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: ProjectTypeCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ProjectTypeCreatedByDataAttributesCreatedBy;
+  updatedBy?: ProjectTypeCreatedByDataAttributesUpdatedBy;
+};
+
 export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
@@ -4992,6 +4835,11 @@ export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
   data?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
 };
 
+export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
+  id?: number;
+  attributes?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+};
+
 export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissions = {
   data?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
 };
@@ -5010,32 +4858,9 @@ export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissions
     data?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
-export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
-  };
-
 export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
     data?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
-  };
-
-export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
-  { [key: string]: any };
-
-export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
-  {
-    id?: number;
-    attributes?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
-  };
-
-export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
-  {
-    data?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
 export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
@@ -5052,10 +4877,28 @@ export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissions
     updatedBy?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
-export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
-  id?: number;
-  attributes?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-};
+export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
+  };
+
+export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
+  { [key: string]: any };
+
+export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
+  {
+    id?: number;
+    attributes?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
+  };
+
+export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+  {
+    data?: ProjectTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+  };
 
 export type ProjectTypeCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes = {
   [key: string]: any;
@@ -5100,6 +4943,11 @@ export interface ProjectTypeRequest {
 }
 
 export type ProjectResponseMeta = { [key: string]: any };
+
+export interface ProjectResponseDataObject {
+  id?: number;
+  attributes?: Project;
+}
 
 export interface ProjectResponse {
   data?: ProjectResponseDataObject;
@@ -5168,11 +5016,6 @@ export interface Project {
   updatedBy?: ProjectUpdatedBy;
 }
 
-export interface ProjectResponseDataObject {
-  id?: number;
-  attributes?: Project;
-}
-
 export type ProjectFundersDataItemAttributes = { [key: string]: any };
 
 export type ProjectFundersDataItem = {
@@ -5217,8 +5060,6 @@ export type ProjectSustainableDevelopmentGoals = {
   data?: ProjectSustainableDevelopmentGoalsDataItem[];
 };
 
-export type ProjectThirdAreaOfInterventionDataAttributes = { [key: string]: any };
-
 export type ProjectThirdAreaOfInterventionData = {
   id?: number;
   attributes?: ProjectThirdAreaOfInterventionDataAttributes;
@@ -5227,6 +5068,8 @@ export type ProjectThirdAreaOfInterventionData = {
 export type ProjectThirdAreaOfIntervention = {
   data?: ProjectThirdAreaOfInterventionData;
 };
+
+export type ProjectThirdAreaOfInterventionDataAttributes = { [key: string]: any };
 
 export type ProjectSecondaryAreaOfInterventionDataAttributes = { [key: string]: any };
 
@@ -5307,6 +5150,44 @@ export type ProjectCountryOfCoordinationDataAttributesCreatedBy = {
   data?: ProjectCountryOfCoordinationDataAttributesCreatedByData;
 };
 
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributes = {
+  source_name?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName;
+  source_id?: string;
+  title?: string;
+  short_description?: string;
+  country?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
+  detailed_description?: string;
+  project_fund?: string;
+  institution_funding?: string;
+  state_province?: string;
+  further_location?: string;
+  map_location?: string;
+  implem_date?: string;
+  publication_date?: string;
+  implem_decade?: string;
+  main_purposes?: string;
+  has_changed?: boolean;
+  land_use_has_changed?: string;
+  degradation_assessed?: string;
+  language?: string;
+  land_use_types?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes;
+  sync?: boolean;
+  show?: boolean;
+  practice_url?: string;
+  land_use_priors?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
+  subinterventions?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
+  practice_intervention?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
+  updatedBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedBy;
+};
+
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItem = {
+  id?: number;
+  attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributes;
+};
+
 export type ProjectCountryOfCoordinationDataAttributesPractices = {
   data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItem[];
 };
@@ -5354,43 +5235,27 @@ export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttribute
   data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedByData;
 };
 
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributes = {
-  source_name?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName;
-  source_id?: string;
-  title?: string;
-  short_description?: string;
-  country?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
-  detailed_description?: string;
-  project_fund?: string;
-  institution_funding?: string;
-  state_province?: string;
-  further_location?: string;
-  map_location?: string;
-  implem_date?: string;
-  publication_date?: string;
-  implem_decade?: string;
-  main_purposes?: string;
-  has_changed?: boolean;
-  land_use_has_changed?: string;
-  degradation_assessed?: string;
-  language?: string;
-  land_use_types?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes;
-  sync?: boolean;
-  show?: boolean;
-  practice_url?: string;
-  practice_intervention?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
-  land_use_priors?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
-  subinterventions?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
-  updatedBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesUpdatedBy;
-};
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention];
 
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItem = {
-  id?: number;
-  attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributes;
-};
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  {
+    Management: 'Management',
+    Land_Use_Change: 'Land Use Change',
+    None: 'None',
+  } as const;
+
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
+  {
+    id?: number;
+    attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
+  };
+
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions =
+  {
+    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem[];
+  };
 
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -5406,6 +5271,11 @@ export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttribute
     data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData;
   };
 
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy =
+  {
+    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData;
+  };
+
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
   {
     name?: string;
@@ -5417,17 +5287,6 @@ export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttribute
     updatedBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
   };
 
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem[];
-  };
-
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -5435,11 +5294,6 @@ export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttribute
   {
     id?: number;
     attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes =
@@ -5469,68 +5323,14 @@ export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttribute
   data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
 };
 
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes =
+export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
   {
     name?: string;
-    slug?: string;
-    practices?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
+    practices?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-    updatedBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
+    createdBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+    updatedBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
@@ -5555,16 +5355,6 @@ export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttribute
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
   {
     data?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
-  {
-    name?: string;
-    practices?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-    updatedBy?: ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
@@ -5628,15 +5418,6 @@ export type ProjectCountryOfCoordinationDataAttributesProjects = {
   data?: ProjectCountryOfCoordinationDataAttributesProjectsDataItem[];
 };
 
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributes = {
-  name?: string;
-  projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedBy;
-};
-
 export type ProjectCountryOfCoordinationDataAttributesRegionData = {
   id?: number;
   attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributes;
@@ -5658,6 +5439,15 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesUpdate
   data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedByData;
 };
 
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributes = {
+  name?: string;
+  projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesCreatedBy;
+  updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesUpdatedBy;
+};
+
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -5669,29 +5459,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesCreate
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesCreatedBy = {
   data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesCreatedByData;
 };
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItem = {
-  id?: number;
-  attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributes;
-};
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjects = {
-  data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItem[];
-};
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
-  {
-    data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
-  };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributes =
   {
@@ -5722,6 +5489,29 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     updatedAt?: string;
     createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
     updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
+  };
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItem = {
+  id?: number;
+  attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributes;
+};
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjects = {
+  data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItem[];
+};
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
+  };
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
+  {
+    data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
@@ -5827,6 +5617,28 @@ export const ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProje
     declined: 'declined',
   } as const;
 
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+  {
+    name?: string;
+    organization_type?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type_other?: string;
+    main_organization_theme?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    short_description?: string;
+    description?: string;
+    country?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    url?: string;
+    lead_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    user_email?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+  };
+
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
   { [key: string]: any };
 
@@ -5853,28 +5665,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
   {
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
-  {
-    name?: string;
-    organization_type?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
-    organization_type_other?: string;
-    main_organization_theme?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
-    short_description?: string;
-    description?: string;
-    country?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
-    url?: string;
-    lead_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-    user_email?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
@@ -6040,6 +5830,16 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
   };
 
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+  {
+    name?: string;
+    projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
+  };
+
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -6066,16 +5866,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
-  };
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
-  {
-    name?: string;
-    projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
@@ -6106,15 +5896,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
   };
 
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
   {
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
@@ -6138,6 +5919,15 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
   {
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
+  };
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
   };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
@@ -6210,14 +6000,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
   };
 
-export type ProjectCountryOfCoordinationDataAttributesContinentDataAttributes = {
-  name?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributesCreatedBy;
-  updatedBy?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributesUpdatedBy;
-};
-
 export type ProjectCountryOfCoordinationDataAttributesContinentData = {
   id?: number;
   attributes?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributes;
@@ -6239,6 +6021,14 @@ export type ProjectCountryOfCoordinationDataAttributesContinentDataAttributesUpd
   data?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributesUpdatedByData;
 };
 
+export type ProjectCountryOfCoordinationDataAttributesContinentDataAttributes = {
+  name?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributesCreatedBy;
+  updatedBy?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributesUpdatedBy;
+};
+
 export type ProjectCountryOfCoordinationDataAttributesContinentDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -6249,15 +6039,6 @@ export type ProjectCountryOfCoordinationDataAttributesContinentDataAttributesCre
 
 export type ProjectCountryOfCoordinationDataAttributesContinentDataAttributesCreatedBy = {
   data?: ProjectCountryOfCoordinationDataAttributesContinentDataAttributesCreatedByData;
-};
-
-export type ProjectProjectTypeData = {
-  id?: number;
-  attributes?: ProjectProjectTypeDataAttributes;
-};
-
-export type ProjectProjectType = {
-  data?: ProjectProjectTypeData;
 };
 
 export type ProjectProjectTypeDataAttributesUpdatedByDataAttributes = { [key: string]: any };
@@ -6288,6 +6069,15 @@ export type ProjectProjectTypeDataAttributes = {
   updatedBy?: ProjectProjectTypeDataAttributesUpdatedBy;
 };
 
+export type ProjectProjectTypeData = {
+  id?: number;
+  attributes?: ProjectProjectTypeDataAttributes;
+};
+
+export type ProjectProjectType = {
+  data?: ProjectProjectTypeData;
+};
+
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
@@ -6299,15 +6089,6 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributesUpdatedByData
 
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesUpdatedBy = {
   data?: ProjectProjectTypeDataAttributesCreatedByDataAttributesUpdatedByData;
-};
-
-export type ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
 };
 
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedBy = {
@@ -6331,21 +6112,13 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributes = {
   updatedBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesUpdatedBy;
 };
 
-export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
-  {
-    data?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
-  };
+export type ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedByDataAttributes = {
+  [key: string]: any;
+};
 
-export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes = {
-  name?: string;
-  code?: string;
-  description?: string;
-  users?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-  permissions?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-  updatedBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+export type ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedByData = {
+  id?: number;
+  attributes?: ProjectProjectTypeDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
 };
 
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem = {
@@ -6366,6 +6139,11 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem
     attributes?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
   };
 
+export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
+  {
+    data?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+  };
+
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -6380,6 +6158,20 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem
     data?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
+export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -6390,6 +6182,18 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem
   {
     data?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
+
+export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes = {
+  name?: string;
+  code?: string;
+  description?: string;
+  users?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+  permissions?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+  updatedBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+};
 
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -6403,20 +6207,6 @@ export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItem
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
-  };
-
-export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type ProjectProjectTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -6543,1277 +6333,18 @@ export type ProjectRequestData = {
   publication_status?: ProjectRequestDataPublicationStatus;
 };
 
-export type PracticeInterventionResponseMeta = { [key: string]: any };
-
-export interface PracticeInterventionResponse {
-  data?: PracticeInterventionResponseDataObject;
-  meta?: PracticeInterventionResponseMeta;
-}
-
-export type PracticeInterventionUpdatedByData = {
-  id?: number;
-  attributes?: PracticeInterventionUpdatedByDataAttributes;
-};
-
-export type PracticeInterventionUpdatedBy = {
-  data?: PracticeInterventionUpdatedByData;
-};
-
-export interface PracticeIntervention {
-  name: string;
-  slug: string;
-  practices?: PracticeInterventionPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeInterventionCreatedBy;
-  updatedBy?: PracticeInterventionUpdatedBy;
-}
-
-export interface PracticeInterventionResponseDataObject {
-  id?: number;
-  attributes?: PracticeIntervention;
-}
-
-export type PracticeInterventionUpdatedByDataAttributes = { [key: string]: any };
-
-export type PracticeInterventionCreatedByDataAttributes = { [key: string]: any };
-
-export type PracticeInterventionCreatedByData = {
-  id?: number;
-  attributes?: PracticeInterventionCreatedByDataAttributes;
-};
-
-export type PracticeInterventionCreatedBy = {
-  data?: PracticeInterventionCreatedByData;
-};
-
-export type PracticeInterventionPracticesDataItem = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributes;
-};
-
-export type PracticeInterventionPractices = {
-  data?: PracticeInterventionPracticesDataItem[];
-};
-
-export type PracticeInterventionPracticesDataItemAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesUpdatedBy = {
-  data?: PracticeInterventionPracticesDataItemAttributesUpdatedByData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributes = {
-  source_name?: PracticeInterventionPracticesDataItemAttributesSourceName;
-  source_id?: string;
-  title?: string;
-  short_description?: string;
-  country?: PracticeInterventionPracticesDataItemAttributesCountry;
-  detailed_description?: string;
-  project_fund?: string;
-  institution_funding?: string;
-  state_province?: string;
-  further_location?: string;
-  map_location?: string;
-  implem_date?: string;
-  publication_date?: string;
-  implem_decade?: string;
-  main_purposes?: string;
-  has_changed?: boolean;
-  land_use_has_changed?: string;
-  degradation_assessed?: string;
-  language?: string;
-  land_use_types?: PracticeInterventionPracticesDataItemAttributesLandUseTypes;
-  sync?: boolean;
-  show?: boolean;
-  practice_url?: string;
-  practice_intervention?: PracticeInterventionPracticesDataItemAttributesPracticeIntervention;
-  land_use_priors?: PracticeInterventionPracticesDataItemAttributesLandUsePriors;
-  subinterventions?: PracticeInterventionPracticesDataItemAttributesSubinterventions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeInterventionPracticesDataItemAttributesCreatedBy;
-  updatedBy?: PracticeInterventionPracticesDataItemAttributesUpdatedBy;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCreatedByDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCreatedBy = {
-  data?: PracticeInterventionPracticesDataItemAttributesCreatedByData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributes = {
-  name?: string;
-  slug?: string;
-  practices?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-  updatedBy?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItem = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventions = {
-  data?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItem[];
-};
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUsePriorsDataItemAttributes = {
-  [key: string]: any;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesLandUsePriorsDataItem = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesLandUsePriorsDataItemAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesLandUsePriors = {
-  data?: PracticeInterventionPracticesDataItemAttributesLandUsePriorsDataItem[];
-};
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributes = {
-  name?: string;
-  slug?: string;
-  practices?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-  updatedBy?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeIntervention = {
-  data?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributes = {
-  name?: string;
-  practices?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-  updatedBy?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItem = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypes = {
-  data?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItem[];
-};
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountry = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesUpdatedBy = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesPractices = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItem[];
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributes = {
-  name?: string;
-  capital?: string;
-  code?: number;
-  fips?: string;
-  iso_2?: string;
-  iso_3?: string;
-  continent?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinent;
-  region?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegion;
-  projects?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesProjects;
-  lat?: number;
-  long?: number;
-  practices?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy;
-  updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesUpdatedBy;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItem = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItemAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesProjects = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItem[];
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegion = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributes =
-  {
-    name?: string;
-    projects?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
-  {
-    name?: string;
-    project_type?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
-    start_date?: string;
-    end_date?: string;
-    short_description?: string;
-    description?: string;
-    country_of_coordination?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-    region_of_interventions?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-    country_of_interventions?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
-    website?: string;
-    project_coordinator_name?: string;
-    project_coordinator_email?: string;
-    second_project_coordinator_name?: string;
-    second_project_coordinator_email?: string;
-    main_area_of_intervention?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
-    main_area_of_intervention_other?: string;
-    secondary_area_of_intervention?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-    third_area_of_intervention?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-    sustainable_development_goals?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-    lead_partner?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-    partners?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
-    funders?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
-    publication_status?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
-  (typeof PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
-
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
-  {
-    proposed: 'proposed',
-    accepted: 'accepted',
-    declined: 'declined',
-  } as const;
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
-  (typeof PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
-
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
-  {
-    proposed: 'proposed',
-    accepted: 'accepted',
-    declined: 'declined',
-  } as const;
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
-  {
-    name?: string;
-    organization_type?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
-    organization_type_other?: string;
-    main_organization_theme?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
-    short_description?: string;
-    description?: string;
-    country?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
-    url?: string;
-    lead_projects?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-    user_email?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
-  {
-    name?: string;
-    projects?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinent = {
-  data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentData;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentData = {
-  id?: number;
-  attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributes;
-};
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
-  {
-    firstname?: string;
-    lastname?: string;
-    username?: string;
-    email?: string;
-    resetPasswordToken?: string;
-    registrationToken?: string;
-    isActive?: boolean;
-    roles?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
-    blocked?: boolean;
-    preferedLanguage?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
-  {
-    id?: number;
-    attributes?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
-  {
-    data?: PracticeInterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
-  };
-
-export type PracticeInterventionPracticesDataItemAttributesSourceName =
-  (typeof PracticeInterventionPracticesDataItemAttributesSourceName)[keyof typeof PracticeInterventionPracticesDataItemAttributesSourceName];
-
-// eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeInterventionPracticesDataItemAttributesSourceName = {
-  WOCAT: 'WOCAT',
-} as const;
-
-export type PracticeInterventionListResponseMetaPagination = {
-  page?: number;
-  pageSize?: number;
-  pageCount?: number;
-  total?: number;
-};
-
-export type PracticeInterventionListResponseMeta = {
-  pagination?: PracticeInterventionListResponseMetaPagination;
-};
-
-export interface PracticeInterventionListResponseDataItem {
-  id?: number;
-  attributes?: PracticeIntervention;
-}
-
-export interface PracticeInterventionListResponse {
-  data?: PracticeInterventionListResponseDataItem[];
-  meta?: PracticeInterventionListResponseMeta;
-}
-
-export type PracticeInterventionRequestDataPracticesItem = number | string;
-
-export type PracticeInterventionRequestData = {
-  name: string;
-  slug: string;
-  practices?: PracticeInterventionRequestDataPracticesItem[];
-};
-
-export interface PracticeInterventionRequest {
-  data: PracticeInterventionRequestData;
-}
-
 export type PracticeImportResponseMeta = { [key: string]: any };
+
+export interface PracticeImport {
+  start: string;
+  finished?: string;
+  status?: PracticeImportStatus;
+  output?: unknown;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: PracticeImportCreatedBy;
+  updatedBy?: PracticeImportUpdatedBy;
+}
 
 export interface PracticeImportResponseDataObject {
   id?: number;
@@ -7835,17 +6366,6 @@ export type PracticeImportUpdatedByData = {
 export type PracticeImportUpdatedBy = {
   data?: PracticeImportUpdatedByData;
 };
-
-export interface PracticeImport {
-  start: string;
-  finished?: string;
-  status?: PracticeImportStatus;
-  output?: unknown;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeImportCreatedBy;
-  updatedBy?: PracticeImportUpdatedBy;
-}
 
 export type PracticeImportCreatedByDataAttributes = {
   firstname?: string;
@@ -7895,6 +6415,18 @@ export type PracticeImportCreatedByDataAttributesCreatedBy = {
   data?: PracticeImportCreatedByDataAttributesCreatedByData;
 };
 
+export type PracticeImportCreatedByDataAttributesRolesDataItemAttributes = {
+  name?: string;
+  code?: string;
+  description?: string;
+  users?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesUsers;
+  permissions?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissions;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+  updatedBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+};
+
 export type PracticeImportCreatedByDataAttributesRolesDataItem = {
   id?: number;
   attributes?: PracticeImportCreatedByDataAttributesRolesDataItemAttributes;
@@ -7917,18 +6449,6 @@ export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesUpdatedB
   data?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
 };
 
-export type PracticeImportCreatedByDataAttributesRolesDataItemAttributes = {
-  name?: string;
-  code?: string;
-  description?: string;
-  users?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesUsers;
-  permissions?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-  updatedBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-};
-
 export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes = {
   [key: string]: any;
 };
@@ -7941,6 +6461,20 @@ export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesCreatedB
 export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
   data?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
 };
+
+export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
 
 export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
   id?: number;
@@ -7963,20 +6497,6 @@ export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissi
 export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type PracticeImportCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -8073,6 +6593,11 @@ export interface PracticeImportRequest {
 
 export type PracticeResponseMeta = { [key: string]: any };
 
+export interface PracticeResponseDataObject {
+  id?: number;
+  attributes?: Practice;
+}
+
 export interface PracticeResponse {
   data?: PracticeResponseDataObject;
   meta?: PracticeResponseMeta;
@@ -8100,38 +6625,15 @@ export type PracticeCreatedBy = {
   data?: PracticeCreatedByData;
 };
 
-export type PracticeSubinterventionsDataItemAttributes = { [key: string]: any };
+export type PracticePracticeIntervention =
+  (typeof PracticePracticeIntervention)[keyof typeof PracticePracticeIntervention];
 
-export type PracticeSubinterventionsDataItem = {
-  id?: number;
-  attributes?: PracticeSubinterventionsDataItemAttributes;
-};
-
-export type PracticeSubinterventions = {
-  data?: PracticeSubinterventionsDataItem[];
-};
-
-export type PracticeLandUsePriorsDataItemAttributes = { [key: string]: any };
-
-export type PracticeLandUsePriorsDataItem = {
-  id?: number;
-  attributes?: PracticeLandUsePriorsDataItemAttributes;
-};
-
-export type PracticeLandUsePriors = {
-  data?: PracticeLandUsePriorsDataItem[];
-};
-
-export type PracticePracticeInterventionDataAttributes = { [key: string]: any };
-
-export type PracticePracticeInterventionData = {
-  id?: number;
-  attributes?: PracticePracticeInterventionDataAttributes;
-};
-
-export type PracticePracticeIntervention = {
-  data?: PracticePracticeInterventionData;
-};
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PracticePracticeIntervention = {
+  Management: 'Management',
+  Land_Use_Change: 'Land Use Change',
+  None: 'None',
+} as const;
 
 export interface Practice {
   source_name: PracticeSourceName;
@@ -8157,19 +6659,36 @@ export interface Practice {
   sync: boolean;
   show: boolean;
   practice_url?: string;
-  practice_intervention?: PracticePracticeIntervention;
   land_use_priors?: PracticeLandUsePriors;
   subinterventions?: PracticeSubinterventions;
+  practice_intervention: PracticePracticeIntervention;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: PracticeCreatedBy;
   updatedBy?: PracticeUpdatedBy;
 }
 
-export interface PracticeResponseDataObject {
+export type PracticeSubinterventionsDataItemAttributes = { [key: string]: any };
+
+export type PracticeSubinterventionsDataItem = {
   id?: number;
-  attributes?: Practice;
-}
+  attributes?: PracticeSubinterventionsDataItemAttributes;
+};
+
+export type PracticeSubinterventions = {
+  data?: PracticeSubinterventionsDataItem[];
+};
+
+export type PracticeLandUsePriorsDataItemAttributes = { [key: string]: any };
+
+export type PracticeLandUsePriorsDataItem = {
+  id?: number;
+  attributes?: PracticeLandUsePriorsDataItemAttributes;
+};
+
+export type PracticeLandUsePriors = {
+  data?: PracticeLandUsePriorsDataItem[];
+};
 
 export type PracticeLandUseTypesDataItemAttributes = { [key: string]: any };
 
@@ -8180,15 +6699,6 @@ export type PracticeLandUseTypesDataItem = {
 
 export type PracticeLandUseTypes = {
   data?: PracticeLandUseTypesDataItem[];
-};
-
-export type PracticeCountryData = {
-  id?: number;
-  attributes?: PracticeCountryDataAttributes;
-};
-
-export type PracticeCountry = {
-  data?: PracticeCountryData;
 };
 
 export type PracticeCountryDataAttributesUpdatedByDataAttributes = { [key: string]: any };
@@ -8219,6 +6729,15 @@ export type PracticeCountryDataAttributes = {
   updatedAt?: string;
   createdBy?: PracticeCountryDataAttributesCreatedBy;
   updatedBy?: PracticeCountryDataAttributesUpdatedBy;
+};
+
+export type PracticeCountryData = {
+  id?: number;
+  attributes?: PracticeCountryDataAttributes;
+};
+
+export type PracticeCountry = {
+  data?: PracticeCountryData;
 };
 
 export type PracticeCountryDataAttributesCreatedByDataAttributes = { [key: string]: any };
@@ -8267,6 +6786,16 @@ export type PracticeCountryDataAttributesPracticesDataItemAttributesCreatedBy = 
   data?: PracticeCountryDataAttributesPracticesDataItemAttributesCreatedByData;
 };
 
+export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention = {
+  Management: 'Management',
+  Land_Use_Change: 'Land Use Change',
+  None: 'None',
+} as const;
+
 export type PracticeCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItem = {
   id?: number;
   attributes?: PracticeCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
@@ -8300,9 +6829,9 @@ export type PracticeCountryDataAttributesPracticesDataItemAttributes = {
   sync?: boolean;
   show?: boolean;
   practice_url?: string;
-  practice_intervention?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention;
   land_use_priors?: PracticeCountryDataAttributesPracticesDataItemAttributesLandUsePriors;
   subinterventions?: PracticeCountryDataAttributesPracticesDataItemAttributesSubinterventions;
+  practice_intervention?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: PracticeCountryDataAttributesPracticesDataItemAttributesCreatedBy;
@@ -8373,68 +6902,6 @@ export type PracticeCountryDataAttributesPracticesDataItemAttributesLandUsePrior
 export type PracticeCountryDataAttributesPracticesDataItemAttributesLandUsePriors = {
   data?: PracticeCountryDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
 };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionData = {
-  id?: number;
-  attributes?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes;
-};
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeIntervention = {
-  data?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionData;
-};
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-  };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: PracticeCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-  };
 
 export type PracticeCountryDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
   {
@@ -8529,6 +6996,15 @@ export type PracticeCountryDataAttributesProjects = {
   data?: PracticeCountryDataAttributesProjectsDataItem[];
 };
 
+export type PracticeCountryDataAttributesRegionDataAttributes = {
+  name?: string;
+  projects?: PracticeCountryDataAttributesRegionDataAttributesProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: PracticeCountryDataAttributesRegionDataAttributesCreatedBy;
+  updatedBy?: PracticeCountryDataAttributesRegionDataAttributesUpdatedBy;
+};
+
 export type PracticeCountryDataAttributesRegionData = {
   id?: number;
   attributes?: PracticeCountryDataAttributesRegionDataAttributes;
@@ -8549,15 +7025,6 @@ export type PracticeCountryDataAttributesRegionDataAttributesUpdatedByData = {
 
 export type PracticeCountryDataAttributesRegionDataAttributesUpdatedBy = {
   data?: PracticeCountryDataAttributesRegionDataAttributesUpdatedByData;
-};
-
-export type PracticeCountryDataAttributesRegionDataAttributes = {
-  name?: string;
-  projects?: PracticeCountryDataAttributesRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: PracticeCountryDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: PracticeCountryDataAttributesRegionDataAttributesUpdatedBy;
 };
 
 export type PracticeCountryDataAttributesRegionDataAttributesCreatedByDataAttributes = {
@@ -8619,6 +7086,32 @@ export const PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAt
     declined: 'declined',
   } as const;
 
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
+  { [key: string]: any };
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
+  {
+    id?: number;
+    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
+  };
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders = {
+  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
+};
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
+  { [key: string]: any };
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
+  {
+    id?: number;
+    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
+  };
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners = {
+  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
+};
+
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes = {
   name?: string;
   project_type?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
@@ -8649,31 +7142,16 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
   updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
+    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
-};
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
-  { [key: string]: any };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
   {
-    id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
+    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
   };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
-};
 
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
   {
@@ -8710,17 +7188,6 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
 
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
-  {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
-  };
 
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
@@ -8817,15 +7284,6 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
     data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
-  };
-
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
   {
     id?: number;
@@ -8851,6 +7309,15 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
     data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
   };
 
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
+    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
+  };
+
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -8863,6 +7330,15 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
   {
     data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
+  };
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
@@ -8888,15 +7364,6 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
   {
     data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
-  };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
@@ -9094,6 +7561,20 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
     data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
   };
 
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
+  {
+    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
+  };
+
+export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+  };
+
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
   {
     id?: number;
@@ -9112,20 +7593,6 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
   {
     id?: number;
     attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
-  };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
-  {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
-  };
-
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
   };
 
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
@@ -9172,10 +7639,6 @@ export type PracticeCountryDataAttributesContinentDataAttributesUpdatedBy = {
   data?: PracticeCountryDataAttributesContinentDataAttributesUpdatedByData;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy = {
-  data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
-};
-
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributes = {
   firstname?: string;
   lastname?: string;
@@ -9210,6 +7673,10 @@ export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAtt
     id?: number;
     attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
   };
+
+export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy = {
+  data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
+};
 
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
@@ -9246,19 +7713,6 @@ export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAtt
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
     data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
-  };
-
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
@@ -9300,6 +7754,19 @@ export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAtt
     data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
+export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+  };
+
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -9328,6 +7795,11 @@ export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAtt
     data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
   };
 
+export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+  {
+    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+  };
+
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
   { [key: string]: any };
 
@@ -9335,11 +7807,6 @@ export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAtt
   {
     id?: number;
     attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
-  };
-
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
-  {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
 export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
@@ -9388,11 +7855,19 @@ export interface PracticeRequest {
   data: PracticeRequestData;
 }
 
+export type PracticeRequestDataPracticeIntervention =
+  (typeof PracticeRequestDataPracticeIntervention)[keyof typeof PracticeRequestDataPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const PracticeRequestDataPracticeIntervention = {
+  Management: 'Management',
+  Land_Use_Change: 'Land Use Change',
+  None: 'None',
+} as const;
+
 export type PracticeRequestDataSubinterventionsItem = number | string;
 
 export type PracticeRequestDataLandUsePriorsItem = number | string;
-
-export type PracticeRequestDataPracticeIntervention = number | string;
 
 export type PracticeRequestDataLandUseTypesItem = number | string;
 
@@ -9430,9 +7905,9 @@ export type PracticeRequestData = {
   sync: boolean;
   show: boolean;
   practice_url?: string;
-  practice_intervention?: PracticeRequestDataPracticeIntervention;
   land_use_priors?: PracticeRequestDataLandUsePriorsItem[];
   subinterventions?: PracticeRequestDataSubinterventionsItem[];
+  practice_intervention: PracticeRequestDataPracticeIntervention;
 };
 
 export type PageResponseMeta = { [key: string]: any };
@@ -9458,6 +7933,20 @@ export type PageUpdatedBy = {
   data?: PageUpdatedByData;
 };
 
+export interface Page {
+  title?: string;
+  default_basemap?: PageDefaultBasemap;
+  layer_groups?: PageLayerGroups;
+  slug?: string;
+  color?: string;
+  external_url?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: PageCreatedBy;
+  updatedBy?: PageUpdatedBy;
+}
+
 export type PageCreatedByDataAttributes = { [key: string]: any };
 
 export type PageCreatedByData = {
@@ -9478,20 +7967,6 @@ export type PageLayerGroups = {
   data?: PageLayerGroupsDataItem[];
 };
 
-export interface Page {
-  title?: string;
-  default_basemap?: PageDefaultBasemap;
-  layer_groups?: PageLayerGroups;
-  slug?: string;
-  color?: string;
-  external_url?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: PageCreatedBy;
-  updatedBy?: PageUpdatedBy;
-}
-
 export type PageLayerGroupsDataItemAttributesUpdatedByDataAttributes = { [key: string]: any };
 
 export type PageLayerGroupsDataItemAttributesUpdatedByData = {
@@ -9503,6 +7978,18 @@ export type PageLayerGroupsDataItemAttributesUpdatedBy = {
   data?: PageLayerGroupsDataItemAttributesUpdatedByData;
 };
 
+export type PageLayerGroupsDataItemAttributes = {
+  title?: string;
+  layers?: PageLayerGroupsDataItemAttributesLayers;
+  order?: number;
+  description?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  publishedAt?: string;
+  createdBy?: PageLayerGroupsDataItemAttributesCreatedBy;
+  updatedBy?: PageLayerGroupsDataItemAttributesUpdatedBy;
+};
+
 export type PageLayerGroupsDataItemAttributesCreatedByDataAttributes = { [key: string]: any };
 
 export type PageLayerGroupsDataItemAttributesCreatedByData = {
@@ -9512,6 +7999,37 @@ export type PageLayerGroupsDataItemAttributesCreatedByData = {
 
 export type PageLayerGroupsDataItemAttributesCreatedBy = {
   data?: PageLayerGroupsDataItemAttributesCreatedByData;
+};
+
+export type PageLayerGroupsDataItemAttributesLayersDataItem = {
+  id?: number;
+  attributes?: PageLayerGroupsDataItemAttributesLayersDataItemAttributes;
+};
+
+export type PageLayerGroupsDataItemAttributesLayers = {
+  data?: PageLayerGroupsDataItemAttributesLayersDataItem[];
+};
+
+export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByData = {
+  id?: number;
+  attributes?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes;
+};
+
+export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedBy = {
+  data?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByData;
+};
+
+export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByData = {
+  id?: number;
+  attributes?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributes;
+};
+
+export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedBy = {
+  data?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByData;
 };
 
 export type PageLayerGroupsDataItemAttributesLayersDataItemAttributes = {
@@ -9539,49 +8057,6 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributes = {
   publishedAt?: string;
   createdBy?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedBy;
   updatedBy?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedBy;
-};
-
-export type PageLayerGroupsDataItemAttributesLayersDataItem = {
-  id?: number;
-  attributes?: PageLayerGroupsDataItemAttributesLayersDataItemAttributes;
-};
-
-export type PageLayerGroupsDataItemAttributesLayers = {
-  data?: PageLayerGroupsDataItemAttributesLayersDataItem[];
-};
-
-export type PageLayerGroupsDataItemAttributes = {
-  title?: string;
-  layers?: PageLayerGroupsDataItemAttributesLayers;
-  order?: number;
-  description?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-  createdBy?: PageLayerGroupsDataItemAttributesCreatedBy;
-  updatedBy?: PageLayerGroupsDataItemAttributesUpdatedBy;
-};
-
-export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedBy = {
-  data?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesUpdatedByData;
-};
-
-export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedBy = {
-  data?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByData;
 };
 
 export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesUpdatedByDataAttributes =
@@ -9654,19 +8129,6 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDa
     data?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-  };
-
 export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -9704,6 +8166,19 @@ export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDa
 export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
     data?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+  };
+
+export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type PageLayerGroupsDataItemAttributesLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -9802,10 +8277,6 @@ export interface PageListResponse {
   meta?: PageListResponseMeta;
 }
 
-export interface PageRequest {
-  data: PageRequestData;
-}
-
 export type PageRequestDataLayerGroupsItem = number | string;
 
 export type PageRequestDataDefaultBasemap =
@@ -9827,16 +8298,28 @@ export type PageRequestData = {
   external_url?: string;
 };
 
-export type OrganizationTypeResponseMeta = { [key: string]: any };
-
-export interface OrganizationTypeResponseDataObject {
-  id?: number;
-  attributes?: OrganizationType;
+export interface PageRequest {
+  data: PageRequestData;
 }
+
+export type OrganizationTypeResponseMeta = { [key: string]: any };
 
 export interface OrganizationTypeResponse {
   data?: OrganizationTypeResponseDataObject;
   meta?: OrganizationTypeResponseMeta;
+}
+
+export interface OrganizationType {
+  name: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationTypeCreatedBy;
+  updatedBy?: OrganizationTypeUpdatedBy;
+}
+
+export interface OrganizationTypeResponseDataObject {
+  id?: number;
+  attributes?: OrganizationType;
 }
 
 export type OrganizationTypeUpdatedByDataAttributes = { [key: string]: any };
@@ -9848,31 +8331,6 @@ export type OrganizationTypeUpdatedByData = {
 
 export type OrganizationTypeUpdatedBy = {
   data?: OrganizationTypeUpdatedByData;
-};
-
-export interface OrganizationType {
-  name: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: OrganizationTypeCreatedBy;
-  updatedBy?: OrganizationTypeUpdatedBy;
-}
-
-export type OrganizationTypeCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: OrganizationTypeCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: OrganizationTypeCreatedByDataAttributesCreatedBy;
-  updatedBy?: OrganizationTypeCreatedByDataAttributesUpdatedBy;
 };
 
 export type OrganizationTypeCreatedByData = {
@@ -9906,18 +8364,6 @@ export type OrganizationTypeCreatedByDataAttributesCreatedBy = {
   data?: OrganizationTypeCreatedByDataAttributesCreatedByData;
 };
 
-export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedBy = {
-  data?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
-};
-
 export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributes = {
   name?: string;
   code?: string;
@@ -9939,6 +8385,35 @@ export type OrganizationTypeCreatedByDataAttributesRoles = {
   data?: OrganizationTypeCreatedByDataAttributesRolesDataItem[];
 };
 
+export type OrganizationTypeCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: OrganizationTypeCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationTypeCreatedByDataAttributesCreatedBy;
+  updatedBy?: OrganizationTypeCreatedByDataAttributesUpdatedBy;
+};
+
+export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData = {
+  id?: number;
+  attributes?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
+};
+
+export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedBy = {
+  data?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+};
+
 export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -9949,15 +8424,6 @@ export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesCreate
 
 export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
   data?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
-};
-
-export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
-  id?: number;
-  attributes?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-};
-
-export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissions = {
-  data?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
 };
 
 export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -9987,6 +8453,15 @@ export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermis
     createdBy?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
     updatedBy?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
+
+export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
+  id?: number;
+  attributes?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+};
+
+export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissions = {
+  data?: OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+};
 
 export type OrganizationTypeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
@@ -10059,11 +8534,6 @@ export interface OrganizationTypeRequest {
 
 export type OrganizationThemeResponseMeta = { [key: string]: any };
 
-export interface OrganizationThemeResponseDataObject {
-  id?: number;
-  attributes?: OrganizationTheme;
-}
-
 export interface OrganizationThemeResponse {
   data?: OrganizationThemeResponseDataObject;
   meta?: OrganizationThemeResponseMeta;
@@ -10097,6 +8567,11 @@ export interface OrganizationTheme {
   updatedBy?: OrganizationThemeUpdatedBy;
 }
 
+export interface OrganizationThemeResponseDataObject {
+  id?: number;
+  attributes?: OrganizationTheme;
+}
+
 export type OrganizationThemeCreatedByDataAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
@@ -10123,6 +8598,15 @@ export type OrganizationThemeCreatedByDataAttributesCreatedBy = {
   data?: OrganizationThemeCreatedByDataAttributesCreatedByData;
 };
 
+export type OrganizationThemeCreatedByDataAttributesRolesDataItem = {
+  id?: number;
+  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributes;
+};
+
+export type OrganizationThemeCreatedByDataAttributesRoles = {
+  data?: OrganizationThemeCreatedByDataAttributesRolesDataItem[];
+};
+
 export type OrganizationThemeCreatedByDataAttributes = {
   firstname?: string;
   lastname?: string;
@@ -10140,8 +8624,25 @@ export type OrganizationThemeCreatedByDataAttributes = {
   updatedBy?: OrganizationThemeCreatedByDataAttributesUpdatedBy;
 };
 
+export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData = {
+  id?: number;
+  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
+};
+
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedBy = {
   data?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+};
+
+export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByData = {
+  id?: number;
+  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
+};
+
+export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
+  data?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
 };
 
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributes = {
@@ -10156,39 +8657,8 @@ export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributes = {
   updatedBy?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
 };
 
-export type OrganizationThemeCreatedByDataAttributesRolesDataItem = {
-  id?: number;
-  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributes;
-};
-
-export type OrganizationThemeCreatedByDataAttributesRoles = {
-  data?: OrganizationThemeCreatedByDataAttributesRolesDataItem[];
-};
-
-export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
-};
-
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
-
-export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
-};
-
-export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
-  data?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
-};
-
-export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
-  id?: number;
-  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-};
 
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissions = {
   data?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
@@ -10206,20 +8676,6 @@ export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermi
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
-  };
-
-export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -10249,6 +8705,25 @@ export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermi
   {
     data?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
+
+export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
+export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
+  id?: number;
+  attributes?: OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+};
 
 export type OrganizationThemeCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
@@ -10293,32 +8768,6 @@ export interface OrganizationThemeRequest {
 
 export type OrganizationResponseMeta = { [key: string]: any };
 
-export interface Organization {
-  name: string;
-  organization_type?: OrganizationOrganizationType;
-  organization_type_other?: string;
-  main_organization_theme?: OrganizationMainOrganizationTheme;
-  secondary_organization_theme?: OrganizationSecondaryOrganizationTheme;
-  short_description: string;
-  description?: string;
-  country?: OrganizationCountry;
-  url: string;
-  lead_projects?: OrganizationLeadProjects;
-  partner_projects?: OrganizationPartnerProjects;
-  funded_projects?: OrganizationFundedProjects;
-  publication_status?: OrganizationPublicationStatus;
-  user_email?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: OrganizationCreatedBy;
-  updatedBy?: OrganizationUpdatedBy;
-}
-
-export interface OrganizationResponseDataObject {
-  id?: number;
-  attributes?: Organization;
-}
-
 export interface OrganizationResponse {
   data?: OrganizationResponseDataObject;
   meta?: OrganizationResponseMeta;
@@ -10356,6 +8805,32 @@ export const OrganizationPublicationStatus = {
   declined: 'declined',
 } as const;
 
+export interface Organization {
+  name: string;
+  organization_type?: OrganizationOrganizationType;
+  organization_type_other?: string;
+  main_organization_theme?: OrganizationMainOrganizationTheme;
+  secondary_organization_theme?: OrganizationSecondaryOrganizationTheme;
+  short_description: string;
+  description?: string;
+  country?: OrganizationCountry;
+  url: string;
+  lead_projects?: OrganizationLeadProjects;
+  partner_projects?: OrganizationPartnerProjects;
+  funded_projects?: OrganizationFundedProjects;
+  publication_status?: OrganizationPublicationStatus;
+  user_email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationCreatedBy;
+  updatedBy?: OrganizationUpdatedBy;
+}
+
+export interface OrganizationResponseDataObject {
+  id?: number;
+  attributes?: Organization;
+}
+
 export type OrganizationFundedProjectsDataItemAttributes = { [key: string]: any };
 
 export type OrganizationFundedProjectsDataItem = {
@@ -10378,15 +8853,15 @@ export type OrganizationPartnerProjects = {
   data?: OrganizationPartnerProjectsDataItem[];
 };
 
-export type OrganizationLeadProjects = {
-  data?: OrganizationLeadProjectsDataItem[];
-};
-
 export type OrganizationLeadProjectsDataItemAttributes = { [key: string]: any };
 
 export type OrganizationLeadProjectsDataItem = {
   id?: number;
   attributes?: OrganizationLeadProjectsDataItemAttributes;
+};
+
+export type OrganizationLeadProjects = {
+  data?: OrganizationLeadProjectsDataItem[];
 };
 
 export type OrganizationCountryData = {
@@ -10474,6 +8949,27 @@ export type OrganizationCountryDataAttributesPracticesDataItemAttributesCreatedB
   data?: OrganizationCountryDataAttributesPracticesDataItemAttributesCreatedByData;
 };
 
+export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention = {
+  Management: 'Management',
+  Land_Use_Change: 'Land Use Change',
+  None: 'None',
+} as const;
+
+export type OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
+  {
+    name?: string;
+    slug?: string;
+    practices?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
+    updatedBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
+  };
+
 export type OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItem = {
   id?: number;
   attributes?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
@@ -10507,9 +9003,9 @@ export type OrganizationCountryDataAttributesPracticesDataItemAttributes = {
   sync?: boolean;
   show?: boolean;
   practice_url?: string;
-  practice_intervention?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention;
   land_use_priors?: OrganizationCountryDataAttributesPracticesDataItemAttributesLandUsePriors;
   subinterventions?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventions;
+  practice_intervention?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesCreatedBy;
@@ -10558,17 +9054,6 @@ export type OrganizationCountryDataAttributesPracticesDataItemAttributesSubinter
     data?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem[];
   };
 
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-    updatedBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
-  };
-
 export type OrganizationCountryDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes =
   { [key: string]: any };
 
@@ -10580,68 +9065,6 @@ export type OrganizationCountryDataAttributesPracticesDataItemAttributesLandUseP
 export type OrganizationCountryDataAttributesPracticesDataItemAttributesLandUsePriors = {
   data?: OrganizationCountryDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
 };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-    updatedBy?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-  };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionData = {
-  id?: number;
-  attributes?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes;
-};
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeIntervention = {
-  data?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionData;
-};
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: OrganizationCountryDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-  };
 
 export type OrganizationCountryDataAttributesPracticesDataItemAttributesLandUseTypesDataItem = {
   id?: number;
@@ -10911,6 +9334,28 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
   };
 
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+  {
+    name?: string;
+    organization_type?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type_other?: string;
+    main_organization_theme?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    short_description?: string;
+    description?: string;
+    country?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    url?: string;
+    lead_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    user_email?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+  };
+
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -10962,28 +9407,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
   {
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
-  };
-
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
-  {
-    name?: string;
-    organization_type?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
-    organization_type_other?: string;
-    main_organization_theme?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
-    short_description?: string;
-    description?: string;
-    country?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
-    url?: string;
-    lead_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-    user_email?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
   };
 
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
@@ -11056,6 +9479,17 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
   };
 
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
+  };
+
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
+  {
+    data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
+  };
+
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
   {
     name?: string;
@@ -11080,17 +9514,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
-  {
-    data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
-  };
-
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -11105,11 +9528,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
   };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
-  {
-    data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
-  };
-
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
@@ -11117,6 +9535,11 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
   {
     id?: number;
     attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
+  };
+
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
+  {
+    data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
   };
 
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
@@ -11147,12 +9570,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
   };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
-  {
-    id?: number;
-    attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
-  };
-
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
   {
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
@@ -11172,15 +9589,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
   };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-    updatedBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
-  };
-
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -11193,6 +9601,21 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
   {
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
+  };
+
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
+    updatedBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
+  };
+
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
+  {
+    id?: number;
+    attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
   };
 
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
@@ -11237,15 +9660,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
   };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
-  };
-
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
   {
     id?: number;
@@ -11285,13 +9699,14 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
   };
 
-export type OrganizationCountryDataAttributesContinentDataAttributes = {
-  name?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: OrganizationCountryDataAttributesContinentDataAttributesCreatedBy;
-  updatedBy?: OrganizationCountryDataAttributesContinentDataAttributesUpdatedBy;
-};
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+    updatedBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+  };
 
 export type OrganizationCountryDataAttributesContinentData = {
   id?: number;
@@ -11313,6 +9728,14 @@ export type OrganizationCountryDataAttributesContinentDataAttributesUpdatedByDat
 
 export type OrganizationCountryDataAttributesContinentDataAttributesUpdatedBy = {
   data?: OrganizationCountryDataAttributesContinentDataAttributesUpdatedByData;
+};
+
+export type OrganizationCountryDataAttributesContinentDataAttributes = {
+  name?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationCountryDataAttributesContinentDataAttributesCreatedBy;
+  updatedBy?: OrganizationCountryDataAttributesContinentDataAttributesUpdatedBy;
 };
 
 export type OrganizationCountryDataAttributesContinentDataAttributesCreatedByDataAttributes = {
@@ -11339,11 +9762,6 @@ export type OrganizationSecondaryOrganizationTheme = {
   data?: OrganizationSecondaryOrganizationThemeData;
 };
 
-export type OrganizationMainOrganizationThemeData = {
-  id?: number;
-  attributes?: OrganizationMainOrganizationThemeDataAttributes;
-};
-
 export type OrganizationMainOrganizationTheme = {
   data?: OrganizationMainOrganizationThemeData;
 };
@@ -11361,14 +9779,6 @@ export type OrganizationMainOrganizationThemeDataAttributesUpdatedBy = {
   data?: OrganizationMainOrganizationThemeDataAttributesUpdatedByData;
 };
 
-export type OrganizationMainOrganizationThemeDataAttributes = {
-  name?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: OrganizationMainOrganizationThemeDataAttributesCreatedBy;
-  updatedBy?: OrganizationMainOrganizationThemeDataAttributesUpdatedBy;
-};
-
 export type OrganizationMainOrganizationThemeDataAttributesCreatedByDataAttributes = {
   [key: string]: any;
 };
@@ -11380,6 +9790,19 @@ export type OrganizationMainOrganizationThemeDataAttributesCreatedByData = {
 
 export type OrganizationMainOrganizationThemeDataAttributesCreatedBy = {
   data?: OrganizationMainOrganizationThemeDataAttributesCreatedByData;
+};
+
+export type OrganizationMainOrganizationThemeDataAttributes = {
+  name?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationMainOrganizationThemeDataAttributesCreatedBy;
+  updatedBy?: OrganizationMainOrganizationThemeDataAttributesUpdatedBy;
+};
+
+export type OrganizationMainOrganizationThemeData = {
+  id?: number;
+  attributes?: OrganizationMainOrganizationThemeDataAttributes;
 };
 
 export type OrganizationOrganizationTypeDataAttributes = {
@@ -11433,6 +9856,23 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesUpd
   data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesUpdatedByData;
 };
 
+export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesCreatedBy;
+  updatedBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesUpdatedBy;
+};
+
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -11454,23 +9894,6 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
   data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItem[];
 };
 
-export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesUpdatedBy;
-};
-
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -11483,6 +9906,19 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
     data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+  };
+
+export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
@@ -11499,6 +9935,20 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
     data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
+export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -11508,19 +9958,6 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
     data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-  };
-
-export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -11537,6 +9974,9 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
     data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
+export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
   {
     id?: number;
@@ -11547,23 +9987,6 @@ export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRol
   {
     data?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
   };
-
-export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
-export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
 
 export type OrganizationOrganizationTypeDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
   { [key: string]: any };
@@ -11614,6 +10037,10 @@ export interface OrganizationListResponse {
   meta?: OrganizationListResponseMeta;
 }
 
+export interface OrganizationRequest {
+  data: OrganizationRequestData;
+}
+
 export type OrganizationRequestDataPublicationStatus =
   (typeof OrganizationRequestDataPublicationStatus)[keyof typeof OrganizationRequestDataPublicationStatus];
 
@@ -11654,10 +10081,6 @@ export type OrganizationRequestData = {
   publication_status?: OrganizationRequestDataPublicationStatus;
   user_email?: string;
 };
-
-export interface OrganizationRequest {
-  data: OrganizationRequestData;
-}
 
 export type LayerGroupResponseMeta = { [key: string]: any };
 
@@ -11705,26 +10128,6 @@ export type LayerGroupCreatedBy = {
   data?: LayerGroupCreatedByData;
 };
 
-export type LayerGroupLayersDataItemAttributesUpdatedByDataAttributes = { [key: string]: any };
-
-export type LayerGroupLayersDataItemAttributesUpdatedByData = {
-  id?: number;
-  attributes?: LayerGroupLayersDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type LayerGroupLayersDataItemAttributesUpdatedBy = {
-  data?: LayerGroupLayersDataItemAttributesUpdatedByData;
-};
-
-export type LayerGroupLayersDataItemAttributesCreatedByData = {
-  id?: number;
-  attributes?: LayerGroupLayersDataItemAttributesCreatedByDataAttributes;
-};
-
-export type LayerGroupLayersDataItemAttributesCreatedBy = {
-  data?: LayerGroupLayersDataItemAttributesCreatedByData;
-};
-
 export type LayerGroupLayersDataItemAttributes = {
   title?: string;
   type?: LayerGroupLayersDataItemAttributesType;
@@ -11761,6 +10164,26 @@ export type LayerGroupLayers = {
   data?: LayerGroupLayersDataItem[];
 };
 
+export type LayerGroupLayersDataItemAttributesUpdatedByDataAttributes = { [key: string]: any };
+
+export type LayerGroupLayersDataItemAttributesUpdatedByData = {
+  id?: number;
+  attributes?: LayerGroupLayersDataItemAttributesUpdatedByDataAttributes;
+};
+
+export type LayerGroupLayersDataItemAttributesUpdatedBy = {
+  data?: LayerGroupLayersDataItemAttributesUpdatedByData;
+};
+
+export type LayerGroupLayersDataItemAttributesCreatedByData = {
+  id?: number;
+  attributes?: LayerGroupLayersDataItemAttributesCreatedByDataAttributes;
+};
+
+export type LayerGroupLayersDataItemAttributesCreatedBy = {
+  data?: LayerGroupLayersDataItemAttributesCreatedByData;
+};
+
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
@@ -11774,8 +10197,26 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesUpdatedBy =
   data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesUpdatedByData;
 };
 
+export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByData = {
+  id?: number;
+  attributes?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByDataAttributes;
+};
+
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedBy = {
   data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByData;
+};
+
+export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItem = {
+  id?: number;
+  attributes?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributes;
+};
+
+export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRoles = {
+  data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItem[];
 };
 
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributes = {
@@ -11795,24 +10236,6 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributes = {
   updatedBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesUpdatedBy;
 };
 
-export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesCreatedByDataAttributes;
-};
-
-export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItem = {
-  id?: number;
-  attributes?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributes;
-};
-
-export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRoles = {
-  data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItem[];
-};
-
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -11826,18 +10249,6 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataIt
   {
     data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
-
-export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributes = {
-  name?: string;
-  code?: string;
-  description?: string;
-  users?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-  permissions?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-  updatedBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-};
 
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
@@ -11853,20 +10264,6 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataIt
     data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -11877,6 +10274,18 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataIt
   {
     data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
+
+export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributes = {
+  name?: string;
+  code?: string;
+  description?: string;
+  users?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+  permissions?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+  updatedBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+};
 
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -11904,6 +10313,20 @@ export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataIt
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
     data?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
+  };
+
+export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type LayerGroupLayersDataItemAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
@@ -11980,6 +10403,31 @@ export interface LayerGroupRequest {
 
 export type LayerResponseMeta = { [key: string]: any };
 
+export interface LayerResponse {
+  data?: LayerResponseDataObject;
+  meta?: LayerResponseMeta;
+}
+
+export type LayerUpdatedByDataAttributes = { [key: string]: any };
+
+export type LayerUpdatedByData = {
+  id?: number;
+  attributes?: LayerUpdatedByDataAttributes;
+};
+
+export type LayerUpdatedBy = {
+  data?: LayerUpdatedByData;
+};
+
+export type LayerCreatedByData = {
+  id?: number;
+  attributes?: LayerCreatedByDataAttributes;
+};
+
+export type LayerCreatedBy = {
+  data?: LayerCreatedByData;
+};
+
 export interface Layer {
   title: string;
   type: LayerType;
@@ -12012,48 +10460,6 @@ export interface LayerResponseDataObject {
   attributes?: Layer;
 }
 
-export interface LayerResponse {
-  data?: LayerResponseDataObject;
-  meta?: LayerResponseMeta;
-}
-
-export type LayerUpdatedByDataAttributes = { [key: string]: any };
-
-export type LayerUpdatedByData = {
-  id?: number;
-  attributes?: LayerUpdatedByDataAttributes;
-};
-
-export type LayerUpdatedBy = {
-  data?: LayerUpdatedByData;
-};
-
-export type LayerCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: LayerCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LayerCreatedByDataAttributesCreatedBy;
-  updatedBy?: LayerCreatedByDataAttributesUpdatedBy;
-};
-
-export type LayerCreatedByData = {
-  id?: number;
-  attributes?: LayerCreatedByDataAttributes;
-};
-
-export type LayerCreatedBy = {
-  data?: LayerCreatedByData;
-};
-
 export type LayerCreatedByDataAttributesUpdatedByDataAttributes = { [key: string]: any };
 
 export type LayerCreatedByDataAttributesUpdatedByData = {
@@ -12076,8 +10482,30 @@ export type LayerCreatedByDataAttributesCreatedBy = {
   data?: LayerCreatedByDataAttributesCreatedByData;
 };
 
+export type LayerCreatedByDataAttributesRolesDataItem = {
+  id?: number;
+  attributes?: LayerCreatedByDataAttributesRolesDataItemAttributes;
+};
+
 export type LayerCreatedByDataAttributesRoles = {
   data?: LayerCreatedByDataAttributesRolesDataItem[];
+};
+
+export type LayerCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: LayerCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: LayerCreatedByDataAttributesCreatedBy;
+  updatedBy?: LayerCreatedByDataAttributesUpdatedBy;
 };
 
 export type LayerCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes = {
@@ -12106,24 +10534,6 @@ export type LayerCreatedByDataAttributesRolesDataItemAttributesCreatedBy = {
   data?: LayerCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
 };
 
-export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes = {
-  action?: string;
-  actionParameters?: unknown;
-  subject?: string;
-  properties?: unknown;
-  conditions?: unknown;
-  role?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-  updatedBy?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-};
-
-export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
-  id?: number;
-  attributes?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-};
-
 export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissions = {
   data?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
 };
@@ -12138,11 +10548,6 @@ export type LayerCreatedByDataAttributesRolesDataItemAttributes = {
   updatedAt?: string;
   createdBy?: LayerCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
   updatedBy?: LayerCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-};
-
-export type LayerCreatedByDataAttributesRolesDataItem = {
-  id?: number;
-  attributes?: LayerCreatedByDataAttributesRolesDataItemAttributes;
 };
 
 export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -12184,6 +10589,24 @@ export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataIt
 
 export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole = {
   data?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+};
+
+export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes = {
+  action?: string;
+  actionParameters?: unknown;
+  subject?: string;
+  properties?: unknown;
+  conditions?: unknown;
+  role?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+  updatedBy?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+};
+
+export type LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem = {
+  id?: number;
+  attributes?: LayerCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
 };
 
 export type LayerCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes = {
@@ -12282,6 +10705,17 @@ export type LandUseTypeUpdatedBy = {
   data?: LandUseTypeUpdatedByData;
 };
 
+export type LandUseTypeCreatedByDataAttributes = { [key: string]: any };
+
+export type LandUseTypeCreatedByData = {
+  id?: number;
+  attributes?: LandUseTypeCreatedByDataAttributes;
+};
+
+export type LandUseTypeCreatedBy = {
+  data?: LandUseTypeCreatedByData;
+};
+
 export interface LandUseType {
   name: string;
   practices?: LandUseTypePractices;
@@ -12295,28 +10729,6 @@ export interface LandUseTypeResponseDataObject {
   id?: number;
   attributes?: LandUseType;
 }
-
-export type LandUseTypeCreatedByDataAttributes = { [key: string]: any };
-
-export type LandUseTypeCreatedByData = {
-  id?: number;
-  attributes?: LandUseTypeCreatedByDataAttributes;
-};
-
-export type LandUseTypeCreatedBy = {
-  data?: LandUseTypeCreatedByData;
-};
-
-export type LandUseTypePracticesDataItem = {
-  id?: number;
-  attributes?: LandUseTypePracticesDataItemAttributes;
-};
-
-export type LandUseTypePractices = {
-  data?: LandUseTypePracticesDataItem[];
-};
-
-export type LandUseTypePracticesDataItemAttributesUpdatedByDataAttributes = { [key: string]: any };
 
 export type LandUseTypePracticesDataItemAttributesUpdatedByData = {
   id?: number;
@@ -12351,14 +10763,25 @@ export type LandUseTypePracticesDataItemAttributes = {
   sync?: boolean;
   show?: boolean;
   practice_url?: string;
-  practice_intervention?: LandUseTypePracticesDataItemAttributesPracticeIntervention;
   land_use_priors?: LandUseTypePracticesDataItemAttributesLandUsePriors;
   subinterventions?: LandUseTypePracticesDataItemAttributesSubinterventions;
+  practice_intervention?: LandUseTypePracticesDataItemAttributesPracticeIntervention;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: LandUseTypePracticesDataItemAttributesCreatedBy;
   updatedBy?: LandUseTypePracticesDataItemAttributesUpdatedBy;
 };
+
+export type LandUseTypePracticesDataItem = {
+  id?: number;
+  attributes?: LandUseTypePracticesDataItemAttributes;
+};
+
+export type LandUseTypePractices = {
+  data?: LandUseTypePracticesDataItem[];
+};
+
+export type LandUseTypePracticesDataItemAttributesUpdatedByDataAttributes = { [key: string]: any };
 
 export type LandUseTypePracticesDataItemAttributesCreatedByDataAttributes = { [key: string]: any };
 
@@ -12370,6 +10793,16 @@ export type LandUseTypePracticesDataItemAttributesCreatedByData = {
 export type LandUseTypePracticesDataItemAttributesCreatedBy = {
   data?: LandUseTypePracticesDataItemAttributesCreatedByData;
 };
+
+export type LandUseTypePracticesDataItemAttributesPracticeIntervention =
+  (typeof LandUseTypePracticesDataItemAttributesPracticeIntervention)[keyof typeof LandUseTypePracticesDataItemAttributesPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const LandUseTypePracticesDataItemAttributesPracticeIntervention = {
+  Management: 'Management',
+  Land_Use_Change: 'Land Use Change',
+  None: 'None',
+} as const;
 
 export type LandUseTypePracticesDataItemAttributesSubinterventionsDataItemAttributes = {
   name?: string;
@@ -12442,77 +10875,6 @@ export type LandUseTypePracticesDataItemAttributesLandUsePriors = {
   data?: LandUseTypePracticesDataItemAttributesLandUsePriorsDataItem[];
 };
 
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributes = {
-  name?: string;
-  slug?: string;
-  practices?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-  updatedBy?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-};
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionData = {
-  id?: number;
-  attributes?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributes;
-};
-
-export type LandUseTypePracticesDataItemAttributesPracticeIntervention = {
-  data?: LandUseTypePracticesDataItemAttributesPracticeInterventionData;
-};
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy = {
-  data?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-};
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy = {
-  data?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-};
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesPractices = {
-  data?: LandUseTypePracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
-};
-
-export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy = {
-  data?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
-};
-
-export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributes = {
-  name?: string;
-  practices?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-  updatedBy?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
-};
-
 export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItem = {
   id?: number;
   attributes?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributes;
@@ -12528,6 +10890,10 @@ export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributes
 export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData = {
   id?: number;
   attributes?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
+};
+
+export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy = {
+  data?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
 };
 
 export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
@@ -12555,6 +10921,15 @@ export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributes
   data?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
 };
 
+export type LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributes = {
+  name?: string;
+  practices?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+  updatedBy?: LandUseTypePracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
+};
+
 export type LandUseTypePracticesDataItemAttributesCountryData = {
   id?: number;
   attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributes;
@@ -12577,29 +10952,8 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesUpdatedBy
   data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesUpdatedByData;
 };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes = {
-  [key: string]: any;
-};
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByData = {
-  id?: number;
-  attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes;
-};
-
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedBy = {
   data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByData;
-};
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItem = {
-  id?: number;
-  attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes;
-};
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesPractices = {
-  data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItem[];
 };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributes = {
@@ -12619,6 +10973,27 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributes = {
   updatedAt?: string;
   createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedBy;
   updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesUpdatedBy;
+};
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes = {
+  [key: string]: any;
+};
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByData = {
+  id?: number;
+  attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes;
+};
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes =
+  { [key: string]: any };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItem = {
+  id?: number;
+  attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes;
+};
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesPractices = {
+  data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesPracticesDataItem[];
 };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesProjectsDataItemAttributes =
@@ -12656,15 +11031,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributes = {
-  name?: string;
-  projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
-};
-
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -12690,6 +11056,15 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem[];
   };
 
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributes = {
+  name?: string;
+  projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
+  updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
+};
+
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -12702,37 +11077,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
   {
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
-  {
-    name?: string;
-    project_type?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
-    start_date?: string;
-    end_date?: string;
-    short_description?: string;
-    description?: string;
-    country_of_coordination?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-    region_of_interventions?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-    country_of_interventions?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
-    website?: string;
-    project_coordinator_name?: string;
-    project_coordinator_email?: string;
-    second_project_coordinator_name?: string;
-    second_project_coordinator_email?: string;
-    main_area_of_intervention?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
-    main_area_of_intervention_other?: string;
-    secondary_area_of_intervention?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-    third_area_of_intervention?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-    sustainable_development_goals?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-    lead_partner?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-    partners?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
-    funders?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
-    publication_status?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
@@ -12788,15 +11132,35 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
   };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
   {
-    id?: number;
-    attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
-  {
-    data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
+    name?: string;
+    project_type?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
+    start_date?: string;
+    end_date?: string;
+    short_description?: string;
+    description?: string;
+    country_of_coordination?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
+    region_of_interventions?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
+    country_of_interventions?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
+    website?: string;
+    project_coordinator_name?: string;
+    project_coordinator_email?: string;
+    second_project_coordinator_name?: string;
+    second_project_coordinator_email?: string;
+    main_area_of_intervention?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
+    main_area_of_intervention_other?: string;
+    secondary_area_of_intervention?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
+    third_area_of_intervention?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
+    sustainable_development_goals?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
+    lead_partner?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
+    partners?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
+    funders?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
+    publication_status?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
@@ -12811,6 +11175,39 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
   {
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+  {
+    name?: string;
+    organization_type?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type_other?: string;
+    main_organization_theme?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    short_description?: string;
+    description?: string;
+    country?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    url?: string;
+    lead_projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    user_email?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
+  {
+    data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
@@ -12908,37 +11305,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
   };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
-  {
-    name?: string;
-    organization_type?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
-    organization_type_other?: string;
-    main_organization_theme?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
-    short_description?: string;
-    description?: string;
-    country?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
-    url?: string;
-    lead_projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
-    user_email?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
-  };
-
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
   {
     id?: number;
@@ -12964,6 +11330,15 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
   };
 
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
+  };
+
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -12976,6 +11351,17 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
   {
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
+  {
+    data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
@@ -12999,17 +11385,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     updatedAt?: string;
     createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
     updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
-  {
-    data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
@@ -13255,6 +11630,11 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDat
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
   };
 
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentData = {
+  id?: number;
+  attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributes;
+};
+
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent = {
   data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentData;
 };
@@ -13273,11 +11653,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy =
-  {
-    data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData;
-  };
-
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributes = {
   name?: string;
   createdAt?: string;
@@ -13286,10 +11661,34 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
   updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy;
 };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentData = {
-  id?: number;
-  attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributes;
-};
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
+  {
+    firstname?: string;
+    lastname?: string;
+    username?: string;
+    email?: string;
+    resetPasswordToken?: string;
+    registrationToken?: string;
+    isActive?: boolean;
+    roles?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
+    blocked?: boolean;
+    preferedLanguage?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy =
+  {
+    data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData;
+  };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
@@ -13330,30 +11729,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
   };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
-  {
-    firstname?: string;
-    lastname?: string;
-    username?: string;
-    email?: string;
-    resetPasswordToken?: string;
-    registrationToken?: string;
-    isActive?: boolean;
-    roles?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
-    blocked?: boolean;
-    preferedLanguage?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes;
-  };
-
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -13366,6 +11741,19 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+  {
+    name?: string;
+    code?: string;
+    description?: string;
+    users?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
@@ -13382,20 +11770,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
@@ -13405,19 +11779,6 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-  };
-
-export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
-  {
-    name?: string;
-    code?: string;
-    description?: string;
-    users?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -13432,6 +11793,20 @@ export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinent
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+  };
+
+export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
 export type LandUseTypePracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -13539,6 +11914,15 @@ export type HomeStatUpdatedBy = {
   data?: HomeStatUpdatedByData;
 };
 
+export type HomeStatCreatedByData = {
+  id?: number;
+  attributes?: HomeStatCreatedByDataAttributes;
+};
+
+export type HomeStatCreatedBy = {
+  data?: HomeStatCreatedByData;
+};
+
 export interface HomeStat {
   title?: string;
   value?: number;
@@ -13549,6 +11933,17 @@ export interface HomeStat {
   createdBy?: HomeStatCreatedBy;
   updatedBy?: HomeStatUpdatedBy;
 }
+
+export type HomeStatCreatedByDataAttributesUpdatedByDataAttributes = { [key: string]: any };
+
+export type HomeStatCreatedByDataAttributesUpdatedByData = {
+  id?: number;
+  attributes?: HomeStatCreatedByDataAttributesUpdatedByDataAttributes;
+};
+
+export type HomeStatCreatedByDataAttributesUpdatedBy = {
+  data?: HomeStatCreatedByDataAttributesUpdatedByData;
+};
 
 export type HomeStatCreatedByDataAttributes = {
   firstname?: string;
@@ -13565,26 +11960,6 @@ export type HomeStatCreatedByDataAttributes = {
   updatedAt?: string;
   createdBy?: HomeStatCreatedByDataAttributesCreatedBy;
   updatedBy?: HomeStatCreatedByDataAttributesUpdatedBy;
-};
-
-export type HomeStatCreatedByData = {
-  id?: number;
-  attributes?: HomeStatCreatedByDataAttributes;
-};
-
-export type HomeStatCreatedBy = {
-  data?: HomeStatCreatedByData;
-};
-
-export type HomeStatCreatedByDataAttributesUpdatedByDataAttributes = { [key: string]: any };
-
-export type HomeStatCreatedByDataAttributesUpdatedByData = {
-  id?: number;
-  attributes?: HomeStatCreatedByDataAttributesUpdatedByDataAttributes;
-};
-
-export type HomeStatCreatedByDataAttributesUpdatedBy = {
-  data?: HomeStatCreatedByDataAttributesUpdatedByData;
 };
 
 export type HomeStatCreatedByDataAttributesCreatedByDataAttributes = { [key: string]: any };
@@ -13755,25 +12130,6 @@ export interface HomeStatRequest {
 
 export type CountryResponseMeta = { [key: string]: any };
 
-export interface Country {
-  name: string;
-  capital?: string;
-  code?: number;
-  fips?: string;
-  iso_2?: string;
-  iso_3?: string;
-  continent?: CountryContinent;
-  region?: CountryRegion;
-  projects?: CountryProjects;
-  lat?: number;
-  long?: number;
-  practices?: CountryPractices;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: CountryCreatedBy;
-  updatedBy?: CountryUpdatedBy;
-}
-
 export interface CountryResponseDataObject {
   id?: number;
   attributes?: Country;
@@ -13817,6 +12173,25 @@ export type CountryPractices = {
   data?: CountryPracticesDataItem[];
 };
 
+export interface Country {
+  name: string;
+  capital?: string;
+  code?: number;
+  fips?: string;
+  iso_2?: string;
+  iso_3?: string;
+  continent?: CountryContinent;
+  region?: CountryRegion;
+  projects?: CountryProjects;
+  lat?: number;
+  long?: number;
+  practices?: CountryPractices;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryCreatedBy;
+  updatedBy?: CountryUpdatedBy;
+}
+
 export type CountryProjectsDataItemAttributes = { [key: string]: any };
 
 export type CountryProjectsDataItem = {
@@ -13826,6 +12201,19 @@ export type CountryProjectsDataItem = {
 
 export type CountryProjects = {
   data?: CountryProjectsDataItem[];
+};
+
+export type CountryRegionDataAttributesUpdatedBy = {
+  data?: CountryRegionDataAttributesUpdatedByData;
+};
+
+export type CountryRegionDataAttributes = {
+  name?: string;
+  projects?: CountryRegionDataAttributesProjects;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryRegionDataAttributesCreatedBy;
+  updatedBy?: CountryRegionDataAttributesUpdatedBy;
 };
 
 export type CountryRegionData = {
@@ -13844,10 +12232,6 @@ export type CountryRegionDataAttributesUpdatedByData = {
   attributes?: CountryRegionDataAttributesUpdatedByDataAttributes;
 };
 
-export type CountryRegionDataAttributesUpdatedBy = {
-  data?: CountryRegionDataAttributesUpdatedByData;
-};
-
 export type CountryRegionDataAttributesCreatedByDataAttributes = { [key: string]: any };
 
 export type CountryRegionDataAttributesCreatedByData = {
@@ -13859,52 +12243,8 @@ export type CountryRegionDataAttributesCreatedBy = {
   data?: CountryRegionDataAttributesCreatedByData;
 };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributes = {
-  name?: string;
-  project_type?: CountryRegionDataAttributesProjectsDataItemAttributesProjectType;
-  start_date?: string;
-  end_date?: string;
-  short_description?: string;
-  description?: string;
-  country_of_coordination?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-  region_of_interventions?: CountryRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-  country_of_interventions?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
-  website?: string;
-  project_coordinator_name?: string;
-  project_coordinator_email?: string;
-  second_project_coordinator_name?: string;
-  second_project_coordinator_email?: string;
-  main_area_of_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
-  main_area_of_intervention_other?: string;
-  secondary_area_of_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-  third_area_of_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-  sustainable_development_goals?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-  lead_partner?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-  partners?: CountryRegionDataAttributesProjectsDataItemAttributesPartners;
-  funders?: CountryRegionDataAttributesProjectsDataItemAttributesFunders;
-  publication_status?: CountryRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-  updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
-};
-
-export type CountryRegionDataAttributesProjectsDataItem = {
-  id?: number;
-  attributes?: CountryRegionDataAttributesProjectsDataItemAttributes;
-};
-
 export type CountryRegionDataAttributesProjects = {
   data?: CountryRegionDataAttributesProjectsDataItem[];
-};
-
-export type CountryRegionDataAttributes = {
-  name?: string;
-  projects?: CountryRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: CountryRegionDataAttributesCreatedBy;
-  updatedBy?: CountryRegionDataAttributesUpdatedBy;
 };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes = {
@@ -13969,29 +12309,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesPartners = {
   data?: CountryRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
 };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData = {
-  id?: number;
-  attributes?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
-};
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartner = {
-  data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
-};
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
-  {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
-  };
-
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes = {
   name?: string;
   organization_type?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
@@ -14012,6 +12329,64 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
   createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
   updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
 };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData = {
+  id?: number;
+  attributes?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
+};
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartner = {
+  data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
+};
+
+export type CountryRegionDataAttributesProjectsDataItemAttributes = {
+  name?: string;
+  project_type?: CountryRegionDataAttributesProjectsDataItemAttributesProjectType;
+  start_date?: string;
+  end_date?: string;
+  short_description?: string;
+  description?: string;
+  country_of_coordination?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
+  region_of_interventions?: CountryRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
+  country_of_interventions?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
+  website?: string;
+  project_coordinator_name?: string;
+  project_coordinator_email?: string;
+  second_project_coordinator_name?: string;
+  second_project_coordinator_email?: string;
+  main_area_of_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
+  main_area_of_intervention_other?: string;
+  secondary_area_of_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
+  third_area_of_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
+  sustainable_development_goals?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
+  lead_partner?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartner;
+  partners?: CountryRegionDataAttributesProjectsDataItemAttributesPartners;
+  funders?: CountryRegionDataAttributesProjectsDataItemAttributesFunders;
+  publication_status?: CountryRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCreatedBy;
+  updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
+};
+
+export type CountryRegionDataAttributesProjectsDataItem = {
+  id?: number;
+  attributes?: CountryRegionDataAttributesProjectsDataItemAttributes;
+};
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
+  };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
+  {
+    data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
+  };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
@@ -14108,6 +12483,15 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
     data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
   };
 
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
+    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
+  };
+
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
   {
     id?: number;
@@ -14147,29 +12531,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
     data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
   };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
-  {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
-  {
-    name?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
-  };
-
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
   {
     id?: number;
@@ -14190,6 +12551,11 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
     attributes?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
   };
 
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
+  {
+    data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
+  };
+
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -14202,6 +12568,15 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
+  };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+  {
+    name?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
@@ -14226,16 +12601,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDeve
 export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
-  {
-    name?: string;
-    projects?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
@@ -14264,6 +12629,16 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDeve
 export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
+  };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+  {
+    name?: string;
+    projects?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
@@ -14360,6 +12735,15 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesRegionOfInterve
   data?: CountryRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
 };
 
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData = {
+  id?: number;
+  attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
+};
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination = {
+  data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
+};
+
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -14393,15 +12777,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedBy;
     updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesUpdatedBy;
   };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData = {
-  id?: number;
-  attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
-};
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination = {
-  data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
-};
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
@@ -14467,9 +12842,9 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     sync?: boolean;
     show?: boolean;
     practice_url?: string;
-    practice_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
     land_use_priors?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriors;
     subinterventions?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventions;
+    practice_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedBy;
@@ -14490,16 +12865,16 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCreatedByData;
   };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention];
+
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+export const CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
   {
-    name?: string;
-    slug?: string;
-    practices?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
-  };
+    Management: 'Management',
+    Land_Use_Change: 'Land Use Change',
+    None: 'None',
+  } as const;
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
   {
@@ -14524,6 +12899,17 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy =
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData;
+  };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
+  {
+    name?: string;
+    slug?: string;
+    practices?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
+    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes =
@@ -14568,68 +12954,15 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
   };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes =
-  {
-    name?: string;
-    slug?: string;
-    practices?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy;
-    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData =
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
   {
     id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributes;
+    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes;
   };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention =
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes =
   {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionData;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByDataAttributes;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedBy =
-  {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesUpdatedByData;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByDataAttributes;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedBy =
-  {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesCreatedByData;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItemAttributes;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPractices =
-  {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeInterventionDataAttributesPracticesDataItem[];
+    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem[];
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
@@ -14644,27 +12977,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
-  {
-    name?: string;
-    practices?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
-  {
-    id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes;
-  };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypes =
-  {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItem[];
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
@@ -14693,6 +13005,16 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices =
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
+  };
+
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
+  {
+    name?: string;
+    practices?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+    updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes =
@@ -14783,6 +13105,14 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeData
     data?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
   };
 
+export type CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes = {
+  name?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+  updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+};
+
 export type CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
@@ -14796,14 +13126,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeData
   {
     data?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
   };
-
-export type CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes = {
-  name?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-  updatedBy?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
-};
 
 export type CountryContinentDataAttributes = {
   name?: string;
@@ -14831,23 +13153,6 @@ export type CountryContinentDataAttributesUpdatedByData = {
 
 export type CountryContinentDataAttributesUpdatedBy = {
   data?: CountryContinentDataAttributesUpdatedByData;
-};
-
-export type CountryContinentDataAttributesCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: CountryContinentDataAttributesCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: CountryContinentDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: CountryContinentDataAttributesCreatedByDataAttributesUpdatedBy;
 };
 
 export type CountryContinentDataAttributesCreatedByData = {
@@ -14885,8 +13190,42 @@ export type CountryContinentDataAttributesCreatedByDataAttributesCreatedBy = {
   data?: CountryContinentDataAttributesCreatedByDataAttributesCreatedByData;
 };
 
+export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes = {
+  name?: string;
+  code?: string;
+  description?: string;
+  users?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+  permissions?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+  updatedBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+};
+
+export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItem = {
+  id?: number;
+  attributes?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+};
+
 export type CountryContinentDataAttributesCreatedByDataAttributesRoles = {
   data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
+};
+
+export type CountryContinentDataAttributesCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: CountryContinentDataAttributesCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: CountryContinentDataAttributesCreatedByDataAttributesCreatedBy;
+  updatedBy?: CountryContinentDataAttributesCreatedByDataAttributesUpdatedBy;
 };
 
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
@@ -14917,17 +13256,6 @@ export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAt
     data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
-  {
-    id?: number;
-    attributes?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
-  };
-
-export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
-  {
-    data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-  };
-
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
@@ -14940,6 +13268,31 @@ export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAt
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
     data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+  };
+
+export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+  {
+    action?: string;
+    actionParameters?: unknown;
+    subject?: string;
+    properties?: unknown;
+    conditions?: unknown;
+    role?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+  };
+
+export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
+  {
+    id?: number;
+    attributes?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+  };
+
+export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
+  {
+    data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
@@ -14970,20 +13323,6 @@ export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAt
     data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
-export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
-  {
-    action?: string;
-    actionParameters?: unknown;
-    subject?: string;
-    properties?: unknown;
-    conditions?: unknown;
-    role?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
-    createdAt?: string;
-    updatedAt?: string;
-    createdBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
-  };
-
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
 
@@ -14995,23 +13334,6 @@ export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAt
 
 export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers = {
   data?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
-};
-
-export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes = {
-  name?: string;
-  code?: string;
-  description?: string;
-  users?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-  permissions?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-  updatedBy?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-};
-
-export type CountryContinentDataAttributesCreatedByDataAttributesRolesDataItem = {
-  id?: number;
-  attributes?: CountryContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
 };
 
 export type CountryListResponseMetaPagination = {
@@ -15064,14 +13386,6 @@ export type CountryRequestData = {
 
 export type ContinentResponseMeta = { [key: string]: any };
 
-export interface Continent {
-  name: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ContinentCreatedBy;
-  updatedBy?: ContinentUpdatedBy;
-}
-
 export interface ContinentResponseDataObject {
   id?: number;
   attributes?: Continent;
@@ -15093,23 +13407,6 @@ export type ContinentUpdatedBy = {
   data?: ContinentUpdatedByData;
 };
 
-export type ContinentCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: ContinentCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ContinentCreatedByDataAttributesCreatedBy;
-  updatedBy?: ContinentCreatedByDataAttributesUpdatedBy;
-};
-
 export type ContinentCreatedByData = {
   id?: number;
   attributes?: ContinentCreatedByDataAttributes;
@@ -15118,6 +13415,14 @@ export type ContinentCreatedByData = {
 export type ContinentCreatedBy = {
   data?: ContinentCreatedByData;
 };
+
+export interface Continent {
+  name: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ContinentCreatedBy;
+  updatedBy?: ContinentUpdatedBy;
+}
 
 export type ContinentCreatedByDataAttributesUpdatedByDataAttributes = { [key: string]: any };
 
@@ -15141,6 +13446,44 @@ export type ContinentCreatedByDataAttributesCreatedBy = {
   data?: ContinentCreatedByDataAttributesCreatedByData;
 };
 
+export type ContinentCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: ContinentCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ContinentCreatedByDataAttributesCreatedBy;
+  updatedBy?: ContinentCreatedByDataAttributesUpdatedBy;
+};
+
+export type ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedBy = {
+  data?: ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+};
+
+export type ContinentCreatedByDataAttributesRolesDataItemAttributes = {
+  name?: string;
+  code?: string;
+  description?: string;
+  users?: ContinentCreatedByDataAttributesRolesDataItemAttributesUsers;
+  permissions?: ContinentCreatedByDataAttributesRolesDataItemAttributesPermissions;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: ContinentCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+  updatedBy?: ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+};
+
+export type ContinentCreatedByDataAttributesRolesDataItem = {
+  id?: number;
+  attributes?: ContinentCreatedByDataAttributesRolesDataItemAttributes;
+};
+
 export type ContinentCreatedByDataAttributesRoles = {
   data?: ContinentCreatedByDataAttributesRolesDataItem[];
 };
@@ -15152,10 +13495,6 @@ export type ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedByData
 export type ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedByData = {
   id?: number;
   attributes?: ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
-};
-
-export type ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedBy = {
-  data?: ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
 };
 
 export type ContinentCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes = {
@@ -15191,23 +13530,6 @@ export type ContinentCreatedByDataAttributesRolesDataItemAttributesPermissionsDa
 
 export type ContinentCreatedByDataAttributesRolesDataItemAttributesPermissions = {
   data?: ContinentCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
-};
-
-export type ContinentCreatedByDataAttributesRolesDataItemAttributes = {
-  name?: string;
-  code?: string;
-  description?: string;
-  users?: ContinentCreatedByDataAttributesRolesDataItemAttributesUsers;
-  permissions?: ContinentCreatedByDataAttributesRolesDataItemAttributesPermissions;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: ContinentCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-  updatedBy?: ContinentCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
-};
-
-export type ContinentCreatedByDataAttributesRolesDataItem = {
-  id?: number;
-  attributes?: ContinentCreatedByDataAttributesRolesDataItemAttributes;
 };
 
 export type ContinentCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
@@ -15317,15 +13639,6 @@ export type AreaOfInterventionUpdatedBy = {
   data?: AreaOfInterventionUpdatedByData;
 };
 
-export type AreaOfInterventionCreatedByData = {
-  id?: number;
-  attributes?: AreaOfInterventionCreatedByDataAttributes;
-};
-
-export type AreaOfInterventionCreatedBy = {
-  data?: AreaOfInterventionCreatedByData;
-};
-
 export interface AreaOfIntervention {
   name: string;
   createdAt?: string;
@@ -15345,6 +13658,32 @@ export type AreaOfInterventionCreatedByDataAttributesUpdatedByData = {
 
 export type AreaOfInterventionCreatedByDataAttributesUpdatedBy = {
   data?: AreaOfInterventionCreatedByDataAttributesUpdatedByData;
+};
+
+export type AreaOfInterventionCreatedByDataAttributes = {
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  email?: string;
+  resetPasswordToken?: string;
+  registrationToken?: string;
+  isActive?: boolean;
+  roles?: AreaOfInterventionCreatedByDataAttributesRoles;
+  blocked?: boolean;
+  preferedLanguage?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  createdBy?: AreaOfInterventionCreatedByDataAttributesCreatedBy;
+  updatedBy?: AreaOfInterventionCreatedByDataAttributesUpdatedBy;
+};
+
+export type AreaOfInterventionCreatedByData = {
+  id?: number;
+  attributes?: AreaOfInterventionCreatedByDataAttributes;
+};
+
+export type AreaOfInterventionCreatedBy = {
+  data?: AreaOfInterventionCreatedByData;
 };
 
 export type AreaOfInterventionCreatedByDataAttributesCreatedByDataAttributes = {
@@ -15367,23 +13706,6 @@ export type AreaOfInterventionCreatedByDataAttributesRolesDataItem = {
 
 export type AreaOfInterventionCreatedByDataAttributesRoles = {
   data?: AreaOfInterventionCreatedByDataAttributesRolesDataItem[];
-};
-
-export type AreaOfInterventionCreatedByDataAttributes = {
-  firstname?: string;
-  lastname?: string;
-  username?: string;
-  email?: string;
-  resetPasswordToken?: string;
-  registrationToken?: string;
-  isActive?: boolean;
-  roles?: AreaOfInterventionCreatedByDataAttributesRoles;
-  blocked?: boolean;
-  preferedLanguage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: AreaOfInterventionCreatedByDataAttributesCreatedBy;
-  updatedBy?: AreaOfInterventionCreatedByDataAttributesUpdatedBy;
 };
 
 export type AreaOfInterventionCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
