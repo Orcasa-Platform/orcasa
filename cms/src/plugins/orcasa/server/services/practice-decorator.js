@@ -59,7 +59,9 @@ module.exports = class WocatPracticeDecorator {
         return practice;
       }
 
-      const decoratedPractice = {};
+      const decoratedPractice = {
+        sync: false,
+      };
 
       if ('land_use_prior' in decoratorJson[practice.source_id]) {
         if (decoratorJson[practice.source_id].land_use_prior === null) {

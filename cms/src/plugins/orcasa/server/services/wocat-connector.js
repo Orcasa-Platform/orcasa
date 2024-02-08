@@ -308,7 +308,7 @@ module.exports = class WocatConnector extends AsyncService {
     }
 
     if (wocatPractice.practice_intervention) {
-        practice_intervention = wocatPractice.practice_intervention
+      practice_intervention = wocatPractice.practice_intervention
     }
 
     if (wocatPractice.subinterventions) {
@@ -338,7 +338,7 @@ module.exports = class WocatConnector extends AsyncService {
           has_changed: wocatPractice.has_changed,
           degradation_assessed: wocatPractice.degradation_assessed.join(';'),
           language: wocatPractice.language.join(';'),
-          sync: true,
+          sync: ('sync' in wocatPractice) ? wocatPractice.sync : true,
           show: true,
 
           land_use_types,
@@ -381,7 +381,7 @@ module.exports = class WocatConnector extends AsyncService {
             has_changed: wocatPractice.has_changed,
             degradation_assessed: wocatPractice.degradation_assessed.join(';'),
             language: wocatPractice.language.join(';'),
-            sync: true,
+            sync: ('sync' in wocatPractice) ? wocatPractice.sync : false,
             show: practices[0].show === null ? true : practices[0].show,
 
             land_use_types,
