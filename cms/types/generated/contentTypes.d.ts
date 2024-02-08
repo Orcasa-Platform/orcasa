@@ -1226,7 +1226,13 @@ export interface ApiPagePage extends Schema.CollectionType {
     slug: Attribute.String;
     color: Attribute.String;
     external_url: Attribute.String;
-    intro: Attribute.RichText;
+    intro: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'custom';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
