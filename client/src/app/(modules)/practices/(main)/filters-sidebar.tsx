@@ -29,8 +29,9 @@ import {
 
 export default function FiltersSidebar() {
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
-  const practicesFiltersOptions = usePracticesFiltersOptions();
   const [filters, setFilters] = usePracticesFilters();
+  const practicesFiltersOptions = usePracticesFiltersOptions(filters);
+
   const scrollableContainerRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -50,30 +51,39 @@ export default function FiltersSidebar() {
   const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
   const SelectFilter = ({
+    source,
     type,
-    placeholder,
+    label,
     disabled,
   }: {
+    source?: keyof typeof practicesFiltersOptions;
     type: keyof typeof practicesFiltersOptions;
-    placeholder: string;
+    label: string;
     disabled?: boolean;
   }) => {
-    const selectedLabel = practicesFiltersOptions[type].find(
+    const selectedLabel = practicesFiltersOptions[source || type]?.find(
       ({ value }) => value === filters[type],
     )?.label;
     const select = (
       <Select
         value={String(filters[type])}
-        onValueChange={(value) =>
-          setFilters({ ...filters, [type]: value === 'all' ? undefined : +value })
-        }
+        onValueChange={(value) => {
+          let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
+          if (typeof returnedValue === 'string') {
+            const selectedOption = practicesFiltersOptions[source || type].find(
+              ({ value }) => String(value) === returnedValue,
+            );
+            if (selectedOption && typeof selectedOption.value === 'number') {
+              returnedValue = +returnedValue;
+            }
+          }
+          return setFilters({ ...filters, [type]: returnedValue });
+        }}
         disabled={disabled}
       >
         <SelectTrigger id={toKebabCase(type)} className="h-12 w-full">
           <SelectValue>
-            <span className="text-sm">
-              {`${placeholder}${selectedLabel ? `: ${selectedLabel}` : ''}`}
-            </span>
+            <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
@@ -84,7 +94,7 @@ export default function FiltersSidebar() {
           >
             All
           </SelectItem>
-          {practicesFiltersOptions[type].map(({ label, value }) => (
+          {practicesFiltersOptions[source || type].map(({ label, value }) => (
             <SelectItem key={value} value={String(value)} className="w-full">
               {label}
             </SelectItem>
@@ -93,29 +103,35 @@ export default function FiltersSidebar() {
       </Select>
     );
 
-    return disabled ? (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger className="w-full">{select}</TooltipTrigger>
-          <TooltipContent
-            sideOffset={20}
-            variant="dark"
-            align="start"
-            className="max-w-[var(--radix-tooltip-trigger-width)]"
-          >
-            <p className="text-xs leading-normal">
-              You have to select a <span className="font-semibold">land use type</span> and a{' '}
-              <span className="font-semibold">main intervention</span> first.
-            </p>
-            <TooltipArrow variant="dark" />
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    ) : (
-      select
+    return (
+      <>
+        <label htmlFor={toKebabCase(type)} className="mb-1 block text-sm font-medium text-gray-700">
+          {label}
+        </label>
+        {disabled ? (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className="w-full">{select}</TooltipTrigger>
+              <TooltipContent
+                sideOffset={20}
+                variant="dark"
+                align="start"
+                className="max-w-[var(--radix-tooltip-trigger-width)]"
+              >
+                <p className="text-xs leading-normal">
+                  You have to select a <span className="font-semibold">land use type</span> and a{' '}
+                  <span className="font-semibold">main intervention</span> first.
+                </p>
+                <TooltipArrow variant="dark" />
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ) : (
+          select
+        )}
+      </>
     );
   };
-
   return (
     <div
       // `inert` is not yet supported by React so that's why it is spread below:
@@ -169,13 +185,26 @@ export default function FiltersSidebar() {
                 options={practicesFiltersOptions.country}
                 onChange={(value) => setFilters({ ...filters, country: value as number[] })}
               />
-              <SelectFilter type="landUseType" placeholder="Land use type" />
-              <SelectFilter type="mainIntervention" placeholder="Main intervention" />
+              <SelectFilter type="mainIntervention" label="Main intervention" />
               <SelectFilter
-                type="subIntervention"
-                placeholder="Sub intervention"
-                disabled={!filters.landUseType || !filters.mainIntervention}
+                source="landUseType"
+                type={
+                  filters?.mainIntervention === 'Land Use Change'
+                    ? 'priorLandUseType'
+                    : 'landUseType'
+                }
+                label="Land use type"
               />
+              {filters?.mainIntervention === 'Land Use Change' && (
+                <SelectFilter type="landUseType" label="New land use type" />
+              )}
+              {filters?.mainIntervention === 'Management' && (
+                <SelectFilter
+                  type="subIntervention"
+                  label="Sub intervention"
+                  disabled={!filters.landUseType || !filters.mainIntervention}
+                />
+              )}
             </div>
           </fieldset>
         </div>

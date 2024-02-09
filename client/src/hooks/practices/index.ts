@@ -11,7 +11,6 @@ import {
   useGetPractices,
   useGetPracticesId,
 } from '@/types/generated/practice';
-import { useGetPracticeInterventions } from '@/types/generated/practice-intervention';
 import {
   PracticeResponse,
   PracticeListResponse,
@@ -69,6 +68,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : [];
+
   const practiceFilters = [
     ...(filters.country.length > 0
       ? [
@@ -80,6 +80,31 @@ const getQueryFilters = (filters: PracticesFilters) => {
                 },
               },
             })),
+          },
+        ]
+      : []),
+    ...(filters.mainIntervention
+      ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
+      : []),
+    ...(filters.subIntervention && filters.mainIntervention === 'Management'
+      ? [
+          {
+            subinterventions: {
+              id: {
+                $eq: filters.subIntervention,
+              },
+            },
+          },
+        ]
+      : []),
+    ...(filters.priorLandUseType && filters.mainIntervention === 'Land Use Change'
+      ? [
+          {
+            land_use_priors: {
+              id: {
+                $eq: filters.priorLandUseType,
+              },
+            },
           },
         ]
       : []),
@@ -195,7 +220,6 @@ export const parseData = (data: Data): PracticesProperties[] => {
 
 const useGetPracticesData = (filters: PracticesFilters) => {
   const queryFilters = getQueryFilters(filters);
-
   const {
     data: practicesData,
     isFetching: practicesIsFetching,
@@ -312,10 +336,9 @@ export const useMapPractices = ({ filters }: { filters: PracticesFilters }): Pra
 export const useMapPractice = (practice: Practice): PracticeMapResponse =>
   getMapPractices(useGetPractice(practice));
 
-export const usePracticesFiltersOptions = (): Record<
-  keyof PracticesDropdownFilters,
-  { label: string; value: number | string }[]
-> => {
+export const usePracticesFiltersOptions = (
+  filters: PracticesFilters,
+): Record<keyof PracticesDropdownFilters, { label: string; value: number | string }[]> => {
   const { data: countryData } = useGetCountries(
     {
       fields: ['name'],
@@ -338,26 +361,34 @@ export const usePracticesFiltersOptions = (): Record<
       },
     },
   );
-  const { data: practiceInterventionData } = useGetPracticeInterventions(
-    {
-      fields: 'name',
-    },
-    {
-      query: {
-        queryKey: ['practice-interventions'],
-      },
-    },
-  );
+
   const { data: subInterventionData } = useGetSubinterventions(
     {
       fields: 'name',
+      filters: {
+        $and: [
+          {
+            practices: {
+              land_use_types: {
+                id: {
+                  $in: filters.landUseType ? [filters.landUseType] : [],
+                },
+              },
+              practice_intervention: {
+                $eq: 'Management',
+              },
+            },
+          },
+        ],
+      },
     },
     {
       query: {
-        queryKey: ['sub-interventions'],
+        queryKey: [`sub-interventions-${filters.landUseType}`],
       },
     },
   );
+
   const country = useMemo(
     () =>
       countryData?.data
@@ -376,14 +407,8 @@ export const usePracticesFiltersOptions = (): Record<
     [landUseTypeData],
   );
 
-  const mainIntervention = useMemo(
-    () =>
-      practiceInterventionData?.data
-        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          practiceInterventionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
-        : [],
-    [practiceInterventionData],
-  );
+  const mainIntervention = ['Management', 'Land Use Change'].map((d) => ({ label: d, value: d }));
+
   const subIntervention = useMemo(
     () =>
       subInterventionData?.data
@@ -396,6 +421,7 @@ export const usePracticesFiltersOptions = (): Record<
   return {
     country,
     landUseType,
+    priorLandUseType: landUseType,
     mainIntervention,
     subIntervention,
   };

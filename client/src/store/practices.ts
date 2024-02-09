@@ -1,9 +1,12 @@
 import { atom, useAtom } from 'jotai';
 
+type MainIntervention = 'Management' | 'Land Use Change';
+
 export interface PracticesDropdownFilters {
   country: number[];
   landUseType: number | undefined;
-  mainIntervention: number | undefined;
+  priorLandUseType: number | undefined;
+  mainIntervention: MainIntervention | undefined;
   subIntervention: number | undefined;
 }
 
@@ -18,6 +21,7 @@ export const usePracticesFilterSidebarOpen = () => {
 
 const filtersAtom = atom<PracticesFilters>({
   country: [],
+  priorLandUseType: undefined,
   landUseType: undefined,
   mainIntervention: undefined,
   subIntervention: undefined,
