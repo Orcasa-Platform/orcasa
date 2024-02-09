@@ -258,6 +258,28 @@ const getQueryFilters = (filters: NetworkFilters) => {
           },
         ]
       : []),
+    ...(filters.year.length > 0
+      ? [
+          {
+            $or: filters.year.map((value) => {
+              return {
+                $and: [
+                  {
+                    start_date: {
+                      $lte: `${value}-12-31`,
+                    },
+                  },
+                  {
+                    end_date: {
+                      $gte: `${value}-01-01`,
+                    },
+                  },
+                ],
+              };
+            }),
+          },
+        ]
+      : []),
     ...(filters.coordinationCountry.length > 0
       ? [
           {
@@ -935,5 +957,10 @@ export const useNetworkProjectFiltersOptions = (): Record<
       { label: 'Finished', value: NetworkProjectStatusFilter.Finished },
       { label: 'Not started', value: NetworkProjectStatusFilter.NotStarted },
     ],
+    // NOTE: 2010 is the hard-coded start year for the filter
+    year: Array.from({ length: new Date().getFullYear() - 2010 + 1 }).map((_, index) => ({
+      label: `${2010 + index}`,
+      value: 2010 + index,
+    })),
   };
 };
