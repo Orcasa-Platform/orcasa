@@ -11,10 +11,13 @@ import { useSidebarScroll } from '@/store';
 
 import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
 
+import { useGetPages } from '@/types/generated/page';
+
 import { useNetworks } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
+import MarkdownRenderer from '@/components/home/markdown-renderer';
 import NewButtons from '@/components/new-buttons';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
@@ -24,6 +27,10 @@ import NetworkList from './network-list';
 export default function NetworkModule() {
   const [filters, setFilters] = useNetworkFilters();
   const previousFilters = usePreviousImmediate(filters);
+
+  const pages = useGetPages({ filters: { slug: 'network' } });
+  const data = pages?.data?.data?.[0];
+  const { attributes: { intro = undefined } = {} } = data || {};
 
   const networks = useNetworks({ filters });
   // The keywords search is not counted because it's shown in the main sidebar
@@ -83,7 +90,9 @@ export default function NetworkModule() {
   return (
     <div className="space-y-10">
       <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
-        Discover <span className="font-semibold text-blue-500">who does what</span> on soil carbon.
+        {intro && (
+          <MarkdownRenderer variant="page-intro" textClass="text-blue-500" content={intro} />
+        )}
       </h1>
       <div className="flex justify-between gap-x-4">
         <Search

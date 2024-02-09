@@ -36,6 +36,13 @@
     },
     "external_url": {
       "type": "string"
+    },
+    "intro": {
+      "type": "customField",
+      "options": {
+        "preset": "custom"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }

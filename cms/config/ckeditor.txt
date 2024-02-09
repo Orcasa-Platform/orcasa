@@ -1,0 +1,68 @@
+globalThis.CKEditorConfig = {
+
+    /* By default custom configs and theme
+    defined in this file are going to be spread into
+    default configs and theme these two properties below
+    allow you to redefine default objects completely: */
+
+    //configsOverwrite:true,
+    //themeOverwrite:true,
+
+    /* Here you can redefine default configs
+    or add completely new ones.
+    Each config includes:
+    "styles", "field" and "editorConfig" properties.
+    Property "field" is required. */
+
+    configs:{
+        custom:{
+            /* Custom field option */
+            field: {
+                key: "custom",
+                value: "custom",
+                metadatas: {
+                  intlLabel: {
+                    id: "ckeditor5.preset.custom.label",
+                    defaultMessage: "Only paragraph and bold",
+                  },
+                },
+            },
+            /* CKEditor configuration */
+            editorConfig:{
+                /* You can find all available built-in plugins
+                in the admin/src/components/Input/CKEditor/configs/base.js */
+                plugins: [
+                    CKEditor5.autoformat.Autoformat,
+                    CKEditor5.basicStyles.Bold,
+                    CKEditor5.essentials.Essentials,
+                    CKEditor5.paragraph.Paragraph,
+                    CKEditor5.pasteFromOffice.PasteFromOffice,
+                    CKEditor5.removeFormat.RemoveFormat,
+                    CKEditor5.specialCharacters.SpecialCharacters,
+                    CKEditor5.specialCharacters.SpecialCharactersArrows,
+                    CKEditor5.specialCharacters.SpecialCharactersCurrency,
+                    CKEditor5.specialCharacters.SpecialCharactersEssentials,
+                    CKEditor5.specialCharacters.SpecialCharactersLatin,
+                    CKEditor5.specialCharacters.SpecialCharactersMathematical,
+                    CKEditor5.specialCharacters.SpecialCharactersText,
+                  ],
+                toolbar: [
+                        'bold',
+                        '|',
+                        'fullScreen',
+                        'undo',
+                        'redo',
+                  ],
+            }
+        }
+    },
+
+    /* Here you can customize the plugin's theme.
+    This will be passed as "createGlobalStyle". */
+    theme:{
+        // common:``,
+        // light:``,
+        // dark:``,
+        // additional:``
+    }
+}

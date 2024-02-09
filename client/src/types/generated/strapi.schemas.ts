@@ -7940,6 +7940,7 @@ export interface Page {
   slug?: string;
   color?: string;
   external_url?: string;
+  intro?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -8296,6 +8297,7 @@ export type PageRequestData = {
   slug?: string;
   color?: string;
   external_url?: string;
+  intro?: string;
 };
 
 export interface PageRequest {

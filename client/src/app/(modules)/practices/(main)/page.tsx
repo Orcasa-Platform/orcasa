@@ -13,16 +13,24 @@ import {
   usePracticesFilters,
 } from '@/store/practices';
 
+import { useGetPages } from '@/types/generated/page';
+
 import { usePractices } from '@/hooks/practices';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
+import MarkdownRenderer from '@/components/home/markdown-renderer';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
 import PracticeList from './practice-list';
 
 export default function PracticesModule() {
+  const pages = useGetPages({ filters: { slug: 'practices' } });
+
+  const data = pages?.data?.data?.[0];
+  const { attributes: { intro = undefined } = {} } = data || {};
+
   const [filters, setFilters] = usePracticesFilters();
   const previousFilters = usePreviousImmediate(filters);
 
@@ -70,8 +78,9 @@ export default function PracticesModule() {
   return (
     <div className="space-y-10">
       <h1 className="border-l-4 border-brown-500 pl-5 font-serif text-lg leading-7">
-        Discover <span className="font-semibold text-brown-500">land management practices</span>{' '}
-        applied to prevent and reduce land degradation and to restore degraded land.
+        {intro && (
+          <MarkdownRenderer variant="page-intro" textClass="text-brown-500" content={intro} />
+        )}
       </h1>
       <div className="flex justify-between gap-x-4">
         <Search

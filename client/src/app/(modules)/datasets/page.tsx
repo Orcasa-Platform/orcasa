@@ -9,9 +9,11 @@ import { format } from '@/lib/utils/formats';
 import { useDatasetsFilters, useFiltersCount } from '@/store/datasets';
 
 import { DatasetSource } from '@/types/datasets';
+import { useGetPages } from '@/types/generated/page';
 
 import { useGetDatasetsInfinite } from '@/hooks/datasets';
 
+import MarkdownRenderer from '@/components/home/markdown-renderer';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@/components/ui/dialog';
@@ -32,13 +34,16 @@ export default function DatasetsModule() {
     minDate: filters.minDate,
     maxDate: filters.maxDate,
   });
+  const pages = useGetPages({ filters: { slug: 'datasets' } });
+  const data = pages?.data?.data?.[0];
+  const { attributes: { intro = undefined } = {} } = data || {};
 
   return (
     <>
       <h1 className="mb-14 border-l-4 border-purple-700 pl-5 font-serif text-lg leading-[30px]">
-        Explore an extensive{' '}
-        <span className="font-semibold text-purple-700">collection of SOC datasets</span> from
-        trusted sources, all in one place.
+        {intro && (
+          <MarkdownRenderer variant="page-intro" textClass="text-purple-700" content={intro} />
+        )}
       </h1>
       <Search
         containerClassName="w-full"
