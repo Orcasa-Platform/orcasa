@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Markdown, { Components } from 'react-markdown';
-import { Markup } from 'react-render-markup';
+
+import sanitizeHtml from 'sanitize-html';
 
 import { cn } from '@/lib/classnames';
 
@@ -19,9 +20,16 @@ const Renderer = ({
   textClass?: string;
 }) => {
   // Replace components for Markup
-  const replace = {
-    p: <span className="mb-4 block text-lg" />,
-    strong: <b className={cn('text-lg font-semibold', textClass)} />,
+  const replace = (content: string) => {
+    const sanitizedHTML = sanitizeHtml(content, {
+      allowedTags: ['p', 'strong'],
+      allowedAttributes: {},
+    });
+
+    return sanitizedHTML
+      .replace(/<p>/g, '<span class="mb-4 block text-lg">')
+      .replace(/<\/p>/g, '</span>')
+      .replace(/<strong>/g, `<b class="${cn('text-lg font-semibold', textClass)}">`);
   };
 
   // Replace components for Markdown
@@ -53,7 +61,7 @@ const Renderer = ({
     },
   };
   return variant === 'page-intro' ? (
-    <Markup markup={content} replace={replace} />
+    <div dangerouslySetInnerHTML={{ __html: replace(content) }} />
   ) : (
     <Markdown className="whitespace-pre-wrap" components={components as Components}>
       {content}
