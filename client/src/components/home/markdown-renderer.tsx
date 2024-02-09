@@ -20,7 +20,7 @@ const Renderer = ({
 }) => {
   // Replace components for Markup
   const replace = {
-    p: <p className="mb-4 text-lg" />,
+    p: <span className="mb-4 block text-lg" />,
     strong: <b className={cn('text-lg font-semibold', textClass)} />,
   };
 
