@@ -773,6 +773,48 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
   };
 };
 
+export const useNetworksCount = (filters: NetworkFilters) => {
+  const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
+  const loadProjects = !filters.type?.length || filters.type.includes('project');
+
+  const queryFilters = getQueryFilters(filters);
+
+  const { data: organizationsData } = useGetOrganizations(
+    {
+      fields: 'id',
+      'pagination[pageSize]': 9999,
+      filters: queryFilters.organization,
+    },
+    {
+      query: {
+        queryKey: ['organization', 'count', filters],
+        keepPreviousData: true,
+        enabled: loadOrganizations,
+      },
+    },
+  );
+
+  const { data: projectsData } = useGetProjects(
+    {
+      fields: 'id',
+      'pagination[pageSize]': 9999,
+      filters: queryFilters.project,
+    },
+    {
+      query: {
+        queryKey: ['project', 'count', filters],
+        keepPreviousData: true,
+        enabled: loadProjects,
+      },
+    },
+  );
+
+  return {
+    organisation: organizationsData?.meta?.pagination?.total ?? 0,
+    project: projectsData?.meta?.pagination?.total ?? 0,
+  };
+};
+
 export const useNetworkOrganizationFiltersOptions = (): Record<
   keyof NetworkOrganizationFilters,
   { label: string; value: number }[]
