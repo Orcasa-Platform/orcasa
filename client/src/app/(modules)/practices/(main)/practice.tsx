@@ -29,10 +29,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 
       <div className="flex gap-2">
         <LanguageIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base uppercase text-slate-500">
-          {/* TODO: Update this as it will be an iso array when the API is updated */}
-          {language?.sort((a, b) => a.length - b.length)[0]}
-        </div>
+        <div className="text-base uppercase text-slate-500">{language}</div>
       </div>
       {source_name === 'WOCAT' && (
         <Image

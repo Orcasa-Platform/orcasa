@@ -27,8 +27,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (language) {
-    //  TODO: Update this as it will be an iso array when the API is updated
-    fields.push({ label: 'Language', value: language?.sort((a, b) => a.length - b.length)[0] });
+    fields.push({ label: 'Language', value: language });
   }
 
   if (source && source.length > 0) {
