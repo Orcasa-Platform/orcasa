@@ -297,7 +297,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "searchable": false,
           "sortable": false
         }
@@ -312,20 +312,6 @@
         },
         "list": {
           "label": "sync",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "show": {
-        "edit": {
-          "label": "Show",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "show",
           "searchable": true,
           "sortable": true
         }
@@ -562,10 +548,6 @@
         [
           {
             "name": "sync",
-            "size": 6
-          },
-          {
-            "name": "show",
             "size": 6
           }
         ],

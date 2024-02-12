@@ -1252,7 +1252,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     source_name: Attribute.Enumeration<['WOCAT']> & Attribute.Required;
@@ -1302,7 +1302,6 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       'api::land-use-type.land-use-type'
     >;
     sync: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
-    show: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
     practice_url: Attribute.Text;
     land_use_priors: Attribute.Relation<
       'api::practice.practice',
@@ -1320,6 +1319,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::practice.practice',
       'oneToOne',

@@ -352,7 +352,7 @@ module.exports = class WocatConnector extends AsyncService {
           degradation_assessed: wocatPractice.degradation_assessed.join(';'),
           language: wocatPractice.language.join(';'),
           sync: ('sync' in wocatPractice) ? wocatPractice.sync : true,
-          show: true,
+          publishedAt: practice_intervention !== 'None' ? new Date() : null,
 
           land_use_types,
           land_use_priors,
@@ -395,7 +395,7 @@ module.exports = class WocatConnector extends AsyncService {
             degradation_assessed: wocatPractice.degradation_assessed.join(';'),
             language: wocatPractice.language.join(';'),
             sync: ('sync' in wocatPractice) ? wocatPractice.sync : false,
-            show: practices[0].show === null ? true : practices[0].show,
+            publishedAt: ((practices[0].show === null || practices[0].show) && practice_intervention !== 'None') ? new Date() : null,
 
             land_use_types,
             land_use_priors,
