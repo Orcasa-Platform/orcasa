@@ -1880,7 +1880,7 @@ __metadata:
     react-router-dom: "npm:^5.2.0"
     strapi-plugin-config-sync: "npm:1.2.3"
     strapi-plugin-import-export-entries: "npm:1.23.1"
-    strapi-plugin-string-array: "npm:1.2.0"
+    strapi-plugin-string-array: "npm:1.2.1"
     styled-components: "npm:^5.2.1"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -13457,9 +13457,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-plugin-string-array@npm:1.2.0":
-  version: 1.2.0
-  resolution: "strapi-plugin-string-array@npm:1.2.0"
+"strapi-plugin-string-array@npm:1.2.1":
+  version: 1.2.1
+  resolution: "strapi-plugin-string-array@npm:1.2.1"
   dependencies:
     "@strapi/design-system": "npm:^1.6.3"
     "@strapi/helper-plugin": "npm:^4.6.0"
@@ -13473,7 +13473,7 @@ __metadata:
     react-dom: ^17.0.0 || ^18.0.0
     react-router-dom: ^5.3.4
     styled-components: ^5.3.6
-  checksum: 10/253ebf7684b1004359ed554ef570f58a3ac3e36ff5d9d521d03bef55bda92beea720702e36c60fb01ed2734268e62799d80d364323c64ad33b03a960e5037f57
+  checksum: 10/2561f0996bc88c7da41584c201b255c31f1af9b4398017d333c3432d66328cebcb55a5f05d593f342b23817bc54c0a74d1705e69d9f07ef8d61536ceeef64f4c
   languageName: node
   linkType: hard
 
