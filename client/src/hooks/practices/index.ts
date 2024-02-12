@@ -97,16 +97,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
   ];
 
   return {
-    $and: [
-      // We filter out non-relevant practices
-      {
-        show: {
-          $eq: true,
-        },
-      },
-      ...generalFilters,
-      ...practiceFilters,
-    ],
+    $and: [...generalFilters, ...practiceFilters],
   };
 };
 
