@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -96,11 +96,6 @@
       "inversedBy": "practices"
     },
     "sync": {
-      "type": "boolean",
-      "default": true,
-      "required": true
-    },
-    "show": {
       "type": "boolean",
       "default": true,
       "required": true
