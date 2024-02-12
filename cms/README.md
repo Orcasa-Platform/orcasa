@@ -9,7 +9,7 @@ project.
 
 - Node.js v20.11
 - Postgres v15.4
-- Yarn v3.6
+- Yarn v4.1
 
 ## Install & run
 
