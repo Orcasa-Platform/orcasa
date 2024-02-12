@@ -77,7 +77,27 @@ export default function FiltersSidebar() {
               returnedValue = +returnedValue;
             }
           }
-          return setFilters({ ...filters, [type]: returnedValue });
+
+          // When we select Land use change as Main intervention
+          // we should move the current value of Land use type to Land use type prior
+          // to match the Scientific Evidence functionality
+          const getMainInterventionUpdates = () => {
+            if (type !== 'mainIntervention') return {};
+            if (value === 'Land Use Change') {
+              return { landUseType: undefined, priorLandUseType: filters.landUseType };
+            }
+            // Reset the filters when the main intervention is Management or all
+            return {
+              landUseType: filters.priorLandUseType || filters.landUseType,
+              priorLandUseType: undefined,
+            };
+          };
+
+          return setFilters({
+            ...filters,
+            [type]: returnedValue,
+            ...getMainInterventionUpdates(),
+          });
         }}
         disabled={disabled}
       >
@@ -132,6 +152,7 @@ export default function FiltersSidebar() {
       </>
     );
   };
+
   return (
     <div
       // `inert` is not yet supported by React so that's why it is spread below:
