@@ -579,8 +579,7 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url",
-          "intro"
+          "external_url"
         ]
       },
       "conditions": []
@@ -610,8 +609,7 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url",
-          "intro"
+          "external_url"
         ]
       },
       "conditions": []
@@ -627,8 +625,7 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url",
-          "intro"
+          "external_url"
         ]
       },
       "conditions": []
@@ -709,7 +706,6 @@
           "language",
           "land_use_types",
           "sync",
-          "show",
           "practice_url",
           "land_use_priors",
           "subinterventions",
@@ -720,6 +716,13 @@
     },
     {
       "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
       "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {},
@@ -752,7 +755,6 @@
           "language",
           "land_use_types",
           "sync",
-          "show",
           "practice_url",
           "land_use_priors",
           "subinterventions",
@@ -788,7 +790,6 @@
           "language",
           "land_use_types",
           "sync",
-          "show",
           "practice_url",
           "land_use_priors",
           "subinterventions",

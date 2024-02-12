@@ -316,20 +316,6 @@
           "sortable": true
         }
       },
-      "show": {
-        "edit": {
-          "label": "Show",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "show",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "practice_url": {
         "edit": {
           "label": "Practice Url",
@@ -346,7 +332,7 @@
       },
       "land_use_priors": {
         "edit": {
-          "label": "Land Use Priors",
+          "label": "land_use_priors",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -448,6 +434,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "source_name",
+        "title",
+        "practice_intervention",
+        "land_use_types"
+      ],
       "edit": [
         [
           {
@@ -563,28 +555,18 @@
           {
             "name": "sync",
             "size": 6
-          },
-          {
-            "name": "show",
-            "size": 6
           }
         ],
         [
           {
-            "name": "land_use_priors",
+            "name": "land_use_types",
             "size": 6
           },
           {
-            "name": "land_use_types",
+            "name": "land_use_priors",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "source_name",
-        "title",
-        "practice_intervention",
-        "land_use_types"
       ]
     }
   },

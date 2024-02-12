@@ -341,7 +341,7 @@
       },
       "publication_status": {
         "edit": {
-          "label": "Publication Status",
+          "label": "publication_status",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -413,6 +413,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
+      ],
       "edit": [
         [
           {
@@ -532,12 +538,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
       ]
     }
   },

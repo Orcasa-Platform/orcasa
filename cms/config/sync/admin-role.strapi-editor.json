@@ -699,7 +699,6 @@
           "degradation_assessed",
           "language",
           "sync",
-          "show",
           "practice_url",
           "subinterventions",
           "practice_intervention"
@@ -740,7 +739,6 @@
           "degradation_assessed",
           "language",
           "sync",
-          "show",
           "practice_url",
           "subinterventions",
           "practice_intervention"
@@ -774,7 +772,6 @@
           "degradation_assessed",
           "language",
           "sync",
-          "show",
           "practice_url",
           "subinterventions",
           "practice_intervention"
@@ -849,8 +846,7 @@
           "sustainable_development_goals",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -889,8 +885,7 @@
           "sustainable_development_goals",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -922,8 +917,7 @@
           "sustainable_development_goals",
           "lead_partner",
           "partners",
-          "funders",
-          "publication_status"
+          "funders"
         ]
       },
       "conditions": []
@@ -1073,8 +1067,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []
@@ -1092,8 +1085,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []
@@ -1104,8 +1096,7 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name",
-          "projects"
+          "name"
         ]
       },
       "conditions": []

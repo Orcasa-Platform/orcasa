@@ -35,7 +35,7 @@
       },
       "practices": {
         "edit": {
-          "label": "Practices",
+          "label": "practices",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -108,6 +108,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -119,12 +125,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "createdAt",
-        "updatedAt"
       ]
     },
     "uid": "api::land-use-type.land-use-type"
