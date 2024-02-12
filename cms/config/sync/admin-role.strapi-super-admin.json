@@ -579,7 +579,8 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url"
+          "external_url",
+          "intro"
         ]
       },
       "conditions": []
@@ -609,7 +610,8 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url"
+          "external_url",
+          "intro"
         ]
       },
       "conditions": []
@@ -625,7 +627,8 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url"
+          "external_url",
+          "intro"
         ]
       },
       "conditions": []

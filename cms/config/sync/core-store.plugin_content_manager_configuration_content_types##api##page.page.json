@@ -105,6 +105,20 @@
           "sortable": true
         }
       },
+      "intro": {
+        "edit": {
+          "label": "intro",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "intro",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -200,6 +214,12 @@
           {
             "name": "external_url",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "intro",
+            "size": 12
           }
         ]
       ]
