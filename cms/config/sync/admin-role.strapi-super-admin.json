@@ -431,13 +431,6 @@
       "conditions": []
     },
     {
-      "action": "plugin::content-manager.explorer.publish",
-      "actionParameters": {},
-      "subject": "api::network-suggestion.network-suggestion",
-      "properties": {},
-      "conditions": []
-    },
-    {
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::network-suggestion.network-suggestion",

@@ -1069,7 +1069,7 @@ export interface ApiNetworkSuggestionNetworkSuggestion
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     email_recipients: Attribute.Text &
@@ -1081,7 +1081,6 @@ export interface ApiNetworkSuggestionNetworkSuggestion
       >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::network-suggestion.network-suggestion',
       'oneToOne',

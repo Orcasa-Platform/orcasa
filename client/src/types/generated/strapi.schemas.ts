@@ -10199,7 +10199,6 @@ export interface NetworkSuggestion {
   email_recipients?: string;
   createdAt?: string;
   updatedAt?: string;
-  publishedAt?: string;
   createdBy?: NetworkSuggestionCreatedBy;
   updatedBy?: NetworkSuggestionUpdatedBy;
 }
