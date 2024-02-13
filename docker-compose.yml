@@ -42,7 +42,6 @@ services:
       - NODE_ENV=development
       - NEXT_PUBLIC_API_URL=http://localhost:1337/api
       - NEXT_PUBLIC_DATASETS_API_URL=https://orcasa.apis.ekoal.org
-      - NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS=impact4soil@groupes.renater.fr
       - NEXT_PUBLIC_URL=http://localhost:3000
       - NEXT_PUBLIC_ENVIRONMENT=development
       - NEXT_PUBLIC_GA_TRACKING_ID=someTestValue
