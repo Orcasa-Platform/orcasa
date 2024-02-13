@@ -943,6 +943,11 @@ export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
+    practices_prior: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'manyToMany',
+      'api::practice.practice'
+    >;
     practices: Attribute.Relation<
       'api::land-use-type.land-use-type',
       'manyToMany',

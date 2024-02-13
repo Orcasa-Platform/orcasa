@@ -20,7 +20,7 @@ module.exports = ({ strapi }) => ({
     });
 
     try {
-      await wocatImporter.import()
+      wocatImporter.import()
         .then(async (practices) => {
           return practiceDecorator.decoratePractices(practices);
         })

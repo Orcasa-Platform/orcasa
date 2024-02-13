@@ -132,7 +132,7 @@ module.exports = class WocatConnector extends AsyncService {
     }
   }
 
-  getLandUsePrior(questionnaire) {
+  getLandUsePriors(questionnaire) {
     const lands = get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__3__initial_landuse.children.tech_qg_239.children.tech_landuse_2018.value[0].values', []);
     return lands.map(l => this.mapWithDictionary(this.landUseMap, l[0]));
   }
@@ -223,7 +223,7 @@ module.exports = class WocatConnector extends AsyncService {
       land_use_has_changed: get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__3__initial_landuse.children.tech_qg_237.children.tech_initial_landuse_changed.value[0].values', []),
       has_changed: get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__3__initial_landuse.children.tech_qg_237.children.tech_initial_landuse_changed.value[0].values', ['No information'])[0] === 'Yes (Please fill out the questions below with regard to the land use before implementation of the Technology)',
 
-      land_use_prior: this.getLandUsePrior(questionnaire),
+      land_use_priors: this.getLandUsePriors(questionnaire),
       degradation_assessed: this.getDegradationAssessed(questionnaire),
       prevention_restoration: get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__8.children.tech_qg_35.children.tech_prevention.value[0].values', null),
       agroclimatic_zone: get(questionnaire, 'section_specifications.children.tech__5.children.tech__5__1.children.tech_qg_55.children.tech_agroclimatic_zone.value[0].values', null),
@@ -278,7 +278,6 @@ module.exports = class WocatConnector extends AsyncService {
       } else {
         land_use_priors = wocatPractice.land_use_priors
       }
-
     }
 
     if (wocatPractice.land_use_types) {
@@ -360,7 +359,7 @@ module.exports = class WocatConnector extends AsyncService {
           country,
           subinterventions,
         },
-        populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
+        populate: ['country', 'land_use_types', 'land_use_priors', 'practice_intervention']
       });
     } else {
       if (practices[0].sync === false) {
@@ -403,7 +402,7 @@ module.exports = class WocatConnector extends AsyncService {
             country,
             subinterventions,
           },
-          populate: ['country', 'land_use_types', 'land_use_prior', 'practice_intervention']
+          populate: ['country', 'land_use_types', 'land_use_priors', 'practice_intervention']
         });
       } catch (error) {
         throw error;

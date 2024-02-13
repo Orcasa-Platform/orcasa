@@ -107,7 +107,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::land-use-type.land-use-type",
-      "inversedBy": "practices"
+      "inversedBy": "practices_prior"
     },
     "subinterventions": {
       "type": "relation",

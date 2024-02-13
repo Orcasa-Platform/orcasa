@@ -16,11 +16,17 @@
       "required": true,
       "unique": true
     },
-    "practices": {
+    "practices_prior": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::practice.practice",
       "mappedBy": "land_use_priors"
+    },
+    "practices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::practice.practice",
+      "mappedBy": "land_use_change"
     }
   }
 }

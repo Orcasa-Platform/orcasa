@@ -33,6 +33,21 @@
           "sortable": true
         }
       },
+      "practices_prior": {
+        "edit": {
+          "label": "Practices Prior",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "source_id"
+        },
+        "list": {
+          "label": "practices_prior",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "practices": {
         "edit": {
           "label": "Practices",
@@ -113,9 +128,15 @@
           {
             "name": "name",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "practices",
+            "size": 6
+          },
+          {
+            "name": "practices_prior",
             "size": 6
           }
         ]
@@ -123,8 +144,8 @@
       "list": [
         "id",
         "name",
-        "createdAt",
-        "updatedAt"
+        "practices",
+        "practices_prior"
       ]
     },
     "uid": "api::land-use-type.land-use-type"

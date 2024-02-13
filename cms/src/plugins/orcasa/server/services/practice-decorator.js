@@ -71,9 +71,9 @@ module.exports = class WocatPracticeDecorator {
 
       if ('land_use_prior' in decoratorJson[practice.source_id]) {
         if (decoratorJson[practice.source_id].land_use_prior === null) {
-          decoratedPractice.land_use_prior = [];
+          decoratedPractice.land_use_priors = [];
         } else {
-          decoratedPractice.land_use_prior = (await strapi.entityService.findMany(
+          decoratedPractice.land_use_priors = (await strapi.entityService.findMany(
             'api::land-use-type.land-use-type',
             {
               filters: { name: { $in: decoratorJson[practice.source_id].land_use_prior } },
@@ -135,7 +135,7 @@ module.exports = class WocatPracticeDecorator {
 
   async decorate() {
     const practices = await strapi.entityService.findMany('api::practice.practice', {
-      populate: ['country', 'land_use_prior', 'land_use_types', 'practice_intervention', 'subinterventions'],
+      populate: ['country', 'land_use_priors', 'land_use_types', 'practice_intervention', 'subinterventions'],
     });
 
     return this.decoratePractices(practices, true);
