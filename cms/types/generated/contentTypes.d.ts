@@ -1118,13 +1118,15 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       'api::organization.organization',
       'oneToOne',
       'api::organization-type.organization-type'
-    >;
+    > &
+      Attribute.Required;
     organization_type_other: Attribute.String;
     main_organization_theme: Attribute.Relation<
       'api::organization.organization',
       'oneToOne',
       'api::organization-theme.organization-theme'
-    >;
+    > &
+      Attribute.Required;
     secondary_organization_theme: Attribute.Relation<
       'api::organization.organization',
       'oneToOne',
@@ -1143,7 +1145,8 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       'api::organization.organization',
       'oneToOne',
       'api::country.country'
-    >;
+    > &
+      Attribute.Required;
     url: Attribute.String & Attribute.Required;
     lead_projects: Attribute.Relation<
       'api::organization.organization',
@@ -1426,7 +1429,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'oneToOne',
       'api::project-type.project-type'
-    >;
+    > &
+      Attribute.Required;
     start_date: Attribute.Date & Attribute.Required;
     end_date: Attribute.Date;
     short_description: Attribute.Text &
@@ -1442,7 +1446,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'oneToOne',
       'api::country.country'
-    >;
+    > &
+      Attribute.Required;
     region_of_interventions: Attribute.Relation<
       'api::project.project',
       'manyToMany',
@@ -1483,7 +1488,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToOne',
       'api::organization.organization'
-    >;
+    > &
+      Attribute.Required;
     partners: Attribute.Relation<
       'api::project.project',
       'manyToMany',
