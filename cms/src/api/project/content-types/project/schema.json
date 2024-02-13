@@ -19,6 +19,7 @@
     },
     "project_type": {
       "type": "relation",
+      "required": true,
       "relation": "oneToOne",
       "target": "api::project-type.project-type"
     },
@@ -40,6 +41,7 @@
     },
     "country_of_coordination": {
       "type": "relation",
+      "required": true,
       "relation": "oneToOne",
       "target": "api::country.country"
     },
@@ -96,6 +98,7 @@
     },
     "lead_partner": {
       "type": "relation",
+      "required": true,
       "relation": "manyToOne",
       "target": "api::organization.organization",
       "inversedBy": "lead_projects"
