@@ -20,16 +20,13 @@ export default {
     const organizationDelta = event.params.data;
     const organizationToUpdate: any = await strapi.entityService.findOne("api::organization.organization", event.params.where.id);
 
-    if ((!organizationToUpdate.organization_type && organizationDelta.organization_type.connect.length === 0) ||
-      (organizationDelta.organization_type.disconnect.length === 1 && organizationDelta.organization_type.connect.length === 0)) {
+    if (organizationDelta.organization_type.connect.length === 0 && (organizationDelta.organization_type.disconnect.length === 1 || !organizationToUpdate.organization_type)) {
       throw new ApplicationError('Organization Type is required');
     }
-    if ((!organizationToUpdate.main_organization_theme && organizationDelta.main_organization_theme.connect.length === 0) ||
-      (organizationDelta.main_organization_theme.disconnect.length === 1 && organizationDelta.main_organization_theme.connect.length === 0)) {
+    if (organizationDelta.main_organization_theme.connect.length === 0 && (organizationDelta.main_organization_theme.disconnect.length === 1 || !organizationToUpdate.main_organization_theme)) {
       throw new ApplicationError('Main Organization Theme is required');
     }
-    if ((!organizationToUpdate.country && organizationDelta.country.connect.length === 0) ||
-      (organizationDelta.country.disconnect.length === 1 && organizationDelta.country.connect.length === 0)) {
+    if (organizationDelta.country.connect.length === 0 && (organizationDelta.country.disconnect.length === 1 || !organizationToUpdate.country)) {
       throw new ApplicationError('Country is required');
     }
   },
