@@ -86,34 +86,34 @@ const getQueryFilters = (filters: PracticesFilters) => {
     ...(filters.mainIntervention
       ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
       : []),
-    ...(filters.subIntervention && filters.mainIntervention === 'Management'
+    ...(filters.subInterventions && filters.mainIntervention === 'Management'
       ? [
           {
             subinterventions: {
               id: {
-                $eq: filters.subIntervention,
+                $eq: filters.subInterventions,
               },
             },
           },
         ]
       : []),
-    ...(filters.priorLandUseType && filters.mainIntervention === 'Land Use Change'
+    ...(filters.priorLandUseTypes && filters.mainIntervention === 'Land Use Change'
       ? [
           {
             land_use_priors: {
               id: {
-                $eq: filters.priorLandUseType,
+                $eq: filters.priorLandUseTypes,
               },
             },
           },
         ]
       : []),
-    ...(filters.landUseType
+    ...(filters.landUseTypes
       ? [
           {
             land_use_types: {
               id: {
-                $eq: filters.landUseType,
+                $eq: filters.landUseTypes,
               },
             },
           },
@@ -371,7 +371,7 @@ export const usePracticesFiltersOptions = (
             practices: {
               land_use_types: {
                 id: {
-                  $in: filters.landUseType ? [filters.landUseType] : [],
+                  $in: filters.landUseTypes ? [filters.landUseTypes] : [],
                 },
               },
               practice_intervention: {
@@ -384,7 +384,7 @@ export const usePracticesFiltersOptions = (
     },
     {
       query: {
-        queryKey: [`sub-interventions-${filters.landUseType}`],
+        queryKey: [`sub-interventions-${filters.landUseTypes}`],
       },
     },
   );
@@ -398,7 +398,7 @@ export const usePracticesFiltersOptions = (
     [countryData],
   );
 
-  const landUseType = useMemo(
+  const landUseTypes = useMemo(
     () =>
       landUseTypeData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -409,7 +409,7 @@ export const usePracticesFiltersOptions = (
 
   const mainIntervention = ['Management', 'Land Use Change'].map((d) => ({ label: d, value: d }));
 
-  const subIntervention = useMemo(
+  const subInterventions = useMemo(
     () =>
       subInterventionData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -420,9 +420,9 @@ export const usePracticesFiltersOptions = (
 
   return {
     country,
-    landUseType,
-    priorLandUseType: landUseType,
+    landUseTypes,
+    priorLandUseTypes: landUseTypes,
     mainIntervention,
-    subIntervention,
+    subInterventions,
   };
 };

@@ -55,52 +55,57 @@ export default function FiltersSidebar() {
     type,
     label,
     disabled,
+    multiple,
   }: {
     source?: keyof typeof practicesFiltersOptions;
     type: keyof typeof practicesFiltersOptions;
     label: string;
     disabled?: boolean;
+    multiple?: boolean;
   }) => {
     const selectedLabel = practicesFiltersOptions[source || type]?.find(
       ({ value }) => value === filters[type],
     )?.label;
-    const select = (
-      <Select
-        value={String(filters[type])}
-        onValueChange={(value) => {
-          let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
-          if (typeof returnedValue === 'string') {
-            const selectedOption = practicesFiltersOptions[source || type].find(
-              ({ value }) => String(value) === returnedValue,
-            );
-            if (selectedOption && typeof selectedOption.value === 'number') {
-              returnedValue = +returnedValue;
-            }
-          }
+    const handleValueChange = (value: string | number | undefined) => {
+      let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
+      if (typeof returnedValue === 'string') {
+        const selectedOption = practicesFiltersOptions[source || type].find(
+          ({ value }) => String(value) === returnedValue,
+        );
+        if (selectedOption && typeof selectedOption.value === 'number') {
+          returnedValue = +returnedValue;
+        }
+      }
 
-          // When we select Land use change as Main intervention
-          // we should move the current value of Land use type to Land use type prior
-          // to match the Scientific Evidence functionality
-          const getMainInterventionUpdates = () => {
-            if (type !== 'mainIntervention') return {};
-            if (value === 'Land Use Change') {
-              return { landUseType: undefined, priorLandUseType: filters.landUseType };
-            }
-            // Reset the filters when the main intervention is Management or all
-            return {
-              landUseType: filters.priorLandUseType || filters.landUseType,
-              priorLandUseType: undefined,
-            };
-          };
+      // When we select Land use change as Main intervention
+      // we should move the current value of Land use type to Land use type prior
+      // to match the Scientific Evidence functionality
+      const getMainInterventionUpdates = () => {
+        if (type !== 'mainIntervention') return {};
+        if (value === 'Land Use Change') {
+          return { landUseTypes: undefined, priorLandUseTypes: filters.landUseTypes };
+        }
+        // Reset the filters when the main intervention is Management or all
+        return {
+          landUseTypes: filters.priorLandUseTypes || filters.landUseTypes,
+          priorLandUseTypes: undefined,
+        };
+      };
+      return setFilters({
+        ...filters,
+        [type]: returnedValue,
+        ...getMainInterventionUpdates(),
+      });
+    };
+    const handleMultipleValueChange = (value: (string | number)[] | undefined) => {
+      return setFilters({
+        ...filters,
+        [type]: value,
+      });
+    };
 
-          return setFilters({
-            ...filters,
-            [type]: returnedValue,
-            ...getMainInterventionUpdates(),
-          });
-        }}
-        disabled={disabled}
-      >
+    const select = !multiple ? (
+      <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
         <SelectTrigger id={toKebabCase(type)} className="h-12 w-full">
           <SelectValue>
             <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
@@ -121,16 +126,27 @@ export default function FiltersSidebar() {
           ))}
         </SelectContent>
       </Select>
+    ) : (
+      <MultiCombobox
+        name={toKebabCase(type)}
+        variant="practices"
+        selectedLabel={filters[type]?.length ? `${label} (${filters[type]?.length})` : 'All'}
+        value={filters[type] ? (filters[type] as number[]) : []}
+        options={practicesFiltersOptions[source || type] || []}
+        onChange={handleMultipleValueChange}
+        disabled={disabled}
+        className="!mt-0.5"
+      />
     );
 
     return (
       <>
-        <label htmlFor={toKebabCase(type)} className="mb-1 block text-sm font-medium text-gray-700">
+        <label htmlFor={toKebabCase(type)} className="block text-sm font-medium text-gray-700">
           {label}
         </label>
         {disabled ? (
           <TooltipProvider>
-            <Tooltip>
+            <Tooltip delayDuration={0}>
               <TooltipTrigger className="w-full">{select}</TooltipTrigger>
               <TooltipContent
                 sideOffset={20}
@@ -178,21 +194,22 @@ export default function FiltersSidebar() {
           <span className="sr-only">Close</span>
           <X className="h-6 w-6" />
         </Button>
-        <h1 className="font-serif text-3.8xl">Filters</h1>
+        <h1 className="mb-6 font-serif text-3.8xl">Filters</h1>
         <div className="flex flex-col gap-y-10">
           <fieldset className="relative">
             <Button
               type="button"
               variant="vanilla"
               size="auto"
-              className="absolute bottom-full right-0 -translate-y-4 text-base font-semibold text-brown-500 hover:text-brown-800 disabled:text-gray-300 disabled:opacity-100"
+              className="absolute bottom-full left-0 -translate-y-4 text-base font-semibold text-brown-500 hover:text-brown-800 disabled:text-gray-300 disabled:opacity-100"
               onClick={() =>
                 setFilters({
                   ...filters,
                   country: [],
-                  landUseType: undefined,
+                  landUseTypes: undefined,
+                  priorLandUseTypes: undefined,
                   mainIntervention: undefined,
-                  subIntervention: undefined,
+                  subInterventions: undefined,
                 })
               }
             >
@@ -208,22 +225,24 @@ export default function FiltersSidebar() {
               />
               <SelectFilter type="mainIntervention" label="Main intervention" />
               <SelectFilter
-                source="landUseType"
+                source="landUseTypes"
                 type={
                   filters?.mainIntervention === 'Land Use Change'
-                    ? 'priorLandUseType'
-                    : 'landUseType'
+                    ? 'priorLandUseTypes'
+                    : 'landUseTypes'
                 }
                 label="Land use type"
+                multiple
               />
               {filters?.mainIntervention === 'Land Use Change' && (
-                <SelectFilter type="landUseType" label="New land use type" />
+                <SelectFilter type="landUseTypes" label="New land use type" multiple />
               )}
               {filters?.mainIntervention === 'Management' && (
                 <SelectFilter
-                  type="subIntervention"
-                  label="Sub intervention"
-                  disabled={!filters.landUseType || !filters.mainIntervention}
+                  type="subInterventions"
+                  label="Sub-intervention"
+                  disabled={!filters.landUseTypes || !filters.mainIntervention}
+                  multiple
                 />
               )}
             </div>
