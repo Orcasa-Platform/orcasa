@@ -103,7 +103,9 @@ export default function FiltersSidebar() {
         [type]: value,
       });
     };
-
+    const options = practicesFiltersOptions[source || type].sort((a, b) =>
+      a.label.localeCompare(b.label),
+    );
     const select = !multiple ? (
       <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
         <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12 w-full">
@@ -119,7 +121,7 @@ export default function FiltersSidebar() {
           >
             All
           </SelectItem>
-          {practicesFiltersOptions[source || type].map(({ label, value }) => (
+          {options.map(({ label, value }) => (
             <SelectItem key={value} value={String(value)} className="w-full">
               {label}
             </SelectItem>
@@ -132,7 +134,7 @@ export default function FiltersSidebar() {
         variant="practices"
         selectedLabel={filters[type]?.length ? `${label} (${filters[type]?.length})` : 'All'}
         value={filters[type] ? (filters[type] as number[]) : []}
-        options={practicesFiltersOptions[source || type] || []}
+        options={options || []}
         onChange={handleMultipleValueChange}
         disabled={disabled}
         className="!mt-0"
