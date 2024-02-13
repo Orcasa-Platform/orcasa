@@ -83,10 +83,11 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
+    // Main intervention is selected
     ...(filters.mainIntervention
       ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
       : []),
-    ...(filters.subInterventions && filters.mainIntervention === 'Management'
+    ...(filters.mainIntervention === 'Management' && filters.subInterventions
       ? [
           {
             $or: filters.subInterventions.map((id) => ({
@@ -99,7 +100,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.priorLandUseTypes && filters.mainIntervention === 'Land Use Change'
+    ...(filters.mainIntervention === 'Land Use Change' && filters.priorLandUseTypes
       ? [
           {
             $or: filters.priorLandUseTypes.map((id) => ({
@@ -112,7 +113,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.landUseTypes
+    ...(filters.mainIntervention && filters.landUseTypes
       ? [
           {
             $or: filters.landUseTypes.map((id) => ({
@@ -122,6 +123,53 @@ const getQueryFilters = (filters: PracticesFilters) => {
                 },
               },
             })),
+          },
+        ]
+      : []),
+    // Main intervention is not selected:
+    // We have to select all practices that have the selected land use types
+    // and also prior land use types in the case of Land Use Change Management
+    ...(!filters.mainIntervention
+      ? [
+          {
+            $or: [
+              {
+                $and: [
+                  {
+                    practice_intervention: {
+                      $eq: 'Management',
+                    },
+                  },
+                  {
+                    $or: filters.landUseTypes?.map((id) => ({
+                      land_use_types: {
+                        id: {
+                          $eq: id,
+                        },
+                      },
+                    })),
+                  },
+                ],
+              },
+              {
+                $and: [
+                  {
+                    practice_intervention: {
+                      $eq: 'Land Use Change',
+                    },
+                  },
+                  {
+                    $or: filters.landUseTypes?.map((id) => ({
+                      land_use_priors: {
+                        id: {
+                          $eq: id,
+                        },
+                      },
+                    })),
+                  },
+                ],
+              },
+            ],
           },
         ]
       : []),
