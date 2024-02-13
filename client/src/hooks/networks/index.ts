@@ -782,7 +782,7 @@ export const useNetworksCount = (filters: NetworkFilters) => {
   const { data: organizationsData } = useGetOrganizations(
     {
       fields: 'id',
-      'pagination[pageSize]': 9999,
+      'pagination[pageSize]': 1,
       filters: queryFilters.organization,
     },
     {
