@@ -139,7 +139,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
       map?.off('render', handleMapRender);
     };
   }, [map, handleMapRender]);
-  const noData = <div className="text-xs">has No data</div>;
+  const noData = <div>there is no data</div>;
 
   return (
     <div className="space-y-3 pt-2 text-gray-700 first:pt-0">
@@ -153,14 +153,13 @@ const PopupItem = ({ id }: PopupItemProps) => {
       >
         {click && (
           <>
-            <div>
+            <div className="text-base">
               At the Coordinates:{' '}
-              <span className="text-xs font-semibold">
+              <span className="font-semibold">
                 {popup?.lngLat.lng.toFixed(4)}, {popup?.lngLat.lat.toFixed(4)}
               </span>
             </div>{' '}
-            the <span className="font-semibold">{attributes.title}</span>
-            <dl className="flex items-center space-x-1">
+            <dl className="flex items-center space-x-1 text-base">
               {click && !!featuresData && click.values.some((v) => featuresData[v.key]) && (
                 <>
                   {click.values.map((v) => {
@@ -172,8 +171,8 @@ const PopupItem = ({ id }: PopupItemProps) => {
                     if (!value) return noData;
                     return (
                       <div key={v.key}>
-                        <dd className="text-xs">
-                          <span>is </span>
+                        <dd>
+                          <span>the value is </span>
                           <span className="font-semibold">
                             {value} {v.unit}
                           </span>
