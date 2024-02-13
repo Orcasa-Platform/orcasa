@@ -13,7 +13,7 @@ import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from 
 
 import { useGetPages } from '@/types/generated/page';
 
-import { useNetworks } from '@/hooks/networks';
+import { useNetworks, useNetworksCount } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -33,6 +33,8 @@ export default function NetworkModule() {
   const { attributes: { intro = undefined } = {} } = data || {};
 
   const networks = useNetworks({ filters });
+  const networksCount = useNetworksCount(filters);
+
   // The keywords search is not counted because it's shown in the main sidebar
   const filtersCount = useFiltersCount(filters, ['search']);
 
@@ -43,6 +45,9 @@ export default function NetworkModule() {
   const [savedSidebarScroll, setSavedSidebarScroll] = useSidebarScroll();
 
   const filtersButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
+  const loadProjects = !filters.type?.length || filters.type.includes('project');
 
   // We store the sidebar's scroll position when navigating away from the list view. `useEffect`
   // can't be used because it would be executed after repainting i.e. after navigating.
@@ -117,7 +122,18 @@ export default function NetworkModule() {
           )}
         </Button>
       </div>
-      <NetworkList {...networks} />
+      <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
+        {loadOrganizations &&
+          loadProjects &&
+          `Showing ${networksCount.organisation} organisations and ${networksCount.project} projects.`}
+        {loadOrganizations &&
+          !loadProjects &&
+          `Showing ${networksCount.organisation} organisations.`}
+        {!loadOrganizations && loadProjects && `Showing ${networksCount.project} projects.`}
+      </div>
+      <div className="!mt-6">
+        <NetworkList {...networks} />
+      </div>
       {env.NEXT_PUBLIC_HIDE_NETWORK_FORMS !== 'true' && renderFormButtons}
     </div>
   );
