@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "network_suggestions",
+  "info": {
+    "singularName": "network-suggestion",
+    "pluralName": "network-suggestions",
+    "displayName": "Network Suggestion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email_recipients": {
+      "type": "customField",
+      "options": {
+        "separator": "comma"
+      },
+      "customField": "plugin::string-array.input"
+    }
+  }
+}

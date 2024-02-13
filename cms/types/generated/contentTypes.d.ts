@@ -1059,6 +1059,44 @@ export interface ApiLayerGroupLayerGroup extends Schema.CollectionType {
   };
 }
 
+export interface ApiNetworkSuggestionNetworkSuggestion
+  extends Schema.SingleType {
+  collectionName: 'network_suggestions';
+  info: {
+    singularName: 'network-suggestion';
+    pluralName: 'network-suggestions';
+    displayName: 'Network Suggestion';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    email_recipients: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'comma';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::network-suggestion.network-suggestion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::network-suggestion.network-suggestion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrganizationOrganization extends Schema.CollectionType {
   collectionName: 'organizations';
   info: {
@@ -1674,6 +1712,7 @@ declare module '@strapi/types' {
       'api::land-use-type.land-use-type': ApiLandUseTypeLandUseType;
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
+      'api::network-suggestion.network-suggestion': ApiNetworkSuggestionNetworkSuggestion;
       'api::organization.organization': ApiOrganizationOrganization;
       'api::organization-theme.organization-theme': ApiOrganizationThemeOrganizationTheme;
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;
