@@ -106,7 +106,7 @@ export default function FiltersSidebar() {
 
     const select = !multiple ? (
       <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
-        <SelectTrigger id={toKebabCase(type)} className="h-12 w-full">
+        <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12 w-full">
           <SelectValue>
             <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
           </SelectValue>
@@ -135,7 +135,7 @@ export default function FiltersSidebar() {
         options={practicesFiltersOptions[source || type] || []}
         onChange={handleMultipleValueChange}
         disabled={disabled}
-        className="!mt-0.5"
+        className="!mt-0"
       />
     );
 
@@ -147,7 +147,7 @@ export default function FiltersSidebar() {
         {disabled ? (
           <TooltipProvider>
             <Tooltip delayDuration={0}>
-              <TooltipTrigger className="w-full">{select}</TooltipTrigger>
+              <TooltipTrigger className="!mt-0 w-full">{select}</TooltipTrigger>
               <TooltipContent
                 sideOffset={20}
                 variant="dark"
@@ -241,7 +241,7 @@ export default function FiltersSidebar() {
                 <SelectFilter
                   type="subInterventions"
                   label="Sub-intervention"
-                  disabled={!filters.landUseTypes || !filters.mainIntervention}
+                  disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
                   multiple
                 />
               )}
