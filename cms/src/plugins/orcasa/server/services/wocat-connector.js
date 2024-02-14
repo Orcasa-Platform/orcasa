@@ -228,7 +228,7 @@ module.exports = class WocatConnector extends AsyncService {
       prevention_restoration: get(questionnaire, 'section_specifications.children.tech__3.children.tech__3__8.children.tech_qg_35.children.tech_prevention.value[0].values', null),
       agroclimatic_zone: get(questionnaire, 'section_specifications.children.tech__5.children.tech__5__1.children.tech_qg_55.children.tech_agroclimatic_zone.value[0].values', null),
 
-      language: questionnaire.translations[0].filter(language => language.length === 2),
+      language: questionnaire.translations.map((elem) => elem.find(language => language.length === 2)),
     }))
   }
 
