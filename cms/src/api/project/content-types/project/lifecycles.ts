@@ -18,7 +18,7 @@ export default {
     }
   },
   async beforeUpdate(event) {
-    const projectToUpdate: any = await strapi.entityService.findOne("api::project.project", event.params.where.id);
+    const projectToUpdate: any = await strapi.entityService.findOne("api::project.project", event.params.where.id, { populate: ['project_type', 'lead_partner', 'country_of_coordination'] });
     const projectDelta = event.params.data;
 
     if (projectDelta.project_type.connect.length === 0 && (projectDelta.project_type.disconnect.length === 1 || !projectToUpdate.project_type)) {
