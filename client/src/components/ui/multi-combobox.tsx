@@ -46,7 +46,7 @@ export interface ComboboxProps<T> {
   name?: string;
   variant?: VariantProps<typeof optionVariants>['variant'];
   value: T[];
-  options: { label: string; value: T }[];
+  options: { label: string; value: T; disabled?: boolean }[];
   onChange: (value: T[]) => void;
   disabled?: boolean;
   ariaDescribedBy?: string;
@@ -172,14 +172,18 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                 sideOffset={-1}
                 className="max-h-80 w-[var(--radix-tooltip-trigger-width)] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
               >
-                <div className="sticky top-0 flex gap-x-4 border-b border-dashed border-gray-300 bg-white px-3 py-4">
+                <div className="sticky top-0 z-10 flex gap-x-4 border-b border-dashed border-gray-300 bg-white px-3 py-4">
                   <Button
                     type="button"
                     variant="vanilla"
                     size="auto"
                     className={buttonVariants({ variant })}
                     disabled={value.length === options.length}
-                    onClick={() => onChange(options.map(({ value }) => value))}
+                    onClick={() =>
+                      onChange(
+                        options.filter(({ disabled }) => !disabled).map(({ value }) => value),
+                      )
+                    }
                   >
                     Select all
                   </Button>
@@ -206,6 +210,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                       <ComboboxPrimitive.Option
                         key={option.value as Key}
                         value={option.value}
+                        disabled={option.disabled}
                         className={cn(optionVariants({ variant }))}
                       >
                         <Checkbox
@@ -220,6 +225,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                           id={`multi-combobox-option-${option.value}`}
                           defaultChecked={isDefaultChecked}
                           className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
+                          disabled={option.disabled}
                         />
                         <Label
                           htmlFor={`multi-combobox-option-${option.value}`}

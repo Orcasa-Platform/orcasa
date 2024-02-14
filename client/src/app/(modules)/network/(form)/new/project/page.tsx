@@ -59,7 +59,15 @@ export default function ProjectForm() {
   const secondaryAreasOfIntervention = areasOfIntervention?.filter(
     (type) => type?.id?.toString() !== otherId,
   );
-  const fieldValues: { [key: string]: Field } = {
+  const fieldValues: {
+    [key: string]: Omit<Field, 'options'> & {
+      options?:
+        | Field['options']
+        // Some options of some fields are dynamic (i.e. based on other fields) so here we allow
+        // `options` to be a function that returns the list of options
+        | (() => undefined | { label: string; value: string }[]);
+    };
+  } = {
     lead_partner: {
       label: 'Coordinator',
       required: true,
@@ -251,10 +259,14 @@ export default function ProjectForm() {
         areasOfIntervention?.map((type) => type?.id?.toString()) as [string, ...string[]],
       ),
       type: 'select',
-      options: areasOfIntervention?.map((area) => ({
-        label: area?.name,
-        value: area?.id?.toString(),
-      })),
+      options: () =>
+        areasOfIntervention?.map((area) => ({
+          label: area?.name,
+          value: area?.id?.toString(),
+          disabled:
+            area?.id?.toString() === watch('secondary_area_of_intervention') ||
+            area?.id?.toString() === watch('third_area_of_intervention'),
+        })),
       required: true,
     },
     main_area_of_intervention_other: {
@@ -295,10 +307,14 @@ export default function ProjectForm() {
         )
         .optional(),
       type: 'select',
-      options: secondaryAreasOfIntervention?.map((area) => ({
-        label: area?.name,
-        value: area?.id?.toString(),
-      })),
+      options: () =>
+        secondaryAreasOfIntervention?.map((area) => ({
+          label: area?.name,
+          value: area?.id?.toString(),
+          disabled:
+            area?.id?.toString() === watch('main_area_of_intervention') ||
+            area?.id?.toString() === watch('third_area_of_intervention'),
+        })),
     },
     third_area_of_intervention: {
       label: 'Third area of intervention',
@@ -311,10 +327,14 @@ export default function ProjectForm() {
         )
         .optional(),
       type: 'select',
-      options: secondaryAreasOfIntervention?.map((area) => ({
-        label: area?.name,
-        value: area?.id?.toString(),
-      })),
+      options: () =>
+        secondaryAreasOfIntervention?.map((area) => ({
+          label: area?.name,
+          value: area?.id?.toString(),
+          disabled:
+            area?.id?.toString() === watch('main_area_of_intervention') ||
+            area?.id?.toString() === watch('secondary_area_of_intervention'),
+        })),
     },
     sustainable_development_goals: {
       label: 'Sustainable development goals',
@@ -351,7 +371,7 @@ export default function ProjectForm() {
       type: 'email',
     },
   };
-  const fields: { [key: string]: Field } | undefined = hasData && fieldValues;
+  const fields = hasData && fieldValues;
   const formSchema = z.object(
     Object.keys(fieldValues).reduce((acc: { [key: string]: Field['zod'] }, field) => {
       if (field in fieldValues) {
@@ -458,7 +478,7 @@ export default function ProjectForm() {
                   label={type === 'multiselect' ? label : key}
                   type={type}
                   required={required}
-                  options={options}
+                  options={Array.isArray(options) || options === undefined ? options : options()}
                   form={form}
                   maxSize={maxSize}
                   placeholder={placeholder}
