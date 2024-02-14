@@ -99,6 +99,7 @@ module "github_values" {
     TF_PROJECT_NAME                    = var.project_name
     TF_CMS_REPOSITORY_NAME             = module.cms_ecr.repository_name
     TF_CLIENT_REPOSITORY_NAME          = module.client_ecr.repository_name
+    TF_QGIS_REPOSITORY_NAME            = module.qgis_ecr.repository_name
     TF_PIPELINE_USER_ACCESS_KEY_ID     = module.iam.pipeline_user_access_key_id
     TF_PIPELINE_USER_SECRET_ACCESS_KEY = module.iam.pipeline_user_access_key_secret
   }
