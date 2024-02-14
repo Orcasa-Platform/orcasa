@@ -32,8 +32,8 @@ export default {
     const published: boolean = ('publishedAt' in data) ? data.publishedAt !== null : practice.publishedAt !== null;
     const practiceIntervention: string = ('practice_intervention' in data) ? data.practice_intervention : practice.practice_intervention;
 
-    const numberOfLandUsePriorsAfterUpdate = ((practice.land_use_priors ?? []).length) + ((data.land_use_priors.connect ?? []).length) - ((data.land_use_priors.disconnect ?? []).length);
-    const numberOfSubinterventionsAfterUpdate = ((practice.subinterventions ?? []).length) + ((data.subinterventions.connect ?? []).length) - ((data.subinterventions.disconnect ?? []).length);
+    const numberOfLandUsePriorsAfterUpdate = ((practice.land_use_priors ?? []).length) + ((data.land_use_priors?.connect ?? []).length) - ((data.land_use_priors?.disconnect ?? []).length);
+    const numberOfSubinterventionsAfterUpdate = ((practice.subinterventions ?? []).length) + ((data.subinterventions?.connect ?? []).length) - ((data.subinterventions?.disconnect ?? []).length);
 
     if (published && practiceIntervention === 'None') {
       throw new ApplicationError('Published practices must have Practice Intervention set');
