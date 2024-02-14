@@ -108,12 +108,12 @@ export default function FiltersSidebar() {
     );
     const select = !multiple ? (
       <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
-        <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12 w-full">
+        <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12">
           <SelectValue>
             <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
           </SelectValue>
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="w-[var(--radix-select-trigger-width)]">
           <SelectItem
             key="all"
             value="all"
@@ -122,7 +122,7 @@ export default function FiltersSidebar() {
             All
           </SelectItem>
           {options.map(({ label, value }) => (
-            <SelectItem key={value} value={String(value)} className="w-full">
+            <SelectItem key={value} value={String(value)} className="w-full capitalize">
               {label}
             </SelectItem>
           ))}
@@ -137,7 +137,7 @@ export default function FiltersSidebar() {
         options={options || []}
         onChange={handleMultipleValueChange}
         disabled={disabled}
-        className="!mt-0"
+        className="!mt-0 capitalize"
       />
     );
 
