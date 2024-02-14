@@ -53,7 +53,6 @@ export interface ComboboxProps<T> {
   ariaInvalid?: boolean;
   showSelected?: boolean;
   className?: string;
-  selectedLabel?: string;
 }
 
 export const MultiCombobox = <T extends NonNullable<unknown>>({
@@ -68,7 +67,6 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   ariaInvalid,
   showSelected = false,
   className,
-  selectedLabel,
 }: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -144,11 +142,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             disabled={disabled}
           >
             {showSelected ? (
-              <span className={cn({ 'max-h-14 max-w-full truncate': showSelected })}>
+              <span className={cn({ 'max-h-14 max-w-full truncate capitalize': showSelected })}>
                 {selectedLabels}
               </span>
             ) : (
-              selectedLabel || `${name}${value.length > 0 ? ` (${value.length})` : ''}`
+              `${name}${value.length > 0 ? ` (${value.length})` : ''}`
             )}
             <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
           </Button>

@@ -66,6 +66,7 @@ export default function FiltersSidebar() {
     const selectedLabel = practicesFiltersOptions[source || type]?.find(
       ({ value }) => value === filters[type],
     )?.label;
+
     const handleValueChange = (value: string | number | undefined) => {
       let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
       if (typeof returnedValue === 'string') {
@@ -132,12 +133,12 @@ export default function FiltersSidebar() {
       <MultiCombobox
         name={toKebabCase(type)}
         variant="practices"
-        selectedLabel={filters[type]?.length ? `${label} (${filters[type]?.length})` : 'All'}
         value={filters[type] ? (filters[type] as number[]) : []}
         options={options || []}
         onChange={handleMultipleValueChange}
         disabled={disabled}
-        className="!mt-0 capitalize"
+        className="!mt-0 max-w-[284px] capitalize"
+        showSelected
       />
     );
 
