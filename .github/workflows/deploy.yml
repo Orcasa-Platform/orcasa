@@ -52,12 +52,12 @@ jobs:
         id: extract_branch
 
       - name: Configure AWS credentials
-        if: steps.qgis-changes.outputs.qgis == 'true'
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.qgis-changes.outputs.qgis == 'true' }}
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.PIPELINE_USER_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.PIPELINE_USER_SECRET_ACCESS_KEY }}
-          aws-region: ${{ vars.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.TF_PIPELINE_USER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.TF_PIPELINE_USER_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.TF_AWS_REGION }}
 
       - name: Login to Amazon ECR
         if: steps.qgis-changes.outputs.qgis == 'true'
@@ -325,7 +325,7 @@ jobs:
 
   deploy:
     name: Deploy Client and CMS to Amazon EB
-    needs: [build_client_image, build_cms_image]
+    needs: [build_client_image, build_cms_image, build_qgis_image]
     runs-on: ubuntu-22.04
 
     steps:
