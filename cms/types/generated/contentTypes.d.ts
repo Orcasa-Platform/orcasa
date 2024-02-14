@@ -1166,6 +1166,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
     publication_status: Attribute.Enumeration<
       ['proposed', 'accepted', 'declined']
     > &
+      Attribute.Required &
       Attribute.DefaultTo<'accepted'>;
     user_email: Attribute.Email;
     createdAt: Attribute.DateTime;
@@ -1488,8 +1489,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToOne',
       'api::organization.organization'
-    > &
-      Attribute.Required;
+    >;
     partners: Attribute.Relation<
       'api::project.project',
       'manyToMany',
@@ -1503,6 +1503,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     publication_status: Attribute.Enumeration<
       ['proposed', 'accepted', 'declined']
     > &
+      Attribute.Required &
       Attribute.DefaultTo<'accepted'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -365,7 +365,8 @@
           "lead_projects",
           "partner_projects",
           "funded_projects",
-          "user_email"
+          "user_email",
+          "publication_status"
         ]
       },
       "conditions": []
@@ -388,7 +389,8 @@
           "lead_projects",
           "partner_projects",
           "funded_projects",
-          "user_email"
+          "user_email",
+          "publication_status"
         ]
       },
       "conditions": [
@@ -413,7 +415,8 @@
           "lead_projects",
           "partner_projects",
           "funded_projects",
-          "user_email"
+          "user_email",
+          "publication_status"
         ]
       },
       "conditions": [
@@ -593,7 +596,8 @@
           "third_area_of_intervention",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "publication_status"
         ]
       },
       "conditions": []
@@ -624,7 +628,8 @@
           "third_area_of_intervention",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "publication_status"
         ]
       },
       "conditions": [
@@ -657,7 +662,8 @@
           "third_area_of_intervention",
           "lead_partner",
           "partners",
-          "funders"
+          "funders",
+          "publication_status"
         ]
       },
       "conditions": [

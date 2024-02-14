@@ -19,9 +19,9 @@
     },
     "project_type": {
       "type": "relation",
-      "required": true,
       "relation": "oneToOne",
-      "target": "api::project-type.project-type"
+      "target": "api::project-type.project-type",
+      "required": true
     },
     "start_date": {
       "type": "date",
@@ -41,9 +41,9 @@
     },
     "country_of_coordination": {
       "type": "relation",
-      "required": true,
       "relation": "oneToOne",
-      "target": "api::country.country"
+      "target": "api::country.country",
+      "required": true
     },
     "region_of_interventions": {
       "type": "relation",
@@ -98,7 +98,6 @@
     },
     "lead_partner": {
       "type": "relation",
-      "required": true,
       "relation": "manyToOne",
       "target": "api::organization.organization",
       "inversedBy": "lead_projects"
@@ -122,7 +121,8 @@
         "accepted",
         "declined"
       ],
-      "default": "accepted"
+      "default": "accepted",
+      "required": true
     }
   }
 }

@@ -20,18 +20,18 @@
     },
     "organization_type": {
       "type": "relation",
-      "required": true,
       "relation": "oneToOne",
-      "target": "api::organization-type.organization-type"
+      "target": "api::organization-type.organization-type",
+      "required": true
     },
     "organization_type_other": {
       "type": "string"
     },
     "main_organization_theme": {
       "type": "relation",
-      "required": true,
       "relation": "oneToOne",
-      "target": "api::organization-theme.organization-theme"
+      "target": "api::organization-theme.organization-theme",
+      "required": true
     },
     "secondary_organization_theme": {
       "type": "relation",
@@ -49,9 +49,9 @@
     },
     "country": {
       "type": "relation",
-      "required": true,
       "relation": "oneToOne",
-      "target": "api::country.country"
+      "target": "api::country.country",
+      "required": true
     },
     "url": {
       "type": "string",
@@ -82,7 +82,8 @@
         "accepted",
         "declined"
       ],
-      "default": "accepted"
+      "default": "accepted",
+      "required": true
     },
     "user_email": {
       "type": "email",
