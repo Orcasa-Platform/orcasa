@@ -77,8 +77,8 @@ jobs:
           file: ./qgis/Dockerfile
           push: true
           tags: |
-            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.QGIS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.TF_QGIS_REPOSITORY_NAME }}:${{ github.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.TF_QGIS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   build_cms_image:
     name: Build CMS image and push to Amazon ECR
@@ -199,7 +199,7 @@ jobs:
           push: true
           tags: |
             ${{ steps.login-ecr.outputs.registry }}/${{ secrets.TF_CMS_REPOSITORY_NAME }}:${{ github.sha }}
-            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.TF_CMS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ secrets.TF_CMS_REPOSITORY_NAME }}:${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
 
   build_client_image:
     name: Build Client image and push to Amazon ECR
@@ -359,7 +359,7 @@ jobs:
           ECR_REPOSITORY_CLIENT: ${{ secrets.TF_CLIENT_REPOSITORY_NAME }}
           ECR_REPOSITORY_CMS: ${{ secrets.TF_CMS_REPOSITORY_NAME }}
           ECR_REPOSITORY_QGIS: ${{ secrets.TF_QGIS_REPOSITORY_NAME }}
-          IMAGE_TAG: ${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}
+          IMAGE_TAG: ${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
         run: |
           echo "version: '3.3'" > docker-compose.yml
           echo "services:" >> docker-compose.yml
@@ -405,8 +405,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.TF_PIPELINE_USER_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.TF_PIPELINE_USER_SECRET_ACCESS_KEY }}
-          application_name: ${{ secrets.TF_PROJECT_NAME}}-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}
-          environment_name: ${{ secrets.TF_PROJECT_NAME}}-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || 'staging' }}-environment
+          application_name: ${{ secrets.TF_PROJECT_NAME}}-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}
+          environment_name: ${{ secrets.TF_PROJECT_NAME}}-${{ steps.extract_branch.outputs.branch == 'main' && 'production' || steps.extract_branch.outputs.branch }}-environment
           region: ${{ secrets.TF_AWS_REGION }}
           version_label: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           deployment_package: infrastructure/source_bundle/deploy.zip
