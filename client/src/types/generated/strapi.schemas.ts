@@ -11,6 +11,8 @@ export type GetSustainableDevGoalsIdParams = {
   populate?: string;
 };
 
+export type GetSustainableDevGoalsPopulateOneOf = { [key: string]: any };
+
 export type GetSustainableDevGoalsParams = {
   /**
    * Sort by attributes ascending (asc) or descending (desc)
@@ -37,13 +39,13 @@ export type GetSustainableDevGoalsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetSustainableDevGoalsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -60,6 +62,8 @@ export type GetStaticPagesIdParams = {
    */
   populate?: string;
 };
+
+export type GetStaticPagesPopulateOneOf = { [key: string]: any };
 
 export type GetStaticPagesParams = {
   /**
@@ -87,13 +91,13 @@ export type GetStaticPagesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetStaticPagesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -110,6 +114,8 @@ export type GetRegionsIdParams = {
    */
   populate?: string;
 };
+
+export type GetRegionsPopulateOneOf = { [key: string]: any };
 
 export type GetRegionsParams = {
   /**
@@ -137,13 +143,13 @@ export type GetRegionsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetRegionsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -160,6 +166,8 @@ export type GetProjectTypesIdParams = {
    */
   populate?: string;
 };
+
+export type GetProjectTypesPopulateOneOf = { [key: string]: any };
 
 export type GetProjectTypesParams = {
   /**
@@ -187,13 +195,13 @@ export type GetProjectTypesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetProjectTypesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -210,6 +218,8 @@ export type GetProjectsIdParams = {
    */
   populate?: string;
 };
+
+export type GetProjectsPopulateOneOf = { [key: string]: any };
 
 export type GetProjectsParams = {
   /**
@@ -237,13 +247,13 @@ export type GetProjectsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetProjectsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -260,6 +270,8 @@ export type GetPracticesIdParams = {
    */
   populate?: string;
 };
+
+export type GetPracticesPopulateOneOf = { [key: string]: any };
 
 export type GetPracticesParams = {
   /**
@@ -287,13 +299,13 @@ export type GetPracticesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetPracticesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -310,6 +322,8 @@ export type GetPagesIdParams = {
    */
   populate?: string;
 };
+
+export type GetPagesPopulateOneOf = { [key: string]: any };
 
 export type GetPagesParams = {
   /**
@@ -337,13 +351,13 @@ export type GetPagesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetPagesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -360,6 +374,8 @@ export type GetOrganizationTypesIdParams = {
    */
   populate?: string;
 };
+
+export type GetOrganizationTypesPopulateOneOf = { [key: string]: any };
 
 export type GetOrganizationTypesParams = {
   /**
@@ -387,13 +403,13 @@ export type GetOrganizationTypesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetOrganizationTypesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -410,6 +426,8 @@ export type GetOrganizationThemesIdParams = {
    */
   populate?: string;
 };
+
+export type GetOrganizationThemesPopulateOneOf = { [key: string]: any };
 
 export type GetOrganizationThemesParams = {
   /**
@@ -437,13 +455,13 @@ export type GetOrganizationThemesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetOrganizationThemesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -460,6 +478,8 @@ export type GetOrganizationsIdParams = {
    */
   populate?: string;
 };
+
+export type GetOrganizationsPopulateOneOf = { [key: string]: any };
 
 export type GetOrganizationsParams = {
   /**
@@ -487,13 +507,13 @@ export type GetOrganizationsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetOrganizationsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -510,6 +530,8 @@ export type GetLayerGroupsIdParams = {
    */
   populate?: string;
 };
+
+export type GetLayerGroupsPopulateOneOf = { [key: string]: any };
 
 export type GetLayerGroupsParams = {
   /**
@@ -537,13 +559,13 @@ export type GetLayerGroupsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetLayerGroupsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -560,6 +582,8 @@ export type GetLayersIdParams = {
    */
   populate?: string;
 };
+
+export type GetLayersPopulateOneOf = { [key: string]: any };
 
 export type GetLayersParams = {
   /**
@@ -587,13 +611,13 @@ export type GetLayersParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetLayersPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -610,6 +634,8 @@ export type GetLandUseTypesIdParams = {
    */
   populate?: string;
 };
+
+export type GetLandUseTypesPopulateOneOf = { [key: string]: any };
 
 export type GetLandUseTypesParams = {
   /**
@@ -637,13 +663,13 @@ export type GetLandUseTypesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetLandUseTypesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -660,6 +686,8 @@ export type GetHomeStatsIdParams = {
    */
   populate?: string;
 };
+
+export type GetHomeStatsPopulateOneOf = { [key: string]: any };
 
 export type GetHomeStatsParams = {
   /**
@@ -687,13 +715,13 @@ export type GetHomeStatsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetHomeStatsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -710,6 +738,8 @@ export type GetCountriesIdParams = {
    */
   populate?: string;
 };
+
+export type GetCountriesPopulateOneOf = { [key: string]: any };
 
 export type GetCountriesParams = {
   /**
@@ -737,13 +767,13 @@ export type GetCountriesParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetCountriesPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -760,6 +790,8 @@ export type GetAreaOfInterventionsIdParams = {
    */
   populate?: string;
 };
+
+export type GetAreaOfInterventionsPopulateOneOf = { [key: string]: any };
 
 export type GetAreaOfInterventionsParams = {
   /**
@@ -787,13 +819,13 @@ export type GetAreaOfInterventionsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetAreaOfInterventionsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -1159,6 +1191,7 @@ export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribute
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -1227,6 +1260,7 @@ export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttribute
 export type SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: SustainableDevGoalProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
@@ -2766,6 +2800,7 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -2822,6 +2857,7 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
@@ -3831,6 +3867,7 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOr
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -3900,6 +3937,7 @@ export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizatio
 export type RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: RegionProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
@@ -5016,12 +5054,12 @@ export type ProjectCreatedBy = {
 
 export interface Project {
   name: string;
-  project_type?: ProjectProjectType;
+  project_type: ProjectProjectType;
   start_date: string;
   end_date?: string;
   short_description: string;
   description?: string;
-  country_of_coordination?: ProjectCountryOfCoordination;
+  country_of_coordination: ProjectCountryOfCoordination;
   region_of_interventions?: ProjectRegionOfInterventions;
   country_of_interventions?: ProjectCountryOfInterventions;
   website: string;
@@ -5034,7 +5072,7 @@ export interface Project {
   secondary_area_of_intervention?: ProjectSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectSustainableDevelopmentGoals;
-  lead_partner?: ProjectLeadPartner;
+  lead_partner: ProjectLeadPartner;
   partners?: ProjectPartners;
   funders?: ProjectFunders;
   publication_status?: ProjectPublicationStatus;
@@ -5811,6 +5849,7 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -5820,6 +5859,7 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
@@ -6369,12 +6409,12 @@ export type ProjectRequestDataProjectType = number | string;
 
 export type ProjectRequestData = {
   name: string;
-  project_type?: ProjectRequestDataProjectType;
+  project_type: ProjectRequestDataProjectType;
   start_date: string;
   end_date?: string;
   short_description: string;
   description?: string;
-  country_of_coordination?: ProjectRequestDataCountryOfCoordination;
+  country_of_coordination: ProjectRequestDataCountryOfCoordination;
   region_of_interventions?: ProjectRequestDataRegionOfInterventionsItem[];
   country_of_interventions?: ProjectRequestDataCountryOfInterventionsItem[];
   website: string;
@@ -6387,7 +6427,7 @@ export type ProjectRequestData = {
   secondary_area_of_intervention?: ProjectRequestDataSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectRequestDataThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectRequestDataSustainableDevelopmentGoalsItem[];
-  lead_partner?: ProjectRequestDataLeadPartner;
+  lead_partner: ProjectRequestDataLeadPartner;
   partners?: ProjectRequestDataPartnersItem[];
   funders?: ProjectRequestDataFundersItem[];
   publication_status?: ProjectRequestDataPublicationStatus;
@@ -7392,6 +7432,7 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -7435,6 +7476,7 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
@@ -8407,6 +8449,7 @@ export type OrganizationTypeCreatedBy = {
 
 export interface OrganizationType {
   name: string;
+  order: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationTypeCreatedBy;
@@ -8602,6 +8645,7 @@ export interface OrganizationTypeListResponse {
 
 export type OrganizationTypeRequestData = {
   name: string;
+  order: number;
 };
 
 export interface OrganizationTypeRequest {
@@ -8612,6 +8656,7 @@ export type OrganizationThemeResponseMeta = { [key: string]: any };
 
 export interface OrganizationTheme {
   name: string;
+  order: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationThemeCreatedBy;
@@ -8836,6 +8881,7 @@ export interface OrganizationThemeListResponse {
 
 export type OrganizationThemeRequestData = {
   name: string;
+  order: number;
 };
 
 export interface OrganizationThemeRequest {
@@ -8867,13 +8913,13 @@ export type OrganizationUpdatedBy = {
 
 export interface Organization {
   name: string;
-  organization_type?: OrganizationOrganizationType;
+  organization_type: OrganizationOrganizationType;
   organization_type_other?: string;
-  main_organization_theme?: OrganizationMainOrganizationTheme;
+  main_organization_theme: OrganizationMainOrganizationTheme;
   secondary_organization_theme?: OrganizationSecondaryOrganizationTheme;
   short_description: string;
   description?: string;
-  country?: OrganizationCountry;
+  country: OrganizationCountry;
   url: string;
   lead_projects?: OrganizationLeadProjects;
   partner_projects?: OrganizationPartnerProjects;
@@ -9890,6 +9936,7 @@ export type OrganizationMainOrganizationThemeDataAttributesCreatedBy = {
 
 export type OrganizationMainOrganizationThemeDataAttributes = {
   name?: string;
+  order?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationMainOrganizationThemeDataAttributesCreatedBy;
@@ -9929,6 +9976,7 @@ export type OrganizationOrganizationTypeDataAttributesCreatedBy = {
 
 export type OrganizationOrganizationTypeDataAttributes = {
   name?: string;
+  order?: number;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationOrganizationTypeDataAttributesCreatedBy;
@@ -10158,13 +10206,13 @@ export type OrganizationRequestDataOrganizationType = number | string;
 
 export type OrganizationRequestData = {
   name: string;
-  organization_type?: OrganizationRequestDataOrganizationType;
+  organization_type: OrganizationRequestDataOrganizationType;
   organization_type_other?: string;
-  main_organization_theme?: OrganizationRequestDataMainOrganizationTheme;
+  main_organization_theme: OrganizationRequestDataMainOrganizationTheme;
   secondary_organization_theme?: OrganizationRequestDataSecondaryOrganizationTheme;
   short_description: string;
   description?: string;
-  country?: OrganizationRequestDataCountry;
+  country: OrganizationRequestDataCountry;
   url: string;
   lead_projects?: OrganizationRequestDataLeadProjectsItem[];
   partner_projects?: OrganizationRequestDataPartnerProjectsItem[];
@@ -11692,6 +11740,7 @@ export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegi
 export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -11715,6 +11764,7 @@ export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegi
 export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
@@ -12849,6 +12899,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
@@ -12922,6 +12973,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerData
 export type CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
