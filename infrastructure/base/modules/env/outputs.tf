@@ -60,11 +60,10 @@ output "txt_record_value" {
   value = module.email.txt_record_value
 }
 
-output "smtp_username" {
+output "email_iam_user_access_key_id" {
   value = aws_iam_access_key.email_user_access_key.id
 }
 
-output "smtp_password" {
-  value     = aws_iam_access_key.email_user_access_key.ses_smtp_password_v4
-  sensitive = true
+output "email_iam_user_access_key_secret" {
+  value = aws_iam_access_key.email_user_access_key.secret
 }

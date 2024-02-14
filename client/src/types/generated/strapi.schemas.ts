@@ -5016,12 +5016,12 @@ export type ProjectCreatedBy = {
 
 export interface Project {
   name: string;
-  project_type?: ProjectProjectType;
+  project_type: ProjectProjectType;
   start_date: string;
   end_date?: string;
   short_description: string;
   description?: string;
-  country_of_coordination?: ProjectCountryOfCoordination;
+  country_of_coordination: ProjectCountryOfCoordination;
   region_of_interventions?: ProjectRegionOfInterventions;
   country_of_interventions?: ProjectCountryOfInterventions;
   website: string;
@@ -5034,7 +5034,7 @@ export interface Project {
   secondary_area_of_intervention?: ProjectSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectSustainableDevelopmentGoals;
-  lead_partner?: ProjectLeadPartner;
+  lead_partner: ProjectLeadPartner;
   partners?: ProjectPartners;
   funders?: ProjectFunders;
   publication_status?: ProjectPublicationStatus;
@@ -6369,12 +6369,12 @@ export type ProjectRequestDataProjectType = number | string;
 
 export type ProjectRequestData = {
   name: string;
-  project_type?: ProjectRequestDataProjectType;
+  project_type: ProjectRequestDataProjectType;
   start_date: string;
   end_date?: string;
   short_description: string;
   description?: string;
-  country_of_coordination?: ProjectRequestDataCountryOfCoordination;
+  country_of_coordination: ProjectRequestDataCountryOfCoordination;
   region_of_interventions?: ProjectRequestDataRegionOfInterventionsItem[];
   country_of_interventions?: ProjectRequestDataCountryOfInterventionsItem[];
   website: string;
@@ -6387,7 +6387,7 @@ export type ProjectRequestData = {
   secondary_area_of_intervention?: ProjectRequestDataSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectRequestDataThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectRequestDataSustainableDevelopmentGoalsItem[];
-  lead_partner?: ProjectRequestDataLeadPartner;
+  lead_partner: ProjectRequestDataLeadPartner;
   partners?: ProjectRequestDataPartnersItem[];
   funders?: ProjectRequestDataFundersItem[];
   publication_status?: ProjectRequestDataPublicationStatus;
@@ -8867,13 +8867,13 @@ export type OrganizationUpdatedBy = {
 
 export interface Organization {
   name: string;
-  organization_type?: OrganizationOrganizationType;
+  organization_type: OrganizationOrganizationType;
   organization_type_other?: string;
-  main_organization_theme?: OrganizationMainOrganizationTheme;
+  main_organization_theme: OrganizationMainOrganizationTheme;
   secondary_organization_theme?: OrganizationSecondaryOrganizationTheme;
   short_description: string;
   description?: string;
-  country?: OrganizationCountry;
+  country: OrganizationCountry;
   url: string;
   lead_projects?: OrganizationLeadProjects;
   partner_projects?: OrganizationPartnerProjects;
@@ -10158,13 +10158,13 @@ export type OrganizationRequestDataOrganizationType = number | string;
 
 export type OrganizationRequestData = {
   name: string;
-  organization_type?: OrganizationRequestDataOrganizationType;
+  organization_type: OrganizationRequestDataOrganizationType;
   organization_type_other?: string;
-  main_organization_theme?: OrganizationRequestDataMainOrganizationTheme;
+  main_organization_theme: OrganizationRequestDataMainOrganizationTheme;
   secondary_organization_theme?: OrganizationRequestDataSecondaryOrganizationTheme;
   short_description: string;
   description?: string;
-  country?: OrganizationRequestDataCountry;
+  country: OrganizationRequestDataCountry;
   url: string;
   lead_projects?: OrganizationRequestDataLeadProjectsItem[];
   partner_projects?: OrganizationRequestDataPartnerProjectsItem[];

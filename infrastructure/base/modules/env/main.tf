@@ -1,3 +1,40 @@
+resource "random_password" "api_token_salt" {
+  length           = 32
+  special          = true
+  override_special = "!#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_password" "admin_jwt_secret" {
+  length           = 32
+  special          = true
+  override_special = "!#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_password" "transfer_token_salt" {
+  length           = 32
+  special          = true
+  override_special = "!#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_password" "jwt_secret" {
+  length           = 32
+  special          = true
+  override_special = "!#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_password" "nextauth_secret" {
+  length           = 32
+  special          = true
+  override_special = "!#%&*()-_=+[]{}<>:?"
+}
+
+resource "random_password" "app_key" {
+  length           = 32
+  special          = false
+  numeric          = false
+  override_special = "!#%&*()-_=+[]{}<>:?"
+}
+
 resource "aws_security_group" "postgresql_access" {
   vpc_id      = var.vpc.id
   description = "SG allowing access to the Postgres SG"

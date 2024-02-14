@@ -50,7 +50,6 @@ variable "ec2_instance_type" {
 variable "rds_backup_retention_period" {
   type        = number
   description = "Number of days to retain backup for the database"
-  default     = 7
 }
 
 variable "rds_log_retention_period" {
@@ -83,4 +82,13 @@ variable "elasticbeanstalk_iam_service_linked_role_name" {
 variable "data_bucket_name" {
   type        = string
   description = "Name of the data S3 bucket where QGIS data will be stored"
+}
+
+variable "repo_name" {
+  type        = string
+  description = "Name of the Github repository where the code is hosted"
+}
+
+variable "wocat_token" {
+  type = string
 }
