@@ -1,8 +1,13 @@
 import { atom, useAtom } from 'jotai';
 
+type MainIntervention = 'Management' | 'Land Use Change';
+
 export interface PracticesDropdownFilters {
   country: number[];
-  landUseType: number[];
+  landUseTypes: number[] | undefined;
+  priorLandUseTypes: number[] | undefined;
+  mainIntervention: MainIntervention | undefined;
+  subInterventions: number[] | undefined;
 }
 
 export interface PracticesFilters extends PracticesDropdownFilters {
@@ -14,7 +19,13 @@ export const usePracticesFilterSidebarOpen = () => {
   return useAtom(filterSidebarOpenAtom);
 };
 
-const filtersAtom = atom<PracticesFilters>({ country: [], landUseType: [] });
+const filtersAtom = atom<PracticesFilters>({
+  country: [],
+  priorLandUseTypes: undefined,
+  landUseTypes: undefined,
+  mainIntervention: undefined,
+  subInterventions: undefined,
+});
 export const usePracticesFilters = () => {
   return useAtom(filtersAtom);
 };
