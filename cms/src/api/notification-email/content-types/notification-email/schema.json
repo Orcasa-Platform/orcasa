@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "notification_emails",
+  "info": {
+    "singularName": "notification-email",
+    "pluralName": "notification-emails",
+    "displayName": "Notification Email"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "notification_email": {
+      "type": "customField",
+      "options": {
+        "separator": "comma"
+      },
+      "customField": "plugin::string-array.input"
+    }
+  }
+}

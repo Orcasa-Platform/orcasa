@@ -1,4 +1,4 @@
-import { errors } from "@strapi/utils";
+import { env, errors } from "@strapi/utils";
 
 const { ApplicationError } = errors;
 
@@ -30,7 +30,26 @@ export default {
     if (projectDelta.country_of_coordination.connect.length === 0 && (projectDelta.country_of_coordination.disconnect.length === 1 || !projectToUpdate.country_of_coordination)) {
       throw new ApplicationError('Country of Coordination is required');
     }
+  },
+
+  async afterCreate(event) {
+    const { result, params  } = event;
+    const notificationEmails: any = await strapi.entityService.findMany('api::notification-email.notification-email');
+    const emailPromises = [];
+
+    for (const email of notificationEmails.notification_email.split(',')) {
+      emailPromises.push(
+        strapi.plugins['email'].services.email.send({
+          to: email,
+          subject:  `Impact4Soil - Network - New Project suggestion "${params.data.name}", ID: ${result.id}` ,
+          text: env('CMS_URL') + `/admin/content-manager/collection-types/api::project.project/${result.id}`
+        })
+      );
+    }
+    await Promise.all(emailPromises);
   }
+
+
 }
 
 
