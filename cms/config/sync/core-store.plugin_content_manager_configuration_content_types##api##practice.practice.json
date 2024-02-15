@@ -545,10 +545,6 @@
           {
             "name": "sync",
             "size": 4
-          },
-          {
-            "name": "show",
-            "size": 4
           }
         ],
         [
