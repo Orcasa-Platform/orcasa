@@ -27,6 +27,133 @@ import {
   TooltipArrow,
 } from '@/components/ui/tooltip';
 
+const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+
+const SelectFilter = ({
+  source,
+  type,
+  label,
+  disabled,
+  multiple,
+  setFilters,
+  practicesFiltersOptions,
+  filters,
+}: {
+  source?: keyof typeof practicesFiltersOptions;
+  type: keyof typeof practicesFiltersOptions;
+  label: string;
+  disabled?: boolean;
+  multiple?: boolean;
+  setFilters: (filters: ReturnType<typeof usePracticesFilters>[0]) => void;
+  practicesFiltersOptions: ReturnType<typeof usePracticesFiltersOptions>;
+  filters: ReturnType<typeof usePracticesFilters>[0];
+}) => {
+  const selectedLabel = practicesFiltersOptions[source || type]?.find(
+    ({ value }) => value === filters[type],
+  )?.label;
+  const handleValueChange = (value: string | number | undefined) => {
+    let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
+    if (typeof returnedValue === 'string') {
+      const selectedOption = practicesFiltersOptions[source || type].find(
+        ({ value }) => String(value) === returnedValue,
+      );
+      if (selectedOption && typeof selectedOption.value === 'number') {
+        returnedValue = +returnedValue;
+      }
+    }
+
+    // When we select Land use change as Main intervention
+    // we should move the current value of Land use type to Land use type prior
+    // to match the Scientific Evidence functionality
+    const getMainInterventionUpdates = () => {
+      if (type !== 'mainIntervention') return {};
+      if (value === 'Land Use Change') {
+        return { landUseTypes: undefined, priorLandUseTypes: filters.landUseTypes };
+      }
+      // Reset the filters when the main intervention is Management or all
+      return {
+        landUseTypes: filters.priorLandUseTypes || filters.landUseTypes,
+        priorLandUseTypes: undefined,
+      };
+    };
+    return setFilters({
+      ...filters,
+      [type]: returnedValue,
+      ...getMainInterventionUpdates(),
+    });
+  };
+
+  const options = practicesFiltersOptions[source || type].sort((a, b) =>
+    a.label.localeCompare(b.label),
+  );
+  const select = !multiple ? (
+    <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
+      <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12">
+        <SelectValue>
+          <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent className="w-[var(--radix-select-trigger-width)]">
+        <SelectItem key="all" value="all" className="w-full border-b border-dashed border-gray-300">
+          All
+        </SelectItem>
+        {options.map(({ label, value }) => (
+          <SelectItem key={value} value={String(value)} className="w-full capitalize">
+            {label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  ) : (
+    <MultiCombobox
+      id={toKebabCase(type)}
+      key={toKebabCase(type)}
+      name={toKebabCase(type)}
+      variant="practices"
+      value={filters[type] ? (filters[type] as number[]) : []}
+      options={options || []}
+      onChange={(value) =>
+        setFilters({
+          ...filters,
+          [type]: value,
+        })
+      }
+      disabled={disabled}
+      className="!mt-0 max-w-[284px] capitalize"
+      showSelected
+    />
+  );
+
+  return (
+    <>
+      <label htmlFor={toKebabCase(type)} className="block text-sm font-medium text-gray-700">
+        {label}
+      </label>
+      {disabled ? (
+        <TooltipProvider>
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger className="!mt-0 w-full">{select}</TooltipTrigger>
+            <TooltipContent
+              sideOffset={20}
+              variant="dark"
+              align="start"
+              className="max-w-[var(--radix-tooltip-trigger-width)]"
+            >
+              <p className="text-xs leading-normal">
+                You have to select a <span className="font-semibold">land use type</span> and a{' '}
+                <span className="font-semibold">main intervention</span> first.
+              </p>
+              <TooltipArrow variant="dark" />
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      ) : (
+        select
+      )}
+    </>
+  );
+};
+
 export default function FiltersSidebar() {
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const [filters, setFilters] = usePracticesFilters();
@@ -48,129 +175,6 @@ export default function FiltersSidebar() {
       scrollableContainerRef.current.scrollTo({ top: 0 });
     }
   }, [filterSidebarOpen, scrollableContainerRef]);
-  const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-
-  const SelectFilter = ({
-    source,
-    type,
-    label,
-    disabled,
-    multiple,
-  }: {
-    source?: keyof typeof practicesFiltersOptions;
-    type: keyof typeof practicesFiltersOptions;
-    label: string;
-    disabled?: boolean;
-    multiple?: boolean;
-  }) => {
-    const selectedLabel = practicesFiltersOptions[source || type]?.find(
-      ({ value }) => value === filters[type],
-    )?.label;
-
-    const handleValueChange = (value: string | number | undefined) => {
-      let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
-      if (typeof returnedValue === 'string') {
-        const selectedOption = practicesFiltersOptions[source || type].find(
-          ({ value }) => String(value) === returnedValue,
-        );
-        if (selectedOption && typeof selectedOption.value === 'number') {
-          returnedValue = +returnedValue;
-        }
-      }
-
-      // When we select Land use change as Main intervention
-      // we should move the current value of Land use type to Land use type prior
-      // to match the Scientific Evidence functionality
-      const getMainInterventionUpdates = () => {
-        if (type !== 'mainIntervention') return {};
-        if (value === 'Land Use Change') {
-          return { landUseTypes: undefined, priorLandUseTypes: filters.landUseTypes };
-        }
-        // Reset the filters when the main intervention is Management or all
-        return {
-          landUseTypes: filters.priorLandUseTypes || filters.landUseTypes,
-          priorLandUseTypes: undefined,
-        };
-      };
-      return setFilters({
-        ...filters,
-        [type]: returnedValue,
-        ...getMainInterventionUpdates(),
-      });
-    };
-    const handleMultipleValueChange = (value: (string | number)[] | undefined) => {
-      return setFilters({
-        ...filters,
-        [type]: value,
-      });
-    };
-    const options = practicesFiltersOptions[source || type].sort((a, b) =>
-      a.label.localeCompare(b.label),
-    );
-    const select = !multiple ? (
-      <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
-        <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12">
-          <SelectValue>
-            <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent className="w-[var(--radix-select-trigger-width)]">
-          <SelectItem
-            key="all"
-            value="all"
-            className="w-full border-b border-dashed border-gray-300"
-          >
-            All
-          </SelectItem>
-          {options.map(({ label, value }) => (
-            <SelectItem key={value} value={String(value)} className="w-full capitalize">
-              {label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    ) : (
-      <MultiCombobox
-        name={toKebabCase(type)}
-        variant="practices"
-        value={filters[type] ? (filters[type] as number[]) : []}
-        options={options || []}
-        onChange={handleMultipleValueChange}
-        disabled={disabled}
-        className="!mt-0 max-w-[284px] capitalize"
-        showSelected
-      />
-    );
-
-    return (
-      <>
-        <label htmlFor={toKebabCase(type)} className="block text-sm font-medium text-gray-700">
-          {label}
-        </label>
-        {disabled ? (
-          <TooltipProvider>
-            <Tooltip delayDuration={0}>
-              <TooltipTrigger className="!mt-0 w-full">{select}</TooltipTrigger>
-              <TooltipContent
-                sideOffset={20}
-                variant="dark"
-                align="start"
-                className="max-w-[var(--radix-tooltip-trigger-width)]"
-              >
-                <p className="text-xs leading-normal">
-                  You have to select a <span className="font-semibold">land use type</span> and a{' '}
-                  <span className="font-semibold">main intervention</span> first.
-                </p>
-                <TooltipArrow variant="dark" />
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        ) : (
-          select
-        )}
-      </>
-    );
-  };
 
   return (
     <div
@@ -220,13 +224,21 @@ export default function FiltersSidebar() {
             </Button>
             <div className="space-y-4">
               <MultiCombobox
+                id="country"
+                key="country"
                 name="Country"
                 variant="practices"
                 value={filters.country ?? []}
                 options={practicesFiltersOptions.country}
                 onChange={(value) => setFilters({ ...filters, country: value as number[] })}
               />
-              <SelectFilter type="mainIntervention" label="Main intervention" />
+              <SelectFilter
+                type="mainIntervention"
+                label="Main intervention"
+                setFilters={setFilters}
+                practicesFiltersOptions={practicesFiltersOptions}
+                filters={filters}
+              />
               <SelectFilter
                 source="landUseTypes"
                 type={
@@ -236,9 +248,19 @@ export default function FiltersSidebar() {
                 }
                 label="Land use type"
                 multiple
+                setFilters={setFilters}
+                practicesFiltersOptions={practicesFiltersOptions}
+                filters={filters}
               />
               {filters?.mainIntervention === 'Land Use Change' && (
-                <SelectFilter type="landUseTypes" label="New land use type" multiple />
+                <SelectFilter
+                  type="landUseTypes"
+                  label="New land use type"
+                  multiple
+                  setFilters={setFilters}
+                  practicesFiltersOptions={practicesFiltersOptions}
+                  filters={filters}
+                />
               )}
               {filters?.mainIntervention === 'Management' && (
                 <SelectFilter
@@ -246,6 +268,9 @@ export default function FiltersSidebar() {
                   label="Sub-intervention"
                   disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
                   multiple
+                  setFilters={setFilters}
+                  practicesFiltersOptions={practicesFiltersOptions}
+                  filters={filters}
                 />
               )}
             </div>
