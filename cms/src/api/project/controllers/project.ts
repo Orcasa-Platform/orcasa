@@ -12,13 +12,14 @@ export default factories.createCoreController('api::project.project', () => ({
     }
     ctx.request.query.populate = { 'country_of_interventions': { fields: ['id'] } }
     ctx.request.query.fields = ['name']
+    ctx.query.filters = { ...ctx.query.filters, publication_status: { $eq: 'accepted' } }
 
     const { data } = await super.find(ctx);
 
     return data.map((result) => ({
       id: result.id,
       name: result.attributes.name,
-      countries: result.attributes.country_of_interventions.data.map((country) => (country.id))
+      countries: result.attributes.country_of_interventions?.data?.map((country) => (country.id))
     }));
   },
 

@@ -12,13 +12,14 @@ export default factories.createCoreController('api::organization.organization', 
     }
     ctx.request.query.populate = { 'country': { fields: ['id'] } }
     ctx.request.query.fields = ['name']
+    ctx.query.filters = { ...ctx.query.filters, publication_status: { $eq: 'accepted' } }
 
     const { data } = await super.find(ctx);
 
     return data.map((result) => ({
       id: result.id,
       name: result.attributes.name,
-      country: result.attributes.country.data.id
+      country: result.attributes.country?.data?.id
     }));
   },
 
