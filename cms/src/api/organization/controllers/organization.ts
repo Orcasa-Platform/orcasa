@@ -3,6 +3,7 @@
  */
 
 import { factories } from '@strapi/strapi'
+import { env } from "@strapi/utils";
 
 export default factories.createCoreController('api::organization.organization', () => ({
   async map(ctx) {
@@ -36,6 +37,15 @@ export default factories.createCoreController('api::organization.organization', 
 
     ctx.request.body.data.publication_status = "proposed"
 
-    return await super.create(ctx);
+    const response = await super.create(ctx);
+
+    const notificationEmails: any = await strapi.entityService.findMany('api::notification-email.notification-email');
+    await strapi.plugins['email'].services.email.send({
+      bcc: notificationEmails.notification_email,
+      subject:  `Impact4Soil - Network - New Organization suggestion "${response.data.attributes.name}", ID: ${response.data.id}` ,
+      text: env('CMS_URL') + `/admin/content-manager/collection-types/api::organization.organization/${response.data.id}`
+    });
+
+    return response;
   }
 }));
