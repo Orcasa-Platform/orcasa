@@ -14,13 +14,16 @@ export default factories.createCoreController('api::organization.organization', 
     ctx.request.query.fields = ['name']
 
     const { data } = await super.find(ctx);
-    // some more logic
 
-    return data.map((result) => ({id: result.id, name: result.attributes.name, country: result.attributes.country.data.id}));
+    return data.map((result) => ({
+      id: result.id,
+      name: result.attributes.name,
+      country: result.attributes.country.data.id
+    }));
   },
 
   async find(ctx) {
-    ctx.query = { ...ctx.query, publication_status: 'accepted' }
+    ctx.query.filters = { ...ctx.query.filters, publication_status: { $eq: 'accepted' } }
 
     return await super.find(ctx);
   },
