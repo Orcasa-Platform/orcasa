@@ -6,13 +6,22 @@ export default {
   beforeCreate(event) {
     const organizationDelta = event.params.data;
 
-    if (organizationDelta.organization_type.connect.length === 0) {
+    const organizationTypeConnected = (organizationDelta.organization_type.connect && organizationDelta.organization_type.connect.length > 0);
+    const organizationTypeSentAsString = (organizationDelta.organization_type && typeof organizationDelta.organization_type === 'string');
+
+    const organizationThemeConnected = (organizationDelta.main_organization_theme.connect && organizationDelta.main_organization_theme.connect.length > 0);
+    const organizationThemeSentAsStrings = (organizationDelta.main_organization_theme && typeof organizationDelta.main_organization_theme === 'string');
+
+    const countryConnected = (organizationDelta.country.connect && organizationDelta.country.connect.length > 0);
+    const countrySentAsStrings = (organizationDelta.country && typeof organizationDelta.country === 'string');
+
+    if (!organizationTypeConnected && !organizationTypeSentAsString) {
       throw new ApplicationError('Organization Type is required');
     }
-    if (organizationDelta.main_organization_theme.connect.length === 0) {
+    if (!organizationThemeConnected && !organizationThemeSentAsStrings) {
       throw new ApplicationError('Main Organization Theme is required');
     }
-    if (organizationDelta.country.connect.length === 0) {
+    if (!countryConnected && !countrySentAsStrings) {
       throw new ApplicationError('Country is required');
     }
   },
@@ -29,22 +38,5 @@ export default {
     if (organizationDelta.country.connect.length === 0 && (organizationDelta.country.disconnect.length === 1 || !organizationToUpdate.country)) {
       throw new ApplicationError('Country is required');
     }
-  },
-
-  async afterCreate(event) {
-    const { result, params  } = event;
-    const notificationEmails: any = await strapi.entityService.findMany('api::notification-email.notification-email');
-    const emailPromises = [];
-
-    for (const email of notificationEmails.notification_email.split(',')) {
-      emailPromises.push(
-        strapi.plugins['email'].services.email.send({
-          to: email,
-          subject:  `Impact4Soil - Network - New Organization suggestion "${params.data.name}", ID: ${result.id}` ,
-          text: env('CMS_URL') + `/admin/content-manager/collection-types/api::organization.organization/${result.id}`
-        })
-      );
-    }
-    await Promise.all(emailPromises);
   }
 }
