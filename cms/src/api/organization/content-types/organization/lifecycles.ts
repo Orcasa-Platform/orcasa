@@ -4,39 +4,32 @@ const { ApplicationError } = errors;
 
 export default {
   beforeCreate(event) {
-    const organizationDelta = event.params.data;
+    const { organization_type, main_organization_theme, country } = event.params.data;
 
-    const organizationTypeConnected = (organizationDelta.organization_type.connect && organizationDelta.organization_type.connect.length > 0);
-    const organizationTypeSentAsString = (organizationDelta.organization_type && typeof organizationDelta.organization_type === 'string');
-
-    const organizationThemeConnected = (organizationDelta.main_organization_theme.connect && organizationDelta.main_organization_theme.connect.length > 0);
-    const organizationThemeSentAsStrings = (organizationDelta.main_organization_theme && typeof organizationDelta.main_organization_theme === 'string');
-
-    const countryConnected = (organizationDelta.country.connect && organizationDelta.country.connect.length > 0);
-    const countrySentAsStrings = (organizationDelta.country && typeof organizationDelta.country === 'string');
-
-    if (!organizationTypeConnected && !organizationTypeSentAsString) {
+    if (!(organization_type.connect?.length > 0) && !(typeof organization_type === 'string')) {
       throw new ApplicationError('Organization Type is required');
     }
-    if (!organizationThemeConnected && !organizationThemeSentAsStrings) {
+    if (!(main_organization_theme.connect?.length > 0) && !(typeof main_organization_theme === 'string')) {
       throw new ApplicationError('Main Organization Theme is required');
     }
-    if (!countryConnected && !countrySentAsStrings) {
+    if (!(country.connect?.length > 0) && !(typeof country === 'string')) {
       throw new ApplicationError('Country is required');
     }
   },
   async beforeUpdate(event) {
-    const organizationDelta = event.params.data;
-    const organizationToUpdate: any = await strapi.entityService.findOne("api::organization.organization", event.params.where.id, { populate: ['organization_type', 'main_organization_theme', 'country'] });
+    const { project_type, lead_partner, country_of_coordination } = event.params.data;
+    const projectToUpdate = await strapi.entityService.findOne("api::project.project", event.params.where.id, {
+      populate: ['project_type', 'lead_partner', 'country_of_coordination']
+    });
 
-    if (organizationDelta.organization_type.connect.length === 0 && (organizationDelta.organization_type.disconnect.length === 1 || !organizationToUpdate.organization_type)) {
-      throw new ApplicationError('Organization Type is required');
+    if (project_type.connect.length === 0 && (project_type.disconnect.length === 1 || !projectToUpdate.project_type)) {
+      throw new ApplicationError('Project Type is required');
     }
-    if (organizationDelta.main_organization_theme.connect.length === 0 && (organizationDelta.main_organization_theme.disconnect.length === 1 || !organizationToUpdate.main_organization_theme)) {
-      throw new ApplicationError('Main Organization Theme is required');
+    if (lead_partner.connect.length === 0 && (lead_partner.disconnect?.length === 1 || !projectToUpdate.lead_partner)) {
+      throw new ApplicationError('Lead Partner is required');
     }
-    if (organizationDelta.country.connect.length === 0 && (organizationDelta.country.disconnect.length === 1 || !organizationToUpdate.country)) {
-      throw new ApplicationError('Country is required');
+    if (country_of_coordination.connect.length === 0 && (country_of_coordination?.disconnect?.length === 1 || !projectToUpdate.country_of_coordination)) {
+      throw new ApplicationError('Country of Coordination is required');
     }
   }
 }
