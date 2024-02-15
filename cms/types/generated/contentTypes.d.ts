@@ -1199,7 +1199,7 @@ export interface ApiOrganizationThemeOrganizationTheme
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    order: Attribute.Integer & Attribute.DefaultTo<1>;
+    order: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
