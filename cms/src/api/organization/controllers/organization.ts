@@ -43,7 +43,8 @@ export default factories.createCoreController('api::organization.organization', 
     await strapi.plugins['email'].services.email.send({
       bcc: notificationEmails.notification_email,
       subject:  `Impact4Soil - Network - New Organization suggestion "${response.data.attributes.name}", ID: ${response.data.id}` ,
-      text: env('CMS_URL') + `/admin/content-manager/collection-types/api::organization.organization/${response.data.id}`
+      text: `<h3>New Organization suggestion created</h3>
+             <p> You may review the details via the following link: <a href="${env('CMS_URL')}/admin/content-manager/collection-types/api::organization.organization/${response.data.id}">Review Organization</a></p>`
     });
 
     return response;
