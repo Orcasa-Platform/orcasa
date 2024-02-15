@@ -9,10 +9,11 @@ import { useMapSearchParams } from '@/store';
 import { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
-import GlobeIcon from '@/styles/icons/globe.svg';
-import LanguageIcon from '@/styles/icons/language.svg';
 
 import { TypedPractice } from './types';
+
+import GlobeIcon from '@/styles/icons/globe.svg';
+import LanguageIcon from '@/styles/icons/language.svg';
 
 const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   if (!attributes) return null;
@@ -29,7 +30,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 
       <div className="flex gap-2">
         <LanguageIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base uppercase text-slate-500">{language}</div>
+        <div className="text-base uppercase text-slate-500">{language?.join(', ')}</div>
       </div>
       {source_name === 'WOCAT' && (
         <Image
