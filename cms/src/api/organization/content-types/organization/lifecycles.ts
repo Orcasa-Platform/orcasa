@@ -1,4 +1,4 @@
-import { errors } from "@strapi/utils";
+import { env, errors } from "@strapi/utils";
 
 const { ApplicationError } = errors;
 
@@ -30,4 +30,21 @@ export default {
       throw new ApplicationError('Country is required');
     }
   },
+
+  async afterCreate(event) {
+    const { result, params  } = event;
+    const notificationEmails: any = await strapi.entityService.findMany('api::notification-email.notification-email');
+    const emailPromises = [];
+
+    for (const email of notificationEmails.notification_email.split(',')) {
+      emailPromises.push(
+        strapi.plugins['email'].services.email.send({
+          to: email,
+          subject:  `Impact4Soil - Network - New Organization suggestion "${params.data.name}", ID: ${result.id}` ,
+          text: env('CMS_URL') + `/admin/content-manager/collection-types/api::organization.organization/${result.id}`
+        })
+      );
+    }
+    await Promise.all(emailPromises);
+  }
 }
