@@ -26,10 +26,10 @@ export function formatDate(value: string, options?: Intl.DateTimeFormatOptions) 
   return formatter.format(dateValue);
 }
 
-const formatNumber = (value: number) => {
+const formatNumber = (value: number, options?: Intl.NumberFormatOptions) => {
   // The French number format uses spaces to separate thousands, millions, etc. and a comma to
   // separate the decimals e.g. 1 456 357,45
-  const formatter = Intl.NumberFormat('fr');
+  const formatter = Intl.NumberFormat('fr', options);
   return formatter.format(value);
 };
 
