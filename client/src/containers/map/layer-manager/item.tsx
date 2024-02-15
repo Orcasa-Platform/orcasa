@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 
 import { Layer } from '@deck.gl/core/typed';
 
-import { parseConfig } from '@/lib/json-converter';
+import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 
 import { useLayersInteractive, useLayersInteractiveIds } from '@/store';
 
@@ -33,18 +33,14 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       if (!data?.data?.attributes) return null;
 
       const { interaction_config } = data.data.attributes as LayerTyped;
-
       if (interaction_config?.enabled) {
         const ids = styles.map((l) => l.id);
-
-        if (layersInteractive.includes(id)) {
-          return;
-        }
-
-        setLayersInteractive((prev) => [...prev, id]);
-        setLayersInteractiveIds((prev) => [...prev, ...ids.map((id) => parseInt(id))]);
+        // We use Set here as there were some race conditions on layers with tabs on the toggling of interactive layers
+        setLayersInteractive((prev) => [...new Set([...prev, id])]);
+        setLayersInteractiveIds((prev) => [...new Set([...prev, ...ids.map((id) => +id)])]);
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [data?.data?.attributes, id, layersInteractive, setLayersInteractive, setLayersInteractiveIds],
   );
 
@@ -75,6 +71,7 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
       config,
       params_config,
       settings,
+      jsonConfiguration: JSON_CONFIGURATION,
     });
 
     const bounds = highlighted_bounds as number[][] | null;
@@ -102,10 +99,10 @@ const LayerManagerItem = ({ id, beforeId, settings }: LayerManagerItemProps) => 
   if (type === 'deckgl') {
     const { config, params_config } = data.data.attributes;
     const c = parseConfig({
-      // TODO: type
       config,
       params_config,
       settings,
+      jsonConfiguration: JSON_CONFIGURATION,
     }) as Layer<{ beforeId: string }>;
 
     return <DeckGLLayer id={`${id}-layer`} beforeId={beforeId} config={c} />;

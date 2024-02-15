@@ -21,7 +21,7 @@ export default function GeospatialDataModule() {
           <MarkdownRenderer variant="page-intro" textClass="text-yellow-600" content={intro} />
         )}
       </h1>
-      <LayerGroupsList pageId={pageId} />;
+      <LayerGroupsList pageId={pageId} />
     </>
   );
 }

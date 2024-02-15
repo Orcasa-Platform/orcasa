@@ -33,9 +33,21 @@ const formatNumber = (value: number) => {
   return formatter.format(value);
 };
 
+// Only to remove strange numbers. Maybe it can be fixed in data
+const formatLayerNumber = (value: number) => {
+  // The French number format uses spaces to separate thousands, millions, etc. and a comma to
+  // separate the decimals e.g. 1 456 357,45
+  const formatter = Intl.NumberFormat('fr');
+  // To avoid strange behaviour in the map, we don't display numbers that too small
+  if (Number.isNaN(value)) return null;
+  if (value < -10000000) return null;
+  return formatter.format(value);
+};
+
 const NUMBER_FORMATS = {
   formatPercentage,
   formatNumber,
+  formatLayerNumber,
 } as const;
 
 const STRING_FORMATS = {

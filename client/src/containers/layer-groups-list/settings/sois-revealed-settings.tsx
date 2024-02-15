@@ -22,6 +22,7 @@ export interface SoilsRevealedSettings {
     value: number;
   };
   tabs: Record<string, string>;
+  interaction?: Record<string, { url: string; events: unknown[] }>;
   scenarios: Record<string, string>;
   legends?: Record<string, LegendConfig>;
   onChangeSettings: (settings: Record<string, unknown>) => unknown;
@@ -36,6 +37,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
   tabs,
   scenarios,
   legends,
+  interaction,
   onChangeSettings,
   sourceLink,
 }) => {
@@ -69,9 +71,14 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
       legendUnit: legends?.[label]?.unit,
       legendItems: legends?.[label]?.items,
     };
+    const interactionAttributes = label && {
+      interactionUrl: interaction?.[label]?.url,
+      interactionEvents: interaction?.[label]?.events,
+    };
     onChangeSettings({
       tilesURL: [value],
       ...(legends && legendAttributes ? legendAttributes : {}),
+      ...(interaction && interactionAttributes ? interactionAttributes : {}),
     });
   };
 
