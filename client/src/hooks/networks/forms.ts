@@ -12,27 +12,45 @@ import {
   CountryListResponse,
   ProjectListResponse,
   ProjectTypeListResponse,
+  OrganizationTypeListResponseDataItem,
+  OrganizationThemeListResponseDataItem,
+  CountryListResponseDataItem,
+  ProjectListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 import { useGetSustainableDevGoals } from '@/types/generated/sustainable-dev-goal';
 
+import { sortByOrderAndName } from './utils';
+
 export const useOrganizationGetFormFields = () => {
   const requestObject = {
-    fields: 'name',
+    fields: ['name'],
     sort: 'name',
     'pagination[pageSize]': 9999,
   };
 
-  const { data: organizationTypesData } = useGetOrganizationTypes(requestObject, {
-    query: {
-      queryKey: ['organization-types'],
+  const { data: organizationTypesData } = useGetOrganizationTypes(
+    {
+      ...requestObject,
+      fields: ['name', 'order'],
     },
-  });
+    {
+      query: {
+        queryKey: ['organization-types'],
+      },
+    },
+  );
 
-  const { data: organizationThemeData } = useGetOrganizationThemes(requestObject, {
-    query: {
-      queryKey: ['organization-themes'],
+  const { data: organizationThemeData } = useGetOrganizationThemes(
+    {
+      ...requestObject,
+      fields: ['name', 'order'],
     },
-  });
+    {
+      query: {
+        queryKey: ['organization-themes'],
+      },
+    },
+  );
 
   const { data: countryData } = useGetCountries(requestObject, {
     query: {
@@ -60,23 +78,41 @@ export const useOrganizationGetFormFields = () => {
       | OrganizationThemeListResponse
       | CountryListResponse
       | ProjectListResponse,
+    sortingFunction?: (
+      a:
+        | OrganizationTypeListResponseDataItem
+        | OrganizationThemeListResponseDataItem
+        | CountryListResponseDataItem
+        | ProjectListResponseDataItem,
+      b:
+        | OrganizationTypeListResponseDataItem
+        | OrganizationThemeListResponseDataItem
+        | CountryListResponseDataItem
+        | ProjectListResponseDataItem,
+    ) => number,
   ) => {
-    return data?.data
-      ?.map(
+    const parsedData = data?.data
+      ?.sort(
+        sortingFunction
+          ? sortingFunction
+          : (a, b) => (a.attributes?.name || '').localeCompare(b.attributes?.name || '') ?? 0,
+      )
+      .map(
         (d) =>
           d.attributes && {
             name: d.attributes.name,
             id: d.id,
           },
       )
-      .filter((d): d is { name: string; id: number } => typeof d !== 'undefined')
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .filter((d): d is { name: string; id: number } => typeof d !== 'undefined');
+
+    return parsedData;
   };
 
-  const organizationTypes = parseData(organizationTypesData);
+  const organizationTypes = parseData(organizationTypesData, sortByOrderAndName);
   return {
     organizationTypes,
-    organizationThemes: parseData(organizationThemeData),
+    organizationThemes: parseData(organizationThemeData, sortByOrderAndName),
     countries: parseData(countryData),
     projects: parseData(projects),
     otherOrganizationTypesId: organizationTypes
@@ -87,7 +123,7 @@ export const useOrganizationGetFormFields = () => {
 
 export const useProjectFormGetFields = () => {
   const requestObject = {
-    fields: 'name',
+    fields: ['name'],
     sort: 'name',
     'pagination[pageSize]': 9999,
   };

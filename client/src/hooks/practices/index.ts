@@ -318,7 +318,7 @@ export const usePracticesFiltersOptions = (): Record<
 > => {
   const { data: countryData } = useGetCountries(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -330,7 +330,7 @@ export const usePracticesFiltersOptions = (): Record<
   );
   const { data: landUseTypeData } = useGetLandUseTypes(
     {
-      fields: 'name',
+      fields: ['name'],
     },
     {
       query: {

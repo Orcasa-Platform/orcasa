@@ -15,6 +15,9 @@ import {
   ProjectResponseDataObject,
   ProjectCountryOfCoordinationDataAttributes,
   OrganizationCountryDataAttributes,
+  OrganizationTypeListResponseDataItem,
+  OrganizationThemeListResponseDataItem,
+  CountryListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
 export type Category = 'coordinator' | 'partner' | 'funder';
@@ -208,4 +211,31 @@ export const parseProject = (projectData: ProjectResponse) => {
     }
     return attributes[key]?.data?.map((d) => getOrganizationData(key, d, parentProjectId));
   });
+};
+
+export const sortByOrderAndName = (
+  a:
+    | OrganizationTypeListResponseDataItem
+    | OrganizationThemeListResponseDataItem
+    | CountryListResponseDataItem
+    | ProjectListResponseDataItem,
+  b:
+    | OrganizationTypeListResponseDataItem
+    | OrganizationThemeListResponseDataItem
+    | CountryListResponseDataItem
+    | ProjectListResponseDataItem,
+) => {
+  // If orders are equal, sort by name
+  if (
+    !a?.attributes ||
+    !('order' in a?.attributes) ||
+    !b?.attributes ||
+    !('order' in b?.attributes) ||
+    a?.attributes?.order === b?.attributes?.order
+  ) {
+    if (!b.attributes?.name) return 0;
+    return a.attributes?.name.localeCompare(b.attributes?.name) ?? 0;
+  }
+  // Default sort by order
+  return (a?.attributes?.order || 0) - (b?.attributes?.order || 0);
 };
