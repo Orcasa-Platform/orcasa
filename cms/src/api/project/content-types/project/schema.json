@@ -100,7 +100,8 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::organization.organization",
-      "inversedBy": "lead_projects"
+      "inversedBy": "lead_projects",
+      "required": true
     },
     "partners": {
       "type": "relation",
