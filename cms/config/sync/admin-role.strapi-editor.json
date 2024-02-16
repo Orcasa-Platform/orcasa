@@ -98,7 +98,8 @@
           "region",
           "projects",
           "lat",
-          "long"
+          "long",
+          "practices"
         ]
       },
       "conditions": [],
@@ -126,7 +127,8 @@
           "region",
           "projects",
           "lat",
-          "long"
+          "long",
+          "practices"
         ]
       },
       "conditions": [],
@@ -147,7 +149,8 @@
           "region",
           "projects",
           "lat",
-          "long"
+          "long",
+          "practices"
         ]
       },
       "conditions": [],
@@ -686,6 +689,19 @@
           "title",
           "short_description",
           "country",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
           "language",
           "sync",
           "practice_url",
@@ -713,6 +729,19 @@
           "title",
           "short_description",
           "country",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
           "language",
           "sync",
           "practice_url",
@@ -733,6 +762,19 @@
           "title",
           "short_description",
           "country",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
           "language",
           "sync",
           "practice_url",
@@ -806,6 +848,7 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
+          "sustainable_development_goals",
           "lead_partner",
           "partners",
           "funders",
@@ -845,6 +888,7 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
+          "sustainable_development_goals",
           "lead_partner",
           "partners",
           "funders",
@@ -877,6 +921,7 @@
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
           "third_area_of_intervention",
+          "sustainable_development_goals",
           "lead_partner",
           "partners",
           "funders",
@@ -1030,7 +1075,8 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name"
+          "name",
+          "projects"
         ]
       },
       "conditions": [],
@@ -1048,7 +1094,8 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name"
+          "name",
+          "projects"
         ]
       },
       "conditions": [],
@@ -1059,7 +1106,8 @@
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
-          "name"
+          "name",
+          "projects"
         ]
       },
       "conditions": [],

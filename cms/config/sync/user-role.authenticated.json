@@ -22,12 +22,6 @@
       "action": "api::country.country.findOne"
     },
     {
-      "action": "api::land-use-type.land-use-type.find"
-    },
-    {
-      "action": "api::land-use-type.land-use-type.findOne"
-    },
-    {
       "action": "api::organization-theme.organization-theme.find"
     },
     {
@@ -74,12 +68,6 @@
     },
     {
       "action": "api::static-page.static-page.findOne"
-    },
-    {
-      "action": "api::subintervention.subintervention.find"
-    },
-    {
-      "action": "api::subintervention.subintervention.findOne"
     },
     {
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"

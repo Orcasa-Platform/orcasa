@@ -281,7 +281,7 @@
       },
       "sustainable_development_goals": {
         "edit": {
-          "label": "sustainable_development_goals",
+          "label": "Sustainable Development Goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -341,7 +341,7 @@
       },
       "publication_status": {
         "edit": {
-          "label": "publication_status",
+          "label": "Publication Status",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -413,12 +413,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
-      ],
       "edit": [
         [
           {
@@ -530,14 +524,20 @@
         ],
         [
           {
-            "name": "publication_status",
+            "name": "sustainable_development_goals",
             "size": 6
           },
           {
-            "name": "sustainable_development_goals",
+            "name": "publication_status",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
       ]
     }
   },

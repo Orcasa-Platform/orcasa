@@ -63,6 +63,8 @@ export type GetSubinterventionsIdParams = {
   populate?: string;
 };
 
+export type GetSubinterventionsPopulateOneOf = { [key: string]: any };
+
 export type GetSubinterventionsParams = {
   /**
    * Sort by attributes ascending (asc) or descending (desc)
@@ -89,13 +91,13 @@ export type GetSubinterventionsParams = {
    */
   'pagination[limit]'?: number;
   /**
-   * Fields to return (ex: title,author)
+   * Fields to return (ex: ['title','author','test'])
    */
-  fields?: string;
+  fields?: string[];
   /**
    * Relations to return
    */
-  populate?: string;
+  populate?: string | GetSubinterventionsPopulateOneOf;
   /**
    * Filters to apply
    */
@@ -5122,10 +5124,10 @@ export interface Project {
   secondary_area_of_intervention?: ProjectSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectSustainableDevelopmentGoals;
-  lead_partner: ProjectLeadPartner;
+  lead_partner?: ProjectLeadPartner;
   partners?: ProjectPartners;
   funders?: ProjectFunders;
-  publication_status?: ProjectPublicationStatus;
+  publication_status: ProjectPublicationStatus;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: ProjectCreatedBy;
@@ -6477,10 +6479,10 @@ export type ProjectRequestData = {
   secondary_area_of_intervention?: ProjectRequestDataSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectRequestDataThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectRequestDataSustainableDevelopmentGoalsItem[];
-  lead_partner: ProjectRequestDataLeadPartner;
+  lead_partner?: ProjectRequestDataLeadPartner;
   partners?: ProjectRequestDataPartnersItem[];
   funders?: ProjectRequestDataFundersItem[];
-  publication_status?: ProjectRequestDataPublicationStatus;
+  publication_status: ProjectRequestDataPublicationStatus;
 };
 
 export type PracticeImportResponseMeta = { [key: string]: any };
@@ -8974,7 +8976,7 @@ export interface Organization {
   lead_projects?: OrganizationLeadProjects;
   partner_projects?: OrganizationPartnerProjects;
   funded_projects?: OrganizationFundedProjects;
-  publication_status?: OrganizationPublicationStatus;
+  publication_status: OrganizationPublicationStatus;
   user_email?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -10267,7 +10269,7 @@ export type OrganizationRequestData = {
   lead_projects?: OrganizationRequestDataLeadProjectsItem[];
   partner_projects?: OrganizationRequestDataPartnerProjectsItem[];
   funded_projects?: OrganizationRequestDataFundedProjectsItem[];
-  publication_status?: OrganizationRequestDataPublicationStatus;
+  publication_status: OrganizationRequestDataPublicationStatus;
   user_email?: string;
 };
 

@@ -30,11 +30,18 @@ export default async function ThankYouPage() {
           <div className="text-sm text-gray-700">Published</div>
         </div>
       </div>
-      <div className="flex items-center justify-between border-t border-dashed border-gray-300 py-10">
-        <div className="w-[290px] font-serif text-2xl leading-10 text-gray-700">
-          Want to keep building the network?
+      <div className="space-y-6 border-t border-dashed border-gray-300 py-10">
+        <div className="font-serif text-2xl leading-10 text-gray-700">
+          Keep building the network
         </div>
-        <NewButtons />
+        <ul className="mx-6 list-disc">
+          <li>
+            Associate the organisation to a project by suggesting changes on the project&apos;s
+            details, or
+          </li>
+          <li>Add new organisations and projects to the network</li>
+        </ul>
+        <NewButtons className="ml-0 flex justify-end" />
       </div>
     </div>
   );

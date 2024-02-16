@@ -21,7 +21,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "practices": {
         "edit": {
-          "label": "practices",
+          "label": "Practices",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -123,12 +123,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
