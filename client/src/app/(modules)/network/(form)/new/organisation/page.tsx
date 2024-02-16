@@ -133,6 +133,7 @@ export default function OrganisationForm() {
         label: country?.name,
         value: country?.id?.toString(),
       })),
+      required: true,
     },
     url: {
       label: 'Website',
