@@ -127,9 +127,7 @@ export default function OrganisationForm() {
     },
     country: {
       label: 'Country',
-      zod: z
-        .enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional(),
+      zod: z.enum(countries?.map((type) => type?.id?.toString()) as [string, ...string[]]),
       type: 'select',
       options: countries?.map((country) => ({
         label: country?.name,
