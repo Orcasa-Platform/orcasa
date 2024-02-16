@@ -1528,7 +1528,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToOne',
       'api::organization.organization'
-    >;
+    > &
+      Attribute.Required;
     partners: Attribute.Relation<
       'api::project.project',
       'manyToMany',
