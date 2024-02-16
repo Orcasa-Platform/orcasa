@@ -1,4 +1,4 @@
-import { env, errors } from "@strapi/utils";
+import { errors } from "@strapi/utils";
 
 const { ApplicationError } = errors;
 
@@ -17,19 +17,17 @@ export default {
     }
   },
   async beforeUpdate(event) {
-    const { project_type, lead_partner, country_of_coordination } = event.params.data;
-    const projectToUpdate = await strapi.entityService.findOne("api::project.project", event.params.where.id, {
-      populate: ['project_type', 'lead_partner', 'country_of_coordination']
-    });
+    const { organization_type, main_organization_theme, country } = event.params.data;
+    const organizationToUpdate = await strapi.entityService.findOne("api::organization.organization", event.params.where.id, { populate: ['organization_type', 'main_organization_theme', 'country'] });
 
-    if (project_type.connect.length === 0 && (project_type.disconnect.length === 1 || !projectToUpdate.project_type)) {
-      throw new ApplicationError('Project Type is required');
+    if (organization_type.connect.length === 0 && (organization_type.disconnect.length === 1 || !organizationToUpdate.organization_type)) {
+      throw new ApplicationError('Organization Type is required');
     }
-    if (lead_partner.connect.length === 0 && (lead_partner.disconnect?.length === 1 || !projectToUpdate.lead_partner)) {
-      throw new ApplicationError('Lead Partner is required');
+    if (main_organization_theme.connect.length === 0 && (main_organization_theme.disconnect.length === 1 || !organizationToUpdate.main_organization_theme)) {
+      throw new ApplicationError('Main Organization Theme is required');
     }
-    if (country_of_coordination.connect.length === 0 && (country_of_coordination?.disconnect?.length === 1 || !projectToUpdate.country_of_coordination)) {
-      throw new ApplicationError('Country of Coordination is required');
+    if (country.connect.length === 0 && (country.disconnect.length === 1 || !organizationToUpdate.country)) {
+      throw new ApplicationError('Country is required');
     }
   }
 }
