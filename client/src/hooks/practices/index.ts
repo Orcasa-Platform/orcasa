@@ -436,7 +436,7 @@ export const usePracticesFiltersOptions = (
 
   const { data: subInterventionData } = useGetSubinterventions(
     {
-      fields: 'name',
+      fields: ['name'],
       filters: {
         $and: [
           {
