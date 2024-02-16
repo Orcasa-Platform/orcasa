@@ -6,13 +6,13 @@ export default {
   beforeCreate(event) {
     const { organization_type, main_organization_theme, country } = event.params.data;
 
-    if (!(organization_type.connect?.length > 0) && !(typeof organization_type === 'string')) {
+    if (organization_type.connect?.length === 0 && typeof organization_type !== 'string') {
       throw new ApplicationError('Organization Type is required');
     }
-    if (!(main_organization_theme.connect?.length > 0) && !(typeof main_organization_theme === 'string')) {
+    if (main_organization_theme.connect?.length === 0 && typeof main_organization_theme !== 'string') {
       throw new ApplicationError('Main Organization Theme is required');
     }
-    if (!(country.connect?.length > 0) && !(typeof country === 'string')) {
+    if (country.connect?.length === 0 && typeof country !== 'string') {
       throw new ApplicationError('Country is required');
     }
   },
