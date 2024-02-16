@@ -2,19 +2,13 @@
 
 import { useState } from 'react';
 
-import {
-  SubmitHandler,
-  useForm,
-  UseFormReturn,
-  useFieldArray,
-  ControllerRenderProps,
-} from 'react-hook-form';
+import { SubmitHandler, useForm, UseFormReturn, ControllerRenderProps } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
-import { Check, CircleSlash, AlertCircle, Plus, Trash2 } from 'lucide-react';
+import { Check, CircleSlash } from 'lucide-react';
 import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
@@ -36,12 +30,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-
-const projectRoleOptions = [
-  { label: 'Coordinator', value: 'lead_projects' },
-  { label: 'Partner', value: 'partner_projects' },
-  { label: 'Funder', value: 'funded_projects' },
-];
 
 export default function OrganisationForm() {
   const { organizationTypes, organizationThemes, countries, projects } =
@@ -184,59 +172,6 @@ export default function OrganisationForm() {
       type: 'email',
     },
   };
-
-  const projectFields: { [key: string]: Omit<Field, 'zod'> } | undefined = hasData && {
-    project: {
-      label: 'Project',
-      // zod will be added from projectsArraySchema
-      type: 'select',
-      options: projects.map((type) => ({
-        label: type.name,
-        value: type.id.toString(),
-      })),
-    },
-    role: {
-      label: 'Role',
-      // zod will be added from projectsArraySchema
-      type: 'select',
-      options: projectRoleOptions,
-    },
-  };
-
-  const projectsArraySchema = z.array(
-    z.object({
-      project: z
-        .enum(projects?.map((type) => type?.id?.toString()) as [string, ...string[]])
-        .optional()
-        .superRefine((project, context) => {
-          const index = context.path[1];
-          const role = watch(`projects.${index}.role`);
-          if (!project && !!role) {
-            return context.addIssue({
-              code: z.ZodIssueCode.custom,
-              message: 'Please, select a project for the role.',
-            });
-          }
-          return context;
-        }),
-
-      role: z
-        .enum(projectRoleOptions?.map((role) => role.value) as [string, ...string[]])
-        .optional()
-        .superRefine((role, context) => {
-          const index = context.path[1];
-          const project = watch(`projects.${index}.project`);
-          if (!role && !!project) {
-            return context.addIssue({
-              code: z.ZodIssueCode.custom,
-              message: 'Please, select a role for the project.',
-            });
-          }
-          return context;
-        }),
-    }),
-  );
-
   const fields: { [key: string]: Field } | undefined = hasData && fieldValues;
 
   const formSchema = z.object({
@@ -246,7 +181,6 @@ export default function OrganisationForm() {
       }
       return acc;
     }, {}),
-    ...(fields ? { projects: projectsArraySchema } : {}),
   });
 
   type FormType = z.infer<typeof formSchema>;
@@ -262,16 +196,7 @@ export default function OrganisationForm() {
       ],
     },
   });
-  const { control, handleSubmit, watch } = form;
-
-  const {
-    append,
-    remove,
-    fields: projectFormFields,
-  } = useFieldArray<FormType>({
-    name: 'projects',
-    control,
-  });
+  const { handleSubmit, watch } = form;
 
   const router = useRouter();
 
@@ -292,32 +217,8 @@ export default function OrganisationForm() {
           : `https://${typedData.url}`,
     };
 
-    type ProjectRole = 'lead_projects' | 'partner_projects' | 'funded_projects';
-
-    const projects: Record<ProjectRole, string[] | undefined> = {
-      lead_projects: undefined,
-      partner_projects: undefined,
-      funded_projects: undefined,
-    };
-
-    (normalizedData.projects as { project: string; role: ProjectRole }[]).forEach(
-      ({ project: projectData, role: projectRole }) => {
-        if (projectData) {
-          projects[projectRole] = (projects[projectRole] || []).concat(projectData);
-        }
-      },
-    );
-
-    // Clean projects attribute from normalizedData
-    delete (normalizedData as typeof data).projects;
-
-    const dataWithProjects = {
-      ...normalizedData,
-      ...projects,
-    };
-
     postOrganizations({
-      data: dataWithProjects,
+      data: normalizedData,
     } as unknown as OrganizationRequest)
       .then(() => {
         router.push(`/network/new/organisation/thank-you`);
@@ -330,7 +231,6 @@ export default function OrganisationForm() {
 
   const renderField = ({
     key,
-    projectNumber,
     id,
     index,
   }: {
@@ -339,14 +239,13 @@ export default function OrganisationForm() {
     id?: string;
     index?: number;
   }) => {
-    const isProject = projectNumber !== undefined;
-    const field = isProject ? (projectFields?.[key] as Field) : fields[key];
-    if (!isProject && !field) return null;
+    const field = fields[key];
+    if (!field) return null;
     const { label, required, type, options, placeholder, maxSize, description } = field;
     return (
       <FormField
         key={id || key}
-        name={isProject ? `projects.${projectNumber}.${key}` : key}
+        name={key}
         control={form.control}
         render={(f) => {
           const { field } = f;
@@ -447,44 +346,6 @@ export default function OrganisationForm() {
                 }
                 return renderField({ key });
               })}
-            <h2 className="mt-10 font-serif text-2xl text-gray-700">Organisation network</h2>
-            <div className="flex w-full gap-3 rounded-md bg-peach-50 p-4">
-              <AlertCircle className="w-min-fit h-5 w-5 pt-0.5 text-peach-700" />
-              <div className="flex font-serif text-sm leading-6 text-gray-600">
-                If the project you are looking for is not on the list, please use the project form
-                after you submit this organisation form.
-              </div>
-            </div>
-            {projectFormFields.map((project, index) => {
-              const { id } = project;
-              return (
-                <div className="mt-10" key={`project-${id}`}>
-                  {renderField({ key: 'project', projectNumber: index, id })}
-                  {renderField({ key: 'role', projectNumber: index, id })}
-
-                  <Button
-                    type="button"
-                    onClick={() => remove(index)}
-                    variant="secondary"
-                    className="flex gap-4"
-                  >
-                    <Trash2 className="h-6 w-6" />
-                    Remove project
-                  </Button>
-                </div>
-              );
-            })}
-            <div className="flex w-full justify-end">
-              <Button
-                type="button"
-                onClick={() => append({ project: undefined, role: undefined })}
-                variant="secondary"
-                className="gap-4"
-              >
-                <Plus className="h-6 w-6" />
-                Add another project
-              </Button>
-            </div>
             <div className="space-y-6 border-t border-dashed border-gray-300">
               <h2 className="mt-6 font-serif text-2xl text-gray-700">Contact Information</h2>
               <div className="text-gray-700">
