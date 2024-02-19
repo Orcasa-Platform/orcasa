@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: OrganizationDetailsProps): Pr
   const id = parseInt(params.id);
   const data = await getOrganizationsId(id, { populate: '*' });
   const organization = data?.data?.attributes;
-  if (!organization) {
+  if (!organization || organization.publication_status !== 'accepted') {
     return {};
   }
 
@@ -35,7 +35,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
   const data = await getOrganizationsId(id, { populate: '*' });
   const organization = data?.data?.attributes;
 
-  if (!organization) {
+  if (!organization || organization.publication_status !== 'accepted') {
     notFound();
   }
 

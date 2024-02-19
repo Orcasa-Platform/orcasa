@@ -593,37 +593,62 @@ export const useNetworkDiagram = ({
   type: 'project' | 'organization';
   id: number;
 }) => {
-  const useFunction = type === 'organization' ? useGetOrganizationsId : useGetProjectsId;
+  const useFunction = type === 'organization' ? useGetOrganizations : useGetProjects;
+  const filterPublicationStatus = { filters: { publication_status: { $eq: 'accepted' } } };
   const populate =
     type === 'organization'
-      ? String([
-          'lead_projects',
-          'lead_projects.lead_partner',
-          'lead_projects.partners',
-          'lead_projects.funders',
-          'partner_projects',
-          'partner_projects.lead_partner',
-          'partner_projects.partners',
-          'partner_projects.funders',
-          'funded_projects',
-          'funded_projects.lead_partner',
-          'funded_projects.partners',
-          'funded_projects.funders',
-        ])
-      : String([
-          'lead_partner',
-          'lead_partner.lead_projects',
-          'lead_partner.partner_projects',
-          'lead_partner.funded_projects',
-          'partners',
-          'partners.lead_projects',
-          'partners.partner_projects',
-          'partners.funded_projects',
-          'funders',
-          'funders.lead_projects',
-          'funders.partner_projects',
-          'funders.funded_projects',
-        ]);
+      ? {
+          lead_projects: {
+            ...filterPublicationStatus,
+            populate: {
+              lead_partner: filterPublicationStatus,
+              partners: filterPublicationStatus,
+              funders: filterPublicationStatus,
+            },
+          },
+          partner_projects: {
+            ...filterPublicationStatus,
+            populate: {
+              lead_partner: filterPublicationStatus,
+              partners: filterPublicationStatus,
+              funders: filterPublicationStatus,
+            },
+          },
+          funded_projects: {
+            ...filterPublicationStatus,
+            populate: {
+              lead_partner: filterPublicationStatus,
+              partners: filterPublicationStatus,
+              funders: filterPublicationStatus,
+            },
+          },
+        }
+      : {
+          lead_partner: {
+            ...filterPublicationStatus,
+            populate: {
+              lead_projects: filterPublicationStatus,
+              partner_projects: filterPublicationStatus,
+              funded_projects: filterPublicationStatus,
+            },
+          },
+          partners: {
+            ...filterPublicationStatus,
+            populate: {
+              lead_projects: filterPublicationStatus,
+              partner_projects: filterPublicationStatus,
+              funded_projects: filterPublicationStatus,
+            },
+          },
+          funders: {
+            ...filterPublicationStatus,
+            populate: {
+              lead_projects: filterPublicationStatus,
+              partner_projects: filterPublicationStatus,
+              funded_projects: filterPublicationStatus,
+            },
+          },
+        };
   const {
     data,
     isFetching: organizationIsFetching,
@@ -631,17 +656,27 @@ export const useNetworkDiagram = ({
     isPlaceholderData: organizationIsPlaceholderData,
     isError: organizationIsError,
   } = useFunction(
-    id,
     {
       populate,
+      filters: {
+        $and: [
+          {
+            id: {
+              $eq: id,
+            },
+          },
+        ],
+      },
     },
-    { query: { keepPreviousData: true } },
+    {
+      query: { keepPreviousData: true },
+    },
   );
 
   const parsedData =
     type === 'organization'
-      ? parseOrganization(data as OrganizationResponse)
-      : parseProject(data as ProjectResponse);
+      ? parseOrganization(data?.data?.[0] && ({ data: data?.data?.[0] } as OrganizationResponse))
+      : parseProject(data?.data?.[0] && ({ data: data?.data?.[0] } as ProjectResponse));
 
   return {
     data: parsedData.flat(),
