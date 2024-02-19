@@ -1879,7 +1879,7 @@ __metadata:
     react-dom: "npm:^18.0.0"
     react-router-dom: "npm:^5.2.0"
     strapi-plugin-config-sync: "npm:1.2.3"
-    strapi-plugin-import-export-entries: "npm:1.23.1"
+    strapi-plugin-import-export-entries: "patch:strapi-plugin-import-export-entries@npm%3A1.23.1#~/.yarn/patches/strapi-plugin-import-export-entries-npm-1.23.1-c8ce8f4bf8.patch"
     strapi-plugin-string-array: "npm:1.2.2"
     styled-components: "npm:^5.2.1"
     typescript: "npm:5.3.3"
@@ -13454,6 +13454,25 @@ __metadata:
   peerDependencies:
     "@strapi/strapi": ^4.10.5
   checksum: 10/86adeb385e6be334e140ec00e67f345d912cb4c663bfb86813a8426d554b3107098ab3c35bb808794f81692038d2370f01994083b4a13734abad961c7bdaaef8
+  languageName: node
+  linkType: hard
+
+"strapi-plugin-import-export-entries@patch:strapi-plugin-import-export-entries@npm%3A1.23.1#~/.yarn/patches/strapi-plugin-import-export-entries-npm-1.23.1-c8ce8f4bf8.patch":
+  version: 1.23.1
+  resolution: "strapi-plugin-import-export-entries@patch:strapi-plugin-import-export-entries@npm%3A1.23.1#~/.yarn/patches/strapi-plugin-import-export-entries-npm-1.23.1-c8ce8f4bf8.patch::version=1.23.1&hash=08d818"
+  dependencies:
+    "@monaco-editor/react": "npm:4.4.5"
+    csvtojson: "npm:2.0.10"
+    deepmerge: "npm:^4.2.2"
+    joi: "npm:17.6.0"
+    lodash: "npm:4.17.21"
+    monaco-editor: "npm:0.33.0"
+    monaco-editor-webpack-plugin: "npm:7.0.1"
+    node-fetch: "npm:2.6.9"
+    react-singleton-hook: "npm:3.3.0"
+  peerDependencies:
+    "@strapi/strapi": ^4.10.5
+  checksum: 10/bfe19ee0e822dde73bb80f332366b96a7d94c621f5b8ee1aa925416ad00d16cfdbe12aed04b79e9a9d7589704ec454af311f18f38112692a5d30c062ee0965be
   languageName: node
   linkType: hard
 

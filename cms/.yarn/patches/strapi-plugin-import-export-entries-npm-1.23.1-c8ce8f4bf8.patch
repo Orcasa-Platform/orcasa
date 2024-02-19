@@ -1,0 +1,13 @@
+diff --git a/admin/src/hooks/useSlug.js b/admin/src/hooks/useSlug.js
+index 3d206c920958b5a01fc7c732b89055ab93aad966..24d3866609755b5ac8f8f775aca64d24b6b5e5f8 100644
+--- a/admin/src/hooks/useSlug.js
++++ b/admin/src/hooks/useSlug.js
+@@ -7,7 +7,7 @@ export const useSlug = () => {
+   const { pathname } = useLocation();
+ 
+   const slug = useMemo(() => {
+-    const matches = pathname.match(/content-manager\/(collectionType|singleType)\/([a-zA-Z0-9\-:_.]*)/);
++    const matches = pathname.match(/content-manager\/(collectionType|singleType|collection-types|single-types)\/([a-zA-Z0-9\-:_.]*)/);
+     return matches?.[2] ? matches[2] : SLUG_WHOLE_DB;
+   }, [pathname]);
+ 

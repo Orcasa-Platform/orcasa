@@ -6,13 +6,13 @@ export default {
   beforeCreate(event) {
     const { project_type, lead_partner, country_of_coordination } = event.params.data;
 
-    if (project_type.connect?.length === 0 && typeof project_type !== 'string') {
+    if (project_type?.connect?.length === 0 && typeof project_type !== 'string') {
       throw new ApplicationError('Project Type is required');
     }
-    if (lead_partner.connect?.length === 0 && typeof lead_partner !== 'string') {
+    if (lead_partner?.connect?.length === 0 && typeof lead_partner !== 'string') {
       throw new ApplicationError('Lead Partner is required');
     }
-    if (country_of_coordination.connect?.length === 0 && typeof country_of_coordination !== 'string') {
+    if (country_of_coordination?.connect?.length === 0 && typeof country_of_coordination !== 'string') {
       throw new ApplicationError('Country of Coordination is required');
     }
   },
@@ -22,13 +22,13 @@ export default {
       populate: ['project_type', 'lead_partner', 'country_of_coordination']
     });
 
-    if (project_type.connect.length === 0 && (project_type.disconnect.length === 1 || !projectToUpdate.project_type)) {
+    if (project_type?.connect?.length === 0 && (project_type?.disconnect?.length === 1 || !projectToUpdate.project_type)) {
       throw new ApplicationError('Project Type is required');
     }
-    if (lead_partner.connect.length === 0 && (lead_partner.disconnect.length === 1 || !projectToUpdate.lead_partner)) {
+    if (lead_partner?.connect?.length === 0 && (lead_partner?.disconnect?.length === 1 || !projectToUpdate.lead_partner)) {
       throw new ApplicationError('Lead Partner is required');
     }
-    if (country_of_coordination.connect.length === 0 && (country_of_coordination.disconnect.length === 1 || !projectToUpdate.country_of_coordination)) {
+    if (country_of_coordination?.connect?.length === 0 && (country_of_coordination?.disconnect?.length === 1 || !projectToUpdate.country_of_coordination)) {
       throw new ApplicationError('Country of Coordination is required');
     }
   }
