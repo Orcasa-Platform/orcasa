@@ -13,7 +13,7 @@ export type Field = {
   zod: ZodField;
   description?: string | React.ReactNode;
   type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email' | 'date';
-  options?: { label: string; value: string }[];
+  options?: { label: string; value: string; disabled?: boolean }[];
   maxSize?: number;
   placeholder?: string;
 };

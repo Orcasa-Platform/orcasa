@@ -84,8 +84,8 @@ const InputComponent = ({
           </span>
         </SelectTrigger>
         <SelectContent className="max-w-[632px]">
-          {options?.map(({ label, value }) => (
-            <SelectItem key={value} value={value} variant={variant}>
+          {options?.map(({ label, value, disabled }) => (
+            <SelectItem key={value} value={value} disabled={disabled} variant={variant}>
               {label}
             </SelectItem>
           ))}
