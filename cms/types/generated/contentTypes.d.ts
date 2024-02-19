@@ -1096,6 +1096,43 @@ export interface ApiNetworkSuggestionNetworkSuggestion
   };
 }
 
+export interface ApiNotificationEmailNotificationEmail
+  extends Schema.SingleType {
+  collectionName: 'notification_emails';
+  info: {
+    singularName: 'notification-email';
+    pluralName: 'notification-emails';
+    displayName: 'Notification Email';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    notification_email: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'comma';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification-email.notification-email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification-email.notification-email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrganizationOrganization extends Schema.CollectionType {
   collectionName: 'organizations';
   info: {
@@ -1166,6 +1203,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
     publication_status: Attribute.Enumeration<
       ['proposed', 'accepted', 'declined']
     > &
+      Attribute.Required &
       Attribute.DefaultTo<'accepted'>;
     user_email: Attribute.Email;
     createdAt: Attribute.DateTime;
@@ -1199,6 +1237,7 @@ export interface ApiOrganizationThemeOrganizationTheme
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
+    order: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1230,6 +1269,7 @@ export interface ApiOrganizationTypeOrganizationType
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
+    order: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1503,6 +1543,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     publication_status: Attribute.Enumeration<
       ['proposed', 'accepted', 'declined']
     > &
+      Attribute.Required &
       Attribute.DefaultTo<'accepted'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1718,6 +1759,7 @@ declare module '@strapi/types' {
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
       'api::network-suggestion.network-suggestion': ApiNetworkSuggestionNetworkSuggestion;
+      'api::notification-email.notification-email': ApiNotificationEmailNotificationEmail;
       'api::organization.organization': ApiOrganizationOrganization;
       'api::organization-theme.organization-theme': ApiOrganizationThemeOrganizationTheme;
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;

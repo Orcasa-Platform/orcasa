@@ -1,7 +1,7 @@
 'use-client';
 import { ReactElement, createElement, isValidElement, useMemo } from 'react';
 
-import { parseConfig } from '@/lib/json-converter';
+import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 
 import { useLayersSettings } from '@/store';
 
@@ -61,6 +61,7 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
       config: legend_config,
       params_config,
       settings: layersSettings[id] ?? {},
+      jsonConfiguration: JSON_CONFIGURATION,
     });
 
     if (!l) return null;

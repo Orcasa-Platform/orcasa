@@ -12,11 +12,12 @@ import {
   useGetPracticesId,
 } from '@/types/generated/practice';
 import {
-  PracticeListResponse,
   PracticeResponse,
+  PracticeListResponse,
   PracticeListResponseDataItem,
   PracticeCountryDataAttributes,
 } from '@/types/generated/strapi.schemas';
+import { useGetSubinterventions } from '@/types/generated/subintervention';
 
 export type PracticesProperties = {
   id: number | undefined;
@@ -67,6 +68,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : [];
+
   const practiceFilters = [
     ...(filters.country.length > 0
       ? [
@@ -81,16 +83,111 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.landUseType.length > 0
+    // Main intervention is selected
+    ...(filters.mainIntervention
+      ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
+      : []),
+    ...(filters.mainIntervention === 'Management' && filters.subInterventions
       ? [
           {
-            $or: filters.landUseType.map((id) => ({
+            $or: filters.subInterventions.map((id) => ({
+              subinterventions: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.mainIntervention === 'Land Use Change' && filters.priorLandUseTypes
+      ? [
+          {
+            $or: filters.priorLandUseTypes.map((id) => ({
+              land_use_priors: {
+                id: {
+                  $eq: id,
+                },
+              },
+            })),
+          },
+        ]
+      : []),
+    ...(filters.mainIntervention && filters.landUseTypes
+      ? [
+          {
+            $or: filters.landUseTypes.map((id) => ({
               land_use_types: {
                 id: {
                   $eq: id,
                 },
               },
             })),
+          },
+        ]
+      : []),
+    // Main intervention is not selected:
+    // We have to select all practices that have the selected land use types as land use types or prior land use types
+    // and also prior land use types in the case of Land Use Change Management
+    ...(!filters.mainIntervention
+      ? [
+          {
+            $or: [
+              {
+                $and: [
+                  {
+                    practice_intervention: {
+                      $eq: 'Management',
+                    },
+                  },
+                  {
+                    $or: filters.landUseTypes?.map((id) => ({
+                      land_use_types: {
+                        id: {
+                          $eq: id,
+                        },
+                      },
+                    })),
+                  },
+                ],
+              },
+              {
+                $and: [
+                  {
+                    practice_intervention: {
+                      $eq: 'Land Use Change',
+                    },
+                  },
+                  {
+                    $or: filters.landUseTypes?.map((id) => ({
+                      land_use_priors: {
+                        id: {
+                          $eq: id,
+                        },
+                      },
+                    })),
+                  },
+                ],
+              },
+              {
+                $and: [
+                  {
+                    practice_intervention: {
+                      $eq: 'Land Use Change',
+                    },
+                  },
+                  {
+                    $or: filters.landUseTypes?.map((id) => ({
+                      land_use_types: {
+                        id: {
+                          $eq: id,
+                        },
+                      },
+                    })),
+                  },
+                ],
+              },
+            ],
           },
         ]
       : []),
@@ -195,7 +292,6 @@ export const parseData = (data: Data): PracticesProperties[] => {
 
 const useGetPracticesData = (filters: PracticesFilters) => {
   const queryFilters = getQueryFilters(filters);
-
   const {
     data: practicesData,
     isFetching: practicesIsFetching,
@@ -312,13 +408,12 @@ export const useMapPractices = ({ filters }: { filters: PracticesFilters }): Pra
 export const useMapPractice = (practice: Practice): PracticeMapResponse =>
   getMapPractices(useGetPractice(practice));
 
-export const usePracticesFiltersOptions = (): Record<
-  keyof PracticesDropdownFilters,
-  { label: string; value: number | string }[]
-> => {
+export const usePracticesFiltersOptions = (
+  filters: PracticesFilters,
+): Record<keyof PracticesDropdownFilters, { label: string; value: number | string }[]> => {
   const { data: countryData } = useGetCountries(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -330,11 +425,38 @@ export const usePracticesFiltersOptions = (): Record<
   );
   const { data: landUseTypeData } = useGetLandUseTypes(
     {
-      fields: 'name',
+      fields: ['name'],
     },
     {
       query: {
         queryKey: ['land-use-types'],
+      },
+    },
+  );
+
+  const { data: subInterventionData } = useGetSubinterventions(
+    {
+      fields: ['name'],
+      filters: {
+        $and: [
+          {
+            practices: {
+              land_use_types: {
+                id: {
+                  $in: filters.landUseTypes,
+                },
+              },
+              practice_intervention: {
+                $eq: 'Management',
+              },
+            },
+          },
+        ],
+      },
+    },
+    {
+      query: {
+        queryKey: [`sub-interventions-${filters.landUseTypes}`],
       },
     },
   );
@@ -348,7 +470,7 @@ export const usePracticesFiltersOptions = (): Record<
     [countryData],
   );
 
-  const landUseType = useMemo(
+  const landUseTypes = useMemo(
     () =>
       landUseTypeData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -357,8 +479,22 @@ export const usePracticesFiltersOptions = (): Record<
     [landUseTypeData],
   );
 
+  const mainIntervention = ['Management', 'Land Use Change'].map((d) => ({ label: d, value: d }));
+
+  const subInterventions = useMemo(
+    () =>
+      subInterventionData?.data
+        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          subInterventionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        : [],
+    [subInterventionData],
+  );
+
   return {
     country,
-    landUseType,
+    landUseTypes,
+    priorLandUseTypes: landUseTypes,
+    mainIntervention,
+    subInterventions,
   };
 };

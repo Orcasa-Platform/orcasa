@@ -6,13 +6,13 @@ repo_name          = "orcasa"
 # domains managed externally
 staging_domain = "staging.orcasa.dev-vizzuality.com"
 staging_ec2_instance_type  = "c5a.xlarge"
-staging_rds_engine_version = "15.4"
+staging_rds_engine_version = "15.5"
 staging_rds_instance_class = "db.t3.micro"
 staging_rds_backup_retention_period = 7
 
 demo_domain    = "demo.orcasa.dev-vizzuality.com"
 demo_ec2_instance_type  = "c5a.xlarge"
-demo_rds_engine_version = "15.4"
+demo_rds_engine_version = "15.5"
 demo_rds_instance_class = "db.t3.micro"
 demo_rds_backup_retention_period = 30
 

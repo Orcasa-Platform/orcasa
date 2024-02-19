@@ -23,6 +23,41 @@ Other AWS services are used internally by Elastic Beanstalk, for example:
 
 The deployment is automated using a GH Action that builds the Docker images and deploys them to Elastic Beanstalk.
 
+## Setting environment variables
+
+Docker images are built in Github Actions. As such, environment variables for those images need to be
+available to the Github Action runner - typically
+through [Secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
+or [Variables](https://docs.github.com/en/actions/learn-github-actions/variables). There are two ways to set these
+values on your Github repository so that they are available to the docker images built using this approach:
+
+- Setting these through the included Terraform code.
+- Setting these directly on the Github repository "Settings" page.
+
+These approaches are functionally equivalent, but aim at supporting different use cases when setting these values. The
+former approach privileges values that are tightly coupled with the overall infrastructure setup (e.g. database access
+config), while the latter offers more flexibility and ease of use for values that require easier manipulation (directly
+on the Github repository "Settings" page) and are less key to the infrastructure (e.g. frontend api key to access a 3rd
+party service).
+
+These Github Secrets/Variables follow a naming convention that identifies how they are meant to be managed:
+
+- TF_(PRODUCTION|<UPPER CASE BRANCH NAME>)_[CLIENT_ENV|CMS_ENV]_<SECRET OR VARIABLE NAME> - managed by Terraform
+- (PRODUCTION|<UPPER CASE BRANCH NAME>)_[CLIENT_ENV|CMS_ENV]_<SECRET OR VARIABLE NAME> - managed manually on the
+  repository's "Settings" page
+
+All Secrets/Variables that follow this naming convention will be automatically added to the respective docker image
+build process, with their prefixes removed. If you need to add a new/custom secret/variable, and would like to do so
+directly on the repository, be sure to name it accordingly. Likewise, manual changes done to TF_ prefixed values will be
+overwritten by subsequent Terraform code, so do not modify those manually in the repository settings.
+
+**Examples**
+
+- STAGING_CLIENT_ENV_MY_API_KEY - goes into staging client `.env` as `MY_API_KEY`
+- CLIENT_ENV_MY_OTHER_API_KEY - goes into client `.env` in all environments as `MY_OTHER_API_KEY`
+- TF_CMS_ENV_DO_NOT_EDIT - goes into CMS `.env` in all environments as `DO_NOT_EDIT` but must not be edited in the
+  Github "Settings" page - modify through Terraform if needed.
+
 # Infrastructure as Code
 
 The resources required to deploy the solution are defined in the `infrastructure` folder. The infrastructure is defined using Terraform.
@@ -45,3 +80,4 @@ https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-linux-extend.ht
 We're using the following customisation options, using the ".platform" folder:
 - .platform/nginx/conf.d/orcasa.conf: to configure nginx to proxy the requests to the CMS and client applications
 - .ebextensions/authorized_keys.config: to add public SSH keys to the EC2 instances
+

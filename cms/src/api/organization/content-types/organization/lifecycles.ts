@@ -4,30 +4,30 @@ const { ApplicationError } = errors;
 
 export default {
   beforeCreate(event) {
-    const organizationDelta = event.params.data;
+    const { organization_type, main_organization_theme, country } = event.params.data;
 
-    if (organizationDelta.organization_type.connect.length === 0) {
+    if (organization_type.connect?.length === 0 && typeof organization_type !== 'string') {
       throw new ApplicationError('Organization Type is required');
     }
-    if (organizationDelta.main_organization_theme.connect.length === 0) {
+    if (main_organization_theme.connect?.length === 0 && typeof main_organization_theme !== 'string') {
       throw new ApplicationError('Main Organization Theme is required');
     }
-    if (organizationDelta.country.connect.length === 0) {
+    if (country.connect?.length === 0 && typeof country !== 'string') {
       throw new ApplicationError('Country is required');
     }
   },
   async beforeUpdate(event) {
-    const organizationDelta = event.params.data;
-    const organizationToUpdate: any = await strapi.entityService.findOne("api::organization.organization", event.params.where.id);
+    const { organization_type, main_organization_theme, country } = event.params.data;
+    const organizationToUpdate = await strapi.entityService.findOne("api::organization.organization", event.params.where.id, { populate: ['organization_type', 'main_organization_theme', 'country'] });
 
-    if (organizationDelta.organization_type.connect.length === 0 && (organizationDelta.organization_type.disconnect.length === 1 || !organizationToUpdate.organization_type)) {
+    if (organization_type.connect.length === 0 && (organization_type.disconnect.length === 1 || !organizationToUpdate.organization_type)) {
       throw new ApplicationError('Organization Type is required');
     }
-    if (organizationDelta.main_organization_theme.connect.length === 0 && (organizationDelta.main_organization_theme.disconnect.length === 1 || !organizationToUpdate.main_organization_theme)) {
+    if (main_organization_theme.connect.length === 0 && (main_organization_theme.disconnect.length === 1 || !organizationToUpdate.main_organization_theme)) {
       throw new ApplicationError('Main Organization Theme is required');
     }
-    if (organizationDelta.country.connect.length === 0 && (organizationDelta.country.disconnect.length === 1 || !organizationToUpdate.country)) {
+    if (country.connect.length === 0 && (country.disconnect.length === 1 || !organizationToUpdate.country)) {
       throw new ApplicationError('Country is required');
     }
-  },
+  }
 }

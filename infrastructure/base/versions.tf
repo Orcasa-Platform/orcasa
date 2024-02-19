@@ -14,15 +14,21 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.14"
+      version = "~> 5.36"
     }
   }
 
-  required_version = "~> 1.5.6"
+  required_version = "~> 1.7.3"
 }
 
 provider "aws" {
   region = var.aws_region
+
+#  default_tags {
+#    tags = {
+#      ManagedBy = "Terraform"
+#    }
+#  }
 }
 
 # https://github.com/integrations/terraform-provider-github/issues/667#issuecomment-1182340862

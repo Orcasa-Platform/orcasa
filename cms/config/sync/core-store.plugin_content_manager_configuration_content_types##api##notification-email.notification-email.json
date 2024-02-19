@@ -1,14 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::organization-theme.organization-theme",
+  "key": "plugin_content_manager_configuration_content_types::api::notification-email.notification-email",
   "value": {
-    "uid": "api::organization-theme.organization-theme",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,30 +19,16 @@
           "sortable": true
         }
       },
-      "name": {
+      "notification_email": {
         "edit": {
-          "label": "Name",
+          "label": "notification_email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "order": {
-        "edit": {
-          "label": "order",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "order",
+          "label": "notification_email",
           "searchable": true,
           "sortable": true
         }
@@ -110,23 +95,20 @@
     "layouts": {
       "list": [
         "id",
-        "name",
+        "notification_email",
         "createdAt",
-        "order"
+        "updatedAt"
       ],
       "edit": [
         [
           {
-            "name": "name",
+            "name": "notification_email",
             "size": 6
-          },
-          {
-            "name": "order",
-            "size": 4
           }
         ]
       ]
-    }
+    },
+    "uid": "api::notification-email.notification-email"
   },
   "type": "object",
   "environment": null,

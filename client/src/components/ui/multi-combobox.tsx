@@ -52,6 +52,7 @@ export interface ComboboxProps<T> {
   ariaDescribedBy?: string;
   ariaInvalid?: boolean;
   showSelected?: boolean;
+  className?: string;
 }
 
 export const MultiCombobox = <T extends NonNullable<unknown>>({
@@ -65,6 +66,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   ariaDescribedBy,
   ariaInvalid,
   showSelected = false,
+  className,
 }: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -114,7 +116,13 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   return (
     <div
       ref={containerRef}
-      className="relative text-base"
+      className={cn(
+        'relative text-base',
+        {
+          'pointer-events-none cursor-not-allowed': disabled,
+        },
+        className,
+      )}
       aria-describedby={ariaDescribedBy}
       aria-invalid={ariaInvalid}
     >
@@ -134,7 +142,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             disabled={disabled}
           >
             {showSelected ? (
-              <span className={cn({ 'max-h-14 max-w-full truncate': showSelected })}>
+              <span className={cn({ 'max-h-14 max-w-full truncate capitalize': showSelected })}>
                 {selectedLabels}
               </span>
             ) : (
@@ -198,7 +206,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                     Clear
                   </Button>
                 </div>
-                {filteredOptions.length === 0 && search.length > 0 && (
+                {filteredOptions.length === 0 && (
                   <p className="py-8 text-center text-gray-700">No results</p>
                 )}
                 <ComboboxPrimitive.Options static>

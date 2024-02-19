@@ -29,7 +29,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 
       <div className="flex gap-2">
         <LanguageIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base uppercase text-slate-500">{language}</div>
+        <div className="text-base uppercase text-slate-500">{language?.join(', ')}</div>
       </div>
       {source_name === 'WOCAT' && (
         <Image

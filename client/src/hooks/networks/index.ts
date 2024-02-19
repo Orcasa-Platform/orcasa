@@ -47,6 +47,8 @@ import {
   getCountryData,
 } from '@/hooks/networks/utils';
 
+import { sortByOrderAndName } from './utils';
+
 export type OrganizationProperties = {
   id: number | undefined;
   name: string | undefined;
@@ -781,7 +783,7 @@ export const useNetworksCount = (filters: NetworkFilters) => {
 
   const { data: organizationsData } = useGetOrganizations(
     {
-      fields: 'id',
+      fields: ['id'],
       'pagination[pageSize]': 1,
       filters: queryFilters.organization,
     },
@@ -796,7 +798,7 @@ export const useNetworksCount = (filters: NetworkFilters) => {
 
   const { data: projectsData } = useGetProjects(
     {
-      fields: 'id',
+      fields: ['id'],
       'pagination[pageSize]': 9999,
       filters: queryFilters.project,
     },
@@ -821,7 +823,7 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
 > => {
   const { data: countryData } = useGetCountries(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -843,8 +845,8 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
 
   const { data: organizationTypeData } = useGetOrganizationTypes(
     {
-      fields: 'name',
-      sort: 'name',
+      fields: ['name', 'order'],
+      // Sort will be done later as the undefined values need to be moved to the top
       'pagination[pageSize]': 9999,
     },
     {
@@ -858,15 +860,18 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
     () =>
       organizationTypeData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          organizationTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+          organizationTypeData.data
+            .sort(sortByOrderAndName)
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            .map((d) => ({ label: d.attributes!.name, value: d.id! }))
         : [],
     [organizationTypeData],
   );
 
   const { data: organizationThemeData } = useGetOrganizationThemes(
     {
-      fields: 'name',
-      sort: 'name',
+      fields: ['name', 'order'],
+      // Sort will be done later as the undefined values need to be moved to the top
       'pagination[pageSize]': 9999,
     },
     {
@@ -880,7 +885,10 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
     () =>
       organizationThemeData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          organizationThemeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+          organizationThemeData.data
+            .sort(sortByOrderAndName)
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            .map((d) => ({ label: d.attributes!.name, value: d.id! }))
         : [],
     [organizationThemeData],
   );
@@ -898,7 +906,7 @@ export const useNetworkProjectFiltersOptions = (): Record<
 > => {
   const { data: countryData } = useGetCountries(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -920,7 +928,7 @@ export const useNetworkProjectFiltersOptions = (): Record<
 
   const { data: projectTypeData } = useGetProjectTypes(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -942,7 +950,7 @@ export const useNetworkProjectFiltersOptions = (): Record<
 
   const { data: regionData } = useGetRegions(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -964,7 +972,7 @@ export const useNetworkProjectFiltersOptions = (): Record<
 
   const { data: interventionAreaData } = useGetAreaOfInterventions(
     {
-      fields: 'name',
+      fields: ['name'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },

@@ -5,7 +5,7 @@ import { ReactElement, cloneElement, useCallback, useMemo } from 'react';
 import { Info } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
-import { parseConfig } from '@/lib/json-converter';
+import { JSON_CONFIGURATION, parseConfig } from '@/lib/json-converter';
 
 import { useLayers, useLayersSettings } from '@/store';
 
@@ -107,6 +107,7 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
       config: attributes.ui_settings,
       params_config: attributes.params_config,
       settings: layersSettings[id] ?? { opacity: 1, visibility: true },
+      jsonConfiguration: JSON_CONFIGURATION,
     });
 
     if (component) {

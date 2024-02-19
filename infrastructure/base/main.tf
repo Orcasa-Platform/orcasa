@@ -61,190 +61,6 @@ module "iam" {
   source = "./modules/iam"
 }
 
-#
-# Staging secrets
-#
-
-resource "random_password" "staging_api_token_salt" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "staging_admin_jwt_secret" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "staging_transfer_token_salt" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "staging_jwt_secret" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "staging_nextauth_secret" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "staging_app_key" {
-  length           = 32
-  special          = false
-  numeric          = false
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-#
-# Demo secrets
-#
-
-resource "random_password" "demo_api_token_salt" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "demo_admin_jwt_secret" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "demo_transfer_token_salt" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "demo_jwt_secret" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "demo_nextauth_secret" {
-  length           = 32
-  special          = true
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-resource "random_password" "demo_app_key" {
-  length           = 32
-  special          = false
-  numeric          = false
-  override_special = "!#%&*()-_=+[]{}<>:?"
-}
-
-locals {
-  staging_cms_env = {
-    HOST                = "0.0.0.0"
-    PORT                = 1337
-    APP_KEYS            = random_password.staging_app_key.result
-    API_TOKEN_SALT      = random_password.staging_api_token_salt.result
-    ADMIN_JWT_SECRET    = random_password.staging_admin_jwt_secret.result
-    TRANSFER_TOKEN_SALT = random_password.staging_transfer_token_salt.result
-    JWT_SECRET          = random_password.staging_jwt_secret.result
-    CMS_URL             = "https://${var.staging_domain}/cms/"
-    WOCAT_TOKEN         = var.wocat_token
-
-    # Database
-    DATABASE_CLIENT                  = "postgres"
-    DATABASE_HOST                    = module.staging.postgresql_host
-    DATABASE_PORT                    = module.staging.postgresql_port
-    DATABASE_NAME                    = module.staging.postgresql_db_name
-    DATABASE_USERNAME                = module.staging.postgresql_username
-    DATABASE_PASSWORD                = module.staging.postgresql_password
-    DATABASE_SSL                     = true
-    DATABASE_SSL_REJECT_UNAUTHORIZED = false
-
-    SMTP_FROM     = "no-reply@no-reply.${var.staging_domain}"
-    SMTP_REPLY_TO = "no-reply@no-reply.${var.staging_domain}"
-    SMTP_HOST     = "email-smtp.${var.aws_region}.amazonaws.com"
-    SMTP_PORT     = 465
-    SMTP_USER     = module.staging.smtp_username
-    SMTP_PASSWORD = module.staging.smtp_password
-  }
-  staging_client_env = {
-    NEXT_PUBLIC_URL                                 = "https://${var.staging_domain}"
-    NEXT_PUBLIC_ENVIRONMENT                         = "production"
-    NEXT_PUBLIC_API_URL                             = "https://${var.staging_domain}/cms/api"
-    NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
-    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr,carla.biscotti@vizzuality.com"
-    NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
-    NEXT_PUBLIC_HIDE_NETWORK_FORMS                  = "false"
-    NEXT_PUBLIC_ENABLE_RESPONSIVE                   = "true"
-    LOG_LEVEL                                       = "info"
-  }
-  demo_cms_env = {
-    HOST                = "0.0.0.0"
-    PORT                = 1337
-    APP_KEYS            = random_password.demo_app_key.result
-    API_TOKEN_SALT      = random_password.demo_api_token_salt.result
-    ADMIN_JWT_SECRET    = random_password.demo_admin_jwt_secret.result
-    TRANSFER_TOKEN_SALT = random_password.demo_transfer_token_salt.result
-    JWT_SECRET          = random_password.demo_jwt_secret.result
-    CMS_URL             = "https://${var.demo_domain}/cms/"
-    WOCAT_TOKEN         = var.wocat_token
-
-    # Database
-    DATABASE_CLIENT                  = "postgres"
-    DATABASE_HOST                    = module.demo.postgresql_host
-    DATABASE_PORT                    = module.demo.postgresql_port
-    DATABASE_NAME                    = module.demo.postgresql_db_name
-    DATABASE_USERNAME                = module.demo.postgresql_username
-    DATABASE_PASSWORD                = module.demo.postgresql_password
-    DATABASE_SSL                     = true
-    DATABASE_SSL_REJECT_UNAUTHORIZED = false
-
-    SMTP_FROM     = "no-reply@no-reply.${var.demo_domain}"
-    SMTP_REPLY_TO = "no-reply@no-reply.${var.demo_domain}"
-    SMTP_HOST     = "email-smtp.${var.aws_region}.amazonaws.com"
-    SMTP_PORT     = 465
-    SMTP_USER     = module.demo.smtp_username
-    SMTP_PASSWORD = module.demo.smtp_password
-  }
-  demo_client_env = {
-    NEXT_PUBLIC_URL                                 = "https://${var.demo_domain}"
-    NEXT_PUBLIC_ENVIRONMENT                         = "production"
-    NEXT_PUBLIC_API_URL                             = "https://${var.demo_domain}/cms/api"
-    NEXT_PUBLIC_DATASETS_API_URL                    = "https://orcasa.apis.ekoal.org"
-    NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS = "impact4soil@groupes.renater.fr"
-    NEXT_PUBLIC_GA_TRACKING_ID                      = var.ga_tracking_id
-    NEXT_PUBLIC_HIDE_NETWORK_FORMS                  = "true"
-    NEXT_PUBLIC_ENABLE_RESPONSIVE                   = "false"
-    LOG_LEVEL                                       = "info"
-  }
-}
-
-module "github_values" {
-  source     = "./modules/github_values"
-  repo_name  = var.repo_name
-  secret_map = {
-    PIPELINE_USER_ACCESS_KEY_ID     = module.iam.pipeline_user_access_key_id
-    PIPELINE_USER_SECRET_ACCESS_KEY = module.iam.pipeline_user_access_key_secret
-    CMS_REPOSITORY_NAME             = module.cms_ecr.repository_name
-    CLIENT_REPOSITORY_NAME          = module.client_ecr.repository_name
-    QGIS_REPOSITORY_NAME            = module.qgis_ecr.repository_name
-    STAGING_CMS_ENV_FILE            = join("\n", [for key, value in local.staging_cms_env : "${key}=${value}"])
-    STAGING_CLIENT_ENV_FILE         = join("\n", [for key, value in local.staging_client_env : "${key}=${value}"])
-    STAGING_DOMAIN                  = var.staging_domain
-    DEMO_CMS_ENV_FILE               = join("\n", [for key, value in local.demo_cms_env : "${key}=${value}"])
-    DEMO_CLIENT_ENV_FILE            = join("\n", [for key, value in local.demo_client_env : "${key}=${value}"])
-    DEMO_DOMAIN                     = var.demo_domain
-  }
-  variable_map = {
-    AWS_REGION = var.aws_region
-  }
-}
-
 module "data_bucket" {
   source      = "./modules/bucket"
   bucket_name = local.bucket_name
@@ -275,19 +91,36 @@ resource "aws_iam_service_linked_role" "elasticbeanstalk" {
   aws_service_name = "elasticbeanstalk.amazonaws.com"
 }
 
+module "github_values" {
+  source     = "./modules/github_values"
+  repo_name  = var.repo_name
+  secret_map = {
+    TF_AWS_REGION                      = var.aws_region
+    TF_PROJECT_NAME                    = var.project_name
+    TF_CMS_REPOSITORY_NAME             = module.cms_ecr.repository_name
+    TF_CLIENT_REPOSITORY_NAME          = module.client_ecr.repository_name
+    TF_QGIS_REPOSITORY_NAME            = module.qgis_ecr.repository_name
+    TF_PIPELINE_USER_ACCESS_KEY_ID     = module.iam.pipeline_user_access_key_id
+    TF_PIPELINE_USER_SECRET_ACCESS_KEY = module.iam.pipeline_user_access_key_secret
+  }
+  variable_map = {}
+}
+
+
 module "staging" {
   source             = "./modules/env"
   domain             = var.staging_domain
   project            = var.project_name
   environment        = "staging"
   aws_region         = var.aws_region
+  repo_name          = var.repo_name
   vpc                = data.aws_vpc.default_vpc
   subnet_ids         = local.subnets_with_ec2_instance_type_offering_ids
   availability_zones = data.aws_availability_zones.azs_with_ec2_instance_type_offering.names
   beanstalk_platform = var.beanstalk_platform
   beanstalk_tier     = var.beanstalk_tier
 
-  ec2_instance_type  = var.staging_ec2_instance_type
+  ec2_instance_type = var.staging_ec2_instance_type
 
   rds_backup_retention_period = var.staging_rds_backup_retention_period
   rds_engine_version          = var.staging_rds_engine_version
@@ -297,6 +130,8 @@ module "staging" {
 
   data_bucket_name                              = local.bucket_name
   elasticbeanstalk_iam_service_linked_role_name = aws_iam_service_linked_role.elasticbeanstalk.name
+
+  wocat_token = var.wocat_token
 }
 
 module "demo" {
@@ -305,13 +140,14 @@ module "demo" {
   project            = var.project_name
   environment        = "demo"
   aws_region         = var.aws_region
+  repo_name          = var.repo_name
   vpc                = data.aws_vpc.default_vpc
   subnet_ids         = local.subnets_with_ec2_instance_type_offering_ids
   availability_zones = data.aws_availability_zones.azs_with_ec2_instance_type_offering.names
   beanstalk_platform = var.beanstalk_platform
   beanstalk_tier     = var.beanstalk_tier
 
-  ec2_instance_type  = var.demo_ec2_instance_type
+  ec2_instance_type = var.demo_ec2_instance_type
 
   rds_backup_retention_period = var.demo_rds_backup_retention_period
   rds_engine_version          = var.demo_rds_engine_version
@@ -321,4 +157,6 @@ module "demo" {
 
   data_bucket_name                              = local.bucket_name
   elasticbeanstalk_iam_service_linked_role_name = aws_iam_service_linked_role.elasticbeanstalk.name
+
+  wocat_token = var.wocat_token
 }

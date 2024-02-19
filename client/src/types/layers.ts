@@ -33,10 +33,14 @@ export type InteractionConfig = {
     type: 'click' | 'hover';
     values: {
       key: string;
-      label: string;
+      type?: 'string' | 'number';
+      unit: string;
       format?: FormatProps;
     }[];
   }[];
+  url?: string;
+  bboxAPI?: 'nominatim' | 'overpass' | 'default';
+  layer?: string;
 };
 
 export type LayerProps = {

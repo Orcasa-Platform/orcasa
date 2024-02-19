@@ -76,6 +76,7 @@ export default {
           'Project-type',
           'Region',
           'Area-of-intervention',
+          'Subintervention',
           'Sustainable-dev-goal',
           'Home-stat',
           'Practice',
