@@ -255,6 +255,26 @@ export const usePractices = ({
   };
 };
 
+export const usePracticesCount = (filters: PracticesFilters) => {
+  const queryFilters = getQueryFilters(filters);
+
+  const { data } = useGetPractices(
+    {
+      fields: ['id'],
+      'pagination[pageSize]': 1,
+      filters: queryFilters,
+    },
+    {
+      query: {
+        queryKey: ['practice', 'count', filters],
+        keepPreviousData: true,
+      },
+    },
+  );
+
+  return data?.meta?.pagination?.total ?? 0;
+};
+
 export type PointFeatureWithPracticeProperties = PointFeature<{
   countryName: string;
   practices: PracticesProperties[];

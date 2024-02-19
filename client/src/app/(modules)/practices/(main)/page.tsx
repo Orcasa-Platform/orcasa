@@ -15,7 +15,7 @@ import {
 
 import { useGetPages } from '@/types/generated/page';
 
-import { usePractices } from '@/hooks/practices';
+import { usePractices, usePracticesCount } from '@/hooks/practices';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -35,6 +35,7 @@ export default function PracticesModule() {
   const previousFilters = usePreviousImmediate(filters);
 
   const practices = usePractices({ filters });
+  const practicesCount = usePracticesCount(filters);
   // The keywords search is not counted because it's shown in the main sidebar
   const filtersCount = useFiltersCount(filters, ['search']);
 
@@ -105,7 +106,12 @@ export default function PracticesModule() {
           )}
         </Button>
       </div>
-      <PracticeList {...practices} />
+      <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
+        Showing {practicesCount} practice(s).
+      </div>
+      <div className="!mt-6">
+        <PracticeList {...practices} />
+      </div>
     </div>
   );
 }
