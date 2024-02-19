@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ProjectDetailsProps): Promise
   const data = await getProjectsId(id, { populate: '*' });
   const project = data?.data?.attributes;
 
-  if (!project) {
+  if (!project || project.publication_status !== 'accepted') {
     return {};
   }
 
@@ -36,7 +36,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
   const data = await getProjectsId(id, { populate: '*' });
   const project = data?.data?.attributes;
 
-  if (!project) {
+  if (!project || project.publication_status !== 'accepted') {
     notFound();
   }
 

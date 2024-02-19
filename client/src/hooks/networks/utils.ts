@@ -163,7 +163,7 @@ const getOrganizationData = (
     .filter(Boolean),
 });
 
-export const parseOrganization = (organizationData: OrganizationResponse) => {
+export const parseOrganization = (organizationData: OrganizationResponse | undefined) => {
   if (!organizationData) return [];
   const { attributes, id: parentId }: OrganizationResponseDataObject = organizationData?.data || {};
 
@@ -194,7 +194,7 @@ export const parseOrganization = (organizationData: OrganizationResponse) => {
   });
 };
 
-export const parseProject = (projectData: ProjectResponse) => {
+export const parseProject = (projectData: ProjectResponse | undefined) => {
   if (!projectData) return [];
   const { attributes, id: parentProjectId }: ProjectResponseDataObject = projectData?.data || {};
   return PROJECT_KEYS.map((key) => {
