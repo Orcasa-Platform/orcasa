@@ -80,7 +80,7 @@ locals {
     SMTP_HOST     = "email-smtp.${var.aws_region}.amazonaws.com"
     SMTP_PORT     = 465
     SMTP_USER     = aws_iam_access_key.email_user_access_key.id
-    SMTP_PASSWORD = aws_iam_access_key.email_user_access_key.secret
+    SMTP_PASSWORD = aws_iam_access_key.email_user_access_key.ses_smtp_password_v4
 
     AWS_REGION                = var.aws_region
     AWS_SES_DOMAIN            = var.domain
