@@ -604,7 +604,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "land_use_types"
         ]
       },
       "conditions": []
@@ -637,7 +638,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "land_use_types"
         ]
       },
       "conditions": [
@@ -672,7 +674,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "land_use_types"
         ]
       },
       "conditions": [

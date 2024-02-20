@@ -28,6 +28,7 @@ export const getProjectFields = (project: Project) => {
     main_area_of_intervention_other: mainAreaOfInterventionOther,
     sustainable_development_goals: sustainableDevelopmentGoals,
     lead_partner: leadPartner,
+    land_use_types: landUseTypes,
   } = project;
 
   const fields = [];
@@ -134,6 +135,13 @@ export const getProjectFields = (project: Project) => {
     fields.push({
       label: 'Sustainable Development Goals',
       value: sustainableDevelopmentGoals?.data?.map((sdg) => sdg.attributes?.name).join(', '),
+    });
+  }
+
+  if (hasData(landUseTypes) && landUseTypes?.data?.length) {
+    fields.push({
+      label: 'Land use type(s)',
+      value: landUseTypes?.data?.map((lut) => lut.attributes?.name).join(', '),
     });
   }
 

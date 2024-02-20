@@ -47,6 +47,7 @@ export default function ProjectForm() {
     areasOfIntervention,
     sustainableDevelopmentGoals,
     projectTypes,
+    landUseTypes,
   } = useProjectFormGetFields() || {};
   const [openInfo, setInfoOpen] = useState(false);
   const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
@@ -370,6 +371,17 @@ export default function ProjectForm() {
       }),
       type: 'email',
     },
+    land_use_types: {
+      label: 'Land use types',
+      zod: z
+        .array(z.enum(landUseTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]))
+        .optional(),
+      type: 'multiselect',
+      options: landUseTypes?.map((type) => ({
+        label: type.name,
+        value: type.id.toString(),
+      })),
+    },
   };
   const fields = hasData && fieldValues;
   const formSchema = z.object(
@@ -596,6 +608,7 @@ export default function ProjectForm() {
               'secondary_area_of_intervention',
               'third_area_of_intervention',
               'sustainable_development_goals',
+              'land_use_types',
             ])}
 
             <div className="space-y-6 border-t border-dashed border-gray-300">

@@ -955,6 +955,11 @@ export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
       'manyToMany',
       'api::practice.practice'
     >;
+    projects: Attribute.Relation<
+      'api::land-use-type.land-use-type',
+      'manyToMany',
+      'api::project.project'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1563,6 +1568,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'accepted'>;
+    land_use_types: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::land-use-type.land-use-type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
