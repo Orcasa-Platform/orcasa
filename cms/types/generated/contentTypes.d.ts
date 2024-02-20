@@ -512,6 +512,8 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     releasedAt: Attribute.DateTime;
+    scheduledAt: Attribute.DateTime;
+    timezone: Attribute.String;
     actions: Attribute.Relation<
       'plugin::content-releases.release',
       'oneToMany',
@@ -1103,9 +1105,10 @@ export interface ApiNotificationEmailNotificationEmail
     singularName: 'notification-email';
     pluralName: 'notification-emails';
     displayName: 'Notification Email';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     notification_email: Attribute.Text &
@@ -1117,7 +1120,6 @@ export interface ApiNotificationEmailNotificationEmail
       >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::notification-email.notification-email',
       'oneToOne',
@@ -1237,7 +1239,15 @@ export interface ApiOrganizationThemeOrganizationTheme
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    order: Attribute.Integer & Attribute.DefaultTo<0>;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1269,7 +1279,15 @@ export interface ApiOrganizationTypeOrganizationType
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
-    order: Attribute.Integer & Attribute.DefaultTo<0>;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

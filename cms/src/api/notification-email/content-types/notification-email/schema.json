@@ -4,10 +4,11 @@
   "info": {
     "singularName": "notification-email",
     "pluralName": "notification-emails",
-    "displayName": "Notification Email"
+    "displayName": "Notification Email",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
