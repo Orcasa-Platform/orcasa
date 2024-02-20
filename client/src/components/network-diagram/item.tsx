@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 
 import { ChevronDown } from 'lucide-react';
+import CoordinatorLetter from 'public/images/network-links/coordinator.svg';
+import FunderLetter from 'public/images/network-links/funder.svg';
+import PartnerLetter from 'public/images/network-links/partner.svg';
 
 import { cn } from '@/lib/classnames';
 
@@ -18,31 +21,48 @@ import Document from '@/styles/icons/document.svg';
 type PathProps = {
   heightIndex: number;
   category: Category;
-  isGranchild: boolean | undefined;
-  isFirstOfType: boolean | undefined;
+  isGranchild?: boolean;
+  hasDot?: boolean;
 };
 
-const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = false }: PathProps) => {
+const Path = ({ heightIndex, category, isGranchild = false, hasDot = false }: PathProps) => {
   if (typeof heightIndex === 'undefined') return null;
 
-  const ITEM_HEIGHT = 90;
-  const PADDING = 40;
-  const additionalHeight = isFirstOfType ? 20 : 0;
-  const topHeight = heightIndex * ITEM_HEIGHT + additionalHeight;
+  // Padding to place the path at the middle of the item
+  const PADDING = 45;
+  const ITEM_HEIGHT = 70;
+  // Additional height to take into account the space between the items
+  const additionalHeight = heightIndex * 25;
+  const topHeight = (heightIndex + 1) * ITEM_HEIGHT + additionalHeight;
+
+  // Allow some padding to show the full circle
+  const CIRCLE_PADDING = 10;
   // Allow some padding to show the full width of the strokes
   const STROKE_PADDING = 2;
 
   const pathProps = {
-    strokeWidth: category === 'coordinator' ? 3 : 1,
-    strokeDasharray: category === 'funder' ? '3' : '0',
+    strokeWidth: '2',
+    strokeDasharray: category === 'funder' ? '4' : '0',
   };
-
+  const circleColorClass = category === 'partner' ? 'text-gray-300' : 'text-gray-700';
+  const Letter =
+    category === 'coordinator'
+      ? CoordinatorLetter
+      : category === 'funder'
+      ? FunderLetter
+      : PartnerLetter;
   return (
     <>
+      {hasDot && (
+        <span
+          className="dot absolute left-[14px] z-20 h-2 w-2 rounded-full bg-black"
+          style={{ top: 'calc(100% - 4px)' }}
+        />
+      )}
       <svg
-        height={`${PADDING + topHeight}px`}
-        width="25"
-        className="absolute -left-6 fill-transparent stroke-primary"
+        height={`${PADDING + topHeight + CIRCLE_PADDING}px`}
+        width="40"
+        className="absolute -left-10 z-10 fill-transparent stroke-primary"
         style={{
           top: `-${topHeight}px`,
         }}
@@ -50,14 +70,27 @@ const Path = ({ heightIndex, category, isGranchild = false, isFirstOfType = fals
         <path
           d={`M${STROKE_PADDING},${
             isGranchild ? topHeight - ITEM_HEIGHT : '0'
-          } L${STROKE_PADDING},${topHeight + 20}`}
+          } L${STROKE_PADDING},${topHeight + 25}`}
+          className={cn('stroke-current', circleColorClass)}
           {...pathProps}
         />
         <path
-          d={`M${STROKE_PADDING},${topHeight + 20} Q${STROKE_PADDING},${PADDING + topHeight} 25,
-        ${PADDING + topHeight - STROKE_PADDING}`}
+          d={`M${STROKE_PADDING},${topHeight + 25} Q${STROKE_PADDING},${PADDING + topHeight} 50,
+          ${PADDING + topHeight - STROKE_PADDING}`}
+          className={cn('stroke-current', circleColorClass)}
           {...pathProps}
         />
+        <g transform={`translate(20, ${PADDING + topHeight - STROKE_PADDING})`}>
+          <circle
+            cx="4"
+            cy="0"
+            r="8"
+            className={cn('fill-current stroke-none', circleColorClass)}
+          />
+          <g transform="translate(1, -3.5)">
+            <Letter />
+          </g>
+        </g>
       </svg>
     </>
   );
@@ -71,7 +104,9 @@ type ItemProps = Pick<Project | Organization, 'name'> & {
   onToggle?: (opened: boolean) => void;
   heightIndex?: number;
   hasChildren: boolean;
-  isFirstOfType?: boolean;
+  isFirst?: boolean;
+  hasDot?: boolean;
+  className?: string;
 };
 const Item = ({
   name,
@@ -82,7 +117,8 @@ const Item = ({
   onToggle,
   heightIndex,
   hasChildren,
-  isFirstOfType,
+  hasDot,
+  className,
 }: ItemProps) => {
   const isFirstNode = !category;
   const isGranchild = category && !onToggle;
@@ -96,30 +132,32 @@ const Item = ({
   const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
   const canExpandWithoutChildren = typeof onToggle !== 'undefined' && !hasChildren;
   return (
-    <div className="relative -mt-6 w-full">
-      {/* DOT */}
-      {((isFirstNode && hasChildren) || (hasChildren && category && opened)) && (
-        <span
-          className="absolute left-[14px] h-2 w-2 rounded-full bg-black"
-          style={{ top: 'calc(100% - 4px)' }}
-        />
-      )}
+    <div className={cn('relative z-30 -mt-6 w-full', className)}>
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
         <Path
           heightIndex={heightIndex}
           category={category}
           isGranchild={isGranchild}
-          isFirstOfType={isFirstOfType}
+          hasDot={(isFirstNode && hasChildren) || (hasChildren && category && opened)}
+        />
+      )}
+      {hasDot && (
+        <span
+          className="dotss absolute left-[14px] z-20 h-2 w-2 rounded-full bg-black"
+          style={{ top: 'calc(100% - 4px)' }}
         />
       )}
       {/* CONTENT */}
       <div
-        className={cn('mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-6 p-4', {
-          'border border-slate-700': isFirstNode || opened,
-          'bg-blue-50': type === 'organization',
-          'bg-peach-50': type === 'project',
-        })}
+        className={cn(
+          'z-30 mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-6 p-4',
+          {
+            'border border-slate-700': isFirstNode || opened,
+            'bg-blue-50': type === 'organization',
+            'bg-peach-50': type === 'project',
+          },
+        )}
       >
         <div
           className={cn('text-sm text-slate-700', {
