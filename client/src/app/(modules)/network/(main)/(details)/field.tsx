@@ -2,6 +2,8 @@
 
 import { useRef, useState } from 'react';
 
+import Link from 'next/link';
+
 import { cn } from '@/lib/classnames';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
@@ -11,10 +13,11 @@ type Field = {
   label: string;
   value: string | (string | undefined)[] | undefined;
   url?: string | string[];
+  external?: boolean;
   hasEllipsis?: boolean;
 };
 
-const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type }) => {
+const Field = ({ label, value, url, external, type, hasEllipsis }: Field & { type: Type }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const isOverTwoLines = useIsOverTwoLines(ref, hasEllipsis);
@@ -22,8 +25,15 @@ const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type })
     setIsExpanded(!isExpanded);
   };
 
-  const renderLink = (url: string | string[]) =>
-    Array.isArray(url) ? (
+  const renderLink = (url: string | string[], external = false) => {
+    if (!external) {
+      return (
+        <Link className="text-sm text-peach-700" href={`${url}`}>
+          {value}
+        </Link>
+      );
+    }
+    return Array.isArray(url) ? (
       <div>
         {url.map(
           (u, i) =>
@@ -48,6 +58,7 @@ const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type })
         {value}
       </a>
     );
+  };
 
   return (
     <div className="flex gap-6">
@@ -60,7 +71,7 @@ const Field = ({ label, value, url, type, hasEllipsis }: Field & { type: Type })
         {label}
       </div>
       {url ? (
-        renderLink(url)
+        renderLink(url, external)
       ) : (
         <div>
           <div

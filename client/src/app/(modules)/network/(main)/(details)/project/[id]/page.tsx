@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 
 import env from '@/env.mjs';
 
-import { getProjectsId } from '@/types/generated/project';
+import { getProjects, getProjectsId } from '@/types/generated/project';
 
 import NetworkDiagram from '@/components/network-diagram';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,7 @@ interface ProjectDetailsProps {
 
 export async function generateMetadata({ params }: ProjectDetailsProps): Promise<Metadata> {
   const id = parseInt(params.id);
-  const data = await getProjectsId(id, { populate: '*' });
+  const data = await getProjectsId(id);
   const project = data?.data?.attributes;
 
   if (!project || project.publication_status !== 'accepted') {
@@ -33,10 +33,26 @@ export async function generateMetadata({ params }: ProjectDetailsProps): Promise
 
 export default async function ProjectDetails({ params }: ProjectDetailsProps) {
   const id = parseInt(params.id);
-  const data = await getProjectsId(id, { populate: '*' });
-  const project = data?.data?.attributes;
+  const data = await getProjects({
+    filters: { id, publication_status: 'accepted' },
+    populate: {
+      lead_partner: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
+      project_type: { fields: ['name', 'id'] },
+      country_of_coordination: { fields: ['name', 'id'] },
+      region_of_interventions: { fields: ['name', 'id'] },
+      country_of_interventions: { fields: ['name', 'id'] },
+      main_area_of_intervention: { fields: ['name', 'id'] },
+      secondary_area_of_intervention: { fields: ['name', 'id'] },
+      third_area_of_intervention: { fields: ['name', 'id'] },
+      sustainable_development_goals: { fields: ['name', 'id'] },
+      partners: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
+      funders: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
+    },
+  });
+  const projectList = data?.data || [];
+  const project = projectList[0]?.attributes;
 
-  if (!project || project.publication_status !== 'accepted') {
+  if (!project) {
     notFound();
   }
 
