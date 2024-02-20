@@ -1,3 +1,28 @@
+# v3
+
+- Ability to modify the top description of each module in the CMS
+- [Geospatial Data] Ability to get pixel information on the map
+- [Practices] Prevent non-relevant practices from being displayed
+- [Practices] Ability to filter the practices by main intervention and sub-intervention
+- [Network] Ability to configure which email(s) receive organisation/project suggestions in the CMS
+- [Network] Ability to configure the order of the organisation types and main thematics in the CMS
+- [Network] Display the complete organisation type (“Other” type) on the detail view
+- [Network] Allow projects to be linked to multiple sustainable development goals
+- [Network] Prevent associating multiple times the same area of intervention to a project
+- [Network] Prevent non-approved organisations and projects from being displayed
+- [Network] Address an issue where organisation/project relations could be overwritten by non-approved organisations or projects
+- [Network] New mandatory fields on the CMS:
+  - Organization model (Organization type, Main organization theme, Country)
+  - Project model (Project type, Lead partner, Country of coordination)
+- [Network] Send a notification to admins (configurable in Strapi) when a new organisation/project is submitted
+- [Network] Ability to filter projects by year (i.e. matching projects that were active on a specific year)
+- [Network] Add the total number of matching organisations and projects at the top of the list
+- [Network] Update the map's tooltips to improve their legibility
+- [Network] Re-enable organisation/project creation on all environments
+- [Network] Address an issue that could prevent modifying specific fields on the CMS
+  - Practices model (language, land_use_has_changed, degradation_assessed)
+- [Network] Update the configuration of the organisation form's tooltip to improve usability
+
 # v2
 
 - Enhancements on the homepage (animated stats, colors in the navigation menu)
