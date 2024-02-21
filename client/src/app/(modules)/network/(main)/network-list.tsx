@@ -51,7 +51,10 @@ export default function NetworkList({
               key={`network-${g.type}-${g.id}`}
               {...(g as Required<
                 ProjectListResponseDataItem &
-                  OrganizationListResponseDataItem & { type: 'project' | 'organization' }
+                  OrganizationListResponseDataItem & {
+                    type: 'project' | 'organization';
+                    isWorldwide: boolean;
+                  }
               >)}
             />
           );

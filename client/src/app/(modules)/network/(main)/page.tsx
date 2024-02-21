@@ -5,15 +5,13 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Filter, Users2 } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
-import env from '@/env.mjs';
-
 import { useSidebarScroll } from '@/store';
 
-import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
+import { useFiltersCount, useNetworkFilters, useNetworkFilterSidebarOpen } from '@/store/network';
 
 import { useGetPages } from '@/types/generated/page';
 
-import { useNetworks, useNetworksCount } from '@/hooks/networks';
+import { useNetworks, useNetworksCount, useRegionsCount } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -32,7 +30,9 @@ export default function NetworkModule() {
   const data = pages?.data?.data?.[0];
   const { attributes: { intro = undefined } = {} } = data || {};
 
-  const networks = useNetworks({ filters });
+  const regionsCount = useRegionsCount();
+
+  const networks = useNetworks({ filters, regionsCount });
   const networksCount = useNetworksCount(filters);
 
   // The keywords search is not counted because it's shown in the main sidebar
