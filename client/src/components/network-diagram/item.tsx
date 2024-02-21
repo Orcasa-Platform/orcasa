@@ -146,7 +146,7 @@ const Item = ({
       )}
       {hasDot && (
         <span
-          className="dotss absolute left-[14px] z-20 h-2 w-2 rounded-full bg-black"
+          className="absolute left-[14px] z-20 h-2 w-2 rounded-full bg-black"
           style={{ top: 'calc(100% - 4px)' }}
         />
       )}

@@ -48,7 +48,8 @@ const NetworkDiagram = ({
   }
 
   const getIndex = (childIndex: number) => {
-    const previousItem = networks[childIndex + 1]; // + 1 as the order is reversed
+    // We reverse the array and use + 1 instead of - 1 to get the original order
+    const previousItem = [...networks].reverse()[childIndex + 1];
     const isPreviousItemOpened =
       previousItem?.id !== undefined && openCollapsibles.includes(previousItem.id);
     const childIndexOffset = isPreviousItemOpened ? previousItem?.children?.length || 0 : 0;
@@ -70,12 +71,11 @@ const NetworkDiagram = ({
             className="z-40"
           />
           {
-            networks
+            [...networks]
               .reverse() // We reverse the array to correct the z-index of the svgs
               .map((network, childIndex) => {
                 if (
                   !network ||
-                  typeof network === 'undefined' ||
                   typeof network.name === 'undefined' ||
                   typeof network.id === 'undefined'
                 ) {
@@ -96,24 +96,28 @@ const NetworkDiagram = ({
                       className="z-30"
                     />
                     <CollapsibleContent className="ml-14">
-                      {network?.children
-                        .reverse()
-                        .map(
-                          (child, grandChildIndex) =>
-                            child &&
-                            typeof child.id !== 'undefined' && (
-                              <Item
-                                key={child?.id}
-                                name={child.name}
-                                type={child.type as 'organization' | 'project'}
-                                category={child.category}
-                                id={child?.id}
-                                heightIndex={grandChildIndex}
-                                hasChildren={false}
-                                className="z-20"
-                              />
-                            ),
-                        )}
+                      {
+                        [...network.children]
+                          .reverse() // We reverse the array to correct the z-index of the svgs
+                          .map(
+                            (child, grandChildIndex) =>
+                              child &&
+                              typeof child.id !== 'undefined' && (
+                                <Item
+                                  key={child?.id}
+                                  name={child.name}
+                                  type={child.type as 'organization' | 'project'}
+                                  category={child.category}
+                                  id={child?.id}
+                                  heightIndex={grandChildIndex}
+                                  hasChildren={false}
+                                  className="z-20"
+                                />
+                              ),
+                          )
+                          .reverse()
+                        // We reverse it again to have the same order as the original array
+                      }
                     </CollapsibleContent>
                   </Collapsible>
                 );
