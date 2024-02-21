@@ -66,7 +66,7 @@ const getMapsDefaultProps = (
       padding,
     },
     minZoom: 1,
-    maxZoom: 20,
+    maxZoom: 12,
   };
 };
 
