@@ -107,7 +107,7 @@ export default function PracticesModule() {
         </Button>
       </div>
       <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
-        Showing {practicesCount} practice(s).
+        {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">
         <PracticeList {...practices} />

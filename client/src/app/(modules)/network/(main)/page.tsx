@@ -125,11 +125,17 @@ export default function NetworkModule() {
       <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
         {loadOrganizations &&
           loadProjects &&
-          `Showing ${networksCount.organisation} organisation(s) and ${networksCount.project} project(s).`}
+          `Showing ${networksCount.organisation} organisation${
+            networksCount.organisation > 1 ? 's' : ''
+          } and ${networksCount.project} project${networksCount.project > 1 ? 's' : ''}.`}
         {loadOrganizations &&
           !loadProjects &&
-          `Showing ${networksCount.organisation} organisation(s).`}
-        {!loadOrganizations && loadProjects && `Showing ${networksCount.project} project(s).`}
+          `Showing ${networksCount.organisation} organisation${
+            networksCount.organisation > 1 ? 's' : ''
+          }.`}
+        {!loadOrganizations &&
+          loadProjects &&
+          `Showing ${networksCount.project} project${networksCount.project > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">
         <NetworkList {...networks} />
