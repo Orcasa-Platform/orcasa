@@ -121,17 +121,26 @@ const NetworkDiagram = ({
               .reverse() // We reverse it again to have the same order as the original array
           }
         </div>
-        <div className="flex h-fit w-[165px] flex-col gap-2 border border-dashed border-gray-200 p-6 text-slate-700">
-          <div className="flex items-center gap-2">
-            <span className="h-[3px] w-6 bg-gray-700" />
+        <div className="flex h-fit w-[177px] flex-col gap-2 border border-dashed border-gray-200 p-4 text-slate-700">
+          <div className="relative flex items-center gap-2">
+            <span className="h-[3px] w-10 bg-gray-700" />
+            <span className="min-w-5 absolute left-2.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-700 text-xs text-white">
+              C
+            </span>
             <span>Coordinator</span>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-6 border-t border-gray-700" />
+          <div className="relative flex items-center gap-2">
+            <span className="h-[3px] w-10 bg-gray-300" />
+            <span className="min-w-5 absolute left-2.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 text-xs text-white">
+              P
+            </span>
             <span>Partner</span>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-6 border-t border-dashed border-gray-700" />
+          <div className="relative flex items-center gap-2">
+            <span className="relative h-[3px] w-10 border-t-2 border-dashed border-gray-700" />
+            <span className="min-w-5 absolute left-2.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-700 text-xs text-white">
+              F
+            </span>
             <span>Funder</span>
           </div>
         </div>
