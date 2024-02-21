@@ -123,6 +123,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "practices",
+        "practices_prior"
+      ],
       "edit": [
         [
           {
@@ -140,12 +146,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "practices",
-        "practices_prior"
       ]
     },
     "uid": "api::land-use-type.land-use-type"
