@@ -27,6 +27,7 @@ export const getProjectFields = (project: Project) => {
     third_area_of_intervention: thirdAreaOfIntervention,
     main_area_of_intervention_other: mainAreaOfInterventionOther,
     sustainable_development_goals: sustainableDevelopmentGoals,
+    lead_partner: leadPartner,
   } = project;
 
   const fields = [];
@@ -59,18 +60,28 @@ export const getProjectFields = (project: Project) => {
     });
   }
 
+  if (hasData(leadPartner)) {
+    fields.push({
+      label: 'Coordinator',
+      value: leadPartner?.data?.attributes?.name,
+      url: `/network/organization/${leadPartner?.data?.id}`,
+    });
+  }
+
   if (hasData(projectCoordinatorName)) {
     if (hasData(secondProjectCoordinatorName)) {
       fields.push({
-        label: 'Project coordinators',
+        label: 'Lead partners',
         value: [projectCoordinatorName, secondProjectCoordinatorName],
         url: [`mailto:${projectCoordinatorEmail}`, `mailto:${secondProjectCoordinatorEmail}`],
+        external: true,
       });
     } else {
       fields.push({
-        label: 'Project coordinator',
+        label: 'Lead partner',
         value: projectCoordinatorName,
         url: `mailto:${projectCoordinatorEmail}`,
+        external: true,
       });
     }
   }
