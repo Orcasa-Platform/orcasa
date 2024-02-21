@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 
+import Link from 'next/link';
+
 import { ChevronDown } from 'lucide-react';
 import CoordinatorLetter from 'public/images/network-links/coordinator.svg';
 import FunderLetter from 'public/images/network-links/funder.svg';
@@ -16,6 +18,7 @@ import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
+
 import Document from '@/styles/icons/document.svg';
 
 type PathProps = {
@@ -159,15 +162,16 @@ const Item = ({
           },
         )}
       >
-        <div
+        <Link
           className={cn('text-sm text-slate-700', {
             'line-clamp-2': isOverTwoLines,
           })}
+          href={`/network/${type}/${id}?${searchParams.toString()}`}
           ref={ref}
           {...(isOverTwoLines ? { title: name } : {})}
         >
           {name}
-        </div>
+        </Link>
         {category && (
           <div className="flex min-w-fit max-w-fit items-center gap-4">
             <SlidingLinkButton
