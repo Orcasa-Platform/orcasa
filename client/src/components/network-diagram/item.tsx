@@ -18,7 +18,6 @@ import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
-
 import Document from '@/styles/icons/document.svg';
 
 type PathProps = {
@@ -130,7 +129,7 @@ const Item = ({
   const toggleOpenCollapsible = () => {
     onToggle?.(opened);
   };
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const isOverTwoLines = useIsOverTwoLines(ref, true);
   const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
   const canExpandWithoutChildren = typeof onToggle !== 'undefined' && !hasChildren;
