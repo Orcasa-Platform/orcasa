@@ -96,14 +96,14 @@ export const getProjectFields = (project: Project) => {
 
   if (hasData(regionOfInterventions) && regionOfInterventions?.data?.length) {
     fields.push({
-      label: 'Regions of intervention',
+      label: `Region${regionOfInterventions?.data?.length > 1 ? 's' : ''} of intervention`,
       value: regionOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
 
   if (hasData(countryOfInterventions) && countryOfInterventions?.data?.length) {
     fields.push({
-      label: 'Countries of intervention',
+      label: `Countr${countryOfInterventions?.data?.length > 1 ? 'ies' : 'y'} of intervention`,
       value: countryOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
@@ -126,21 +126,23 @@ export const getProjectFields = (project: Project) => {
     }
 
     fields.push({
-      label: 'Main areas of intervention',
+      label: `Main area${mainAreaOfInterventions.length > 1 ? 's' : ''} of intervention`,
       value: mainAreaOfInterventions.join(', '),
     });
   }
 
   if (hasData(sustainableDevelopmentGoals) && sustainableDevelopmentGoals?.data?.length) {
     fields.push({
-      label: 'Sustainable Development Goals',
+      label: `Sustainable Development Goal${
+        sustainableDevelopmentGoals?.data?.length > 1 ? 's' : ''
+      }`,
       value: sustainableDevelopmentGoals?.data?.map((sdg) => sdg.attributes?.name).join(', '),
     });
   }
 
   if (hasData(landUseTypes) && landUseTypes?.data?.length) {
     fields.push({
-      label: 'Land use type(s)',
+      label: `Land use type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
       value: landUseTypes?.data?.map((lut) => lut.attributes?.name).join(', '),
     });
   }
