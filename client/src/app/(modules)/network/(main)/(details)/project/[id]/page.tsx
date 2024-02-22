@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import env from '@/env.mjs';
 
 import { getProjects, getProjectsId } from '@/types/generated/project';
+import { getRegions } from '@/types/generated/region';
 
 import NetworkDiagram from '@/components/network-diagram';
 import { Button } from '@/components/ui/button';
@@ -49,6 +50,12 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
       funders: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
     },
   });
+  const regionsMeta = await getRegions({
+    fields: ['id'],
+    'pagination[pageSize]': 1,
+  });
+
+  const regionsCount = regionsMeta?.meta?.pagination?.total ?? -1;
   const projectList = data?.data || [];
   const project = projectList[0]?.attributes;
 
@@ -58,7 +65,10 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
 
   const { name, website } = project;
 
-  const fields: Field[] = getProjectFields(project);
+  const fields: Field[] = getProjectFields({
+    ...project,
+    isWorldwide: regionsCount === project.region_of_interventions?.data?.length,
+  });
 
   return (
     <>
