@@ -1,5 +1,6 @@
 import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
+import { useGetLandUseTypes } from '@/types/generated/land-use-type';
 import { useGetOrganizations } from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
 import { useGetOrganizationTypes } from '@/types/generated/organization-type';
@@ -7,15 +8,17 @@ import { useGetProjects } from '@/types/generated/project';
 import { useGetProjectTypes } from '@/types/generated/project-type';
 import { useGetRegions } from '@/types/generated/region';
 import {
-  OrganizationThemeListResponse,
-  OrganizationTypeListResponse,
   CountryListResponse,
-  ProjectListResponse,
-  ProjectTypeListResponse,
-  OrganizationTypeListResponseDataItem,
-  OrganizationThemeListResponseDataItem,
   CountryListResponseDataItem,
+  LandUseTypeListResponse,
+  LandUseTypeListResponseDataItem,
+  OrganizationThemeListResponse,
+  OrganizationThemeListResponseDataItem,
+  OrganizationTypeListResponse,
+  OrganizationTypeListResponseDataItem,
+  ProjectListResponse,
   ProjectListResponseDataItem,
+  ProjectTypeListResponse,
 } from '@/types/generated/strapi.schemas';
 import { useGetSustainableDevGoals } from '@/types/generated/sustainable-dev-goal';
 
@@ -77,18 +80,21 @@ export const useOrganizationGetFormFields = () => {
       | OrganizationTypeListResponse
       | OrganizationThemeListResponse
       | CountryListResponse
-      | ProjectListResponse,
+      | ProjectListResponse
+      | LandUseTypeListResponse,
     sortingFunction?: (
       a:
         | OrganizationTypeListResponseDataItem
         | OrganizationThemeListResponseDataItem
         | CountryListResponseDataItem
-        | ProjectListResponseDataItem,
+        | ProjectListResponseDataItem
+        | LandUseTypeListResponseDataItem,
       b:
         | OrganizationTypeListResponseDataItem
         | OrganizationThemeListResponseDataItem
         | CountryListResponseDataItem
-        | ProjectListResponseDataItem,
+        | ProjectListResponseDataItem
+        | LandUseTypeListResponseDataItem,
     ) => number,
   ) => {
     const parsedData = data?.data
@@ -163,13 +169,20 @@ export const useProjectFormGetFields = () => {
     },
   });
 
+  const { data: landUseTypes } = useGetLandUseTypes(requestObject, {
+    query: {
+      queryKey: ['land-use-types'],
+    },
+  });
+
   if (
     typeof regions === 'undefined' ||
     typeof areasOfIntervention === 'undefined' ||
     typeof sustainableDevelopmentGoals === 'undefined' ||
     typeof countryData === 'undefined' ||
     typeof organizations === 'undefined' ||
-    typeof projectTypes === 'undefined'
+    typeof projectTypes === 'undefined' ||
+    typeof landUseTypes === 'undefined'
   ) {
     return;
   }
@@ -179,7 +192,8 @@ export const useProjectFormGetFields = () => {
       | OrganizationThemeListResponse
       | CountryListResponse
       | ProjectListResponse
-      | ProjectTypeListResponse,
+      | ProjectTypeListResponse
+      | LandUseTypeListResponse,
   ) => {
     return data?.data
       ?.map(
@@ -200,5 +214,6 @@ export const useProjectFormGetFields = () => {
     organizations: parseData(organizations),
     sustainableDevelopmentGoals: parseData(sustainableDevelopmentGoals),
     projectTypes: parseData(projectTypes),
+    landUseTypes: parseData(landUseTypes),
   };
 };

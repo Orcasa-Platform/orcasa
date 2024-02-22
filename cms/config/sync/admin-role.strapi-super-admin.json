@@ -217,7 +217,8 @@
         "fields": [
           "name",
           "practices_prior",
-          "practices"
+          "practices",
+          "projects"
         ]
       },
       "conditions": []
@@ -237,7 +238,8 @@
         "fields": [
           "name",
           "practices_prior",
-          "practices"
+          "practices",
+          "projects"
         ]
       },
       "conditions": []
@@ -250,7 +252,8 @@
         "fields": [
           "name",
           "practices_prior",
-          "practices"
+          "practices",
+          "projects"
         ]
       },
       "conditions": []
@@ -961,7 +964,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "land_use_types"
         ]
       },
       "conditions": []
@@ -1001,7 +1005,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "land_use_types"
         ]
       },
       "conditions": []
@@ -1034,7 +1039,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "land_use_types"
         ]
       },
       "conditions": []
