@@ -13,9 +13,12 @@ import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
 
+import { useIsFormDirty } from '@/store/network';
+
 import { postOrganizations } from '@/types/generated/organization';
 import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/strapi.schemas';
 
+import useBeforeUnloadDirtyForm from '@/hooks/navigation';
 import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
 import InputComponent from '@/components/form/input-component';
@@ -34,6 +37,7 @@ import {
 export default function OrganisationForm() {
   const { organizationTypes, organizationThemes, countries, projects } =
     useOrganizationGetFormFields() || {};
+
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
   const hasData = organizationTypes && organizationThemes && countries && projects;
   const [error, setError] = useState<AxiosError | undefined>();
@@ -195,9 +199,13 @@ export default function OrganisationForm() {
       ],
     },
   });
-  const { handleSubmit, watch } = form;
 
   const router = useRouter();
+
+  const [, setIsFormDirty] = useIsFormDirty();
+  useBeforeUnloadDirtyForm(form);
+
+  const { handleSubmit, watch } = form;
 
   if (!hasData || !fields) {
     return null;
@@ -220,6 +228,7 @@ export default function OrganisationForm() {
       data: normalizedData,
     } as unknown as OrganizationRequest)
       .then(() => {
+        setIsFormDirty(false);
         router.push(`/network/new/organisation/thank-you`);
       })
       .catch((err) => {

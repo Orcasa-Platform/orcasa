@@ -5,8 +5,6 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Filter, Users2 } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
-import env from '@/env.mjs';
-
 import { useSidebarScroll } from '@/store';
 
 import { useFiltersCount, useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
