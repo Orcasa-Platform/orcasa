@@ -13,11 +13,11 @@ export default {
       throw new ApplicationError('Published practices must have Practice Intervention set');
     }
 
-    if (practiceIntervention === 'Land Use Change' && data.land_use_priors?.connect?.length === 0) {
+    if (practiceIntervention === 'Land Use Change' && data.land_use_priors.connect.length === 0) {
       throw new ApplicationError('Practice Intervention of type Land Use Change must have Land Use Priors set');
     }
 
-    if (practiceIntervention === 'Management' && data.subinterventions?.connect?.length === 0) {
+    if (practiceIntervention === 'Management' && data.subinterventions.connect.length === 0) {
       throw new ApplicationError('Practice Intervention of type Management must have Subinterventions set');
     }
   },

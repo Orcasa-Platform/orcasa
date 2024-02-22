@@ -34,20 +34,6 @@
           "sortable": true
         }
       },
-      "description": {
-        "edit": {
-          "label": "description",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "description",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -108,23 +94,19 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
             "name": "name",
             "size": 6
-          },
-          {
-            "name": "description",
-            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "createdAt",
+        "updatedAt"
       ]
     }
   },
