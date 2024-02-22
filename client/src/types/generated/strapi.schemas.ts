@@ -1957,6 +1957,7 @@ export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttribute
 
 export type SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributes = {
   name?: string;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: SustainableDevGoalProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
@@ -3106,6 +3107,7 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
 export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
@@ -4619,6 +4621,7 @@ export type RegionProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
 
 export type RegionProjectsDataItemAttributesProjectTypeDataAttributes = {
   name?: string;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: RegionProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
@@ -4853,6 +4856,7 @@ export interface ProjectTypeResponse {
 
 export interface ProjectType {
   name: string;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: ProjectTypeCreatedBy;
@@ -5071,6 +5075,7 @@ export interface ProjectTypeListResponse {
 
 export type ProjectTypeRequestData = {
   name: string;
+  description?: string;
 };
 
 export interface ProjectTypeRequest {
@@ -6206,6 +6211,7 @@ export type ProjectProjectTypeDataAttributesUpdatedBy = {
 
 export type ProjectProjectTypeDataAttributes = {
   name?: string;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: ProjectProjectTypeDataAttributesCreatedBy;
@@ -7772,6 +7778,7 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
 export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
@@ -9852,6 +9859,7 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
@@ -10284,7 +10292,6 @@ export interface NotificationEmail {
   notification_email?: string;
   createdAt?: string;
   updatedAt?: string;
-  publishedAt?: string;
   createdBy?: NotificationEmailCreatedBy;
   updatedBy?: NotificationEmailUpdatedBy;
 }
@@ -12281,6 +12288,7 @@ export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegi
 export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
@@ -13801,6 +13809,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes = {
   name?: string;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
