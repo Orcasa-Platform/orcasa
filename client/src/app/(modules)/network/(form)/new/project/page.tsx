@@ -15,9 +15,12 @@ import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
 
+import { useIsFormDirty } from '@/store/network';
+
 import { postProjects } from '@/types/generated/project';
 import { ProjectRequest, ProjectRequestData } from '@/types/generated/strapi.schemas';
 
+import useBeforeUnloadDirtyForm from '@/hooks/navigation';
 import { useProjectFormGetFields } from '@/hooks/networks/forms';
 
 import InputComponent from '@/components/form/input-component';
@@ -414,6 +417,9 @@ export default function ProjectForm() {
 
   const router = useRouter();
 
+  const [, setIsFormDirty] = useIsFormDirty();
+  useBeforeUnloadDirtyForm(form);
+
   if (!hasData || !fields) {
     return null;
   }
@@ -431,6 +437,7 @@ export default function ProjectForm() {
       data: normalizedData,
     } as unknown as ProjectRequest)
       .then(() => {
+        setIsFormDirty(false);
         router.push(`/network/new/project/thank-you`);
       })
       .catch((err) => {

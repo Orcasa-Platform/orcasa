@@ -61,8 +61,15 @@ const filtersAtom = atom<NetworkFilters>({
   interventionCountry: [],
   interventionArea: [],
 });
+
 export const useNetworkFilters = () => {
   return useAtom(filtersAtom);
+};
+
+const isFormDirtyAtom = atom<boolean>(false);
+
+export const useIsFormDirty = () => {
+  return useAtom(isFormDirtyAtom);
 };
 
 export const useNetworkOrganizationFilters = () => {
