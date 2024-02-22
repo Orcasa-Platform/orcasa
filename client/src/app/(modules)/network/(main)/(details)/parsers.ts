@@ -71,14 +71,14 @@ export const getProjectFields = (project: Project) => {
   if (hasData(projectCoordinatorName)) {
     if (hasData(secondProjectCoordinatorName)) {
       fields.push({
-        label: 'Lead partners',
+        label: 'Project managers',
         value: [projectCoordinatorName, secondProjectCoordinatorName],
         url: [`mailto:${projectCoordinatorEmail}`, `mailto:${secondProjectCoordinatorEmail}`],
         external: true,
       });
     } else {
       fields.push({
-        label: 'Lead partner',
+        label: 'Project manager',
         value: projectCoordinatorName,
         url: `mailto:${projectCoordinatorEmail}`,
         external: true,
