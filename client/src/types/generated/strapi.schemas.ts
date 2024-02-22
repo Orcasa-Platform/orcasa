@@ -10284,7 +10284,6 @@ export interface NotificationEmail {
   notification_email?: string;
   createdAt?: string;
   updatedAt?: string;
-  publishedAt?: string;
   createdBy?: NotificationEmailCreatedBy;
   updatedBy?: NotificationEmailUpdatedBy;
 }
