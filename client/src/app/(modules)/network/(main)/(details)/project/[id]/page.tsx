@@ -1,9 +1,7 @@
 import { notFound } from 'next/navigation';
 
-import { ExternalLink, Pencil } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
-
-import env from '@/env.mjs';
 
 import { getProjects, getProjectsId } from '@/types/generated/project';
 import { getRegions } from '@/types/generated/region';
@@ -13,6 +11,7 @@ import { Button } from '@/components/ui/button';
 
 import Field from '../../field';
 import { getProjectFields } from '../../parsers';
+import SuggestButton from '../../suggest-button';
 
 interface ProjectDetailsProps {
   params: { id: string };
@@ -80,20 +79,8 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
         ))}
       </div>
       <div className="mt-10 flex justify-end gap-4">
-        <Button variant="secondary" asChild>
-          <a
-            href={`mailto:${
-              env.NEXT_PUBLIC_NETWORK_SUGGESTION_EMAIL_RECIPIENTS
-            }?subject=${encodeURIComponent(
-              `Impact4Soil - Network - Change suggestion for project "${project.name}", ID: ${id}`,
-            )}&body=${encodeURIComponent(
-              `Kindly provide comprehensive details below regarding the changes you'd like to suggest. Include your name, your affiliated organization, and an email address for potential contact. Thank you for assisting us in keeping the Soil Carbon Network up-to-date! Sincerely, The Impact4Soil Team.`,
-            )}`}
-          >
-            <Pencil className="mr-2 h-6 w-6" />
-            Suggest changes
-          </a>
-        </Button>
+        <SuggestButton id={id} data={project} label="project" />
+
         <Button asChild variant="secondary" disabled={!website}>
           <a href={website} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-6 w-6" />

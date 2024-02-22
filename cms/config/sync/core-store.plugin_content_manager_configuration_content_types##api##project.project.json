@@ -355,7 +355,7 @@
       },
       "land_use_types": {
         "edit": {
-          "label": "Land Use Types",
+          "label": "land_use_types",
           "description": "",
           "placeholder": "",
           "visible": true,
