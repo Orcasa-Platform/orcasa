@@ -97,7 +97,9 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
 
   if (hasData(regionOfInterventions) && regionOfInterventions?.data?.length) {
     fields.push({
-      label: `Region${isWorldwide || regionOfInterventions?.data?.length === 1 ? '' : 's'} of intervention`,
+      label: `Region${
+        isWorldwide || regionOfInterventions?.data?.length === 1 ? '' : 's'
+      } of intervention`,
       value: isWorldwide
         ? 'Worldwide'
         : regionOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),

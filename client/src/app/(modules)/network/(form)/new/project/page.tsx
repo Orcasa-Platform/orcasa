@@ -572,7 +572,7 @@ export default function ProjectForm() {
             </div>
             {renderFields(['lead_partner', 'partners', 'funders'])}
             <h2 className="mt-10 flex items-center gap-2 font-serif text-2xl text-gray-700">
-              Coordinator contact details
+              Manager contact details
               <TooltipProvider>
                 <Tooltip delayDuration={0} open={openInfo} onOpenChange={setInfoOpen}>
                   <TooltipTrigger asChild onClick={handleInfoClick}>
@@ -582,18 +582,18 @@ export default function ProjectForm() {
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent variant="dark" className="max-w-[227px] font-sans">
-                    <p>Contact details of the person responsible of project coordination.</p>
+                    <p>Contact details of the person responsible for project management.</p>
                     <TooltipArrow variant="dark" />
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </h2>
             <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
-              Project coordinator:
+              Project manager:
             </h3>
             {renderFields(['project_coordinator_name', 'project_coordinator_email'])}
             <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
-              Second project coordinator:
+              Second project manager:
             </h3>
             {renderFields(['second_project_coordinator_name', 'second_project_coordinator_email'])}
             <h2 className="mt-10 font-serif text-2xl text-gray-700">Project information</h2>
