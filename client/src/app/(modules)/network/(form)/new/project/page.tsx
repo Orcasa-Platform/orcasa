@@ -15,9 +15,12 @@ import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
 
+import { useIsFormDirty } from '@/store/network';
+
 import { postProjects } from '@/types/generated/project';
 import { ProjectRequest, ProjectRequestData } from '@/types/generated/strapi.schemas';
 
+import useBeforeUnloadDirtyForm from '@/hooks/navigation';
 import { useProjectFormGetFields } from '@/hooks/networks/forms';
 
 import InputComponent from '@/components/form/input-component';
@@ -47,6 +50,7 @@ export default function ProjectForm() {
     areasOfIntervention,
     sustainableDevelopmentGoals,
     projectTypes,
+    landUseTypes,
   } = useProjectFormGetFields() || {};
   const [openInfo, setInfoOpen] = useState(false);
   const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
@@ -370,6 +374,17 @@ export default function ProjectForm() {
       }),
       type: 'email',
     },
+    land_use_types: {
+      label: 'Land use types',
+      zod: z
+        .array(z.enum(landUseTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]))
+        .optional(),
+      type: 'multiselect',
+      options: landUseTypes?.map((type) => ({
+        label: type.name,
+        value: type.id.toString(),
+      })),
+    },
   };
   const fields = hasData && fieldValues;
   const formSchema = z.object(
@@ -414,6 +429,9 @@ export default function ProjectForm() {
 
   const router = useRouter();
 
+  const [, setIsFormDirty] = useIsFormDirty();
+  useBeforeUnloadDirtyForm(form);
+
   if (!hasData || !fields) {
     return null;
   }
@@ -431,6 +449,7 @@ export default function ProjectForm() {
       data: normalizedData,
     } as unknown as ProjectRequest)
       .then(() => {
+        setIsFormDirty(false);
         router.push(`/network/new/project/thank-you`);
       })
       .catch((err) => {
@@ -596,6 +615,7 @@ export default function ProjectForm() {
               'secondary_area_of_intervention',
               'third_area_of_intervention',
               'sustainable_development_goals',
+              'land_use_types',
             ])}
 
             <div className="space-y-6 border-t border-dashed border-gray-300">

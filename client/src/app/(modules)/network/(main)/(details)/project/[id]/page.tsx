@@ -48,6 +48,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
       sustainable_development_goals: { fields: ['name', 'id'] },
       partners: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
       funders: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
+      land_use_types: { fields: ['name', 'id'] },
     },
   });
   const regionsMeta = await getRegions({

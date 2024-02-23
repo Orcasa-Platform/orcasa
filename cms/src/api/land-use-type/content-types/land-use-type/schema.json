@@ -27,6 +27,12 @@
       "relation": "manyToMany",
       "target": "api::practice.practice",
       "mappedBy": "land_use_change"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "land_use_types"
     }
   }
 }

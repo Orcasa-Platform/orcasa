@@ -353,6 +353,21 @@
           "sortable": true
         }
       },
+      "land_use_types": {
+        "edit": {
+          "label": "Land Use Types",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "land_use_types",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -535,6 +550,12 @@
           },
           {
             "name": "publication_status",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "land_use_types",
             "size": 6
           }
         ]
