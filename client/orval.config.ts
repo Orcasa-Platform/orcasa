@@ -80,6 +80,7 @@ export default {
           'Sustainable-dev-goal',
           'Home-stat',
           'Practice',
+          'Network-suggestion',
         ],
       },
     },
