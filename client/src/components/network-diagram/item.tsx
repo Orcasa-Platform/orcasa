@@ -109,6 +109,7 @@ type ItemProps = Pick<Project | Organization, 'name'> & {
   isFirst?: boolean;
   hasDot?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 };
 const Item = ({
   name,
@@ -121,6 +122,7 @@ const Item = ({
   hasChildren,
   hasDot,
   className,
+  style,
 }: ItemProps) => {
   const isFirstNode = !category;
   const isGranchild = category && !onToggle;
@@ -134,7 +136,7 @@ const Item = ({
   const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
   const canExpandWithoutChildren = typeof onToggle !== 'undefined' && !hasChildren;
   return (
-    <div className={cn('relative z-30 -mt-6 w-full', className)}>
+    <div className={cn('relative z-30 -mt-6 w-full', className)} style={style}>
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
         <Path

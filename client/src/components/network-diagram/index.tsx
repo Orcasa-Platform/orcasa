@@ -117,7 +117,7 @@ const NetworkDiagram = ({
                                   id={child?.id}
                                   heightIndex={grandChildIndex}
                                   hasChildren={false}
-                                  className="z-20"
+                                  style={{ zIndex: 20 + +grandChildIndex }}
                                 />
                               ),
                           )
