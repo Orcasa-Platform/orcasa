@@ -1,7 +1,7 @@
 import { MutableRefObject, useCallback, useEffect, useState } from 'react';
 
 export const useIsOverTwoLines = (
-  ref: MutableRefObject<HTMLDivElement | null>,
+  ref: MutableRefObject<HTMLDivElement | HTMLAnchorElement | null>,
   hasEllipsis = false,
 ) => {
   const [isOverTwoLines, setIsOverTwoLines] = useState(false);
