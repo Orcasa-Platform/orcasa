@@ -8,7 +8,7 @@ const hasData = (field: Project[keyof Project]) => {
   return typeof field !== 'undefined' && field?.data;
 };
 
-export const getProjectFields = (project: Project) => {
+export const getProjectFields = (project: Project & { isWorldwide: boolean }) => {
   const {
     short_description: shortDescription,
     description,
@@ -28,6 +28,7 @@ export const getProjectFields = (project: Project) => {
     main_area_of_intervention_other: mainAreaOfInterventionOther,
     sustainable_development_goals: sustainableDevelopmentGoals,
     lead_partner: leadPartner,
+    isWorldwide,
     land_use_types: landUseTypes,
   } = project;
 
@@ -96,8 +97,10 @@ export const getProjectFields = (project: Project) => {
 
   if (hasData(regionOfInterventions) && regionOfInterventions?.data?.length) {
     fields.push({
-      label: `Region${regionOfInterventions?.data?.length > 1 ? 's' : ''} of intervention`,
-      value: regionOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
+      label: `Region${isWorldwide || regionOfInterventions?.data?.length === 1 ? '' : 's'} of intervention`,
+      value: isWorldwide
+        ? 'Worldwide'
+        : regionOfInterventions?.data?.map((c) => c.attributes?.name).join(', '),
     });
   }
 

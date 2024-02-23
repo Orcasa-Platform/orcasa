@@ -24,9 +24,11 @@ import OrganizationIcon from '@/styles/icons/organisation.svg';
 const Icons = ({
   type,
   attributes,
+  isWorldwide,
 }: {
   type: 'project' | 'organization';
   attributes: Project | Organization | undefined;
+  isWorldwide?: boolean;
 }) => {
   if (!attributes) return null;
   if (type === 'project') {
@@ -37,7 +39,9 @@ const Icons = ({
       region_of_interventions,
     } = (attributes as Project) || {};
     const projectType = project_type?.data?.attributes?.name;
-    const regionName = region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
+    const regionName = isWorldwide
+      ? 'Worldwide'
+      : region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
     return (
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         {projectType && (
@@ -94,9 +98,11 @@ export default function Network({
   id,
   attributes,
   type,
+  isWorldwide,
 }: ProjectListResponseDataItem &
   OrganizationListResponseDataItem & {
     type: 'project' | 'organization';
+    isWorldwide?: boolean;
   }) {
   const { name, short_description: shortDescription } = attributes || {};
   const searchParams = useMapSearchParams();
@@ -111,7 +117,7 @@ export default function Network({
     >
       <div className="flex w-full flex-col justify-between gap-6 px-12 py-10 text-base text-slate-500">
         <header className="flex flex-col gap-6">
-          <Icons type={type} attributes={attributes} />
+          <Icons type={type} attributes={attributes} isWorldwide={isWorldwide} />
           <div
             className={cn('font-serif text-2xl leading-10', {
               'text-peach-700': type === 'project',

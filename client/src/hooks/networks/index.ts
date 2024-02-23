@@ -9,8 +9,8 @@ import { NetworkFilters, NetworkOrganizationFilters, NetworkProjectFilters } fro
 import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
 import {
-  useGetOrganizationsId,
   useGetOrganizations,
+  useGetOrganizationsId,
   useGetOrganizationsInfinite,
 } from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
@@ -23,28 +23,28 @@ import {
 import { useGetProjectTypes } from '@/types/generated/project-type';
 import { useGetRegions } from '@/types/generated/region';
 import {
+  AreaOfInterventionListResponseDataItem,
+  OrganizationFundedProjectsDataItem,
+  OrganizationLeadProjectsDataItem,
+  OrganizationListResponse,
+  OrganizationListResponseDataItem,
+  OrganizationPartnerProjectsDataItem,
+  OrganizationResponse,
+  ProjectListResponse,
   ProjectListResponseDataItem,
   ProjectResponse,
-  OrganizationResponse,
-  OrganizationListResponseDataItem,
-  OrganizationLeadProjectsDataItem,
-  OrganizationPartnerProjectsDataItem,
-  OrganizationFundedProjectsDataItem,
-  ProjectListResponse,
-  OrganizationListResponse,
-  AreaOfInterventionListResponseDataItem,
 } from '@/types/generated/strapi.schemas';
 
 import {
+  getCountryData,
+  getParsedData,
+  getPopulateForFilters,
   ORGANIZATION_KEYS,
-  PROJECT_KEYS,
   parseData,
+  ParsedData,
   parseOrganization,
   parseProject,
-  ParsedData,
-  getPopulateForFilters,
-  getParsedData,
-  getCountryData,
+  PROJECT_KEYS,
 } from '@/hooks/networks/utils';
 
 import { sortByOrderAndName } from './utils';
@@ -687,7 +687,35 @@ export const useNetworkDiagram = ({
   };
 };
 
-export const useNetworks = ({ size = 20, filters }: { size?: number; filters: NetworkFilters }) => {
+export const useRegionsCount = () => {
+  const { data, isFetching, isFetched, isPlaceholderData, isError } = useGetRegions({
+    fields: ['id'],
+    'pagination[pageSize]': 1,
+  });
+  return {
+    data: data?.meta?.pagination?.total ?? -1,
+    isFetching,
+    isFetched,
+    isPlaceholderData,
+    isError,
+  };
+};
+
+export const useNetworks = ({
+  size = 20,
+  filters,
+  regionsCount,
+}: {
+  size?: number;
+  filters: NetworkFilters;
+  regionsCount: {
+    data: number;
+    isFetching: boolean;
+    isFetched: boolean;
+    isPlaceholderData: boolean;
+    isError: boolean;
+  };
+}) => {
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadProjects = !filters.type?.length || filters.type.includes('project');
 
@@ -756,7 +784,7 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
   const networks = useMemo(() => {
     type Networks = (
       | (OrganizationListResponseDataItem & { type: 'organization' })
-      | (ProjectListResponseDataItem & { type: 'project' })
+      | (ProjectListResponseDataItem & { type: 'project'; isWorldwide: boolean })
     )[];
 
     const sortAlphabetically = (a: Networks[0], b: Networks[0]) =>
@@ -782,13 +810,18 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
             ...organization,
             type: 'organization',
           })) as Networks),
-          ...(projects.map((project) => ({ ...project, type: 'project' })) as Networks),
+          ...(projects.map((project) => ({
+            ...project,
+            type: 'project',
+            isWorldwide:
+              project?.attributes?.region_of_interventions?.data?.length === regionsCount.data,
+          })) as Networks),
         ].sort(sortAlphabetically),
       ];
     }
 
     return res;
-  }, [organizationsData, projectsData, loadOrganizations, loadProjects]);
+  }, [organizationsData, projectsData, loadOrganizations, loadProjects, regionsCount.data]);
 
   return {
     networks,
@@ -803,10 +836,11 @@ export const useNetworks = ({ size = 20, filters }: { size?: number; filters: Ne
     },
     hasNextPage: organizationsHasNextPage || projectsHasNextPage,
     isFetchingNextPage: organizationsIsFetchingNextPage || projectsIsFetchingNextPage,
-    isFetching: organizationsIsFetching || projectsIsFetching,
-    isFetched: organizationsIsFetched || projectsIsFetched,
-    isPlaceholderData: organizationsIsPlaceholderData || projectsIsPlaceholderData,
-    isError: organizationsIsError || projectsIsError,
+    isFetching: organizationsIsFetching || projectsIsFetching || regionsCount.isFetching,
+    isFetched: organizationsIsFetched || projectsIsFetched || regionsCount.isFetched,
+    isPlaceholderData:
+      organizationsIsPlaceholderData || projectsIsPlaceholderData || regionsCount.isPlaceholderData,
+    isError: organizationsIsError || projectsIsError || regionsCount.isError,
   };
 };
 
