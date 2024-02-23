@@ -17,7 +17,7 @@ const SuggestButton = ({
 }) => {
   const networkEmails = useGetNetworkSuggestion();
   const emails = networkEmails.data?.data?.attributes?.email_recipients as string[] | undefined;
-  if (!emails || typeof emails === 'undefined') return null;
+  if (!emails) return null;
   return (
     <Button variant="secondary" asChild>
       <a
