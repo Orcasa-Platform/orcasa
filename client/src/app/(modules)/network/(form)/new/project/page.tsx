@@ -214,6 +214,17 @@ export default function ProjectForm() {
       })),
       required: true,
     },
+    land_use_types: {
+      label: 'Land use types',
+      zod: z
+        .array(z.enum(landUseTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]))
+        .optional(),
+      type: 'multiselect',
+      options: landUseTypes?.map((type) => ({
+        label: type.name,
+        value: type.id.toString(),
+      })),
+    },
     start_date: {
       label: 'Start date',
       required: true,
@@ -373,17 +384,6 @@ export default function ProjectForm() {
         message: 'Email is limited to 255 characters.',
       }),
       type: 'email',
-    },
-    land_use_types: {
-      label: 'Land use types',
-      zod: z
-        .array(z.enum(landUseTypes?.map((type) => type?.id?.toString()) as [string, ...string[]]))
-        .optional(),
-      type: 'multiselect',
-      options: landUseTypes?.map((type) => ({
-        label: type.name,
-        value: type.id.toString(),
-      })),
     },
   };
   const fields = hasData && fieldValues;

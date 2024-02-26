@@ -95,6 +95,13 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
     });
   }
 
+  if (hasData(landUseTypes) && landUseTypes?.data?.length) {
+    fields.push({
+      label: `Land use type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
+      value: landUseTypes?.data?.map((lut) => lut.attributes?.name).join(', '),
+    });
+  }
+
   if (hasData(regionOfInterventions) && regionOfInterventions?.data?.length) {
     fields.push({
       label: `Region${
@@ -142,13 +149,6 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
         sustainableDevelopmentGoals?.data?.length > 1 ? 's' : ''
       }`,
       value: sustainableDevelopmentGoals?.data?.map((sdg) => sdg.attributes?.name).join(', '),
-    });
-  }
-
-  if (hasData(landUseTypes) && landUseTypes?.data?.length) {
-    fields.push({
-      label: `Land use type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
-      value: landUseTypes?.data?.map((lut) => lut.attributes?.name).join(', '),
     });
   }
 
