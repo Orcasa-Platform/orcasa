@@ -39,7 +39,12 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
   }
 
   if (description && description.length > 0) {
-    fields.push({ label: 'Description and outcomes', value: description, hasEllipsis: true });
+    fields.push({
+      label: 'Description and outcomes',
+      value: description,
+      hasEllipsis: true,
+      rawHTML: true,
+    });
   }
 
   if (startDate) {

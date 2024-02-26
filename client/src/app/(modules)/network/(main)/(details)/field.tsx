@@ -15,9 +15,18 @@ type Field = {
   url?: string | string[];
   external?: boolean;
   hasEllipsis?: boolean;
+  rawHTML?: boolean;
 };
 
-const Field = ({ label, value, url, external, type, hasEllipsis }: Field & { type: Type }) => {
+const Field = ({
+  label,
+  value,
+  url,
+  external,
+  type,
+  hasEllipsis,
+  rawHTML,
+}: Field & { type: Type }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const isOverTwoLines = useIsOverTwoLines(ref, hasEllipsis);
@@ -74,14 +83,24 @@ const Field = ({ label, value, url, external, type, hasEllipsis }: Field & { typ
         renderLink(url, external)
       ) : (
         <div>
-          <div
-            ref={ref}
-            className={cn('text-sm', {
-              'line-clamp-2': !isExpanded && isOverTwoLines,
-            })}
-          >
-            {value}
-          </div>
+          {rawHTML ? (
+            <div
+              ref={ref}
+              className={cn('text-sm', {
+                'line-clamp-2': !isExpanded && isOverTwoLines,
+              })}
+              dangerouslySetInnerHTML={{ __html: (value as string) || '' }}
+            />
+          ) : (
+            <div
+              ref={ref}
+              className={cn('text-sm', {
+                'line-clamp-2': !isExpanded && isOverTwoLines,
+              })}
+            >
+              {value}
+            </div>
+          )}
           {isOverTwoLines && (
             <button
               onClick={toggleExpanded}
