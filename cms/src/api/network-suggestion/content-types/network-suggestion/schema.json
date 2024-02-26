@@ -12,7 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "email_recipients": {
+    "new_suggestion_email_recipients": {
+      "type": "customField",
+      "options": {
+        "separator": "comma"
+      },
+      "customField": "plugin::string-array.input"
+    },
+    "edit_suggestion_email_recipients": {
       "type": "customField",
       "options": {
         "separator": "comma"

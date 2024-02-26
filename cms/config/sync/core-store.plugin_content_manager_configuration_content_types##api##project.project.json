@@ -101,8 +101,8 @@
         },
         "list": {
           "label": "Description",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "country_of_coordination": {
@@ -413,6 +413,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
+      ],
       "edit": [
         [
           {
@@ -439,10 +445,6 @@
         [
           {
             "name": "short_description",
-            "size": 6
-          },
-          {
-            "name": "description",
             "size": 6
           }
         ],
@@ -531,13 +533,13 @@
             "name": "publication_status",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
       ]
     }
   },
