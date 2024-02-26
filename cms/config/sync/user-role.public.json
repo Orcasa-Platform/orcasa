@@ -46,9 +46,6 @@
       "action": "api::layer.layer.findOne"
     },
     {
-      "action": "api::network-suggestion.network-suggestion.find"
-    },
-    {
       "action": "api::organization-theme.organization-theme.find"
     },
     {
