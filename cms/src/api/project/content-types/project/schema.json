@@ -35,10 +35,6 @@
       "maxLength": 350,
       "required": true
     },
-    "description": {
-      "type": "text",
-      "maxLength": 3000
-    },
     "country_of_coordination": {
       "type": "relation",
       "relation": "oneToOne",
@@ -130,6 +126,13 @@
       "relation": "manyToMany",
       "target": "api::land-use-type.land-use-type",
       "inversedBy": "projects"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }

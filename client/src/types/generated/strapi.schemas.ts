@@ -1126,7 +1126,6 @@ export type SustainableDevGoalProjectsDataItemAttributes = {
   start_date?: string;
   end_date?: string;
   short_description?: string;
-  description?: string;
   country_of_coordination?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordination;
   region_of_interventions?: SustainableDevGoalProjectsDataItemAttributesRegionOfInterventions;
   country_of_interventions?: SustainableDevGoalProjectsDataItemAttributesCountryOfInterventions;
@@ -1145,6 +1144,7 @@ export type SustainableDevGoalProjectsDataItemAttributes = {
   funders?: SustainableDevGoalProjectsDataItemAttributesFunders;
   publication_status?: SustainableDevGoalProjectsDataItemAttributesPublicationStatus;
   land_use_types?: SustainableDevGoalProjectsDataItemAttributesLandUseTypes;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: SustainableDevGoalProjectsDataItemAttributesCreatedBy;
@@ -2596,7 +2596,6 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     start_date?: string;
     end_date?: string;
     short_description?: string;
-    description?: string;
     country_of_coordination?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
     region_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
     country_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
@@ -2615,6 +2614,7 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegio
     funders?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
     publication_status?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
     land_use_types?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
@@ -3864,7 +3864,6 @@ export type RegionProjectsDataItemAttributes = {
   start_date?: string;
   end_date?: string;
   short_description?: string;
-  description?: string;
   country_of_coordination?: RegionProjectsDataItemAttributesCountryOfCoordination;
   region_of_interventions?: RegionProjectsDataItemAttributesRegionOfInterventions;
   country_of_interventions?: RegionProjectsDataItemAttributesCountryOfInterventions;
@@ -3883,6 +3882,7 @@ export type RegionProjectsDataItemAttributes = {
   funders?: RegionProjectsDataItemAttributesFunders;
   publication_status?: RegionProjectsDataItemAttributesPublicationStatus;
   land_use_types?: RegionProjectsDataItemAttributesLandUseTypes;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: RegionProjectsDataItemAttributesCreatedBy;
@@ -5279,7 +5279,6 @@ export interface Project {
   start_date: string;
   end_date?: string;
   short_description: string;
-  description?: string;
   country_of_coordination: ProjectCountryOfCoordination;
   region_of_interventions?: ProjectRegionOfInterventions;
   country_of_interventions?: ProjectCountryOfInterventions;
@@ -5298,6 +5297,7 @@ export interface Project {
   funders?: ProjectFunders;
   publication_status: ProjectPublicationStatus;
   land_use_types?: ProjectLandUseTypes;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: ProjectCreatedBy;
@@ -5555,7 +5555,6 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     start_date?: string;
     end_date?: string;
     short_description?: string;
-    description?: string;
     country_of_coordination?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
     region_of_interventions?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
     country_of_interventions?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
@@ -5574,6 +5573,7 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     funders?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
     publication_status?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
     land_use_types?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
@@ -6658,7 +6658,6 @@ export type ProjectRequestData = {
   start_date: string;
   end_date?: string;
   short_description: string;
-  description?: string;
   country_of_coordination: ProjectRequestDataCountryOfCoordination;
   region_of_interventions?: ProjectRequestDataRegionOfInterventionsItem[];
   country_of_interventions?: ProjectRequestDataCountryOfInterventionsItem[];
@@ -6677,6 +6676,7 @@ export type ProjectRequestData = {
   funders?: ProjectRequestDataFundersItem[];
   publication_status: ProjectRequestDataPublicationStatus;
   land_use_types?: ProjectRequestDataLandUseTypesItem[];
+  description?: string;
 };
 
 export interface ProjectRequest {
@@ -7173,7 +7173,6 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
   start_date?: string;
   end_date?: string;
   short_description?: string;
-  description?: string;
   country_of_coordination?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
   region_of_interventions?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
   country_of_interventions?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
@@ -7192,6 +7191,7 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
   funders?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
   publication_status?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
   land_use_types?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
@@ -9414,7 +9414,6 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
   start_date?: string;
   end_date?: string;
   short_description?: string;
-  description?: string;
   country_of_coordination?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
   region_of_interventions?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
   country_of_interventions?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
@@ -9433,6 +9432,7 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
   funders?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
   publication_status?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
   land_use_types?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
@@ -11819,7 +11819,6 @@ export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegi
     start_date?: string;
     end_date?: string;
     short_description?: string;
-    description?: string;
     country_of_coordination?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
     region_of_interventions?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
     country_of_interventions?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
@@ -11838,6 +11837,7 @@ export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegi
     funders?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
     publication_status?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
     land_use_types?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+    description?: string;
     createdAt?: string;
     updatedAt?: string;
     createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
@@ -13035,7 +13035,6 @@ export type CountryRegionDataAttributesProjectsDataItemAttributes = {
   start_date?: string;
   end_date?: string;
   short_description?: string;
-  description?: string;
   country_of_coordination?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
   region_of_interventions?: CountryRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
   country_of_interventions?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
@@ -13054,6 +13053,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributes = {
   funders?: CountryRegionDataAttributesProjectsDataItemAttributesFunders;
   publication_status?: CountryRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
   land_use_types?: CountryRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+  description?: string;
   createdAt?: string;
   updatedAt?: string;
   createdBy?: CountryRegionDataAttributesProjectsDataItemAttributesCreatedBy;

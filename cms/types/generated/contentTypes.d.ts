@@ -1151,10 +1151,13 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 350;
       }>;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 3000;
-      }>;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
     country: Attribute.Relation<
       'api::organization.organization',
       'oneToOne',
@@ -1471,10 +1474,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 350;
       }>;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 3000;
-      }>;
     country_of_coordination: Attribute.Relation<
       'api::project.project',
       'oneToOne',
@@ -1543,6 +1542,13 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::land-use-type.land-use-type'
     >;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
