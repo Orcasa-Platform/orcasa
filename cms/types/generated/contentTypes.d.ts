@@ -1079,7 +1079,14 @@ export interface ApiNetworkSuggestionNetworkSuggestion
     draftAndPublish: false;
   };
   attributes: {
-    email_recipients: Attribute.Text &
+    new_suggestion_email_recipients: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'comma';
+        }
+      >;
+    edit_suggestion_email_recipients: Attribute.Text &
       Attribute.CustomField<
         'plugin::string-array.input',
         {
@@ -1096,43 +1103,6 @@ export interface ApiNetworkSuggestionNetworkSuggestion
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::network-suggestion.network-suggestion',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiNotificationEmailNotificationEmail
-  extends Schema.SingleType {
-  collectionName: 'notification_emails';
-  info: {
-    singularName: 'notification-email';
-    pluralName: 'notification-emails';
-    displayName: 'Notification Email';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    notification_email: Attribute.Text &
-      Attribute.CustomField<
-        'plugin::string-array.input',
-        {
-          separator: 'comma';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::notification-email.notification-email',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::notification-email.notification-email',
       'oneToOne',
       'admin::user'
     > &
@@ -1788,7 +1758,6 @@ declare module '@strapi/types' {
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
       'api::network-suggestion.network-suggestion': ApiNetworkSuggestionNetworkSuggestion;
-      'api::notification-email.notification-email': ApiNotificationEmailNotificationEmail;
       'api::organization.organization': ApiOrganizationOrganization;
       'api::organization-theme.organization-theme': ApiOrganizationThemeOrganizationTheme;
       'api::organization-type.organization-type': ApiOrganizationTypeOrganizationType;

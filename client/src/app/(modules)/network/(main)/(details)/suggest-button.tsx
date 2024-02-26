@@ -16,7 +16,9 @@ const SuggestButton = ({
   label: 'project' | 'organisation';
 }) => {
   const networkEmails = useGetNetworkSuggestion();
-  const emails = networkEmails.data?.data?.attributes?.email_recipients as string[] | undefined;
+  const emails = networkEmails.data?.data?.attributes?.edit_suggestion_email_recipients as
+    | string[]
+    | undefined;
   if (!emails) return null;
   return (
     <Button variant="secondary" asChild>

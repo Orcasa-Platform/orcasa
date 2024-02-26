@@ -19,16 +19,30 @@
           "sortable": true
         }
       },
-      "email_recipients": {
+      "new_suggestion_email_recipients": {
         "edit": {
-          "label": "Email Recipients",
+          "label": "New Suggestion Email Recipients",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "email_recipients",
+          "label": "new_suggestion_email_recipients",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "edit_suggestion_email_recipients": {
+        "edit": {
+          "label": "Edit Suggestion Email Recipients",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "edit_suggestion_email_recipients",
           "searchable": true,
           "sortable": true
         }
@@ -96,16 +110,20 @@
       "edit": [
         [
           {
-            "name": "email_recipients",
+            "name": "new_suggestion_email_recipients",
+            "size": 6
+          },
+          {
+            "name": "edit_suggestion_email_recipients",
             "size": 6
           }
         ]
       ],
       "list": [
         "id",
-        "email_recipients",
         "createdAt",
-        "updatedAt"
+        "updatedAt",
+        "new_suggestion_email_recipients"
       ]
     },
     "uid": "api::network-suggestion.network-suggestion"
