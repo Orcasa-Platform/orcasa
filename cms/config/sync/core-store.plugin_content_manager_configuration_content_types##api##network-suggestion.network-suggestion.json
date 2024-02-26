@@ -21,7 +21,7 @@
       },
       "email_recipients": {
         "edit": {
-          "label": "Email Recipients",
+          "label": "email_recipients",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -93,6 +93,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "email_recipients"
+      ],
       "edit": [
         [
           {
@@ -100,12 +106,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "email_recipients",
-        "createdAt",
-        "updatedAt"
       ]
     },
     "uid": "api::network-suggestion.network-suggestion"

@@ -39,10 +39,10 @@ export default factories.createCoreController('api::project.project', () => ({
 
     const response = await super.create(ctx);
 
-    const notificationEmails: any = await strapi.entityService.findMany('api::notification-email.notification-email');
-    if (notificationEmails?.notification_email) {
+    const networkSuggestion: any = await strapi.entityService.findMany('api::network-suggestion.network-suggestion');
+    if (networkSuggestion?.new_suggestion_email_recipients) {
       await strapi.plugins['email'].services.email.send({
-        bcc: notificationEmails.notification_email,
+        bcc: networkSuggestion.new_suggestion_email_recipients,
         subject:  `Impact4Soil - Network - New Project suggestion "${response.data.attributes.name}", ID: ${response.data.id}` ,
         text: `<h3>New Project suggestion created</h3>
              <p> You may review the details via the following link: <a href="${env('CMS_URL')}admin/content-manager/collection-types/api::project.project/${response.data.id}">Review Project</a></p>`
