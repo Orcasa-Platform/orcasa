@@ -289,7 +289,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Sustainable Development Goals",
+          "label": "sustainable_development_goals",
           "searchable": false,
           "sortable": false
         }
@@ -355,7 +355,7 @@
       },
       "land_use_types": {
         "edit": {
-          "label": "Land Use Types",
+          "label": "land_use_types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -363,7 +363,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Land Use Types",
+          "label": "land_use_types",
           "searchable": false,
           "sortable": false
         }
@@ -428,6 +428,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
+      ],
       "edit": [
         [
           {
@@ -553,12 +559,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
       ]
     }
   },
