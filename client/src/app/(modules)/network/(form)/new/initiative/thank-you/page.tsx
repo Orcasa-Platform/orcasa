@@ -6,7 +6,7 @@ export default async function ThankYouPage() {
   return (
     <div className="flex w-[632px] flex-col space-y-4">
       <h1 className="w-[632px] font-serif text-3.5xl text-peach-700">
-        Project successfully submitted!
+        Initiative successfully submitted!
       </h1>
       <div className="flex w-full items-center justify-between pb-16 pt-20">
         <div className="flex flex-col items-center gap-2.5">

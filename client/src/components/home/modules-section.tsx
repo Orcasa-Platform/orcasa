@@ -70,8 +70,8 @@ const modulesInfo = {
         </div>
         <div className="text-sm">
           The current network was created during the foundations of the Soil Carbon International
-          Research Consortium. Help us extend it by suggesting new projects and organizations to be
-          added.
+          Research Consortium. Help us extend it by suggesting new initiatives and organizations to
+          be added.
         </div>
       </>
     ),

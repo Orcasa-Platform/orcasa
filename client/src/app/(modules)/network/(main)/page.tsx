@@ -127,7 +127,7 @@ export default function NetworkModule() {
           loadProjects &&
           `Showing ${networksCount.organisation} organisation${
             networksCount.organisation > 1 ? 's' : ''
-          } and ${networksCount.project} project${networksCount.project > 1 ? 's' : ''}.`}
+          } and ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
         {loadOrganizations &&
           !loadProjects &&
           `Showing ${networksCount.organisation} organisation${
@@ -135,7 +135,7 @@ export default function NetworkModule() {
           }.`}
         {!loadOrganizations &&
           loadProjects &&
-          `Showing ${networksCount.project} project${networksCount.project > 1 ? 's' : ''}.`}
+          `Showing ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">
         <NetworkList {...networks} />

@@ -17,9 +17,9 @@ const NewButtons = ({ className }: { className?: string }) => (
       </Link>
     </Button>
     <Button asChild>
-      <Link href="/network/new/project">
+      <Link href="/network/new/initiative">
         <Plus className="mr-2 h-6 w-6" />
-        <div className="text-base">Project</div>
+        <div className="text-base">Initiative</div>
       </Link>
     </Button>
   </div>

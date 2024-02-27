@@ -32,7 +32,7 @@ const NetworkLegend = () => {
           </div>
           <div>and</div>
           <div className="flex items-center rounded border border-peach-700 bg-peach-700 px-2 py-0.5 text-xs text-white">
-            Projects
+            Initiatives
           </div>
         </div>
         {renderMarkersLegend()}
@@ -44,7 +44,7 @@ const NetworkLegend = () => {
             <div className="w-1.5 bg-peach-700" />
           </div>
         </div>
-        <div className="text-sm text-slate-700">Organisations and projects by country.</div>
+        <div className="text-sm text-slate-700">Organisations and initatives by country.</div>
       </div>
     </div>
   );

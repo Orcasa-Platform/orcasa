@@ -84,7 +84,7 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
           <span className="sr-only">Close</span>
         </Button>
         <header className="pb-6 text-lg text-slate-700">
-          <span>{type === 'project' ? 'Projects coordinated in ' : 'Organisations from '}</span>
+          <span>{type === 'project' ? 'Initiatives coordinated in ' : 'Organisations from '}</span>
           <span className="font-semibold">{countryName}</span>
           {parentType && parentName && networkDetailSentencePart(parentType, parentName, type)}
         </header>

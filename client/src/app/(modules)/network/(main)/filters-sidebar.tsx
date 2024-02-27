@@ -108,7 +108,7 @@ export default function FiltersSidebar() {
                   })
                 }
               />
-              <Label htmlFor="filter-project">Projects</Label>
+              <Label htmlFor="filter-project">Initiatives</Label>
             </div>
           </fieldset>
           <fieldset className="relative">
@@ -155,7 +155,7 @@ export default function FiltersSidebar() {
             </div>
           </fieldset>
           <fieldset className="relative">
-            <legend className="mb-4 font-semibold">Project</legend>
+            <legend className="mb-4 font-semibold">Initiative</legend>
             <Button
               type="button"
               variant="vanilla"
@@ -179,7 +179,7 @@ export default function FiltersSidebar() {
             </Button>
             <div className="space-y-4">
               <MultiCombobox
-                name="Project type"
+                name="Initiative type"
                 variant="network-project"
                 value={filters.projectType ?? []}
                 options={projectFiltersOptions.projectType}

@@ -73,14 +73,14 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
   if (hasData(projectCoordinatorName)) {
     if (hasData(secondProjectCoordinatorName)) {
       fields.push({
-        label: 'Project managers',
+        label: 'Initiative managers',
         value: [projectCoordinatorName, secondProjectCoordinatorName],
         url: [`mailto:${projectCoordinatorEmail}`, `mailto:${secondProjectCoordinatorEmail}`],
         external: true,
       });
     } else {
       fields.push({
-        label: 'Project manager',
+        label: 'Initiative manager',
         value: projectCoordinatorName,
         url: `mailto:${projectCoordinatorEmail}`,
         external: true,
@@ -90,7 +90,7 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
 
   if (hasData(projectType)) {
     fields.push({
-      label: 'Project type',
+      label: 'Initiative type',
       value: projectType?.data?.attributes?.name,
     });
   }
