@@ -299,29 +299,25 @@
           {
             "name": "organization_type",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "organization_type_other",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "main_organization_theme",
             "size": 6
-          },
-          {
-            "name": "secondary_organization_theme",
-            "size": 6
           }
         ],
         [
           {
-            "name": "short_description",
+            "name": "secondary_organization_theme",
             "size": 6
           },
           {
-            "name": "country",
+            "name": "short_description",
             "size": 6
           }
         ],

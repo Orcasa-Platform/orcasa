@@ -1155,7 +1155,7 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
-          preset: 'toolbar';
+          preset: 'custom2';
         }
       >;
     country: Attribute.Relation<
@@ -1520,8 +1520,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToOne',
       'api::organization.organization'
-    > &
-      Attribute.Required;
+    >;
     partners: Attribute.Relation<
       'api::project.project',
       'manyToMany',
@@ -1546,7 +1545,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
-          preset: 'toolbar';
+          preset: 'custom2';
         }
       >;
     createdAt: Attribute.DateTime;

@@ -5292,7 +5292,7 @@ export interface Project {
   secondary_area_of_intervention?: ProjectSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectSustainableDevelopmentGoals;
-  lead_partner: ProjectLeadPartner;
+  lead_partner?: ProjectLeadPartner;
   partners?: ProjectPartners;
   funders?: ProjectFunders;
   publication_status: ProjectPublicationStatus;
@@ -6671,7 +6671,7 @@ export type ProjectRequestData = {
   secondary_area_of_intervention?: ProjectRequestDataSecondaryAreaOfIntervention;
   third_area_of_intervention?: ProjectRequestDataThirdAreaOfIntervention;
   sustainable_development_goals?: ProjectRequestDataSustainableDevelopmentGoalsItem[];
-  lead_partner: ProjectRequestDataLeadPartner;
+  lead_partner?: ProjectRequestDataLeadPartner;
   partners?: ProjectRequestDataPartnersItem[];
   funders?: ProjectRequestDataFundersItem[];
   publication_status: ProjectRequestDataPublicationStatus;

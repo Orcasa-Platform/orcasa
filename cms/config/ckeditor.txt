@@ -54,7 +54,36 @@ globalThis.CKEditorConfig = {
                         'redo',
                   ],
             }
-        }
+        },
+        custom2: {
+            /* Custom field option */
+            field: {
+                key: "custom2",
+                value: "custom2",
+                metadatas: {
+                  intlLabel: {
+                    id: "ckeditor5.preset.custom2.label",
+                    defaultMessage: "Only new lines and bullet lists",
+                  },
+                },
+            },
+            editorConfig:{
+                /* You can find all available built-in plugins
+                in the admin/src/components/Input/CKEditor/configs/base.js */
+                plugins: [
+                    CKEditor5.autoformat.Autoformat,
+                    CKEditor5.essentials.Essentials,
+                    CKEditor5.list.List,
+                    CKEditor5.paragraph.Paragraph,
+                    CKEditor5.pasteFromOffice.PasteFromOffice,
+                  ],
+                  toolbar: [
+                    'bulletedList', 'numberedList',
+                    '|',
+                    'undo', 'redo'
+                  ],
+            }
+        },
     },
 
     /* Here you can customize the plugin's theme.

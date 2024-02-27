@@ -8,6 +8,8 @@ import { cn } from '@/lib/classnames';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
+import MarkdownRenderer from '@/components/home/markdown-renderer';
+
 type Type = 'project' | 'organization';
 type Field = {
   label: string;
@@ -84,14 +86,15 @@ const Field = ({
       ) : (
         <div>
           {rawHTML ? (
-            <div
-              ref={ref}
-              className={cn('text-sm', {
-                'line-clamp-2': !isExpanded && isOverTwoLines,
-              })}
-              dangerouslySetInnerHTML={{ __html: (value as string) || '' }}
-            />
+            <MarkdownRenderer variant="page-intro" content={value as string} />
           ) : (
+            // <div
+            //   ref={ref}
+            //   className={cn('text-sm', {
+            //     'line-clamp-2': !isExpanded && isOverTwoLines,
+            //   })}
+            //   dangerouslySetInnerHTML={{ __html: (value as string) || '' }}
+            // />
             <div
               ref={ref}
               className={cn('text-sm', {

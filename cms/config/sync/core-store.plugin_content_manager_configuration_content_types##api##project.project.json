@@ -465,12 +465,6 @@
         ],
         [
           {
-            "name": "description",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "country_of_coordination",
             "size": 6
           },

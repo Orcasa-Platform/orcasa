@@ -96,8 +96,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::organization.organization",
-      "inversedBy": "lead_projects",
-      "required": true
+      "inversedBy": "lead_projects"
     },
     "partners": {
       "type": "relation",
@@ -130,7 +129,7 @@
     "description": {
       "type": "customField",
       "options": {
-        "preset": "toolbar"
+        "preset": "custom2"
       },
       "customField": "plugin::ckeditor5.CKEditor"
     }
