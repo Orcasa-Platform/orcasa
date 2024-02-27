@@ -17,7 +17,7 @@ type Field = {
   url?: string | string[];
   external?: boolean;
   hasEllipsis?: boolean;
-  rawHTML?: boolean;
+  markup?: boolean;
 };
 
 const Field = ({
@@ -27,7 +27,7 @@ const Field = ({
   external,
   type,
   hasEllipsis,
-  rawHTML,
+  markup,
 }: Field & { type: Type }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -85,16 +85,16 @@ const Field = ({
         renderLink(url, external)
       ) : (
         <div>
-          {rawHTML ? (
-            <MarkdownRenderer variant="page-intro" content={value as string} />
+          {markup ? (
+            <MarkdownRenderer
+              variant="description"
+              className={cn('text-sm', {
+                'line-clamp-2': !isExpanded && isOverTwoLines,
+              })}
+              content={value as string}
+              ref={ref}
+            />
           ) : (
-            // <div
-            //   ref={ref}
-            //   className={cn('text-sm', {
-            //     'line-clamp-2': !isExpanded && isOverTwoLines,
-            //   })}
-            //   dangerouslySetInnerHTML={{ __html: (value as string) || '' }}
-            // />
             <div
               ref={ref}
               className={cn('text-sm', {
