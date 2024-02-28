@@ -59,7 +59,7 @@ module.exports = {
         peach: {
           50: '#FFF7EF',
           100: '#FFECDB',
-          // Projects
+          // Initiatives
           700: '#EF6A4C',
           900: '#CA3412',
         },

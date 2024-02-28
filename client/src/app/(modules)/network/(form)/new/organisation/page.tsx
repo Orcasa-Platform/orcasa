@@ -35,11 +35,10 @@ import {
 } from '@/components/ui/form';
 
 export default function OrganisationForm() {
-  const { organizationTypes, organizationThemes, countries, projects } =
-    useOrganizationGetFormFields() || {};
+  const { organizationTypes, organizationThemes, countries } = useOrganizationGetFormFields() || {};
 
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
-  const hasData = organizationTypes && organizationThemes && countries && projects;
+  const hasData = organizationTypes && organizationThemes && countries;
   const [error, setError] = useState<AxiosError | undefined>();
   const fieldValues: { [key: string]: Field } = {
     name: {
@@ -190,14 +189,6 @@ export default function OrganisationForm() {
 
   const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      projects: [
-        {
-          project: undefined,
-          role: undefined,
-        },
-      ],
-    },
   });
 
   const router = useRouter();
@@ -211,9 +202,7 @@ export default function OrganisationForm() {
     return null;
   }
 
-  type DataType = Omit<OrganizationRequestData, 'projects'> & {
-    projects: { project: string; role: string }[];
-  };
+  type DataType = OrganizationRequestData;
   const onSubmit: SubmitHandler<FormType> = (data) => {
     const typedData: DataType = data as unknown as DataType;
     const normalizedData = {
@@ -237,16 +226,7 @@ export default function OrganisationForm() {
       });
   };
 
-  const renderField = ({
-    key,
-    id,
-    index,
-  }: {
-    key: string;
-    projectNumber?: number;
-    id?: string;
-    index?: number;
-  }) => {
+  const renderField = ({ key, id, index }: { key: string; id?: string; index?: number }) => {
     const field = fields[key];
     if (!field) return null;
     const { label, required, type, options, placeholder, maxSize, description } = field;
@@ -347,7 +327,7 @@ export default function OrganisationForm() {
               <span> are mandatory.</span>
             </div>
             {Object.keys(fields)
-              .filter((key) => key !== 'user_email' && !key.startsWith('project'))
+              .filter((key) => key !== 'user_email')
               .map((key) => {
                 if (key === 'organization_type_other' && watch('organization_type') !== OtherId) {
                   return null;

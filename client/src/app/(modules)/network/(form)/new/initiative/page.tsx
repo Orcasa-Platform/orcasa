@@ -490,7 +490,7 @@ export default function ProjectForm() {
                       string
                     >
                   }
-                  variant="network-project"
+                  variant="network-initiative"
                   key={id}
                   index={index}
                   name={key}
