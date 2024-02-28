@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::network-suggestion.network-suggestion",
+  "key": "plugin_content_manager_configuration_content_types::api::notification-email.notification-email",
   "value": {
     "settings": {
       "bulkable": true,
@@ -19,16 +19,16 @@
           "sortable": true
         }
       },
-      "email_recipients": {
+      "notification_email": {
         "edit": {
-          "label": "Email Recipients",
+          "label": "notification_email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "email_recipients",
+          "label": "notification_email",
           "searchable": true,
           "sortable": true
         }
@@ -93,22 +93,22 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "notification_email",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
-            "name": "email_recipients",
+            "name": "notification_email",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "email_recipients",
-        "createdAt",
-        "updatedAt"
       ]
     },
-    "uid": "api::network-suggestion.network-suggestion"
+    "uid": "api::notification-email.notification-email"
   },
   "type": "object",
   "environment": null,

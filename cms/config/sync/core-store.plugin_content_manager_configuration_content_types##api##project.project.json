@@ -354,20 +354,6 @@
           "sortable": false
         }
       },
-      "description": {
-        "edit": {
-          "label": "Description",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Description",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
