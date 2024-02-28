@@ -125,7 +125,7 @@ export default function OrganisationForm() {
           message: 'Extended description is limited to 3000 characters.',
         })
         .optional(),
-      type: 'textarea',
+      type: 'wysiwyg',
       maxSize: 3000,
     },
     country: {

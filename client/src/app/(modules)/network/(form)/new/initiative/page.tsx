@@ -201,7 +201,7 @@ export default function ProjectForm() {
           message: 'Description is limited to 3000 characters.',
         })
         .optional(),
-      type: 'textarea',
+      type: 'wysiwyg',
       maxSize: 3000,
     },
     project_type: {

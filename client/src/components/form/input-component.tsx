@@ -1,4 +1,7 @@
 import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
+import ReactQuill from 'react-quill';
+
+import 'react-quill/dist/quill.snow.css';
 
 import { ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
 
@@ -62,6 +65,34 @@ const InputComponent = ({
 }) => {
   const { watch, register } = form;
   const { name, onChange, value } = field;
+  if (type === 'wysiwyg') {
+    const watchField = watch(name) as string;
+    const counterId = `${name} - counter`;
+    const hasError: boolean = !!watchField && !!maxSize && watchField.length > maxSize;
+    return (
+      <div className="w-full">
+        <ReactQuill
+          theme="snow"
+          value={typeof value === 'string' ? value : undefined}
+          onChange={onChange}
+          modules={{
+            toolbar: [[{ list: 'ordered' }, { list: 'bullet' }], ['clean']],
+          }}
+          formats={['list', 'bullet', 'clean']}
+        />
+        {maxSize && (
+          <div
+            id={counterId}
+            className={cn('flex justify-end text-sm text-gray-500', {
+              'text-destructive': hasError,
+            })}
+          >
+            {watchField ? watchField.length : '0'} / {maxSize}
+          </div>
+        )}
+      </div>
+    );
+  }
   if (type === 'select') {
     const registerProjectsField =
       id && variant === 'network-organization' ? register(`projects.${index}.${name}`) : undefined;
