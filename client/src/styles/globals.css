@@ -81,7 +81,19 @@
 
 /* Overrides */
 
+/* Maplibre */
 .maplibregl-popup-content {
   padding: 0 !important;
   border-radius: 0 !important;
+}
+
+/* React Quill Rich editor */
+.ql-toolbar.ql-snow {
+  /*  */
+  @apply border-gray-300 !important;
+}
+
+.ql-container.ql-snow {
+  @apply border-gray-300 text-base !important;
+  border-top: none !important;
 }

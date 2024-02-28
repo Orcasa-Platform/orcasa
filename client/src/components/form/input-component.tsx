@@ -1,8 +1,8 @@
-import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
+import React from 'react';
 
+import { ControllerRenderProps, useForm } from 'react-hook-form';
 import 'react-quill/dist/quill.snow.css';
-
-import dynamic from 'next/dynamic';
+import ReactQuill from 'react-quill';
 
 import { ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
 
@@ -25,29 +25,8 @@ import { Textarea } from '@/components/ui/textarea';
 
 import { type Field } from './types';
 
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
-const InputComponent = ({
-  field,
-  type,
-  required,
-  options,
-  maxSize,
-  placeholder,
-  id,
-  index,
-  'aria-describedby': ariaDescribedBy,
-  'aria-invalid': ariaInvalid,
-  form,
-  variant,
-  label,
-}: {
-  field: ControllerRenderProps<
-    {
-      [x: string]: string | string[] | undefined;
-    },
-    string
-  >;
+interface InputComponentProps {
+  field: ControllerRenderProps<{ [x: string]: string | string[] | undefined }, string>;
   type: Field['type'];
   required?: Field['required'];
   options?: Field['options'];
@@ -59,29 +38,53 @@ const InputComponent = ({
   index?: number;
   name: string;
   label?: string;
-  form: UseFormReturn<
-    { [K in string | `projects.${string}` | 'projects']?: string | Date | undefined },
-    string,
-    undefined
-  >;
+  form: ReturnType<typeof useForm>;
   variant?: ComboboxProps<unknown>['variant'];
-}) => {
+  richEditorConfig?: ReactQuill.QuillOptions;
+}
+
+const InputComponent = React.forwardRef<ReactQuill, InputComponentProps>((props, ref) => {
+  const {
+    field,
+    type,
+    required,
+    options,
+    maxSize,
+    placeholder,
+    id,
+    index,
+    'aria-describedby': ariaDescribedBy,
+    'aria-invalid': ariaInvalid,
+    form,
+    variant,
+    label,
+    richEditorConfig,
+  } = props;
+
   const { watch, register } = form;
   const { name, onChange, value } = field;
-  if (type === 'wysiwyg') {
+  if (type === 'wysiwyg' && window !== undefined) {
     const watchField = watch(name) as string;
     const counterId = `${name} - counter`;
     const hasError: boolean = !!watchField && !!maxSize && watchField.length > maxSize;
     return (
       <div className="w-full">
         <ReactQuill
+          id={id}
+          tabIndex={0}
+          ref={ref}
           theme="snow"
+          onKeyDown={(e) => {
+            // On esc key press, blur the editor for accessibility
+            if (e.key === 'Escape' && typeof ref === 'object' && ref !== null && 'current' in ref) {
+              ref?.current?.blur();
+            }
+          }}
           value={typeof value === 'string' ? value : undefined}
           onChange={onChange}
-          modules={{
-            toolbar: [[{ list: 'ordered' }, { list: 'bullet' }], ['clean']],
-          }}
-          formats={['list', 'bullet', 'clean']}
+          {...richEditorConfig}
+          aria-describedby={ariaDescribedBy}
+          aria-invalid={!!ariaInvalid}
         />
         {maxSize && (
           <div
@@ -96,6 +99,7 @@ const InputComponent = ({
       </div>
     );
   }
+
   if (type === 'select') {
     const registerProjectsField =
       id && variant === 'network-organization' ? register(`projects.${index}.${name}`) : undefined;
@@ -253,6 +257,8 @@ const InputComponent = ({
       aria-invalid={!!ariaInvalid}
     />
   );
-};
+});
+
+InputComponent.displayName = 'InputComponent';
 
 export default InputComponent;
