@@ -41,11 +41,13 @@ export default factories.createCoreController('api::organization.organization', 
 
     const networkSuggestion: any = await strapi.entityService.findMany('api::network-suggestion.network-suggestion');
     if (networkSuggestion?.new_suggestion_email_recipients) {
+      strapi.log.info(`Sending organization suggestion creation email to: ${networkSuggestion.new_suggestion_email_recipients}`);
       await strapi.plugins['email'].services.email.send({
         bcc: networkSuggestion.new_suggestion_email_recipients,
         subject: `Impact4Soil - Network - New Organization suggestion "${response.data.attributes.name}", ID: ${response.data.id}`,
-        text: `<h3>New Organization suggestion created</h3>
-             <p> You may review the details via the following link: <a href="${env('CMS_URL')}admin/content-manager/collection-types/api::organization.organization/${response.data.id}">Review Organization</a></p>`
+        text: `New Organization suggestion created. You may review the details via the following link: ${env("CMS_URL")}admin/content-manager/collection-types/api::organization.organization/${response.data.id}`,
+        html: `<h3>New Organization suggestion created</h3>
+             <p> You may review the details via the following link: <a target="_blank" href="${env('CMS_URL')}admin/content-manager/collection-types/api::organization.organization/${response.data.id}">Review Organization</a></p>`
       });
     }
 

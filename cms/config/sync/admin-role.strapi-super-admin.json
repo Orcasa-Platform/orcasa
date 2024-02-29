@@ -418,7 +418,8 @@
       "subject": "api::network-suggestion.network-suggestion",
       "properties": {
         "fields": [
-          "email_recipients"
+          "new_suggestion_email_recipients",
+          "edit_suggestion_email_recipients"
         ]
       },
       "conditions": []
@@ -436,7 +437,8 @@
       "subject": "api::network-suggestion.network-suggestion",
       "properties": {
         "fields": [
-          "email_recipients"
+          "new_suggestion_email_recipients",
+          "edit_suggestion_email_recipients"
         ]
       },
       "conditions": []
@@ -447,47 +449,8 @@
       "subject": "api::network-suggestion.network-suggestion",
       "properties": {
         "fields": [
-          "email_recipients"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
-      "subject": "api::notification-email.notification-email",
-      "properties": {
-        "fields": [
-          "notification_email"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::notification-email.notification-email",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::notification-email.notification-email",
-      "properties": {
-        "fields": [
-          "notification_email"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::notification-email.notification-email",
-      "properties": {
-        "fields": [
-          "notification_email"
+          "new_suggestion_email_recipients",
+          "edit_suggestion_email_recipients"
         ]
       },
       "conditions": []
