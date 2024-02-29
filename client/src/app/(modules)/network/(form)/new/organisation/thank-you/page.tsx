@@ -36,7 +36,7 @@ export default async function ThankYouPage() {
         </div>
         <ul className="mx-6 list-disc">
           <li>
-            Associate the organisation to a initiative by suggesting changes on the
+            Associate the organisation to an initiative by suggesting changes on the
             initiative&apos;s details, or
           </li>
           <li>Add new organisations and initiatives to the network</li>
