@@ -15,6 +15,13 @@ import {
 } from '@/types/generated/strapi.schemas';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
 import CalendarIcon from '@/styles/icons/calendar.svg';
 import FolderIcon from '@/styles/icons/folder.svg';
@@ -39,16 +46,27 @@ const Icons = ({
       region_of_interventions,
     } = (attributes as Project) || {};
     const projectType = project_type?.data?.attributes?.name;
+    const projectTypeDescription = project_type?.data?.attributes?.description;
     const regionName = isWorldwide
       ? 'Worldwide'
       : region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
     return (
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         {projectType && (
-          <div className="flex gap-2">
-            <FolderIcon className="h-6 w-6 min-w-min" />
-            <div className="text-base text-slate-500">{projectType}</div>
-          </div>
+          <TooltipProvider>
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <div className="flex gap-2">
+                  <FolderIcon className="h-6 w-6 min-w-min" />
+                  <div className="text-base text-slate-500">{projectType}</div>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent variant="dark" className="max-w-[293px] text-sm leading-7">
+                <p>{projectTypeDescription}</p>
+                <TooltipArrow variant="dark" />
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )}
         {startDate && (
           <div className="flex gap-2">
