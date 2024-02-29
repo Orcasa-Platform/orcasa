@@ -1,3 +1,7 @@
+# v3.1
+
+- [Network] Improve configuration of email(s) receiving organisation/project suggestions notifications in the CMS
+
 # v3
 
 - Ability to modify the top description of each module in the CMS

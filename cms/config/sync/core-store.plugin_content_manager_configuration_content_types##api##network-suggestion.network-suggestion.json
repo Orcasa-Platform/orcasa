@@ -21,7 +21,7 @@
       },
       "new_suggestion_email_recipients": {
         "edit": {
-          "label": "New Suggestion Email Recipients",
+          "label": "new_suggestion_email_recipients",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "edit_suggestion_email_recipients": {
         "edit": {
-          "label": "Edit Suggestion Email Recipients",
+          "label": "edit_suggestion_email_recipients",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -107,6 +107,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "new_suggestion_email_recipients"
+      ],
       "edit": [
         [
           {
@@ -118,12 +124,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "createdAt",
-        "updatedAt",
-        "new_suggestion_email_recipients"
       ]
     },
     "uid": "api::network-suggestion.network-suggestion"
