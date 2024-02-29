@@ -37,7 +37,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
     filters: { id, publication_status: 'accepted' },
     populate: {
       lead_partner: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
-      project_type: { fields: ['name', 'id'] },
+      project_type: { fields: ['name', 'id', 'description'] },
       country_of_coordination: { fields: ['name', 'id'] },
       region_of_interventions: { fields: ['name', 'id'] },
       country_of_interventions: { fields: ['name', 'id'] },

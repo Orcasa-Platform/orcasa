@@ -46,7 +46,7 @@ export interface ComboboxProps<T> {
   name?: string;
   variant?: VariantProps<typeof optionVariants>['variant'];
   value: T[];
-  options: { label: string; value: T; disabled?: boolean }[];
+  options: { label: string; value: T; disabled?: boolean; description?: string }[];
   onChange: (value: T[]) => void;
   disabled?: boolean;
   ariaDescribedBy?: string;
@@ -240,6 +240,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                           className="pointer-events-none leading-normal"
                         >
                           {option.label}
+                          {option.description && (
+                            <div className="mt-3 text-sm leading-7 text-gray-500">
+                              {option.description}
+                            </div>
+                          )}
                         </Label>
                       </ComboboxPrimitive.Option>
                     );

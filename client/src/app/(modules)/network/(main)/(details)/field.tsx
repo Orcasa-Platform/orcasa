@@ -4,11 +4,21 @@ import { useRef, useState } from 'react';
 
 import Link from 'next/link';
 
+import { Info } from 'lucide-react';
+
 import { cn } from '@/lib/classnames';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 type Type = 'project' | 'organization';
 type Field = {
@@ -18,6 +28,7 @@ type Field = {
   external?: boolean;
   hasEllipsis?: boolean;
   markup?: boolean;
+  description?: string;
 };
 
 const Field = ({
@@ -28,6 +39,7 @@ const Field = ({
   type,
   hasEllipsis,
   markup,
+  description,
 }: Field & { type: Type }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -70,6 +82,8 @@ const Field = ({
       </a>
     );
   };
+  const [openInfo, setInfoOpen] = useState(false);
+  const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
 
   return (
     <div className="flex gap-6">
@@ -95,13 +109,15 @@ const Field = ({
               ref={ref}
             />
           ) : (
-            <div
-              ref={ref}
-              className={cn('text-sm', {
-                'line-clamp-2': !isExpanded && isOverTwoLines,
-              })}
-            >
-              {value}
+            <div className="flex items-center space-x-2">
+              <div
+                ref={ref}
+                className={cn('text-sm', {
+                  'line-clamp-2': !isExpanded && isOverTwoLines,
+                })}
+              >
+                {value}
+              </div>
             </div>
           )}
           {isOverTwoLines && (

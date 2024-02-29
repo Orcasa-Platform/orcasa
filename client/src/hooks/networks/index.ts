@@ -997,7 +997,7 @@ export const useNetworkProjectFiltersOptions = (): Record<
 
   const { data: projectTypeData } = useGetProjectTypes(
     {
-      fields: ['name'],
+      fields: ['name', 'description'],
       sort: 'name',
       'pagination[pageSize]': 9999,
     },
@@ -1011,8 +1011,14 @@ export const useNetworkProjectFiltersOptions = (): Record<
   const projectType = useMemo(
     () =>
       projectTypeData?.data
-        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          projectTypeData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        ? projectTypeData.data.map((d) => ({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            label: d.attributes!.name,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            value: d.id!,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            description: d.attributes!.description,
+          }))
         : [],
     [projectTypeData],
   );

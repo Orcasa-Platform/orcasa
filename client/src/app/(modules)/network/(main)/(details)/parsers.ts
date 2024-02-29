@@ -97,6 +97,7 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
     fields.push({
       label: 'Initiative type',
       value: projectType?.data?.attributes?.name,
+      description: projectType?.data?.attributes?.description,
     });
   }
 
