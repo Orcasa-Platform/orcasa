@@ -91,6 +91,20 @@
           "sortable": true
         }
       },
+      "description": {
+        "edit": {
+          "label": "Description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "country_of_coordination": {
         "edit": {
           "label": "Country of Coordination",
@@ -334,14 +348,14 @@
           "editable": true
         },
         "list": {
-          "label": "publication_status",
+          "label": "Publication Status",
           "searchable": true,
           "sortable": true
         }
       },
       "land_use_types": {
         "edit": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -349,7 +363,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "searchable": false,
           "sortable": false
         }
@@ -414,12 +428,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
-      ],
       "edit": [
         [
           {
@@ -447,6 +455,12 @@
           {
             "name": "short_description",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
           }
         ],
         [
@@ -531,22 +545,22 @@
             "size": 6
           },
           {
-            "name": "publication_status",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "land_use_types",
             "size": 6
           }
         ],
         [
           {
-            "name": "description",
-            "size": 12
+            "name": "publication_status",
+            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
       ]
     }
   },
