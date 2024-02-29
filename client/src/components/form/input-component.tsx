@@ -71,6 +71,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
     return (
       <div className="w-full">
         <ReactQuill
+          {...field}
           id={id}
           tabIndex={0}
           ref={ref}
@@ -81,8 +82,6 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
               ref?.current?.blur();
             }
           }}
-          value={typeof value === 'string' ? value : undefined}
-          onChange={onChange}
           {...richEditorConfig}
           aria-describedby={ariaDescribedBy}
           aria-invalid={!!ariaInvalid}

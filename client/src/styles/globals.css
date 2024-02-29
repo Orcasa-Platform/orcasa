@@ -89,7 +89,6 @@
 
 /* React Quill Rich editor */
 .ql-toolbar.ql-snow {
-  /*  */
   @apply border-gray-300 !important;
 }
 
