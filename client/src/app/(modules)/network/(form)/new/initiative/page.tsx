@@ -572,14 +572,12 @@ export default function ProjectForm() {
                 could require clarifications from our team, please enter your email so we can
                 contact you about it.
               </div>
-              {
-                <RenderField
-                  id="user_email"
-                  form={form}
-                  fields={fields}
-                  variant="network-initiative"
-                />
-              }
+              <RenderField
+                id="user_email"
+                form={form}
+                fields={fields}
+                variant="network-initiative"
+              />
             </div>
           </div>
         </form>

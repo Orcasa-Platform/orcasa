@@ -67,7 +67,8 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
   if (type === 'wysiwyg' && window !== undefined) {
     const watchField = watch(name) as string;
     const counterId = `${name} - counter`;
-    const hasError: boolean = !!watchField && !!maxSize && watchField.length > maxSize;
+    const onlyTextCount = watchField?.replace(/<[^>]*>?/gm, '').length || 0;
+    const hasError: boolean = !!watchField && !!maxSize && +onlyTextCount > maxSize;
     return (
       <div className="w-full">
         <ReactQuill
@@ -94,7 +95,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
               'text-destructive': hasError,
             })}
           >
-            {watchField ? watchField.length : '0'} / {maxSize}
+            {watchField ? onlyTextCount : '0'} / {maxSize}
           </div>
         )}
       </div>
