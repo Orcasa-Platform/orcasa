@@ -97,7 +97,7 @@ export default function FiltersSidebar() {
             </div>
             <div className="flex items-center gap-x-2">
               <Checkbox
-                id="filter-project"
+                id="filter-initiative"
                 checked={filters.type?.includes('project') ?? false}
                 onCheckedChange={(checked) =>
                   setFilters({
@@ -108,7 +108,7 @@ export default function FiltersSidebar() {
                   })
                 }
               />
-              <Label htmlFor="filter-project">Projects</Label>
+              <Label htmlFor="filter-initiative">Initiatives</Label>
             </div>
           </fieldset>
           <fieldset className="relative">
@@ -155,7 +155,7 @@ export default function FiltersSidebar() {
             </div>
           </fieldset>
           <fieldset className="relative">
-            <legend className="mb-4 font-semibold">Project</legend>
+            <legend className="mb-4 font-semibold">Initiative</legend>
             <Button
               type="button"
               variant="vanilla"
@@ -179,50 +179,50 @@ export default function FiltersSidebar() {
             </Button>
             <div className="space-y-4">
               <MultiCombobox
-                name="Project type"
-                variant="network-project"
+                name="Initiative type"
+                variant="network-initiative"
                 value={filters.projectType ?? []}
                 options={projectFiltersOptions.projectType}
                 onChange={(value) => setFilters({ ...filters, projectType: value })}
               />
               <MultiCombobox
                 name="Status"
-                variant="network-project"
+                variant="network-initiative"
                 value={filters.status ?? []}
                 options={projectFiltersOptions.status}
                 onChange={(value) => setFilters({ ...filters, status: value })}
               />
               <MultiCombobox
                 name="Active on year"
-                variant="network-project"
+                variant="network-initiative"
                 value={filters.year ?? []}
                 options={projectFiltersOptions.year}
                 onChange={(value) => setFilters({ ...filters, year: value })}
               />
               <MultiCombobox
                 name="Country of coordination"
-                variant="network-project"
+                variant="network-initiative"
                 value={filters.coordinationCountry ?? []}
                 options={projectFiltersOptions.coordinationCountry}
                 onChange={(value) => setFilters({ ...filters, coordinationCountry: value })}
               />
               <MultiCombobox
                 name="Region of intervention"
-                variant="network-project"
+                variant="network-initiative"
                 value={filters.interventionRegion ?? []}
                 options={projectFiltersOptions.interventionRegion}
                 onChange={(value) => setFilters({ ...filters, interventionRegion: value })}
               />
               <MultiCombobox
                 name="Country of intervention"
-                variant="network-project"
+                variant="network-initiative"
                 value={filters.interventionCountry ?? []}
                 options={projectFiltersOptions.interventionCountry}
                 onChange={(value) => setFilters({ ...filters, interventionCountry: value })}
               />
               <MultiCombobox
                 name="Area of intervention"
-                variant="network-project"
+                variant="network-initiative"
                 value={filters.interventionArea ?? []}
                 options={projectFiltersOptions.interventionArea}
                 onChange={(value) => setFilters({ ...filters, interventionArea: value })}

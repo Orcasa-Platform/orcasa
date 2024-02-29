@@ -10,6 +10,7 @@ import { useMapSearchParams, useSidebarOpen } from '@/store';
 import type { OrganizationProperties, ProjectProperties } from '@/hooks/networks';
 
 import { Button } from '@/components/ui/button';
+
 export type PopupAttributes = {
   longitude: number;
   latitude: number;
@@ -84,7 +85,7 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
           <span className="sr-only">Close</span>
         </Button>
         <header className="pb-6 text-lg text-slate-700">
-          <span>{type === 'project' ? 'Projects coordinated in ' : 'Organisations from '}</span>
+          <span>{type === 'project' ? 'Initiatives coordinated in ' : 'Organisations from '}</span>
           <span className="font-semibold">{countryName}</span>
           {parentType && parentName && networkDetailSentencePart(parentType, parentName, type)}
         </header>
@@ -93,7 +94,9 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
             <li key={id} className={listDiscClass}>
               <Link
                 className={cn('text-left text-base font-semibold', networkClass)}
-                href={`/network/${type}/${id}?${searchParams.toString()}`}
+                href={`/network/${
+                  type === 'project' ? 'initiative' : type
+                }/${id}?${searchParams.toString()}`}
                 onClick={() => {
                   setSidebarOpen(true);
                 }}

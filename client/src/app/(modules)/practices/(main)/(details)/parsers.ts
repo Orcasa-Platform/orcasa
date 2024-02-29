@@ -43,7 +43,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (projectName) {
-    fields.push({ label: 'Project Name', value: projectName });
+    fields.push({ label: 'Initiative Name', value: projectName });
   }
 
   return fields;

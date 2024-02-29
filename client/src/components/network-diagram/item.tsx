@@ -167,7 +167,9 @@ const Item = ({
           className={cn('text-sm text-slate-700', {
             'line-clamp-2': isOverTwoLines,
           })}
-          href={`/network/${type}/${id}?${searchParams.toString()}`}
+          href={`/network/${
+            type === 'project' ? 'initiative' : type
+          }/${id}?${searchParams.toString()}`}
           ref={ref}
           {...(isOverTwoLines ? { title: name } : {})}
         >
@@ -183,7 +185,9 @@ const Item = ({
                 // Compensate for the missing button
                 'mr-10': canExpandWithoutChildren,
               })}
-              href={`/network/${type}/${id}?${searchParams.toString()}`}
+              href={`/network/${
+                type === 'project' ? 'initiative' : type
+              }/${id}?${searchParams.toString()}`}
               position="right"
               Icon={Document}
             >

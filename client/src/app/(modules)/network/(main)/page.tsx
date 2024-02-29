@@ -47,7 +47,7 @@ export default function NetworkModule() {
   const filtersButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
-  const loadProjects = !filters.type?.length || filters.type.includes('project');
+  const loadInitiatives = !filters.type?.length || filters.type.includes('project');
 
   // We store the sidebar's scroll position when navigating away from the list view. `useEffect`
   // can't be used because it would be executed after repainting i.e. after navigating.
@@ -124,18 +124,18 @@ export default function NetworkModule() {
       </div>
       <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
         {loadOrganizations &&
-          loadProjects &&
+          loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
             networksCount.organisation > 1 ? 's' : ''
-          } and ${networksCount.project} project${networksCount.project > 1 ? 's' : ''}.`}
+          } and ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
         {loadOrganizations &&
-          !loadProjects &&
+          !loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
             networksCount.organisation > 1 ? 's' : ''
           }.`}
         {!loadOrganizations &&
-          loadProjects &&
-          `Showing ${networksCount.project} project${networksCount.project > 1 ? 's' : ''}.`}
+          loadInitiatives &&
+          `Showing ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">
         <NetworkList {...networks} />

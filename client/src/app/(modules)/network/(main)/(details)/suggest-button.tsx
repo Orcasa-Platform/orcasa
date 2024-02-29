@@ -13,7 +13,7 @@ const SuggestButton = ({
 }: {
   data: { name: string };
   id: number;
-  label: 'project' | 'organisation';
+  label: 'initiative' | 'organisation';
 }) => {
   const networkEmails = useGetNetworkSuggestion();
   const emails = networkEmails.data?.data?.attributes?.edit_suggestion_email_recipients as

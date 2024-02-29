@@ -79,7 +79,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
         ))}
       </div>
       <div className="mt-10 flex justify-end gap-4">
-        <SuggestButton id={id} data={project} label="project" />
+        <SuggestButton id={id} data={project} label="initiative" />
 
         <Button asChild variant="secondary" disabled={!website}>
           <a href={website} target="_blank" rel="noreferrer">

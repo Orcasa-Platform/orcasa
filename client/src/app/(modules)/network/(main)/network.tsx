@@ -132,7 +132,9 @@ export default function Network({
           <SlidingLinkButton
             Icon={ChevronRight}
             position="right"
-            href={`/network/${type}/${id}?${searchParams.toString()}`}
+            href={`/network/${
+              type === 'project' ? 'initiative' : type
+            }/${id}?${searchParams.toString()}`}
             buttonClassName={cn({
               'bg-peach-100': type === 'project',
               'bg-blue-100': type === 'organization',

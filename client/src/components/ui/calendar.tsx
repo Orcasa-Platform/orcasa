@@ -23,7 +23,7 @@ const calendarDayVariants = cva('text-white hover:text-white focus:text-white', 
     variant: {
       default: 'bg-blue-500 focus:bg-blue-500',
       'network-organization': 'bg-blue-500 focus:bg-blue-500',
-      'network-project': 'bg-peach-700 focus:bg-peach-700',
+      'network-initiative': 'bg-peach-700 focus:bg-peach-700',
       practices: 'bg-brown-500 focus:bg-brown-500',
       datasets: 'bg-purple-700 focus:bg-purple-700',
     },

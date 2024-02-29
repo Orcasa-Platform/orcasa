@@ -91,20 +91,6 @@
           "sortable": true
         }
       },
-      "description": {
-        "edit": {
-          "label": "Description",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Description",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "country_of_coordination": {
         "edit": {
           "label": "Country of Coordination",
@@ -461,10 +447,6 @@
           {
             "name": "short_description",
             "size": 6
-          },
-          {
-            "name": "description",
-            "size": 6
           }
         ],
         [
@@ -557,6 +539,12 @@
           {
             "name": "land_use_types",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
           }
         ]
       ]

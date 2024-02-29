@@ -205,7 +205,7 @@ export default function ProjectForm() {
       maxSize: 3000,
     },
     project_type: {
-      label: 'Project type',
+      label: 'Initiative type',
       zod: z.enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]]),
       type: 'select',
       options: projectTypes?.map((type) => ({
@@ -450,7 +450,7 @@ export default function ProjectForm() {
     } as unknown as ProjectRequest)
       .then(() => {
         setIsFormDirty(false);
-        router.push(`/network/new/project/thank-you`);
+        router.push(`/network/new/initiative/thank-you`);
       })
       .catch((err) => {
         setError(err);
@@ -490,7 +490,7 @@ export default function ProjectForm() {
                       string
                     >
                   }
-                  variant="network-project"
+                  variant="network-initiative"
                   key={id}
                   index={index}
                   name={key}
@@ -525,7 +525,7 @@ export default function ProjectForm() {
         >
           <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
             <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300 pb-6 pt-20">
-              <h1 className="font-serif text-3.5xl text-peach-700">New Project</h1>
+              <h1 className="font-serif text-3.5xl text-peach-700">New Initiative</h1>
               <Button
                 type="submit"
                 variant="primary"
@@ -551,7 +551,7 @@ export default function ProjectForm() {
               'mt-56': !!error,
             })}
           >
-            <h2 className="font-serif text-2xl leading-10 text-gray-700">Project network</h2>
+            <h2 className="font-serif text-2xl leading-10 text-gray-700">Initiative network</h2>
             <div className="text-gray-700">
               <span>Fields marked with </span>
               <span className="text-red-700">*</span>
@@ -582,21 +582,21 @@ export default function ProjectForm() {
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent variant="dark" className="max-w-[227px] font-sans">
-                    <p>Contact details of the person responsible for project management.</p>
+                    <p>Contact details of the person responsible for initiative management.</p>
                     <TooltipArrow variant="dark" />
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </h2>
             <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
-              Project manager:
+              Initiative manager:
             </h3>
             {renderFields(['project_coordinator_name', 'project_coordinator_email'])}
             <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
-              Second project manager:
+              Second initiative manager:
             </h3>
             {renderFields(['second_project_coordinator_name', 'second_project_coordinator_email'])}
-            <h2 className="mt-10 font-serif text-2xl text-gray-700">Project information</h2>
+            <h2 className="mt-10 font-serif text-2xl text-gray-700">Initiative information</h2>
             {renderFields([
               'name',
               'website',
