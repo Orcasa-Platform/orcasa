@@ -2,7 +2,6 @@ import React from 'react';
 
 import { ControllerRenderProps, useForm } from 'react-hook-form';
 import 'react-quill/dist/quill.snow.css';
-import ReactQuill from 'react-quill';
 
 import { ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
 
@@ -25,6 +24,8 @@ import { Textarea } from '@/components/ui/textarea';
 
 import { type Field } from './types';
 
+const ReactQuill = typeof window !== 'undefined' ? require('react-quill') : undefined;
+
 interface InputComponentProps {
   field: ControllerRenderProps<{ [x: string]: string | string[] | undefined }, string>;
   type: Field['type'];
@@ -40,10 +41,10 @@ interface InputComponentProps {
   label?: string;
   form: ReturnType<typeof useForm>;
   variant?: ComboboxProps<unknown>['variant'];
-  richEditorConfig?: ReactQuill.QuillOptions;
+  richEditorConfig?: typeof ReactQuill.QuillOptions;
 }
 
-const InputComponent = React.forwardRef<ReactQuill, InputComponentProps>((props, ref) => {
+const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>((props, ref) => {
   const {
     field,
     type,
@@ -74,7 +75,7 @@ const InputComponent = React.forwardRef<ReactQuill, InputComponentProps>((props,
           tabIndex={0}
           ref={ref}
           theme="snow"
-          onKeyDown={(e) => {
+          onKeyDown={(e: React.KeyboardEvent) => {
             // On esc key press, blur the editor for accessibility
             if (e.key === 'Escape' && typeof ref === 'object' && ref !== null && 'current' in ref) {
               ref?.current?.blur();
