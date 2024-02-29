@@ -101,8 +101,8 @@
         },
         "list": {
           "label": "Description",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "country_of_coordination": {

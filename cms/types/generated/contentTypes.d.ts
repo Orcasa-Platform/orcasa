@@ -901,38 +901,6 @@ export interface ApiCountryCountry extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomeStatHomeStat extends Schema.CollectionType {
-  collectionName: 'home_stats';
-  info: {
-    singularName: 'home-stat';
-    pluralName: 'home-stats';
-    displayName: 'Home Stats';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    value: Attribute.Integer;
-    class: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::home-stat.home-stat',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::home-stat.home-stat',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
   collectionName: 'land_use_types';
   info: {
@@ -1753,7 +1721,6 @@ declare module '@strapi/types' {
       'api::area-of-intervention.area-of-intervention': ApiAreaOfInterventionAreaOfIntervention;
       'api::continent.continent': ApiContinentContinent;
       'api::country.country': ApiCountryCountry;
-      'api::home-stat.home-stat': ApiHomeStatHomeStat;
       'api::land-use-type.land-use-type': ApiLandUseTypeLandUseType;
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
