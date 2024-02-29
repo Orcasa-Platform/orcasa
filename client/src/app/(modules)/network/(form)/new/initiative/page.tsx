@@ -209,6 +209,7 @@ export default function ProjectForm() {
       options: projectTypes?.map((type) => ({
         label: type.name,
         value: type.id.toString(),
+        description: type.description,
       })),
       required: true,
     },

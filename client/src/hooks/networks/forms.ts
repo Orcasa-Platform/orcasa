@@ -163,11 +163,14 @@ export const useProjectFormGetFields = () => {
     },
   });
 
-  const { data: projectTypes } = useGetProjectTypes(requestObject, {
-    query: {
-      queryKey: ['project-types'],
+  const { data: projectTypes } = useGetProjectTypes(
+    { ...requestObject, fields: ['name', 'description'] },
+    {
+      query: {
+        queryKey: ['project-types'],
+      },
     },
-  });
+  );
 
   const { data: landUseTypes } = useGetLandUseTypes(requestObject, {
     query: {
@@ -201,9 +204,14 @@ export const useProjectFormGetFields = () => {
           d.attributes && {
             name: d.attributes.name,
             id: d.id,
+            // Description for project types
+            description: 'description' in d.attributes ? d.attributes?.description : undefined,
           },
       )
-      .filter((d): d is { name: string; id: number } => typeof d !== 'undefined')
+      .filter(
+        (d): d is { name: string; id: number; description: string | undefined } =>
+          typeof d !== 'undefined',
+      )
       .sort((a, b) => a.name.localeCompare(b.name));
   };
 

@@ -124,8 +124,14 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
           </span>
         </SelectTrigger>
         <SelectContent className="max-w-[632px]">
-          {options?.map(({ label, value, disabled }) => (
-            <SelectItem key={value} value={value} disabled={disabled} variant={variant}>
+          {options?.map(({ label, value, disabled, description }) => (
+            <SelectItem
+              key={value}
+              value={value}
+              disabled={disabled}
+              variant={variant}
+              description={description}
+            >
               {label}
             </SelectItem>
           ))}

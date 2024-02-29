@@ -13,7 +13,7 @@ export type Field = {
   zod: ZodField;
   description?: string | React.ReactNode;
   type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email' | 'date' | 'wysiwyg';
-  options?: { label: string; value: string; disabled?: boolean }[];
+  options?: { label: string; value: string; disabled?: boolean; description?: string }[];
   maxSize?: number;
   richEditorConfig?: ReactQuill.QuillOptions;
   placeholder?: string;
