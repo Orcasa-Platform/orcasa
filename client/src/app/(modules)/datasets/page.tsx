@@ -41,9 +41,7 @@ export default function DatasetsModule() {
   return (
     <>
       <h1 className="mb-14 border-l-4 border-purple-700 pl-5 font-serif text-lg leading-[30px]">
-        {intro && (
-          <MarkdownRenderer variant="page-intro" textClass="text-purple-700" content={intro} />
-        )}
+        {intro && <MarkdownRenderer variant="bold" textClass="text-purple-700" content={intro} />}
       </h1>
       <Search
         containerClassName="w-full"

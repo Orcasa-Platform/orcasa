@@ -58,10 +58,10 @@ export default function ProjectForm() {
   const fieldValues: {
     [key: string]: Omit<Field, 'options'> & {
       options?:
-      | Field['options']
-      // Some options of some fields are dynamic (i.e. based on other fields) so here we allow
-      // `options` to be a function that returns the list of options
-      | (() => undefined | { label: string; value: string }[]);
+        | Field['options']
+        // Some options of some fields are dynamic (i.e. based on other fields) so here we allow
+        // `options` to be a function that returns the list of options
+        | (() => undefined | { label: string; value: string }[]);
     };
   } = {
     lead_partner: {

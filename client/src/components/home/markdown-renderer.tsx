@@ -4,7 +4,7 @@ import Markdown, { Components } from 'react-markdown';
 
 import sanitizeHtml from 'sanitize-html';
 
-import { cn } from '@/lib/classnames';
+import { renderMarkup } from '@/lib/utils/markup-renderer';
 
 interface Component {
   node: Components['p'];
@@ -14,37 +14,19 @@ const Renderer = React.forwardRef<
   HTMLDivElement,
   {
     content: string;
-    variant?: 'page-intro' | 'description';
+    variant?: 'bold' | 'lists';
     textClass?: string;
     className?: string;
   }
 >(({ content, variant, textClass, className }, ref) => {
   // Replace components for Markup
   const replace = (content: string) => {
+    if (!variant) return content;
     const sanitizedHTML = sanitizeHtml(content, {
       allowedTags: ['p', 'strong', 'ul', 'ol', 'li'],
       allowedAttributes: {},
     });
-
-    if (variant === 'page-intro') {
-      return sanitizedHTML
-        .replace(/<p>/g, '<span class="mb-4 block text-lg">')
-        .replace(/<\/p>/g, '</span>')
-        .replace(/<strong>/g, `<b class="${cn('text-lg font-semibold', textClass)}">`);
-    }
-
-    if (variant === 'description') {
-      return sanitizedHTML
-        .replace(/<p>/g, '<span class="mb-4 block">')
-        .replace(/<\/p>/g, '</span>')
-        .replace(/<ul>/g, '<ul class="list-inside list-disc leading-6 text-gray-700">')
-        .replace(
-          /<ol>/g,
-          '<ol class="list-inside list-decimal leading-6 text-gray-700 marker:font-semibold">',
-        )
-        .replace(/<li>/g, '<li class="mb-2">');
-    }
-    return sanitizedHTML;
+    return renderMarkup(sanitizedHTML, variant, textClass);
   };
 
   // Replace components for Markdown
@@ -78,10 +60,10 @@ const Renderer = React.forwardRef<
 
   return !!variant ? (
     <div
-      dangerouslySetInnerHTML={{ __html: replace(content) }}
+      dangerouslySetInnerHTML={{ __html: replace(content) || '' }}
       className={className}
       // Description needs ref to calculate the height of the div
-      ref={variant === 'description' ? ref : undefined}
+      ref={variant === 'lists' ? ref : undefined}
     />
   ) : (
     <Markdown className="whitespace-pre-wrap" components={components as Components}>

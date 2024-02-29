@@ -82,6 +82,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
               ref?.current?.blur();
             }
           }}
+          preserveWhitespace
           {...richEditorConfig}
           aria-describedby={ariaDescribedBy}
           aria-invalid={!!ariaInvalid}

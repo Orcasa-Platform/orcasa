@@ -96,3 +96,23 @@
   @apply border-gray-300 text-base !important;
   border-top: none !important;
 }
+
+/* These styles are applied to the editor on the network forms
+to match the way we display the information on the detail pages
+Check lib/utils/markup-renderer renderMarkup function list variant */
+
+.ql-editor p {
+  @apply mb-4 block !important;
+}
+
+.ql-editor ul {
+  @apply list-inside list-disc leading-6 text-gray-700 !important;
+}
+
+.ql-editor ol {
+  @apply list-inside list-decimal leading-6 text-gray-700 !important;
+}
+
+.ql-editor li {
+  @apply mb-2 !important;
+}

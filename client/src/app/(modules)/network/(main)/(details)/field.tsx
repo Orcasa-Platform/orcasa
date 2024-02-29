@@ -87,7 +87,7 @@ const Field = ({
         <div>
           {markup ? (
             <MarkdownRenderer
-              variant="description"
+              variant="lists"
               className={cn('text-sm', {
                 'line-clamp-2': !isExpanded && isOverTwoLines,
               })}
