@@ -91,20 +91,6 @@
           "sortable": true
         }
       },
-      "description": {
-        "edit": {
-          "label": "Description",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Description",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "country_of_coordination": {
         "edit": {
           "label": "Country of Coordination",
@@ -289,7 +275,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Sustainable Development Goals",
+          "label": "sustainable_development_goals",
           "searchable": false,
           "sortable": false
         }
@@ -348,7 +334,7 @@
           "editable": true
         },
         "list": {
-          "label": "Publication Status",
+          "label": "publication_status",
           "searchable": true,
           "sortable": true
         }
@@ -479,12 +465,6 @@
         ],
         [
           {
-            "name": "description",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "country_of_coordination",
             "size": 6
           },
@@ -563,16 +543,22 @@
           {
             "name": "sustainable_development_goals",
             "size": 6
+          },
+          {
+            "name": "publication_status",
+            "size": 6
           }
         ],
         [
           {
-            "name": "publication_status",
-            "size": 6
-          },
-          {
             "name": "land_use_types",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
           }
         ]
       ]
