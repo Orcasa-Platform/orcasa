@@ -12,7 +12,7 @@ export default async function Stats({ className }: { className: string }) {
   const data: { title: string; class: string; value?: number }[] = [
     {
       title: 'Meta-analysis',
-      value: (await getScientificEvidenceMockStats()).all?.metaAnalysis || 0,
+      value: (await getScientificEvidenceMockStats())?.all?.metaAnalysis || 0,
       class: 'bg-green-700',
     },
     {

@@ -8,7 +8,16 @@ export const AXIOS_INSTANCE = Axios.create({
 
 export const ScientificEvidenceStatsAPI = <T>(config: AxiosRequestConfig): Promise<T> => {
   const source = Axios.CancelToken.source();
-  const promise = AXIOS_INSTANCE({ ...config, cancelToken: source.token }).then(({ data }) => data);
+  const promise = AXIOS_INSTANCE({ ...config, cancelToken: source.token })
+    .then(({ data }) => data)
+    .catch((error) => {
+      if (Axios.isAxiosError(error) && error.response?.status === 403) {
+        console.error(
+          '403 error. Is NEXT_PUBLIC_SCIENTIFIC_EVIDENCE_STATS_API_URL correctly set?',
+          error,
+        );
+      }
+    });
 
   config.signal?.addEventListener?.('abort', () => {
     source.cancel('Query was cancelled by React Query');
