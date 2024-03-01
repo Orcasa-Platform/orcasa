@@ -39,7 +39,12 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
   }
 
   if (description && description.length > 0) {
-    fields.push({ label: 'Description and outcomes', value: description, hasEllipsis: true });
+    fields.push({
+      label: 'Description and outcomes',
+      value: description,
+      hasEllipsis: true,
+      markup: true,
+    });
   }
 
   if (startDate) {
@@ -173,7 +178,12 @@ export const getOrganizationFields = (organization: Organization) => {
   }
 
   if (description && description.length > 0) {
-    fields.push({ label: 'Description and outcomes', value: description, hasEllipsis: true });
+    fields.push({
+      label: 'Description and outcomes',
+      value: description,
+      hasEllipsis: true,
+      markup: true,
+    });
   }
 
   if (country) {

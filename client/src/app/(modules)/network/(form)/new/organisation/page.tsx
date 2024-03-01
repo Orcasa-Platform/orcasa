@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { SubmitHandler, useForm, UseFormReturn, ControllerRenderProps } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
 
@@ -21,18 +21,10 @@ import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/
 import useBeforeUnloadDirtyForm from '@/hooks/navigation';
 import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
-import InputComponent from '@/components/form/input-component';
+import RenderField from '@/components/form/render-field';
 import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormDescription,
-  FormField,
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form } from '@/components/ui/form';
 
 export default function OrganisationForm() {
   const { organizationTypes, organizationThemes, countries } = useOrganizationGetFormFields() || {};
@@ -125,7 +117,13 @@ export default function OrganisationForm() {
           message: 'Extended description is limited to 3000 characters.',
         })
         .optional(),
-      type: 'textarea',
+      type: 'wysiwyg',
+      richEditorConfig: {
+        modules: {
+          toolbar: [[{ list: 'ordered' }, { list: 'bullet' }], ['clean']],
+        },
+        formats: ['list', 'bullet', 'clean'],
+      },
       maxSize: 3000,
     },
     country: {
@@ -226,66 +224,6 @@ export default function OrganisationForm() {
       });
   };
 
-  const renderField = ({ key, id, index }: { key: string; id?: string; index?: number }) => {
-    const field = fields[key];
-    if (!field) return null;
-    const { label, required, type, options, placeholder, maxSize, description } = field;
-    return (
-      <FormField
-        key={id || key}
-        name={key}
-        control={form.control}
-        render={(f) => {
-          const { field } = f;
-          return (
-            <FormItem>
-              <FormLabel className="flex justify-between">
-                <span>
-                  {label}
-                  {required && (
-                    <>
-                      {' '}
-                      <span className="text-red-700">*</span>
-                    </>
-                  )}
-                </span>
-                {!required && <span className="text-sm text-gray-700">Optional</span>}
-              </FormLabel>
-              <FormControl>
-                <InputComponent
-                  field={
-                    field as unknown as ControllerRenderProps<
-                      { [x: string]: string | string[] | undefined },
-                      string
-                    >
-                  }
-                  variant="network-organization"
-                  key={id}
-                  index={index}
-                  name={key}
-                  type={type}
-                  required={required}
-                  options={options}
-                  maxSize={maxSize}
-                  placeholder={placeholder}
-                  form={
-                    form as UseFormReturn<
-                      { [x: string]: string | Date | undefined },
-                      string,
-                      undefined
-                    >
-                  }
-                />
-              </FormControl>
-              <FormDescription className="text-sm text-slate-500">{description}</FormDescription>
-              <FormMessage className="max-w-[632px]" />
-            </FormItem>
-          );
-        }}
-      />
-    );
-  };
-
   return (
     <>
       <Form {...form}>
@@ -332,7 +270,15 @@ export default function OrganisationForm() {
                 if (key === 'organization_type_other' && watch('organization_type') !== OtherId) {
                   return null;
                 }
-                return renderField({ key });
+                return (
+                  <RenderField
+                    key={key}
+                    id={key}
+                    form={form}
+                    fields={fields}
+                    variant="network-initiative"
+                  />
+                );
               })}
             <div className="space-y-6 border-t border-dashed border-gray-300">
               <h2 className="mt-6 font-serif text-2xl text-gray-700">Contact Information</h2>
@@ -341,7 +287,12 @@ export default function OrganisationForm() {
                 could require clarifications from our team, please enter your email so we can
                 contact you about it.
               </div>
-              {renderField({ key: 'user_email' })}
+              <RenderField
+                id="user_email"
+                form={form}
+                fields={fields}
+                variant="network-organization"
+              />
             </div>
           </div>
         </form>

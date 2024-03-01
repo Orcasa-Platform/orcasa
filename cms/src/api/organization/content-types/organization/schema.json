@@ -44,8 +44,11 @@
       "maxLength": 350
     },
     "description": {
-      "type": "text",
-      "maxLength": 3000
+      "type": "customField",
+      "options": {
+        "preset": "custom2"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     },
     "country": {
       "type": "relation",

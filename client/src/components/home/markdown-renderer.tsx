@@ -4,32 +4,29 @@ import Markdown, { Components } from 'react-markdown';
 
 import sanitizeHtml from 'sanitize-html';
 
-import { cn } from '@/lib/classnames';
+import { renderMarkup } from '@/lib/utils/markup-renderer';
 
 interface Component {
   node: Components['p'];
 }
 
-const Renderer = ({
-  content,
-  variant,
-  textClass,
-}: {
-  content: string;
-  variant?: 'page-intro';
-  textClass?: string;
-}) => {
+const Renderer = React.forwardRef<
+  HTMLDivElement,
+  {
+    content: string;
+    variant?: 'bold' | 'lists';
+    textClass?: string;
+    className?: string;
+  }
+>(({ content, variant, textClass, className }, ref) => {
   // Replace components for Markup
   const replace = (content: string) => {
+    if (!variant) return content;
     const sanitizedHTML = sanitizeHtml(content, {
-      allowedTags: ['p', 'strong'],
+      allowedTags: ['p', 'strong', 'ul', 'ol', 'li'],
       allowedAttributes: {},
     });
-
-    return sanitizedHTML
-      .replace(/<p>/g, '<span class="mb-4 block text-lg">')
-      .replace(/<\/p>/g, '</span>')
-      .replace(/<strong>/g, `<b class="${cn('text-lg font-semibold', textClass)}">`);
+    return renderMarkup(sanitizedHTML, variant, textClass);
   };
 
   // Replace components for Markdown
@@ -60,12 +57,21 @@ const Renderer = ({
       );
     },
   };
-  return variant === 'page-intro' ? (
-    <div dangerouslySetInnerHTML={{ __html: replace(content) }} />
+
+  return !!variant ? (
+    <div
+      dangerouslySetInnerHTML={{ __html: replace(content) || '' }}
+      className={className}
+      // Description needs ref to calculate the height of the div
+      ref={variant === 'lists' ? ref : undefined}
+    />
   ) : (
     <Markdown className="whitespace-pre-wrap" components={components as Components}>
       {content}
     </Markdown>
   );
-};
+});
+
+Renderer.displayName = 'Renderer';
+
 export default Renderer;

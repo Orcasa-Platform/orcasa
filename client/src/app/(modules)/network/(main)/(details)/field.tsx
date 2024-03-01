@@ -8,6 +8,8 @@ import { cn } from '@/lib/classnames';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
+import MarkdownRenderer from '@/components/home/markdown-renderer';
+
 type Type = 'project' | 'organization';
 type Field = {
   label: string;
@@ -15,9 +17,18 @@ type Field = {
   url?: string | string[];
   external?: boolean;
   hasEllipsis?: boolean;
+  markup?: boolean;
 };
 
-const Field = ({ label, value, url, external, type, hasEllipsis }: Field & { type: Type }) => {
+const Field = ({
+  label,
+  value,
+  url,
+  external,
+  type,
+  hasEllipsis,
+  markup,
+}: Field & { type: Type }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const isOverTwoLines = useIsOverTwoLines(ref, hasEllipsis);
@@ -74,14 +85,25 @@ const Field = ({ label, value, url, external, type, hasEllipsis }: Field & { typ
         renderLink(url, external)
       ) : (
         <div>
-          <div
-            ref={ref}
-            className={cn('text-sm', {
-              'line-clamp-2': !isExpanded && isOverTwoLines,
-            })}
-          >
-            {value}
-          </div>
+          {markup ? (
+            <MarkdownRenderer
+              variant="lists"
+              className={cn('text-sm', {
+                'line-clamp-2': !isExpanded && isOverTwoLines,
+              })}
+              content={value as string}
+              ref={ref}
+            />
+          ) : (
+            <div
+              ref={ref}
+              className={cn('text-sm', {
+                'line-clamp-2': !isExpanded && isOverTwoLines,
+              })}
+            >
+              {value}
+            </div>
+          )}
           {isOverTwoLines && (
             <button
               onClick={toggleExpanded}

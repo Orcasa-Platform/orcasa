@@ -857,7 +857,6 @@
           "start_date",
           "end_date",
           "short_description",
-          "description",
           "country_of_coordination",
           "region_of_interventions",
           "country_of_interventions",
@@ -875,7 +874,8 @@
           "partners",
           "funders",
           "publication_status",
-          "land_use_types"
+          "land_use_types",
+          "description"
         ]
       },
       "conditions": []
@@ -898,7 +898,6 @@
           "start_date",
           "end_date",
           "short_description",
-          "description",
           "country_of_coordination",
           "region_of_interventions",
           "country_of_interventions",
@@ -916,7 +915,8 @@
           "partners",
           "funders",
           "publication_status",
-          "land_use_types"
+          "land_use_types",
+          "description"
         ]
       },
       "conditions": []
@@ -932,7 +932,6 @@
           "start_date",
           "end_date",
           "short_description",
-          "description",
           "country_of_coordination",
           "region_of_interventions",
           "country_of_interventions",
@@ -950,7 +949,8 @@
           "partners",
           "funders",
           "publication_status",
-          "land_use_types"
+          "land_use_types",
+          "description"
         ]
       },
       "conditions": []

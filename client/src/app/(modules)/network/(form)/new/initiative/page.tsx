@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { SubmitHandler, useForm, ControllerRenderProps } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -23,18 +23,10 @@ import { ProjectRequest, ProjectRequestData } from '@/types/generated/strapi.sch
 import useBeforeUnloadDirtyForm from '@/hooks/navigation';
 import { useProjectFormGetFields } from '@/hooks/networks/forms';
 
-import InputComponent from '@/components/form/input-component';
+import RenderField from '@/components/form/render-field';
 import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormDescription,
-  FormField,
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form } from '@/components/ui/form';
 import {
   TooltipArrow,
   TooltipContent,
@@ -201,7 +193,13 @@ export default function ProjectForm() {
           message: 'Description is limited to 3000 characters.',
         })
         .optional(),
-      type: 'textarea',
+      type: 'wysiwyg',
+      richEditorConfig: {
+        modules: {
+          toolbar: [[{ list: 'ordered' }, { list: 'bullet' }], ['clean']],
+        },
+        formats: ['list', 'bullet', 'clean'],
+      },
       maxSize: 3000,
     },
     project_type: {
@@ -458,63 +456,12 @@ export default function ProjectForm() {
       });
   };
 
-  const renderField = ({ key, id, index }: { key: string; id?: string; index?: number }) => {
-    const field = fields[key];
-    const { label, required, type, options, placeholder, maxSize, description } = field;
-    return (
-      <FormField
-        key={key}
-        name={key}
-        control={form.control}
-        render={(f) => {
-          const { field } = f;
-          return (
-            <FormItem>
-              <FormLabel className="flex justify-between">
-                <span>
-                  {label}
-                  {required && (
-                    <>
-                      {' '}
-                      <span className="text-red-700">*</span>
-                    </>
-                  )}
-                </span>
-                {!required && <span className="text-sm text-gray-700">Optional</span>}
-              </FormLabel>
-              <FormControl>
-                <InputComponent
-                  field={
-                    field as unknown as ControllerRenderProps<
-                      { [x: string]: string | string[] | undefined },
-                      string
-                    >
-                  }
-                  variant="network-initiative"
-                  key={id}
-                  index={index}
-                  name={key}
-                  label={type === 'multiselect' ? label : key}
-                  type={type}
-                  required={required}
-                  options={Array.isArray(options) || options === undefined ? options : options()}
-                  form={form}
-                  maxSize={maxSize}
-                  placeholder={placeholder}
-                />
-              </FormControl>
-              <FormDescription className="text-sm text-slate-500">{description}</FormDescription>
-              <FormMessage className="max-w-[632px]" />
-            </FormItem>
-          );
-        }}
-      />
-    );
-  };
   const renderFields = (fieldsArray: (keyof typeof fields)[]) =>
     Object.keys(fields)
       .filter((key) => fieldsArray.includes(key))
-      .map((key) => renderField({ key }));
+      .map((key) => (
+        <RenderField key={key} id={key} form={form} fields={fields} variant="network-initiative" />
+      ));
   return (
     <>
       <Form {...form}>
@@ -625,7 +572,12 @@ export default function ProjectForm() {
                 could require clarifications from our team, please enter your email so we can
                 contact you about it.
               </div>
-              {renderField({ key: 'user_email' })}
+              <RenderField
+                id="user_email"
+                form={form}
+                fields={fields}
+                variant="network-initiative"
+              />
             </div>
           </div>
         </form>
