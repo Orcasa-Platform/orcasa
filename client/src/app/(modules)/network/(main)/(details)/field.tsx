@@ -118,6 +118,22 @@ const Field = ({
               >
                 {value}
               </div>
+              {description && (
+                <TooltipProvider>
+                  <Tooltip delayDuration={0} open={openInfo} onOpenChange={setInfoOpen}>
+                    <TooltipTrigger asChild onClick={handleInfoClick}>
+                      <Button type="button" size="auto" variant="icon">
+                        <span className="sr-only">Description</span>
+                        <Info />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent variant="dark" className="max-w-[293px] text-sm leading-7">
+                      {description}
+                      <TooltipArrow variant="dark" className="-ml-3" />
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
             </div>
           )}
           {isOverTwoLines && (

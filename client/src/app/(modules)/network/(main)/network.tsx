@@ -52,22 +52,25 @@ const Icons = ({
       : region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
     return (
       <div className="flex flex-wrap gap-x-4 gap-y-2">
-        {projectType && (
-          <TooltipProvider>
-            <Tooltip delayDuration={0}>
-              <TooltipTrigger asChild>
-                <div className="flex gap-2">
-                  <FolderIcon className="h-6 w-6 min-w-min" />
-                  <div className="text-base text-slate-500">{projectType}</div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent variant="dark" className="max-w-[293px] text-sm leading-7">
-                <p>{projectTypeDescription}</p>
-                <TooltipArrow variant="dark" />
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        )}
+        {projectType &&
+          (projectTypeDescription ? (
+            <TooltipProvider>
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger>
+                  <div className="flex gap-2">
+                    <FolderIcon className="h-6 w-6 min-w-min" />
+                    <div className="text-base text-slate-500">{projectType}</div>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent variant="dark" className="max-w-[293px] text-sm leading-7">
+                  <p>{projectTypeDescription}</p>
+                  <TooltipArrow variant="dark" />
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ) : (
+            <div className="text-base text-slate-500">{projectType}</div>
+          ))}
         {startDate && (
           <div className="flex gap-2">
             <CalendarIcon className="h-6 w-6 min-w-min" />
