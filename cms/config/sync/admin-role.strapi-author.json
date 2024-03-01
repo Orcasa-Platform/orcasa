@@ -5,17 +5,18 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {
         "fields": [
@@ -24,11 +25,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::area-of-intervention.area-of-intervention",
       "properties": {
         "fields": [
@@ -37,22 +38,22 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {
         "fields": [
@@ -61,11 +62,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::continent.continent",
       "properties": {
         "fields": [
@@ -74,11 +75,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::country.country",
       "properties": {
         "fields": [
@@ -93,32 +94,11 @@
           "projects"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::country.country",
-      "properties": {
-        "fields": [
-          "name",
-          "capital",
-          "code",
-          "fips",
-          "iso_2",
-          "iso_3",
-          "continent",
-          "region",
-          "projects"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::country.country",
       "properties": {
         "fields": [
@@ -135,54 +115,32 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::home-stat.home-stat",
-      "properties": {
-        "fields": [
-          "title",
-          "value",
-          "class"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::home-stat.home-stat",
-      "properties": {
-        "fields": [
-          "title",
-          "value",
-          "class"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::home-stat.home-stat",
+      "actionParameters": {},
+      "subject": "api::country.country",
       "properties": {
         "fields": [
-          "title",
-          "value",
-          "class"
+          "name",
+          "capital",
+          "code",
+          "fips",
+          "iso_2",
+          "iso_3",
+          "continent",
+          "region",
+          "projects"
         ]
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::layer-group.layer-group",
       "properties": {
         "fields": [
@@ -190,11 +148,11 @@
           "layers"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::layer-group.layer-group",
       "properties": {
         "fields": [
@@ -204,11 +162,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::layer-group.layer-group",
       "properties": {
         "fields": [
@@ -218,11 +176,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -234,11 +192,11 @@
           "interaction_config"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -252,11 +210,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::layer.layer",
       "properties": {
         "fields": [
@@ -270,11 +228,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {
         "fields": [
@@ -282,11 +240,11 @@
           "order"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {
         "fields": [
@@ -296,11 +254,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::organization-theme.organization-theme",
       "properties": {
         "fields": [
@@ -310,11 +268,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {
         "fields": [
@@ -322,11 +280,11 @@
           "order"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {
         "fields": [
@@ -336,11 +294,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::organization-type.organization-type",
       "properties": {
         "fields": [
@@ -350,11 +308,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -374,11 +332,11 @@
           "publication_status"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -400,11 +358,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::organization.organization",
       "properties": {
         "fields": [
@@ -426,11 +384,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
@@ -442,11 +400,11 @@
           "external_url"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
@@ -460,11 +418,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
@@ -478,11 +436,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -496,31 +454,11 @@
           "practice_intervention"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::practice.practice",
-      "properties": {
-        "fields": [
-          "source_name",
-          "source_id",
-          "title",
-          "short_description",
-          "country",
-          "language",
-          "sync",
-          "practice_intervention"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -536,35 +474,42 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::project-type.project-type",
-      "properties": {
-        "fields": [
-          "name"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::project-type.project-type",
-      "properties": {
-        "fields": [
-          "name"
-        ]
-      },
-      "conditions": [
-        "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "country",
+          "language",
+          "sync",
+          "practice_intervention"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::project-type.project-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::project-type.project-type",
       "properties": {
         "fields": [
@@ -573,11 +518,24 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::project-type.project-type",
+      "properties": {
+        "fields": [
+          "name"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::project.project",
       "properties": {
         "fields": [
@@ -605,11 +563,11 @@
           "publication_status"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::project.project",
       "properties": {
         "fields": [
@@ -639,11 +597,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::project.project",
       "properties": {
         "fields": [
@@ -673,11 +631,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::region.region",
       "properties": {
         "fields": [
@@ -685,11 +643,11 @@
           "projects"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::region.region",
       "properties": {
         "fields": [
@@ -699,11 +657,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::region.region",
       "properties": {
         "fields": [
@@ -713,22 +671,22 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
@@ -737,11 +695,11 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
       "subject": "api::sustainable-dev-goal.sustainable-dev-goal",
       "properties": {
         "fields": [
@@ -750,54 +708,53 @@
       },
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::upload.assets.copy-link",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.create",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.download",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.assets.update",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     },
     {
       "action": "plugin::upload.configure-view",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
-      "conditions": [],
-      "actionParameters": {}
+      "conditions": []
     },
     {
       "action": "plugin::upload.read",
+      "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [
         "admin::is-creator"
-      ],
-      "actionParameters": {}
+      ]
     }
   ]
 }

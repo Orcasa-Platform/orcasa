@@ -18,6 +18,7 @@ export const env = createEnv({
     NEXT_PUBLIC_URL: z.string().url(),
     NEXT_PUBLIC_API_URL: z.string().url(),
     NEXT_PUBLIC_DATASETS_API_URL: z.string().url(),
+    NEXT_PUBLIC_SCIENTIFIC_EVIDENCE_STATS_API_URL: z.string().url(),
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
     NEXT_PUBLIC_ENABLE_RESPONSIVE: z.string().optional(),
   },
@@ -32,6 +33,8 @@ export const env = createEnv({
     NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_DATASETS_API_URL: process.env.NEXT_PUBLIC_DATASETS_API_URL,
+    NEXT_PUBLIC_SCIENTIFIC_EVIDENCE_STATS_API_URL:
+      process.env.NEXT_PUBLIC_SCIENTIFIC_EVIDENCE_STATS_API_URL,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
     NEXT_PUBLIC_ENABLE_RESPONSIVE: process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE,
   },

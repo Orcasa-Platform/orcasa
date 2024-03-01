@@ -159,59 +159,6 @@
     {
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
-      "subject": "api::home-stat.home-stat",
-      "properties": {
-        "fields": [
-          "title",
-          "value",
-          "class"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
-      "subject": "api::home-stat.home-stat",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "actionParameters": {},
-      "subject": "api::home-stat.home-stat",
-      "properties": {},
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::home-stat.home-stat",
-      "properties": {
-        "fields": [
-          "title",
-          "value",
-          "class"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::home-stat.home-stat",
-      "properties": {
-        "fields": [
-          "title",
-          "value",
-          "class"
-        ]
-      },
-      "conditions": []
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
       "subject": "api::land-use-type.land-use-type",
       "properties": {
         "fields": [
