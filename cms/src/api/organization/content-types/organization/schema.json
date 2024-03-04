@@ -91,6 +91,12 @@
     "user_email": {
       "type": "email",
       "required": false
+    },
+    "practices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::practice.practice",
+      "inversedBy": "organizations"
     }
   }
 }

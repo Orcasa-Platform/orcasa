@@ -1154,6 +1154,11 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'accepted'>;
     user_email: Attribute.Email;
+    practices: Attribute.Relation<
+      'api::organization.organization',
+      'manyToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1370,6 +1375,11 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       'api::practice.practice',
       'manyToMany',
       'api::project.project'
+    >;
+    organizations: Attribute.Relation<
+      'api::practice.practice',
+      'manyToMany',
+      'api::organization.organization'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
