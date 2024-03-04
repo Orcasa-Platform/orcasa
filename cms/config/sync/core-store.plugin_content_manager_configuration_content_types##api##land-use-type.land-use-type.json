@@ -21,7 +21,7 @@
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "practices_prior": {
         "edit": {
-          "label": "practices_prior",
+          "label": "Practices Prior",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "practices": {
         "edit": {
-          "label": "practices",
+          "label": "Practices",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -141,17 +141,13 @@
       "list": [
         "id",
         "name",
-        "practices_prior",
-        "practices"
+        "practices",
+        "practices_prior"
       ],
       "edit": [
         [
           {
             "name": "name",
-            "size": 6
-          },
-          {
-            "name": "practices_prior",
             "size": 6
           }
         ],
@@ -160,6 +156,12 @@
             "name": "practices",
             "size": 6
           },
+          {
+            "name": "practices_prior",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "projects",
             "size": 6

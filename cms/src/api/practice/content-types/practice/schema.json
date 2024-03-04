@@ -123,6 +123,12 @@
         "None"
       ],
       "required": true
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "inversedBy": "practices"
     }
   }
 }

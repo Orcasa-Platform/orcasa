@@ -1366,6 +1366,11 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       ['Management', 'Land Use Change', 'None']
     > &
       Attribute.Required;
+    projects: Attribute.Relation<
+      'api::practice.practice',
+      'manyToMany',
+      'api::project.project'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1516,6 +1521,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
           preset: 'custom2';
         }
       >;
+    practices: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::practice.practice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

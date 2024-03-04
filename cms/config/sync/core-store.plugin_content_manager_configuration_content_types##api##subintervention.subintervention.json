@@ -126,7 +126,7 @@
         "id",
         "name",
         "slug",
-        "practices"
+        "createdAt"
       ],
       "edit": [
         [

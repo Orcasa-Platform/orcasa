@@ -714,7 +714,8 @@
           "practice_url",
           "land_use_priors",
           "subinterventions",
-          "practice_intervention"
+          "practice_intervention",
+          "projects"
         ]
       },
       "conditions": []
@@ -763,7 +764,8 @@
           "practice_url",
           "land_use_priors",
           "subinterventions",
-          "practice_intervention"
+          "practice_intervention",
+          "projects"
         ]
       },
       "conditions": []
@@ -798,7 +800,8 @@
           "practice_url",
           "land_use_priors",
           "subinterventions",
-          "practice_intervention"
+          "practice_intervention",
+          "projects"
         ]
       },
       "conditions": []
@@ -875,7 +878,8 @@
           "funders",
           "publication_status",
           "land_use_types",
-          "description"
+          "description",
+          "practices"
         ]
       },
       "conditions": []
@@ -916,7 +920,8 @@
           "funders",
           "publication_status",
           "land_use_types",
-          "description"
+          "description",
+          "practices"
         ]
       },
       "conditions": []
@@ -950,7 +955,8 @@
           "funders",
           "publication_status",
           "land_use_types",
-          "description"
+          "description",
+          "practices"
         ]
       },
       "conditions": []
