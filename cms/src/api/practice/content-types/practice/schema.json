@@ -129,6 +129,12 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "practices"
+    },
+    "organizations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organization.organization",
+      "mappedBy": "practices"
     }
   }
 }
