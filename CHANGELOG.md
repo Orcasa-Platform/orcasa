@@ -1,3 +1,23 @@
+# v4
+
+- Limit the zoom level of the maps to 13
+- Display dynamic number of meta-analyses, initiatives, datasets and practices on the homepage
+- [Geospatial Data] Ability to automatically zoom when a layer with highlighted bounds is toggled on
+- [Scientific Evidence] Address an issue where the minimum zoom button could report an incorrect state
+- [Scientific Evidence] Display data beyond -100% and 100% on the charts
+- [Scientific Evidence] Address an issue on Firefox when the browser would navigate back on its own
+- [Scientific Evidence] Explain that a publication can be displayed several times on the map
+- [Practices] Display the total number of matching practices
+- [Practices] Address an issue where the user couldn't filter by dates
+- [Network] Display a warning if the user tries to leave an unsubmitted form
+- [Network] Rename “projects” as “initiatives”
+- [Network] Remove the “Worldwide” region of intervention
+- [Network] Improve the legibility and interactivity of the network graph
+- [Network] Allow simple formatting (new lines and lists) in the description of organisations and initiatives
+- [Network] Display the name of the coordinating organisation in the initiative detail page
+- [Network] Ability to add a description to the initiative types
+- [Network] Ability to associate initiatives to land use types
+
 # v3.1
 
 - [Network] Improve configuration of email(s) receiving organisation/project suggestions notifications in the CMS
