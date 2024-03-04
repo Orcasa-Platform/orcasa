@@ -17,7 +17,6 @@ import {
 import InfoTooltip from '@/components/ui/info-tooltip';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-
 import CalendarIcon from '@/styles/icons/calendar.svg';
 import FolderIcon from '@/styles/icons/folder.svg';
 import GlobeIcon from '@/styles/icons/globe.svg';
@@ -45,24 +44,24 @@ const Icons = ({
     const regionName = isWorldwide
       ? 'Worldwide'
       : region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
-    const projectTypeContent = (
-      <div className="flex gap-2">
-        <FolderIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base text-slate-500">{projectType}</div>
-      </div>
-    );
+    const projectTypeContent = <div className="text-base text-slate-500">{projectType}</div>;
+
     return (
       <div className="flex flex-wrap gap-x-4 gap-y-2">
-        {projectType &&
-          (projectTypeDescription ? (
-            <InfoTooltip
-              triggerContent={projectTypeContent}
-              content={<p>{projectTypeDescription}</p>}
-              className="max-w-[293px]"
-            />
-          ) : (
-            projectTypeContent
-          ))}
+        {projectType && (
+          <div className="flex gap-2">
+            <FolderIcon className="h-6 w-6 min-w-min" />
+            {projectTypeDescription ? (
+              <InfoTooltip
+                triggerContent={projectTypeContent}
+                content={<p>{projectTypeDescription}</p>}
+                className="max-w-[293px]"
+              />
+            ) : (
+              projectTypeContent
+            )}
+          </div>
+        )}
         {startDate && (
           <div className="flex gap-2">
             <CalendarIcon className="h-6 w-6 min-w-min" />

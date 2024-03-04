@@ -22,12 +22,6 @@
       "action": "api::country.country.findOne"
     },
     {
-      "action": "api::land-use-type.land-use-type.find"
-    },
-    {
-      "action": "api::land-use-type.land-use-type.findOne"
-    },
-    {
       "action": "api::layer-group.layer-group.find"
     },
     {
@@ -38,9 +32,6 @@
     },
     {
       "action": "api::layer.layer.findOne"
-    },
-    {
-      "action": "api::network-suggestion.network-suggestion.find"
     },
     {
       "action": "api::organization-theme.organization-theme.find"
@@ -73,18 +64,6 @@
       "action": "api::page.page.findOne"
     },
     {
-      "action": "api::practice-import.practice-import.find"
-    },
-    {
-      "action": "api::practice-import.practice-import.findOne"
-    },
-    {
-      "action": "api::practice.practice.find"
-    },
-    {
-      "action": "api::practice.practice.findOne"
-    },
-    {
       "action": "api::project-type.project-type.find"
     },
     {
@@ -107,18 +86,6 @@
     },
     {
       "action": "api::region.region.findOne"
-    },
-    {
-      "action": "api::static-page.static-page.find"
-    },
-    {
-      "action": "api::static-page.static-page.findOne"
-    },
-    {
-      "action": "api::subintervention.subintervention.find"
-    },
-    {
-      "action": "api::subintervention.subintervention.findOne"
     },
     {
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.find"

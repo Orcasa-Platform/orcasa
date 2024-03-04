@@ -267,7 +267,7 @@
       },
       "sustainable_development_goals": {
         "edit": {
-          "label": "Sustainable Development Goals",
+          "label": "sustainable_development_goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -541,17 +541,7 @@
         ],
         [
           {
-            "name": "sustainable_development_goals",
-            "size": 6
-          },
-          {
             "name": "publication_status",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "land_use_types",
             "size": 6
           }
         ],
@@ -559,6 +549,16 @@
           {
             "name": "description",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "sustainable_development_goals",
+            "size": 6
+          },
+          {
+            "name": "land_use_types",
+            "size": 6
           }
         ]
       ]
