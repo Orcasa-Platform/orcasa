@@ -117,8 +117,8 @@
         },
         "list": {
           "label": "description",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "country": {
@@ -283,6 +283,11 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "publication_status"
+      ],
       "edit": [
         [
           {
@@ -318,10 +323,6 @@
         ],
         [
           {
-            "name": "description",
-            "size": 6
-          },
-          {
             "name": "country",
             "size": 6
           }
@@ -355,12 +356,13 @@
             "name": "user_email",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "publication_status"
       ]
     }
   },

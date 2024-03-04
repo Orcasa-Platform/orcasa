@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Info } from 'lucide-react';
 import striptags from 'striptags';
 
 import { format } from '@/lib/utils/formats';
@@ -8,7 +8,7 @@ import { format } from '@/lib/utils/formats';
 import { Dataset, DatasetListResponseDataItem, DatasetSource } from '@/types/datasets';
 
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import InfoTooltip from '@/components/ui/info-tooltip';
 import CalendarIcon from '@/styles/icons/calendar.svg';
 
 export const sourceToLogo: Record<
@@ -62,7 +62,6 @@ const Icons = ({ source, publication_date }: Omit<Dataset, '_id'>) => {
 
 export default function Dataset({ _id, ...attributes }: DatasetListResponseDataItem) {
   const { title, authors, short_description, url, doi } = attributes;
-
   return (
     <li key={_id} className="mb-2 flex min-h-[240px] w-full bg-gray-50">
       <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-gray-700">
@@ -70,18 +69,16 @@ export default function Dataset({ _id, ...attributes }: DatasetListResponseDataI
           <Icons {...attributes} />
           <div className="font-serif text-lg">{title}</div>
           {!!authors && authors.length > 0 && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger className="line-clamp-1 cursor-pointer text-left text-xs italic">
+            <InfoTooltip
+              triggerContent={Array.isArray(authors) ? authors.join(', ') : authors}
+              content={
+                <p className="text-xs italic">
                   {Array.isArray(authors) ? authors.join(', ') : authors}
-                </TooltipTrigger>
-                <TooltipContent align="start" className="max-w-[450px]">
-                  <p className="text-xs italic">
-                    {Array.isArray(authors) ? authors.join(', ') : authors}
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+                </p>
+              }
+              className="max-w-[450px]"
+              triggerClassName="line-clamp-1 max-w-fit cursor-pointer text-left text-xs italic"
+            />
           )}
           <p
             className="mt-4 line-clamp-2 text-sm text-gray-500"

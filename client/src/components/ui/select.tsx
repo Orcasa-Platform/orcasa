@@ -10,7 +10,7 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 export const itemVariants = cva(
-  'relative flex cursor-default select-none items-center p-4 pl-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+  'relative flex cursor-default select-none p-4 pl-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex-col items-start',
   {
     variants: {
       variant: {
@@ -108,16 +108,22 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & VariantProps<typeof itemVariants>
->(({ className, children, variant, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> &
+    VariantProps<typeof itemVariants> & {
+      description?: string;
+    }
+>(({ className, children, variant, description, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <SelectPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
-      </SelectPrimitive.ItemIndicator>
-    </span>
+    <div>
+      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+        <SelectPrimitive.ItemIndicator>
+          <Check className="h-4 w-4" />
+        </SelectPrimitive.ItemIndicator>
+      </span>
 
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+    </div>
+    {description && <div className="pt-3 text-sm leading-7 text-gray-500">{description}</div>}
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;

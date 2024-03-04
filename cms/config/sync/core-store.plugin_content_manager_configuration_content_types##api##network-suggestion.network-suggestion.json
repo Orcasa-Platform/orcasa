@@ -109,9 +109,9 @@
     "layouts": {
       "list": [
         "id",
-        "createdAt",
-        "updatedAt",
-        "new_suggestion_email_recipients"
+        "new_suggestion_email_recipients",
+        "edit_suggestion_email_recipients",
+        "createdAt"
       ],
       "edit": [
         [

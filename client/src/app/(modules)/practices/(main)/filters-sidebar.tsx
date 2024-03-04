@@ -11,6 +11,7 @@ import { usePracticesFilterSidebarOpen, usePracticesFilters } from '@/store/prac
 import { usePracticesFiltersOptions } from '@/hooks/practices';
 
 import { Button } from '@/components/ui/button';
+import InfoTooltip from '@/components/ui/info-tooltip';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 import {
   Select,
@@ -19,13 +20,6 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
-import {
-  TooltipProvider,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '@/components/ui/tooltip';
 
 const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
@@ -130,23 +124,18 @@ const SelectFilter = ({
         {label}
       </label>
       {disabled ? (
-        <TooltipProvider>
-          <Tooltip delayDuration={0}>
-            <TooltipTrigger className="!mt-0 w-full">{select}</TooltipTrigger>
-            <TooltipContent
-              sideOffset={20}
-              variant="dark"
-              align="start"
-              className="max-w-[var(--radix-tooltip-trigger-width)]"
-            >
-              <p className="text-xs leading-normal">
-                You have to select a <span className="font-semibold">land use type</span> and a{' '}
-                <span className="font-semibold">main intervention</span> first.
-              </p>
-              <TooltipArrow variant="dark" />
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <InfoTooltip
+          triggerContent={select}
+          content={
+            <p className="text-xs leading-normal">
+              You have to select a <span className="font-semibold">land use type</span> and a{' '}
+              <span className="font-semibold">main intervention</span> first.
+            </p>
+          }
+          className="max-w-[var(--radix-tooltip-trigger-width)]"
+          triggerClassName="!mt-0 w-full"
+          sideOffset={20}
+        />
       ) : (
         select
       )}
