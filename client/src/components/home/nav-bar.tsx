@@ -32,7 +32,18 @@ const NavBar = () => (
     <nav className="hidden h-full items-center justify-center gap-10 font-serif text-base text-gray-500 lg:flex">
       {modules.map((module) => {
         const { href, name, color } = module;
-        return (
+        return 'external' in module && module.external ? (
+          <a
+            key={href}
+            href={href}
+            className={cn(
+              'box-border flex h-full items-center border-t-8 border-t-transparent',
+              moduleColors[color].hoverBorder,
+            )}
+          >
+            <div className="-mt-2 flex h-full items-center">{name}</div>
+          </a>
+        ) : (
           <Link
             key={href}
             href={href}
