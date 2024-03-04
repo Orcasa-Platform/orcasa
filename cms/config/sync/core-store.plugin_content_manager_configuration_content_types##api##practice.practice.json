@@ -389,6 +389,21 @@
           "sortable": false
         }
       },
+      "organizations": {
+        "edit": {
+          "label": "Organizations",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "organizations",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -579,6 +594,10 @@
         [
           {
             "name": "projects",
+            "size": 6
+          },
+          {
+            "name": "organizations",
             "size": 6
           }
         ]

@@ -510,7 +510,8 @@
           "partner_projects",
           "funded_projects",
           "publication_status",
-          "user_email"
+          "user_email",
+          "practices"
         ]
       },
       "conditions": []
@@ -541,7 +542,8 @@
           "partner_projects",
           "funded_projects",
           "publication_status",
-          "user_email"
+          "user_email",
+          "practices"
         ]
       },
       "conditions": []
@@ -565,7 +567,8 @@
           "partner_projects",
           "funded_projects",
           "publication_status",
-          "user_email"
+          "user_email",
+          "practices"
         ]
       },
       "conditions": []
@@ -715,7 +718,8 @@
           "land_use_priors",
           "subinterventions",
           "practice_intervention",
-          "projects"
+          "projects",
+          "organizations"
         ]
       },
       "conditions": []
@@ -765,7 +769,8 @@
           "land_use_priors",
           "subinterventions",
           "practice_intervention",
-          "projects"
+          "projects",
+          "organizations"
         ]
       },
       "conditions": []
@@ -801,7 +806,8 @@
           "land_use_priors",
           "subinterventions",
           "practice_intervention",
-          "projects"
+          "projects",
+          "organizations"
         ]
       },
       "conditions": []

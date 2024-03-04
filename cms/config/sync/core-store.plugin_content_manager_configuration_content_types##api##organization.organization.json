@@ -223,6 +223,21 @@
           "sortable": true
         }
       },
+      "practices": {
+        "edit": {
+          "label": "Practices",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "source_id"
+        },
+        "list": {
+          "label": "practices",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -283,11 +298,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "publication_status"
-      ],
       "edit": [
         [
           {
@@ -362,7 +372,19 @@
             "name": "description",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "practices",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "publication_status",
+        "practices"
       ]
     }
   },
