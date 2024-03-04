@@ -267,7 +267,7 @@
       },
       "sustainable_development_goals": {
         "edit": {
-          "label": "sustainable_development_goals",
+          "label": "Sustainable Development Goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -275,7 +275,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "sustainable_development_goals",
+          "label": "Sustainable Development Goals",
           "searchable": false,
           "sortable": false
         }
@@ -334,14 +334,14 @@
           "editable": true
         },
         "list": {
-          "label": "publication_status",
+          "label": "Publication Status",
           "searchable": true,
           "sortable": true
         }
       },
       "land_use_types": {
         "edit": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -364,6 +364,21 @@
         },
         "list": {
           "label": "Description",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "practices": {
+        "edit": {
+          "label": "Practices",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "source_id"
+        },
+        "list": {
+          "label": "practices",
           "searchable": false,
           "sortable": false
         }
@@ -428,12 +443,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
-      ],
       "edit": [
         [
           {
@@ -461,6 +470,12 @@
           {
             "name": "short_description",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "description",
+            "size": 12
           }
         ],
         [
@@ -541,26 +556,32 @@
         ],
         [
           {
-            "name": "publication_status",
+            "name": "sustainable_development_goals",
             "size": 6
           }
         ],
         [
           {
-            "name": "description",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "sustainable_development_goals",
+            "name": "publication_status",
             "size": 6
           },
           {
             "name": "land_use_types",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "practices",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
       ]
     }
   },

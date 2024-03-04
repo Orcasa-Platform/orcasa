@@ -132,6 +132,12 @@
         "preset": "custom2"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "practices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::practice.practice",
+      "inversedBy": "projects"
     }
   }
 }

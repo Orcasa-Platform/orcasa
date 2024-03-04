@@ -1,6 +1,7 @@
 {
   "key": "plugin_content_manager_configuration_content_types::api::practice.practice",
   "value": {
+    "uid": "api::practice.practice",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -21,21 +22,21 @@
       },
       "source_name": {
         "edit": {
-          "label": "source_name",
+          "label": "Source Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "source_name",
+          "label": "Source Name",
           "searchable": true,
           "sortable": true
         }
       },
       "source_id": {
         "edit": {
-          "label": "source_id",
+          "label": "Source Id",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,21 +50,21 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "Title",
           "searchable": true,
           "sortable": true
         }
       },
       "short_description": {
         "edit": {
-          "label": "short_description",
+          "label": "Short Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -77,7 +78,7 @@
       },
       "country": {
         "edit": {
-          "label": "country",
+          "label": "Country",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +93,7 @@
       },
       "detailed_description": {
         "edit": {
-          "label": "detailed_description",
+          "label": "Detailed Description",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -106,7 +107,7 @@
       },
       "project_fund": {
         "edit": {
-          "label": "project_fund",
+          "label": "Project Fund",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -120,7 +121,7 @@
       },
       "institution_funding": {
         "edit": {
-          "label": "institution_funding",
+          "label": "Institution Funding",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -134,7 +135,7 @@
       },
       "state_province": {
         "edit": {
-          "label": "state_province",
+          "label": "State/Province",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -148,7 +149,7 @@
       },
       "further_location": {
         "edit": {
-          "label": "further_location",
+          "label": "Further Location",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -162,7 +163,7 @@
       },
       "map_location": {
         "edit": {
-          "label": "map_location",
+          "label": "Map Location",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -176,7 +177,7 @@
       },
       "implem_date": {
         "edit": {
-          "label": "implem_date",
+          "label": "Implementation Date",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -190,7 +191,7 @@
       },
       "publication_date": {
         "edit": {
-          "label": "publication_date",
+          "label": "Publication Date",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -204,7 +205,7 @@
       },
       "implem_decade": {
         "edit": {
-          "label": "implem_decade",
+          "label": "Implementation Decade",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -218,7 +219,7 @@
       },
       "main_purposes": {
         "edit": {
-          "label": "main_purposes",
+          "label": "Main Purposes",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -232,7 +233,7 @@
       },
       "has_changed": {
         "edit": {
-          "label": "has_changed",
+          "label": "Has Changed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -246,7 +247,7 @@
       },
       "land_use_has_changed": {
         "edit": {
-          "label": "land_use_has_changed",
+          "label": "Land Use Has Changed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -260,7 +261,7 @@
       },
       "degradation_assessed": {
         "edit": {
-          "label": "degradation_assessed",
+          "label": "Degradation Assessed",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -274,7 +275,7 @@
       },
       "language": {
         "edit": {
-          "label": "language",
+          "label": "Language",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -288,7 +289,7 @@
       },
       "land_use_types": {
         "edit": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -296,14 +297,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "searchable": false,
           "sortable": false
         }
       },
       "sync": {
         "edit": {
-          "label": "sync",
+          "label": "Sync",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -317,7 +318,7 @@
       },
       "practice_url": {
         "edit": {
-          "label": "practice_url",
+          "label": "Practice Url",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -331,7 +332,7 @@
       },
       "land_use_priors": {
         "edit": {
-          "label": "land_use_priors",
+          "label": "Land Use Priors",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -346,7 +347,7 @@
       },
       "subinterventions": {
         "edit": {
-          "label": "subinterventions",
+          "label": "Subinterventions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -361,16 +362,31 @@
       },
       "practice_intervention": {
         "edit": {
-          "label": "practice_intervention",
+          "label": "Practice Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "practice_intervention",
+          "label": "Practice Intervention",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "projects": {
+        "edit": {
+          "label": "Projects",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "projects",
+          "searchable": false,
+          "sortable": false
         }
       },
       "createdAt": {
@@ -433,12 +449,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "source_name",
-        "source_id",
-        "title"
-      ],
       "edit": [
         [
           {
@@ -466,87 +476,93 @@
             "size": 6
           },
           {
-            "name": "detailed_description",
+            "name": "language",
             "size": 6
           }
         ],
         [
+          {
+            "name": "detailed_description",
+            "size": 6
+          },
           {
             "name": "project_fund",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "institution_funding",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "state_province",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "further_location",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "map_location",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "implem_date",
             "size": 6
+          },
+          {
+            "name": "publication_date",
+            "size": 6
           }
         ],
         [
-          {
-            "name": "publication_date",
-            "size": 4
-          },
           {
             "name": "implem_decade",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "main_purposes",
             "size": 6
-          },
-          {
-            "name": "has_changed",
-            "size": 4
           }
         ],
         [
+          {
+            "name": "has_changed",
+            "size": 6
+          },
           {
             "name": "land_use_has_changed",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "degradation_assessed",
+            "size": 6
+          },
+          {
+            "name": "practice_url",
             "size": 6
           }
         ],
         [
           {
-            "name": "language",
+            "name": "subinterventions",
             "size": 6
           },
           {
-            "name": "land_use_types",
+            "name": "practice_intervention",
             "size": 6
           }
         ],
         [
           {
             "name": "sync",
-            "size": 4
-          },
-          {
-            "name": "practice_url",
             "size": 6
           }
         ],
@@ -556,19 +572,24 @@
             "size": 6
           },
           {
-            "name": "subinterventions",
+            "name": "land_use_types",
             "size": 6
           }
         ],
         [
           {
-            "name": "practice_intervention",
+            "name": "projects",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "source_name",
+        "title",
+        "practice_intervention",
+        "land_use_types"
       ]
-    },
-    "uid": "api::practice.practice"
+    }
   },
   "type": "object",
   "environment": null,
