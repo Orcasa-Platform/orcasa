@@ -27,7 +27,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (language) {
-    fields.push({ label: 'Language', value: language.join(', ') });
+    fields.push({ label: 'Language', value: language.map((l) => l.toUpperCase()).join(', ') });
   }
 
   if (source && source.length > 0) {
