@@ -31,6 +31,8 @@ export interface Module {
   slug: string;
   href: string;
   color: keyof typeof moduleColors;
+  // Links to an external website through redirect. Specific to Scientific Evidence module.
+  external?: boolean;
 }
 
 export const modules = [
@@ -45,6 +47,7 @@ export const modules = [
     slug: 'scientific-evidence',
     href: '/scientific-evidence',
     color: 'teal',
+    external: true,
   },
   {
     name: 'Practices',
