@@ -164,7 +164,6 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
       label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
       value: practices?.data?.map((practice) => practice.attributes?.title),
       url: practices?.data?.map((practice) => `/practices/${practice.id}`),
-      external: true,
     });
   }
 
