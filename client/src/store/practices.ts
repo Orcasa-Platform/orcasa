@@ -4,6 +4,7 @@ type MainIntervention = 'Management' | 'Land Use Change';
 
 export interface PracticesDropdownFilters {
   country: number[];
+  year: number[];
   landUseTypes: number[] | undefined;
   priorLandUseTypes: number[] | undefined;
   mainIntervention: MainIntervention | undefined;
@@ -21,6 +22,7 @@ export const usePracticesFilterSidebarOpen = () => {
 
 const filtersAtom = atom<PracticesFilters>({
   country: [],
+  year: [],
   priorLandUseTypes: undefined,
   landUseTypes: undefined,
   mainIntervention: undefined,
