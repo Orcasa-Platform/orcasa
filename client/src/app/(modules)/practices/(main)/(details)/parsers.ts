@@ -14,6 +14,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
     publication_date: publicationDate,
     project_fund: projectName,
     institution_funding: institutionName,
+    projects,
   } = practice as TypedPractice;
 
   const fields = [];
@@ -44,6 +45,14 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
 
   if (projectName) {
     fields.push({ label: 'Initiative Name', value: projectName });
+  }
+
+  if (projects && projects?.data?.length) {
+    fields.push({
+      label: 'Project',
+      value: projects?.data?.map((project) => project.attributes?.name),
+      url: projects?.data?.map((project) => `/network/initiative/${project.id}`),
+    });
   }
 
   return fields;

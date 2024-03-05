@@ -7,6 +7,7 @@ import { cn } from '@/lib/classnames';
 import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
+import Link from 'next/link';
 
 export type FieldType = {
   label: string;
@@ -25,32 +26,66 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
     setIsExpanded(!isExpanded);
   };
 
-  const renderLink = (url: string | string[]) =>
-    Array.isArray(url) ? (
-      <div>
-        {url.map(
-          (u, i) =>
-            value?.[i] && (
-              <>
-                {i !== 0 ? ', ' : ''}
-                <a
-                  key={u}
-                  href={u}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm text-brown-500"
-                >
-                  {formatId ? formatFunction({ id: formatId, value: value[i] }) : value[i]}
-                </a>
-              </>
-            ),
-        )}
-      </div>
-    ) : (
-      <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
-        {formatId ? formatFunction({ id: formatId, value }) : value}
-      </a>
-    );
+  const renderSingleLink = (url: string, external = false) => {
+    if (!external) {
+      return (
+        <Link className="text-sm text-peach-700" href={`${url}`}>
+          {value}
+        </Link>
+      );
+    } else {
+      return (
+        <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
+          {value}
+        </a>
+      );
+    }
+  };
+
+  const renderLinkArray = (url: Array<string>, external = false) => {
+    if (!external) {
+      return (
+        <div>
+          {url.map(
+            (elemUrl, index) =>
+              value?.[index] && (
+                <>
+                  {index !== 0 ? <br /> : ''}
+                  <Link key={elemUrl} className="text-sm text-peach-700" href={`${elemUrl}`}>
+                    {value[index]}
+                  </Link>
+                </>
+              ),
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          {url.map(
+            (elemUrl, index) =>
+              value?.[index] && (
+                <>
+                  {index !== 0 ? <br /> : ''}
+                  <a
+                    key={elemUrl}
+                    href={elemUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-peach-700"
+                  >
+                    {value[index]}
+                  </a>
+                </>
+              ),
+          )}
+        </div>
+      );
+    }
+  };
+  const renderLink = (url: string | string[], external = false) => {
+    return Array.isArray(url) ? renderLinkArray(url, external) : renderSingleLink(url, external);
+  };
 
   const renderField = () => {
     if (logo) {
