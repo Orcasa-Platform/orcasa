@@ -162,7 +162,9 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
   if (hasData(practices) && practices?.data?.length) {
     fields.push({
       label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
-      value: practices?.data?.map((practice) => practice.attributes?.title).join(', '),
+      value: practices?.data?.map((practice) => practice.attributes?.title),
+      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
+      external: true,
     });
   }
 
