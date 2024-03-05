@@ -51,7 +51,7 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
               value?.[index] && (
                 <>
                   {index !== 0 ? <br /> : ''}
-                  <Link key={elemUrl} className="text-sm text-peach-700" href={`${elemUrl}`}>
+                  <Link key={elemUrl} className="text-sm text-brown-500" href={`${elemUrl}`}>
                     {value[index]}
                   </Link>
                 </>
@@ -72,7 +72,7 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
                     href={elemUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm text-peach-700"
+                    className="text-sm text-brown-500"
                   >
                     {value[index]}
                   </a>
