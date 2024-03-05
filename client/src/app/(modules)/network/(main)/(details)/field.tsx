@@ -63,6 +63,7 @@ const Field = ({
             value?.[i] && (
               <>
                 {i !== 0 ? ', ' : ''}
+                {i !== 0 ? <br /> : ''}
                 <a
                   key={u}
                   href={u}
@@ -73,6 +74,7 @@ const Field = ({
                   {value[i]}
                 </a>
               </>
+
             ),
         )}
       </div>
