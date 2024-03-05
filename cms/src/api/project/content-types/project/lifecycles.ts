@@ -4,7 +4,7 @@ const { ApplicationError } = errors;
 
 export default {
   beforeCreate(event) {
-    const { project_type, lead_partner, country_of_coordination } = event.params.data;
+    const { project_type, lead_partner, country_of_coordination, project_coordinator_email, project_coordinator_website } = event.params.data;
 
     if (project_type?.connect?.length === 0 && typeof project_type !== 'string') {
       throw new ApplicationError('Project Type is required');
@@ -15,9 +15,13 @@ export default {
     if (country_of_coordination?.connect?.length === 0 && typeof country_of_coordination !== 'string') {
       throw new ApplicationError('Country of Coordination is required');
     }
+
+    if (project_coordinator_email && project_coordinator_website) {
+      throw new ApplicationError('You should not provide Project Coordinator Email and Project Coordinator Website simultaneously.');
+    }
   },
   async beforeUpdate(event) {
-    const { project_type, lead_partner, country_of_coordination } = event.params.data;
+    const { project_type, lead_partner, country_of_coordination, project_coordinator_email, project_coordinator_website } = event.params.data;
     const projectToUpdate = await strapi.entityService.findOne("api::project.project", event.params.where.id, {
       populate: ['project_type', 'lead_partner', 'country_of_coordination']
     });
@@ -30,6 +34,10 @@ export default {
     }
     if (country_of_coordination?.connect?.length === 0 && (country_of_coordination?.disconnect?.length === 1 || !projectToUpdate.country_of_coordination)) {
       throw new ApplicationError('Country of Coordination is required');
+    }
+
+    if (project_coordinator_email && project_coordinator_website) {
+      throw new ApplicationError('You should not provide Project Coordinator Email and Project Coordinator Website simultaneously.');
     }
   }
 }
