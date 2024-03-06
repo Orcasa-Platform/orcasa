@@ -21,7 +21,7 @@
       },
       "start": {
         "edit": {
-          "label": "Start",
+          "label": "start",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "finished": {
         "edit": {
-          "label": "Finished",
+          "label": "finished",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "status": {
         "edit": {
-          "label": "Status",
+          "label": "status",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -63,7 +63,7 @@
       },
       "output": {
         "edit": {
-          "label": "Output",
+          "label": "output",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -135,6 +135,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "start",
+        "finished",
+        "status"
+      ],
       "edit": [
         [
           {
@@ -158,12 +164,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "start",
-        "finished",
-        "status"
       ]
     },
     "uid": "api::practice-import.practice-import"

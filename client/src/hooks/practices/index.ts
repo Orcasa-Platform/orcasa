@@ -83,6 +83,28 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
+    ...(filters.year.length > 0
+      ? [
+          {
+            $or: filters.year.map((value) => {
+              return {
+                $and: [
+                  {
+                    publication_date: {
+                      $lte: `${value}-12-31`,
+                    },
+                  },
+                  {
+                    publication_date: {
+                      $gte: `${value}-01-01`,
+                    },
+                  },
+                ],
+              };
+            }),
+          },
+        ]
+      : []),
     // Main intervention is selected
     ...(filters.mainIntervention
       ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
@@ -512,6 +534,12 @@ export const usePracticesFiltersOptions = (
 
   return {
     country,
+    // NOTE: 2010 is the hard-coded start year for the filter
+    year: Array.from({ length: new Date().getFullYear() - 2010 + 1 }).map((_, index) => ({
+      label: `${2010 + index}`,
+      value: 2010 + index,
+    })),
+
     landUseTypes,
     priorLandUseTypes: landUseTypes,
     mainIntervention,

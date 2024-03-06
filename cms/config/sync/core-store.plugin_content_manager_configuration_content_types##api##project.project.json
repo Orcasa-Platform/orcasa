@@ -152,14 +152,14 @@
       },
       "project_coordinator_name": {
         "edit": {
-          "label": "Project Coordinator Name",
+          "label": "project_coordinator_name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Project Coordinator Name",
+          "label": "project_coordinator_name",
           "searchable": true,
           "sortable": true
         }
@@ -180,28 +180,28 @@
       },
       "second_project_coordinator_name": {
         "edit": {
-          "label": "Second Project Coordinator Name",
+          "label": "second_project_coordinator_name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Second Project Coordinator Name",
+          "label": "second_project_coordinator_name",
           "searchable": true,
           "sortable": true
         }
       },
       "second_project_coordinator_email": {
         "edit": {
-          "label": "Second Project Coordinator Email",
+          "label": "second_project_coordinator_email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Second Project Coordinator Email",
+          "label": "second_project_coordinator_email",
           "searchable": true,
           "sortable": true
         }
@@ -267,7 +267,7 @@
       },
       "sustainable_development_goals": {
         "edit": {
-          "label": "Sustainable Development Goals",
+          "label": "sustainable_development_goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -275,7 +275,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Sustainable Development Goals",
+          "label": "sustainable_development_goals",
           "searchable": false,
           "sortable": false
         }
@@ -334,14 +334,14 @@
           "editable": true
         },
         "list": {
-          "label": "Publication Status",
+          "label": "publication_status",
           "searchable": true,
           "sortable": true
         }
       },
       "land_use_types": {
         "edit": {
-          "label": "Land Use Types",
+          "label": "land_use_types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -370,7 +370,7 @@
       },
       "practices": {
         "edit": {
-          "label": "Practices",
+          "label": "practices",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -443,6 +443,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
+      ],
       "edit": [
         [
           {
@@ -474,12 +480,6 @@
         ],
         [
           {
-            "name": "description",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "country_of_coordination",
             "size": 6
           },
@@ -500,21 +500,7 @@
         ],
         [
           {
-            "name": "project_coordinator_name",
-            "size": 6
-          },
-          {
             "name": "project_coordinator_email",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "second_project_coordinator_name",
-            "size": 6
-          },
-          {
-            "name": "second_project_coordinator_email",
             "size": 6
           }
         ],
@@ -556,13 +542,19 @@
         ],
         [
           {
-            "name": "sustainable_development_goals",
+            "name": "publication_status",
             "size": 6
           }
         ],
         [
           {
-            "name": "publication_status",
+            "name": "description",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "sustainable_development_goals",
             "size": 6
           },
           {
@@ -574,14 +566,22 @@
           {
             "name": "practices",
             "size": 6
+          },
+          {
+            "name": "project_coordinator_name",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "second_project_coordinator_name",
+            "size": 6
+          },
+          {
+            "name": "second_project_coordinator_email",
+            "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
       ]
     }
   },
