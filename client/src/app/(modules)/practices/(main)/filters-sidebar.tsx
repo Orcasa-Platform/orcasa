@@ -223,7 +223,7 @@ export default function FiltersSidebar() {
                 onChange={(value) => setFilters({ ...filters, country: value as number[] })}
               />
               <MultiCombobox
-                id="publised-year"
+                id="published-year"
                 name="Published on year"
                 variant="practices"
                 value={filters.year ?? []}

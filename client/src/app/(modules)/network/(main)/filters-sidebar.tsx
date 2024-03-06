@@ -155,7 +155,9 @@ export default function FiltersSidebar() {
                 value={filters.organizationType ?? []}
                 options={organizationFiltersOptions.organizationType}
                 onChange={(value) => setFilters({ ...filters, organizationType: value })}
-                disabled={filters.type?.includes('project')}
+                disabled={
+                  filters.type?.includes('project') && !filters.type?.includes('organization')
+                }
               />
               <MultiCombobox
                 name="Thematic"
@@ -163,7 +165,9 @@ export default function FiltersSidebar() {
                 value={filters.thematic ?? []}
                 options={organizationFiltersOptions.thematic}
                 onChange={(value) => setFilters({ ...filters, thematic: value })}
-                disabled={filters.type?.includes('project')}
+                disabled={
+                  filters.type?.includes('project') && !filters.type?.includes('organization')
+                }
               />
               <MultiCombobox
                 name="Country"
@@ -171,7 +175,9 @@ export default function FiltersSidebar() {
                 value={filters.country ?? []}
                 options={organizationFiltersOptions.country}
                 onChange={(value) => setFilters({ ...filters, country: value })}
-                disabled={filters.type?.includes('project')}
+                disabled={
+                  filters.type?.includes('project') && !filters.type?.includes('organization')
+                }
               />
             </div>
           </fieldset>
@@ -205,7 +211,9 @@ export default function FiltersSidebar() {
                 value={filters.projectType ?? []}
                 options={projectFiltersOptions.projectType}
                 onChange={(value) => setFilters({ ...filters, projectType: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
               <MultiCombobox
                 name="Status"
@@ -213,7 +221,9 @@ export default function FiltersSidebar() {
                 value={filters.status ?? []}
                 options={projectFiltersOptions.status}
                 onChange={(value) => setFilters({ ...filters, status: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
               <MultiCombobox
                 name="Active on year"
@@ -221,7 +231,9 @@ export default function FiltersSidebar() {
                 value={filters.year ?? []}
                 options={projectFiltersOptions.year}
                 onChange={(value) => setFilters({ ...filters, year: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
               <MultiCombobox
                 name="Country of coordination"
@@ -229,7 +241,9 @@ export default function FiltersSidebar() {
                 value={filters.coordinationCountry ?? []}
                 options={projectFiltersOptions.coordinationCountry}
                 onChange={(value) => setFilters({ ...filters, coordinationCountry: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
               <MultiCombobox
                 name="Region of intervention"
@@ -237,7 +251,9 @@ export default function FiltersSidebar() {
                 value={filters.interventionRegion ?? []}
                 options={projectFiltersOptions.interventionRegion}
                 onChange={(value) => setFilters({ ...filters, interventionRegion: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
               <MultiCombobox
                 name="Country of intervention"
@@ -245,7 +261,9 @@ export default function FiltersSidebar() {
                 value={filters.interventionCountry ?? []}
                 options={projectFiltersOptions.interventionCountry}
                 onChange={(value) => setFilters({ ...filters, interventionCountry: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
               <MultiCombobox
                 name="Area of intervention"
@@ -253,7 +271,9 @@ export default function FiltersSidebar() {
                 value={filters.interventionArea ?? []}
                 options={projectFiltersOptions.interventionArea}
                 onChange={(value) => setFilters({ ...filters, interventionArea: value })}
-                disabled={filters.type?.includes('organization')}
+                disabled={
+                  filters.type?.includes('organization') && !filters.type?.includes('project')
+                }
               />
             </div>
           </fieldset>

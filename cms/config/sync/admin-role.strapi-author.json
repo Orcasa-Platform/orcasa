@@ -485,15 +485,11 @@
           "start_date",
           "end_date",
           "short_description",
-          "description",
           "country_of_coordination",
           "region_of_interventions",
           "country_of_interventions",
           "website",
-          "project_coordinator_name",
           "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
           "main_area_of_intervention",
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
@@ -501,7 +497,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "description"
         ]
       },
       "conditions": [],
@@ -517,15 +514,11 @@
           "start_date",
           "end_date",
           "short_description",
-          "description",
           "country_of_coordination",
           "region_of_interventions",
           "country_of_interventions",
           "website",
-          "project_coordinator_name",
           "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
           "main_area_of_intervention",
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
@@ -533,7 +526,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "description"
         ]
       },
       "conditions": [
@@ -551,15 +545,11 @@
           "start_date",
           "end_date",
           "short_description",
-          "description",
           "country_of_coordination",
           "region_of_interventions",
           "country_of_interventions",
           "website",
-          "project_coordinator_name",
           "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
           "main_area_of_intervention",
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
@@ -567,7 +557,8 @@
           "lead_partner",
           "partners",
           "funders",
-          "publication_status"
+          "publication_status",
+          "description"
         ]
       },
       "conditions": [

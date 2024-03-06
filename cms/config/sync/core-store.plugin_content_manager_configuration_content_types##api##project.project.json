@@ -152,14 +152,14 @@
       },
       "project_coordinator_name": {
         "edit": {
-          "label": "Project Coordinator Name",
+          "label": "project_coordinator_name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Project Coordinator Name",
+          "label": "project_coordinator_name",
           "searchable": true,
           "sortable": true
         }
@@ -180,28 +180,28 @@
       },
       "second_project_coordinator_name": {
         "edit": {
-          "label": "Second Project Coordinator Name",
+          "label": "second_project_coordinator_name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Second Project Coordinator Name",
+          "label": "second_project_coordinator_name",
           "searchable": true,
           "sortable": true
         }
       },
       "second_project_coordinator_email": {
         "edit": {
-          "label": "Second Project Coordinator Email",
+          "label": "second_project_coordinator_email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Second Project Coordinator Email",
+          "label": "second_project_coordinator_email",
           "searchable": true,
           "sortable": true
         }
@@ -500,21 +500,7 @@
         ],
         [
           {
-            "name": "project_coordinator_name",
-            "size": 6
-          },
-          {
             "name": "project_coordinator_email",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "second_project_coordinator_name",
-            "size": 6
-          },
-          {
-            "name": "second_project_coordinator_email",
             "size": 6
           }
         ],
@@ -579,6 +565,20 @@
         [
           {
             "name": "practices",
+            "size": 6
+          },
+          {
+            "name": "project_coordinator_name",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "second_project_coordinator_name",
+            "size": 6
+          },
+          {
+            "name": "second_project_coordinator_email",
             "size": 6
           }
         ]
