@@ -29,13 +29,13 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
   const renderSingleLink = (url: string, external = false) => {
     if (!external) {
       return (
-        <Link className="text-sm text-peach-700" href={`${url}`}>
+        <Link className="text-sm text-brown-500" href={`${url}`}>
           {value}
         </Link>
       );
     } else {
       return (
-        <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
+        <a href={url} target="_blank" rel="noreferrer" className="text-sm text-brown-500">
           {value}
         </a>
       );
