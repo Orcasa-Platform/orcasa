@@ -15,6 +15,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
     project_fund: projectName,
     institution_funding: institutionName,
     projects,
+    organizations,
   } = practice as TypedPractice;
 
   const fields = [];
@@ -52,6 +53,14 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
       label: 'Project',
       value: projects?.data?.map((project) => project.attributes?.name),
       url: projects?.data?.map((project) => `/network/initiative/${project.id}`),
+    });
+  }
+
+  if (organizations && organizations?.data?.length) {
+    fields.push({
+      label: 'Organization',
+      value: organizations?.data?.map((organization) => organization.attributes?.name),
+      url: organizations?.data?.map((organization) => `/network/organization/${organization.id}`),
     });
   }
 
