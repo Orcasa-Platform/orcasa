@@ -1,0 +1,10 @@
+{
+  "default": {
+    "dryRun": false,
+    "strict": true,
+    "format": ["@cucumber/pretty-formatter"],
+    "paths": ["tests/features/"],
+    "require": ["cucumber.conf.js", "tests/features/steps/**/*.ts"],
+    "requireModule": ["ts-node/register"]
+  }
+}
