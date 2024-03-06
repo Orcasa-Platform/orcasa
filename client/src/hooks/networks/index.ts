@@ -1,4 +1,6 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
+
+import { UseFormReturn } from 'react-hook-form';
 
 import { FetchNextPageOptions } from '@tanstack/react-query';
 import { uniqBy } from 'lodash';
@@ -1088,4 +1090,33 @@ export const useNetworkProjectFiltersOptions = (): Record<
       value: 2010 + index,
     })),
   };
+};
+
+/**
+ * Immediately validate a field based on a custom validation function
+ */
+export const useImmediateValidate = (
+  { watch, setError, clearErrors }: UseFormReturn,
+  field: string,
+  validateFunction: (fieldValue: any) => Promise<boolean>,
+  message: string,
+) => {
+  const fieldValue = watch(field);
+
+  useEffect(() => {
+    const validate = async () => {
+      let isValid = true;
+      try {
+        isValid = !(await validateFunction(fieldValue));
+      } catch {}
+
+      if (isValid) {
+        clearErrors(field);
+      } else {
+        setError(field, { type: 'custom', message });
+      }
+    };
+
+    validate();
+  }, [fieldValue, clearErrors, field, validateFunction, message, setError]);
 };

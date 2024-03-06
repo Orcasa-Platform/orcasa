@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { Check, CircleSlash } from 'lucide-react';
 import { z } from 'zod';
@@ -15,10 +16,11 @@ import { cn } from '@/lib/classnames';
 
 import { useIsFormDirty } from '@/store/network';
 
-import { postOrganizations } from '@/types/generated/organization';
+import { getOrganizations, postOrganizations } from '@/types/generated/organization';
 import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/strapi.schemas';
 
 import useBeforeUnloadDirtyForm from '@/hooks/navigation';
+import { useImmediateValidate } from '@/hooks/networks';
 import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
 import RenderField from '@/components/form/render-field';
@@ -28,6 +30,8 @@ import { Form } from '@/components/ui/form';
 
 export default function OrganisationForm() {
   const { organizationTypes, organizationThemes, countries } = useOrganizationGetFormFields() || {};
+
+  const queryClient = useQueryClient();
 
   const OtherId = organizationTypes?.find((type) => type?.name === 'Other')?.id?.toString();
   const hasData = organizationTypes && organizationThemes && countries;
@@ -195,6 +199,35 @@ export default function OrganisationForm() {
   useBeforeUnloadDirtyForm(form);
 
   const { handleSubmit, watch } = form;
+
+  const validateName = useCallback(
+    async (organizationName: string | undefined) => {
+      if (!organizationName) {
+        return false;
+      }
+
+      const data = await queryClient.fetchQuery({
+        queryKey: ['organization', 'count', organizationName],
+        queryFn: () =>
+          getOrganizations({
+            fields: ['id'],
+            'pagination[pageSize]': 1,
+            filters: {
+              name: {
+                $eqi: organizationName,
+              },
+            },
+          }),
+        // Cache the result for 10 minutes
+        staleTime: 1000 * 3600 * 10,
+      });
+
+      return !(data?.meta?.pagination?.total === 0);
+    },
+    [queryClient],
+  );
+
+  useImmediateValidate(form, 'name', validateName, 'That organisation already exists.');
 
   if (!hasData || !fields) {
     return null;

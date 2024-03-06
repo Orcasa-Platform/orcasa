@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Tooltip } from '@radix-ui/react-tooltip';
+import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { Check, CircleSlash, AlertCircle, Info } from 'lucide-react';
 import { z } from 'zod';
@@ -17,10 +18,11 @@ import { cn } from '@/lib/classnames';
 
 import { useIsFormDirty } from '@/store/network';
 
-import { postProjects } from '@/types/generated/project';
+import { getProjects, postProjects } from '@/types/generated/project';
 import { ProjectRequest, ProjectRequestData } from '@/types/generated/strapi.schemas';
 
 import useBeforeUnloadDirtyForm from '@/hooks/navigation';
+import { useImmediateValidate } from '@/hooks/networks';
 import { useProjectFormGetFields } from '@/hooks/networks/forms';
 
 import RenderField from '@/components/form/render-field';
@@ -44,6 +46,9 @@ export default function ProjectForm() {
     projectTypes,
     landUseTypes,
   } = useProjectFormGetFields() || {};
+
+  const queryClient = useQueryClient();
+
   const [openInfo, setInfoOpen] = useState(false);
   const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
   const otherId = areasOfIntervention
@@ -408,6 +413,35 @@ export default function ProjectForm() {
     setFocus,
     formState: { errors },
   } = form;
+
+  const validateName = useCallback(
+    async (projectName: string | undefined) => {
+      if (!projectName) {
+        return false;
+      }
+
+      const data = await queryClient.fetchQuery({
+        queryKey: ['organization', 'count', projectName],
+        queryFn: () =>
+          getProjects({
+            fields: ['id'],
+            'pagination[pageSize]': 1,
+            filters: {
+              name: {
+                $eqi: projectName,
+              },
+            },
+          }),
+        // Cache the result for 10 minutes
+        staleTime: 1000 * 3600 * 10,
+      });
+
+      return !(data?.meta?.pagination?.total === 0);
+    },
+    [queryClient],
+  );
+
+  useImmediateValidate(form, 'name', validateName, 'That initiative already exists.');
 
   useEffect(() => {
     const firstError = (Object.keys(errors) as Array<keyof typeof errors>).reduce<
