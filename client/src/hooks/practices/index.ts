@@ -7,15 +7,16 @@ import { PracticesDropdownFilters, PracticesFilters } from '@/store/practices';
 import { useGetCountries } from '@/types/generated/country';
 import { useGetLandUseTypes } from '@/types/generated/land-use-type';
 import {
-  useGetPracticesInfinite,
   useGetPractices,
   useGetPracticesId,
+  useGetPracticesInfinite,
 } from '@/types/generated/practice';
 import {
-  PracticeResponse,
+  PracticeCountriesDataItem,
+  PracticeCountriesDataItemAttributes,
   PracticeListResponse,
   PracticeListResponseDataItem,
-  PracticeCountryDataAttributes,
+  PracticeResponse,
 } from '@/types/generated/strapi.schemas';
 import { useGetSubinterventions } from '@/types/generated/subintervention';
 
@@ -304,31 +305,37 @@ export type PointFeatureWithPracticeProperties = PointFeature<{
 
 type Data = PracticeListResponse | PracticeResponse | undefined;
 
-// Get country data from the practice
-export const getCountryData = (d: PracticeListResponseDataItem) =>
-  (d as PracticeListResponseDataItem)?.attributes?.country?.data?.attributes;
+// Get countries data from the practice
+export const getCountriesData = (d: PracticeListResponseDataItem) =>
+  (d as PracticeListResponseDataItem)?.attributes?.countries?.data?.map(
+    (country: PracticeCountriesDataItem) => country?.attributes,
+  );
 
 // Get only important data for the map
 export const getParsedData: (
   d: PracticeListResponseDataItem,
-  countryD: PracticeCountryDataAttributes,
-) => PracticesProperties = (d, countryD) => ({
-  id: d.id,
-  title: d.attributes?.title,
-  countryName: countryD?.name || '',
-  countryLat: countryD?.lat || 0,
-  countryLong: countryD?.long || 0,
-});
+  practiceCountries: Array<PracticeCountriesDataItemAttributes | undefined>,
+) => Array<PracticesProperties> = (d, practiceCountries) => {
+  return practiceCountries.map((practiceCountry) => ({
+    id: d.id,
+    title: d.attributes?.title,
+    countryName: practiceCountry?.name || '',
+    countryLat: practiceCountry?.lat || 0,
+    countryLong: practiceCountry?.long || 0,
+  }));
+};
 
 // Parse data for each array
 export const parseData = (data: Data): PracticesProperties[] => {
   if (!data?.data) return [];
   return (Array.isArray(data.data) ? data.data : [data.data])
-    ?.map((d) => {
-      const countryData = getCountryData(d);
+    ?.map((d: PracticeListResponseDataItem) => {
+      const countryData: Array<PracticeCountriesDataItemAttributes | undefined> | undefined =
+        getCountriesData(d);
       if (!countryData) return null;
       return getParsedData(d, countryData);
     })
+    .flat()
     .filter((d: PracticesProperties | null): d is PracticesProperties => d !== null);
 };
 
@@ -342,7 +349,7 @@ const useGetPracticesData = (filters: PracticesFilters) => {
     isError: practicesIsError,
   } = useGetPractices(
     {
-      populate: 'country',
+      populate: 'countries',
       'pagination[pageSize]': 9999,
       filters: queryFilters,
     },
@@ -373,7 +380,7 @@ const useGetPractice = ({ id }: Practice) => {
   } = useGetPracticesId(
     id as number,
     {
-      populate: 'country',
+      populate: '*',
     },
     { query: { keepPreviousData: true } },
   );

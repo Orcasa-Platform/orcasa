@@ -1383,7 +1383,7 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     source_id?: string;
     title?: string;
     short_description?: string;
-    country?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
+    countries?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountries;
     detailed_description?: string;
     project_fund?: string;
     institution_funding?: string;
@@ -1878,18 +1878,18 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes =
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes =
   { [key: string]: any };
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryData =
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItem =
   {
     id?: number;
-    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes;
+    attributes?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes;
   };
 
-export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry =
+export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountries =
   {
-    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryData;
+    data?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItem[];
   };
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName =
@@ -2347,7 +2347,7 @@ export type SubinterventionPracticesDataItemAttributes = {
   source_id?: string;
   title?: string;
   short_description?: string;
-  country?: SubinterventionPracticesDataItemAttributesCountry;
+  countries?: SubinterventionPracticesDataItemAttributesCountries;
   detailed_description?: string;
   project_fund?: string;
   institution_funding?: string;
@@ -2513,864 +2513,867 @@ export type SubinterventionPracticesDataItemAttributesLandUseTypes = {
   data?: SubinterventionPracticesDataItemAttributesLandUseTypesDataItem[];
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryData = {
+export type SubinterventionPracticesDataItemAttributesCountriesDataItem = {
   id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributes;
+  attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributes;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountry = {
-  data?: SubinterventionPracticesDataItemAttributesCountryData;
+export type SubinterventionPracticesDataItemAttributesCountries = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItem[];
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByData = {
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesUpdatedByData = {
   id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByDataAttributes;
+  attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesUpdatedByDataAttributes;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedBy = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedByData;
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesUpdatedBy = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesUpdatedByData;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData = {
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesCreatedByData = {
   id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByDataAttributes;
+  attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesCreatedByDataAttributes;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedByData;
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesCreatedBy = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesCreatedByData;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItem = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItemAttributes;
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesPracticesDataItem =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesPracticesDataItemAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesPractices = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesPracticesDataItem[];
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesPractices = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesPracticesDataItem[];
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItem = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItemAttributes;
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesProjectsDataItem =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesProjectsDataItemAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesProjects = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesProjectsDataItem[];
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesProjects = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesProjectsDataItem[];
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributes = {
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributes = {
   name?: string;
   capital?: string;
   code?: number;
   fips?: string;
   iso_2?: string;
   iso_3?: string;
-  continent?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinent;
-  region?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegion;
-  projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesProjects;
+  continent?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinent;
+  region?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegion;
+  projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesProjects;
   lat?: number;
   long?: number;
-  practices?: SubinterventionPracticesDataItemAttributesCountryDataAttributesPractices;
+  practices?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesPractices;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesCreatedBy;
-  updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesUpdatedBy;
+  createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesCreatedBy;
+  updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesUpdatedBy;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributes = {
-  name?: string;
-  projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionData = {
-  id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributes;
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegion = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionData;
-};
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjects =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem[];
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPractices =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem[];
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem =
-  {
-    id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes;
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes =
-  {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem[];
-  };
-
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributes =
   {
     name?: string;
-    project_type?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
+    projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedBy;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionData = {
+  id?: number;
+  attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributes;
+};
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegion = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionData;
+};
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByDataAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedBy =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItem =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjects =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItem[];
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes =
+  { [key: string]: any };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPractices =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem[];
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem =
+  {
+    id?: number;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes;
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes =
+  {
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem[];
+  };
+
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributes =
+  {
+    name?: string;
+    project_type?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
     start_date?: string;
     end_date?: string;
     short_description?: string;
-    country_of_coordination?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-    region_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-    country_of_interventions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
+    country_of_coordination?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
+    region_of_interventions?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
+    country_of_interventions?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
     website?: string;
     project_coordinator_name?: string;
     project_coordinator_email?: string;
     second_project_coordinator_name?: string;
     second_project_coordinator_email?: string;
-    main_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
+    main_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
     main_area_of_intervention_other?: string;
-    secondary_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-    third_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-    sustainable_development_goals?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-    lead_partner?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-    partners?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
-    funders?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
-    publication_status?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-    land_use_types?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+    secondary_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
+    third_area_of_intervention?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
+    sustainable_development_goals?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
+    lead_partner?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
+    partners?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
+    funders?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
+    publication_status?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
+    land_use_types?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
     description?: string;
-    practices?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPractices;
+    practices?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes =
   {
     name?: string;
-    practices_prior?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior;
-    practices?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices;
-    projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects;
+    practices_prior?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior;
+    practices?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices;
+    projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
-  (typeof SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
+  (typeof SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
+export const SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
   {
     proposed: 'proposed',
     accepted: 'accepted',
     declined: 'declined',
   } as const;
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFunders =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartners =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
-  (typeof SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
+  (typeof SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
+export const SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
   {
     proposed: 'proposed',
     accepted: 'accepted',
     declined: 'declined',
   } as const;
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
   {
     name?: string;
-    organization_type?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
     organization_type_other?: string;
-    main_organization_theme?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    main_organization_theme?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
     short_description?: string;
     description?: string;
-    country?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    country?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
     url?: string;
-    lead_projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    lead_projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
     user_email?: string;
-    practices?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices;
+    practices?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
     order?: number;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
     order?: number;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
   {
     name?: string;
-    projects?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    projects?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
   {
     name?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
     description?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentData = {
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentData = {
   id?: number;
-  attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributes;
+  attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributes;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinent = {
-  data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentData;
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinent = {
+  data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentData;
 };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributes =
   {
     name?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributes =
   {
     firstname?: string;
     lastname?: string;
@@ -3379,185 +3382,185 @@ export type SubinterventionPracticesDataItemAttributesCountryDataAttributesConti
     resetPasswordToken?: string;
     registrationToken?: string;
     isActive?: boolean;
-    roles?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
+    roles?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRoles;
     blocked?: boolean;
     preferedLanguage?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRoles =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
   {
     name?: string;
     code?: string;
     description?: string;
-    users?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    users?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
     actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
-    role?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    role?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+    createdBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
   {
     id?: number;
-    attributes?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
+    attributes?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
   };
 
-export type SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
+export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
   {
-    data?: SubinterventionPracticesDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
+    data?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
   };
 
 export type SubinterventionPracticesDataItemAttributesSourceName =
@@ -4264,7 +4267,7 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
     source_id?: string;
     title?: string;
     short_description?: string;
-    country?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
+    countries?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountries;
     detailed_description?: string;
     project_fund?: string;
     institution_funding?: string;
@@ -4739,18 +4742,18 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
     data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes =
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes =
   { [key: string]: any };
 
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryData =
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItem =
   {
     id?: number;
-    attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes;
+    attributes?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes;
   };
 
-export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry =
+export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountries =
   {
-    data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryData;
+    data?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItem[];
   };
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName =
@@ -5867,7 +5870,7 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     source_id?: string;
     title?: string;
     short_description?: string;
-    country?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountry;
+    countries?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountries;
     detailed_description?: string;
     project_fund?: string;
     institution_funding?: string;
@@ -6169,18 +6172,18 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryDataAttributes =
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes =
   { [key: string]: any };
 
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryData =
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItem =
   {
     id?: number;
-    attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryDataAttributes;
+    attributes?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes;
   };
 
-export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountry =
+export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountries =
   {
-    data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryData;
+    data?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItem[];
   };
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
@@ -7235,7 +7238,7 @@ export interface Practice {
   source_id: string;
   title?: string;
   short_description?: string;
-  country?: PracticeCountry;
+  countries?: PracticeCountries;
   detailed_description?: string;
   project_fund?: string;
   institution_funding?: string;
@@ -7298,322 +7301,327 @@ export type PracticeLandUseTypes = {
   data?: PracticeLandUseTypesDataItem[];
 };
 
-export type PracticeCountryData = {
+export type PracticeCountriesDataItem = {
   id?: number;
-  attributes?: PracticeCountryDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributes;
 };
 
-export type PracticeCountry = {
-  data?: PracticeCountryData;
+export type PracticeCountries = {
+  data?: PracticeCountriesDataItem[];
 };
 
-export type PracticeCountryDataAttributesUpdatedByDataAttributes = { [key: string]: any };
+export type PracticeCountriesDataItemAttributesUpdatedByDataAttributes = { [key: string]: any };
 
-export type PracticeCountryDataAttributesUpdatedByData = {
+export type PracticeCountriesDataItemAttributesUpdatedByData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesUpdatedByDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesUpdatedByDataAttributes;
 };
 
-export type PracticeCountryDataAttributesUpdatedBy = {
-  data?: PracticeCountryDataAttributesUpdatedByData;
+export type PracticeCountriesDataItemAttributesUpdatedBy = {
+  data?: PracticeCountriesDataItemAttributesUpdatedByData;
 };
 
-export type PracticeCountryDataAttributesCreatedByDataAttributes = { [key: string]: any };
+export type PracticeCountriesDataItemAttributesCreatedByDataAttributes = { [key: string]: any };
 
-export type PracticeCountryDataAttributesCreatedByData = {
+export type PracticeCountriesDataItemAttributesCreatedByData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesCreatedByDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesCreatedByDataAttributes;
 };
 
-export type PracticeCountryDataAttributesCreatedBy = {
-  data?: PracticeCountryDataAttributesCreatedByData;
+export type PracticeCountriesDataItemAttributesCreatedBy = {
+  data?: PracticeCountriesDataItemAttributesCreatedByData;
 };
 
-export type PracticeCountryDataAttributesPracticesDataItemAttributes = { [key: string]: any };
+export type PracticeCountriesDataItemAttributesPracticesDataItemAttributes = { [key: string]: any };
 
-export type PracticeCountryDataAttributesPracticesDataItem = {
+export type PracticeCountriesDataItemAttributesPracticesDataItem = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesPracticesDataItemAttributes;
+  attributes?: PracticeCountriesDataItemAttributesPracticesDataItemAttributes;
 };
 
-export type PracticeCountryDataAttributesPractices = {
-  data?: PracticeCountryDataAttributesPracticesDataItem[];
+export type PracticeCountriesDataItemAttributesPractices = {
+  data?: PracticeCountriesDataItemAttributesPracticesDataItem[];
 };
 
-export type PracticeCountryDataAttributes = {
+export type PracticeCountriesDataItemAttributes = {
   name?: string;
   capital?: string;
   code?: number;
   fips?: string;
   iso_2?: string;
   iso_3?: string;
-  continent?: PracticeCountryDataAttributesContinent;
-  region?: PracticeCountryDataAttributesRegion;
-  projects?: PracticeCountryDataAttributesProjects;
+  continent?: PracticeCountriesDataItemAttributesContinent;
+  region?: PracticeCountriesDataItemAttributesRegion;
+  projects?: PracticeCountriesDataItemAttributesProjects;
   lat?: number;
   long?: number;
-  practices?: PracticeCountryDataAttributesPractices;
+  practices?: PracticeCountriesDataItemAttributesPractices;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: PracticeCountryDataAttributesCreatedBy;
-  updatedBy?: PracticeCountryDataAttributesUpdatedBy;
+  createdBy?: PracticeCountriesDataItemAttributesCreatedBy;
+  updatedBy?: PracticeCountriesDataItemAttributesUpdatedBy;
 };
 
-export type PracticeCountryDataAttributesProjectsDataItemAttributes = { [key: string]: any };
+export type PracticeCountriesDataItemAttributesProjectsDataItemAttributes = { [key: string]: any };
 
-export type PracticeCountryDataAttributesProjectsDataItem = {
+export type PracticeCountriesDataItemAttributesProjectsDataItem = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesProjectsDataItemAttributes;
+  attributes?: PracticeCountriesDataItemAttributesProjectsDataItemAttributes;
 };
 
-export type PracticeCountryDataAttributesProjects = {
-  data?: PracticeCountryDataAttributesProjectsDataItem[];
+export type PracticeCountriesDataItemAttributesProjects = {
+  data?: PracticeCountriesDataItemAttributesProjectsDataItem[];
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributes = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributes = {
   name?: string;
-  projects?: PracticeCountryDataAttributesRegionDataAttributesProjects;
+  projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjects;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: PracticeCountryDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: PracticeCountryDataAttributesRegionDataAttributesUpdatedBy;
+  createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesCreatedBy;
+  updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesUpdatedBy;
 };
 
-export type PracticeCountryDataAttributesRegionData = {
+export type PracticeCountriesDataItemAttributesRegionData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesRegionDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesRegionDataAttributes;
 };
 
-export type PracticeCountryDataAttributesRegion = {
-  data?: PracticeCountryDataAttributesRegionData;
+export type PracticeCountriesDataItemAttributesRegion = {
+  data?: PracticeCountriesDataItemAttributesRegionData;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesUpdatedByData = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributesUpdatedByData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesUpdatedByDataAttributes;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesUpdatedBy = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesUpdatedByData;
+export type PracticeCountriesDataItemAttributesRegionDataAttributesUpdatedBy = {
+  data?: PracticeCountriesDataItemAttributesRegionDataAttributesUpdatedByData;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesCreatedByDataAttributes = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributesCreatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesCreatedByData = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributesCreatedByData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesRegionDataAttributesCreatedByDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesCreatedByDataAttributes;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesCreatedBy = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesCreatedByData;
+export type PracticeCountriesDataItemAttributesRegionDataAttributesCreatedBy = {
+  data?: PracticeCountriesDataItemAttributesRegionDataAttributesCreatedByData;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItem = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItem = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes;
+  attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributes;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjects = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItem[];
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjects = {
+  data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItem[];
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
-};
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
+  {
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
+  };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
-};
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy =
+  {
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
+  };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPractices = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem[];
-};
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPractices =
+  {
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem[];
+  };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
-  (typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
+  (typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
+export const PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
   {
     proposed: 'proposed',
     accepted: 'accepted',
     declined: 'declined',
   } as const;
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes = {
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributes = {
   name?: string;
-  project_type?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
+  project_type?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
   start_date?: string;
   end_date?: string;
   short_description?: string;
-  country_of_coordination?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-  region_of_interventions?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-  country_of_interventions?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
+  country_of_coordination?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
+  region_of_interventions?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
+  country_of_interventions?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
   website?: string;
   project_coordinator_name?: string;
   project_coordinator_email?: string;
   second_project_coordinator_name?: string;
   second_project_coordinator_email?: string;
-  main_area_of_intervention?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
+  main_area_of_intervention?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
   main_area_of_intervention_other?: string;
-  secondary_area_of_intervention?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-  third_area_of_intervention?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-  sustainable_development_goals?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-  lead_partner?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-  partners?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
-  funders?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
-  publication_status?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-  land_use_types?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+  secondary_area_of_intervention?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
+  third_area_of_intervention?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
+  sustainable_development_goals?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
+  lead_partner?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
+  partners?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
+  funders?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
+  publication_status?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
+  land_use_types?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
   description?: string;
-  practices?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPractices;
+  practices?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPractices;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-  updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
+  createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
+  updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
 };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
-};
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFunders =
+  {
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
+  };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners = {
-  data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
-};
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartners =
+  {
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
+  };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
   {
     name?: string;
-    organization_type?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
     organization_type_other?: string;
-    main_organization_theme?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    main_organization_theme?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
     short_description?: string;
     description?: string;
-    country?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    country?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
     url?: string;
-    lead_projects?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    lead_projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
     user_email?: string;
-    practices?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices;
+    practices?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes =
   {
-    source_name?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName;
+    source_name?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName;
     source_id?: string;
     title?: string;
     short_description?: string;
-    country?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountry;
+    countries?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountries;
     detailed_description?: string;
     project_fund?: string;
     institution_funding?: string;
@@ -7628,725 +7636,725 @@ export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAtt
     land_use_has_changed?: string;
     degradation_assessed?: string;
     language?: string;
-    land_use_types?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypes;
+    land_use_types?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypes;
     sync?: boolean;
     practice_url?: string;
-    land_use_priors?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriors;
-    subinterventions?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventions;
-    practice_intervention?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention;
-    projects?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects;
-    organizations?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations;
+    land_use_priors?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriors;
+    subinterventions?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventions;
+    practice_intervention?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention;
+    projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects;
+    organizations?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizationsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjectsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention =
-  (typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention];
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention =
+  (typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention)[keyof typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention =
+export const PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention =
   {
     Management: 'Management',
     Land_Use_Change: 'Land Use Change',
     None: 'None',
   } as const;
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventions =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventions =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPracticesDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributes =
   {
     name?: string;
     slug?: string;
-    practices?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
+    practices?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSubinterventionsDataItemAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriors =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriors =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUsePriorsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypes =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributes =
   {
     name?: string;
-    practices_prior?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior;
-    practices?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
-    projects?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjects;
+    practices_prior?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior;
+    practices?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices;
+    projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjects =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjects =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPractices =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountry =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountries =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
-  (typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName)[keyof typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName];
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
+  (typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName)[keyof typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
+export const PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
   } as const;
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
-  (typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
+  (typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
+export const PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
   {
     proposed: 'proposed',
     accepted: 'accepted',
     declined: 'declined',
   } as const;
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
     order?: number;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
     order?: number;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
   {
     name?: string;
-    projects?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
   {
     name?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
     description?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesContinentData = {
+export type PracticeCountriesDataItemAttributesContinentData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesContinentDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesContinentDataAttributes;
 };
 
-export type PracticeCountryDataAttributesContinent = {
-  data?: PracticeCountryDataAttributesContinentData;
+export type PracticeCountriesDataItemAttributesContinent = {
+  data?: PracticeCountriesDataItemAttributesContinentData;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes = {
+export type PracticeCountriesDataItemAttributesContinentDataAttributesUpdatedByDataAttributes = {
   [key: string]: any;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesUpdatedByData = {
+export type PracticeCountriesDataItemAttributesContinentDataAttributesUpdatedByData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesUpdatedByDataAttributes;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesUpdatedBy = {
-  data?: PracticeCountryDataAttributesContinentDataAttributesUpdatedByData;
+export type PracticeCountriesDataItemAttributesContinentDataAttributesUpdatedBy = {
+  data?: PracticeCountriesDataItemAttributesContinentDataAttributesUpdatedByData;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributes = {
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributes = {
   firstname?: string;
   lastname?: string;
   username?: string;
@@ -8354,188 +8362,191 @@ export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAtt
   resetPasswordToken?: string;
   registrationToken?: string;
   isActive?: boolean;
-  roles?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
+  roles?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRoles;
   blocked?: boolean;
   preferedLanguage?: string;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
-  updatedBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
+  createdBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
+  updatedBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByData = {
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByData = {
   id?: number;
-  attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributes;
+  attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributes;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedBy = {
-  data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByData;
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedBy = {
+  data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByData;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributes = {
+export type PracticeCountriesDataItemAttributesContinentDataAttributes = {
   name?: string;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedBy;
-  updatedBy?: PracticeCountryDataAttributesContinentDataAttributesUpdatedBy;
+  createdBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedBy;
+  updatedBy?: PracticeCountriesDataItemAttributesContinentDataAttributesUpdatedBy;
 };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy = {
-  data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
-};
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy =
+  {
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
+  };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy = {
-  data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
-};
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy =
+  {
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
+  };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
   {
     name?: string;
     code?: string;
     description?: string;
-    users?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    users?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles = {
-  data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
-};
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRoles =
+  {
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
+  };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
     actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
-    role?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    role?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+    createdBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
   {
     id?: number;
-    attributes?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
+    attributes?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
   };
 
-export type PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
+export type PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
   {
-    data?: PracticeCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
+    data?: PracticeCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
   };
 
 export type PracticeSourceName = (typeof PracticeSourceName)[keyof typeof PracticeSourceName];
@@ -8590,7 +8601,7 @@ export type PracticeRequestDataLandUsePriorsItem = number | string;
 
 export type PracticeRequestDataLandUseTypesItem = number | string;
 
-export type PracticeRequestDataCountry = number | string;
+export type PracticeRequestDataCountriesItem = number | string;
 
 export type PracticeRequestDataSourceName =
   (typeof PracticeRequestDataSourceName)[keyof typeof PracticeRequestDataSourceName];
@@ -8605,7 +8616,7 @@ export type PracticeRequestData = {
   source_id: string;
   title?: string;
   short_description?: string;
-  country?: PracticeRequestDataCountry;
+  countries?: PracticeRequestDataCountriesItem[];
   detailed_description?: string;
   project_fund?: string;
   institution_funding?: string;
@@ -10000,7 +10011,7 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     source_id?: string;
     title?: string;
     short_description?: string;
-    country?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountry;
+    countries?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountries;
     detailed_description?: string;
     project_fund?: string;
     institution_funding?: string;
@@ -10201,18 +10212,18 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryDataAttributes =
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes =
   { [key: string]: any };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryData =
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItem =
   {
     id?: number;
-    attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryDataAttributes;
+    attributes?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes;
   };
 
-export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountry =
+export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountries =
   {
-    data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountryData;
+    data?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesCountriesDataItem[];
   };
 
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
@@ -11877,7 +11888,7 @@ export type LandUseTypePracticesPriorDataItemAttributes = {
   source_id?: string;
   title?: string;
   short_description?: string;
-  country?: LandUseTypePracticesPriorDataItemAttributesCountry;
+  countries?: LandUseTypePracticesPriorDataItemAttributesCountries;
   detailed_description?: string;
   project_fund?: string;
   institution_funding?: string;
@@ -12043,855 +12054,858 @@ export type LandUseTypePracticesPriorDataItemAttributesLandUseTypes = {
   data?: LandUseTypePracticesPriorDataItemAttributesLandUseTypesDataItem[];
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryData = {
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItem = {
   id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributes;
+  attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributes;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountry = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryData;
+export type LandUseTypePracticesPriorDataItemAttributesCountries = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItem[];
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesUpdatedByData = {
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesUpdatedByData = {
   id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesUpdatedByDataAttributes;
+  attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesUpdatedByDataAttributes;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesUpdatedBy = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesUpdatedByData;
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesUpdatedBy = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesUpdatedByData;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCreatedByData = {
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesCreatedByData = {
   id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCreatedByDataAttributes;
+  attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesCreatedByDataAttributes;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCreatedBy = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCreatedByData;
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesCreatedBy = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesCreatedByData;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributes = {
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributes = {
   name?: string;
   capital?: string;
   code?: number;
   fips?: string;
   iso_2?: string;
   iso_3?: string;
-  continent?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinent;
-  region?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegion;
-  projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesProjects;
+  continent?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinent;
+  region?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegion;
+  projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesProjects;
   lat?: number;
   long?: number;
-  practices?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesPractices;
+  practices?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesPractices;
   createdAt?: string;
   updatedAt?: string;
-  createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCreatedBy;
-  updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesUpdatedBy;
+  createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesCreatedBy;
+  updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesUpdatedBy;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesPracticesDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesPracticesDataItem = {
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesPracticesDataItem =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesPracticesDataItemAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesPractices = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesPracticesDataItem[];
+};
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesProjectsDataItemAttributes =
+  { [key: string]: any };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesProjectsDataItem =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesProjectsDataItemAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesProjects = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesProjectsDataItem[];
+};
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionData = {
   id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesPracticesDataItemAttributes;
+  attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributes;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesPractices = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesPracticesDataItem[];
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegion = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionData;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesProjectsDataItem = {
-  id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesProjectsDataItemAttributes;
-};
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesProjects = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesProjectsDataItem[];
-};
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionData = {
-  id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributes;
-};
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegion = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionData;
-};
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributes = {
-  name?: string;
-  projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjects;
-  createdAt?: string;
-  updatedAt?: string;
-  createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy;
-  updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesUpdatedBy;
-};
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByDataAttributes;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedBy =
-  {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesCreatedByData;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjects =
-  {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItem[];
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
-  {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy =
-  {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes =
-  { [key: string]: any };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPractices =
-  {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem[];
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem =
-  {
-    id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes;
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes =
-  {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem[];
-  };
-
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributes =
   {
     name?: string;
-    project_type?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
+    projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjects;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesUpdatedBy;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByDataAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedBy =
+  {
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesCreatedByData;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItem =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjects =
+  {
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItem[];
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes =
+  { [key: string]: any };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByDataAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy =
+  {
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedByData;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes =
+  { [key: string]: any };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByDataAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy =
+  {
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedByData;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes =
+  { [key: string]: any };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItemAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPractices =
+  {
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPracticesDataItem[];
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem =
+  {
+    id?: number;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes;
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes =
+  {
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItem[];
+  };
+
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributes =
+  {
+    name?: string;
+    project_type?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectType;
     start_date?: string;
     end_date?: string;
     short_description?: string;
-    country_of_coordination?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
-    region_of_interventions?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
-    country_of_interventions?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
+    country_of_coordination?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination;
+    region_of_interventions?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions;
+    country_of_interventions?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions;
     website?: string;
     project_coordinator_name?: string;
     project_coordinator_email?: string;
     second_project_coordinator_name?: string;
     second_project_coordinator_email?: string;
-    main_area_of_intervention?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
+    main_area_of_intervention?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention;
     main_area_of_intervention_other?: string;
-    secondary_area_of_intervention?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
-    third_area_of_intervention?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
-    sustainable_development_goals?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
-    lead_partner?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
-    partners?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
-    funders?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
-    publication_status?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
-    land_use_types?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
+    secondary_area_of_intervention?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention;
+    third_area_of_intervention?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention;
+    sustainable_development_goals?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals;
+    lead_partner?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner;
+    partners?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartners;
+    funders?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFunders;
+    publication_status?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus;
+    land_use_types?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypes;
     description?: string;
-    practices?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPractices;
+    practices?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjectsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributes =
   {
     name?: string;
-    practices_prior?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior;
-    practices?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices;
-    projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects;
+    practices_prior?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior;
+    practices?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPractices;
+    projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPrior =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
-  (typeof LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
+  (typeof LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus)[keyof typeof LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
+export const LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPublicationStatus =
   {
     proposed: 'proposed',
     accepted: 'accepted',
     declined: 'declined',
   } as const;
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFunders =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFunders =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesFundersDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartners =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartners =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesPartnersDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes =
   {
     name?: string;
-    organization_type?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
+    organization_type?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType;
     organization_type_other?: string;
-    main_organization_theme?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
-    secondary_organization_theme?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
+    main_organization_theme?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme;
+    secondary_organization_theme?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme;
     short_description?: string;
     description?: string;
-    country?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
+    country?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry;
     url?: string;
-    lead_projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
-    partner_projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
-    funded_projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
-    publication_status?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
+    lead_projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects;
+    partner_projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects;
+    funded_projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects;
+    publication_status?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus;
     user_email?: string;
-    practices?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices;
+    practices?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartner =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPractices =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
-  (typeof LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
+  (typeof LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus)[keyof typeof LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
+export const LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
   {
     proposed: 'proposed',
     accepted: 'accepted',
     declined: 'declined',
   } as const;
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjects =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesFundedProjectsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjects =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPartnerProjectsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjects =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesLeadProjectsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountry =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesCountryData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationTheme =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesSecondaryOrganizationThemeData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes =
   {
     name?: string;
     order?: number;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationTheme =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesMainOrganizationThemeDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationType =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributes =
   {
     name?: string;
     order?: number;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesOrganizationTypeDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes =
   {
     name?: string;
-    projects?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
+    projects?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoals =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjects =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSustainableDevelopmentGoalsDataItemAttributesProjectsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfIntervention =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesThirdAreaOfInterventionData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfIntervention =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesSecondaryAreaOfInterventionData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes =
   {
     name?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfIntervention =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesMainAreaOfInterventionDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventions =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfInterventionsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventions =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesRegionOfInterventionsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordination =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes =
   {
     name?: string;
     description?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectType =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesProjectTypeDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentData = {
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentData = {
   id?: number;
-  attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributes;
+  attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributes;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinent = {
-  data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentData;
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinent = {
+  data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentData;
 };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributes =
   {
     firstname?: string;
     lastname?: string;
@@ -12900,194 +12914,194 @@ export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesCont
     resetPasswordToken?: string;
     registrationToken?: string;
     isActive?: boolean;
-    roles?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles;
+    roles?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRoles;
     blocked?: boolean;
     preferedLanguage?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributes =
   {
     name?: string;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes =
   {
     name?: string;
     code?: string;
     description?: string;
-    users?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
-    permissions?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
+    users?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers;
+    permissions?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRoles =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRoles =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissions =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItem[];
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributes =
   {
     action?: string;
     actionParameters?: unknown;
     subject?: string;
     properties?: unknown;
     conditions?: unknown;
-    role?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
+    role?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole;
     createdAt?: string;
     updatedAt?: string;
-    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
-    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
+    createdBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy;
+    updatedBy?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesUpdatedBy;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedBy =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesCreatedByData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleDataAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRole =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesPermissionsDataItemAttributesRoleData;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes =
   { [key: string]: any };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem =
   {
     id?: number;
-    attributes?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
+    attributes?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItemAttributes;
   };
 
-export type LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
+export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsers =
   {
-    data?: LandUseTypePracticesPriorDataItemAttributesCountryDataAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
+    data?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesContinentDataAttributesCreatedByDataAttributesRolesDataItemAttributesUsersDataItem[];
   };
 
 export type LandUseTypePracticesPriorDataItemAttributesSourceName =
@@ -13612,7 +13626,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     source_id?: string;
     title?: string;
     short_description?: string;
-    country?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry;
+    countries?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountries;
     detailed_description?: string;
     project_fund?: string;
     institution_funding?: string;
@@ -14132,18 +14146,18 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesLandUseTypesDataItemAttributesPracticesPriorDataItem[];
   };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountry =
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountries =
   {
-    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryData;
+    data?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItem[];
   };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes =
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes =
   { [key: string]: any };
 
-export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryData =
+export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItem =
   {
     id?: number;
-    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountryDataAttributes;
+    attributes?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesCountriesDataItemAttributes;
   };
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName =

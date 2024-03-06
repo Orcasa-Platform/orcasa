@@ -536,6 +536,171 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice-import.practice-import",
+      "properties": {
+        "fields": [
+          "start",
+          "finished",
+          "status",
+          "output"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
+          "language",
+          "land_use_types",
+          "sync",
+          "practice_url",
+          "land_use_priors",
+          "subinterventions",
+          "practice_intervention",
+          "projects",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
+          "language",
+          "land_use_types",
+          "sync",
+          "practice_url",
+          "land_use_priors",
+          "subinterventions",
+          "practice_intervention",
+          "projects",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::practice.practice",
+      "properties": {
+        "fields": [
+          "source_name",
+          "source_id",
+          "title",
+          "short_description",
+          "detailed_description",
+          "project_fund",
+          "institution_funding",
+          "state_province",
+          "further_location",
+          "map_location",
+          "implem_date",
+          "publication_date",
+          "implem_decade",
+          "main_purposes",
+          "has_changed",
+          "land_use_has_changed",
+          "degradation_assessed",
+          "language",
+          "land_use_types",
+          "sync",
+          "practice_url",
+          "land_use_priors",
+          "subinterventions",
+          "practice_intervention",
+          "projects",
+          "organizations"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
       "subject": "api::project-type.project-type",
       "properties": {
         "fields": [

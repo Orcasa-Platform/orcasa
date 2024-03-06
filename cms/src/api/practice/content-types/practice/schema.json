@@ -29,9 +29,9 @@
     "short_description": {
       "type": "text"
     },
-    "country": {
+    "countries": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::country.country",
       "inversedBy": "practices"
     },

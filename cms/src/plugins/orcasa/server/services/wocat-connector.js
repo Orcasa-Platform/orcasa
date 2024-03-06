@@ -234,7 +234,7 @@ module.exports = class WocatConnector extends AsyncService {
 
   async convertToPractice(wocatPractice) {
     let practice = null
-    let country = null;
+    let countries = [];
     let land_use_types = [];
     let land_use_priors = [];
     let practice_intervention = null;
@@ -259,12 +259,12 @@ module.exports = class WocatConnector extends AsyncService {
     }
 
     if (wocatPractice.country) {
-      country = (await strapi.entityService.findMany(
+      countries = (await strapi.entityService.findMany(
         'api::country.country',
         {
           filters: { name: wocatPractice.country },
         }
-      ))[0];
+      ));
     }
 
     if (wocatPractice.land_use_priors) {
@@ -356,10 +356,10 @@ module.exports = class WocatConnector extends AsyncService {
           land_use_types,
           land_use_priors,
           practice_intervention,
-          country,
+          countries,
           subinterventions,
         },
-        populate: ['country', 'land_use_types', 'land_use_priors', 'practice_intervention']
+        populate: ['countries', 'land_use_types', 'land_use_priors', 'practice_intervention']
       });
     } else {
       if (practices[0].sync === false) {
@@ -399,10 +399,10 @@ module.exports = class WocatConnector extends AsyncService {
             land_use_types,
             land_use_priors,
             practice_intervention,
-            country,
+            countries,
             subinterventions,
           },
-          populate: ['country', 'land_use_types', 'land_use_priors', 'practice_intervention']
+          populate: ['countries', 'land_use_types', 'land_use_priors', 'practice_intervention']
         });
       } catch (error) {
         throw error;

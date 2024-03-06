@@ -59,12 +59,15 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
 };
 
 export const getPracticeImplementationFields = (practice: Practice): FieldType[] => {
-  const { country, implem_date: implementationDate } = practice;
+  const { countries, implem_date: implementationDate } = practice;
 
   const fields = [];
 
-  if (country) {
-    fields.push({ label: 'Country', value: country?.data?.attributes?.name });
+  if (countries) {
+    fields.push({
+      label: `Countr${(countries?.data?.length ?? 0) > 1 ? 'ies' : 'y'}`,
+      value: countries?.data?.map((country) => country?.attributes?.name).join(', '),
+    });
   }
 
   if (implementationDate) {
