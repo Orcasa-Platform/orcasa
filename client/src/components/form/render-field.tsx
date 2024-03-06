@@ -33,8 +33,17 @@ const RenderField = ({
   variant: 'network-initiative' | 'network-organization';
 }) => {
   const field = fields[id];
-  const { label, required, type, options, placeholder, maxSize, description, richEditorConfig } =
-    field;
+  const {
+    label,
+    required,
+    type,
+    options,
+    placeholder,
+    maxSize,
+    description,
+    richEditorConfig,
+    allowSelectAll,
+  } = field;
   const richEditorRef = useRef<ReactQuill | null>(null);
   const Label = () => {
     const labelContent = (
@@ -87,6 +96,7 @@ const RenderField = ({
                 name={id}
                 label={type === 'multiselect' ? label : id}
                 type={type}
+                allowSelectAll={allowSelectAll}
                 required={required}
                 options={Array.isArray(options) || options === undefined ? options : options()}
                 form={form}
