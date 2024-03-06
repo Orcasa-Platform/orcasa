@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ExternalLink, Info } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import striptags from 'striptags';
 
 import { format } from '@/lib/utils/formats';
