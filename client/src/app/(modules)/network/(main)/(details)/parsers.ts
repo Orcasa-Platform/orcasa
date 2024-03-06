@@ -30,6 +30,7 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
     lead_partner: leadPartner,
     isWorldwide,
     land_use_types: landUseTypes,
+    practices,
   } = project;
 
   const fields = [];
@@ -155,6 +156,14 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
         sustainableDevelopmentGoals?.data?.length > 1 ? 's' : ''
       }`,
       value: sustainableDevelopmentGoals?.data?.map((sdg) => sdg.attributes?.name).join(', '),
+    });
+  }
+
+  if (hasData(practices) && practices?.data?.length) {
+    fields.push({
+      label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
+      value: practices?.data?.map((practice) => practice.attributes?.title),
+      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
     });
   }
 
