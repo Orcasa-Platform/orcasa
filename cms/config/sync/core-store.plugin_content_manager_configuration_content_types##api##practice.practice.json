@@ -75,9 +75,9 @@
           "sortable": true
         }
       },
-      "country": {
+      "countries": {
         "edit": {
-          "label": "country",
+          "label": "Countries",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -85,9 +85,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country",
-          "searchable": true,
-          "sortable": true
+          "label": "Countries",
+          "searchable": false,
+          "sortable": false
         }
       },
       "detailed_description": {
@@ -492,7 +492,7 @@
         ],
         [
           {
-            "name": "country",
+            "name": "countries",
             "size": 6
           },
           {

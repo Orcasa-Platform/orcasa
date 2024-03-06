@@ -9,6 +9,7 @@ import { useMapSearchParams } from '@/store';
 import { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
+import { WithEllipsis } from '@/components/ui/with-ellipsis';
 import GlobeIcon from '@/styles/icons/globe.svg';
 import LanguageIcon from '@/styles/icons/language.svg';
 
@@ -17,14 +18,16 @@ import { TypedPractice } from './types';
 const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   if (!attributes) return null;
 
-  const { country, language, source_name } = attributes;
-  const countryName = country?.data?.attributes?.name;
+  const { countries, language, source_name } = attributes;
+  const countriesNames = countries?.data?.map((country) => country?.attributes?.name).join(', ');
 
   return (
     <div className="flex flex-wrap gap-x-4 gap-y-2">
       <div className="flex gap-2">
         <GlobeIcon className="h-6 w-6 min-w-min" />
-        <div className="text-base text-slate-500">{countryName}</div>
+        <div className="text-base text-slate-500">
+          {countriesNames && <WithEllipsis text={countriesNames} />}
+        </div>
       </div>
 
       <div className="flex gap-2">
