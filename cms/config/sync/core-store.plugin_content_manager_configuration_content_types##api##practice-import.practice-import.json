@@ -21,7 +21,7 @@
       },
       "start": {
         "edit": {
-          "label": "start",
+          "label": "Start",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "finished": {
         "edit": {
-          "label": "finished",
+          "label": "Finished",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "status": {
         "edit": {
-          "label": "status",
+          "label": "Status",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -63,7 +63,7 @@
       },
       "output": {
         "edit": {
-          "label": "output",
+          "label": "Output",
           "description": "",
           "placeholder": "",
           "visible": true,

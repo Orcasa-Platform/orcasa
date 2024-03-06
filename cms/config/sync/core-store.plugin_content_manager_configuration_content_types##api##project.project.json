@@ -152,14 +152,14 @@
       },
       "project_coordinator_name": {
         "edit": {
-          "label": "project_coordinator_name",
+          "label": "Project Coordinator Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "project_coordinator_name",
+          "label": "Project Coordinator Name",
           "searchable": true,
           "sortable": true
         }
@@ -180,28 +180,28 @@
       },
       "second_project_coordinator_name": {
         "edit": {
-          "label": "second_project_coordinator_name",
+          "label": "Second Project Coordinator Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "second_project_coordinator_name",
+          "label": "Second Project Coordinator Name",
           "searchable": true,
           "sortable": true
         }
       },
       "second_project_coordinator_email": {
         "edit": {
-          "label": "second_project_coordinator_email",
+          "label": "Second Project Coordinator Email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "second_project_coordinator_email",
+          "label": "Second Project Coordinator Email",
           "searchable": true,
           "sortable": true
         }
@@ -267,7 +267,7 @@
       },
       "sustainable_development_goals": {
         "edit": {
-          "label": "sustainable_development_goals",
+          "label": "Sustainable Development Goals",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -275,7 +275,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "sustainable_development_goals",
+          "label": "Sustainable Development Goals",
           "searchable": false,
           "sortable": false
         }
@@ -334,14 +334,14 @@
           "editable": true
         },
         "list": {
-          "label": "publication_status",
+          "label": "Publication Status",
           "searchable": true,
           "sortable": true
         }
       },
       "land_use_types": {
         "edit": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -370,7 +370,7 @@
       },
       "practices": {
         "edit": {
-          "label": "practices",
+          "label": "Practices",
           "description": "",
           "placeholder": "",
           "visible": true,
