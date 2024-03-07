@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Function to parse JSON files and update label keys
@@ -6,7 +6,7 @@ parse_json_files() {
     local base_path="$1"
 
     # Check if jq is installed
-    if ! command -v jq &> /dev/null; then
+    if ! jq --version > /dev/null 2>&1; then
         echo "jq is not installed. Please install jq to proceed."
         exit 1
     fi
@@ -35,7 +35,7 @@ cd ./client && yarn types && yarn lint --fix && yarn check-types && git add -A .
 
 SCRIPT_DIR="$(pwd)"
 CMS_ENV_FILE="$SCRIPT_DIR/../cms/.env"
-if [[ -f "$CMS_ENV_FILE" ]] ; then
+if [ -f "$CMS_ENV_FILE" ] ; then
     echo "Exporting CMS config.."
     cd .. && cd ./cms && yarn config-sync export -y && parse_json_files config/sync && git add config/sync/*
 else
