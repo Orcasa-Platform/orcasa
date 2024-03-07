@@ -9,4 +9,5 @@ if [[ -f "$CMS_ENV_FILE" ]] ; then
     cd ./cms && yarn config-sync import -y
 else
     echo "CMS env file does not exist, can't import config"
+    echo "DEBUG: looking for env file in $CMS_ENV_FILE"
 fi
