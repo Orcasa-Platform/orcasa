@@ -43,16 +43,14 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
     fields.push({ label: 'Institutions', value: institutionName });
   }
 
-  if (projectName) {
-    fields.push({ label: 'Initiative Name', value: projectName });
-  }
-
   if (projects && projects?.data?.length) {
     fields.push({
-      label: `Project${projects?.data?.length > 1 ? 's' : ''}`,
+      label: `Initiative${projects?.data?.length > 1 ? 's' : ''}`,
       value: projects?.data?.map((project) => project.attributes?.name),
       url: projects?.data?.map((project) => `/network/initiative/${project.id}`),
     });
+  } else if (projectName) {
+    fields.push({ label: 'Initiative', value: projectName });
   }
 
   return fields;
