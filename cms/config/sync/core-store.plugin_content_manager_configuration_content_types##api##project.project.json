@@ -350,7 +350,7 @@
           "editable": true
         },
         "list": {
-          "label": "project_coordinator_website",
+          "label": "Project Coordinator Website",
           "searchable": true,
           "sortable": true
         }
@@ -537,20 +537,6 @@
         [
           {
             "name": "practices",
-            "size": 6
-          },
-          {
-            "name": "project_coordinator_name",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "second_project_coordinator_name",
-            "size": 6
-          },
-          {
-            "name": "second_project_coordinator_email",
             "size": 6
           }
         ]

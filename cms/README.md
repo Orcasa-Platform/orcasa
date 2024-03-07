@@ -37,7 +37,6 @@ yarn start
 
 In both situations, be sure to set the corresponding `NODE_ENV` value.
 
-
 ### Using Docker
 
 This project includes 2 docker configuration files:
@@ -67,6 +66,7 @@ The following environment variables are used:
 | TRANSFER_TOKEN_SALT |          Salt used to generate [Transfer tokens](https://docs.strapi.io/dev-docs/data-management/transfer#generate-a-transfer-token). If no transfer token salt is defined, transfer features will be disabled. |              
 | ADMIN_JWT_SECRET    |                                                                                                                                                                          Secret used to encode admin JWT tokens |              
 | JWT_SECRET          |                                                                                                                                                                           Secret used to encode user JWT tokens |              
+| WOCAT_TOKEN         |                                                                                                                                                                                  WOCAT API authentication token |              
 | DATABASE_CLIENT     |                                                                                                                                                                                 Database client. Use `postgres` |              
 | DATABASE_HOST       |                                                                                                                                                                                            Database server host |              
 | DATABASE_PORT       |                                                                                                                                                                                            Database server port |              
@@ -74,7 +74,6 @@ The following environment variables are used:
 | DATABASE_USERNAME   |                                                                                                                                                                                               Database username |              
 | DATABASE_PASSWORD   |                                                                                                                                                                                               Database password |              
 | DATABASE_SSL        |                                                                                                                                                    If SSL should be used when connecting to the database server |              
-
 
 ## Data management
 
