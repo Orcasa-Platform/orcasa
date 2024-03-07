@@ -1099,7 +1099,7 @@ export const useNetworkProjectFiltersOptions = (): Record<
 export const useValidate = (
   { watch, setError, clearErrors }: UseFormReturn,
   field: string,
-  validateFunction: (fieldValue: unknown) => Promise<boolean>,
+  validateFunction: (fieldValue: string | undefined) => Promise<boolean>,
   message: string,
   debounce = 250,
 ) => {

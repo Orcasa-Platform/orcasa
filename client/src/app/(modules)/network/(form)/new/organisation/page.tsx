@@ -29,7 +29,8 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 
 export default function OrganisationForm() {
-  const { organizationTypes, organizationThemes, countries } = useOrganizationGetFormFields() || {};
+  const { organizationTypes, organizationThemes, countries, practices } =
+    useOrganizationGetFormFields() || {};
 
   const queryClient = useQueryClient();
 
@@ -103,6 +104,21 @@ export default function OrganisationForm() {
         label: theme?.name,
         value: theme?.id?.toString(),
       })),
+    },
+    practices: {
+      label: 'Practices',
+      zod: z
+        .array(
+          z.enum(practices?.map((practice) => practice.id.toString()) as [string, ...string[]]),
+        )
+        .optional(),
+      type: 'multiselect',
+      allowSelectAll: false,
+      options: practices?.map((practice) => ({
+        label: practice.title,
+        value: practice.id.toString(),
+      })),
+      required: false,
     },
     short_description: {
       label: 'Brief description',
