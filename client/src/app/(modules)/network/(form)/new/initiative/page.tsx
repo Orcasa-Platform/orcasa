@@ -97,17 +97,6 @@ export default function ProjectForm() {
         value: type.id.toString(),
       })),
     },
-    project_coordinator_name: {
-      label: 'Name',
-      zod: z
-        .string()
-        .max(255, {
-          message: 'Name is limited to 255 characters.',
-        })
-        .optional(),
-      type: 'text',
-      maxSize: 255,
-    },
     project_coordinator_email: {
       label: 'Email',
       zod: z
@@ -119,27 +108,29 @@ export default function ProjectForm() {
         .optional(),
       type: 'email',
     },
-    second_project_coordinator_name: {
-      label: 'Name',
+    project_coordinator_website: {
+      label: 'Website',
       zod: z
         .string()
         .max(255, {
-          message: 'Name is limited to 255 characters.',
+          message: 'Website is limited to 255 characters.',
+        })
+        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
+          message: 'Please, enter a valid URL.',
         })
         .optional(),
       type: 'text',
       maxSize: 255,
-    },
-    second_project_coordinator_email: {
-      label: 'Email',
-      zod: z
-        .string()
-        .email('Please, enter a valid email.')
-        .max(255, {
-          message: 'Email is limited to 255 characters.',
-        })
-        .optional(),
-      type: 'email',
+      description: (
+        <div className="leading-normal text-gray-500">
+          Accepted URLs format:
+          <ul className="ml-4 list-disc">
+            <li>https://irc-orcasa.eu/ or https://www.irc-orcasa.eu/</li>
+            <li>www.irc-orcasa.eu/</li>
+            <li>irc-orcasa.eu/</li>
+          </ul>
+        </div>
+      ),
     },
     name: {
       label: 'Name',
@@ -555,11 +546,7 @@ export default function ProjectForm() {
             <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
               Initiative manager:
             </h3>
-            {renderFields(['project_coordinator_name', 'project_coordinator_email'])}
-            <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
-              Second initiative manager:
-            </h3>
-            {renderFields(['second_project_coordinator_name', 'second_project_coordinator_email'])}
+            {renderFields(['project_coordinator_email', 'project_coordinator_website'])}
             <h2 className="mt-10 font-serif text-2xl text-gray-700">Initiative information</h2>
             {renderFields([
               'name',

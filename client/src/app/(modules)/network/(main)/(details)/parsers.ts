@@ -15,10 +15,8 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
     start_date: startDate,
     end_date: endDate,
     country_of_coordination: countryOfCoordination,
-    project_coordinator_name: projectCoordinatorName,
     project_coordinator_email: projectCoordinatorEmail,
-    second_project_coordinator_name: secondProjectCoordinatorName,
-    second_project_coordinator_email: secondProjectCoordinatorEmail,
+    project_coordinator_website: projectCoordinatorWebsite,
     project_type: projectType,
     region_of_interventions: regionOfInterventions,
     country_of_interventions: countryOfInterventions,
@@ -76,22 +74,15 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
     });
   }
 
-  if (hasData(projectCoordinatorName)) {
-    if (hasData(secondProjectCoordinatorName)) {
-      fields.push({
-        label: 'Initiative managers',
-        value: [projectCoordinatorName, secondProjectCoordinatorName],
-        url: [`mailto:${projectCoordinatorEmail}`, `mailto:${secondProjectCoordinatorEmail}`],
-        external: true,
-      });
-    } else {
-      fields.push({
-        label: 'Initiative manager',
-        value: projectCoordinatorName,
-        url: `mailto:${projectCoordinatorEmail}`,
-        external: true,
-      });
-    }
+  if (hasData(projectCoordinatorEmail) || hasData(projectCoordinatorWebsite)) {
+    fields.push({
+      label: 'Initiative manager',
+      value: projectCoordinatorEmail ?? projectCoordinatorWebsite,
+      url: hasData(projectCoordinatorEmail)
+        ? `mailto:${projectCoordinatorEmail}`
+        : projectCoordinatorWebsite,
+      external: true,
+    });
   }
 
   if (hasData(projectType)) {

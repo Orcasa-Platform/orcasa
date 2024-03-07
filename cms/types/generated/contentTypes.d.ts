@@ -1474,10 +1474,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::country.country'
     >;
     website: Attribute.String & Attribute.Required;
-    project_coordinator_name: Attribute.String;
     project_coordinator_email: Attribute.String;
-    second_project_coordinator_name: Attribute.String;
-    second_project_coordinator_email: Attribute.String;
     main_area_of_intervention: Attribute.Relation<
       'api::project.project',
       'oneToOne',
@@ -1503,7 +1500,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToOne',
       'api::organization.organization'
-    >;
+    > &
+      Attribute.Required;
     partners: Attribute.Relation<
       'api::project.project',
       'manyToMany',
@@ -1536,6 +1534,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'manyToMany',
       'api::practice.practice'
     >;
+    project_coordinator_website: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

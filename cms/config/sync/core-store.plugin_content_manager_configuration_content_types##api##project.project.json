@@ -150,20 +150,6 @@
           "sortable": true
         }
       },
-      "project_coordinator_name": {
-        "edit": {
-          "label": "Project Coordinator Name",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Project Coordinator Name",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "project_coordinator_email": {
         "edit": {
           "label": "Project Coordinator Email",
@@ -174,34 +160,6 @@
         },
         "list": {
           "label": "Project Coordinator Email",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "second_project_coordinator_name": {
-        "edit": {
-          "label": "Second Project Coordinator Name",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Second Project Coordinator Name",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "second_project_coordinator_email": {
-        "edit": {
-          "label": "Second Project Coordinator Email",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Second Project Coordinator Email",
           "searchable": true,
           "sortable": true
         }
@@ -381,6 +339,20 @@
           "label": "Practices",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "project_coordinator_website": {
+        "edit": {
+          "label": "Project Coordinator Website",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "project_coordinator_website",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {

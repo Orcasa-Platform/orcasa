@@ -870,10 +870,7 @@
           "region_of_interventions",
           "country_of_interventions",
           "website",
-          "project_coordinator_name",
           "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
           "main_area_of_intervention",
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
@@ -885,7 +882,8 @@
           "publication_status",
           "land_use_types",
           "description",
-          "practices"
+          "practices",
+          "project_coordinator_website"
         ]
       },
       "conditions": []
@@ -912,10 +910,7 @@
           "region_of_interventions",
           "country_of_interventions",
           "website",
-          "project_coordinator_name",
           "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
           "main_area_of_intervention",
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
@@ -927,7 +922,8 @@
           "publication_status",
           "land_use_types",
           "description",
-          "practices"
+          "practices",
+          "project_coordinator_website"
         ]
       },
       "conditions": []
@@ -947,10 +943,7 @@
           "region_of_interventions",
           "country_of_interventions",
           "website",
-          "project_coordinator_name",
           "project_coordinator_email",
-          "second_project_coordinator_name",
-          "second_project_coordinator_email",
           "main_area_of_intervention",
           "main_area_of_intervention_other",
           "secondary_area_of_intervention",
@@ -962,7 +955,8 @@
           "publication_status",
           "land_use_types",
           "description",
-          "practices"
+          "practices",
+          "project_coordinator_website"
         ]
       },
       "conditions": []
