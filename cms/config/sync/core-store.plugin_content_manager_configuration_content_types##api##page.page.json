@@ -15,42 +15,42 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "Title",
           "searchable": true,
           "sortable": true
         }
       },
       "default_basemap": {
         "edit": {
-          "label": "default_basemap",
+          "label": "Default Basemap",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "default_basemap",
+          "label": "Default Basemap",
           "searchable": true,
           "sortable": true
         }
       },
       "layer_groups": {
         "edit": {
-          "label": "layer_groups",
+          "label": "Layer Groups",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,98 +58,98 @@
           "mainField": "title"
         },
         "list": {
-          "label": "layer_groups",
+          "label": "Layer Groups",
           "searchable": false,
           "sortable": false
         }
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "slug",
+          "label": "Slug",
           "searchable": true,
           "sortable": true
         }
       },
       "color": {
         "edit": {
-          "label": "color",
+          "label": "Color",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "color",
+          "label": "Color",
           "searchable": true,
           "sortable": true
         }
       },
       "external_url": {
         "edit": {
-          "label": "external_url",
+          "label": "External Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "external_url",
+          "label": "External Url",
           "searchable": true,
           "sortable": true
         }
       },
       "intro": {
         "edit": {
-          "label": "intro",
+          "label": "Intro",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "intro",
+          "label": "Intro",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -157,14 +157,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -172,7 +172,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

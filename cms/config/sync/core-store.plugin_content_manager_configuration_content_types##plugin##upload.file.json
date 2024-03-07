@@ -15,210 +15,210 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "alternativeText": {
         "edit": {
-          "label": "alternativeText",
+          "label": "AlternativeText",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alternativeText",
+          "label": "AlternativeText",
           "searchable": true,
           "sortable": true
         }
       },
       "caption": {
         "edit": {
-          "label": "caption",
+          "label": "Caption",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "caption",
+          "label": "Caption",
           "searchable": true,
           "sortable": true
         }
       },
       "width": {
         "edit": {
-          "label": "width",
+          "label": "Width",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "width",
+          "label": "Width",
           "searchable": true,
           "sortable": true
         }
       },
       "height": {
         "edit": {
-          "label": "height",
+          "label": "Height",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "height",
+          "label": "Height",
           "searchable": true,
           "sortable": true
         }
       },
       "formats": {
         "edit": {
-          "label": "formats",
+          "label": "Formats",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "formats",
+          "label": "Formats",
           "searchable": false,
           "sortable": false
         }
       },
       "hash": {
         "edit": {
-          "label": "hash",
+          "label": "Hash",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "hash",
+          "label": "Hash",
           "searchable": true,
           "sortable": true
         }
       },
       "ext": {
         "edit": {
-          "label": "ext",
+          "label": "Ext",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "ext",
+          "label": "Ext",
           "searchable": true,
           "sortable": true
         }
       },
       "mime": {
         "edit": {
-          "label": "mime",
+          "label": "Mime",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "mime",
+          "label": "Mime",
           "searchable": true,
           "sortable": true
         }
       },
       "size": {
         "edit": {
-          "label": "size",
+          "label": "Size",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "size",
+          "label": "Size",
           "searchable": true,
           "sortable": true
         }
       },
       "url": {
         "edit": {
-          "label": "url",
+          "label": "Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "url",
+          "label": "Url",
           "searchable": true,
           "sortable": true
         }
       },
       "previewUrl": {
         "edit": {
-          "label": "previewUrl",
+          "label": "PreviewUrl",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "previewUrl",
+          "label": "PreviewUrl",
           "searchable": true,
           "sortable": true
         }
       },
       "provider": {
         "edit": {
-          "label": "provider",
+          "label": "Provider",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "provider",
+          "label": "Provider",
           "searchable": true,
           "sortable": true
         }
       },
       "provider_metadata": {
         "edit": {
-          "label": "provider_metadata",
+          "label": "Provider Metadata",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "provider_metadata",
+          "label": "Provider Metadata",
           "searchable": false,
           "sortable": false
         }
       },
       "folder": {
         "edit": {
-          "label": "folder",
+          "label": "Folder",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -226,56 +226,56 @@
           "mainField": "name"
         },
         "list": {
-          "label": "folder",
+          "label": "Folder",
           "searchable": true,
           "sortable": true
         }
       },
       "folderPath": {
         "edit": {
-          "label": "folderPath",
+          "label": "FolderPath",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "folderPath",
+          "label": "FolderPath",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -283,14 +283,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -298,7 +298,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

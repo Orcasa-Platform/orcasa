@@ -14,28 +14,28 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "practices_prior": {
         "edit": {
-          "label": "practices_prior",
+          "label": "Practices Prior",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -43,14 +43,14 @@
           "mainField": "source_id"
         },
         "list": {
-          "label": "practices_prior",
+          "label": "Practices Prior",
           "searchable": false,
           "sortable": false
         }
       },
       "practices": {
         "edit": {
-          "label": "practices",
+          "label": "Practices",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,14 +58,14 @@
           "mainField": "source_id"
         },
         "list": {
-          "label": "practices",
+          "label": "Practices",
           "searchable": false,
           "sortable": false
         }
       },
       "projects": {
         "edit": {
-          "label": "projects",
+          "label": "Projects",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -73,42 +73,42 @@
           "mainField": "name"
         },
         "list": {
-          "label": "projects",
+          "label": "Projects",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -116,14 +116,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -131,7 +131,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

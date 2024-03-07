@@ -15,7 +15,7 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
@@ -93,7 +93,7 @@
       },
       "country_of_coordination": {
         "edit": {
-          "label": "Country of Coordination",
+          "label": "Country Of Coordination",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -101,14 +101,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Country of Coordination",
+          "label": "Country Of Coordination",
           "searchable": true,
           "sortable": true
         }
       },
       "region_of_interventions": {
         "edit": {
-          "label": "Regions of Intervention",
+          "label": "Regions Of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -116,14 +116,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Regions of Intervention",
+          "label": "Regions Of Intervention",
           "searchable": false,
           "sortable": false
         }
       },
       "country_of_interventions": {
         "edit": {
-          "label": "Countries of Intervention",
+          "label": "Countries Of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -131,7 +131,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Countries of Intervention",
+          "label": "Countries Of Intervention",
           "searchable": false,
           "sortable": false
         }
@@ -208,7 +208,7 @@
       },
       "main_area_of_intervention": {
         "edit": {
-          "label": "Main Area of Intervention",
+          "label": "Main Area Of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -216,28 +216,28 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Main Area of Intervention",
+          "label": "Main Area Of Intervention",
           "searchable": true,
           "sortable": true
         }
       },
       "main_area_of_intervention_other": {
         "edit": {
-          "label": "Main Area of Intervention - Other",
+          "label": "Main Area Of Intervention - Other",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "Main Area of Intervention - Other",
+          "label": "Main Area Of Intervention - Other",
           "searchable": true,
           "sortable": true
         }
       },
       "secondary_area_of_intervention": {
         "edit": {
-          "label": "Secondary Area of Intervention",
+          "label": "Secondary Area Of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -245,14 +245,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Secondary Area of Intervention",
+          "label": "Secondary Area Of Intervention",
           "searchable": true,
           "sortable": true
         }
       },
       "third_area_of_intervention": {
         "edit": {
-          "label": "Third Area of Intervention",
+          "label": "Third Area Of Intervention",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -260,7 +260,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "Third Area of Intervention",
+          "label": "Third Area Of Intervention",
           "searchable": true,
           "sortable": true
         }
@@ -349,7 +349,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_types",
+          "label": "Land Use Types",
           "searchable": false,
           "sortable": false
         }
@@ -378,42 +378,42 @@
           "mainField": "source_id"
         },
         "list": {
-          "label": "practices",
+          "label": "Practices",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -421,14 +421,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -436,7 +436,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

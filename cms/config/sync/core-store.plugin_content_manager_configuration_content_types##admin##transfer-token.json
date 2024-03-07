@@ -15,70 +15,70 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": true,
           "sortable": true
         }
       },
       "accessKey": {
         "edit": {
-          "label": "accessKey",
+          "label": "AccessKey",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "accessKey",
+          "label": "AccessKey",
           "searchable": true,
           "sortable": true
         }
       },
       "lastUsedAt": {
         "edit": {
-          "label": "lastUsedAt",
+          "label": "LastUsedAt",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lastUsedAt",
+          "label": "LastUsedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "permissions": {
         "edit": {
-          "label": "permissions",
+          "label": "Permissions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -86,70 +86,70 @@
           "mainField": "action"
         },
         "list": {
-          "label": "permissions",
+          "label": "Permissions",
           "searchable": false,
           "sortable": false
         }
       },
       "expiresAt": {
         "edit": {
-          "label": "expiresAt",
+          "label": "ExpiresAt",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "expiresAt",
+          "label": "ExpiresAt",
           "searchable": true,
           "sortable": true
         }
       },
       "lifespan": {
         "edit": {
-          "label": "lifespan",
+          "label": "Lifespan",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lifespan",
+          "label": "Lifespan",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -157,14 +157,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -172,7 +172,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

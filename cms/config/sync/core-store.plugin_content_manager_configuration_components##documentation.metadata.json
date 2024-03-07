@@ -15,91 +15,91 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": false,
           "sortable": false
         }
       },
       "source": {
         "edit": {
-          "label": "source",
+          "label": "Source",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "source",
+          "label": "Source",
           "searchable": false,
           "sortable": false
         }
       },
       "source_url": {
         "edit": {
-          "label": "source_url",
+          "label": "Source Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "source_url",
+          "label": "Source Url",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": false,
           "sortable": false
         }
       },
       "other_information": {
         "edit": {
-          "label": "other_information",
+          "label": "Other Information",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "other_information",
+          "label": "Other Information",
           "searchable": false,
           "sortable": false
         }
       },
       "short_description": {
         "edit": {
-          "label": "short_description",
+          "label": "Short Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "short_description",
+          "label": "Short Description",
           "searchable": true,
           "sortable": true
         }
       },
       "long_title": {
         "edit": {
-          "label": "long_title",
+          "label": "Long Title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "long_title",
+          "label": "Long Title",
           "searchable": true,
           "sortable": true
         }
