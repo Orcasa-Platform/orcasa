@@ -1,9 +1,10 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import { UseFormReturn } from 'react-hook-form';
 
 import { FetchNextPageOptions } from '@tanstack/react-query';
 import { uniqBy } from 'lodash';
+import { useDebounce } from 'rooks';
 import { PointFeature } from 'supercluster';
 
 import { NetworkFilters, NetworkOrganizationFilters, NetworkProjectFilters } from '@/store/network';
@@ -1095,28 +1096,31 @@ export const useNetworkProjectFiltersOptions = (): Record<
 /**
  * Immediately validate a field based on a custom validation function
  */
-export const useImmediateValidate = (
+export const useValidate = (
   { watch, setError, clearErrors }: UseFormReturn,
   field: string,
   validateFunction: (fieldValue: any) => Promise<boolean>,
   message: string,
+  debounce = 250,
 ) => {
   const fieldValue = watch(field);
 
+  const validate = useCallback(async () => {
+    let isValid = true;
+    try {
+      isValid = !(await validateFunction(fieldValue));
+    } catch {}
+
+    if (isValid) {
+      clearErrors(field);
+    } else {
+      setError(field, { type: 'custom', message });
+    }
+  }, [validateFunction, fieldValue, clearErrors, field, setError, message]);
+
+  const debouncedValidate = useDebounce(validate, debounce);
+
   useEffect(() => {
-    const validate = async () => {
-      let isValid = true;
-      try {
-        isValid = !(await validateFunction(fieldValue));
-      } catch {}
-
-      if (isValid) {
-        clearErrors(field);
-      } else {
-        setError(field, { type: 'custom', message });
-      }
-    };
-
-    validate();
-  }, [fieldValue, clearErrors, field, validateFunction, message, setError]);
+    debouncedValidate();
+  }, [fieldValue, message, debouncedValidate]);
 };

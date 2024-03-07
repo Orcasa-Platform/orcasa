@@ -20,7 +20,7 @@ import { getOrganizations, postOrganizations } from '@/types/generated/organizat
 import { OrganizationRequest, OrganizationRequestData } from '@/types/generated/strapi.schemas';
 
 import useBeforeUnloadDirtyForm from '@/hooks/navigation';
-import { useImmediateValidate } from '@/hooks/networks';
+import { useValidate } from '@/hooks/networks';
 import { useOrganizationGetFormFields } from '@/hooks/networks/forms';
 
 import RenderField from '@/components/form/render-field';
@@ -227,7 +227,7 @@ export default function OrganisationForm() {
     [queryClient],
   );
 
-  useImmediateValidate(form, 'name', validateName, 'That organisation already exists.');
+  useValidate(form, 'name', validateName, 'That organisation already exists.');
 
   if (!hasData || !fields) {
     return null;

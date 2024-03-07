@@ -22,7 +22,7 @@ import { getProjects, postProjects } from '@/types/generated/project';
 import { ProjectRequest, ProjectRequestData } from '@/types/generated/strapi.schemas';
 
 import useBeforeUnloadDirtyForm from '@/hooks/navigation';
-import { useImmediateValidate } from '@/hooks/networks';
+import { useValidate } from '@/hooks/networks';
 import { useProjectFormGetFields } from '@/hooks/networks/forms';
 
 import RenderField from '@/components/form/render-field';
@@ -441,7 +441,7 @@ export default function ProjectForm() {
     [queryClient],
   );
 
-  useImmediateValidate(form, 'name', validateName, 'That initiative already exists.');
+  useValidate(form, 'name', validateName, 'That initiative already exists.');
 
   useEffect(() => {
     const firstError = (Object.keys(errors) as Array<keyof typeof errors>).reduce<
