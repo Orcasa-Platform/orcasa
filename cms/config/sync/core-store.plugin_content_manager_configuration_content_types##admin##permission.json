@@ -15,84 +15,84 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "action": {
         "edit": {
-          "label": "action",
+          "label": "Action",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "action",
+          "label": "Action",
           "searchable": true,
           "sortable": true
         }
       },
       "actionParameters": {
         "edit": {
-          "label": "actionParameters",
+          "label": "ActionParameters",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "actionParameters",
+          "label": "ActionParameters",
           "searchable": false,
           "sortable": false
         }
       },
       "subject": {
         "edit": {
-          "label": "subject",
+          "label": "Subject",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "subject",
+          "label": "Subject",
           "searchable": true,
           "sortable": true
         }
       },
       "properties": {
         "edit": {
-          "label": "properties",
+          "label": "Properties",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "properties",
+          "label": "Properties",
           "searchable": false,
           "sortable": false
         }
       },
       "conditions": {
         "edit": {
-          "label": "conditions",
+          "label": "Conditions",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "conditions",
+          "label": "Conditions",
           "searchable": false,
           "sortable": false
         }
       },
       "role": {
         "edit": {
-          "label": "role",
+          "label": "Role",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -100,42 +100,42 @@
           "mainField": "name"
         },
         "list": {
-          "label": "role",
+          "label": "Role",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -143,14 +143,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -158,7 +158,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

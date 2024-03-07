@@ -50,7 +50,7 @@ const Icons = ({
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         {projectType && (
           <div className="flex gap-2">
-            <FolderIcon className="h-6 w-6 min-w-min" />
+            <FolderIcon className="mt-0.5 h-6 w-6 min-w-min" />
             {projectTypeDescription ? (
               <InfoTooltip
                 triggerContent={projectTypeContent}
@@ -64,7 +64,7 @@ const Icons = ({
         )}
         {startDate && (
           <div className="flex gap-2">
-            <CalendarIcon className="h-6 w-6 min-w-min" />
+            <CalendarIcon className="mt-0.5 h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               {format({ id: 'formatDate', value: startDate })}
               {endDate ? ` - ${format({ id: 'formatDate', value: endDate })}` : ''}
@@ -73,7 +73,7 @@ const Icons = ({
         )}
         {regionName && (
           <div className="flex gap-2">
-            <GlobeIcon className="h-6 w-6 min-w-min" />
+            <GlobeIcon className="mt-0.5 h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               <WithEllipsis text={regionName} />
             </div>
@@ -89,12 +89,12 @@ const Icons = ({
     return (
       <div className="flex flex-wrap gap-x-4 gap-y-2">
         <div className="flex gap-2">
-          <GlobeIcon className="h-6 w-6 min-w-min" />
+          <GlobeIcon className="mt-0.5 h-6 w-6 min-w-min" />
           <div className="text-base text-slate-500">{countryName}</div>
         </div>
         {organization_type && (
           <div className="flex gap-2">
-            <OrganizationIcon className="h-6 w-6 min-w-min" />
+            <OrganizationIcon className="mt-0.5 h-6 w-6 min-w-min" />
             <div className="text-base text-slate-500">
               {organizationTypeName && <WithEllipsis text={organizationTypeName} />}
             </div>

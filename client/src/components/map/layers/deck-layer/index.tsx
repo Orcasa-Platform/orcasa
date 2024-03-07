@@ -8,6 +8,7 @@ import { useDeckMapboxOverlayContext } from '@/components/map/provider';
 
 export type DeckLayerProps<T> = LayerProps &
   T & {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     type: any;
   };
 

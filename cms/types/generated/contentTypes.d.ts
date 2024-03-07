@@ -881,7 +881,7 @@ export interface ApiCountryCountry extends Schema.CollectionType {
     long: Attribute.Float;
     practices: Attribute.Relation<
       'api::country.country',
-      'oneToMany',
+      'manyToMany',
       'api::practice.practice'
     >;
     createdAt: Attribute.DateTime;
@@ -1313,9 +1313,9 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     source_id: Attribute.String & Attribute.Required;
     title: Attribute.Text;
     short_description: Attribute.Text;
-    country: Attribute.Relation<
+    countries: Attribute.Relation<
       'api::practice.practice',
-      'manyToOne',
+      'manyToMany',
       'api::country.country'
     >;
     detailed_description: Attribute.Text;

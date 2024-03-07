@@ -15,7 +15,7 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
@@ -51,14 +51,14 @@
       },
       "organization_type_other": {
         "edit": {
-          "label": "Organization Type - other",
+          "label": "Organization Type - Other",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "organization_type_other",
+          "label": "Organization Type Other",
           "searchable": true,
           "sortable": true
         }
@@ -73,7 +73,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "main_organization_theme",
+          "label": "Main Organization Theme",
           "searchable": true,
           "sortable": true
         }
@@ -88,7 +88,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "secondary_organization_theme",
+          "label": "Secondary Organization Theme",
           "searchable": true,
           "sortable": true
         }
@@ -102,7 +102,7 @@
           "editable": true
         },
         "list": {
-          "label": "short_description",
+          "label": "Short Description",
           "searchable": true,
           "sortable": true
         }
@@ -116,7 +116,7 @@
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": false,
           "sortable": false
         }
@@ -145,7 +145,7 @@
           "editable": true
         },
         "list": {
-          "label": "url",
+          "label": "Url",
           "searchable": true,
           "sortable": true
         }
@@ -160,7 +160,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "lead_projects",
+          "label": "Lead Projects",
           "searchable": false,
           "sortable": false
         }
@@ -175,7 +175,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "partner_projects",
+          "label": "Partner Projects",
           "searchable": false,
           "sortable": false
         }
@@ -190,7 +190,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "funded_projects",
+          "label": "Funded Projects",
           "searchable": false,
           "sortable": false
         }
@@ -204,7 +204,7 @@
           "editable": true
         },
         "list": {
-          "label": "publication_status",
+          "label": "Publication Status",
           "searchable": true,
           "sortable": true
         }
@@ -218,7 +218,7 @@
           "editable": true
         },
         "list": {
-          "label": "user_email",
+          "label": "User Email",
           "searchable": true,
           "sortable": true
         }
@@ -233,42 +233,42 @@
           "mainField": "source_id"
         },
         "list": {
-          "label": "practices",
+          "label": "Practices",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -276,14 +276,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -291,13 +291,19 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "name",
+        "publication_status",
+        "practices"
+      ],
       "edit": [
         [
           {
@@ -379,12 +385,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "publication_status",
-        "practices"
       ]
     }
   },

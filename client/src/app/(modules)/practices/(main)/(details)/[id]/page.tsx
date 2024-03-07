@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
 
-import { getPracticesId } from '@/types/generated/practice';
+import { getPractices, getPracticesId } from '@/types/generated/practice';
 
 import { Button } from '@/components/ui/button';
 
@@ -31,8 +31,19 @@ export async function generateMetadata({ params }: PracticeDetailsProps): Promis
 
 export default async function PracticeDetails({ params }: PracticeDetailsProps) {
   const id = parseInt(params.id);
-  const data = await getPracticesId(id, { populate: '*' });
-  const practice = data?.data?.attributes;
+  const data = await getPractices({
+    filters: { id },
+    populate: {
+      country: { fields: ['name', 'id'] },
+      land_use_types: { fields: ['name', 'id'] },
+      land_use_priors: { fields: ['name', 'id'] },
+      subinterventions: { fields: ['name', 'id'] },
+      projects: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
+      organizations: { filters: { publication_status: 'accepted' }, fields: ['name', 'id'] },
+    },
+  });
+  const practiceList = data?.data || [];
+  const practice = practiceList[0]?.attributes;
 
   // If we couldn't find the practice, we display a 404
   if (!practice) {

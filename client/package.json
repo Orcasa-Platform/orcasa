@@ -8,7 +8,7 @@
     "start": "node index.js",
     "lint": "next lint",
     "check-types": "tsc",
-    "test": "playwright test",
+    "test": "TS_NODE_PROJECT=tsconfig.test.json cucumber-js",
     "types": "orval --config ./orval.config.ts",
     "prepare": "cd .. && husky install client/.husky"
   },
@@ -89,6 +89,8 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^10.3.1",
+    "@cucumber/pretty-formatter": "^1.0.0",
     "@playwright/test": "^1.35.1",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/typography": "0.5.9",
@@ -102,8 +104,10 @@
     "husky": "^8.0.3",
     "lodash": "^4.17.21",
     "orval": "^6.17.0",
+    "playwright": "^1.42.1",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0"
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "ts-node": "^10.9.2"
   },
   "packageManager": "yarn@4.1.0"
 }

@@ -1,7 +1,6 @@
 {
   "key": "plugin_content_manager_configuration_content_types::api::practice.practice",
   "value": {
-    "uid": "api::practice.practice",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -15,7 +14,7 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
@@ -43,7 +42,7 @@
           "editable": true
         },
         "list": {
-          "label": "source_id",
+          "label": "Source Id",
           "searchable": true,
           "sortable": true
         }
@@ -71,14 +70,14 @@
           "editable": true
         },
         "list": {
-          "label": "short_description",
+          "label": "Short Description",
           "searchable": true,
           "sortable": true
         }
       },
-      "country": {
+      "countries": {
         "edit": {
-          "label": "Country",
+          "label": "Countries",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -86,9 +85,9 @@
           "mainField": "name"
         },
         "list": {
-          "label": "country",
-          "searchable": true,
-          "sortable": true
+          "label": "Countries",
+          "searchable": false,
+          "sortable": false
         }
       },
       "detailed_description": {
@@ -100,7 +99,7 @@
           "editable": true
         },
         "list": {
-          "label": "detailed_description",
+          "label": "Detailed Description",
           "searchable": true,
           "sortable": true
         }
@@ -114,7 +113,7 @@
           "editable": true
         },
         "list": {
-          "label": "project_fund",
+          "label": "Project Fund",
           "searchable": true,
           "sortable": true
         }
@@ -128,21 +127,21 @@
           "editable": true
         },
         "list": {
-          "label": "institution_funding",
+          "label": "Institution Funding",
           "searchable": true,
           "sortable": true
         }
       },
       "state_province": {
         "edit": {
-          "label": "State/Province",
+          "label": "State Province",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "state_province",
+          "label": "State Province",
           "searchable": true,
           "sortable": true
         }
@@ -156,7 +155,7 @@
           "editable": true
         },
         "list": {
-          "label": "further_location",
+          "label": "Further Location",
           "searchable": true,
           "sortable": true
         }
@@ -170,21 +169,21 @@
           "editable": true
         },
         "list": {
-          "label": "map_location",
+          "label": "Map Location",
           "searchable": true,
           "sortable": true
         }
       },
       "implem_date": {
         "edit": {
-          "label": "Implementation Date",
+          "label": "Implem Date",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "implem_date",
+          "label": "Implem Date",
           "searchable": true,
           "sortable": true
         }
@@ -198,21 +197,21 @@
           "editable": true
         },
         "list": {
-          "label": "publication_date",
+          "label": "Publication Date",
           "searchable": true,
           "sortable": true
         }
       },
       "implem_decade": {
         "edit": {
-          "label": "Implementation Decade",
+          "label": "Implem Decade",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "implem_decade",
+          "label": "Implem Decade",
           "searchable": true,
           "sortable": true
         }
@@ -226,7 +225,7 @@
           "editable": true
         },
         "list": {
-          "label": "main_purposes",
+          "label": "Main Purposes",
           "searchable": true,
           "sortable": true
         }
@@ -240,7 +239,7 @@
           "editable": true
         },
         "list": {
-          "label": "has_changed",
+          "label": "Has Changed",
           "searchable": true,
           "sortable": true
         }
@@ -254,7 +253,7 @@
           "editable": true
         },
         "list": {
-          "label": "land_use_has_changed",
+          "label": "Land Use Has Changed",
           "searchable": true,
           "sortable": true
         }
@@ -268,7 +267,7 @@
           "editable": true
         },
         "list": {
-          "label": "degradation_assessed",
+          "label": "Degradation Assessed",
           "searchable": true,
           "sortable": true
         }
@@ -282,7 +281,7 @@
           "editable": true
         },
         "list": {
-          "label": "language",
+          "label": "Language",
           "searchable": true,
           "sortable": true
         }
@@ -311,7 +310,7 @@
           "editable": true
         },
         "list": {
-          "label": "sync",
+          "label": "Sync",
           "searchable": true,
           "sortable": true
         }
@@ -325,7 +324,7 @@
           "editable": true
         },
         "list": {
-          "label": "practice_url",
+          "label": "Practice Url",
           "searchable": true,
           "sortable": true
         }
@@ -340,7 +339,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "land_use_priors",
+          "label": "Land Use Priors",
           "searchable": false,
           "sortable": false
         }
@@ -355,7 +354,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "subinterventions",
+          "label": "Subinterventions",
           "searchable": false,
           "sortable": false
         }
@@ -384,7 +383,7 @@
           "mainField": "name"
         },
         "list": {
-          "label": "projects",
+          "label": "Projects",
           "searchable": false,
           "sortable": false
         }
@@ -399,42 +398,42 @@
           "mainField": "name"
         },
         "list": {
-          "label": "organizations",
+          "label": "Organizations",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -442,14 +441,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -457,13 +456,19 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "source_name",
+        "source_id",
+        "title"
+      ],
       "edit": [
         [
           {
@@ -487,103 +492,73 @@
         ],
         [
           {
-            "name": "country",
-            "size": 6
-          },
-          {
-            "name": "language",
+            "name": "detailed_description",
             "size": 6
           }
         ],
         [
-          {
-            "name": "detailed_description",
-            "size": 6
-          },
           {
             "name": "project_fund",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "institution_funding",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "state_province",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "further_location",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "map_location",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "implem_date",
             "size": 6
-          },
-          {
-            "name": "publication_date",
-            "size": 6
           }
         ],
         [
+          {
+            "name": "publication_date",
+            "size": 4
+          },
           {
             "name": "implem_decade",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "main_purposes",
             "size": 6
+          },
+          {
+            "name": "has_changed",
+            "size": 4
           }
         ],
         [
-          {
-            "name": "has_changed",
-            "size": 6
-          },
           {
             "name": "land_use_has_changed",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "degradation_assessed",
             "size": 6
-          },
-          {
-            "name": "practice_url",
-            "size": 6
           }
         ],
         [
           {
-            "name": "subinterventions",
-            "size": 6
-          },
-          {
-            "name": "practice_intervention",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "sync",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "land_use_priors",
+            "name": "language",
             "size": 6
           },
           {
@@ -593,22 +568,47 @@
         ],
         [
           {
-            "name": "projects",
+            "name": "sync",
+            "size": 4
+          },
+          {
+            "name": "practice_url",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "land_use_priors",
             "size": 6
           },
           {
+            "name": "subinterventions",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "practice_intervention",
+            "size": 6
+          },
+          {
+            "name": "projects",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "organizations",
+            "size": 6
+          },
+          {
+            "name": "countries",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "source_name",
-        "title",
-        "practice_intervention",
-        "land_use_types"
       ]
-    }
+    },
+    "uid": "api::practice.practice"
   },
   "type": "object",
   "environment": null,

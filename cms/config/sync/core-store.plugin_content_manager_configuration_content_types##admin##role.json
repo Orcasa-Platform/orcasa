@@ -15,56 +15,56 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "code": {
         "edit": {
-          "label": "code",
+          "label": "Code",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "code",
+          "label": "Code",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": true,
           "sortable": true
         }
       },
       "users": {
         "edit": {
-          "label": "users",
+          "label": "Users",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -72,14 +72,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "users",
+          "label": "Users",
           "searchable": false,
           "sortable": false
         }
       },
       "permissions": {
         "edit": {
-          "label": "permissions",
+          "label": "Permissions",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -87,42 +87,42 @@
           "mainField": "action"
         },
         "list": {
-          "label": "permissions",
+          "label": "Permissions",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -130,14 +130,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -145,7 +145,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

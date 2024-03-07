@@ -14,7 +14,7 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
@@ -28,7 +28,7 @@
           "editable": true
         },
         "list": {
-          "label": "start",
+          "label": "Start",
           "searchable": true,
           "sortable": true
         }
@@ -42,7 +42,7 @@
           "editable": true
         },
         "list": {
-          "label": "finished",
+          "label": "Finished",
           "searchable": true,
           "sortable": true
         }
@@ -56,7 +56,7 @@
           "editable": true
         },
         "list": {
-          "label": "status",
+          "label": "Status",
           "searchable": true,
           "sortable": true
         }
@@ -70,42 +70,42 @@
           "editable": true
         },
         "list": {
-          "label": "output",
+          "label": "Output",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -113,14 +113,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -128,13 +128,19 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "start",
+        "finished",
+        "status"
+      ],
       "edit": [
         [
           {
@@ -158,12 +164,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "start",
-        "finished",
-        "status"
       ]
     },
     "uid": "api::practice-import.practice-import"

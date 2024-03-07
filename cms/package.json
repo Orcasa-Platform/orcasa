@@ -23,7 +23,7 @@
     "react-router-dom": "^5.2.0",
     "strapi-plugin-config-sync": "1.2.3",
     "strapi-plugin-import-export-entries": "patch:strapi-plugin-import-export-entries@npm%3A1.23.1#~/.yarn/patches/strapi-plugin-import-export-entries-npm-1.23.1-c8ce8f4bf8.patch",
-    "strapi-plugin-string-array": "1.2.2",
+    "strapi-plugin-string-array": "1.2.3",
     "styled-components": "^5.2.1"
   },
   "workspaces": [

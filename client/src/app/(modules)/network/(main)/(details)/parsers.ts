@@ -30,6 +30,7 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
     lead_partner: leadPartner,
     isWorldwide,
     land_use_types: landUseTypes,
+    practices,
   } = project;
 
   const fields = [];
@@ -98,6 +99,14 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
       label: 'Initiative type',
       value: projectType?.data?.attributes?.name,
       description: projectType?.data?.attributes?.description,
+    });
+  }
+
+  if (hasData(practices) && practices?.data?.length) {
+    fields.push({
+      label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
+      value: practices?.data?.map((practice) => practice.attributes?.title),
+      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
     });
   }
 
@@ -170,6 +179,7 @@ export const getOrganizationFields = (organization: Organization) => {
     secondary_organization_theme: secondaryThematic,
     organization_type: organizationType,
     organization_type_other: otherOrganizationType,
+    practices,
   } = organization;
 
   const fields = [];
@@ -198,6 +208,14 @@ export const getOrganizationFields = (organization: Organization) => {
         : ''
     } `;
     fields.push({ label: 'Thematic', value: thematics });
+  }
+
+  if (hasData(practices) && practices?.data?.length) {
+    fields.push({
+      label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
+      value: practices?.data?.map((practice) => practice.attributes?.title),
+      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
+    });
   }
 
   if (organizationType) {

@@ -15,42 +15,42 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "name": {
         "edit": {
-          "label": "name",
+          "label": "Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Name",
           "searchable": true,
           "sortable": true
         }
       },
       "pathId": {
         "edit": {
-          "label": "pathId",
+          "label": "PathId",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "pathId",
+          "label": "PathId",
           "searchable": true,
           "sortable": true
         }
       },
       "parent": {
         "edit": {
-          "label": "parent",
+          "label": "Parent",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,14 +58,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "parent",
+          "label": "Parent",
           "searchable": true,
           "sortable": true
         }
       },
       "children": {
         "edit": {
-          "label": "children",
+          "label": "Children",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -73,14 +73,14 @@
           "mainField": "name"
         },
         "list": {
-          "label": "children",
+          "label": "Children",
           "searchable": false,
           "sortable": false
         }
       },
       "files": {
         "edit": {
-          "label": "files",
+          "label": "Files",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -88,56 +88,56 @@
           "mainField": "name"
         },
         "list": {
-          "label": "files",
+          "label": "Files",
           "searchable": false,
           "sortable": false
         }
       },
       "path": {
         "edit": {
-          "label": "path",
+          "label": "Path",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "path",
+          "label": "Path",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -145,14 +145,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -160,7 +160,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

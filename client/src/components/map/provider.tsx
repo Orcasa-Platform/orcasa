@@ -2,11 +2,12 @@
 
 import { createContext, PropsWithChildren, useCallback, useContext, useMemo, useRef } from 'react';
 
+import { Layer, LayersList } from '@deck.gl/core/typed';
 import { MapboxOverlay, MapboxOverlayProps } from '@deck.gl/mapbox/typed';
 import { useControl } from 'react-map-gl/maplibre';
 
 interface DeckMapboxOverlayContext {
-  addLayer: (layer: any) => void;
+  addLayer: (layer: Layer<object>) => void;
   removeLayer: (id: string) => void;
 }
 
@@ -31,14 +32,14 @@ function useMapboxOverlay(
 }
 
 export const DeckMapboxOverlayProvider = ({ children }: PropsWithChildren) => {
-  const layersRef = useRef<any[]>([]);
+  const layersRef = useRef<Array<(LayersList | Layer<object>) & { id: string }>>([]);
 
   const OVERLAY = useMapboxOverlay({
     interleaved: true,
   });
 
   const addLayer = useCallback(
-    (layer: any) => {
+    (layer: Layer<object>) => {
       const newLayers = [...layersRef.current.filter((l) => l.id !== layer.id), layer];
 
       layersRef.current = newLayers;

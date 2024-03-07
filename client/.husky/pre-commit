@@ -1,13 +1,44 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Function to parse JSON files and update label keys
+parse_json_files() {
+    local base_path="$1"
+
+    # Check if jq is installed
+    if ! command -v jq &> /dev/null; then
+        echo "jq is not installed. Please install jq to proceed."
+        exit 1
+    fi
+
+    # Loop through each JSON file in the folder
+    for file in "$base_path"/*.json; do
+        echo "Processing $file..."
+
+        # Check if the file is actually a file and not a directory
+        if [ -f "$file" ]; then
+            # Parse each "label" key recursively and update its value
+            if jq 'walk(if type == "object" and (.label|type) == "string" then .label |= (gsub("_"; " ") | (. / " ") | map(. / "" | .[:1] |= map(ascii_upcase) | add) |join(" ")) else . end)' "$file" > "$file.tmp"; then
+                mv "$file.tmp" "$file"
+                echo "Processed $file"
+            else
+                echo "Failed to process $file"
+                rm -f "$file.tmp"
+            fi
+        else
+            echo "$file is not a regular file, skipping..."
+        fi
+    done
+}
+
 cd ./client && yarn types && yarn lint --fix && yarn check-types && git add -A .
 
 SCRIPT_DIR="$(pwd)"
 CMS_ENV_FILE="$SCRIPT_DIR/../cms/.env"
 if [[ -f "$CMS_ENV_FILE" ]] ; then
     echo "Exporting CMS config.."
-    cd .. && cd ./cms && yarn config-sync export -y && git add config/sync/*
+    cd .. && cd ./cms && yarn config-sync export -y && parse_json_files config/sync && git add config/sync/*
 else
     echo "CMS env file does not exist, can't export config"
+    echo "DEBUG: looking for env file in $CMS_ENV_FILE"
 fi

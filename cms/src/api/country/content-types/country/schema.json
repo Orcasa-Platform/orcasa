@@ -56,9 +56,9 @@
     },
     "practices": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::practice.practice",
-      "mappedBy": "country"
+      "mappedBy": "countries"
     }
   }
 }

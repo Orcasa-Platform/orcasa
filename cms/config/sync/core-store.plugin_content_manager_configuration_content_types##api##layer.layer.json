@@ -15,308 +15,308 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Title",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "Title",
           "searchable": true,
           "sortable": true
         }
       },
       "type": {
         "edit": {
-          "label": "type",
+          "label": "Type",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "type",
+          "label": "Type",
           "searchable": true,
           "sortable": true
         }
       },
       "config": {
         "edit": {
-          "label": "config",
+          "label": "Config",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "config",
+          "label": "Config",
           "searchable": false,
           "sortable": false
         }
       },
       "params_config": {
         "edit": {
-          "label": "params_config",
+          "label": "Params Config",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "params_config",
+          "label": "Params Config",
           "searchable": false,
           "sortable": false
         }
       },
       "legend_config": {
         "edit": {
-          "label": "legend_config",
+          "label": "Legend Config",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "legend_config",
+          "label": "Legend Config",
           "searchable": false,
           "sortable": false
         }
       },
       "interaction_config": {
         "edit": {
-          "label": "interaction_config",
+          "label": "Interaction Config",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "interaction_config",
+          "label": "Interaction Config",
           "searchable": false,
           "sortable": false
         }
       },
       "source": {
         "edit": {
-          "label": "source",
+          "label": "Source",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "source",
+          "label": "Source",
           "searchable": true,
           "sortable": true
         }
       },
       "source_url": {
         "edit": {
-          "label": "source_url",
+          "label": "Source Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "source_url",
+          "label": "Source Url",
           "searchable": true,
           "sortable": true
         }
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "description",
+          "label": "Description",
           "searchable": true,
           "sortable": true
         }
       },
       "license": {
         "edit": {
-          "label": "license",
+          "label": "License",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "license",
+          "label": "License",
           "searchable": true,
           "sortable": true
         }
       },
       "citation": {
         "edit": {
-          "label": "citation",
+          "label": "Citation",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "citation",
+          "label": "Citation",
           "searchable": true,
           "sortable": true
         }
       },
       "cautions": {
         "edit": {
-          "label": "cautions",
+          "label": "Cautions",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "cautions",
+          "label": "Cautions",
           "searchable": true,
           "sortable": true
         }
       },
       "related_publications": {
         "edit": {
-          "label": "related_publications",
+          "label": "Related Publications",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "related_publications",
+          "label": "Related Publications",
           "searchable": true,
           "sortable": true
         }
       },
       "resource_contact_name": {
         "edit": {
-          "label": "resource_contact_name",
+          "label": "Resource Contact Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "resource_contact_name",
+          "label": "Resource Contact Name",
           "searchable": true,
           "sortable": true
         }
       },
       "resource_contact_url": {
         "edit": {
-          "label": "resource_contact_url",
+          "label": "Resource Contact Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "resource_contact_url",
+          "label": "Resource Contact Url",
           "searchable": true,
           "sortable": true
         }
       },
       "metadata_contact_name": {
         "edit": {
-          "label": "metadata_contact_name",
+          "label": "Metadata Contact Name",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "metadata_contact_name",
+          "label": "Metadata Contact Name",
           "searchable": true,
           "sortable": true
         }
       },
       "metadata_contact_url": {
         "edit": {
-          "label": "metadata_contact_url",
+          "label": "Metadata Contact Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "metadata_contact_url",
+          "label": "Metadata Contact Url",
           "searchable": true,
           "sortable": true
         }
       },
       "highlighted_bounds": {
         "edit": {
-          "label": "highlighted_bounds",
+          "label": "Highlighted Bounds",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "highlighted_bounds",
+          "label": "Highlighted Bounds",
           "searchable": false,
           "sortable": false
         }
       },
       "ui_settings": {
         "edit": {
-          "label": "ui_settings",
+          "label": "Ui Settings",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "ui_settings",
+          "label": "Ui Settings",
           "searchable": false,
           "sortable": false
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -324,14 +324,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -339,7 +339,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

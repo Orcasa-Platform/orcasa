@@ -15,126 +15,126 @@
       "id": {
         "edit": {},
         "list": {
-          "label": "id",
+          "label": "Id",
           "searchable": true,
           "sortable": true
         }
       },
       "firstname": {
         "edit": {
-          "label": "firstname",
+          "label": "Firstname",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "firstname",
+          "label": "Firstname",
           "searchable": true,
           "sortable": true
         }
       },
       "lastname": {
         "edit": {
-          "label": "lastname",
+          "label": "Lastname",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "lastname",
+          "label": "Lastname",
           "searchable": true,
           "sortable": true
         }
       },
       "username": {
         "edit": {
-          "label": "username",
+          "label": "Username",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "username",
+          "label": "Username",
           "searchable": true,
           "sortable": true
         }
       },
       "email": {
         "edit": {
-          "label": "email",
+          "label": "Email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "email",
+          "label": "Email",
           "searchable": true,
           "sortable": true
         }
       },
       "password": {
         "edit": {
-          "label": "password",
+          "label": "Password",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "password",
+          "label": "Password",
           "searchable": true,
           "sortable": true
         }
       },
       "resetPasswordToken": {
         "edit": {
-          "label": "resetPasswordToken",
+          "label": "ResetPasswordToken",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "resetPasswordToken",
+          "label": "ResetPasswordToken",
           "searchable": true,
           "sortable": true
         }
       },
       "registrationToken": {
         "edit": {
-          "label": "registrationToken",
+          "label": "RegistrationToken",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "registrationToken",
+          "label": "RegistrationToken",
           "searchable": true,
           "sortable": true
         }
       },
       "isActive": {
         "edit": {
-          "label": "isActive",
+          "label": "IsActive",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "isActive",
+          "label": "IsActive",
           "searchable": true,
           "sortable": true
         }
       },
       "roles": {
         "edit": {
-          "label": "roles",
+          "label": "Roles",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -142,70 +142,70 @@
           "mainField": "name"
         },
         "list": {
-          "label": "roles",
+          "label": "Roles",
           "searchable": false,
           "sortable": false
         }
       },
       "blocked": {
         "edit": {
-          "label": "blocked",
+          "label": "Blocked",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "blocked",
+          "label": "Blocked",
           "searchable": true,
           "sortable": true
         }
       },
       "preferedLanguage": {
         "edit": {
-          "label": "preferedLanguage",
+          "label": "PreferedLanguage",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "preferedLanguage",
+          "label": "PreferedLanguage",
           "searchable": true,
           "sortable": true
         }
       },
       "createdAt": {
         "edit": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "createdAt",
+          "label": "CreatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedAt": {
         "edit": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "description": "",
           "placeholder": "",
           "visible": false,
           "editable": true
         },
         "list": {
-          "label": "updatedAt",
+          "label": "UpdatedAt",
           "searchable": true,
           "sortable": true
         }
       },
       "createdBy": {
         "edit": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -213,14 +213,14 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "createdBy",
+          "label": "CreatedBy",
           "searchable": true,
           "sortable": true
         }
       },
       "updatedBy": {
         "edit": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "description": "",
           "placeholder": "",
           "visible": false,
@@ -228,7 +228,7 @@
           "mainField": "firstname"
         },
         "list": {
-          "label": "updatedBy",
+          "label": "UpdatedBy",
           "searchable": true,
           "sortable": true
         }

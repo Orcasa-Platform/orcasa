@@ -202,6 +202,7 @@ export default function FiltersSidebar() {
                 setFilters({
                   ...filters,
                   country: [],
+                  year: [],
                   landUseTypes: undefined,
                   priorLandUseTypes: undefined,
                   mainIntervention: undefined,
@@ -220,6 +221,14 @@ export default function FiltersSidebar() {
                 value={filters.country ?? []}
                 options={practicesFiltersOptions.country}
                 onChange={(value) => setFilters({ ...filters, country: value as number[] })}
+              />
+              <MultiCombobox
+                id="published-year"
+                name="Published on year"
+                variant="practices"
+                value={filters.year ?? []}
+                options={practicesFiltersOptions.year}
+                onChange={(value) => setFilters({ ...filters, year: value as number[] })}
               />
               <SelectFilter
                 type="mainIntervention"
