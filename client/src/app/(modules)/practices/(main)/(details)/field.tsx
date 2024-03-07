@@ -3,11 +3,12 @@
 
 import { useRef, useState } from 'react';
 
+import Link from 'next/link';
+
 import { cn } from '@/lib/classnames';
 import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
-import Link from 'next/link';
 
 export type FieldType = {
   label: string;

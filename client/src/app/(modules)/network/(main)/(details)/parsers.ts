@@ -210,20 +210,20 @@ export const getOrganizationFields = (organization: Organization) => {
     fields.push({ label: 'Thematic', value: thematics });
   }
 
+  if (hasData(practices) && practices?.data?.length) {
+    fields.push({
+      label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
+      value: practices?.data?.map((practice) => practice.attributes?.title),
+      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
+    });
+  }
+
   if (organizationType) {
     fields.push({
       label: 'Type of organisation',
       value: otherOrganizationType
         ? `Other (${otherOrganizationType})`
         : organizationType?.data?.attributes?.name,
-    });
-  }
-
-  if (hasData(practices) && practices?.data?.length) {
-    fields.push({
-      label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
-      value: practices?.data?.map((practice) => practice.attributes?.title),
-      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
     });
   }
 
