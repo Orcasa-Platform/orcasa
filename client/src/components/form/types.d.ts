@@ -15,6 +15,7 @@ export type Field = {
   type: 'text' | 'textarea' | 'select' | 'multiselect' | 'email' | 'date' | 'wysiwyg';
   options?: { label: string; value: string; disabled?: boolean; description?: string }[];
   maxSize?: number;
+  allowSelectAll?: boolean;
   richEditorConfig?: ReactQuill.QuillOptions;
   placeholder?: string;
 };

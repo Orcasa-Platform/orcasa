@@ -30,6 +30,7 @@ interface InputComponentProps {
   field: ControllerRenderProps<{ [x: string]: string | string[] | undefined }, string>;
   type: Field['type'];
   required?: Field['required'];
+  allowSelectAll?: boolean;
   options?: Field['options'];
   maxSize?: Field['maxSize'];
   placeholder?: Field['placeholder'];
@@ -60,6 +61,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
     variant,
     label,
     richEditorConfig,
+    allowSelectAll,
   } = props;
 
   const { watch, register } = form;
@@ -178,6 +180,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
         ariaInvalid={!!ariaInvalid}
         onChange={onChange}
         variant={variant}
+        allowSelectAll={allowSelectAll}
         options={options ?? []}
         showSelected
       />

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Tooltip } from '@radix-ui/react-tooltip';
 import { AxiosError } from 'axios';
-import { Check, CircleSlash, AlertCircle, Info } from 'lucide-react';
+import { AlertCircle, Check, CircleSlash, Info } from 'lucide-react';
 import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
@@ -42,6 +42,7 @@ export default function ProjectForm() {
     areasOfIntervention,
     sustainableDevelopmentGoals,
     projectTypes,
+    practices,
     landUseTypes,
   } = useProjectFormGetFields() || {};
   const [openInfo, setInfoOpen] = useState(false);
@@ -212,6 +213,21 @@ export default function ProjectForm() {
         description: type.description,
       })),
       required: true,
+    },
+    practices: {
+      label: 'Practices',
+      zod: z
+        .array(
+          z.enum(practices?.map((practice) => practice.id.toString()) as [string, ...string[]]),
+        )
+        .optional(),
+      type: 'multiselect',
+      allowSelectAll: false,
+      options: practices?.map((practice) => ({
+        label: practice.title,
+        value: practice.id.toString(),
+      })),
+      required: false,
     },
     land_use_types: {
       label: 'Land use types',
@@ -551,6 +567,7 @@ export default function ProjectForm() {
               'short_description',
               'description',
               'project_type',
+              'practices',
               'start_date',
               'end_date',
               'country_of_coordination',

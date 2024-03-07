@@ -1,7 +1,7 @@
 import React, { Key, useEffect, useMemo, useRef, useState } from 'react';
 
 import { Combobox as ComboboxPrimitive } from '@headlessui/react';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
@@ -53,6 +53,7 @@ export interface ComboboxProps<T> {
   ariaInvalid?: boolean;
   showSelected?: boolean;
   className?: string;
+  allowSelectAll?: boolean;
 }
 
 export const MultiCombobox = <T extends NonNullable<unknown>>({
@@ -67,6 +68,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   ariaInvalid,
   showSelected = false,
   className,
+  allowSelectAll = true,
 }: ComboboxProps<T>) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
@@ -181,20 +183,22 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                 className="max-h-80 w-[var(--radix-tooltip-trigger-width)] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
               >
                 <div className="sticky top-0 z-10 flex gap-x-4 border-b border-dashed border-gray-300 bg-white px-3 py-4">
-                  <Button
-                    type="button"
-                    variant="vanilla"
-                    size="auto"
-                    className={buttonVariants({ variant })}
-                    disabled={value.length === options.length}
-                    onClick={() =>
-                      onChange(
-                        options.filter(({ disabled }) => !disabled).map(({ value }) => value),
-                      )
-                    }
-                  >
-                    Select all
-                  </Button>
+                  {allowSelectAll && (
+                    <Button
+                      type="button"
+                      variant="vanilla"
+                      size="auto"
+                      className={buttonVariants({ variant })}
+                      disabled={value.length === options.length}
+                      onClick={() =>
+                        onChange(
+                          options.filter(({ disabled }) => !disabled).map(({ value }) => value),
+                        )
+                      }
+                    >
+                      Select all
+                    </Button>
+                  )}
                   <Button
                     type="button"
                     variant="vanilla"

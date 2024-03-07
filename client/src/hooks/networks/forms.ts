@@ -4,6 +4,7 @@ import { useGetLandUseTypes } from '@/types/generated/land-use-type';
 import { useGetOrganizations } from '@/types/generated/organization';
 import { useGetOrganizationThemes } from '@/types/generated/organization-theme';
 import { useGetOrganizationTypes } from '@/types/generated/organization-type';
+import { useGetPractices } from '@/types/generated/practice';
 import { useGetProjects } from '@/types/generated/project';
 import { useGetProjectTypes } from '@/types/generated/project-type';
 import { useGetRegions } from '@/types/generated/region';
@@ -16,6 +17,7 @@ import {
   OrganizationThemeListResponseDataItem,
   OrganizationTypeListResponse,
   OrganizationTypeListResponseDataItem,
+  PracticeListResponse,
   ProjectListResponse,
   ProjectListResponseDataItem,
   ProjectTypeListResponse,
@@ -172,6 +174,18 @@ export const useProjectFormGetFields = () => {
     },
   );
 
+  const { data: practices } = useGetPractices(
+    {
+      'pagination[pageSize]': 9999,
+      fields: ['title'],
+    },
+    {
+      query: {
+        queryKey: ['practices'],
+      },
+    },
+  );
+
   const { data: landUseTypes } = useGetLandUseTypes(requestObject, {
     query: {
       queryKey: ['land-use-types'],
@@ -185,10 +199,12 @@ export const useProjectFormGetFields = () => {
     typeof countryData === 'undefined' ||
     typeof organizations === 'undefined' ||
     typeof projectTypes === 'undefined' ||
+    typeof practices === 'undefined' ||
     typeof landUseTypes === 'undefined'
   ) {
     return;
   }
+
   const parseData = (
     data:
       | OrganizationTypeListResponse
@@ -215,6 +231,19 @@ export const useProjectFormGetFields = () => {
       .sort((a, b) => a.name.localeCompare(b.name));
   };
 
+  const parsePractices = (data: PracticeListResponse) => {
+    return data?.data
+      ?.map(
+        (d) =>
+          d.attributes && {
+            title: d.attributes.title,
+            id: d.id,
+          },
+      )
+      .filter((d): d is { title: string; id: number } => typeof d !== 'undefined')
+      .sort((a, b) => a.title.localeCompare(b.title));
+  };
+
   return {
     regions: parseData(regions),
     areasOfIntervention: parseData(areasOfIntervention),
@@ -223,5 +252,6 @@ export const useProjectFormGetFields = () => {
     sustainableDevelopmentGoals: parseData(sustainableDevelopmentGoals),
     projectTypes: parseData(projectTypes),
     landUseTypes: parseData(landUseTypes),
+    practices: parsePractices(practices),
   };
 };
