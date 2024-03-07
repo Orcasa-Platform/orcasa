@@ -43,6 +43,7 @@ const RenderField = ({
     description,
     richEditorConfig,
     allowSelectAll,
+    validationDependantField,
   } = field;
   const richEditorRef = useRef<ReactQuill | null>(null);
   const Label = () => {
@@ -94,6 +95,7 @@ const RenderField = ({
                 key={id}
                 index={index}
                 name={id}
+                validationDependantField={validationDependantField}
                 label={type === 'multiselect' ? label : id}
                 type={type}
                 allowSelectAll={allowSelectAll}

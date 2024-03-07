@@ -18,4 +18,7 @@ export type Field = {
   allowSelectAll?: boolean;
   richEditorConfig?: ReactQuill.QuillOptions;
   placeholder?: string;
+  // The onBlur of the current field will trigger the validation of the connected field
+  // This is made for interconnected dependant fields
+  validationDependantField?: string;
 };

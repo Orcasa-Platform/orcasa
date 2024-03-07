@@ -43,6 +43,7 @@ interface InputComponentProps {
   form: ReturnType<typeof useForm>;
   variant?: ComboboxProps<unknown>['variant'];
   richEditorConfig?: typeof ReactQuill.QuillOptions;
+  validationDependantField?: string;
 }
 
 const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>((props, ref) => {
@@ -62,6 +63,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
     label,
     richEditorConfig,
     allowSelectAll,
+    validationDependantField,
   } = props;
 
   const { watch, register } = form;
@@ -266,6 +268,13 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
       id={id}
       aria-describedby={ariaDescribedBy}
       aria-invalid={!!ariaInvalid}
+      onBlur={() => {
+        if (validationDependantField) {
+          form.trigger(validationDependantField);
+          form.trigger(field.name);
+        }
+        field.onBlur();
+      }}
     />
   );
 });
