@@ -1880,7 +1880,7 @@ __metadata:
     react-router-dom: "npm:^5.2.0"
     strapi-plugin-config-sync: "npm:1.2.3"
     strapi-plugin-import-export-entries: "patch:strapi-plugin-import-export-entries@npm%3A1.23.1#~/.yarn/patches/strapi-plugin-import-export-entries-npm-1.23.1-c8ce8f4bf8.patch"
-    strapi-plugin-string-array: "npm:1.2.2"
+    strapi-plugin-string-array: "npm:1.2.3"
     styled-components: "npm:^5.2.1"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -13538,9 +13538,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strapi-plugin-string-array@npm:1.2.2":
-  version: 1.2.2
-  resolution: "strapi-plugin-string-array@npm:1.2.2"
+"strapi-plugin-string-array@npm:1.2.3":
+  version: 1.2.3
+  resolution: "strapi-plugin-string-array@npm:1.2.3"
   dependencies:
     "@strapi/design-system": "npm:^1.6.3"
     "@strapi/helper-plugin": "npm:^4.6.0"
@@ -13554,7 +13554,7 @@ __metadata:
     react-dom: ^17.0.0 || ^18.0.0
     react-router-dom: ^5.3.4
     styled-components: ^5.3.6
-  checksum: 10/9d6fc8c4fbf078ddfd07bfc6848cd30a8859c148c17a3f980634fbee589c0f7b4c58be9b86149c806f0ceac68b3db8af8be11335ed0811c917ccedfde37a28d0
+  checksum: 10/af653ad2995548f467d9dc321c496e25b35fcfe239c51bd184029ca1fb704f1b483c6eca930231f971061f3dfde3202ff20a428e187aa0c8d332071e6658514e
   languageName: node
   linkType: hard
 
