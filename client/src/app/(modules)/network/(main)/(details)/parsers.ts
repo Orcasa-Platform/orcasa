@@ -179,6 +179,7 @@ export const getOrganizationFields = (organization: Organization) => {
     secondary_organization_theme: secondaryThematic,
     organization_type: organizationType,
     organization_type_other: otherOrganizationType,
+    practices,
   } = organization;
 
   const fields = [];
@@ -207,6 +208,14 @@ export const getOrganizationFields = (organization: Organization) => {
         : ''
     } `;
     fields.push({ label: 'Thematic', value: thematics });
+  }
+
+  if (hasData(practices) && practices?.data?.length) {
+    fields.push({
+      label: `Practice${practices?.data?.length > 1 ? 's' : ''}`,
+      value: practices?.data?.map((practice) => practice.attributes?.title),
+      url: practices?.data?.map((practice) => `/practices/${practice.id}`),
+    });
   }
 
   if (organizationType) {
