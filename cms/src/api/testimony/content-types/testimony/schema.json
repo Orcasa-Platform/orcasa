@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testimonies",
+  "info": {
+    "singularName": "testimony",
+    "pluralName": "testimonies",
+    "displayName": "Testimony"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "testimonies"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "testimonies"
+      },
+      "customField": "plugin::ckeditor5.CKEditor",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "microscope",
+        "scale",
+        "landmark",
+        "factory",
+        "heart handshake",
+        "mandatory"
+      ],
+      "required": true
+    }
+  }
+}

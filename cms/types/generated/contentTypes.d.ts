@@ -889,6 +889,11 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       'manyToMany',
       'api::practice.practice'
     >;
+    testimonies: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::testimony.testimony'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1729,6 +1734,61 @@ export interface ApiSustainableDevGoalSustainableDevGoal
   };
 }
 
+export interface ApiTestimonyTestimony extends Schema.CollectionType {
+  collectionName: 'testimonies';
+  info: {
+    singularName: 'testimony';
+    pluralName: 'testimonies';
+    displayName: 'Testimony';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    country: Attribute.Relation<
+      'api::testimony.testimony',
+      'manyToOne',
+      'api::country.country'
+    >;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'testimonies';
+        }
+      >;
+    role: Attribute.String & Attribute.Required;
+    icon: Attribute.Enumeration<
+      [
+        'microscope',
+        'scale',
+        'landmark',
+        'factory',
+        'heart handshake',
+        'mandatory'
+      ]
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimony.testimony',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimony.testimony',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1766,6 +1826,7 @@ declare module '@strapi/types' {
       'api::static-page.static-page': ApiStaticPageStaticPage;
       'api::subintervention.subintervention': ApiSubinterventionSubintervention;
       'api::sustainable-dev-goal.sustainable-dev-goal': ApiSustainableDevGoalSustainableDevGoal;
+      'api::testimony.testimony': ApiTestimonyTestimony;
     }
   }
 }

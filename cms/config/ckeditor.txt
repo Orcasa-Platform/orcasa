@@ -84,6 +84,38 @@ globalThis.CKEditorConfig = {
                   ],
             }
         },
+        testimonies: {
+            /* Testimonies field option */
+            field: {
+                key: "testimonies",
+                value: "testimonies",
+                metadatas: {
+                  intlLabel: {
+                    id: "ckeditor5.preset.custom2.label",
+                    defaultMessage: "New lines, bold, italic and underline",
+                  },
+                },
+            },
+            editorConfig:{
+                /* You can find all available built-in plugins
+                in the admin/src/components/Input/CKEditor/configs/base.js */
+                plugins: [
+                    CKEditor5.autoformat.Autoformat,
+                    CKEditor5.basicStyles.Bold,
+                    CKEditor5.basicStyles.Italic,
+                    CKEditor5.basicStyles.Underline,
+                    CKEditor5.essentials.Essentials,
+                    CKEditor5.list.List,
+                    CKEditor5.paragraph.Paragraph,
+                    CKEditor5.pasteFromOffice.PasteFromOffice,
+                  ],
+                  toolbar: [
+                    'bold', 'italic', 'underline',
+                    '|',
+                    'undo', 'redo'
+                  ],
+            }
+        },
     },
 
     /* Here you can customize the plugin's theme.

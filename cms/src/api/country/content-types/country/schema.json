@@ -59,6 +59,12 @@
       "relation": "manyToMany",
       "target": "api::practice.practice",
       "mappedBy": "countries"
+    },
+    "testimonies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimony.testimony",
+      "mappedBy": "country"
     }
   }
 }
