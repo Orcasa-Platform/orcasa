@@ -34,7 +34,7 @@ export default async function PracticeDetails({ params }: PracticeDetailsProps) 
   const data = await getPractices({
     filters: { id },
     populate: {
-      country: { fields: ['name', 'id'] },
+      countries: { fields: ['name', 'id'] },
       land_use_types: { fields: ['name', 'id'] },
       land_use_priors: { fields: ['name', 'id'] },
       subinterventions: { fields: ['name', 'id'] },

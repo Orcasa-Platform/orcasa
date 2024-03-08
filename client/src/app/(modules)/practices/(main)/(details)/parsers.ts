@@ -68,7 +68,7 @@ export const getPracticeImplementationFields = (practice: Practice): FieldType[]
 
   const fields = [];
 
-  if (countries) {
+  if (countries && (countries?.data?.length ?? 0) > 0) {
     fields.push({
       label: `Countr${(countries?.data?.length ?? 0) > 1 ? 'ies' : 'y'}`,
       value: countries?.data?.map((country) => country?.attributes?.name).join(', '),
