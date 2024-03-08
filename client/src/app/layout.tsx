@@ -24,10 +24,12 @@ const robotoSlab = Roboto_Slab({
   variable: '--font-roboto-slab',
 });
 
+const DESCRIPTION =
+  'Powered by the Soil Carbon International Research Consortium, Impact4soil offers data and meta-analysis on soil carbon, practices, and land management solutions.';
+
 export const metadata: Metadata = {
   title: { template: 'Impact4Soil - %s', default: 'Impact4Soil' },
-  description:
-    'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.',
+  description: DESCRIPTION,
   keywords: 'Impact4Soil, ORCaSa, Horizon Europe, carbon capture, climate change',
   robots: 'index, follow',
   authors: { name: 'Vizzuality', url: 'https://vizzuality.com' },
@@ -40,12 +42,9 @@ export const metadata: Metadata = {
     : {}),
   openGraph: {
     title: 'Impact4Soil - Horizon Europe Initiative',
-    // TODO: update description
-    description:
-      'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.',
+    description: DESCRIPTION,
     type: 'website',
-    // TODO: update url
-    url: 'https://irc-orcasa.eu/',
+    url: 'https://impact4soil.com/',
     locale: 'en_US',
     images: [{ url: '/metadata/1200x630.png' }],
     siteName: 'ORCaSa',
@@ -54,15 +53,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: '/metadata/1200x630.png',
     title: 'ORCaSa',
-    // TODO: update description
-    description:
-      'ORCaSa is a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil.',
+    description: DESCRIPTION,
     site: '@IRC_ORCaSa',
     creator: '@Vizzuality',
   },
   themeColor: '#ffffff',
-  // TODO: update url
-  metadataBase: new URL('https://irc-orcasa.eu/'),
+  metadataBase: new URL('https://impact4soil.com/'),
   alternates: {
     canonical: `/`,
   },

@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PracticeDetailsProps): Promis
 
   return {
     title: `Impact4Soil - ${practice?.title}`,
+    description: practice?.short_description,
   };
 }
 

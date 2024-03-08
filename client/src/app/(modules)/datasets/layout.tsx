@@ -1,5 +1,7 @@
 export const metadata = {
   title: 'Datasets',
+  description:
+    'Explore datasets on Soil Organic carbon from diverse trusted sources to find the correct information for your activities.',
 };
 
 export default function DatasetsModuleLayout({ children }: { children: React.ReactNode }) {
