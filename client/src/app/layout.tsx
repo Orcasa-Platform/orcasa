@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import { Suspense } from 'react';
 
 import { Roboto_Slab, Roboto } from 'next/font/google';
+import Script from 'next/script';
 
 import { Metadata } from 'next';
 
@@ -73,6 +74,9 @@ export const metadata: Metadata = {
   },
 };
 
+const NEXT_PUBLIC_MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
+const NEXT_PUBLIC_MATOMO_SITE_ID = process.env.NEXT_PUBLIC_MATOMO_SITE_ID;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <Providers>
@@ -91,6 +95,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </Suspense>
           {children}
         </body>
+        {NEXT_PUBLIC_MATOMO_URL && NEXT_PUBLIC_MATOMO_SITE_ID && (
+          <Script
+            id="matomo-analytics"
+            dangerouslySetInnerHTML={{
+              __html: `<!-- Matomo -->
+            <script>
+              var _paq = window._paq = window._paq || [];
+              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="${NEXT_PUBLIC_MATOMO_URL}";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', ${NEXT_PUBLIC_MATOMO_SITE_ID}]);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            </script>
+            <!-- End Matomo Code -->`,
+            }}
+          />
+        )}
       </html>
     </Providers>
   );

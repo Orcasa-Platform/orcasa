@@ -21,6 +21,8 @@ export const env = createEnv({
     NEXT_PUBLIC_SCIENTIFIC_EVIDENCE_STATS_API_URL: z.string().url(),
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().optional(),
     NEXT_PUBLIC_ENABLE_RESPONSIVE: z.string().optional(),
+    NEXT_PUBLIC_MATOMO_SITE_ID: z.string().optional(),
+    NEXT_PUBLIC_MATOMO_URL: z.string().optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -37,6 +39,8 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_SCIENTIFIC_EVIDENCE_STATS_API_URL,
     NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
     NEXT_PUBLIC_ENABLE_RESPONSIVE: process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE,
+    NEXT_PUBLIC_MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
+    NEXT_PUBLIC_MATOMO_URL: process.env.NEXT_PUBLIC_MATOMO_URL,
   },
 });
 
