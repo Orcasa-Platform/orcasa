@@ -85,7 +85,9 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
       value: projectCoordinatorEmail ?? projectCoordinatorWebsite,
       url: hasData(projectCoordinatorEmail)
         ? `mailto:${projectCoordinatorEmail}`
-        : projectCoordinatorWebsite !== undefined && makeGlobalLink(projectCoordinatorWebsite),
+        : projectCoordinatorWebsite
+        ? makeGlobalLink(projectCoordinatorWebsite)
+        : undefined,
 
       external: true,
     });

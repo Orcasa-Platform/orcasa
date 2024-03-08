@@ -220,7 +220,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
 
                     return (
                       <ComboboxPrimitive.Option
-                        key={option.value as Key}
+                        key={option.value as unknown as Key}
                         value={option.value}
                         disabled={option.disabled}
                         className={cn(optionVariants({ variant }))}
