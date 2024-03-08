@@ -16,6 +16,9 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
     institution_funding: institutionName,
     projects,
     organizations,
+    practice_intervention: mainIntervention,
+    land_use_types: landUseTypes,
+    land_use_priors: landUsePriors,
   } = practice as TypedPractice;
 
   const fields = [];
@@ -38,6 +41,24 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
 
   if (shortDescription && shortDescription.length > 0) {
     fields.push({ label: 'Description', value: shortDescription });
+  }
+
+  if (mainIntervention) {
+    fields.push({ label: 'Main Intervention', value: mainIntervention });
+  }
+
+  if (landUsePriors && landUsePriors?.data?.length) {
+    fields.push({
+      label: `Land Use Type${landUsePriors?.data?.length > 1 ? 's' : ''}`,
+      value: landUsePriors?.data?.map((landUsePrior) => landUsePrior.attributes?.name).join(', '),
+    });
+  }
+
+  if (landUseTypes && landUseTypes?.data?.length) {
+    fields.push({
+      label: `New Land Use Type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
+      value: landUseTypes?.data?.map((landUseType) => landUseType.attributes?.name).join(', '),
+    });
   }
 
   if (organizations && organizations?.data?.length) {
