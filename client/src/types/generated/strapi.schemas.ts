@@ -4,6 +4,58 @@
  * DOCUMENTATION
  * OpenAPI spec version: 1.0.0
  */
+export type GetTestimoniesIdParams = {
+  /**
+   * Relations to return
+   */
+  populate?: string;
+};
+
+export type GetTestimoniesPopulateOneOf = { [key: string]: any };
+
+export type GetTestimoniesParams = {
+  /**
+   * Sort by attributes ascending (asc) or descending (desc)
+   */
+  sort?: string;
+  /**
+   * Return page/pageSize (default: true)
+   */
+  'pagination[withCount]'?: boolean;
+  /**
+   * Page number (default: 0)
+   */
+  'pagination[page]'?: number;
+  /**
+   * Page size (default: 25)
+   */
+  'pagination[pageSize]'?: number;
+  /**
+   * Offset value (default: 0)
+   */
+  'pagination[start]'?: number;
+  /**
+   * Number of entities to return (default: 25)
+   */
+  'pagination[limit]'?: number;
+  /**
+   * Fields to return (ex: ['title','author','test'])
+   */
+  fields?: string[];
+  /**
+   * Relations to return
+   */
+  populate?: string | GetTestimoniesPopulateOneOf;
+  /**
+   * Filters to apply
+   */
+  filters?: { [key: string]: any };
+  /**
+   * Locale to apply
+   */
+  locale?: string;
+};
+
 export type GetSustainableDevGoalsIdParams = {
   /**
    * Relations to return
@@ -978,6 +1030,7 @@ export interface Testimony {
   content: string;
   role: string;
   icon: TestimonyIcon;
+  order: number;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -1010,7 +1063,6 @@ export const TestimonyIcon = {
   landmark: 'landmark',
   factory: 'factory',
   heart_handshake: 'heart handshake',
-  mandatory: 'mandatory',
 } as const;
 
 export type TestimonyCountryData = {
@@ -1092,6 +1144,7 @@ export type TestimonyCountryDataAttributesTestimoniesDataItemAttributes = {
   content?: string;
   role?: string;
   icon?: TestimonyCountryDataAttributesTestimoniesDataItemAttributesIcon;
+  order?: number;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -1122,7 +1175,6 @@ export const TestimonyCountryDataAttributesTestimoniesDataItemAttributesIcon = {
   landmark: 'landmark',
   factory: 'factory',
   heart_handshake: 'heart handshake',
-  mandatory: 'mandatory',
 } as const;
 
 export type TestimonyCountryDataAttributesTestimoniesDataItemAttributesCountryDataAttributes = {
@@ -2362,7 +2414,6 @@ export const TestimonyRequestDataIcon = {
   landmark: 'landmark',
   factory: 'factory',
   heart_handshake: 'heart handshake',
-  mandatory: 'mandatory',
 } as const;
 
 export type TestimonyRequestDataCountry = number | string;
@@ -2373,6 +2424,7 @@ export type TestimonyRequestData = {
   content: string;
   role: string;
   icon: TestimonyRequestDataIcon;
+  order: number;
 };
 
 export interface TestimonyRequest {
@@ -2826,7 +2878,6 @@ export const SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDa
     landmark: 'landmark',
     factory: 'factory',
     heart_handshake: 'heart handshake',
-    mandatory: 'mandatory',
   } as const;
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesTestimoniesDataItemAttributes =
@@ -2836,6 +2887,7 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     content?: string;
     role?: string;
     icon?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesTestimoniesDataItemAttributesIcon;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -4114,7 +4166,6 @@ export const SubinterventionPracticesDataItemAttributesCountriesDataItemAttribut
     landmark: 'landmark',
     factory: 'factory',
     heart_handshake: 'heart handshake',
-    mandatory: 'mandatory',
   } as const;
 
 export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesTestimoniesDataItemAttributes =
@@ -4124,6 +4175,7 @@ export type SubinterventionPracticesDataItemAttributesCountriesDataItemAttribute
     content?: string;
     role?: string;
     icon?: SubinterventionPracticesDataItemAttributesCountriesDataItemAttributesTestimoniesDataItemAttributesIcon;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -5850,7 +5902,6 @@ export const RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributes
     landmark: 'landmark',
     factory: 'factory',
     heart_handshake: 'heart handshake',
-    mandatory: 'mandatory',
   } as const;
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesTestimoniesDataItemAttributes =
@@ -5860,6 +5911,7 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesT
     content?: string;
     role?: string;
     icon?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesTestimoniesDataItemAttributesIcon;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -7289,6 +7341,7 @@ export type ProjectCountryOfCoordinationDataAttributesTestimoniesDataItemAttribu
   content?: string;
   role?: string;
   icon?: ProjectCountryOfCoordinationDataAttributesTestimoniesDataItemAttributesIcon;
+  order?: number;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -7318,7 +7371,6 @@ export const ProjectCountryOfCoordinationDataAttributesTestimoniesDataItemAttrib
   landmark: 'landmark',
   factory: 'factory',
   heart_handshake: 'heart handshake',
-  mandatory: 'mandatory',
 } as const;
 
 export type ProjectCountryOfCoordinationDataAttributesTestimoniesDataItemAttributesCountryDataAttributes =
@@ -9088,6 +9140,7 @@ export type PracticeCountriesDataItemAttributesTestimoniesDataItemAttributes = {
   content?: string;
   role?: string;
   icon?: PracticeCountriesDataItemAttributesTestimoniesDataItemAttributesIcon;
+  order?: number;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -9117,7 +9170,6 @@ export const PracticeCountriesDataItemAttributesTestimoniesDataItemAttributesIco
   landmark: 'landmark',
   factory: 'factory',
   heart_handshake: 'heart handshake',
-  mandatory: 'mandatory',
 } as const;
 
 export type PracticeCountriesDataItemAttributesTestimoniesDataItemAttributesCountryDataAttributes =
@@ -11469,6 +11521,7 @@ export type OrganizationCountryDataAttributesTestimoniesDataItemAttributes = {
   content?: string;
   role?: string;
   icon?: OrganizationCountryDataAttributesTestimoniesDataItemAttributesIcon;
+  order?: number;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -11519,7 +11572,6 @@ export const OrganizationCountryDataAttributesTestimoniesDataItemAttributesIcon 
   landmark: 'landmark',
   factory: 'factory',
   heart_handshake: 'heart handshake',
-  mandatory: 'mandatory',
 } as const;
 
 export type OrganizationCountryDataAttributesTestimoniesDataItemAttributesCountryDataAttributes = {
@@ -14026,7 +14078,6 @@ export const LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttribu
     landmark: 'landmark',
     factory: 'factory',
     heart_handshake: 'heart handshake',
-    mandatory: 'mandatory',
   } as const;
 
 export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesTestimoniesDataItemAttributes =
@@ -14036,6 +14087,7 @@ export type LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttribut
     content?: string;
     role?: string;
     icon?: LandUseTypePracticesPriorDataItemAttributesCountriesDataItemAttributesTestimoniesDataItemAttributesIcon;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -15586,6 +15638,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     content?: string;
     role?: string;
     icon?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesTestimoniesDataItemAttributesIcon;
+    order?: number;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -15618,7 +15671,6 @@ export const CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoord
     landmark: 'landmark',
     factory: 'factory',
     heart_handshake: 'heart handshake',
-    mandatory: 'mandatory',
   } as const;
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesTestimoniesDataItemAttributesCountryDataAttributes =

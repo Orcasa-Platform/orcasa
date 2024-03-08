@@ -1159,7 +1159,8 @@
           "country",
           "content",
           "role",
-          "icon"
+          "icon",
+          "order"
         ]
       },
       "conditions": []
@@ -1188,7 +1189,8 @@
           "country",
           "content",
           "role",
-          "icon"
+          "icon",
+          "order"
         ]
       },
       "conditions": []
@@ -1203,7 +1205,8 @@
           "country",
           "content",
           "role",
-          "icon"
+          "icon",
+          "order"
         ]
       },
       "conditions": []

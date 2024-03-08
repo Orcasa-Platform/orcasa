@@ -90,6 +90,20 @@
           "sortable": true
         }
       },
+      "order": {
+        "edit": {
+          "label": "Order",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Order",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -181,6 +195,12 @@
           {
             "name": "icon",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "order",
+            "size": 4
           }
         ]
       ]

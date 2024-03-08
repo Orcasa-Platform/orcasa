@@ -1740,6 +1740,7 @@ export interface ApiTestimonyTestimony extends Schema.CollectionType {
     singularName: 'testimony';
     pluralName: 'testimonies';
     displayName: 'Testimony';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1761,16 +1762,10 @@ export interface ApiTestimonyTestimony extends Schema.CollectionType {
       >;
     role: Attribute.String & Attribute.Required;
     icon: Attribute.Enumeration<
-      [
-        'microscope',
-        'scale',
-        'landmark',
-        'factory',
-        'heart handshake',
-        'mandatory'
-      ]
+      ['microscope', 'scale', 'landmark', 'factory', 'heart handshake']
     > &
       Attribute.Required;
+    order: Attribute.Integer & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

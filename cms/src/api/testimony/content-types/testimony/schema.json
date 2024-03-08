@@ -4,7 +4,8 @@
   "info": {
     "singularName": "testimony",
     "pluralName": "testimonies",
-    "displayName": "Testimony"
+    "displayName": "Testimony",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -40,9 +41,12 @@
         "scale",
         "landmark",
         "factory",
-        "heart handshake",
-        "mandatory"
+        "heart handshake"
       ],
+      "required": true
+    },
+    "order": {
+      "type": "integer",
       "required": true
     }
   }
