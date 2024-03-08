@@ -1,3 +1,7 @@
+import { Info } from 'lucide-react';
+
+import InfoTooltip from '@/components/ui/info-tooltip';
+
 const PracticesLegend = () => {
   const renderMarkersLegend = () => {
     const legendItem = (text: string) => (
@@ -25,7 +29,19 @@ const PracticesLegend = () => {
   };
   return (
     <div className="flex h-[280px] w-[325px] flex-col gap-3 bg-white p-3 font-sans shadow">
-      <header className="text-base font-semibold text-gray-700">Total practices implemented</header>
+      <header className="flex items-center text-base font-semibold text-gray-700">
+        Total practices implemented
+        <InfoTooltip
+          triggerContent={<Info className="ml-1" />}
+          className="max-w-[240px] px-1.5 py-1 text-sm font-normal leading-7"
+          content={
+            <>
+              A practice can be linked to one or more countries and thus appear several times on the
+              map
+            </>
+          }
+        />
+      </header>
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-start gap-1 text-sm text-slate-500">
           Sum of practices.
