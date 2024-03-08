@@ -75,12 +75,18 @@ export const getProjectFields = (project: Project & { isWorldwide: boolean }) =>
   }
 
   if (hasData(projectCoordinatorEmail) || hasData(projectCoordinatorWebsite)) {
+    const makeGlobalLink = (link: string) =>
+      link.startsWith('http://') || link.startsWith('https://')
+        ? link
+        : `https://${projectCoordinatorWebsite}`;
+
     fields.push({
-      label: 'Initiative manager',
+      label: 'Contact',
       value: projectCoordinatorEmail ?? projectCoordinatorWebsite,
       url: hasData(projectCoordinatorEmail)
         ? `mailto:${projectCoordinatorEmail}`
-        : projectCoordinatorWebsite,
+        : projectCoordinatorWebsite !== undefined && makeGlobalLink(projectCoordinatorWebsite),
+
       external: true,
     });
   }
