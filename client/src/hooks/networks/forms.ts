@@ -57,6 +57,18 @@ export const useOrganizationGetFormFields = () => {
     },
   );
 
+  const { data: practices } = useGetPractices(
+    {
+      'pagination[pageSize]': 9999,
+      fields: ['title'],
+    },
+    {
+      query: {
+        queryKey: ['practices'],
+      },
+    },
+  );
+
   const { data: countryData } = useGetCountries(requestObject, {
     query: {
       queryKey: ['countries'],
@@ -73,6 +85,7 @@ export const useOrganizationGetFormFields = () => {
     typeof organizationTypesData === 'undefined' ||
     typeof organizationThemeData === 'undefined' ||
     typeof countryData === 'undefined' ||
+    typeof practices === 'undefined' ||
     typeof projects === 'undefined'
   ) {
     return;
@@ -99,7 +112,7 @@ export const useOrganizationGetFormFields = () => {
         | LandUseTypeListResponseDataItem,
     ) => number,
   ) => {
-    const parsedData = data?.data
+    return data?.data
       ?.sort(
         sortingFunction
           ? sortingFunction
@@ -113,8 +126,19 @@ export const useOrganizationGetFormFields = () => {
           },
       )
       .filter((d): d is { name: string; id: number } => typeof d !== 'undefined');
+  };
 
-    return parsedData;
+  const parsePractices = (data: PracticeListResponse) => {
+    return data?.data
+      ?.map(
+        (d) =>
+          d.attributes && {
+            title: d.attributes.title,
+            id: d.id,
+          },
+      )
+      .filter((d): d is { title: string; id: number } => typeof d !== 'undefined')
+      .sort((a, b) => a.title.localeCompare(b.title));
   };
 
   const organizationTypes = parseData(organizationTypesData, sortByOrderAndName);
@@ -123,6 +147,7 @@ export const useOrganizationGetFormFields = () => {
     organizationThemes: parseData(organizationThemeData, sortByOrderAndName),
     countries: parseData(countryData),
     projects: parseData(projects),
+    practices: parsePractices(practices),
     otherOrganizationTypesId: organizationTypes
       ?.find((type) => type?.name === 'Other')
       ?.id.toString(),
