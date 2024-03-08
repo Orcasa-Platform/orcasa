@@ -1897,6 +1897,7 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
 export const SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItemAttributes =
@@ -3565,6 +3566,7 @@ export type SubinterventionPracticesDataItemAttributesSourceName =
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const SubinterventionPracticesDataItemAttributesSourceName = {
   WOCAT: 'WOCAT',
+  FAO: 'FAO',
 } as const;
 
 export type SubinterventionListResponseMetaPagination = {
@@ -4757,6 +4759,7 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
 export const RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItemAttributes =
@@ -6183,6 +6186,7 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
 export const ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
@@ -7907,6 +7911,7 @@ export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataI
 export const PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
@@ -8540,6 +8545,7 @@ export type PracticeSourceName = (typeof PracticeSourceName)[keyof typeof Practi
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PracticeSourceName = {
   WOCAT: 'WOCAT',
+  FAO: 'FAO',
 } as const;
 
 export type PracticeListResponseMetaPagination = {
@@ -8595,6 +8601,7 @@ export type PracticeRequestDataSourceName =
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const PracticeRequestDataSourceName = {
   WOCAT: 'WOCAT',
+  FAO: 'FAO',
 } as const;
 
 export type PracticeRequestData = {
@@ -10217,6 +10224,7 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
 export const OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
@@ -13092,6 +13100,7 @@ export type LandUseTypePracticesPriorDataItemAttributesSourceName =
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const LandUseTypePracticesPriorDataItemAttributesSourceName = {
   WOCAT: 'WOCAT',
+  FAO: 'FAO',
 } as const;
 
 export type LandUseTypeListResponseMetaPagination = {
@@ -14147,6 +14156,7 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
 export const CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesProjectsDataItemAttributes =

@@ -1314,7 +1314,7 @@ export interface ApiPracticePractice extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    source_name: Attribute.Enumeration<['WOCAT']> & Attribute.Required;
+    source_name: Attribute.Enumeration<['WOCAT', 'FAO']> & Attribute.Required;
     source_id: Attribute.String & Attribute.Required;
     title: Attribute.Text;
     short_description: Attribute.Text;

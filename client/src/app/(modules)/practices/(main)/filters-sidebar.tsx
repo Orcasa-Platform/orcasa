@@ -6,7 +6,7 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
-import { usePracticesFilterSidebarOpen, usePracticesFilters } from '@/store/practices';
+import { usePracticesFilterSidebarOpen, usePracticesFilters, SourceName } from '@/store/practices';
 
 import { usePracticesFiltersOptions } from '@/hooks/practices';
 
@@ -207,12 +207,22 @@ export default function FiltersSidebar() {
                   priorLandUseTypes: undefined,
                   mainIntervention: undefined,
                   subInterventions: undefined,
+                  sourceName: [],
                 })
               }
             >
               Reset all
             </Button>
             <div className="space-y-4">
+              <MultiCombobox
+                id="source"
+                key="source"
+                name="Source"
+                variant="practices"
+                value={filters.sourceName ?? []}
+                options={practicesFiltersOptions.sourceName}
+                onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
+              />
               <MultiCombobox
                 id="country"
                 key="country"

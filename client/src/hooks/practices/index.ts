@@ -71,6 +71,17 @@ const getQueryFilters = (filters: PracticesFilters) => {
       : [];
 
   const practiceFilters = [
+    ...(filters.sourceName.length > 0
+      ? [
+          {
+            $or: filters.sourceName.map((id) => ({
+              source_name: {
+                $eq: id,
+              },
+            })),
+          },
+        ]
+      : []),
     ...(filters.country.length > 0
       ? [
           {
@@ -529,6 +540,7 @@ export const usePracticesFiltersOptions = (
   );
 
   const mainIntervention = ['Management', 'Land Use Change'].map((d) => ({ label: d, value: d }));
+  const sourceName = ['WOCAT', 'FAO'].map((d) => ({ label: d, value: d }));
 
   const subInterventions = useMemo(
     () =>
@@ -547,6 +559,7 @@ export const usePracticesFiltersOptions = (
       value: 2010 + index,
     })),
 
+    sourceName,
     landUseTypes,
     priorLandUseTypes: landUseTypes,
     mainIntervention,

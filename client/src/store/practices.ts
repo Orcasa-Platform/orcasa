@@ -1,6 +1,7 @@
 import { atom, useAtom } from 'jotai';
 
 type MainIntervention = 'Management' | 'Land Use Change';
+export type SourceName = 'FAO' | 'WOCAT';
 
 export interface PracticesDropdownFilters {
   country: number[];
@@ -9,6 +10,7 @@ export interface PracticesDropdownFilters {
   priorLandUseTypes: number[] | undefined;
   mainIntervention: MainIntervention | undefined;
   subInterventions: number[] | undefined;
+  sourceName: SourceName[];
 }
 
 export interface PracticesFilters extends PracticesDropdownFilters {
@@ -27,6 +29,7 @@ const filtersAtom = atom<PracticesFilters>({
   landUseTypes: undefined,
   mainIntervention: undefined,
   subInterventions: undefined,
+  sourceName: [],
 });
 export const usePracticesFilters = () => {
   return useAtom(filtersAtom);
