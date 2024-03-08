@@ -15,7 +15,8 @@
     "source_name": {
       "type": "enumeration",
       "enum": [
-        "WOCAT"
+        "WOCAT",
+        "FAO"
       ],
       "required": true
     },
