@@ -77,6 +77,20 @@
           "sortable": true
         }
       },
+      "isEntryValid": {
+        "edit": {
+          "label": "IsEntryValid",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "IsEntryValid",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -162,6 +176,12 @@
           {
             "name": "locale",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "isEntryValid",
+            "size": 4
           }
         ]
       ]

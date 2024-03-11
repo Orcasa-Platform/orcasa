@@ -415,12 +415,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "start_date",
-        "sustainable_development_goals"
-      ],
       "edit": [
         [
           {
@@ -473,6 +467,10 @@
         [
           {
             "name": "project_coordinator_email",
+            "size": 6
+          },
+          {
+            "name": "project_coordinator_website",
             "size": 6
           }
         ],
@@ -540,6 +538,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "start_date",
+        "sustainable_development_goals"
       ]
     }
   },
