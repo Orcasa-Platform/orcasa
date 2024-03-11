@@ -1,3 +1,18 @@
+# v5
+
+- Ability to link organisations and practices
+- Ability to link initiatives and practices
+- Add metadata for search engines
+- Enable Matomo analytics
+- [Practices] Ability to link practices to multiple countries
+- [Practices] Ability to filter the practices by publication year and source
+- [Practices] Display the main intervention and land use types in the detailed view
+- [Practices] Display the two-letter languages of a practice in uppercase
+- [Network] Warn the user if they try to create an organisation/project that already exists
+- [Network] Modify the contact details of the initiatives to only register a generic email or URL
+- [Network] Disable unrelevant filters when only displaying organisations or initiatives
+- [Datasets] Address an issue where the logos of the sources wouldn't be displayed
+
 # v4
 
 - Limit the zoom level of the maps to 13
