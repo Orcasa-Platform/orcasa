@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: ProjectDetailsProps): Promise
 
   return {
     title: `Impact4Soil - ${project?.name}`,
+    description: project?.short_description,
   };
 }
 
