@@ -8,10 +8,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Tooltip } from '@radix-ui/react-tooltip';
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { AlertCircle, Check, CircleSlash, Info } from 'lucide-react';
+import { AlertCircle, Check, CircleSlash } from 'lucide-react';
 import { z } from 'zod';
 
 import { cn } from '@/lib/classnames';
@@ -29,12 +28,6 @@ import RenderField from '@/components/form/render-field';
 import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
-import {
-  TooltipArrow,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 
 export default function ProjectForm() {
   const {
@@ -50,8 +43,6 @@ export default function ProjectForm() {
 
   const queryClient = useQueryClient();
 
-  const [openInfo, setInfoOpen] = useState(false);
-  const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
   const otherId = areasOfIntervention
     ?.find((type) => type?.name === 'Other (to be specified)')
     ?.id?.toString();
@@ -61,6 +52,7 @@ export default function ProjectForm() {
   const secondaryAreasOfIntervention = areasOfIntervention?.filter(
     (type) => type?.id?.toString() !== otherId,
   );
+
   const fieldValues: {
     [key: string]: Omit<Field, 'options'> & {
       options?:
@@ -103,18 +95,32 @@ export default function ProjectForm() {
       })),
     },
     project_coordinator_email: {
-      label: 'Email',
+      label: 'Generic Email',
       zod: z
         .string()
         .email('Please, enter a valid email.')
         .max(255, {
           message: 'Email is limited to 255 characters.',
         })
-        .optional(),
+        .optional()
+        .or(z.literal(''))
+        .superRefine((value, refinementContext) => {
+          const projectCoordinatorWebsite = watch('project_coordinator_website');
+          if (value && projectCoordinatorWebsite) {
+            return refinementContext.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: 'Only one of the two fields can be filled: Generic Email or Contact url.',
+            });
+          }
+          return refinementContext;
+        }),
       type: 'email',
+      description:
+        'Please use a generic email (e.g., info@initiative.com) and avoid personal emails.',
+      validationDependantField: 'project_coordinator_website',
     },
     project_coordinator_website: {
-      label: 'Website',
+      label: 'Contact url',
       zod: z
         .string()
         .max(255, {
@@ -123,19 +129,22 @@ export default function ProjectForm() {
         .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
           message: 'Please, enter a valid URL.',
         })
-        .optional(),
+        .superRefine((value, refinementContext) => {
+          const projectCoordinatorEmail = watch('project_coordinator_email');
+          if (value && projectCoordinatorEmail) {
+            return refinementContext.addIssue({
+              code: z.ZodIssueCode.custom,
+              message: 'Only one of the two fields can be filled: Generic Email or Contact url.',
+            });
+          }
+          return refinementContext;
+        })
+        .optional()
+        .or(z.literal('')),
       type: 'text',
       maxSize: 255,
-      description: (
-        <div className="leading-normal text-gray-500">
-          Accepted URLs format:
-          <ul className="ml-4 list-disc">
-            <li>https://irc-orcasa.eu/ or https://www.irc-orcasa.eu/</li>
-            <li>www.irc-orcasa.eu/</li>
-            <li>irc-orcasa.eu/</li>
-          </ul>
-        </div>
-      ),
+      description: 'You can paste here the url of the contact section from the initiative website.',
+      validationDependantField: 'project_coordinator_email',
     },
     name: {
       label: 'Name',
@@ -397,6 +406,7 @@ export default function ProjectForm() {
       type: 'email',
     },
   };
+
   const fields = hasData && fieldValues;
   const formSchema = z.object(
     Object.keys(fieldValues).reduce((acc: { [key: string]: Field['zod'] }, field) => {
@@ -561,25 +571,11 @@ export default function ProjectForm() {
             </div>
             {renderFields(['lead_partner', 'partners', 'funders'])}
             <h2 className="mt-10 flex items-center gap-2 font-serif text-2xl text-gray-700">
-              Manager contact details
-              <TooltipProvider>
-                <Tooltip delayDuration={0} open={openInfo} onOpenChange={setInfoOpen}>
-                  <TooltipTrigger asChild onClick={handleInfoClick}>
-                    <Button type="button" size="auto" variant="icon">
-                      <span className="sr-only">Coordinator contact details info</span>
-                      <Info />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent variant="dark" className="max-w-[227px] font-sans">
-                    <p>Contact details of the person responsible for initiative management.</p>
-                    <TooltipArrow variant="dark" />
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              Initiative&apos;s contact
             </h2>
-            <h3 className="mt-10 font-serif text-base font-semibold text-gray-700">
-              Initiative manager:
-            </h3>
+            <p className="mt-14 font-serif text-base text-gray-700">
+              You can add one of the next options:
+            </p>
             {renderFields(['project_coordinator_email', 'project_coordinator_website'])}
             <h2 className="mt-10 font-serif text-2xl text-gray-700">Initiative information</h2>
             {renderFields([

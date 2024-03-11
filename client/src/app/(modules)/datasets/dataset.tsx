@@ -5,7 +5,7 @@ import striptags from 'striptags';
 
 import { format } from '@/lib/utils/formats';
 
-import { Dataset, DatasetListResponseDataItem, DatasetSource } from '@/types/datasets';
+import type { Dataset, DatasetListResponseDataItem, DatasetSource } from '@/types/datasets';
 
 import { Button } from '@/components/ui/button';
 import InfoTooltip from '@/components/ui/info-tooltip';

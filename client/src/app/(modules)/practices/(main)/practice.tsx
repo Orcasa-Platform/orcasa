@@ -6,7 +6,7 @@ import { ChevronRight } from 'lucide-react';
 
 import { useMapSearchParams } from '@/store';
 
-import { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
+import type { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
