@@ -60,7 +60,7 @@ const Card = ({ card }: CardProps) => {
       <div className="flex h-12 w-12 items-center justify-center bg-gray-700 p-2">
         <Icon className="h-12 w-12 text-white" />
       </div>
-      <p
+      <div
         dangerouslySetInnerHTML={{ __html: content || '' }}
         className="text-sm leading-6 text-gray-700"
       />

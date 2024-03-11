@@ -105,7 +105,6 @@ globalThis.CKEditorConfig = {
                     CKEditor5.basicStyles.Italic,
                     CKEditor5.basicStyles.Underline,
                     CKEditor5.essentials.Essentials,
-                    CKEditor5.list.List,
                     CKEditor5.paragraph.Paragraph,
                     CKEditor5.pasteFromOffice.PasteFromOffice,
                   ],
