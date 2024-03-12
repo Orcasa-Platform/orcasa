@@ -121,6 +121,9 @@
       "action": "api::sustainable-dev-goal.sustainable-dev-goal.findOne"
     },
     {
+      "action": "api::testimony.testimony.find"
+    },
+    {
       "action": "plugin::users-permissions.auth.callback"
     },
     {
