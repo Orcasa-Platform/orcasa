@@ -20,12 +20,14 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::country.country",
-      "inversedBy": "testimonies"
+      "inversedBy": "testimonies",
+      "required": true
     },
     "content": {
       "type": "customField",
       "options": {
-        "preset": "testimonies"
+        "preset": "testimonies",
+        "maxLengthCharacters": 550
       },
       "customField": "plugin::ckeditor5.CKEditor",
       "required": true

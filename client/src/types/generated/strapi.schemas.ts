@@ -1026,7 +1026,7 @@ export type TestimonyUpdatedBy = {
 
 export interface Testimony {
   name: string;
-  country?: TestimonyCountry;
+  country: TestimonyCountry;
   content: string;
   role: string;
   icon: TestimonyIcon;
@@ -2420,7 +2420,7 @@ export type TestimonyRequestDataCountry = number | string;
 
 export type TestimonyRequestData = {
   name: string;
-  country?: TestimonyRequestDataCountry;
+  country: TestimonyRequestDataCountry;
   content: string;
   role: string;
   icon: TestimonyRequestDataIcon;

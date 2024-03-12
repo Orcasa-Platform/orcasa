@@ -104,16 +104,18 @@ const Carousel = () => {
           ))}
         </motion.div>
       </div>
-      <div className="mt-6 hidden gap-1 lg:flex">
-        <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
-          <ArrowLeft className="h-4 w-4" />
-          <span className="sr-only">Previous testimony</span>
-        </Button>
-        <Button variant="outline" className="px-3 py-0" onClick={nextCard}>
-          <ArrowRight className="h-4 w-4" />
-          <span className="sr-only">Next testimony</span>
-        </Button>
-      </div>
+      {isFetched && testimonies.length > 1 ? (
+        <div className="mt-6 hidden gap-1 lg:flex">
+          <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
+            <ArrowLeft className="h-4 w-4" />
+            <span className="sr-only">Previous testimony</span>
+          </Button>
+          <Button variant="outline" className="px-3 py-0" onClick={nextCard}>
+            <ArrowRight className="h-4 w-4" />
+            <span className="sr-only">Next testimony</span>
+          </Button>
+        </div>
+      ) : null}
       {/* For mobile */}
       <CarouselComponent className="block lg:hidden">
         <CarouselContent className="p-1">

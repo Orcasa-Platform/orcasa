@@ -1751,13 +1751,15 @@ export interface ApiTestimonyTestimony extends Schema.CollectionType {
       'api::testimony.testimony',
       'manyToOne',
       'api::country.country'
-    >;
+    > &
+      Attribute.Required;
     content: Attribute.RichText &
       Attribute.Required &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
           preset: 'testimonies';
+          maxLengthCharacters: 550;
         }
       >;
     role: Attribute.String & Attribute.Required;
