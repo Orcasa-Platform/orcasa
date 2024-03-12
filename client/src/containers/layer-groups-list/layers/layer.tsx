@@ -2,7 +2,7 @@
 
 import { ReactElement, cloneElement, useCallback, useMemo } from 'react';
 
-import { Info } from 'lucide-react';
+import Info from 'public/images/info.svg';
 
 import { cn } from '@/lib/classnames';
 import { JSON_CONFIGURATION, parseConfig } from '@/lib/json-converter';
@@ -31,7 +31,7 @@ const renderField = ({ key, value, url }: Field) => {
           href={url}
           target="_blank"
           rel="noreferrer"
-          className="font-semibold text-yellow-600 hover:underline"
+          className="font-semibold text-green-700 hover:underline"
         >
           {value}
         </a>
@@ -89,8 +89,8 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
       target="_blank"
       rel="noreferrer"
       className={cn({
-        'font-semibold hover:underline': true,
-        'text-yellow-600': !isActive,
+        'text-[10px] font-semibold hover:underline': true,
+        'text-green-700': !isActive,
         'text-white': isActive,
       })}
     >
@@ -131,40 +131,27 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
 
   if (!id) return null;
   return (
-    <li
-      key={id}
-      className={cn('flex flex-col gap-y-4 bg-yellow-50 p-6', {
-        'bg-slate-700 text-white': isActive,
-      })}
-    >
-      <header className="flex items-start justify-between gap-x-4">
-        <h4 className="font-serif text-lg leading-7">{attributes.title}</h4>
-        <div className="flex items-center gap-4 pt-1">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="vanilla" size="auto" className={cn({ 'text-white': isActive })}>
-                <span className="sr-only">Info button</span>
-                <Info className="h-6 w-6" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
-              <div className="font-serif text-2xl leading-10">{attributes.title}</div>
-              <div className="whitespace-pre-wrap text-sm">{attributes.description}</div>
-              {fields.map(renderField)}
-            </DialogContent>
-          </Dialog>
-          <Switch
-            variant="two-tone"
-            checked={layers.includes(id)}
-            onCheckedChange={handleLayerChange}
-          />
+    <li key={id} className={cn('flex flex-col p-2', {})}>
+      <header className="flex items-center justify-between gap-x-4 text-gray-700">
+        <div className="flex items-center gap-2">
+          <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
+          <h4 className="text-[10px] leading-[14px]">{attributes.title}</h4>
         </div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="vanilla" size="auto" className={cn({ 'text-grey-700': isActive })}>
+              <span className="sr-only">Info button</span>
+              <Info className="h-4 w-4" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+            <div className="font-serif text-2xl leading-10">{attributes.title}</div>
+            <div className="whitespace-pre-wrap text-sm">{attributes.description}</div>
+            {fields.map(renderField)}
+          </DialogContent>
+        </Dialog>
       </header>
-      {isActive && layerSettings ? (
-        layerSettings
-      ) : (
-        <div className="flex justify-end">{sourceLink}</div>
-      )}
+      {isActive && layerSettings}
     </li>
   );
 }

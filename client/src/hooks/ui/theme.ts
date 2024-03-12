@@ -20,7 +20,7 @@ export function useTheme(prefix?: string): DefaultVariant | OpenerVariant | Text
       text: 'text-black',
       default: 'dark',
     },
-    'basemap-satellite': { opener: 'opener-light', text: 'text-white', default: 'light' },
+    'basemap-satellite': { opener: 'opener-dark', text: 'text-white', default: 'light' },
   };
   const [{ basemap }] = useMapSettings();
 

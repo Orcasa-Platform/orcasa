@@ -22,8 +22,8 @@ export default function Layers({
     <div>
       {data?.data && (
         <>
-          {description && <p className="mb-8 text-base leading-6">{description}</p>}
-          <ul className="space-y-4">
+          {description && <p className="mb-8 text-base leading-6 text-gray-700">{description}</p>}
+          <ul>
             {data.data.map((l) => {
               if (!l.id || !l.attributes) return null;
               return <Layer key={l.id} {...l} />;

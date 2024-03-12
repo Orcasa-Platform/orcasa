@@ -94,8 +94,8 @@ export default function NetworkModule() {
 
   return (
     <div className="space-y-10">
-      <h1 className="max-w-[372px] border-l-4 border-blue-500 pl-5 font-serif text-lg leading-7">
-        {intro && <MarkdownRenderer variant="bold" textClass="text-blue-500" content={intro} />}
+      <h1 className="max-w-[372px] font-serif leading-7">
+        {intro && <MarkdownRenderer variant="bold" content={intro} />}
       </h1>
       <div className="flex justify-between gap-x-4">
         <Search

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef } from 'react';
@@ -13,6 +14,7 @@ import { Section } from '@/types/app';
 import { useTheme } from '@/hooks/ui/theme';
 
 import { Button } from '@/components/ui/button';
+
 type OpenerVariant = 'opener-dark' | 'opener-light';
 
 /**
@@ -70,14 +72,14 @@ export default function Sidebar({
   return (
     <div
       className={cn({
-        'js-sidebar absolute left-[90px] top-0 z-20 hidden h-full w-full flex-col bg-white transition-transform duration-500 lg:flex':
+        'js-sidebar absolute bottom-2 left-[90px] top-2 z-20 hidden w-full flex-col transition-transform duration-500 lg:flex':
           true,
         [widthClassName]: true,
         'translate-x-0': open,
         '-translate-x-full': !open,
       })}
     >
-      <div className="absolute left-full top-0 z-10">
+      <div className="absolute left-full top-4 z-10">
         <Button
           variant={variant}
           size="icon"
@@ -87,15 +89,21 @@ export default function Sidebar({
         >
           <ChevronLeft
             className={cn({
-              'h-6 w-6 transition-transform': true,
+              'h-5 w-5 transition-transform': true,
               'rotate-180': !open,
             })}
           />
         </Button>
       </div>
-
-      <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto border-r border-gray-200 bg-white">
-        <div className="space-y-5 px-12 py-10 text-slate-700">{children}</div>
+      <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto rounded-lg rounded-r-none border-r border-gray-500 bg-gray-700">
+        <div
+          className="space-y-5 bg-contain bg-no-repeat px-12 py-10 text-white"
+          style={{
+            backgroundImage: `url('/images/sidebar-background.svg')`,
+          }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

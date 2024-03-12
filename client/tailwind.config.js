@@ -46,6 +46,7 @@ module.exports = {
         gray: {
           50: '#F7F7F9',
           100: '#F0F0F5',
+          150: '#E9EAF0',
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',

@@ -23,9 +23,10 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         icon: '!p-0 !h-6',
-        'opener-light': 'bg-white justify-center items-center flex hover:bg-slate-200',
+        'opener-light':
+          'bg-white justify-center items-center flex hover:bg-slate-200 rounded-lg rounded-l-none',
         'opener-dark':
-          'bg-slate-700 text-white justify-center items-center flex hover:bg-slate-600',
+          'bg-slate-700 text-white justify-center items-center flex hover:bg-slate-600 rounded-lg rounded-l-none',
       },
       size: {
         // From the UI kit

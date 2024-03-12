@@ -8,14 +8,11 @@ import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/classnames';
 
 const switchVariants = cva(
-  'peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-xl border-2 border-slate-700 py-0.5 pl-0.5 pr-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-transparent',
+  'peer inline-flex h-4 w-7 p-0.5 shrink-0 cursor-pointer items-center rounded-xl py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-gray-150',
   {
     variants: {
       variant: {
-        // Blue switch
-        default: 'data-[state=checked]:bg-main',
-        // Blue switch that becomes white when toggled
-        'two-tone': 'data-[state=checked]:bg-white',
+        default: ' data-[state=checked]:bg-green-700',
       },
     },
     defaultVariants: {
@@ -25,14 +22,11 @@ const switchVariants = cva(
 );
 
 const thumbVariants = cva(
-  'pointer-events-none block h-4 w-4 rounded-full bg-main shadow ring-0 transition data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0',
+  'pointer-events-none block h-3 w-3 rounded-full shadow ring-0 transition data-[state=checked]:translate-x-3 data-[state=unchecked]:translate-x-0 bg-white',
   {
     variants: {
       variant: {
-        // Blue switch
-        default: 'data-[state=checked]:bg-white',
-        // Blue switch that becomes white when toggled
-        'two-tone': '',
+        default: '',
       },
     },
     defaultVariants: {
