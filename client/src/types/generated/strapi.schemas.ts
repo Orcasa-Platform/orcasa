@@ -1756,6 +1756,7 @@ export type TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAt
 export const TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesSourceName =
   {
     WOCAT: 'WOCAT',
+    FAO: 'FAO',
   } as const;
 
 export type TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPublicationStatus =
