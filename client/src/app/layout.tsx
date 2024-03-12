@@ -96,19 +96,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             id="matomo-analytics"
             dangerouslySetInnerHTML={{
               __html: `<!-- Matomo -->
-            <script>
-              var _paq = window._paq = window._paq || [];
-              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-              _paq.push(['trackPageView']);
-              _paq.push(['enableLinkTracking']);
-              (function() {
-                var u="${NEXT_PUBLIC_MATOMO_URL}";
-                _paq.push(['setTrackerUrl', u+'matomo.php']);
-                _paq.push(['setSiteId', ${NEXT_PUBLIC_MATOMO_SITE_ID}]);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-              })();
-            </script>
+            var _paq = window._paq = window._paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+              var u="${NEXT_PUBLIC_MATOMO_URL}";
+              _paq.push(['setTrackerUrl', u+'matomo.php']);
+              _paq.push(['setSiteId', ${NEXT_PUBLIC_MATOMO_SITE_ID}]);
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            })();
             <!-- End Matomo Code -->`,
             }}
           />
