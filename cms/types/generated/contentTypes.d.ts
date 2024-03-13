@@ -1465,7 +1465,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     short_description: Attribute.Text &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
-        maxLength: 350;
+        maxLength: 600;
       }>;
     country_of_coordination: Attribute.Relation<
       'api::project.project',
