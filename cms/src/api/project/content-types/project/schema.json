@@ -32,7 +32,7 @@
     },
     "short_description": {
       "type": "text",
-      "maxLength": 350,
+      "maxLength": 600,
       "required": true
     },
     "country_of_coordination": {
