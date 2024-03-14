@@ -15,6 +15,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
   children,
   name,
   className = '',
+  position,
   // sortable
   sortable,
   // attributes,
@@ -37,11 +38,21 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
   return (
     <div
       className={cn({
-        'mb-px w-full bg-white font-sans shadow': true,
+        'mb-px w-full rounded-lg rounded-tr-none bg-white font-sans shadow': true,
+        'rounded-t-none': position === 'middle' || position === 'last',
+        'rounded-b-none': position === 'first' || position === 'middle',
         [className]: !!className,
       })}
     >
-      <header className="sticky top-0 z-10 flex items-start justify-between space-x-2 border-t border-slate-200 bg-white p-2">
+      <header
+        className={cn(
+          'sticky top-0 z-10 flex items-start justify-between space-x-2 rounded-lg border-t border-slate-200 bg-white p-3',
+          {
+            'rounded-t-none': position === 'middle' || position === 'last',
+            'rounded-b-none': position === 'first' || position === 'middle',
+          },
+        )}
+      >
         <div
           className={cn({
             'relative flex items-start space-x-2': true,
@@ -49,13 +60,19 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
           })}
         >
           {sortable?.handle && (
-            <Button type="button" variant="vanilla" size="icon-sm" {...listeners}>
+            <Button
+              type="button"
+              variant="vanilla"
+              size="icon-sm"
+              {...listeners}
+              className="items-start"
+            >
               <span className="sr-only">Click and drag to reorder</span>
-              <GripVertical className="h-5 w-5" />
+              <GripVertical className="h-4 w-4" />
             </Button>
           )}
 
-          <div className="text-base font-semibold text-gray-700">{name}</div>
+          <div className="text-xs font-semibold text-gray-700">{name}</div>
         </div>
 
         {/* TOOLBAR */}
@@ -68,7 +85,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
         />
       </header>
 
-      {validChildren && <div className="px-2 pb-2">{children}</div>}
+      {validChildren && <div className="px-3 pb-3">{children}</div>}
     </div>
   );
 };

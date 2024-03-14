@@ -17,13 +17,15 @@ export default async function ModulesLayout({ children }: { children: React.Reac
   return (
     <Hydrate state={dehydratedState}>
       <Providers>
-        <main className="flex min-h-screen flex-col">
+        <main className="flex min-h-screen flex-col bg-gray-800">
           <div className="h-screen w-screen">
             <Dialog>
               <MobileMenuBar />
               <MobileMenu />
             </Dialog>
             <Nav />
+            {/* Blue Frame */}
+            <div className="pointer-events-none absolute left-[calc(90px-8px)] top-0 z-[100] h-[calc(100%)] w-[calc(100%-90px+8px)] rounded-2xl border-8 border-gray-800"></div>
             {children}
           </div>
         </main>

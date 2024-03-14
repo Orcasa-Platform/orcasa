@@ -11,11 +11,7 @@ import { useSidebarOpen } from '@/store';
 
 import { Section } from '@/types/app';
 
-import { useTheme } from '@/hooks/ui/theme';
-
 import { Button } from '@/components/ui/button';
-
-type OpenerVariant = 'opener-dark' | 'opener-light';
 
 /**
  * Get and (immediately) set the scroll position of the sidebar
@@ -58,8 +54,6 @@ export default function Sidebar({
   section: Section;
 }) {
   const [open, setOpen] = useSidebarOpen();
-  const variant: OpenerVariant = useTheme('opener');
-
   const widthClassName = useMemo(() => {
     const sectionMaxWidth: Partial<Record<Section, string>> = {
       'geospatial-data': 'w-[min(35%,_490px)]',
@@ -81,7 +75,7 @@ export default function Sidebar({
     >
       <div className="absolute left-full top-4 z-10">
         <Button
-          variant={variant}
+          variant="opener-dark"
           size="icon"
           onClick={() => {
             setOpen(!open);

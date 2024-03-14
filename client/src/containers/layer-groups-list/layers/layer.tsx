@@ -89,7 +89,7 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
       target="_blank"
       rel="noreferrer"
       className={cn({
-        'text-[10px] font-semibold hover:underline': true,
+        'text-2xs font-semibold hover:underline': true,
         'text-green-700': !isActive,
         'text-white': isActive,
       })}
@@ -131,11 +131,11 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
 
   if (!id) return null;
   return (
-    <li key={id} className={cn('flex flex-col p-2', {})}>
-      <header className="flex items-center justify-between gap-x-4 text-gray-700">
+    <li key={id} className={cn('flex flex-col rounded-lg p-2 hover:bg-gray-50', {})}>
+      <header className="flex items-center justify-between gap-x-4 text-gray-700 ">
         <div className="flex items-center gap-2">
           <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
-          <h4 className="text-[10px] leading-[14px]">{attributes.title}</h4>
+          <h4 className="text-sm leading-[14px]">{attributes.title}</h4>
         </div>
         <Dialog>
           <DialogTrigger asChild>

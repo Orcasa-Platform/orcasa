@@ -48,23 +48,24 @@ const TreeCoverLossSettings: React.FC<TreeCoverLossSettings> = ({
   );
 
   return (
-    <>
-      <p>{description}</p>
+    <div className="ml-9 space-y-2 text-gray-700">
+      <p className="mt-2 text-2xs text-gray-500">{description}</p>
       <div className="flex items-center gap-x-4">
         <label htmlFor="tree-cover-loss-from">From</label>
         <Select
           value={`${startYearValue}`}
           onValueChange={(value) => onChangeSettings({ startYear: +value })}
         >
-          <SelectTrigger id="tree-cover-loss-from" className="h-12 w-auto">
+          <SelectTrigger variant="small" id="tree-cover-loss-from" className="w-auto">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent variant="small">
             {options.map(({ label, value }) => (
               <SelectItem
                 key={value}
                 value={`${value}`}
                 disabled={value > endYearValue}
+                variant="small"
                 className="w-full"
               >
                 {label}
@@ -77,16 +78,17 @@ const TreeCoverLossSettings: React.FC<TreeCoverLossSettings> = ({
           value={`${endYearValue}`}
           onValueChange={(value) => onChangeSettings({ endYear: +value })}
         >
-          <SelectTrigger id="tree-cover-loss-to" className="h-12 w-auto">
+          <SelectTrigger id="tree-cover-loss-to" className="w-auto" variant="small">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent variant="small">
             {options.map(({ label, value }) => (
               <SelectItem
                 key={value}
                 value={`${value}`}
                 disabled={value < startYearValue}
                 className="w-full"
+                variant="small"
               >
                 {label}
               </SelectItem>
@@ -94,7 +96,7 @@ const TreeCoverLossSettings: React.FC<TreeCoverLossSettings> = ({
           </SelectContent>
         </Select>
       </div>
-    </>
+    </div>
   );
 };
 

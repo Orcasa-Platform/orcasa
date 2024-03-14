@@ -69,6 +69,18 @@ const MapLegends = ({ className = '' }) => {
   );
 
   const sortable = layers?.length > 1;
+  const getPosition = (i: number, totalNumber: number) => {
+    if (totalNumber === 1) {
+      return 'only';
+    }
+    if (i === 0) {
+      return 'first';
+    }
+    if (i === totalNumber - 1) {
+      return 'last';
+    }
+    return 'middle';
+  };
 
   const ITEMS = useMemo(() => {
     if (isNetworkPage) {
@@ -78,13 +90,14 @@ const MapLegends = ({ className = '' }) => {
       return <PracticesLegend />;
     }
 
-    return layers.map((layer) => {
+    return layers.map((layer, i) => {
       const settings = layersSettings[layer] ?? { opacity: 1, visibility: true };
 
       return (
         <MapLegendItem
           id={layer}
           key={layer}
+          position={getPosition(i, layers.length)}
           settings={settings}
           onChangeOpacity={(opacity: number) => {
             handleChangeOpacity(layer, opacity);
@@ -114,7 +127,7 @@ const MapLegends = ({ className = '' }) => {
   ]);
 
   return (
-    <div className="absolute bottom-16 right-6 z-10 w-full max-w-xs">
+    <div className="absolute bottom-8 right-6 z-10 w-full max-w-xs">
       <Legend
         className={cn(
           'max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]',

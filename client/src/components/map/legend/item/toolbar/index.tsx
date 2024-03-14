@@ -30,7 +30,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
   const { opacity = 1, visibility = true } = settings || {};
 
   return (
-    <div id="legend-toolbar" className="flex space-x-2">
+    <div id="legend-toolbar" className="flex">
       {settingsManager?.opacity && (
         <div className="flex items-start">
           <Popover
@@ -49,7 +49,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                       'pointer-events-none': popoverOpen,
                     })}
                   >
-                    <Opacity className="flex h-6 w-6" />
+                    <Opacity className="flex h-4 w-4" />
                     <span className="sr-only">Change opacity</span>
                   </Button>
                 </TooltipTrigger>
@@ -57,7 +57,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
 
               <TooltipPortal>
                 <TooltipContent align="end" alignOffset={-10}>
-                  <div className="text-xxs">Opacity</div>
+                  <div className="text-2xs">Opacity</div>
                   <TooltipArrow className="fill-white" width={10} height={5} />
                 </TooltipContent>
               </TooltipPortal>
@@ -105,15 +105,15 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   if (onChangeVisibility) onChangeVisibility(!visibility);
                 }}
               >
-                {!!visibility && <Eye className="flex h-6 w-6" />}
-                {!visibility && <EyeOff className="flex h-6 w-6" />}
+                {!!visibility && <Eye className="flex h-4 w-4" />}
+                {!visibility && <EyeOff className="flex h-4 w-4" />}
                 <span className="sr-only">{visibility ? 'Hide layer' : 'Show layer'}</span>
               </Button>
             </TooltipTrigger>
 
             <TooltipPortal>
               <TooltipContent side="top" align="end" alignOffset={-10}>
-                <div className="text-xxs">{visibility ? 'Hide layer' : 'Show layer'}</div>
+                <div className="text-2xs">{visibility ? 'Hide layer' : 'Show layer'}</div>
                 <TooltipArrow className="fill-white" width={10} height={5} />
               </TooltipContent>
             </TooltipPortal>
@@ -131,14 +131,14 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
               if (onRemove) onRemove();
             }}
           >
-            <X className="flex h-6 w-6" />
+            <X className="flex h-4 w-4" />
             <span className="sr-only">Remove layer</span>
           </Button>
         </TooltipTrigger>
 
         <TooltipPortal>
           <TooltipContent side="top" align="end" alignOffset={-10}>
-            <div className="text-xxs">Remove layer</div>
+            <div className="text-2xs">Remove layer</div>
             <TooltipArrow className="fill-white" width={10} height={5} />
           </TooltipContent>
         </TooltipPortal>

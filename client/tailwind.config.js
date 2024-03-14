@@ -24,6 +24,7 @@ module.exports = {
       fontSize: {
         '3.5xl': ['32px', '48px'],
         '3.8xl': ['34px', '50px'],
+        '2xs': '10px',
       },
       colors: {
         main: 'hsl(var(--main))',

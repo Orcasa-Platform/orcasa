@@ -10,15 +10,48 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 export const itemVariants = cva(
-  'relative flex cursor-default select-none p-4 pl-8 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex-col items-start',
+  'relative flex cursor-default select-none px-2 py-1 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex-col items-start',
   {
     variants: {
       variant: {
+        small: 'text-sm',
+        // To review
         default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
-        'network-organization': 'data-[highlighted]:bg-blue-50 data-[state=checked]:bg-blue-50',
-        practices: 'data-[highlighted]:bg-gray-700 data-[state=checked]:bg-gray-700',
-        'network-initiative': 'data-[highlighted]:bg-peach-50 data-[state=checked]:bg-peach-50',
-        datasets: 'data-[highlighted]:bg-purple-50 data-[state=checked]:bg-purple-50',
+        'network-organization': 'data-[highsmalled]:bg-blue-50 data-[state=checked]:bg-blue-50',
+        practices: 'data-[highsmalled]:bg-gray-700 data-[state=checked]:bg-gray-700',
+        'network-initiative': 'data-[highsmalled]:bg-peach-50 data-[state=checked]:bg-peach-50',
+        datasets: 'data-[highsmalled]:bg-purple-50 data-[state=checked]:bg-purple-50',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+export const contentVariants = cva(
+  'relative z-50 overflow-hidden bg-popover data-[side=bottom]:-translate-y-px data-[side=left]:translate-x-px data-[side=right]:-translate-x-px data-[side=top]:translate-y-px data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded-lg shadow',
+  {
+    variants: {
+      variant: {
+        small: '',
+        // To review
+        default: 'min-w-[8rem] border border-gray-400 ',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+export const triggerVariants = cva(
+  'flex w-full items-center justify-between border border-gray-300 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg',
+  {
+    variants: {
+      variant: {
+        small: 'text-gray-700 px-2 py-1 text-sm',
+        // To review
+        default: 'text-white px-4 text-base',
       },
     },
     defaultVariants: {
@@ -35,23 +68,27 @@ const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
-    error?: boolean;
-    'aria-invalid'?: boolean;
-  }
->(({ className, children, error, 'aria-invalid': ariaInvalid, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> &
+    VariantProps<typeof triggerVariants> & {
+      error?: boolean;
+      'aria-invalid'?: boolean;
+    }
+>(({ className, children, error, 'aria-invalid': ariaInvalid, variant, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
-    className={cn(
-      'flex h-14 w-full items-center justify-between border border-gray-300 bg-transparent p-4 text-base ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180',
-      className,
-      { 'border-destructive': error || ariaInvalid },
-    )}
+    className={cn(triggerVariants({ variant }), className, {
+      'border-destructive': error || ariaInvalid,
+    })}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-6 w-6 transform data-[state=open]:rotate-180" />
+      <ChevronDown
+        className={cn('ml-1 h-4 w-4 transform data-[state=open]:rotate-180', {
+          'text-gray-700': variant === 'small',
+          'text-white': variant === 'default',
+        })}
+      />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -59,16 +96,15 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = 'popper', ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> &
+    VariantProps<typeof contentVariants>
+>(({ className, children, position = 'popper', variant, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       ref={ref}
-      className={cn(
-        'relative z-50 min-w-[8rem] overflow-hidden border border-gray-400 bg-popover data-[side=bottom]:-translate-y-px data-[side=left]:translate-x-px data-[side=right]:-translate-x-px data-[side=top]:translate-y-px data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-        className,
-      )}
+      className={cn(contentVariants({ variant }), className)}
       position={position}
+      sideOffset={8}
       {...props}
     >
       <ScrollArea.Root className="h-full w-full" type="auto">
@@ -79,7 +115,7 @@ const SelectContent = React.forwardRef<
             className={cn(
               'p-1',
               position === 'popper' &&
-                'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
+                'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-[var(--radix-select-trigger-width)] min-w-[var(--radix-select-trigger-width)]',
             )}
           >
             {children}
@@ -114,14 +150,11 @@ const SelectItem = React.forwardRef<
     }
 >(({ className, children, variant, description, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
-    <div>
-      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-        <SelectPrimitive.ItemIndicator>
-          <Check className="h-4 w-4" />
-        </SelectPrimitive.ItemIndicator>
-      </span>
-
+    <div className="flex items-center">
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemIndicator>
+        <Check className="ml-1 h-4 w-4 text-green-700" />
+      </SelectPrimitive.ItemIndicator>
     </div>
     {description && <div className="pt-3 text-sm leading-7 text-gray-500">{description}</div>}
   </SelectPrimitive.Item>
