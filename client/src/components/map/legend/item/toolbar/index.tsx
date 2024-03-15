@@ -44,7 +44,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   <Button
                     type="button"
                     variant="vanilla"
-                    size="icon-sm"
+                    size="icon-xs"
                     className={cn({
                       'pointer-events-none': popoverOpen,
                     })}
@@ -97,7 +97,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
               <Button
                 type="button"
                 variant="vanilla"
-                size="icon-sm"
+                size="icon-xs"
                 className={cn({
                   'pointer-events-none': popoverOpen,
                 })}
@@ -126,7 +126,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
           <Button
             type="button"
             variant="vanilla"
-            size="icon-sm"
+            size="icon-xs"
             onClick={() => {
               if (onRemove) onRemove();
             }}

@@ -9,9 +9,6 @@ export function useTheme(prefix?: string): DefaultVariant {
     'basemap-light': {
       default: 'dark',
     },
-    'basemap-relief': {
-      default: 'dark',
-    },
     'basemap-satellite': { default: 'light' },
   };
   const [{ basemap }] = useMapSettings();

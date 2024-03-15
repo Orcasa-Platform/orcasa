@@ -11,10 +11,6 @@
           "name": "basemap-light",
           "collapsed": true
       },
-      "basemap-relief": {
-          "name": "basemap-relief",
-          "collapsed": true
-      },
       "labels-light": {
           "name": "labels-light",
           "collapsed": true
@@ -49,15 +45,6 @@
       "maxzoom": 12,
       "minzoom": 1
     },
-    "basemap-relief": {
-      "type": "raster",
-      "tileSize": 256,
-      "tiles": [
-        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"
-      ],
-      "maxzoom": 12,
-      "minzoom": 1
-    },
     "labels": {
       "data": "/country_labels.json",
       "type": "geojson"
@@ -85,13 +72,6 @@
       "type": "raster",
       "source": "basemap-light",
       "metadata": {"group": "basemap-light"},
-      "layout": { "visibility": "none" }
-    },
-    {
-      "id": "basemap-relief",
-      "type": "raster",
-      "source": "basemap-relief",
-      "metadata": {"group": "basemap-relief"},
       "layout": { "visibility": "none" }
     },
     {

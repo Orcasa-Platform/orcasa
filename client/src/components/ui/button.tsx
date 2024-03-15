@@ -31,7 +31,8 @@ const buttonVariants = cva(
       size: {
         // From the UI kit
         xs: 'text-xs px-2 py-1',
-        'icon-sm': 'h-6 w-6',
+        'icon-sm': 'h-8 w-8',
+        'icon-xs': 'h-6 w-6',
         // Not reviewed yet
         default: 'h-10 px-6 py-2 box-content',
         sm: 'h-9 rounded-md px-3',

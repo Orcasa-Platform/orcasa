@@ -32,10 +32,10 @@ const Labels = () => {
   );
 
   return (
-    <>
-      <div className="mb-4 flex items-center justify-between">
+    <div className="space-y-4">
+      <div className="flex w-full items-center justify-between border-b border-gray-200 pb-1">
         <Label htmlFor="labels-switch" className="font-serif text-lg">
-          Country labels
+          Labels
         </Label>
         <Switch id="labels-switch" checked={labels !== null} onCheckedChange={onToggle} />
       </div>
@@ -43,7 +43,7 @@ const Labels = () => {
         value={labels ?? LABELS[0].slug}
         onValueChange={onChange}
         disabled={labels === null}
-        className="gap-2"
+        className="flex gap-4"
       >
         {LABELS.map(({ label, slug }) => (
           <div key={slug} className="group flex cursor-pointer items-center space-x-2">
@@ -58,7 +58,7 @@ const Labels = () => {
           </div>
         ))}
       </RadioGroup>
-    </>
+    </div>
   );
 };
 

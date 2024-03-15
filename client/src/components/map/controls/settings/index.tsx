@@ -46,17 +46,16 @@ export const SettingsControl: FC<SettingsControlProps> = ({
             </TooltipContent>
           </TooltipPortal>
 
-          <PopoverContent side="left" align="start" className="w-[310px] px-6 py-4" sideOffset={16}>
+          <PopoverContent side="left" align="start" className="w-[240px] p-6" sideOffset={16}>
             {children}
             <PopoverClose asChild>
               <Button
                 type="button"
-                variant="primary"
-                size="icon"
-                className="absolute right-0 top-0"
+                size="icon-sm"
+                className="absolute right-3 top-3 rounded-lg bg-gray-50"
               >
                 <span className="sr-only">Close</span>
-                <X className="h-6 w-6" />
+                <X className="h-4 w-4" />
               </Button>
             </PopoverClose>
           </PopoverContent>

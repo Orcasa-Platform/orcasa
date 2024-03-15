@@ -63,7 +63,7 @@ export const LegendItem: React.FC<PropsWithChildren & LegendItemProps> = ({
             <Button
               type="button"
               variant="vanilla"
-              size="icon-sm"
+              size="icon-xs"
               {...listeners}
               className="items-start"
             >
