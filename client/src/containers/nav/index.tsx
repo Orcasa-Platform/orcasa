@@ -34,7 +34,7 @@ const NavLink = ({ href, children, active, slug, ...rest }: NavLinkProps) => {
   return (
     <Link
       className={cn(
-        'flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg py-2 text-xs leading-[18px] text-white transition-colors duration-200',
+        'flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg py-2 text-xs leading-[18px] text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800',
         {
           'bg-green-700': active,
           'hover:bg-gray-500': !active,
