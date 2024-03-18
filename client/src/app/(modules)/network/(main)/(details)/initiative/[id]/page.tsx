@@ -65,6 +65,9 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
     notFound();
   }
 
+  const makeGlobalLink = (link: string) =>
+    link.startsWith('http://') || link.startsWith('https://') ? link : `https://${link}`;
+
   const { name, website } = project;
 
   const fields: Field[] = getProjectFields({
@@ -84,7 +87,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
         <SuggestButton id={id} data={project} label="initiative" />
 
         <Button asChild variant="secondary" disabled={!website}>
-          <a href={website} target="_blank" rel="noreferrer">
+          <a href={makeGlobalLink(website)} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-6 w-6" />
             Visit Website
           </a>

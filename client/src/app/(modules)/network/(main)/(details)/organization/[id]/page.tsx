@@ -39,6 +39,9 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
     notFound();
   }
 
+  const makeGlobalLink = (link: string) =>
+    link.startsWith('http://') || link.startsWith('https://') ? link : `https://${link}`;
+
   const { name, url } = organization;
 
   const fields: Field[] = getOrganizationFields(organization);
@@ -54,7 +57,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
       <div className="mt-10 flex justify-end gap-4">
         <SuggestButton id={id} data={organization} label="organisation" />
         <Button asChild variant="secondary" disabled={!url}>
-          <a href={url} target="_blank" rel="noreferrer">
+          <a href={makeGlobalLink(url)} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-6 w-6" />
             Visit Website
           </a>
