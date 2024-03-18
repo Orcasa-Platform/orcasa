@@ -18,7 +18,11 @@ export default {
   },
   async beforeUpdate(event) {
     const { organization_type, main_organization_theme, country } = event.params.data;
-    const organizationToUpdate = await strapi.entityService.findOne("api::organization.organization", event.params.where.id, { populate: ['organization_type', 'main_organization_theme', 'country'] });
+
+    const organizationToUpdate: any = await strapi.db.query("api::organization.organization").findOne({
+      where: event.params.where,
+      populate: ['organization_type', 'main_organization_theme', 'country']
+    });
 
     if (organization_type?.connect?.length === 0 && (organization_type?.disconnect?.length === 1 || !organizationToUpdate.organization_type)) {
       throw new ApplicationError('Organization Type is required');
