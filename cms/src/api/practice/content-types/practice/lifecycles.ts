@@ -25,8 +25,9 @@ export default {
   async beforeUpdate(event) {
     const { data } = event.params;
 
-    const practice: any = await strapi.entityService.findOne("api::practice.practice", event.params.where.id, {
-      populate: { subinterventions: true, land_use_priors: true },
+    const practice: any = await strapi.db.query("api::practice.practice").findOne({
+      where: event.params.where,
+      populate: { subinterventions: true, land_use_priors: true }
     });
 
     const published: boolean = ('publishedAt' in data) ? data.publishedAt !== null : practice.publishedAt !== null;
