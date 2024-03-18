@@ -15,7 +15,10 @@ export const LegendTypeBasic: React.FC<LegendTypeProps> = ({ className = '', ite
         {items.map(({ value, color }) => (
           <li
             key={`${value}`}
-            className="flex basis-[calc(50%_-_theme(space.2))] space-x-2 text-2xs"
+            className={cn({
+              'flex space-x-2 text-2xs': true,
+              'basis-[calc(50%_-_theme(space.2))]': items.length > 1,
+            })}
           >
             <div
               className="relative top-0.5 h-3 w-3 flex-shrink-0 rounded-full"

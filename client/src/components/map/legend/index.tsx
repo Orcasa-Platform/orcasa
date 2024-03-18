@@ -40,14 +40,19 @@ export const Legend: React.FC<LegendProps> = ({
           type="button"
           variant="primary"
           size="xs"
-          className={cn('self-end rounded-xl', { 'rounded-b-none': opened })}
+          className={cn(
+            'self-end rounded-lg font-medium hover:bg-gray-500 focus-visible:ring-offset-0',
+            {
+              'rounded-b-none': opened,
+            },
+          )}
         >
           <ChevronUp
             className={cn('mr-2 h-4 w-4 transition-transform duration-200', {
               'rotate-180': opened,
             })}
           />
-          <span className="text-2xs">{opened ? 'Hide legend' : 'Show legend'}</span>
+          <span className="text-2xs tracking-wide">{opened ? 'Hide legend' : 'Show legend'}</span>
         </Button>
       </CollapsibleTrigger>
       <CollapsibleContent className="relative -mx-1 flex h-full flex-col overflow-hidden rounded-lg rounded-tr-none">

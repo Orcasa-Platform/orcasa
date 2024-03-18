@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
-import { PopoverArrow } from '@radix-ui/react-popover';
 import { Eye, EyeOff, X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
 import { LegendItemToolbarProps } from '@/components/map/legend/types';
 import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger, PopoverArrow } from '@/components/ui/popover';
 import {
   Tooltip,
   TooltipArrow,
@@ -46,6 +45,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                     variant="vanilla"
                     size="icon-xs"
                     className={cn({
+                      'rounded-full': true,
                       'pointer-events-none': popoverOpen,
                     })}
                   >
@@ -56,18 +56,19 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
               </PopoverTrigger>
 
               <TooltipPortal>
-                <TooltipContent align="end" alignOffset={-10}>
-                  <div className="text-2xs">Opacity</div>
-                  <TooltipArrow className="fill-white" width={10} height={5} />
+                <TooltipContent variant="dark" align="end" alignOffset={-10}>
+                  <div className="text-xs">Opacity</div>
+                  <TooltipArrow variant="dark" width={10} height={5} />
                 </TooltipContent>
               </TooltipPortal>
             </Tooltip>
 
             <PopoverContent
+              variant="dark"
               side="top"
               align="end"
               alignOffset={-10}
-              className="max-w-[122px] px-2.5 pb-2.5 pt-2"
+              className="max-w-[122px] rounded-lg px-2.5 pb-2.5 pt-2"
             >
               <div className="space-y-2">
                 <div className="text-sm">Opacity</div>
@@ -84,7 +85,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   }}
                 />
               </div>
-              <PopoverArrow className="z-0 block fill-white" width={11} height={5} />
+              <PopoverArrow variant="dark" className="z-0 block" width={11} height={5} />
             </PopoverContent>
           </Popover>
         </div>
@@ -99,6 +100,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                 variant="vanilla"
                 size="icon-xs"
                 className={cn({
+                  'rounded-full': true,
                   'pointer-events-none': popoverOpen,
                 })}
                 onClick={() => {
@@ -112,9 +114,9 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
             </TooltipTrigger>
 
             <TooltipPortal>
-              <TooltipContent side="top" align="end" alignOffset={-10}>
-                <div className="text-2xs">{visibility ? 'Hide layer' : 'Show layer'}</div>
-                <TooltipArrow className="fill-white" width={10} height={5} />
+              <TooltipContent variant="dark" side="top" align="end" alignOffset={-10}>
+                <div className="text-xs">{visibility ? 'Hide layer' : 'Show layer'}</div>
+                <TooltipArrow variant="dark" width={10} height={5} />
               </TooltipContent>
             </TooltipPortal>
           </Tooltip>
@@ -127,6 +129,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
             type="button"
             variant="vanilla"
             size="icon-xs"
+            className="rounded-full"
             onClick={() => {
               if (onRemove) onRemove();
             }}
@@ -137,9 +140,9 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
         </TooltipTrigger>
 
         <TooltipPortal>
-          <TooltipContent side="top" align="end" alignOffset={-10}>
-            <div className="text-2xs">Remove layer</div>
-            <TooltipArrow className="fill-white" width={10} height={5} />
+          <TooltipContent variant="dark" side="top" align="end" alignOffset={-10}>
+            <div className="text-xs">Remove layer</div>
+            <TooltipArrow variant="dark" width={10} height={5} />
           </TooltipContent>
         </TooltipPortal>
       </Tooltip>
