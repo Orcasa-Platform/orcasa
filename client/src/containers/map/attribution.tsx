@@ -54,7 +54,7 @@ const Attribution = () => {
   return (
     <div
       className={cn(
-        'absolute bottom-0 right-0 z-40 max-w-[65%] gap-1 bg-gray-800 px-2 py-1 text-2xs leading-tight text-white',
+        'absolute bottom-0 right-0 z-40 max-w-[65%] gap-1 bg-gray-800/80 px-1 py-px font-sans text-2xs font-medium text-white',
       )}
     >
       {getAttributionContent()}

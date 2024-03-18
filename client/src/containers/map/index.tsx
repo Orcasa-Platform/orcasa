@@ -217,7 +217,7 @@ export default function MapContainer() {
   );
 
   return (
-    <div className="absolute bottom-2 left-[90px] top-2 h-[calc(100vh-16px)] w-[calc(100vw-98px)]">
+    <div className="absolute bottom-2 left-[90px] top-2 h-[calc(100vh-16px)] w-[calc(100vw-98px)] overflow-hidden rounded-lg">
       <Map
         id={id}
         initialViewState={initialViewState}

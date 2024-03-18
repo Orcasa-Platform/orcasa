@@ -24,7 +24,7 @@ module.exports = {
       fontSize: {
         '3.5xl': ['32px', '48px'],
         '3.8xl': ['34px', '50px'],
-        '2xs': '10px',
+        '2xs': ['10px', '16px'],
       },
       colors: {
         main: 'hsl(var(--main))',
@@ -117,11 +117,6 @@ module.exports = {
       },
       textColor: {
         default: 'hsl(var(--main))',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         'accordion-down': {
