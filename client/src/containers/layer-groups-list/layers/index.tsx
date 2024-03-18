@@ -11,7 +11,7 @@ const Layer = dynamic(() => import('./layer'), {
 export default function Layers({ data }: { data: LayerGroupLayers | undefined }) {
   if (!data?.data) return null;
   return (
-    <ul>
+    <ul className="space-y-1">
       {data.data.map((l) => {
         if (!l.id || !l.attributes) return null;
         return <Layer key={l.id} {...l} />;

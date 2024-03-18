@@ -3,7 +3,7 @@
 
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-import { ChevronLeft } from 'lucide-react';
+import ChevronLeft from 'public/images/chevron-left.svg';
 
 import { cn } from '@/lib/classnames';
 
@@ -77,10 +77,12 @@ export default function Sidebar({
         <Button
           variant="opener-dark"
           size="icon"
+          className="border-l border-l-gray-500"
           onClick={() => {
             setOpen(!open);
           }}
         >
+          <span className="sr-only">Toggle sidebar</span>
           <ChevronLeft
             className={cn({
               'h-5 w-5 transition-transform': true,
@@ -89,15 +91,14 @@ export default function Sidebar({
           />
         </Button>
       </div>
-      <div className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto rounded-lg rounded-r-none border-r border-gray-500 bg-gray-700">
-        <div
-          className="space-y-5 bg-contain bg-no-repeat px-12 py-10 text-white"
-          style={{
-            backgroundImage: `url('/images/sidebar-background.svg')`,
-          }}
-        >
-          {children}
-        </div>
+      <div
+        className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto rounded-lg rounded-r-none bg-gray-700 bg-[length:100%] bg-scroll bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/sidebar-background.svg')`,
+        }}
+        {...(!open ? { inert: '' } : {})}
+      >
+        <div className="space-y-8 p-10 text-white">{children}</div>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import Info from 'public/images/info.svg';
 
 import { LayerGroupListResponseDataItem } from '@/types/generated/strapi.schemas';
@@ -12,12 +14,14 @@ import {
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import Layers from './layers';
 
 export default function LayerGroupItem(props: Required<LayerGroupListResponseDataItem>) {
   const { id, attributes } = props || {};
   const { layers, description, title } = attributes || {};
+  const [infoOpen, setInfoOpen] = useState(false);
   return (
     <Accordion
       type="single"
@@ -26,20 +30,23 @@ export default function LayerGroupItem(props: Required<LayerGroupListResponseDat
       className="w-full rounded-lg bg-white p-4"
     >
       <AccordionItem key={props.id} value={`${id}`}>
-        <div className="flex w-full justify-between">
-          <AccordionTrigger className="text-xs uppercase text-gray-800">{title}</AccordionTrigger>
+        <div className="flex w-full items-center justify-between">
+          <AccordionTrigger level={2} className="text-xs font-medium uppercase text-gray-800">
+            {title}
+          </AccordionTrigger>
           {description && (
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="vanilla" size="auto" className="-mt-3 mr-2">
+            <Tooltip delayDuration={0} open={infoOpen} onOpenChange={setInfoOpen}>
+              <TooltipTrigger asChild onClick={() => setInfoOpen(!infoOpen)}>
+                <Button variant="vanilla" size="auto" className="mr-2 rounded-full">
                   <span className="sr-only">Info button</span>
                   <Info className="h-4 w-4" />
                 </Button>
-              </DialogTrigger>
-              <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+              </TooltipTrigger>
+              <TooltipContent variant="dark" className="max-w-[270px]">
                 {description}
-              </DialogContent>
-            </Dialog>
+                <TooltipArrow variant="dark" />
+              </TooltipContent>
+            </Tooltip>
           )}
         </div>
         <AccordionContent>

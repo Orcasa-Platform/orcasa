@@ -5,7 +5,7 @@ export const renderMarkup = (html: string, variant: 'bold' | 'lists') => {
     return html
       .replace(/<p>/g, '<span class="mb-4 block text-xl">')
       .replace(/<\/p>/g, '</span>')
-      .replace(/<strong>/g, `<b class="${cn('text-xl font-semibold text-green-700')}">`);
+      .replace(/<strong>/g, `<b class="${cn('text-xl font-bold text-green-700')}">`);
   }
 
   if (variant === 'lists') {

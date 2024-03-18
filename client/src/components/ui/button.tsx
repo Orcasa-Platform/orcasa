@@ -26,7 +26,7 @@ const buttonVariants = cva(
         'opener-light':
           'bg-white justify-center items-center flex hover:bg-slate-200 rounded-lg rounded-l-none',
         'opener-dark':
-          'bg-slate-700 text-white justify-center items-center flex hover:bg-slate-600 rounded-lg rounded-l-none',
+          'text-white bg-gray-700 text-white justify-center items-center flex hover:bg-gray-500 rounded-lg rounded-l-none focus-visible:ring-offset-0',
       },
       size: {
         // From the UI kit
@@ -37,7 +37,7 @@ const buttonVariants = cva(
         default: 'h-10 px-6 py-2 box-content',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
-        icon: 'h-10 w-10',
+        icon: 'h-9 w-9',
         auto: '',
       },
     },

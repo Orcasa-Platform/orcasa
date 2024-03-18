@@ -49,52 +49,63 @@ const TreeCoverLossSettings: React.FC<TreeCoverLossSettings> = ({
 
   return (
     <div className="ml-9 space-y-2 text-gray-700">
-      <p className="mt-2 text-2xs text-gray-500">{description}</p>
-      <div className="flex items-center gap-x-4">
-        <label htmlFor="tree-cover-loss-from">From</label>
-        <Select
-          value={`${startYearValue}`}
-          onValueChange={(value) => onChangeSettings({ startYear: +value })}
-        >
-          <SelectTrigger variant="small" id="tree-cover-loss-from" className="w-auto">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent variant="small">
-            {options.map(({ label, value }) => (
-              <SelectItem
-                key={value}
-                value={`${value}`}
-                disabled={value > endYearValue}
-                variant="small"
-                className="w-full"
-              >
-                {label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <label htmlFor="tree-cover-loss-to">to</label>
-        <Select
-          value={`${endYearValue}`}
-          onValueChange={(value) => onChangeSettings({ endYear: +value })}
-        >
-          <SelectTrigger id="tree-cover-loss-to" className="w-auto" variant="small">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent variant="small">
-            {options.map(({ label, value }) => (
-              <SelectItem
-                key={value}
-                value={`${value}`}
-                disabled={value < startYearValue}
-                className="w-full"
-                variant="small"
-              >
-                {label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      <p className="mt-2 text-2xs tracking-wide text-gray-500">{description}</p>
+      <div className="flex items-center gap-x-2">
+        <div className="flex flex-col">
+          <label
+            htmlFor="tree-cover-loss-from"
+            className="mb-1 text-2xs tracking-wide text-gray-500"
+          >
+            From
+          </label>
+          <Select
+            value={`${startYearValue}`}
+            onValueChange={(value) => onChangeSettings({ startYear: +value })}
+          >
+            <SelectTrigger variant="small" id="tree-cover-loss-from" className="w-auto">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent variant="small">
+              {options.map(({ label, value }) => (
+                <SelectItem
+                  key={value}
+                  value={`${value}`}
+                  disabled={value > endYearValue}
+                  variant="small"
+                  className="w-full"
+                >
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="tree-cover-loss-to" className="mb-1 text-2xs tracking-wide text-gray-500">
+            To
+          </label>
+          <Select
+            value={`${endYearValue}`}
+            onValueChange={(value) => onChangeSettings({ endYear: +value })}
+          >
+            <SelectTrigger id="tree-cover-loss-to" className="w-auto" variant="small">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent variant="small">
+              {options.map(({ label, value }) => (
+                <SelectItem
+                  key={value}
+                  value={`${value}`}
+                  disabled={value < startYearValue}
+                  className="w-full"
+                  variant="small"
+                >
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </div>
   );

@@ -19,18 +19,21 @@ AccordionItem.displayName = 'AccordionItem';
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & {
+    /** Hierarchy level of the accordion (heading level) */
+    level?: number;
+  }
+>(({ className, level, children, ...props }, ref) => (
+  <AccordionPrimitive.Header aria-level={level} className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        'mb-3 flex flex-1 items-center gap-2 transition-all hover:underline [&[data-state=open]>svg]:rotate-180',
+        'flex flex-1 items-center gap-2 rounded-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 [&[data-state=open]>svg]:rotate-180',
         className,
       )}
       {...props}
     >
-      <ChevronDown className="h-4 w-4 rounded-sm bg-gray-50 p-0.5 transition-transform duration-200" />
+      <ChevronDown className="h-4 w-4 rounded bg-gray-50 p-0.5 text-gray-800 transition-transform duration-200" />
       {children}
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
@@ -44,7 +47,7 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      'overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
+      'mt-3 overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
       className,
     )}
     {...props}

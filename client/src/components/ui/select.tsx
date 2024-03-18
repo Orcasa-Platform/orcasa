@@ -45,7 +45,7 @@ export const contentVariants = cva(
   },
 );
 export const triggerVariants = cva(
-  'flex w-full items-center justify-between border border-gray-300 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg',
+  'flex w-full items-center justify-between border border-gray-300 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg text-left',
   {
     variants: {
       variant: {
@@ -84,7 +84,7 @@ const SelectTrigger = React.forwardRef<
     {children}
     <SelectPrimitive.Icon asChild>
       <ChevronDown
-        className={cn('ml-1 h-4 w-4 transform data-[state=open]:rotate-180', {
+        className={cn('ml-1 h-4 w-4 flex-shrink-0 transform data-[state=open]:rotate-180', {
           'text-gray-700': variant === 'small',
           'text-white': variant === 'default',
         })}

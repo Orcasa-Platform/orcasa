@@ -80,7 +80,7 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
   };
 
   return (
-    <div className="ml-9 space-y-2 text-2xs text-gray-500">
+    <div className="ml-9 space-y-2 text-2xs tracking-wide text-gray-500">
       <div className="mt-2">
         {timeFrame?.label ? (
           <>
@@ -103,7 +103,9 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
       )}
       {scenarios && (
         <>
-          <label htmlFor="scenarios">Intervention</label>
+          <label htmlFor="scenarios" className="mb-1 block">
+            Intervention
+          </label>
           <Select value={tilesURL?.[0]} onValueChange={handleValueChange}>
             <SelectTrigger variant="small" id="scenarios" className="w-auto">
               <SelectValue />

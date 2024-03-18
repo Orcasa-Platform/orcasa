@@ -3,6 +3,7 @@
 import { ReactElement, cloneElement, useCallback, useMemo } from 'react';
 
 import Info from 'public/images/info.svg';
+import Link from 'public/images/link.svg';
 
 import { cn } from '@/lib/classnames';
 import { JSON_CONFIGURATION, parseConfig } from '@/lib/json-converter';
@@ -34,9 +35,10 @@ const renderField = ({ key, value, url }: Field) => {
           className="font-semibold text-green-700 hover:underline"
         >
           {value}
+          <Link className="ml-2 inline-block h-4 w-4 align-middle" />
         </a>
       ) : (
-        <div className="whitespace-pre-wrap">{value}</div>
+        <div className="whitespace-pre-wrap leading-7">{value}</div>
       )}
     </div>
   );
@@ -131,22 +133,26 @@ export default function Layer({ id, attributes = {} }: LayerGroupLayersDataItem)
 
   if (!id) return null;
   return (
-    <li key={id} className={cn('flex flex-col rounded-lg p-2 hover:bg-gray-50', {})}>
+    <li key={id} className="flex flex-col rounded-lg p-2 transition-colors hover:bg-gray-50">
       <header className="flex items-center justify-between gap-x-4 text-gray-700 ">
         <div className="flex items-center gap-2">
           <Switch checked={layers.includes(id)} onCheckedChange={handleLayerChange} />
-          <h4 className="text-sm leading-[14px]">{attributes.title}</h4>
+          <h3 className="text-sm leading-7">{attributes.title}</h3>
         </div>
         <Dialog>
           <DialogTrigger asChild>
-            <Button variant="vanilla" size="auto" className={cn({ 'text-grey-700': isActive })}>
+            <Button
+              variant="vanilla"
+              size="auto"
+              className={cn({ 'rounded-full': true, 'text-grey-700': isActive })}
+            >
               <span className="sr-only">Info button</span>
               <Info className="h-4 w-4" />
             </Button>
           </DialogTrigger>
           <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
             <div className="font-serif text-2xl leading-10">{attributes.title}</div>
-            <div className="whitespace-pre-wrap text-sm">{attributes.description}</div>
+            <div className="whitespace-pre-wrap text-sm leading-7">{attributes.description}</div>
             {fields.map(renderField)}
           </DialogContent>
         </Dialog>
