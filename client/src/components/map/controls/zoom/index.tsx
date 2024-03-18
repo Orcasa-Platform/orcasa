@@ -2,13 +2,10 @@
 
 import { FC, useCallback, MouseEvent } from 'react';
 
-import { TooltipPortal } from '@radix-ui/react-tooltip';
 import { Minus, Plus } from 'lucide-react';
 import { useMap } from 'react-map-gl/maplibre';
 
 import { cn } from '@/lib/classnames';
-
-import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import { CONTROL_BUTTON_STYLES } from '../constants';
 
@@ -37,61 +34,37 @@ export const ZoomControl: FC<ZoomControlProps> = ({ className }: ZoomControlProp
 
   return (
     <div className={cn('flex flex-col', className)}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <button
-            className={cn({
-              [CONTROL_BUTTON_STYLES.default]: true,
-              'rounded-b-none border border-b-gray-500': true,
-              [CONTROL_BUTTON_STYLES.hover]: zoom !== maxZoom,
-              [CONTROL_BUTTON_STYLES.active]: zoom !== maxZoom,
-              [CONTROL_BUTTON_STYLES.disabled]: zoom === maxZoom,
-            })}
-            aria-label="Zoom in"
-            type="button"
-            disabled={zoom === maxZoom}
-            onClick={increaseZoom}
-          >
-            <Plus className="h-[20px] w-[20px]" />
-          </button>
-        </TooltipTrigger>
+      <button
+        className={cn({
+          [CONTROL_BUTTON_STYLES.default]: true,
+          'rounded-b-none border-b-gray-500': true,
+          [CONTROL_BUTTON_STYLES.hover]: zoom !== maxZoom,
+          [CONTROL_BUTTON_STYLES.focus]: zoom !== maxZoom,
+          [CONTROL_BUTTON_STYLES.disabled]: zoom === maxZoom,
+        })}
+        aria-label="Zoom in"
+        type="button"
+        disabled={zoom === maxZoom}
+        onClick={increaseZoom}
+      >
+        <Plus className="h-5 w-5" />
+      </button>
 
-        <TooltipPortal>
-          <TooltipContent side="left" align="center">
-            <div className="text-2xs">Zoom in</div>
-
-            <TooltipArrow className="fill-white" width={10} height={5} />
-          </TooltipContent>
-        </TooltipPortal>
-      </Tooltip>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <button
-            className={cn({
-              [CONTROL_BUTTON_STYLES.default]: true,
-              'rounded-t-none border-t-0': true,
-              [CONTROL_BUTTON_STYLES.hover]: zoom !== minZoom,
-              [CONTROL_BUTTON_STYLES.active]: zoom !== minZoom,
-              [CONTROL_BUTTON_STYLES.disabled]: zoom === minZoom,
-            })}
-            aria-label="Zoom out"
-            type="button"
-            disabled={zoom === minZoom}
-            onClick={decreaseZoom}
-          >
-            <Minus className="h-[20px] w-[20px]" />
-          </button>
-        </TooltipTrigger>
-
-        <TooltipPortal>
-          <TooltipContent side="left" align="center">
-            <div className="text-2xs">Zoom out</div>
-
-            <TooltipArrow className="fill-white" width={10} height={5} />
-          </TooltipContent>
-        </TooltipPortal>
-      </Tooltip>
+      <button
+        className={cn({
+          [CONTROL_BUTTON_STYLES.default]: true,
+          'rounded-t-none border-t-0': true,
+          [CONTROL_BUTTON_STYLES.hover]: zoom !== minZoom,
+          [CONTROL_BUTTON_STYLES.focus]: zoom !== minZoom,
+          [CONTROL_BUTTON_STYLES.disabled]: zoom === minZoom,
+        })}
+        aria-label="Zoom out"
+        type="button"
+        disabled={zoom === minZoom}
+        onClick={decreaseZoom}
+      >
+        <Minus className="h-5 w-5" />
+      </button>
     </div>
   );
 };

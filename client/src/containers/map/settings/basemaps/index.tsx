@@ -24,7 +24,7 @@ const Basemaps = () => {
 
   return (
     <fieldset>
-      <legend className="w-full border-b border-gray-200 pb-1 font-serif text-lg">
+      <legend className="w-full border-b border-gray-150 pb-1 font-serif text-lg">
         Basemap style
       </legend>
       <RadioGroup

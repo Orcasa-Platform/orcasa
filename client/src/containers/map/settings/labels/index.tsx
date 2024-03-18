@@ -33,7 +33,7 @@ const Labels = () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex w-full items-center justify-between border-b border-gray-200 pb-1">
+      <div className="flex w-full items-center justify-between border-b border-gray-150 pb-1">
         <Label htmlFor="labels-switch" className="font-serif text-lg">
           Labels
         </Label>

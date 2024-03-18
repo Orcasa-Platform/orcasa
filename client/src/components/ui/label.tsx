@@ -7,7 +7,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/classnames';
 
-const labelVariants = cva('text-sm font-medium leading-none', {
+const labelVariants = cva('text-sm leading-none', {
   variants: {
     variant: {
       default: 'peer-disabled:cursor-not-allowed peer-disabled:text-gray-300',
