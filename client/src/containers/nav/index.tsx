@@ -52,7 +52,7 @@ export default function Nav() {
           {modules.map((module) => {
             const { href, color, name } = module as Module;
             return (
-              <NavLink key={href} href={href} color={color} active={pathname.startsWith(href)}>
+              <NavLink key={href} href={href} color={color} active={pathname?.startsWith(href)}>
                 {name}
               </NavLink>
             );

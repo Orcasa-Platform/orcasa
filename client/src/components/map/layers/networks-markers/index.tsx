@@ -257,7 +257,7 @@ const NetworkMarkerRelations = (network: Parameters<typeof useMapNetworksRelatio
 
 const NetworksMarkers = () => {
   const pathname = usePathname();
-  const [, , type, id] = pathname.split('/') || [];
+  const [, , type, id] = pathname?.split('/') || [];
   const network = {
     type: type as 'organization' | 'project',
     id: Number(id),
