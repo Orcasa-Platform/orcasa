@@ -75,6 +75,13 @@ The following environment variables are used:
 | DATABASE_PASSWORD   |                                                                                                                                                                                               Database password |              
 | DATABASE_SSL        |                                                                                                                                                    If SSL should be used when connecting to the database server |              
 
+
+The included `Dockerfile` and `Dockerfile.prod` files use an additional configuration option, not present when running in native mode:
+
+| Variable name        |                                                                                                                                                                                                                                              Description |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| IMPORT_STRAPI_CONFIG |  If set to true, the Strapi configuration values in the database will be updated using `yarn config-sync import` on application startup. For more details see [this plugin's](https://market.strapi.io/plugins/strapi-plugin-config-sync) documentation |     
+
 ## Data management
 
 The CMS stores both user data and configuration data in the database. Different types of data are managed in different
