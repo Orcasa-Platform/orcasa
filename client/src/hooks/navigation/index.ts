@@ -65,7 +65,7 @@ function usePageUnloadGuard(confirmMessage: string, callbackFunction: () => void
     // cancel it. So we're adding artificial state and in case we got there,
     // it means a user pressed back button.
     // TODO: Check if it is safe to add these to deps so the effect will re-run with pathname and params change
-    history.pushState(null, '', pathname + searchParams.toString());
+    history.pushState(null, '', pathname + (searchParams?.toString() ?? ''));
     window.addEventListener('beforeunload', beforeUnloadHandler);
     window.addEventListener('popstate', popStateHandler);
     window.document.addEventListener(clickType, clickHandler, { capture: true });

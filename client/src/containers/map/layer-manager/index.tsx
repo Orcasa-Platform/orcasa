@@ -16,8 +16,8 @@ const LayerManager = () => {
   const [layers] = useLayers();
   const [layersSettings] = useLayersSettings();
   const pathname = usePathname();
-  const isNetworkPage = pathname.includes('network');
-  const isPracticesPage = pathname.includes('practices');
+  const isNetworkPage = pathname?.includes('network');
+  const isPracticesPage = pathname?.includes('practices');
 
   return (
     <DeckMapboxOverlayProvider>
