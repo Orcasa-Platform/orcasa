@@ -132,7 +132,7 @@ const Item = ({
   const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
 
   return (
-    <div className={cn('relative z-30 w-full', className)} style={style}>
+    <div className={cn('relative w-full', className)} style={style}>
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
         <Path heightIndex={heightIndex} category={category} isGranchild={isGranchild} />
@@ -140,7 +140,7 @@ const Item = ({
       {/* CONTENT */}
       <div
         className={cn(
-          'group z-30 mt-6 flex h-14 w-fit min-w-full items-center justify-between gap-6 rounded-lg px-4 py-2',
+          'group mt-6 flex h-14 w-fit min-w-full items-center justify-between gap-6 rounded-lg px-4 py-2',
           {
             'bg-gray-650 text-gray-200': type === 'organization',
             'bg-purple-500 text-white': type === 'project',
