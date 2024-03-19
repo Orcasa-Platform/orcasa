@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 export type PopupAttributes = {
   longitude: number;
   latitude: number;
-  type: 'initiative' | 'organization';
+  type: 'project' | 'organization';
   properties: {
     countryName: string;
     organizations: OrganizationProperties[];
@@ -22,7 +22,7 @@ export type PopupAttributes = {
   };
 } | null;
 
-type Type = 'initiative' | 'organization';
+type Type = 'project' | 'organization';
 type NetworksPopupProps = {
   popup: PopupAttributes;
   setPopup: (popup: PopupAttributes | null) => void;
@@ -33,20 +33,16 @@ type NetworksPopupProps = {
 const networkDetailSentencePart = (parentType: Type, parentName: string, type: Type) => {
   if (!parentType) return null;
   const parentSpan = <span className="font-semibold">{parentName}</span>;
-  if (parentType === 'initiative')
+  if (parentType === 'project')
     return (
       <span>
-        {type === 'initiative' ? (
-          <> related to {parentSpan}</>
-        ) : (
-          <> participating in {parentSpan}</>
-        )}
+        {type === 'project' ? <> related to {parentSpan}</> : <> participating in {parentSpan}</>}
       </span>
     );
   if (parentType === 'organization')
     return (
       <span>
-        {type === 'initiative' ? (
+        {type === 'project' ? (
           <> in which {parentSpan} participates</>
         ) : (
           <> related to {parentSpan}</>
@@ -65,9 +61,9 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
     properties: { countryName, organizations, projects },
   } = popup;
 
-  const networks = type === 'initiative' ? projects : organizations;
-  const networkClass = type === 'initiative' ? 'text-peach-700' : 'text-blue-500';
-  const listDiscClass = type === 'initiative' ? 'marker:text-peach-700' : 'marker:text-blue-500';
+  const networks = type === 'project' ? projects : organizations;
+  const networkClass = type === 'project' ? 'text-peach-700' : 'text-blue-500';
+  const listDiscClass = type === 'project' ? 'marker:text-peach-700' : 'marker:text-blue-500';
 
   return (
     <Popup
@@ -89,9 +85,7 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
           <span className="sr-only">Close</span>
         </Button>
         <header className="pb-6 text-lg text-slate-700">
-          <span>
-            {type === 'initiative' ? 'Initiatives coordinated in ' : 'Organisations from '}
-          </span>
+          <span>{type === 'project' ? 'Initiatives coordinated in ' : 'Organisations from '}</span>
           <span className="font-semibold">{countryName}</span>
           {parentType && parentName && networkDetailSentencePart(parentType, parentName, type)}
         </header>

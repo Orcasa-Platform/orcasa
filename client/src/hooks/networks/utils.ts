@@ -46,7 +46,7 @@ export const PROJECT_KEYS: ProjectKey[] = ['lead_partner', 'partners', 'funders'
 
 type ProjectKey = 'lead_partner' | 'partners' | 'funders';
 
-export const getPopulateForFilters = (type: 'organization' | 'initiative' | undefined) =>
+export const getPopulateForFilters = (type: 'organization' | 'project' | undefined) =>
   type === 'organization'
     ? String([
         'country',

@@ -54,7 +54,7 @@ type MarkerProps = {
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];
   isCluster?: boolean;
-  onClick?: (type: 'initiative' | 'organization') => void;
+  onClick?: (type: 'project' | 'organization') => void;
 };
 
 const MarkerComponent = ({
@@ -91,7 +91,7 @@ const MarkerComponent = ({
           type="button"
           onClick={(e) => {
             e.stopPropagation();
-            if (onClick) onClick('initiative');
+            if (onClick) onClick('project');
           }}
           className={cn(
             'flex origin-left items-center justify-center bg-peach-700',
@@ -118,7 +118,7 @@ const NetworkMarkersWithData = ({
   features: PointFeatureWithNetworkProperties[];
   isFetched: boolean;
   isError: boolean;
-  type?: 'organization' | 'initiative';
+  type?: 'organization' | 'project';
   id?: number;
 }) => {
   const { current: map } = useMap();
@@ -259,7 +259,7 @@ const NetworksMarkers = () => {
   const pathname = usePathname();
   const [, , type, id] = pathname?.split('/') || [];
   const network = {
-    type: type as 'organization' | 'initiative',
+    type: type as 'organization' | 'project',
     id: Number(id),
   };
 
