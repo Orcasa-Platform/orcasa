@@ -87,7 +87,7 @@ type NetworkMapResponse = {
 };
 
 export type Network = {
-  type: 'organization' | 'project';
+  type: 'organization' | 'initiative';
   id: number | undefined;
 };
 
@@ -442,7 +442,7 @@ const useGetNetworksRelations = ({ id, type }: Network) => {
 
         organizationsData = uniqBy(organizationsData, 'id');
       }
-    } else if (type === 'project') {
+    } else if (type === 'initiative') {
       const mainData = data?.data as ProjectListResponseDataItem;
       if (mainData) {
         // Push main project data and traverse two levels deep
