@@ -259,7 +259,7 @@ const NetworksMarkers = () => {
   const pathname = usePathname();
   const [, , type, id] = pathname?.split('/') || [];
   const network = {
-    type: type as 'organization' | 'project',
+    type: (type === 'initiative' ? 'project' : 'organization') as 'organization' | 'project',
     id: Number(id),
   };
 
