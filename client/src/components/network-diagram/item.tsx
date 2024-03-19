@@ -136,7 +136,7 @@ const Item = ({
   const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
   const canExpandWithoutChildren = typeof onToggle !== 'undefined' && !hasChildren;
   return (
-    <div className={cn('relative z-30 -mt-6 w-full', className)} style={style}>
+    <div className={cn('relative -mt-6 w-full', className)} style={style}>
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
         <Path
@@ -154,14 +154,11 @@ const Item = ({
       )}
       {/* CONTENT */}
       <div
-        className={cn(
-          'z-30 mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-6 p-4',
-          {
-            'border border-slate-700': isFirstNode || opened,
-            'bg-blue-50': type === 'organization',
-            'bg-peach-50': type === 'project',
-          },
-        )}
+        className={cn('mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-6 p-4', {
+          'border border-slate-700': isFirstNode || opened,
+          'bg-blue-50': type === 'organization',
+          'bg-peach-50': type === 'project',
+        })}
       >
         <Link
           className={cn('text-sm text-slate-700', {

@@ -68,7 +68,7 @@ const NetworkDiagram = ({
             type={type}
             hasChildren={networks?.length > 0}
             hasDot={networks?.length > 0}
-            className="z-40"
+            style={{ zIndex: 1000 + networks.length }}
           />
           {
             [...networks]
@@ -87,7 +87,7 @@ const NetworkDiagram = ({
                     key={network.id}
                     className="relative ml-14"
                     // We use the z-index to make sure each path is above the following one
-                    style={{ zIndex: 30 + childIndex }}
+                    style={{ zIndex: 1000 + childIndex }}
                   >
                     <Item
                       key={network.id}
@@ -99,7 +99,7 @@ const NetworkDiagram = ({
                       opened={openCollapsibles.includes(network.id)}
                       heightIndex={getIndex(childIndex)}
                       hasChildren={network?.children?.length > 0}
-                      className="z-30"
+                      style={{ zIndex: 1000 + childIndex }}
                     />
                     <CollapsibleContent className="ml-14">
                       {
@@ -117,7 +117,10 @@ const NetworkDiagram = ({
                                   id={child?.id}
                                   heightIndex={grandChildIndex}
                                   hasChildren={false}
-                                  style={{ zIndex: 20 + +grandChildIndex }}
+                                  style={{
+                                    zIndex:
+                                      1000 + childIndex + grandChildIndex - network.children.length,
+                                  }}
                                 />
                               ),
                           )
