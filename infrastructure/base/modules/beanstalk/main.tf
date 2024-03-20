@@ -135,6 +135,11 @@ locals {
       value     = "false"
     },
     {
+      namespace = "aws:elasticbeanstalk:application:environment"
+      name      = "IMPORT_STRAPI_CONFIG"
+      value     = "true"
+    },
+    {
       namespace = "aws:elbv2:listener:443"
       name      = "ListenerEnabled"
       value     = var.acm_certificate.arn == "" ? "false" : "true"
