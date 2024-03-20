@@ -1,71 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
+  Factory,
+  HeartHandshake,
+  Landmark,
+  LucideIcon,
   Microscope,
-  // Scale,
-  // Landmark,
-  // Factory,
-  // HeartHandshake,
+  Scale,
 } from 'lucide-react';
+
+import { Testimony } from '@/types/generated/strapi.schemas';
+
+import { useTestimonies } from '@/hooks/testimonies';
 
 import {
   Carousel as CarouselComponent,
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import ContentLoader from '@/components/ui/loader';
 
 import { Button } from '../ui/button';
 
 const CARD_WIDTH = 373;
 const CARD_GAP = 40;
 
-const cards = [
-  {
-    id: 1,
-    Icon: Microscope,
-    content:
-      '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-    name: 'Julien Demenois, France',
-    role: 'Senior Researcher',
-  },
-  // {
-  //   id: 2,
-  //   Icon: Scale,
-  //   content:
-  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-  //   name: 'Julien Demenois, France',
-  //   role: 'Policymaker',
-  // },
-  // {
-  //   id: 3,
-  //   Icon: Landmark,
-  //   content:
-  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-  //   name: 'Julien Demenois, France',
-  //   role: 'Funding agency',
-  // },
-  // {
-  //   id: 4,
-  //   Icon: Factory,
-  //   content:
-  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-  //   name: 'Julien Demenois, France',
-  //   role: 'Company',
-  // },
-  // {
-  //   id: 5,
-  //   Icon: HeartHandshake,
-  //   content:
-  //     '"Thanks to Impact4Soil I will be able to quickly identify relevant scientific publications on soil carbon, and even better, I will have a quantified assessment of the impact of practices on soil carbon. This last point is very important for me, as part of a research organisation, because we are often asked to provide this information by decision-makers and journalists. Knowing that there is a reliable source of scientific information is therefore extremely valuable"',
-  //   name: 'Julien Demenois, France',
-  //   role: 'NGO',
-  // },
-];
+const iconMap: Record<string, LucideIcon> = {
+  microscope: Microscope,
+  scale: Scale,
+  landmark: Landmark,
+  factory: Factory,
+  'heart handshake': HeartHandshake,
+};
 
 const cardVariants = {
   hidden: { opacity: 0, x: '-100%' },
@@ -73,21 +44,26 @@ const cardVariants = {
 };
 
 type CardProps = {
-  card: (typeof cards)[0];
+  card?: Testimony;
 };
 
 const Card = ({ card }: CardProps) => {
-  const { Icon, content, name, role } = card;
+  if (!card) return null;
+  const { icon, content, name, role } = card;
+  const Icon = iconMap[icon];
+
   return (
     <motion.div
-      key={card.id}
       className="flex h-[444px] min-w-[373px] max-w-[373px] flex-col justify-between gap-6 border-b-8 border-yellow-500 bg-white p-10 shadow"
       variants={cardVariants}
     >
       <div className="flex h-12 w-12 items-center justify-center bg-gray-700 p-2">
         <Icon className="h-12 w-12 text-white" />
       </div>
-      <p className="text-sm leading-6 text-gray-700">{content}</p>
+      <div
+        dangerouslySetInnerHTML={{ __html: content || '' }}
+        className="text-sm leading-6 text-gray-700"
+      />
       <div>
         <div className="text-gray-700">{name}</div>
         <div className="font-semibold">{role}</div>
@@ -97,17 +73,25 @@ const Card = ({ card }: CardProps) => {
 };
 
 const Carousel = () => {
+  const { testimonies, isFetching, isFetched, isPlaceholderData, isError } = useTestimonies();
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevCard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? cards.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonies.length - 1 : prevIndex - 1));
   };
 
   const nextCard = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === cards.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === testimonies.length - 1 ? 0 : prevIndex + 1));
   };
   return (
-    <>
+    <ContentLoader
+      data={testimonies}
+      isFetching={isFetching}
+      isFetched={isFetched}
+      isPlaceholderData={isPlaceholderData}
+      isError={isError}
+    >
       {/* For lg up */}
       <div className="hidden overflow-hidden shadow lg:block lg:max-w-[50vw] lg:shadow-none">
         <motion.div
@@ -115,32 +99,34 @@ const Carousel = () => {
           animate={{ x: `-${currentIndex * (CARD_WIDTH + CARD_GAP)}px` }}
           transition={{ ease: 'easeInOut' }}
         >
-          {cards.map((card) => (
-            <Card key={card.id} card={card} />
+          {testimonies.map((testimony) => (
+            <Card key={testimony.id} card={testimony.attributes} />
           ))}
         </motion.div>
       </div>
-      <div className="mt-6 hidden gap-1 lg:flex">
-        <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
-          <ArrowLeft className="h-4 w-4" />
-          <span className="sr-only">Previous testimony</span>
-        </Button>
-        <Button variant="outline" className="px-3 py-0" onClick={nextCard}>
-          <ArrowRight className="h-4 w-4" />
-          <span className="sr-only">Next testimony</span>
-        </Button>
-      </div>
+      {isFetched && testimonies.length > 1 ? (
+        <div className="mt-6 hidden gap-1 lg:flex">
+          <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
+            <ArrowLeft className="h-4 w-4" />
+            <span className="sr-only">Previous testimony</span>
+          </Button>
+          <Button variant="outline" className="px-3 py-0" onClick={nextCard}>
+            <ArrowRight className="h-4 w-4" />
+            <span className="sr-only">Next testimony</span>
+          </Button>
+        </div>
+      ) : null}
       {/* For mobile */}
       <CarouselComponent className="block lg:hidden">
         <CarouselContent className="p-1">
-          {cards.map((card) => (
-            <CarouselItem key={card.id} className="flex justify-center">
-              <Card card={card} />
+          {testimonies.map((testimony) => (
+            <CarouselItem key={testimony.id} className="flex justify-center">
+              <Card key={testimony.id} card={testimony.attributes} />
             </CarouselItem>
           ))}
         </CarouselContent>
       </CarouselComponent>
-    </>
+    </ContentLoader>
   );
 };
 

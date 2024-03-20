@@ -100,7 +100,8 @@
           "projects",
           "lat",
           "long",
-          "practices"
+          "practices",
+          "testimonies"
         ]
       },
       "conditions": []
@@ -129,7 +130,8 @@
           "projects",
           "lat",
           "long",
-          "practices"
+          "practices",
+          "testimonies"
         ]
       },
       "conditions": []
@@ -151,7 +153,8 @@
           "projects",
           "lat",
           "long",
-          "practices"
+          "practices",
+          "testimonies"
         ]
       },
       "conditions": []
@@ -1142,6 +1145,68 @@
         "fields": [
           "name",
           "projects"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::testimony.testimony",
+      "properties": {
+        "fields": [
+          "name",
+          "country",
+          "content",
+          "role",
+          "icon",
+          "order"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::testimony.testimony",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::testimony.testimony",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::testimony.testimony",
+      "properties": {
+        "fields": [
+          "name",
+          "country",
+          "content",
+          "role",
+          "icon",
+          "order"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::testimony.testimony",
+      "properties": {
+        "fields": [
+          "name",
+          "country",
+          "content",
+          "role",
+          "icon",
+          "order"
         ]
       },
       "conditions": []

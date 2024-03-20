@@ -48,6 +48,7 @@ import {
   parseOrganization,
   parseProject,
   PROJECT_KEYS,
+  ACCEPTED_STATUS_FILTER,
 } from '@/hooks/networks/utils';
 
 import { sortByOrderAndName } from './utils';
@@ -106,15 +107,6 @@ export enum NetworkProjectStatusFilter {
   Finished,
   NotStarted,
 }
-
-const ACCEPTED_STATUS_FILTER = {
-  $or: [
-    {
-      publication_status: { $eq: 'accepted' },
-    },
-    { publication_status: { $null: true } },
-  ],
-};
 
 const getQueryFilters = (filters: NetworkFilters) => {
   const generalFilters =
@@ -379,6 +371,8 @@ const useGetNetworksRelations = ({ id, type }: Network) => {
   } = useFunction(
     id as number,
     {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       populate,
     },
     { query: { keepPreviousData: true } },

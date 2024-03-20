@@ -17,8 +17,8 @@ const MapLegends = ({ className = '' }) => {
   const [layers, setLayers] = useLayers();
   const [layersSettings, setLayersSettings] = useLayersSettings();
   const pathname = usePathname();
-  const isNetworkPage = pathname.includes('network');
-  const isPracticesPage = pathname.includes('practice');
+  const isNetworkPage = pathname?.includes('network');
+  const isPracticesPage = pathname?.includes('practice');
 
   const handleChangeOrder = useCallback(
     (order: string[]) => {

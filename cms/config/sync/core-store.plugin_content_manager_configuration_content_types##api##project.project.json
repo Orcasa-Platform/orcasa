@@ -153,7 +153,7 @@
       "project_coordinator_email": {
         "edit": {
           "label": "Project Coordinator Email",
-          "description": "",
+          "description": "Please use a generic email (e.g., info@initiative.com) and avoid personal emails.",
           "placeholder": "",
           "visible": true,
           "editable": true

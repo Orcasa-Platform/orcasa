@@ -7,7 +7,9 @@ export const env = createEnv({
    * Serverside Environment variables, not available on the client.
    * Will throw if you access these variables on the client.
    */
-  server: {},
+  server: {
+    NEXT_USE_RESTRICTIVE_ROBOTS_TXT: z.enum(['true', 'false']).optional(),
+  },
   /*
    * Environment variables available on the client (and server).
    *
@@ -41,6 +43,7 @@ export const env = createEnv({
     NEXT_PUBLIC_ENABLE_RESPONSIVE: process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE,
     NEXT_PUBLIC_MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
     NEXT_PUBLIC_MATOMO_URL: process.env.NEXT_PUBLIC_MATOMO_URL,
+    NEXT_USE_RESTRICTIVE_ROBOTS_TXT: process.env.NEXT_USE_RESTRICTIVE_ROBOTS_TXT,
   },
 });
 

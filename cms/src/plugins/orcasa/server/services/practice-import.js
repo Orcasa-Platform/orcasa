@@ -22,7 +22,11 @@ module.exports = ({ strapi }) => ({
     try {
       wocatImporter.import()
         .then(async (practices) => {
-          return practiceDecorator.decoratePractices(practices);
+          if (strapi.config.get('server.wocat.decorate') === true && strapi.config.get('server.wocat.decorateFileURL') !== null) {
+            return practiceDecorator.decoratePractices(practices, strapi.config.get('server.wocat.decorateFileURL'), true);
+          } else {
+            return practices;
+          }
         })
         .then(async (practices) => {
           return wocatImporter.convertToPractices(practices);

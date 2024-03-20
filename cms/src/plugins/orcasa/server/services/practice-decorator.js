@@ -25,9 +25,8 @@ module.exports = class WocatPracticeDecorator {
   }
 
 
-  async decoratePractices(practices, save = false) {
-    const decoratorJson = await this.loadDecoratorJson('https://gist.githubusercontent.com/tiagojsag/e77fade4ff5a59547508a59ae9257253/raw/7c908467154011c9dc8a773d5f4897f51ba7ee40/decorator.json');
-
+  async decoratePractices(practices, decoratorJsonURL, save = false) {
+    const decoratorJson = await this.loadDecoratorJson(decoratorJsonURL);
 
     const interventionsMap = {
       management: 'Management',
@@ -138,7 +137,7 @@ module.exports = class WocatPracticeDecorator {
       populate: ['country', 'land_use_priors', 'land_use_types', 'practice_intervention', 'subinterventions'],
     });
 
-    return this.decoratePractices(practices, true);
+    return this.decoratePractices(practices, strapi.config.get('server.wocat.decorateFileURL'), true);
   }
 }
 

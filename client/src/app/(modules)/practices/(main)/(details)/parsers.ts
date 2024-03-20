@@ -85,7 +85,11 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
 };
 
 export const getPracticeImplementationFields = (practice: Practice): FieldType[] => {
-  const { countries, implem_date: implementationDate } = practice;
+  const {
+    countries,
+    implem_date: implementationDate,
+    implem_decade: implementationDecade,
+  } = practice;
 
   const fields = [];
 
@@ -101,6 +105,11 @@ export const getPracticeImplementationFields = (practice: Practice): FieldType[]
       label: 'Implementation Date',
       value: implementationDate,
       formatId: 'formatDate' as FormatProps['id'],
+    });
+  } else if (implementationDecade) {
+    fields.push({
+      label: 'Implementation Decade',
+      value: implementationDecade,
     });
   }
 

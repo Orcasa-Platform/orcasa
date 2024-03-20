@@ -82,11 +82,11 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.country.length > 0
+    ...(filters.countries.length > 0
       ? [
           {
-            $or: filters.country.map((id) => ({
-              country: {
+            $or: filters.countries.map((id) => ({
+              countries: {
                 id: {
                   $eq: id,
                 },
@@ -521,7 +521,7 @@ export const usePracticesFiltersOptions = (
     },
   );
 
-  const country = useMemo(
+  const countries = useMemo(
     () =>
       countryData?.data
         ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -552,7 +552,7 @@ export const usePracticesFiltersOptions = (
   );
 
   return {
-    country,
+    countries,
     // NOTE: 2010 is the hard-coded start year for the filter
     year: Array.from({ length: new Date().getFullYear() - 2010 + 1 }).map((_, index) => ({
       label: `${2010 + index}`,

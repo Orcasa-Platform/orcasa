@@ -1,12 +1,18 @@
 'use client';
 
+import { useRef } from 'react';
+
 import Image from 'next/image';
 
 import { ChevronRight } from 'lucide-react';
 
+import { cn } from '@/lib/classnames';
+
 import { useMapSearchParams } from '@/store';
 
 import type { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
+
+import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
@@ -22,7 +28,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   const countriesNames = countries?.data?.map((country) => country?.attributes?.name).join(', ');
 
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-2">
+    <div className="relative flex flex-wrap gap-x-4 gap-y-2">
       <div className="flex max-w-[200px] items-start gap-2">
         <GlobeIcon className="mt-0.5 h-6 w-6 min-w-min" />
         <div className="text-base text-slate-500">
@@ -43,6 +49,15 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
           className="ml-auto max-h-[24px]"
         />
       )}
+      {source_name === 'FAO' && (
+        <Image
+          src="/assets/logos/fao.svg"
+          width={44}
+          height={44}
+          alt="FAO"
+          className="absolute right-0 top-0 ml-auto max-h-[44px]"
+        />
+      )}
     </div>
   );
 };
@@ -50,6 +65,8 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 export default function Practice({ id, attributes }: PracticeListResponseDataItem) {
   const { title, short_description: shortDescription } = attributes || {};
   const searchParams = useMapSearchParams();
+  const ref = useRef<HTMLDivElement>(null);
+  const isOverTwoLines = useIsOverTwoLines(ref, true);
 
   return (
     <li key={id} className="mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50">
@@ -57,7 +74,14 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
         <header className="flex flex-col gap-6">
           <Icons attributes={attributes as TypedPractice} />
           <div className="font-serif text-2xl leading-10 text-gray-700">{title}</div>
-          <p className="leading-7">{shortDescription}</p>
+          <div
+            ref={ref}
+            className={cn('leading-7', {
+              'line-clamp-2': isOverTwoLines,
+            })}
+          >
+            {shortDescription}
+          </div>
         </header>
         <div className="flex items-center justify-end">
           <SlidingLinkButton

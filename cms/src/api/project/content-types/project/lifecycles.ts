@@ -22,7 +22,9 @@ export default {
   },
   async beforeUpdate(event) {
     const { project_type, lead_partner, country_of_coordination, project_coordinator_email, project_coordinator_website } = event.params.data;
-    const projectToUpdate = await strapi.entityService.findOne("api::project.project", event.params.where.id, {
+
+    const projectToUpdate: any = await strapi.db.query("api::project.project").findOne({
+      where: event.params.where,
       populate: ['project_type', 'lead_partner', 'country_of_coordination']
     });
 

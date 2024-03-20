@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 const Breadcrumb = () => {
   const pathname = usePathname();
-  const segments = pathname.split('/').filter((segment) => segment !== '');
+  const segments = pathname?.split('/').filter((segment) => segment !== '') ?? [];
   const startCase = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1).replaceAll('-', ' ');
   };

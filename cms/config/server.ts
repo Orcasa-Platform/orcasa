@@ -17,5 +17,7 @@ export default ({ env }) => ({
   wocat: {
     baseUrl: env('WOCAT_BASEURL', 'https://qcat.wocat.net/en/api/v2/'),
     token: env('WOCAT_TOKEN', null),
+    decorate: env.bool('WOCAT_DECORATE', false),
+    decorateFileURL: env('WOCAT_DECORATE_FILE_URL', null),
   }
 });
