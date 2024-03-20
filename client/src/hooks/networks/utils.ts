@@ -46,38 +46,140 @@ export const PROJECT_KEYS: ProjectKey[] = ['lead_partner', 'partners', 'funders'
 
 type ProjectKey = 'lead_partner' | 'partners' | 'funders';
 
+export const ACCEPTED_STATUS_FILTER = {
+  publication_status: { $eq: 'accepted' },
+};
+
 export const getPopulateForFilters = (type: 'organization' | 'project' | undefined) =>
   type === 'organization'
-    ? String([
-        'country',
-        'lead_projects.country_of_coordination',
-        'lead_projects.lead_partner.country',
-        'lead_projects.partners.country',
-        'lead_projects.funders.country',
-        'partner_projects.country_of_coordination',
-        'partner_projects.lead_partner.country',
-        'partner_projects.partners.country',
-        'partner_projects.funders.country',
-        'funded_projects.country_of_coordination',
-        'funded_projects.lead_partner.country',
-        'funded_projects.partners.country',
-        'funded_projects.funders.country',
-      ])
-    : String([
-        'country_of_coordination',
-        'lead_partner.country',
-        'lead_partner.lead_projects.country_of_coordination',
-        'lead_partner.partner_projects.country_of_coordination',
-        'lead_partner.funded_projects.country_of_coordination',
-        'partners.country',
-        'partners.lead_project.country_of_coordination',
-        'partners.partner_projects.country_of_coordination',
-        'partners.funded_projects.country_of_coordination',
-        'funders.country',
-        'funders.lead_projects.country_of_coordination',
-        'funders.partner_projects.country_of_coordination',
-        'funders.funded_projects.country_of_coordination',
-      ]);
+    ? {
+        country: { populate: true },
+        lead_projects: {
+          populate: {
+            country_of_coordination: {
+              populate: true,
+            },
+            lead_partner: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            partners: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            funders: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+          },
+          filters: ACCEPTED_STATUS_FILTER,
+        },
+        partner_projects: {
+          populate: {
+            country_of_coordination: {
+              populate: true,
+            },
+            lead_partner: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            partners: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            funders: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+          },
+          filters: ACCEPTED_STATUS_FILTER,
+        },
+        funded_projects: {
+          populate: {
+            country_of_coordination: {
+              populate: true,
+            },
+            lead_partner: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            partners: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            funders: {
+              populate: ['country'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+          },
+          filters: ACCEPTED_STATUS_FILTER,
+        },
+      }
+    : {
+        country_of_coordination: {
+          populate: true,
+        },
+        lead_partner: {
+          populate: {
+            country: {
+              populate: true,
+            },
+            lead_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            partner_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            funded_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+          },
+          filters: ACCEPTED_STATUS_FILTER,
+        },
+        partners: {
+          populate: {
+            country: {
+              populate: true,
+            },
+            lead_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            partner_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            funded_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+          },
+          filters: ACCEPTED_STATUS_FILTER,
+        },
+        funders: {
+          populate: {
+            country: {
+              populate: true,
+            },
+            lead_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            partner_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+            funded_projects: {
+              populate: ['country_of_coordination'],
+              filters: ACCEPTED_STATUS_FILTER,
+            },
+          },
+          filters: ACCEPTED_STATUS_FILTER,
+        },
+      };
 
 // Get country data from the organization or project
 export const getCountryData = (
