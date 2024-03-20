@@ -40,7 +40,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (shortDescription && shortDescription.length > 0) {
-    fields.push({ label: 'Description', value: shortDescription });
+    fields.push({ label: 'Description', value: shortDescription, hasEllipsis: true });
   }
 
   if (mainIntervention) {
