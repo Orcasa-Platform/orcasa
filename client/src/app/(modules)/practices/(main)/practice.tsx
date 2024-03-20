@@ -46,8 +46,8 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
       {source_name === 'FAO' && (
         <Image
           src="/assets/logos/fao.svg"
-          width={110}
-          height={24}
+          width={44}
+          height={44}
           alt="FAO"
           className="absolute right-0 top-0 ml-auto max-h-[44px]"
         />
