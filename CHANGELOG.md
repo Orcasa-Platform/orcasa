@@ -1,3 +1,16 @@
+# v6
+
+- Allow admins to manage the homepage's testimonies
+- Ability to configure the indexability of the platform through an environment variable
+- [Practices] Integrate an initial sample of practices from FAO
+- [Practices] Display the implementation decade if the implementation date is not available
+- [Practices] Limit the length of the descriptions in the list view
+- [Practices] Address an issue where the user couldn't filter the practices by country
+- [Network] Support displaying incomplete URLs in the detailed view
+- [Network] Address an issue where the map would be empty when viewing the details of an initiative
+- [Network] Address visual glitches on the network diagram
+- [Network] Address an issue where non-approved organisations and projects could be displayed on the map of the detailed view
+
 # v5
 
 - Ability to link organisations and practices
