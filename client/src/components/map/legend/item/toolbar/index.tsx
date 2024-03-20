@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
-import { PopoverArrow } from '@radix-ui/react-popover';
 import { Eye, EyeOff, X } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
 import { LegendItemToolbarProps } from '@/components/map/legend/types';
 import { Button } from '@/components/ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger, PopoverArrow } from '@/components/ui/popover';
 import {
   Tooltip,
   TooltipArrow,
@@ -30,7 +29,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
   const { opacity = 1, visibility = true } = settings || {};
 
   return (
-    <div id="legend-toolbar" className="flex space-x-2">
+    <div id="legend-toolbar" className="flex">
       {settingsManager?.opacity && (
         <div className="flex items-start">
           <Popover
@@ -44,30 +43,32 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   <Button
                     type="button"
                     variant="vanilla"
-                    size="icon-sm"
+                    size="icon-xs"
                     className={cn({
+                      'rounded-full': true,
                       'pointer-events-none': popoverOpen,
                     })}
                   >
-                    <Opacity className="flex h-6 w-6" />
+                    <Opacity className="flex h-4 w-4" />
                     <span className="sr-only">Change opacity</span>
                   </Button>
                 </TooltipTrigger>
               </PopoverTrigger>
 
               <TooltipPortal>
-                <TooltipContent align="end" alignOffset={-10}>
-                  <div className="text-xxs">Opacity</div>
-                  <TooltipArrow className="fill-white" width={10} height={5} />
+                <TooltipContent variant="dark" align="end" alignOffset={-10}>
+                  <div className="text-xs">Opacity</div>
+                  <TooltipArrow variant="dark" width={10} height={5} />
                 </TooltipContent>
               </TooltipPortal>
             </Tooltip>
 
             <PopoverContent
+              variant="dark"
               side="top"
               align="end"
               alignOffset={-10}
-              className="max-w-[122px] px-2.5 pb-2.5 pt-2"
+              className="max-w-[122px] rounded-lg px-2.5 pb-2.5 pt-2"
             >
               <div className="space-y-2">
                 <div className="text-sm">Opacity</div>
@@ -84,7 +85,7 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
                   }}
                 />
               </div>
-              <PopoverArrow className="z-0 block fill-white" width={11} height={5} />
+              <PopoverArrow variant="dark" className="z-0 block" width={11} height={5} />
             </PopoverContent>
           </Popover>
         </div>
@@ -97,24 +98,25 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
               <Button
                 type="button"
                 variant="vanilla"
-                size="icon-sm"
+                size="icon-xs"
                 className={cn({
+                  'rounded-full': true,
                   'pointer-events-none': popoverOpen,
                 })}
                 onClick={() => {
                   if (onChangeVisibility) onChangeVisibility(!visibility);
                 }}
               >
-                {!!visibility && <Eye className="flex h-6 w-6" />}
-                {!visibility && <EyeOff className="flex h-6 w-6" />}
+                {!!visibility && <Eye className="flex h-4 w-4" />}
+                {!visibility && <EyeOff className="flex h-4 w-4" />}
                 <span className="sr-only">{visibility ? 'Hide layer' : 'Show layer'}</span>
               </Button>
             </TooltipTrigger>
 
             <TooltipPortal>
-              <TooltipContent side="top" align="end" alignOffset={-10}>
-                <div className="text-xxs">{visibility ? 'Hide layer' : 'Show layer'}</div>
-                <TooltipArrow className="fill-white" width={10} height={5} />
+              <TooltipContent variant="dark" side="top" align="end" alignOffset={-10}>
+                <div className="text-xs">{visibility ? 'Hide layer' : 'Show layer'}</div>
+                <TooltipArrow variant="dark" width={10} height={5} />
               </TooltipContent>
             </TooltipPortal>
           </Tooltip>
@@ -126,20 +128,21 @@ export const LegendItemToolbar: React.FC<LegendItemToolbarProps> = ({
           <Button
             type="button"
             variant="vanilla"
-            size="icon-sm"
+            size="icon-xs"
+            className="rounded-full"
             onClick={() => {
               if (onRemove) onRemove();
             }}
           >
-            <X className="flex h-6 w-6" />
+            <X className="flex h-4 w-4" />
             <span className="sr-only">Remove layer</span>
           </Button>
         </TooltipTrigger>
 
         <TooltipPortal>
-          <TooltipContent side="top" align="end" alignOffset={-10}>
-            <div className="text-xxs">Remove layer</div>
-            <TooltipArrow className="fill-white" width={10} height={5} />
+          <TooltipContent variant="dark" side="top" align="end" alignOffset={-10}>
+            <div className="text-xs">Remove layer</div>
+            <TooltipArrow variant="dark" width={10} height={5} />
           </TooltipContent>
         </TooltipPortal>
       </Tooltip>

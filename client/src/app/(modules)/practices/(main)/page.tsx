@@ -78,8 +78,8 @@ export default function PracticesModule() {
 
   return (
     <div className="space-y-10">
-      <h1 className="border-l-4 border-brown-500 pl-5 font-serif text-lg leading-7">
-        {intro && <MarkdownRenderer variant="bold" textClass="text-brown-500" content={intro} />}
+      <h1 className="font-serif leading-7">
+        {intro && <MarkdownRenderer variant="bold" content={intro} />}
       </h1>
       <div className="flex justify-between gap-x-4">
         <Search

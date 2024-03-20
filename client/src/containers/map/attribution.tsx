@@ -2,11 +2,8 @@ import { cn } from '@/lib/classnames';
 
 import { useMapSettings } from '@/store/index';
 
-import { useTheme } from '@/hooks/ui/theme';
-
 const Attribution = () => {
   const [{ basemap }] = useMapSettings();
-  const theme = useTheme('text');
   const getAttributionContent = () => {
     if (basemap === 'basemap-satellite') {
       return (
@@ -51,35 +48,13 @@ const Attribution = () => {
       );
     }
 
-    if (basemap === 'basemap-relief') {
-      return (
-        <>
-          Tiles ©{' '}
-          <a
-            className="hover:underline"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://esri.com"
-          >
-            Esri
-          </a>{' '}
-          — Source: Esri
-        </>
-      );
-    }
-
     return null;
   };
 
   return (
     <div
       className={cn(
-        'absolute bottom-0 right-0 z-40 max-w-[55%] gap-1 px-2 py-1 text-sm leading-tight',
-        theme,
-        {
-          'bg-gray-50/25': basemap === 'basemap-satellite',
-          'bg-gray-50/75': basemap === 'basemap-light' || basemap === 'basemap-relief',
-        },
+        'absolute bottom-0 right-0 z-40 max-w-[65%] gap-1 bg-gray-800/80 px-1 py-px font-sans text-2xs font-medium text-white',
       )}
     >
       {getAttributionContent()}

@@ -37,13 +37,13 @@ export interface Module {
 
 export const modules = [
   {
-    name: 'Geospatial Data',
+    name: 'Geospatial data',
     slug: 'geospatial-data',
     href: '/geospatial-data',
     color: 'yellow',
   },
   {
-    name: 'Scientific Evidence',
+    name: 'Scientific evidence',
     slug: 'scientific-evidence',
     href: '/scientific-evidence',
     color: 'teal',

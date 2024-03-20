@@ -83,8 +83,11 @@
 
 /* Maplibre */
 .maplibregl-popup-content {
-  padding: 0 !important;
-  border-radius: 0 !important;
+  @apply !rounded-lg !p-0;
+}
+
+.maplibregl-popup-tip {
+  @apply !border-[5px];
 }
 
 /* React Quill Rich editor */

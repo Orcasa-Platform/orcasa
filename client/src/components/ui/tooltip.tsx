@@ -17,7 +17,7 @@ const tooltipArrowVariants = cva('', {
   variants: {
     variant: {
       default: 'fill-popover',
-      dark: 'fill-gray-700',
+      dark: 'fill-gray-800',
     },
   },
   defaultVariants: {
@@ -44,7 +44,7 @@ const tooltipContentVariants = cva(
     variants: {
       variant: {
         default: 'rounded-md bg-popover px-3 py-1.5 text-sm',
-        dark: 'rounded backdrop-blur-sm bg-gray-700 border-gray-700 p-3 text-xs text-white',
+        dark: 'rounded backdrop-blur-sm bg-gray-800 border-gray-800 p-2 text-xs text-white',
       },
     },
     defaultVariants: {

@@ -15,7 +15,7 @@ export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({
         [className]: !!className,
       })}
     >
-      {!!unit && <div className="mb-1 flex justify-end text-xs text-gray-500">{unit}</div>}
+      {!!unit && <div className="mb-1 flex justify-end text-2xs text-gray-500">{unit}</div>}
       <ul className="flex w-full">
         {items.map(({ color }) => (
           <li
@@ -34,7 +34,7 @@ export const LegendTypeChoropleth: React.FC<LegendTypeProps> = ({
           <li
             key={`${value}`}
             className={cn({
-              'relative flex-shrink-0 text-center text-xs text-gray-500': true,
+              'relative flex-shrink-0 text-center text-2xs text-gray-500': true,
               'before:absolute before:-top-2 before:left-1/2 before:block before:h-1 before:w-px before:bg-gray-700':
                 value !== undefined && value !== null,
             })}

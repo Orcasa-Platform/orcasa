@@ -24,6 +24,7 @@ module.exports = {
       fontSize: {
         '3.5xl': ['32px', '48px'],
         '3.8xl': ['34px', '50px'],
+        '2xs': ['10px', '16px'],
       },
       colors: {
         main: 'hsl(var(--main))',
@@ -46,6 +47,7 @@ module.exports = {
         gray: {
           50: '#F7F7F9',
           100: '#F0F0F5',
+          150: '#E9EAF0',
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',
@@ -72,6 +74,7 @@ module.exports = {
         green: {
           // Scientific evidence
           700: '#2BB3A7',
+          800: '#3C7481',
         },
         purple: {
           // Datasets
@@ -115,11 +118,6 @@ module.exports = {
       },
       textColor: {
         default: 'hsl(var(--main))',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
         'accordion-down': {

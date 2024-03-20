@@ -25,11 +25,11 @@ const PopupContainer = () => {
       maxWidth="360px"
       onClose={() => setPopup(null)}
     >
-      <div className="p-6 pr-[60px]">
+      <div className="p-2 pl-3 pr-[60px]">
         <Button
           size="icon"
           onClick={() => setPopup(null)}
-          className="absolute right-0 top-0 flex items-center justify-center bg-slate-700 p-0 text-white transition-colors hover:bg-slate-500 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+          className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gray-50 text-gray-700 transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>

@@ -24,11 +24,13 @@ const Basemaps = () => {
 
   return (
     <fieldset>
-      <legend className="font-serif text-lg">Basemap style</legend>
+      <legend className="w-full border-b border-gray-150 pb-1 font-serif text-lg">
+        Basemap style
+      </legend>
       <RadioGroup
         value={basemap}
         onValueChange={onChange}
-        className="mt-4 flex items-center justify-between gap-x-2 p-2"
+        className="mt-4 flex justify-between gap-x-2 px-1 pt-1"
       >
         {BASEMAPS.map((basemap) => (
           <Fragment key={basemap.value}>
@@ -38,7 +40,7 @@ const Basemaps = () => {
               variant="naked"
               className="cursor-pointer overflow-hidden"
             >
-              <Image src={basemap.preview} alt={basemap.alt} width={64} height={88} />
+              <Image src={basemap.preview} alt={basemap.alt} width={80} height={72} />
             </RadioGroupItem>
             <Label variant={'default'} className="sr-only text-base" htmlFor={basemap.value}>
               {basemap.alt}

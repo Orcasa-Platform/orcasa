@@ -9,11 +9,6 @@ export const BASEMAPS = [
     value: 'basemap-light',
     preview: '/assets/images/basemap-light.png',
   },
-  {
-    alt: 'Relief basemap',
-    value: 'basemap-relief',
-    preview: '/assets/images/basemap-relief.png',
-  },
 ];
 
 export const LABELS = [
