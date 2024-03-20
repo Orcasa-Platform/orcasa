@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import Image from 'next/image';
 
@@ -66,7 +66,6 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
   const { title, short_description: shortDescription } = attributes || {};
   const searchParams = useMapSearchParams();
   const ref = useRef<HTMLDivElement>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
   const isOverTwoLines = useIsOverTwoLines(ref, true);
 
   return (
@@ -78,19 +77,11 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
           <div
             ref={ref}
             className={cn('leading-7', {
-              'line-clamp-2': !isExpanded && isOverTwoLines,
+              'line-clamp-2': isOverTwoLines,
             })}
           >
             {shortDescription}
           </div>
-          {isOverTwoLines && (
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="w-fit text-left text-sm font-semibold text-brown-500"
-            >
-              {isExpanded ? 'Show less' : 'Show more'}
-            </button>
-          )}
         </header>
         <div className="flex items-center justify-end">
           <SlidingLinkButton
