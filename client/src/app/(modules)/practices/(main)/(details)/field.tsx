@@ -90,8 +90,11 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
 
   const renderField = () => {
     if (logo) {
-      if (value === 'WOCAT')
+      if (value === 'WOCAT') {
         return <img className="h-6 w-[110px]" src="/assets/logos/wocat.png" alt="WOCAT logo" />;
+      } else if (value === 'FAO') {
+        return <img className="h-[44px]" src="/assets/logos/fao.svg" alt="FAO logo" />;
+      }
     }
 
     return url ? (
