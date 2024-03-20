@@ -4,7 +4,7 @@ type MainIntervention = 'Management' | 'Land Use Change';
 export type SourceName = 'FAO' | 'WOCAT';
 
 export interface PracticesDropdownFilters {
-  country: number[];
+  countries: number[];
   year: number[];
   landUseTypes: number[] | undefined;
   priorLandUseTypes: number[] | undefined;
@@ -23,7 +23,7 @@ export const usePracticesFilterSidebarOpen = () => {
 };
 
 const filtersAtom = atom<PracticesFilters>({
-  country: [],
+  countries: [],
   year: [],
   priorLandUseTypes: undefined,
   landUseTypes: undefined,
