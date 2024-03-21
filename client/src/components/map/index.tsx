@@ -91,7 +91,7 @@ export const MapMapbox: FC<CustomMapProps> = ({
   );
 
   const handleMapLoad = useCallback(
-    (e: MapEvent<unknown>) => {
+    (e: MapEvent<undefined>) => {
       setLoaded(true);
 
       if (onLoad) {

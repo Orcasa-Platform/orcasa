@@ -154,11 +154,11 @@ export default function MapContainer() {
     (e: MapLayerMouseEvent) => {
       // Check if a cluster was clicked
       const features = map?.queryRenderedFeatures(e.point);
-      if (features?.length && features.some((f) => f.properties.cluster)) {
+      if (features?.length && features.some((f) => f.properties?.cluster)) {
         // Get the cluster ID
-        const clusterFeature = features.find((f) => f.properties.cluster_id);
-        const clusterId = clusterFeature?.properties.cluster_id;
-        const id = clusterFeature?.layer?.source;
+        const clusterFeature = features.find((f) => f.properties?.cluster_id);
+        const clusterId = clusterFeature?.properties?.cluster_id;
+        const id = clusterFeature?.layer?.source as string;
 
         // Get the zoom level at which the cluster expands
         if (map && clusterId && id) {
