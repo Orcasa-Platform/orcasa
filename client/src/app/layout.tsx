@@ -11,7 +11,7 @@ import { cn } from '@/lib/classnames';
 
 import Providers from '@/app/layout-providers';
 
-import DefaultBasemap from '@/containers/default-basemap';
+import DefaultMapSettings from '@/containers/default-map-settings';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Use suspense to render client component without deopting pages
           https://nextjs.org/docs/messages/deopted-into-client-rendering */}
           <Suspense fallback={null}>
-            <DefaultBasemap />
+            <DefaultMapSettings />
           </Suspense>
           {children}
         </body>
