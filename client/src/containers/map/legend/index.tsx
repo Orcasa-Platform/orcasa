@@ -127,7 +127,11 @@ const MapLegends = ({ className = '' }) => {
   ]);
 
   return (
-    <div className="absolute bottom-8 right-6 z-10 w-full max-w-xs">
+    <div
+      className={cn('absolute bottom-8 right-6 z-10 w-full max-w-xs', {
+        'w-32': isPracticesPage,
+      })}
+    >
       <Legend
         className={cn(
           'max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]',
@@ -137,6 +141,7 @@ const MapLegends = ({ className = '' }) => {
           enabled: sortable,
           handle: true,
         }}
+        hideToggle={isPracticesPage}
         onChangeOrder={handleChangeOrder}
       >
         {ITEMS}

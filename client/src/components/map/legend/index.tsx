@@ -15,6 +15,7 @@ export const Legend: React.FC<LegendProps> = ({
   className = '',
   sortable,
   onChangeOrder,
+  hideToggle,
 }: LegendProps) => {
   const [opened, setOpened] = useState(true);
 
@@ -35,26 +36,28 @@ export const Legend: React.FC<LegendProps> = ({
         [className]: !!className,
       })}
     >
-      <CollapsibleTrigger asChild>
-        <Button
-          type="button"
-          variant="legend"
-          size="xs"
-          className={cn(
-            'self-end rounded-lg font-medium hover:bg-gray-500 focus-visible:ring-offset-0',
-            {
-              'rounded-b-none': opened,
-            },
-          )}
-        >
-          <ChevronUp
-            className={cn('mr-2 h-4 w-4 transition-transform duration-200', {
-              'rotate-180': opened,
-            })}
-          />
-          <span className="text-2xs tracking-wide">{opened ? 'Hide legend' : 'Show legend'}</span>
-        </Button>
-      </CollapsibleTrigger>
+      {!hideToggle && (
+        <CollapsibleTrigger asChild>
+          <Button
+            type="button"
+            variant="legend"
+            size="xs"
+            className={cn(
+              'self-end rounded-lg font-medium hover:bg-gray-500 focus-visible:ring-offset-0',
+              {
+                'rounded-b-none': opened,
+              },
+            )}
+          >
+            <ChevronUp
+              className={cn('mr-2 h-4 w-4 transition-transform duration-200', {
+                'rotate-180': opened,
+              })}
+            />
+            <span className="text-2xs tracking-wide">{opened ? 'Hide legend' : 'Show legend'}</span>
+          </Button>
+        </CollapsibleTrigger>
+      )}
       <CollapsibleContent className="relative -mx-1 flex h-full flex-col overflow-hidden rounded-lg rounded-tr-none">
         <div className="overflow-y-auto overflow-x-hidden px-1">
           {!!sortable.enabled && !!onChangeOrder && (
