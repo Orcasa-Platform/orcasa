@@ -3,13 +3,7 @@
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 
-import {
-  LngLatBoundsLike,
-  MapLayerMouseEvent,
-  useMap,
-  MapStyle,
-  GeoJSONSource,
-} from 'react-map-gl';
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap, GeoJSONSource } from 'react-map-gl';
 
 import dynamic from 'next/dynamic';
 
@@ -40,7 +34,6 @@ import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
 import Attribution from './attribution';
-import mapStyle from './map-style.json';
 const LayerManager = dynamic(() => import('@/containers/map/layer-manager'), {
   ssr: false,
 });
@@ -227,7 +220,7 @@ export default function MapContainer() {
         initialViewState={initialViewState}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={mapStyle as MapStyle}
+        mapStyle="mapbox://styles/orcasa/clu14cfkp01nx01nrc851220b"
         interactiveLayerIds={layersInteractiveIds.map((id) => id.toString())}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
