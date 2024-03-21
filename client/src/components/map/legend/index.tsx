@@ -38,7 +38,7 @@ export const Legend: React.FC<LegendProps> = ({
       <CollapsibleTrigger asChild>
         <Button
           type="button"
-          variant="primary"
+          variant="legend"
           size="xs"
           className={cn(
             'self-end rounded-lg font-medium hover:bg-gray-500 focus-visible:ring-offset-0',
