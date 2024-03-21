@@ -1,12 +1,18 @@
 'use client';
 
+import { useRef } from 'react';
+
 import Image from 'next/image';
 
 import { ArrowRight } from 'lucide-react';
 
+import { cn } from '@/lib/classnames';
+
 import { useMapSearchParams } from '@/store';
 
 import type { Practice, PracticeListResponseDataItem } from '@/types/generated/strapi.schemas';
+
+import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
@@ -15,7 +21,6 @@ import { TypedPractice } from './types';
 
 const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   if (!attributes) return null;
-
   const { countries, language, source_name } = attributes;
   const countriesNames = countries?.data?.map((country) => country?.attributes?.name).join(', ');
 
@@ -43,6 +48,8 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 export default function Practice({ id, attributes }: PracticeListResponseDataItem) {
   const { title, short_description: shortDescription } = attributes || {};
   const searchParams = useMapSearchParams();
+  const ref = useRef<HTMLParagraphElement>(null);
+  const isOverTwoLines = useIsOverTwoLines(ref, true);
 
   return (
     <li key={id} className="mb-2 flex min-h-[252px] w-full gap-4 rounded-lg bg-gray-50">
@@ -50,7 +57,14 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
         <header className="flex flex-col gap-4">
           <Icons attributes={attributes as TypedPractice} />
           <div className="font-serif text-lg leading-7 text-gray-700">{title}</div>
-          <p className="text-xs leading-5">{shortDescription}</p>
+          <p
+            ref={ref}
+            className={cn('text-xs leading-5', {
+              'line-clamp-2': isOverTwoLines,
+            })}
+          >
+            {shortDescription}
+          </p>
         </header>
         <div className="flex items-center justify-end">
           <SlidingLinkButton
