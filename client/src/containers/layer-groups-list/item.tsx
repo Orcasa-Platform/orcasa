@@ -13,7 +13,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import Layers from './layers';
