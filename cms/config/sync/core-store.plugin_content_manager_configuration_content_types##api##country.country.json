@@ -192,21 +192,6 @@
           "sortable": false
         }
       },
-      "testimonies": {
-        "edit": {
-          "label": "Testimonies",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "name"
-        },
-        "list": {
-          "label": "Testimonies",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -333,10 +318,6 @@
         [
           {
             "name": "practices",
-            "size": 6
-          },
-          {
-            "name": "testimonies",
             "size": 6
           }
         ]
