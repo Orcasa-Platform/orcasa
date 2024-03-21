@@ -1,6 +1,4 @@
-import { AnySource } from 'react-map-gl';
-
-import { MapStyle } from 'react-map-gl/maplibre';
+import { AnySource, MapStyle } from 'react-map-gl';
 
 import { FormatProps } from '@/lib/utils/formats';
 

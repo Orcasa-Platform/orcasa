@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo } from 'react';
 
+import { MapLayerMouseEvent } from 'react-map-gl';
+
 import { atom, useAtom } from 'jotai';
 import { parseAsJson, useQueryState } from 'next-usequerystate';
-import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 
 // MAP
 

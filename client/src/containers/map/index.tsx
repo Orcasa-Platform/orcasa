@@ -3,16 +3,19 @@
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 
-import dynamic from 'next/dynamic';
-
 import {
   LngLatBoundsLike,
   MapLayerMouseEvent,
   useMap,
   MapStyle,
   GeoJSONSource,
-} from 'react-map-gl/maplibre';
+} from 'react-map-gl';
+
+import dynamic from 'next/dynamic';
+
 import { usePreviousImmediate } from 'rooks';
+
+import env from '@/env.mjs';
 
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 import { getCroppedBounds } from '@/lib/utils/map';
@@ -219,6 +222,7 @@ export default function MapContainer() {
   return (
     <div className="absolute bottom-2 left-[90px] top-2 h-[calc(100vh-16px)] w-[calc(100vw-98px)] overflow-hidden rounded-lg">
       <Map
+        mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         id={id}
         initialViewState={initialViewState}
         minZoom={minZoom}

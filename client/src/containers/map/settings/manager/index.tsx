@@ -1,13 +1,14 @@
 import { useCallback, useEffect } from 'react';
 
-import type { LayerSpecification } from 'maplibre-gl';
-import { useMap } from 'react-map-gl/maplibre';
+import { useMap } from 'react-map-gl';
+
+import type { AnyLayer } from 'mapbox-gl';
 
 import { useMapSettings } from '@/store/index';
 
 import { LABELS } from '@/constants/basemaps';
 
-type AnyLayerWithMetadata = LayerSpecification & {
+type AnyLayerWithMetadata = AnyLayer & {
   metadata: Record<string, unknown>;
 };
 

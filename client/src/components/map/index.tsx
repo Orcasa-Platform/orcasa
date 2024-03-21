@@ -1,15 +1,11 @@
 'use client';
 
-import 'maplibre-gl/dist/maplibre-gl.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { useEffect, useState, useCallback, FC } from 'react';
 
-import ReactMapGL, {
-  ViewState,
-  ViewStateChangeEvent,
-  MapEvent,
-  useMap,
-} from 'react-map-gl/maplibre';
+import ReactMapGL, { ViewState, ViewStateChangeEvent, MapEvent, useMap } from 'react-map-gl';
+
 import { useDebounce } from 'rooks';
 
 import { cn } from '@/lib/classnames';

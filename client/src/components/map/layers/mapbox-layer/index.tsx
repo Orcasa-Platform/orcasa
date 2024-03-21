@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { Source, Layer, SourceProps } from 'react-map-gl/maplibre';
+import { Source, Layer, SourceProps } from 'react-map-gl';
 
 import { Config, LayerProps } from '@/types/layers';
 

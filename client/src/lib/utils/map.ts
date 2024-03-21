@@ -1,5 +1,6 @@
-import { PaddingOptions, LngLatBounds, LngLatLike } from 'maplibre-gl';
-import { Point } from 'react-map-gl/maplibre';
+import { Point } from 'react-map-gl';
+
+import { PaddingOptions, LngLatBounds, LngLatLike } from 'mapbox-gl';
 
 /**
  * Return bounds which have been cropped based on padding values

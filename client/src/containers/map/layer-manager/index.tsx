@@ -1,8 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { Layer } from 'react-map-gl';
 
-import { Layer } from 'react-map-gl/maplibre';
+import { usePathname } from 'next/navigation';
 
 import { useLayers, useLayersSettings } from '@/store';
 

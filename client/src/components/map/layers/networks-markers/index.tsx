@@ -1,8 +1,9 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 
+import { Marker, useMap } from 'react-map-gl';
+
 import { usePathname } from 'next/navigation';
 
-import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
 import { cn } from '@/lib/classnames';
