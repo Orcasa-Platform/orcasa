@@ -85,17 +85,18 @@ export default function PracticesModule() {
         <Search
           containerClassName="basis-full"
           defaultValue={filters.search}
+          placeholder="Search practice"
           onChange={(keywords) => setFilters({ ...filters, search: keywords })}
         />
         <Button
           ref={filtersButtonRef}
           type="button"
           variant="primary"
-          className="group shrink-0 bg-brown-500 text-base hover:bg-brown-900"
+          className="group shrink-0"
           aria-pressed={filterSidebarOpen}
           onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
         >
-          <Filter className="mr-4 h-6 w-6" />
+          <Filter className="mr-2 h-6 w-6" />
           Filters
           {filtersCount > 0 && (
             <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-brown-800 font-semibold transition group-hover:bg-gray-900">
@@ -104,7 +105,7 @@ export default function PracticesModule() {
           )}
         </Button>
       </div>
-      <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
+      <div className="text-sm text-gray-200">
         {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">

@@ -30,7 +30,7 @@ const SlidingLinkButton = React.forwardRef<
         >
           <Icon
             className={cn({
-              'mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 transition-colors group-hover:bg-slate-700 group-hover:text-white group-focus:bg-slate-700 group-focus:text-white':
+              'mr-[15px] h-[32px] w-[32px] rounded-lg bg-gray-100 px-2 transition-colors group-hover:bg-green-700 group-hover:text-white group-focus:bg-green-700 group-focus:text-white':
                 true,
               [buttonClassName ?? '']: !!buttonClassName,
             })}
@@ -44,7 +44,7 @@ const SlidingLinkButton = React.forwardRef<
                   isCompact,
                 '-translate-x-1/3 group-hover:translate-x-0 group-focus:translate-x-0':
                   position === 'left',
-                'translate-x-0 group-hover:-translate-x-1/3 group-focus:-translate-x-1/3':
+                'translate-x-0 group-hover:-translate-x-1/4 group-focus:-translate-x-1/4':
                   position === 'right',
               },
             )}

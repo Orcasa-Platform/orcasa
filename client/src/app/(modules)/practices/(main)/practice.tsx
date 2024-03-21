@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { useMapSearchParams } from '@/store';
 
@@ -10,8 +10,6 @@ import type { Practice, PracticeListResponseDataItem } from '@/types/generated/s
 
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-import GlobeIcon from '@/styles/icons/globe.svg';
-import LanguageIcon from '@/styles/icons/language.svg';
 
 import { TypedPractice } from './types';
 
@@ -22,17 +20,12 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   const countriesNames = countries?.data?.map((country) => country?.attributes?.name).join(', ');
 
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-2">
-      <div className="flex max-w-[200px] items-start gap-2">
-        <GlobeIcon className="mt-0.5 h-6 w-6 min-w-min" />
-        <div className="text-base text-slate-500">
-          {countriesNames && <WithEllipsis triggerClassName="text-start" text={countriesNames} />}
-        </div>
+    <div className="flex flex-wrap gap-x-1 gap-y-2">
+      <div className="flex max-w-[200px] items-center rounded-2xl border border-green-700 px-2 text-2xs text-green-700">
+        {countriesNames && <WithEllipsis triggerClassName="text-start" text={countriesNames} />}
       </div>
-
-      <div className="flex gap-2">
-        <LanguageIcon className="mt-0.5 h-6 w-6 min-w-min" />
-        <div className="text-base uppercase text-slate-500">{language?.join(', ')}</div>
+      <div className="flex items-center rounded-2xl border border-green-700 px-2 text-2xs uppercase text-green-700">
+        {language?.join(', ')}
       </div>
       {source_name === 'WOCAT' && (
         <Image
@@ -52,16 +45,16 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
   const searchParams = useMapSearchParams();
 
   return (
-    <li key={id} className="mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50">
-      <div className="flex w-full flex-col justify-between gap-6 px-12 py-10 text-base text-slate-500">
-        <header className="flex flex-col gap-6">
+    <li key={id} className="mb-2 flex min-h-[252px] w-full gap-4 rounded-lg bg-gray-50">
+      <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-slate-500">
+        <header className="flex flex-col gap-4">
           <Icons attributes={attributes as TypedPractice} />
-          <div className="font-serif text-2xl leading-10 text-gray-700">{title}</div>
-          <p className="leading-7">{shortDescription}</p>
+          <div className="font-serif text-lg leading-7 text-gray-700">{title}</div>
+          <p className="text-xs leading-5">{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
           <SlidingLinkButton
-            Icon={ChevronRight}
+            Icon={ArrowRight}
             position="right"
             href={`/practices/${id}?${searchParams.toString()}`}
             // Next.js has a bug where the sidebar is not scrolled up to the top when navigating but
