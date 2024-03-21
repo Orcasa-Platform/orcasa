@@ -12,7 +12,6 @@ import { usePreviousImmediate } from 'rooks';
 import env from '@/env.mjs';
 
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
-import { getCroppedBounds } from '@/lib/utils/map';
 
 import { useLayersSettings } from '@/store';
 import { useBbox, useLayersInteractive, useLayersInteractiveIds, usePopup } from '@/store';
@@ -140,11 +139,8 @@ export default function MapContainer() {
 
   const handleMapViewStateChange = useCallback(() => {
     if (map) {
-      // By cropping the bounds, we actually get the visible part of the map
       const bounds = map.getBounds();
-      const croppedBounds = getCroppedBounds(bounds, padding, map.project, map.unproject);
-
-      const bbox = croppedBounds
+      const bbox = bounds
         .toArray()
         .flat()
         .map((v: number) => {
@@ -153,7 +149,7 @@ export default function MapContainer() {
 
       setBbox(bbox);
     }
-  }, [map, padding, setBbox]);
+  }, [map, setBbox]);
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
