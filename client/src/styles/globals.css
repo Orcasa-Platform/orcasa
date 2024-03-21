@@ -90,6 +90,26 @@
   @apply !border-[5px];
 }
 
+.mapboxgl-ctrl-bottom-right {
+  @apply max-w-[65%];
+}
+
+.mapboxgl-ctrl-attrib {
+  @apply !px-1 !py-px font-sans font-medium text-white !bg-gray-800/80 text-2xs;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact {
+  @apply !rounded-md;
+}
+
+.mapboxgl-ctrl-attrib a {
+  @apply !text-white;
+}
+
+.mapboxgl-ctrl-attrib-button {
+  @apply !static !bg-white/50;
+}
+
 /* React Quill Rich editor */
 .ql-toolbar.ql-snow {
   @apply border-gray-300 !important;

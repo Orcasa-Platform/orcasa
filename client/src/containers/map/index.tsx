@@ -32,7 +32,6 @@ import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
-import Attribution from './attribution';
 const LayerManager = dynamic(() => import('@/containers/map/layer-manager'), {
   ssr: false,
 });
@@ -231,7 +230,6 @@ export default function MapContainer() {
             </Controls>
 
             <LayerManager />
-            <Attribution />
             <Popup />
 
             <MapSettingsManager />
