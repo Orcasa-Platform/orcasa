@@ -1,4 +1,5 @@
 import Basemaps from './basemaps';
+import Boundaries from './boundaries';
 import Labels from './labels';
 
 const MapSettings = () => {
@@ -7,6 +8,7 @@ const MapSettings = () => {
       <h1 className="font-serif text-xl">Map settings</h1>
       <Basemaps />
       <Labels />
+      <Boundaries />
     </div>
   );
 };

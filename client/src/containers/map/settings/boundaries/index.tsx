@@ -2,20 +2,20 @@ import { useCallback } from 'react';
 
 import { useMapSettings } from '@/store/index';
 
-import { LABELS } from '@/constants/basemaps';
+import { BOUNDARIES } from '@/constants/basemaps';
 
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Switch } from '@/components/ui/switch';
 
-const Labels = () => {
-  const [{ labels }, setMapSettings] = useMapSettings();
+const Boundaries = () => {
+  const [{ boundaries }, setMapSettings] = useMapSettings();
 
   const onChange = useCallback(
-    (labelsSlug: string) => {
+    (boundariesSlug: string) => {
       setMapSettings((prev) => ({
         ...prev,
-        labels: labelsSlug,
+        boundaries: boundariesSlug,
       }));
     },
     [setMapSettings],
@@ -25,7 +25,7 @@ const Labels = () => {
     (toggled: boolean) => {
       setMapSettings((prev) => ({
         ...prev,
-        labels: toggled ? LABELS[0].slug : null,
+        boundaries: toggled ? BOUNDARIES[0].slug : null,
       }));
     },
     [setMapSettings],
@@ -34,26 +34,26 @@ const Labels = () => {
   return (
     <div className="space-y-4">
       <div className="flex w-full items-center justify-between border-b border-gray-150 pb-1">
-        <Label htmlFor="labels-switch" className="font-serif text-lg">
-          Labels
+        <Label htmlFor="boundaries-switch" className="font-serif text-lg">
+          Boundaries
         </Label>
-        <Switch id="labels-switch" checked={labels !== null} onCheckedChange={onToggle} />
+        <Switch id="boundaries-switch" checked={boundaries !== null} onCheckedChange={onToggle} />
       </div>
       <RadioGroup
-        value={labels ?? LABELS[0].slug}
+        value={boundaries ?? BOUNDARIES[0].slug}
         onValueChange={onChange}
-        disabled={labels === null}
+        disabled={boundaries === null}
         className="flex gap-4"
       >
-        {LABELS.map(({ label, slug }) => (
+        {BOUNDARIES.map(({ label: boundary, slug }) => (
           <div key={slug} className="group flex cursor-pointer items-center space-x-2">
-            <RadioGroupItem value={slug} id={`labels-${slug}`} />
+            <RadioGroupItem value={slug} id={`boundaries-${slug}`} />
             <Label
-              variant={labels === null ? 'disabled' : 'default'}
+              variant={boundaries === null ? 'disabled' : 'default'}
               className="text-base"
-              htmlFor={`labels-${slug}`}
+              htmlFor={`boundaries-${slug}`}
             >
-              {label}
+              {boundary}
             </Label>
           </div>
         ))}
@@ -62,4 +62,4 @@ const Labels = () => {
   );
 };
 
-export default Labels;
+export default Boundaries;

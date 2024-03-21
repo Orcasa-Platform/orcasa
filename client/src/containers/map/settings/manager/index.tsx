@@ -6,7 +6,7 @@ import type { AnyLayer } from 'mapbox-gl';
 
 import { useMapSettings } from '@/store/index';
 
-import { LABELS } from '@/constants/basemaps';
+import { BOUNDARIES, LABELS } from '@/constants/basemaps';
 
 type AnyLayerWithMetadata = AnyLayer & {
   metadata: Record<string, unknown>;
@@ -15,7 +15,7 @@ type AnyLayerWithMetadata = AnyLayer & {
 const MapSettingsManager = () => {
   const { default: mapRef } = useMap();
   const loaded = mapRef?.loaded();
-  const [{ basemap, labels }] = useMapSettings();
+  const [{ basemap, boundaries, labels }] = useMapSettings();
 
   const handleGroup = useCallback(
     (groups: string[], groupId: string, visible = true) => {
@@ -63,7 +63,12 @@ const MapSettingsManager = () => {
       handleGroup(['basemap'], basemap);
     }
     handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
-  }, [basemap, labels, handleGroup]);
+    handleGroup(
+      ['boundaries'],
+      `boundaries-${boundaries ?? BOUNDARIES[0].slug}`,
+      boundaries !== null,
+    );
+  }, [basemap, boundaries, labels, handleGroup]);
 
   // * handle style load
   useEffect(() => {
@@ -75,7 +80,7 @@ const MapSettingsManager = () => {
     };
   }, [mapRef, loaded, handleStyleLoad]);
 
-  // * handle basemap, labels
+  // * handle basemap, boundaries, labels
   useEffect(() => {
     if (!mapRef) return;
     if (basemap) {
@@ -83,7 +88,12 @@ const MapSettingsManager = () => {
     }
 
     handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
-  }, [mapRef, loaded, basemap, labels, handleGroup]);
+    handleGroup(
+      ['boundaries'],
+      `boundaries-${boundaries ?? BOUNDARIES[0].slug}`,
+      boundaries !== null,
+    );
+  }, [mapRef, loaded, basemap, boundaries, labels, handleGroup]);
 
   return null;
 };
