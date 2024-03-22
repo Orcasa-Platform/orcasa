@@ -248,10 +248,11 @@ const ModulesSection = () => (
           <div className="h-2 w-20 bg-teal-500" />
           <div className="text-center text-gray-700 lg:w-[600px]">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
-            altogether actors and experts of the soil carbon community.
+            together the soil carbon community.
             <br />
-            It provides key information on the latest researches and their results, including
-            methodologies for soil carbon balance monitoring, practices, networks, and data.
+            It is a source of key information and the latest research findings and results,
+            including methodologies for soil carbon balance monitoring, practices, networks, and
+            datasets.
           </div>
         </div>
       </div>

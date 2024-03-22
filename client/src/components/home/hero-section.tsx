@@ -57,13 +57,9 @@ const HeroSection = () => {
           {renderHeroImage(true)}
           <div className="lg:w-[476px]">
             <span className="text-base leading-normal text-slate-700">
-              Currently, one-third of the global soils are degraded and depleted in carbon. This is
-              why
-            </span>
-            <span className="text-slate-700">
-              {' '}
-              the Impact4Soil platform is here, to drive cooperation and knowledge sharing on soil
-              carbon at an international level.
+              Currently, one-third of global soils are degraded and depleted in carbon. The
+              Impact4Soil platform is here to drive cooperation and knowledge sharing on soil carbon
+              at an international level.
             </span>
           </div>
           <Button variant="primary" asChild className="mt-10 w-[calc(100%-50px)] lg:w-auto">
