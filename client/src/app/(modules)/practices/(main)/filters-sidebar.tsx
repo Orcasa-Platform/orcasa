@@ -20,6 +20,7 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
+import Reset from '@/styles/icons/reset.svg';
 
 const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
@@ -29,6 +30,7 @@ const SelectFilter = ({
   label,
   disabled,
   multiple,
+  placeholder,
   setFilters,
   practicesFiltersOptions,
   filters,
@@ -38,6 +40,7 @@ const SelectFilter = ({
   label: string;
   disabled?: boolean;
   multiple?: boolean;
+  placeholder?: string;
   setFilters: (filters: ReturnType<typeof usePracticesFilters>[0]) => void;
   practicesFiltersOptions: ReturnType<typeof usePracticesFiltersOptions>;
   filters: ReturnType<typeof usePracticesFilters>[0];
@@ -82,9 +85,9 @@ const SelectFilter = ({
   );
   const select = !multiple ? (
     <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
-      <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12">
+      <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-10">
         <SelectValue>
-          <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
+          <span className="text-sm">{selectedLabel ? selectedLabel : placeholder || 'All'}</span>
         </SelectValue>
       </SelectTrigger>
       <SelectContent className="w-[var(--radix-select-trigger-width)]">
@@ -113,14 +116,14 @@ const SelectFilter = ({
         })
       }
       disabled={disabled}
-      className="!mt-0 max-w-[284px] capitalize"
+      className="!mt-0 capitalize"
       showSelected
     />
   );
 
   return (
     <>
-      <label htmlFor={toKebabCase(type)} className="block text-sm font-medium text-gray-700">
+      <label htmlFor={toKebabCase(type)} className="block text-sm text-gray-200">
         {label}
       </label>
       {disabled ? (
@@ -170,34 +173,32 @@ export default function FiltersSidebar() {
       // `inert` is not yet supported by React so that's why it is spread below:
       // https://github.com/facebook/react/issues/17157
       {...(!filterSidebarOpen ? { inert: '' } : {})}
-      className={cn('absolute left-full top-0 -z-10 h-full w-[380px] bg-white duration-500', {
+      className={cn('absolute left-full top-0 -z-10 h-full w-[380px] bg-gray-700 duration-500', {
         '-translate-x-full': !filterSidebarOpen,
         'translate-x-0': filterSidebarOpen,
       })}
     >
       <div
         ref={scrollableContainerRef}
-        className="flex h-full flex-col gap-y-10 overflow-y-auto p-12"
+        className="flex h-full flex-col gap-y-10 overflow-y-auto p-10 pt-4"
       >
         <Button
           ref={closeButtonRef}
           type="button"
-          variant="primary"
           size="icon"
-          className="absolute right-0 top-0"
+          className="absolute right-6 top-4"
           onClick={() => setFilterSidebarOpen(false)}
         >
           <span className="sr-only">Close</span>
-          <X className="h-6 w-6" />
+          <X className="h-4 w-4" />
         </Button>
-        <h1 className="mb-6 font-serif text-3.8xl">Filters</h1>
+        <h2 className="mb-6 font-serif text-2xl text-yellow-500">Filters</h2>
         <div className="flex flex-col gap-y-10">
           <fieldset className="relative">
             <Button
               type="button"
-              variant="vanilla"
-              size="auto"
-              className="absolute bottom-full left-0 -translate-y-4 text-base font-semibold text-brown-500 hover:text-brown-800 disabled:text-gray-300 disabled:opacity-100"
+              size="xs"
+              className="absolute bottom-full left-0 flex -translate-y-4 items-center gap-1 rounded-2xl text-sm text-gray-50 hover:bg-gray-500 disabled:text-gray-300 disabled:opacity-100"
               onClick={() =>
                 setFilters({
                   ...filters,
@@ -212,37 +213,56 @@ export default function FiltersSidebar() {
               }
             >
               Reset all
+              <Reset className="h-5 w-5" />
             </Button>
             <div className="space-y-4">
-              <MultiCombobox
-                id="source"
-                key="source"
-                name="Source"
-                variant="practices"
-                value={filters.sourceName ?? []}
-                options={practicesFiltersOptions.sourceName}
-                onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
-              />
-              <MultiCombobox
-                id="country"
-                key="country"
-                name="Country"
-                variant="practices"
-                value={filters.country ?? []}
-                options={practicesFiltersOptions.country}
-                onChange={(value) => setFilters({ ...filters, country: value as number[] })}
-              />
-              <MultiCombobox
-                id="published-year"
-                name="Published on year"
-                variant="practices"
-                value={filters.year ?? []}
-                options={practicesFiltersOptions.year}
-                onChange={(value) => setFilters({ ...filters, year: value as number[] })}
-              />
+              <div>
+                <label htmlFor="source" className="text-sm text-gray-200">
+                  Sources
+                </label>
+                <MultiCombobox
+                  id="source"
+                  key="source"
+                  name="Source"
+                  placeholder="Select"
+                  value={filters.sourceName ?? []}
+                  options={practicesFiltersOptions.sourceName}
+                  onChange={(value) =>
+                    setFilters({ ...filters, sourceName: value as SourceName[] })
+                  }
+                />
+              </div>
+              <div>
+                <label htmlFor="country" className="text-sm text-gray-200">
+                  Country
+                </label>
+                <MultiCombobox
+                  id="country"
+                  key="country"
+                  name="Country"
+                  placeholder="Select"
+                  value={filters.country ?? []}
+                  options={practicesFiltersOptions.country}
+                  onChange={(value) => setFilters({ ...filters, country: value as number[] })}
+                />
+              </div>
+              <div>
+                <label htmlFor="published-year" className="text-sm text-gray-200">
+                  Published year
+                </label>
+                <MultiCombobox
+                  id="published-year"
+                  name="Published on year"
+                  placeholder="Select"
+                  value={filters.year ?? []}
+                  options={practicesFiltersOptions.year}
+                  onChange={(value) => setFilters({ ...filters, year: value as number[] })}
+                />
+              </div>
               <SelectFilter
                 type="mainIntervention"
                 label="Main intervention"
+                placeholder="Select"
                 setFilters={setFilters}
                 practicesFiltersOptions={practicesFiltersOptions}
                 filters={filters}

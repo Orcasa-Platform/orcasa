@@ -48,6 +48,7 @@ export interface ComboboxProps<T> {
   value: T[];
   options: { label: string; value: T; disabled?: boolean; description?: string }[];
   onChange: (value: T[]) => void;
+  placeholder?: string;
   disabled?: boolean;
   ariaDescribedBy?: string;
   ariaInvalid?: boolean;
@@ -63,6 +64,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
   value,
   options,
   onChange,
+  placeholder,
   disabled = false,
   ariaDescribedBy,
   ariaInvalid,
@@ -137,7 +139,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             variant="vanilla"
             size="auto"
             className={cn(
-              'relative w-full justify-between border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]',
+              'relative h-10 w-full justify-between rounded-lg border border-gray-300 px-4 py-2 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]',
             )}
             title={selectedLabels}
             onClick={() => setOpen(true)}
@@ -147,10 +149,12 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
               <span className={cn({ 'max-h-14 max-w-full truncate capitalize': showSelected })}>
                 {selectedLabels}
               </span>
+            ) : value.length > 0 ? (
+              `${name} (${value.length})`
             ) : (
-              `${name}${value.length > 0 ? ` (${value.length})` : ''}`
+              placeholder ?? name
             )}
-            <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
+            <ChevronDown className="absolute right-4 top-2 h-6 w-6 flex-shrink-0" />
           </Button>
         )}
         {open && (

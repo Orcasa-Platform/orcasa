@@ -106,8 +106,8 @@ export default function NetworkModule() {
         <Button
           ref={filtersButtonRef}
           type="button"
-          variant="primary"
-          className="group shrink-0 bg-blue-500 text-base hover:bg-blue-900"
+          variant={filterSidebarOpen ? 'filters' : 'primary'}
+          className="group shrink-0 transition-colors duration-500"
           aria-pressed={filterSidebarOpen}
           onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
         >

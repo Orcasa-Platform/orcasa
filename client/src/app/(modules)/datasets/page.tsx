@@ -64,7 +64,7 @@ export default function DatasetsModule() {
           <DialogTrigger asChild>
             <Button
               type="button"
-              variant="primary"
+              variant="filters"
               className="group h-auto shrink-0 bg-purple-700 px-4 text-base hover:bg-purple-900"
             >
               <Filter className="mr-4 h-6 w-6" />

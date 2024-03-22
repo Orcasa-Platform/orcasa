@@ -7,11 +7,7 @@ import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
-import {
-  useFiltersCount,
-  usePracticesFilterSidebarOpen,
-  usePracticesFilters,
-} from '@/store/practices';
+import { usePracticesFilterSidebarOpen, usePracticesFilters } from '@/store/practices';
 
 import { useGetPages } from '@/types/generated/page';
 
@@ -36,9 +32,6 @@ export default function PracticesModule() {
 
   const practices = usePractices({ filters });
   const practicesCount = usePracticesCount(filters);
-  // The keywords search is not counted because it's shown in the main sidebar
-  const filtersCount = useFiltersCount(filters, ['search']);
-
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
@@ -91,18 +84,13 @@ export default function PracticesModule() {
         <Button
           ref={filtersButtonRef}
           type="button"
-          variant="primary"
-          className="group shrink-0"
+          variant={filterSidebarOpen ? 'filters' : 'primary'}
+          className="group shrink-0 transition-colors duration-500"
           aria-pressed={filterSidebarOpen}
           onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
         >
           <Filter className="mr-2 h-6 w-6" />
           Filters
-          {filtersCount > 0 && (
-            <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-brown-800 font-semibold transition group-hover:bg-gray-900">
-              {filtersCount}
-            </span>
-          )}
         </Button>
       </div>
       <div className="text-sm text-gray-200">
