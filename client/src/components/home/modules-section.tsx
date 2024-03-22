@@ -248,10 +248,11 @@ const ModulesSection = () => (
           <div className="h-2 w-20 bg-teal-500" />
           <div className="text-center text-gray-700 lg:w-[600px]">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
-            altogether actors and experts of the soil carbon community.
+            together the soil carbon community.
             <br />
-            It provides key information on the latest researches and their results, including
-            methodologies for soil carbon balance monitoring, practices, networks, and data.
+            It is a source of key information and the latest research findings and results,
+            including methodologies for soil carbon balance monitoring, practices, networks, and
+            datasets.
           </div>
         </div>
       </div>
@@ -263,14 +264,14 @@ const ModulesSection = () => (
       <div className="absolute top-0 z-10 flex flex-col items-center pt-10 lg:h-[616px] lg:pt-0">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-24">
           <Card
-            title="Geospatial Data"
+            title="Geospatial data"
             slug="geospatial-data"
             Icon={Globe2}
             bgColorClass="bg-yellow-500"
             textColorClass="text-yellow-500"
           />
           <Card
-            title="Scientific Evidence"
+            title="Scientific evidence"
             slug="scientific-evidence"
             Icon={BarChart}
             bgColorClass="bg-green-700"

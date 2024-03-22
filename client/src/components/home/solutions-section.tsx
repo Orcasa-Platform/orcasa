@@ -22,8 +22,8 @@ const SolutionsSection = () => (
           </div>
           <div className="px-4 lg:w-[374px] lg:px-0">
             <span className="text-slate-700">
-              Impact4Soil is a meeting point for the research and funding soil carbon communities to
-              go further and faster as a collective. It is designed for different types of users:{' '}
+              Impact4Soil is a meeting point for soil carbon research and funding communities to go
+              further and faster as a collective. It is designed for different types of users:{' '}
             </span>
             <span className="font-semibold text-slate-700">
               researchers, policymakers, funding agencies, companies and NGOs.

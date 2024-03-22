@@ -35,9 +35,8 @@ const Footer = () => (
       <div className="flex flex-col items-start justify-center gap-4 lg:flex-row lg:items-center">
         <EuropeFlag className="h-[48px] min-w-[72px]" />
         <div className="max-w-[543px] text-xs leading-[18px] text-gray-300">
-          Impact4Soil has been developed in the framework of ORCaSa project which received funding
-          from the European Union’s Horizon Europe research programme under grant agreement
-          n°101059863.
+          The ORCaSa project has received funding from the European Union’s Horizon Europe research
+          programme under grant agreement n°101059863.
         </div>
       </div>
       <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">

@@ -51,15 +51,16 @@ const RecommendSection = () => {
             </h2>
             {renderImage(true)}
             <div className="w-[90%] text-base text-gray-700 lg:w-[374px]">
-              Carbon Schemes Inventories, or C.S.I., is a new web platform dedicated to providing
-              detailed information about carbon farming schemes in Europe and around the world.
+              Carbon Schemes Inventories, or CSI, is a new web platform dedicated to providing
+              detailed information about carbon farming schemes in Europe and around the world. This
+              platform has been developed in the framework of the EJP Soil Road4Schemes project.
             </div>
             <Button variant="outline" className="flex w-[90%] px-0 pt-2 lg:w-[173px]" asChild>
               <Link
                 href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
                 target="_blank"
               >
-                Visit EJP soil
+                Visit the platform
                 <ExternalLink className="ml-6" />
               </Link>
             </Button>
