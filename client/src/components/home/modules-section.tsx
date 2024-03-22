@@ -263,14 +263,14 @@ const ModulesSection = () => (
       <div className="absolute top-0 z-10 flex flex-col items-center pt-10 lg:h-[616px] lg:pt-0">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-24">
           <Card
-            title="Geospatial Data"
+            title="Geospatial data"
             slug="geospatial-data"
             Icon={Globe2}
             bgColorClass="bg-yellow-500"
             textColorClass="text-yellow-500"
           />
           <Card
-            title="Scientific Evidence"
+            title="Scientific evidence"
             slug="scientific-evidence"
             Icon={BarChart}
             bgColorClass="bg-green-700"
