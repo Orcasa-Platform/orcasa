@@ -11,14 +11,13 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
-const optionVariants = cva('py-4 px-3 flex items-start gap-x-2 group', {
+const optionVariants = cva('py-3 h-10 px-3 flex items-start gap-x-2 group', {
   variants: {
     variant: {
       default: '',
-      'network-organization': 'hover:bg-blue-50 data-[headlessui-state*=active]:bg-blue-50',
-      practices: 'text-gray-700 hover:text-gray-800',
-      'network-initiative': 'hover:bg-peach-50 data-[headlessui-state*=active]:bg-peach-50',
-      datasets: 'hover:bg-purple-50 data-[headlessui-state*=active]:bg-purple-50',
+      // To review
+      'network-organization': '',
+      'network-initiative': '',
     },
   },
   defaultVariants: {
@@ -26,20 +25,22 @@ const optionVariants = cva('py-4 px-3 flex items-start gap-x-2 group', {
   },
 });
 
-const buttonVariants = cva('text-base font-semibold disabled:text-gray-300 disabled:opacity-100', {
-  variants: {
-    variant: {
-      default: '',
-      'network-organization': 'text-blue-500 hover:text-blue-800',
-      practices: 'text-brown-500 hover:text-brown-800',
-      'network-initiative': 'text-peach-700 hover:text-peach-900',
-      datasets: 'text-purple-700 hover:text-purple-900',
+const buttonVariants = cva(
+  'text-base font-semibold text-green-700 hover:text-green-800 disabled:text-gray-300 disabled:opacity-100',
+  {
+    variants: {
+      variant: {
+        default: '',
+        // To review
+        'network-organization': '',
+        'network-initiative': '',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
     },
   },
-  defaultVariants: {
-    variant: 'default',
-  },
-});
+);
 
 export interface ComboboxProps<T> {
   id?: string;
@@ -163,8 +164,8 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
               <TooltipTrigger asChild>
                 <ComboboxPrimitive.Input
                   autoFocus
-                  className="placeholder:font-base w-full border border-gray-400 p-4 pr-12 placeholder:font-sans placeholder:text-gray-400 focus-visible:outline-none focus-visible:outline-gray-400 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  placeholder="Search…"
+                  className="placeholder:font-base h-10 w-full rounded-lg border border-gray-400 bg-gray-700 p-2 pl-4 pr-14 placeholder:text-gray-400 focus-visible:outline-none focus-visible:outline-gray-400 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  placeholder="Search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
@@ -174,7 +175,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                 type="button"
                 variant="vanilla"
                 size="auto"
-                className="absolute right-4 top-4"
+                className="absolute right-4 top-2"
                 onClick={() => setOpen(false)}
                 disabled={disabled}
               >
@@ -184,9 +185,9 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
               <TooltipContent
                 side="bottom"
                 sideOffset={-1}
-                className="max-h-80 w-[var(--radix-tooltip-trigger-width)] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                className="mt-2.5 max-h-80 w-[var(--radix-tooltip-trigger-width)] overflow-y-auto rounded-lg border border-gray-400 bg-gray-650 p-0 text-base shadow-none"
               >
-                <div className="sticky top-0 z-10 flex gap-x-4 border-b border-dashed border-gray-300 bg-white px-3 py-4">
+                <div className="sticky top-0 z-10 flex justify-end gap-x-4 border-b border-gray-400 bg-gray-650 px-3 py-2">
                   {allowSelectAll && (
                     <Button
                       type="button"
@@ -215,7 +216,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                   </Button>
                 </div>
                 {filteredOptions.length === 0 && (
-                  <p className="py-8 text-center text-gray-700">No results</p>
+                  <p className="py-8 text-center text-white">No results</p>
                 )}
                 <ComboboxPrimitive.Options static>
                   {filteredOptions.map((option) => {
@@ -240,7 +241,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                           key={`${isDefaultChecked}-${option.value}`}
                           id={`multi-combobox-option-${option.value}`}
                           defaultChecked={isDefaultChecked}
-                          className="mt-0.5 shrink-0 group-hover:border-gray-900 group-data-[headlessui-state*=active]:border-gray-900"
+                          className="mt-0.5 shrink-0"
                           disabled={option.disabled}
                         />
                         <Label

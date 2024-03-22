@@ -100,7 +100,6 @@ export default function DatasetsModule() {
               <div className="mt-4 grid grid-cols-3 gap-4">
                 <MultiCombobox
                   name="Source"
-                  variant="datasets"
                   value={filters.source ?? []}
                   options={[
                     { label: 'Cirad dataverse', value: DatasetSource.Cirad },

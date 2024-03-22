@@ -10,13 +10,14 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 export const itemVariants = cva(
-  'relative flex cursor-default select-none px-2 py-1 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex-col items-start',
+  'relative flex cursor-default select-none px-2 py-1 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex-col items-start',
   {
     variants: {
       variant: {
-        small: 'text-sm',
+        small: 'text-sm focus:bg-accent',
+        dark: 'h-10 flex justify-between w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-gray-600',
         // To review
-        default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
+        default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-accent',
         'network-organization': 'data-[highsmalled]:bg-blue-50 data-[state=checked]:bg-blue-50',
         practices: 'data-[highsmalled]:bg-gray-700 data-[state=checked]:bg-gray-700',
         'network-initiative': 'data-[highsmalled]:bg-peach-50 data-[state=checked]:bg-peach-50',
@@ -35,6 +36,7 @@ export const contentVariants = cva(
     variants: {
       variant: {
         small: '',
+        dark: 'bg-gray-650 text-white',
         // To review
         default: 'min-w-[8rem] border border-gray-400 ',
       },
@@ -150,7 +152,7 @@ const SelectItem = React.forwardRef<
     }
 >(({ className, children, variant, description, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
-    <div className="flex items-center">
+    <div className="flex w-full items-center justify-between">
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator>
         <Check className="ml-1 h-4 w-4 text-green-700" />

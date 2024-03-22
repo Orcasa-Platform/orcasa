@@ -90,12 +90,23 @@ const SelectFilter = ({
           <span className="text-sm">{selectedLabel ? selectedLabel : placeholder || 'All'}</span>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent className="w-[var(--radix-select-trigger-width)]">
-        <SelectItem key="all" value="all" className="w-full border-b border-dashed border-gray-300">
+      <SelectContent
+        variant="dark"
+        className="w-[var(--radix-select-trigger-width)]"
+        onClick={() => {
+          debugger;
+        }}
+      >
+        <SelectItem variant="dark" key="all" value="all" className="w-full border-gray-300">
           All
         </SelectItem>
         {options.map(({ label, value }) => (
-          <SelectItem key={value} value={String(value)} className="w-full capitalize">
+          <SelectItem
+            variant="dark"
+            key={value}
+            value={String(value)}
+            className="w-full capitalize"
+          >
             {label}
           </SelectItem>
         ))}
@@ -106,7 +117,6 @@ const SelectFilter = ({
       id={toKebabCase(type)}
       key={toKebabCase(type)}
       name={toKebabCase(type)}
-      variant="practices"
       value={filters[type] ? (filters[type] as number[]) : []}
       options={options || []}
       onChange={(value) =>
