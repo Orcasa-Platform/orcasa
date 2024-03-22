@@ -55,10 +55,17 @@ export default function Nav() {
     <div className="js-main-nav absolute left-0 z-50 hidden h-full w-[90px] lg:block">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-gray-800 py-6">
         <Link href="/" className="flex flex-col-reverse items-center justify-center gap-3">
-          <span className="rounded bg-gray-700 px-2 py-[3px] font-sans text-xs font-normal text-white">
+          <span className="rounded bg-gray-700 px-1.5 py-0.5 font-sans text-2xs font-normal text-white">
             Beta
           </span>
-          <Image src="/images/logo.png" width={58} height={58} alt="Impact4Soil" priority />
+          <Image
+            src="/images/logo.png"
+            width={48}
+            height={48}
+            alt="Impact4Soil"
+            priority
+            className="rounded-lg border border-gray-600 p-1"
+          />
           <span className="sr-only">Impact4Soil</span>
         </Link>
         <div className="mx-3 flex flex-col gap-3 py-px">
@@ -77,6 +84,9 @@ export default function Nav() {
             );
           })}
         </div>
+        <Link href="/" className="mt-auto font-serif text-xs font-semibold text-white">
+          Impact4Soil
+        </Link>
       </div>
     </div>
   );
