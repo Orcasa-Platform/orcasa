@@ -12,7 +12,7 @@ const buttonVariants = cva(
       variant: {
         // From the UI kit
         default: 'bg-gray-50 hover:bg-gray-150 rounded-lg',
-        primary: 'bg-gray-700 hover:bg-gray-800 text-white',
+        primary: 'bg-green-700 hover:bg-green-800 text-white rounded-lg',
         vanilla: '',
         outline: 'border border-gray-300 rounded-lg px-6 py-4 hover:bg-gray-150 text-gray-700',
         // Not reviewed yet
