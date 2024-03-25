@@ -9,8 +9,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ImageSlider />
       <ModulesSection />
+      <ImageSlider />
       <SolutionsSection />
       <div
         className="relative !mt-0 h-[605px] w-full bg-cover bg-center bg-no-repeat"
