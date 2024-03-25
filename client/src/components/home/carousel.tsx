@@ -3,16 +3,12 @@
 import React, { useState } from 'react';
 
 import { motion } from 'framer-motion';
-import {
-  ArrowLeft,
-  ArrowRight,
-  Factory,
-  HeartHandshake,
-  Landmark,
-  LucideIcon,
-  Microscope,
-  Scale,
-} from 'lucide-react';
+import { ArrowLeft, ArrowRight, LucideIcon } from 'lucide-react';
+import Factory from 'public/images/factory.svg';
+import HeartHandshake from 'public/images/heart-handshake.svg';
+import Landmark from 'public/images/landmark.svg';
+import Microscope from 'public/images/microscope.svg';
+import Scale from 'public/images/scale.svg';
 
 import { Testimony } from '@/types/generated/strapi.schemas';
 
@@ -54,15 +50,15 @@ const Card = ({ card }: CardProps) => {
 
   return (
     <motion.div
-      className="flex h-[444px] min-w-[373px] max-w-[373px] flex-col justify-between gap-6 border-b-8 border-yellow-500 bg-white p-10 shadow"
+      className="flex h-[444px] min-w-[373px] max-w-[373px] flex-col justify-start gap-6 rounded-lg bg-white p-10 shadow-lg"
       variants={cardVariants}
     >
-      <div className="flex h-12 w-12 items-center justify-center bg-gray-700 p-2">
-        <Icon className="h-12 w-12 text-white" />
+      <div className="flex items-center justify-start">
+        <Icon className="h-10 w-10" />
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: content || '' }}
-        className="text-sm leading-6 text-gray-700"
+        className="flex-grow text-sm leading-[22px] text-gray-500"
       />
       <div>
         <div className="text-gray-700">{name}</div>
@@ -95,7 +91,7 @@ const Carousel = () => {
       {/* For lg up */}
       <div className="hidden overflow-hidden shadow lg:block lg:max-w-[50vw] lg:shadow-none">
         <motion.div
-          className="flex gap-10 lg:w-[50vw]"
+          className="flex gap-10 p-6 lg:w-[50vw]"
           animate={{ x: `-${currentIndex * (CARD_WIDTH + CARD_GAP)}px` }}
           transition={{ ease: 'easeInOut' }}
         >
@@ -105,13 +101,13 @@ const Carousel = () => {
         </motion.div>
       </div>
       {isFetched && testimonies.length > 1 ? (
-        <div className="mt-6 hidden gap-1 lg:flex">
-          <Button variant="outline" className="px-3 py-0" onClick={prevCard}>
+        <div className="mt-6 hidden gap-2 lg:flex">
+          <Button variant="icon-primary" size="icon-sm" onClick={prevCard}>
             <ArrowLeft className="h-4 w-4" />
             <span className="sr-only">Previous testimony</span>
           </Button>
-          <Button variant="outline" className="px-3 py-0" onClick={nextCard}>
-            <ArrowRight className="h-4 w-4" />
+          <Button variant="icon-primary" size="icon-sm" onClick={nextCard}>
+            <ArrowRight className="w- h-4" />
             <span className="sr-only">Next testimony</span>
           </Button>
         </div>

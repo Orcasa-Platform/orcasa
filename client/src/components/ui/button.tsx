@@ -22,6 +22,8 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         icon: '!p-0 !h-6',
+        'icon-primary':
+          'hover:bg-green-700 hover:text-white rounded-lg disabled:bg-gray-150 disabled:text-gray-300',
         'opener-light':
           'bg-white justify-center items-center flex hover:bg-slate-200 rounded-lg rounded-l-none',
         'opener-dark':
