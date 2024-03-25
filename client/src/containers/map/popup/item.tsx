@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useMap } from 'react-map-gl';
+
 import type { Feature } from 'geojson';
 import type { GeoJsonProperties } from 'geojson';
-import { useMap } from 'react-map-gl/maplibre';
 
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 import { format } from '@/lib/utils/formats';

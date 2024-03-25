@@ -3,19 +3,15 @@
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap, GeoJSONSource } from 'react-map-gl';
+
 import dynamic from 'next/dynamic';
 
-import {
-  LngLatBoundsLike,
-  MapLayerMouseEvent,
-  useMap,
-  MapStyle,
-  GeoJSONSource,
-} from 'react-map-gl/maplibre';
 import { usePreviousImmediate } from 'rooks';
 
+import env from '@/env.mjs';
+
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
-import { getCroppedBounds } from '@/lib/utils/map';
 
 import { useLayersSettings } from '@/store';
 import { useBbox, useLayersInteractive, useLayersInteractiveIds, usePopup } from '@/store';
@@ -36,8 +32,6 @@ import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
-import Attribution from './attribution';
-import mapStyle from './map-style.json';
 const LayerManager = dynamic(() => import('@/containers/map/layer-manager'), {
   ssr: false,
 });
@@ -144,11 +138,8 @@ export default function MapContainer() {
 
   const handleMapViewStateChange = useCallback(() => {
     if (map) {
-      // By cropping the bounds, we actually get the visible part of the map
       const bounds = map.getBounds();
-      const croppedBounds = getCroppedBounds(bounds, padding, map.project, map.unproject);
-
-      const bbox = croppedBounds
+      const bbox = bounds
         .toArray()
         .flat()
         .map((v: number) => {
@@ -157,17 +148,17 @@ export default function MapContainer() {
 
       setBbox(bbox);
     }
-  }, [map, padding, setBbox]);
+  }, [map, setBbox]);
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
       // Check if a cluster was clicked
       const features = map?.queryRenderedFeatures(e.point);
-      if (features?.length && features.some((f) => f.properties.cluster)) {
+      if (features?.length && features.some((f) => f.properties?.cluster)) {
         // Get the cluster ID
-        const clusterFeature = features.find((f) => f.properties.cluster_id);
-        const clusterId = clusterFeature?.properties.cluster_id;
-        const id = clusterFeature?.layer?.source;
+        const clusterFeature = features.find((f) => f.properties?.cluster_id);
+        const clusterId = clusterFeature?.properties?.cluster_id;
+        const id = clusterFeature?.layer?.source as string;
 
         // Get the zoom level at which the cluster expands
         if (map && clusterId && id) {
@@ -219,11 +210,12 @@ export default function MapContainer() {
   return (
     <div className="absolute bottom-2 left-[90px] top-2 h-[calc(100vh-16px)] w-[calc(100vw-98px)] overflow-hidden rounded-lg">
       <Map
+        mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         id={id}
         initialViewState={initialViewState}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={mapStyle as MapStyle}
+        mapStyle="mapbox://styles/orcasa/clu14cfkp01nx01nrc851220b"
         interactiveLayerIds={layersInteractiveIds.map((id) => id.toString())}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
@@ -238,7 +230,6 @@ export default function MapContainer() {
             </Controls>
 
             <LayerManager />
-            <Attribution />
             <Popup />
 
             <MapSettingsManager />

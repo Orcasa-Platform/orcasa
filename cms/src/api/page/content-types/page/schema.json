@@ -19,8 +19,7 @@
       "type": "enumeration",
       "enum": [
         "basemap-satellite",
-        "basemap-light",
-        "basemap-relief"
+        "basemap-light"
       ]
     },
     "layer_groups": {
@@ -43,6 +42,20 @@
         "preset": "custom"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "default_labels": {
+      "type": "enumeration",
+      "enum": [
+        "light",
+        "dark"
+      ]
+    },
+    "default_boundaries": {
+      "type": "enumeration",
+      "enum": [
+        "light",
+        "dark"
+      ]
     }
   }
 }

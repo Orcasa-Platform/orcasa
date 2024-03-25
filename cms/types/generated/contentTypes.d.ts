@@ -1280,7 +1280,7 @@ export interface ApiPagePage extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     default_basemap: Attribute.Enumeration<
-      ['basemap-satellite', 'basemap-light', 'basemap-relief']
+      ['basemap-satellite', 'basemap-light']
     >;
     layer_groups: Attribute.Relation<
       'api::page.page',
@@ -1297,6 +1297,8 @@ export interface ApiPagePage extends Schema.CollectionType {
           preset: 'custom';
         }
       >;
+    default_labels: Attribute.Enumeration<['light', 'dark']>;
+    default_boundaries: Attribute.Enumeration<['light', 'dark']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

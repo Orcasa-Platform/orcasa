@@ -23,6 +23,7 @@ export const env = createEnv({
     NEXT_PUBLIC_ENABLE_RESPONSIVE: z.string().optional(),
     NEXT_PUBLIC_MATOMO_SITE_ID: z.string().optional(),
     NEXT_PUBLIC_MATOMO_URL: z.string().optional(),
+    NEXT_PUBLIC_MAPBOX_TOKEN: z.string(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -41,6 +42,7 @@ export const env = createEnv({
     NEXT_PUBLIC_ENABLE_RESPONSIVE: process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE,
     NEXT_PUBLIC_MATOMO_SITE_ID: process.env.NEXT_PUBLIC_MATOMO_SITE_ID,
     NEXT_PUBLIC_MATOMO_URL: process.env.NEXT_PUBLIC_MATOMO_URL,
+    NEXT_PUBLIC_MAPBOX_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
   },
 });
 

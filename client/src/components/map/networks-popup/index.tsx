@@ -1,7 +1,8 @@
+import { Popup } from 'react-map-gl';
+
 import Link from 'next/link';
 
 import { X } from 'lucide-react';
-import { Popup } from 'react-map-gl/maplibre';
 
 import { cn } from '@/lib/classnames';
 

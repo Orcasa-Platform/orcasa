@@ -1,5 +1,6 @@
+import { Popup } from 'react-map-gl';
+
 import { X } from 'lucide-react';
-import { Popup } from 'react-map-gl/maplibre';
 
 import { useLayersInteractive, usePopup } from '@/store/index';
 
