@@ -20,7 +20,7 @@ const buttonVariants = cva(
           'border border-gray-700 px-4 py-2 hover:bg-gray-50 text-gray-700 hover:bg-slate-700 hover:text-white',
         // Not reviewed yet
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50 rounded-lg',
         'button-switch': 'text-white !px-2',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',

@@ -51,14 +51,7 @@ type MarkerProps = {
   onClick?: (type: 'project' | 'organization') => void;
 };
 
-const MarkerComponent = ({
-  id,
-  longitude,
-  latitude,
-  practices,
-  isCluster = false,
-  onClick,
-}: MarkerProps) => (
+const MarkerComponent = ({ id, longitude, latitude, practices, onClick }: MarkerProps) => (
   <Marker key={`marker-${id}`} longitude={longitude} latitude={latitude}>
     {practices.length > 0 && (
       <button
@@ -67,9 +60,10 @@ const MarkerComponent = ({
           e.stopPropagation();
           if (onClick) onClick('organization');
         }}
-        className={cn('flex items-center justify-center bg-brown-500', getSize(practices?.length), {
-          'border-2 border-gray-700': !isCluster,
-        })}
+        className={cn(
+          'flex items-center justify-center rounded-full bg-green-700',
+          getSize(practices?.length),
+        )}
       >
         <div className="text-sm text-white">
           {format({ id: 'formatNumber', value: practices.length })}
