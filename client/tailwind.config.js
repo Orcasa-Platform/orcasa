@@ -24,6 +24,7 @@ module.exports = {
       fontSize: {
         '3.5xl': ['32px', '48px'],
         '3.8xl': ['34px', '50px'],
+        '4xl': ['36px', '52px'],
         '2xs': ['10px', '16px'],
       },
       colors: {
@@ -80,6 +81,7 @@ module.exports = {
         purple: {
           // Datasets
           50: '#F0EBF4',
+          400: '#B6B1DB',
           700: '#8380BC',
           900: '#584484',
         },

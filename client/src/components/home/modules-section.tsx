@@ -3,7 +3,15 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
-import { Globe2, BarChart, Users2, FileSpreadsheet, ArrowRight, CheckCircle } from 'lucide-react';
+import {
+  Globe2,
+  BarChart,
+  Users2,
+  FileSpreadsheet,
+  ArrowRight,
+  CheckCircle,
+  Tractor,
+} from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
@@ -13,8 +21,6 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
-// Module '"lucide-react"' has no exported member 'Tractor'
-import Tractor from '@/styles/icons/tractor.svg';
 
 const modulesInfo = {
   'geospatial-data': {

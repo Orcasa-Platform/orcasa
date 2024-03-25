@@ -5,6 +5,8 @@ import { useRef, useState } from 'react';
 
 import Link from 'next/link';
 
+import { ExternalLink } from 'lucide-react';
+
 import { cn } from '@/lib/classnames';
 import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
 
@@ -19,6 +21,26 @@ export type FieldType = {
   formatId?: FormatProps['id'];
 };
 
+const FieldLink = ({
+  url,
+  external,
+  children,
+}: {
+  url: string;
+  external?: boolean;
+  children: React.ReactNode;
+}) =>
+  external ? (
+    <a href={url} target="_blank" rel="noreferrer" className="text-sm text-purple-400">
+      {children}
+      <ExternalLink className="ml-2 inline h-4 w-4 min-w-fit" />
+    </a>
+  ) : (
+    <Link className="text-sm text-purple-400" href={`${url}`}>
+      {children}
+    </Link>
+  );
+
 const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -27,65 +49,23 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
     setIsExpanded(!isExpanded);
   };
 
-  const renderSingleLink = (url: string, external = false) => {
-    if (!external) {
-      return (
-        <Link className="text-sm text-brown-500" href={`${url}`}>
-          {value}
-        </Link>
-      );
-    } else {
-      return (
-        <a href={url} target="_blank" rel="noreferrer" className="text-sm text-brown-500">
-          {value}
-        </a>
-      );
-    }
-  };
-
-  const renderLinkArray = (url: Array<string>, external = false) => {
-    if (!external) {
-      return (
-        <div>
-          {url.map(
-            (elemUrl, index) =>
-              value?.[index] && (
-                <>
-                  {index !== 0 ? <br /> : ''}
-                  <Link key={elemUrl} className="text-sm text-brown-500" href={`${elemUrl}`}>
-                    {value[index]}
-                  </Link>
-                </>
-              ),
-          )}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          {url.map(
-            (elemUrl, index) =>
-              value?.[index] && (
-                <>
-                  {index !== 0 ? <br /> : ''}
-                  <a
-                    key={elemUrl}
-                    href={elemUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm text-brown-500"
-                  >
-                    {value[index]}
-                  </a>
-                </>
-              ),
-          )}
-        </div>
-      );
-    }
-  };
   const renderLink = (url: string | string[], external = false) => {
-    return Array.isArray(url) ? renderLinkArray(url, external) : renderSingleLink(url, external);
+    return Array.isArray(url) ? (
+      <div className="flex flex-col gap-2">
+        {url.map(
+          (elemUrl, index) =>
+            value?.[index] && (
+              <FieldLink key={elemUrl} url={`${elemUrl}`} external={external}>
+                {value[index]}
+              </FieldLink>
+            ),
+        )}
+      </div>
+    ) : (
+      <FieldLink external={external} url={url}>
+        {value}
+      </FieldLink>
+    );
   };
 
   const renderField = () => {
@@ -100,14 +80,14 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
       <div>
         <div
           ref={ref}
-          className={cn('text-sm', {
+          className={cn('text-sm text-gray-200', {
             'line-clamp-2': !isExpanded && isOverTwoLines,
           })}
         >
           {formatId ? formatFunction({ id: formatId, value }) : value}
         </div>
         {isOverTwoLines && (
-          <button onClick={toggleExpanded} className="text-sm font-semibold text-brown-500">
+          <button onClick={toggleExpanded} className="text-sm font-semibold">
             {isExpanded ? 'Show less' : 'Show more'}
           </button>
         )}
@@ -116,7 +96,7 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
   };
   return (
     <div className="flex gap-6">
-      <div className="w-[224px] min-w-[224px] text-sm font-semibold">{label}</div>
+      <div className="w-[224px] min-w-[224px] text-sm">{label}</div>
       {renderField()}
     </div>
   );

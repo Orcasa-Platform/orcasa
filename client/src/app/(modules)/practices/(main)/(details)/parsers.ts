@@ -8,7 +8,6 @@ import type { FieldType } from './field';
 
 export const getPracticeFields = (practice: Practice): FieldType[] => {
   const {
-    short_description: shortDescription,
     source_name: source,
     language,
     publication_date: publicationDate,
@@ -36,11 +35,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (source && source.length > 0) {
-    fields.push({ label: 'Source', value: source, logo: true });
-  }
-
-  if (shortDescription && shortDescription.length > 0) {
-    fields.push({ label: 'Description', value: shortDescription });
+    fields.push({ label: 'Source', value: source });
   }
 
   if (mainIntervention) {

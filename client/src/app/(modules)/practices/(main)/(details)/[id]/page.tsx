@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, NotepadText, Tractor } from 'lucide-react';
 import { Metadata } from 'next';
 
 import { getPractices, getPracticesId } from '@/types/generated/practice';
@@ -54,28 +54,37 @@ export default async function PracticeDetails({ params }: PracticeDetailsProps) 
   const { title, practice_url: url } = practice;
   const fields = getPracticeFields(practice);
   const implementationFields = getPracticeImplementationFields(practice);
+
   return (
-    <>
-      <h1 className="mb-6 mt-10 font-serif text-3.8xl leading-[50px]">{title}</h1>
-      <div className="flex flex-col gap-4">
+    <div className="flex gap-16">
+      <div className="flex flex-1 flex-col gap-6">
+        <h1 className="font-serif text-4xl">{title}</h1>
+        <p className="leading-7 text-gray-200">{practice?.short_description}</p>
+        <Button className="h-9 w-fit text-sm" variant="outline-dark" asChild disabled={!url}>
+          <a href={url} target="_blank" rel="noreferrer">
+            <ExternalLink className="mr-2 h-4 w-4" />
+            {practice?.source_name}
+          </a>
+        </Button>
+      </div>
+      <div className="flex flex-1 flex-col gap-6">
+        <header className="flex gap-2 border-b border-gray-600 pb-1">
+          <NotepadText className="h-6 w-6" />
+          <h2 className="mb-4 font-serif text-xl">Details</h2>
+        </header>
         {fields.map((field) => (
           <Field key={field.label} {...field} />
         ))}
       </div>
-      <h2 className="flex flex-col gap-4 border-t border-dashed border-t-gray-300 pt-10">
-        <div className="mb-4 font-serif text-xl">Implementation</div>
+      <div className="flex flex-1 flex-col gap-6">
+        <header className="flex gap-2 border-b border-gray-600 pb-1">
+          <Tractor className="h-6 w-6" />
+          <h2 className="mb-4 font-serif text-xl">Implementation</h2>
+        </header>
         {implementationFields.map((field) => (
           <Field key={field.label} {...field} />
         ))}
-      </h2>
-      <div className="mt-10 flex justify-end gap-4">
-        <Button asChild variant="secondary" disabled={!url}>
-          <a href={url} target="_blank" rel="noreferrer">
-            <ExternalLink className="mr-2 h-6 w-6" />
-            Visit Source
-          </a>
-        </Button>
       </div>
-    </>
+    </div>
   );
 }

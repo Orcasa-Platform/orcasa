@@ -3123,7 +3123,7 @@ __metadata:
     husky: "npm:^8.0.3"
     jotai: "npm:^2.4.3"
     lodash: "npm:^4.17.21"
-    lucide-react: "npm:^0.252.0"
+    lucide-react: "npm:^0.307.0"
     mapbox-gl: "npm:3.2.0"
     next: "npm:13.4.5"
     next-usequerystate: "npm:^1.8.4"
@@ -10132,12 +10132,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.252.0":
-  version: 0.252.0
-  resolution: "lucide-react@npm:0.252.0"
+"lucide-react@npm:^0.307.0":
+  version: 0.307.0
+  resolution: "lucide-react@npm:0.307.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: 10/554db80a1c6441fcb7bd4a58ee2775a213ee61646dceb8e7786d4794ebff25317ad611cdeb761b7058081f8659bb261b5f0689acb01d5d9e14c91b60334d8134
+  checksum: 10/c82747ec8d494c41ce7808647fca412fbda655699ccd7a767a1f029e5c00a89dc846c6ed6f652827c7976f84ae40b477e861e938151985611b9acd7600288759
   languageName: node
   linkType: hard
 

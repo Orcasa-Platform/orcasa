@@ -49,19 +49,21 @@ export const useSidebarScrollHelpers = (): [() => number, (scrollTop: number) =>
 export default function Sidebar({
   children,
   section,
+  isFullWidth = false,
 }: {
   children: React.ReactNode;
   section: Section;
+  isFullWidth?: boolean;
 }) {
   const [open, setOpen] = useSidebarOpen();
   const widthClassName = useMemo(() => {
     const sectionMaxWidth: Partial<Record<Section, string>> = {
       'geospatial-data': 'w-[min(35%,_490px)]',
-      practices: 'w-[min(45%,_820px)]',
+      practices: isFullWidth ? 'w-[calc(100%-90px)]' : 'w-[min(45%,_820px)]',
       network: 'w-[min(45%,_860px)]',
     };
     return sectionMaxWidth[section] ?? '';
-  }, [section]);
+  }, [isFullWidth, section]);
 
   return (
     <div
@@ -94,7 +96,9 @@ export default function Sidebar({
       <div
         className="js-sidebar-scroll-container flex grow flex-col overflow-y-auto rounded-lg rounded-r-none bg-gray-700 bg-[length:100%] bg-scroll bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/sidebar-background.svg')`,
+          backgroundImage: isFullWidth
+            ? `url('/images/sidebar-background-wide.svg')`
+            : `url('/images/sidebar-background.svg')`,
         }}
         {...(!open ? { inert: '' } : {})}
       >

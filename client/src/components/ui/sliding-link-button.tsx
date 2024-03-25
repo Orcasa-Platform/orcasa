@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { cva, type VariantProps } from 'class-variance-authority';
+import type { LucideIcon } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
@@ -26,7 +27,7 @@ const SlidingLinkButton = React.forwardRef<
   React.ComponentProps<typeof Link> &
     VariantProps<typeof buttonVariants> & {
       buttonClassName?: string;
-      Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+      Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | LucideIcon;
       position?: 'left' | 'right' | undefined;
       isCompact?: boolean;
     }

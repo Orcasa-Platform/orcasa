@@ -6,14 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Globe2, Users, Sheet, BarChart4 } from 'lucide-react';
+import { Globe2, Users, Sheet, BarChart4, Tractor } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 
 import { Module, modules } from '@/constants/modules';
-
-// Module '"lucide-react"' has no exported member 'Tractor'
-import Tractor from '@/styles/icons/tractor.svg';
 
 type NavLinkProps = PropsWithChildren<
   Omit<Module, 'name'> & {
