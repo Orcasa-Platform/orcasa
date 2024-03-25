@@ -2,19 +2,46 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/classnames';
+
+const buttonVariants = cva(
+  'mr-[15px] h-[32px] w-[32px] rounded-lg px-2 transition-colors group-hover:bg-green-700 group-hover:text-white group-focus:bg-green-700 group-focus:text-white',
+  {
+    variants: {
+      variant: {
+        default: 'bg-gray-100',
+        dark: 'bg-gray-300',
+      },
+      defaultVariants: {
+        variant: 'default',
+      },
+    },
+  },
+);
 
 const SlidingLinkButton = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentProps<typeof Link> & {
-    buttonClassName?: string;
-    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-    position?: 'left' | 'right' | undefined;
-    isCompact?: boolean;
-  }
+  React.ComponentProps<typeof Link> &
+    VariantProps<typeof buttonVariants> & {
+      buttonClassName?: string;
+      Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+      position?: 'left' | 'right' | undefined;
+      isCompact?: boolean;
+    }
 >(
   (
-    { children, className, buttonClassName, Icon, position = 'left', isCompact = false, ...props },
+    {
+      children,
+      className,
+      buttonClassName,
+      Icon,
+      position = 'left',
+      variant = 'default',
+      isCompact = false,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -29,9 +56,7 @@ const SlidingLinkButton = React.forwardRef<
           {...props}
         >
           <Icon
-            className={cn({
-              'mr-[15px] h-[32px] w-[32px] rounded-lg bg-gray-100 px-2 transition-colors group-hover:bg-green-700 group-hover:text-white group-focus:bg-green-700 group-focus:text-white':
-                true,
+            className={cn(buttonVariants({ variant }), {
               [buttonClassName ?? '']: !!buttonClassName,
             })}
           />

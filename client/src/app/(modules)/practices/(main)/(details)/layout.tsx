@@ -23,6 +23,7 @@ export default function PracticeDetailsLayout({ children }: { children: React.Re
     <>
       <SlidingLinkButton
         href={`/practices?${mapSearchParams.toString()}`}
+        variant="dark"
         Icon={ArrowLeft}
         scroll={false}
       >
