@@ -119,34 +119,6 @@
           "sortable": false
         }
       },
-      "default_labels": {
-        "edit": {
-          "label": "Default Labels",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Default Labels",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "default_boundaries": {
-        "edit": {
-          "label": "Default Boundaries",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "Default Boundaries",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -207,6 +179,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "layer_groups",
+        "default_basemap"
+      ],
       "edit": [
         [
           {
@@ -253,23 +231,7 @@
             "name": "layer_groups",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "default_labels",
-            "size": 6
-          },
-          {
-            "name": "default_boundaries",
-            "size": 6
-          }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "layer_groups",
-        "default_basemap"
       ]
     }
   },

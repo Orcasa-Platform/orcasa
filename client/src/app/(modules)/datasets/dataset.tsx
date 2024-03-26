@@ -9,6 +9,7 @@ import type { Dataset, DatasetListResponseDataItem, DatasetSource } from '@/type
 
 import { Button } from '@/components/ui/button';
 import InfoTooltip from '@/components/ui/info-tooltip';
+
 import CalendarIcon from '@/styles/icons/calendar.svg';
 
 export const sourceToLogo: Record<
@@ -42,8 +43,8 @@ export const sourceToLogo: Record<
   JRC: {
     src: '/assets/logos/jrc.svg',
     alt: 'Joint Research Centre',
-    width: 97,
-    height: 24,
+    width: 62,
+    height: 28,
   },
 };
 
@@ -62,8 +63,9 @@ const Icons = ({ source, publication_date }: Omit<Dataset, '_id'>) => {
 
 export default function Dataset({ _id, ...attributes }: DatasetListResponseDataItem) {
   const { title, authors, short_description, url, doi } = attributes;
+
   return (
-    <li key={_id} className="mb-2 flex min-h-[240px] w-full bg-gray-50">
+    <li key={_id} className="flex min-h-[240px] w-full rounded-lg bg-gray-50">
       <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-gray-700">
         <header className="flex flex-col gap-4">
           <Icons {...attributes} />
