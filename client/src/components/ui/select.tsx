@@ -71,10 +71,10 @@ const SelectValue = SelectPrimitive.Value;
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> &
-  VariantProps<typeof triggerVariants> & {
-    error?: boolean;
-    'aria-invalid'?: boolean;
-  }
+    VariantProps<typeof triggerVariants> & {
+      error?: boolean;
+      'aria-invalid'?: boolean;
+    }
 >(({ className, children, error, 'aria-invalid': ariaInvalid, variant, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
@@ -99,7 +99,7 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> &
-  VariantProps<typeof contentVariants>
+    VariantProps<typeof contentVariants>
 >(({ className, children, position = 'popper', variant, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
@@ -117,7 +117,7 @@ const SelectContent = React.forwardRef<
             className={cn(
               'p-1',
               position === 'popper' &&
-              'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-[var(--radix-select-trigger-width)] min-w-[var(--radix-select-trigger-width)]',
+                'h-full max-h-[50vh] min-h-[var(--radix-select-trigger-height)] w-[var(--radix-select-trigger-width)] min-w-[var(--radix-select-trigger-width)]',
             )}
           >
             {children}
@@ -147,9 +147,9 @@ SelectLabel.displayName = SelectPrimitive.Label.displayName;
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> &
-  VariantProps<typeof itemVariants> & {
-    description?: string;
-  }
+    VariantProps<typeof itemVariants> & {
+      description?: string;
+    }
 >(({ className, children, variant, description, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
     <div className="flex w-full items-center justify-between">

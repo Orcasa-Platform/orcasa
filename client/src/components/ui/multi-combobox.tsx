@@ -83,11 +83,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
       search.length === 0
         ? options
         : options.filter((option) =>
-          option.label
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(search.toLowerCase().replace(/\s+/g, '')),
-        ),
+            option.label
+              .toLowerCase()
+              .replace(/\s+/g, '')
+              .includes(search.toLowerCase().replace(/\s+/g, '')),
+          ),
     [options, search],
   );
 
@@ -115,9 +115,9 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
     value.length === 0
       ? 'Select'
       : options
-        .filter((option) => value.includes(option.value))
-        .map((option) => option.label)
-        .join(', ');
+          .filter((option) => value.includes(option.value))
+          .map((option) => option.label)
+          .join(', ');
   return (
     <div
       ref={containerRef}
