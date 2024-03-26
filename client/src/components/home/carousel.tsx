@@ -102,11 +102,21 @@ const Carousel = () => {
       </div>
       {isFetched && testimonies.length > 1 ? (
         <div className="mt-6 hidden gap-2 lg:flex">
-          <Button variant="icon-primary" size="icon-sm" onClick={prevCard}>
+          <Button
+            variant="icon-primary"
+            size="icon-sm"
+            onClick={prevCard}
+            disabled={currentIndex === 0}
+          >
             <ArrowLeft className="h-4 w-4" />
             <span className="sr-only">Previous testimony</span>
           </Button>
-          <Button variant="icon-primary" size="icon-sm" onClick={nextCard}>
+          <Button
+            variant="icon-primary"
+            size="icon-sm"
+            onClick={nextCard}
+            disabled={currentIndex + 1 === testimonies.length}
+          >
             <ArrowRight className="w- h-4" />
             <span className="sr-only">Next testimony</span>
           </Button>
