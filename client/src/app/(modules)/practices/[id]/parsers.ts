@@ -2,7 +2,7 @@ import { FormatProps } from '@/lib/utils/formats';
 
 import { Practice } from '@/types/generated/strapi.schemas';
 
-import { TypedPractice } from '../types';
+import { TypedPractice } from '../(main)/types';
 
 import type { FieldType } from './field';
 

@@ -9,8 +9,8 @@ import { getPractices, getPracticesId } from '@/types/generated/practice';
 
 import { Button } from '@/components/ui/button';
 
-import Field from '../field';
-import { getPracticeFields, getPracticeImplementationFields } from '../parsers';
+import Field from './field';
+import { getPracticeFields, getPracticeImplementationFields } from './parsers';
 
 interface PracticeDetailsProps {
   params: { id: string };
