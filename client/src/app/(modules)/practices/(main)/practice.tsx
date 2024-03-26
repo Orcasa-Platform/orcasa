@@ -25,7 +25,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
   const countriesNames = countries?.data?.map((country) => country?.attributes?.name).join(', ');
 
   return (
-    <div className="flex flex-wrap gap-x-1 gap-y-2">
+    <div className="relative flex flex-wrap gap-x-1 gap-y-2">
       <div className="flex max-w-[200px] items-center rounded-2xl border border-green-700 px-2 text-2xs text-green-700">
         {countriesNames && <WithEllipsis triggerClassName="text-start" text={countriesNames} />}
       </div>
@@ -39,6 +39,15 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
           height={24}
           alt="WOCAT"
           className="ml-auto max-h-[24px]"
+        />
+      )}
+      {source_name === 'FAO' && (
+        <Image
+          src="/assets/logos/fao.svg"
+          width={44}
+          height={44}
+          alt="FAO"
+          className="absolute right-0 top-0 ml-auto max-h-[44px]"
         />
       )}
     </div>
