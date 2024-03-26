@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Filter } from 'lucide-react';
+import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
@@ -85,7 +85,7 @@ export default function PracticesModule() {
           ref={filtersButtonRef}
           type="button"
           variant={filterSidebarOpen ? 'filters' : 'primary'}
-          className="group shrink-0 transition-colors duration-500"
+          className="group shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700"
           aria-pressed={filterSidebarOpen}
           onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
         >
@@ -93,7 +93,7 @@ export default function PracticesModule() {
           Filters
         </Button>
       </div>
-      <div className="text-sm text-gray-200">
+      <div className="text-xs text-gray-200">
         {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">

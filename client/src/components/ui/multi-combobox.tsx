@@ -26,7 +26,7 @@ const optionVariants = cva('py-3 h-10 px-3 flex items-start gap-x-2 group', {
 });
 
 const buttonVariants = cva(
-  'text-base font-semibold text-green-700 hover:text-green-800 disabled:text-gray-300 disabled:opacity-100',
+  'text-base font-semibold text-green-700 hover:text-green-800 disabled:text-gray-500 disabled:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-0',
   {
     variants: {
       variant: {
@@ -83,11 +83,11 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
       search.length === 0
         ? options
         : options.filter((option) =>
-            option.label
-              .toLowerCase()
-              .replace(/\s+/g, '')
-              .includes(search.toLowerCase().replace(/\s+/g, '')),
-          ),
+          option.label
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(search.toLowerCase().replace(/\s+/g, '')),
+        ),
     [options, search],
   );
 
@@ -115,9 +115,9 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
     value.length === 0
       ? 'Select'
       : options
-          .filter((option) => value.includes(option.value))
-          .map((option) => option.label)
-          .join(', ');
+        .filter((option) => value.includes(option.value))
+        .map((option) => option.label)
+        .join(', ');
   return (
     <div
       ref={containerRef}
@@ -140,7 +140,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             variant="vanilla"
             size="auto"
             className={cn(
-              'relative h-10 w-full justify-between rounded-lg border border-gray-300 px-4 py-2 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px]',
+              'relative h-10 w-full justify-between rounded-lg border border-gray-300 px-4 py-2 text-base focus-visible:ring-offset-0',
             )}
             title={selectedLabels}
             onClick={() => setOpen(true)}

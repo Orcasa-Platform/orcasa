@@ -26,17 +26,17 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 
   return (
     <div className="relative flex flex-wrap gap-x-1 gap-y-2">
-      <div className="flex max-w-[200px] items-center rounded-2xl border border-green-700 px-2 text-2xs text-green-700">
+      <div className="flex max-w-[200px] items-center rounded-2xl border border-green-700 px-2 text-2xs font-medium text-green-700">
         {countriesNames && <WithEllipsis triggerClassName="text-start" text={countriesNames} />}
       </div>
-      <div className="flex items-center rounded-2xl border border-green-700 px-2 text-2xs uppercase text-green-700">
+      <div className="flex items-center rounded-2xl border border-green-700 px-2 text-2xs font-medium uppercase text-green-700">
         {language?.join(', ')}
       </div>
       {source_name === 'WOCAT' && (
         <Image
           src="/assets/logos/wocat.png"
-          width={110}
-          height={24}
+          width={91}
+          height={20}
           alt="WOCAT"
           className="ml-auto max-h-[24px]"
         />
@@ -44,10 +44,10 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
       {source_name === 'FAO' && (
         <Image
           src="/assets/logos/fao.svg"
-          width={44}
-          height={44}
+          width={34}
+          height={34}
           alt="FAO"
-          className="absolute right-0 top-0 ml-auto max-h-[44px]"
+          className="absolute right-0 top-0 ml-auto max-h-[34px]"
         />
       )}
     </div>

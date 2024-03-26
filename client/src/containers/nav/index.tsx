@@ -6,7 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Globe2, Users, Sheet, BarChart4, Tractor } from 'lucide-react';
+import { Globe2, Users, Sheet, BarChart4 } from 'lucide-react';
+import Tractor from 'public/images/tractor.svg';
 
 import { cn } from '@/lib/classnames';
 

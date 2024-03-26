@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation';
 
-import { ExternalLink, NotepadText, Tractor } from 'lucide-react';
 import { Metadata } from 'next';
+import ExternalLink from 'public/images/external-link.svg';
+import NotepadText from 'public/images/notepad-text.svg';
+import Tractor from 'public/images/tractor.svg';
 
 import { getPractices, getPracticesId } from '@/types/generated/practice';
 

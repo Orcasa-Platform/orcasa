@@ -42,7 +42,12 @@ export const SettingsControl: FC<SettingsControlProps> = ({
         <PopoverContent side="left" align="start" className="w-[240px] p-6" sideOffset={16}>
           {children}
           <PopoverClose asChild>
-            <Button type="button" size="icon-sm" className="absolute right-3 top-3">
+            <Button
+              type="button"
+              size="icon-sm"
+              variant="secondary"
+              className="absolute right-3 top-3"
+            >
               <span className="sr-only">Close</span>
               <X className="h-4 w-4" />
             </Button>

@@ -8,12 +8,12 @@ import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 const buttonVariants = cva(
-  'mr-[15px] h-[32px] w-[32px] rounded-lg px-2 transition-colors group-hover:bg-green-700 group-hover:text-white group-focus:bg-green-700 group-focus:text-white',
+  'mr-[15px] h-[32px] w-[32px] rounded-lg px-2 transition-colors group-hover:bg-green-700 group-hover:text-white group-focus:bg-green-700 group-focus:text-white group-focus:ring-2 group-focus:ring-green-700 group-focus:ring-offset-2',
   {
     variants: {
       variant: {
         default: 'bg-gray-100',
-        dark: 'bg-gray-300',
+        dark: 'bg-gray-300 group-focus:ring-offset-gray-700',
       },
       defaultVariants: {
         variant: 'default',
@@ -49,7 +49,7 @@ const SlidingLinkButton = React.forwardRef<
       <>
         <Link
           className={cn(
-            'group flex items-center justify-start',
+            'group flex items-center justify-start focus:outline-none',
             { 'flex-row-reverse': position === 'right' },
             className,
           )}

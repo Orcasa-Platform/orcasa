@@ -31,12 +31,17 @@ const FieldLink = ({
   children: React.ReactNode;
 }) =>
   external ? (
-    <a href={url} target="_blank" rel="noreferrer" className="text-sm text-purple-400">
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      className="text-sm font-semibold leading-7 text-purple-400"
+    >
       {children}
       <ExternalLink className="ml-2 inline h-4 w-4 min-w-fit" />
     </a>
   ) : (
-    <Link className="text-sm text-purple-400" href={`${url}`}>
+    <Link className="text-sm font-semibold leading-7 text-purple-400" href={`${url}`}>
       {children}
     </Link>
   );
@@ -51,7 +56,7 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
 
   const renderLink = (url: string | string[], external = false) => {
     return Array.isArray(url) ? (
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         {url.map(
           (elemUrl, index) =>
             value?.[index] && (

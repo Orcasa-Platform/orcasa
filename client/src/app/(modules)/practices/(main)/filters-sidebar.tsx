@@ -20,6 +20,7 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
+
 import Reset from '@/styles/icons/reset.svg';
 
 const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
@@ -83,6 +84,7 @@ const SelectFilter = ({
   const options = practicesFiltersOptions[source || type].sort((a, b) =>
     a.label.localeCompare(b.label),
   );
+
   const select = !multiple ? (
     <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
       <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-10">
@@ -90,14 +92,8 @@ const SelectFilter = ({
           <span className="text-sm">{selectedLabel ? selectedLabel : placeholder || 'All'}</span>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent
-        variant="dark"
-        className="w-[var(--radix-select-trigger-width)]"
-        onClick={() => {
-          debugger;
-        }}
-      >
-        <SelectItem variant="dark" key="all" value="all" className="w-full border-gray-300">
+      <SelectContent variant="dark" className="w-[var(--radix-select-trigger-width)]">
+        <SelectItem variant="dark" key="all" value="" className="w-full border-gray-300">
           All
         </SelectItem>
         {options.map(({ label, value }) => (

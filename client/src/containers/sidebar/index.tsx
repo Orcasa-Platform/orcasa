@@ -59,7 +59,7 @@ export default function Sidebar({
   const widthClassName = useMemo(() => {
     const sectionMaxWidth: Partial<Record<Section, string>> = {
       'geospatial-data': 'w-[min(35%,_490px)]',
-      practices: isFullWidth ? 'w-[calc(100%-90px)]' : 'w-[min(45%,_820px)]',
+      practices: isFullWidth ? 'w-[calc(100%-90px)]' : 'w-[min(45%,_580px)]',
       network: 'w-[min(45%,_860px)]',
     };
     return sectionMaxWidth[section] ?? '';

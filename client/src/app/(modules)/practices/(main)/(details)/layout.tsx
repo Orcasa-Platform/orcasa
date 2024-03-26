@@ -27,7 +27,7 @@ export default function PracticeDetailsLayout({ children }: { children: React.Re
         Icon={ArrowLeft}
         scroll={false}
       >
-        Back to Results
+        Back to results
       </SlidingLinkButton>
       {children}
     </>

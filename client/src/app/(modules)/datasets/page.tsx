@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 
-import { Filter, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import Filter from 'public/images/filter.svg';
 
 import { format } from '@/lib/utils/formats';
 
@@ -65,9 +66,9 @@ export default function DatasetsModule() {
             <Button
               type="button"
               variant="filters"
-              className="group h-auto shrink-0 bg-purple-700 px-4 text-base hover:bg-purple-900"
+              className="group h-auto shrink-0 bg-purple-700 px-4 text-gray-700 hover:bg-purple-900"
             >
-              <Filter className="mr-4 h-6 w-6" />
+              <Filter className="mr-4 h-6 w-6 text-gray-700" />
               Filters
               {filtersCount > 0 && (
                 <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-purple-900 font-semibold transition group-hover:bg-gray-900">
@@ -143,8 +144,8 @@ export default function DatasetsModule() {
                       toDate={
                         filters.maxDate
                           ? // We're making sure the user can't select the same date in both date
-                            // pickers because the API considers the max date as exclusive
-                            new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
+                          // pickers because the API considers the max date as exclusive
+                          new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
                           : new Date()
                       }
                       selected={filters.minDate ? new Date(filters.minDate) : undefined}
@@ -153,9 +154,9 @@ export default function DatasetsModule() {
                           ...filters,
                           minDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                                2,
-                                '0',
-                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                              2,
+                              '0',
+                            )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }
@@ -194,8 +195,8 @@ export default function DatasetsModule() {
                       fromDate={
                         filters.minDate
                           ? // We're making sure the user can't select the same date in both date
-                            // pickers because the API considers the max date as exclusive
-                            new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
+                          // pickers because the API considers the max date as exclusive
+                          new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
                           : new Date('2000-01-01')
                       }
                       toDate={new Date()}
@@ -205,9 +206,9 @@ export default function DatasetsModule() {
                           ...filters,
                           maxDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                                2,
-                                '0',
-                              )}-${`${date.getDate()}`.padStart(2, '0')}`
+                              2,
+                              '0',
+                            )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }
