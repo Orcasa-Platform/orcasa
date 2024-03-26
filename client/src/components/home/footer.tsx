@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 import EuropeFlag from 'public/images/europe-flag.svg';
 import LinkedinIcon from 'public/images/linkedin-icon.svg';
-// import MailIcon from 'public/images/mail-icon.svg';
+import MailIcon from 'public/images/mail-icon.svg';
 import XIcon from 'public/images/x-icon.svg';
 
 const Footer = () => (
@@ -52,9 +52,9 @@ const Footer = () => (
             <LinkedinIcon className="min-w-4 h-4 w-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          {/* <Link href="#">
-            <MailIcon className="w-5 h-4 min-w-5 hover:opacity-90" />
-          </Link> */}
+          <Link href="mailto:impact4soil@groupes.renater.fr">
+            <MailIcon className="min-w-5 h-4 w-5 hover:opacity-90" />
+          </Link>
         </div>
         <div className="flex items-center justify-start gap-4">
           <Link
