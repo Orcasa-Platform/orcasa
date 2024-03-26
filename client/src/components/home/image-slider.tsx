@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
-import { motion, useTransform, useScroll, useInView, useSpring } from 'framer-motion';
+import { motion, useTransform, useScroll, useSpring } from 'framer-motion';
 
 const images = [
   {
@@ -35,11 +35,15 @@ const IMAGE_WIDTH = 437;
 const ImageSlider = () => {
   const mainScrollElement = useRef<HTMLElement | null>(null);
   const ref = useRef(null);
-  const inView = useInView(ref);
+
+  const [mounted, setMounted] = useState(false);
 
   const { scrollYProgress } = useScroll({
     container: mainScrollElement,
-    target: ref,
+    // FIXME: hack so that Framer Motion works, otherwise it gives an error related to hydration
+    // which can't be fixed even if the component is only mounted client-side (with SSR: false)
+    // Related to https://github.com/framer/motion/issues/2483
+    target: mounted ? ref : undefined,
     offset: ['end end', 'start start'],
   });
 
@@ -54,13 +58,15 @@ const ImageSlider = () => {
   useEffect(() => {
     const mainScroll = document.getElementById('main-scroll');
     mainScrollElement.current = mainScroll;
+
+    setMounted(true);
   }, []);
 
   return (
-    <motion.div className="overflow-x-hidden py-16" ref={ref}>
+    <div className="overflow-x-hidden py-16" ref={ref}>
       <motion.div
         className="flex items-center justify-center gap-10"
-        style={{ x: inView ? scaleX : INITIAL_X, width: images.length * IMAGE_WIDTH }}
+        style={{ x: scaleX, width: images.length * IMAGE_WIDTH }}
       >
         {images.map((image) => (
           <Image
@@ -73,7 +79,7 @@ const ImageSlider = () => {
           />
         ))}
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
