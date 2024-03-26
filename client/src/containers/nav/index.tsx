@@ -74,7 +74,7 @@ export default function Nav() {
                 slug={slug}
                 href={href}
                 color={color}
-                active={pathname.startsWith(href)}
+                active={pathname?.startsWith(href)}
               >
                 {name}
               </NavLink>

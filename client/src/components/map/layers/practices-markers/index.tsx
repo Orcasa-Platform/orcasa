@@ -191,7 +191,7 @@ const PracticeMarkerRelations = (practice: Parameters<typeof useMapPractice>[0])
 
 const PracticesMarkers = () => {
   const pathname = usePathname();
-  const [, , id] = pathname.split('/') || [];
+  const [, , id] = pathname?.split('/') || [];
   const practice = {
     id: Number(id),
   };
