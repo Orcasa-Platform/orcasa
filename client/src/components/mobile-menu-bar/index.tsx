@@ -13,7 +13,7 @@ const MobileMenuBar = () => {
           Beta
         </span>
       </Link>
-      <MobileMenuButton theme="dark" />
+      <MobileMenuButton />
     </nav>
   );
 };

@@ -3,13 +3,11 @@
 import Link from 'next/link';
 
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { X, ExternalLink } from 'lucide-react';
-
-import { cn } from '@/lib/classnames';
+import { X } from 'lucide-react';
 
 import { useMobileMenu } from '@/store';
 
-import { modules, moduleColors } from '@/constants/modules';
+import { modules } from '@/constants/modules';
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useMobileMenu();
@@ -25,32 +23,28 @@ const MobileMenu = () => {
         </DialogPrimitive.Close>
         <nav className="flex h-full w-screen flex-col items-center justify-center gap-10 font-serif text-lg">
           {modules.map((module) => {
-            const { href, name, color } = module;
+            const { href, name } = module;
             return (
               <Link
                 key={href}
                 href={href}
-                className={cn(
-                  'box-border flex items-center border-b-4 pb-2',
-                  moduleColors[color].border,
-                )}
+                className="box-border flex items-center border-b-4 border-transparent pb-2 transition-colors hover:border-yellow-500"
                 onClick={() => setIsOpen(false)}
               >
                 {name}
               </Link>
             );
           })}
-          <a
-            key="about-link"
-            href="/#about"
-            className="ml-2 w-[calc(100%_-_20px)]"
-            onClick={() => setIsOpen(false)}
-          >
-            <div className="flex w-full justify-center border-t border-dashed border-gray-500 py-10">
-              About the project
-              <ExternalLink className="ml-4 inline h-6 w-6" />
-            </div>
-          </a>
+          <div className="flex w-[calc(100%_-_20px)] justify-center border-t border-gray-600 py-10">
+            <a
+              key="about-link"
+              href="/#about"
+              className="box-border flex items-center border-b-4 border-transparent pb-2 transition-colors hover:border-yellow-500"
+              onClick={() => setIsOpen(false)}
+            >
+              About
+            </a>
+          </div>
         </nav>
       </DialogPrimitive.Content>
     </>

@@ -49,7 +49,7 @@ const HeroSection = () => {
   return (
     <div
       id="hero"
-      className="relative min-h-[calc(100vh-72px)] scroll-mt-12 bg-gray-800 pt-6 lg:h-[calc(100vh-72px)] lg:pt-0"
+      className="relative min-h-[calc(100vh-60px)] scroll-mt-12 bg-gray-800 pt-6 lg:h-[calc(100vh-60px)] lg:pt-0"
     >
       <div className="absolute hidden h-full w-full justify-center p-10 pt-0 lg:flex xl:items-center">
         <BackgroundShape className="h-[616px] w-full text-gray-700" />
