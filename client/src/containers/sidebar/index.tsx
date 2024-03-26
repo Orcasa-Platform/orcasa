@@ -75,7 +75,7 @@ export default function Sidebar({
         '-translate-x-full': !open,
       })}
     >
-      <div className="absolute left-full top-4 z-10">
+      <div className="absolute left-full top-4 -z-10">
         <Button
           variant="opener-dark"
           size="icon"
