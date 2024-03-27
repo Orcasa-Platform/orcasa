@@ -6,7 +6,42 @@ export const metadata = {
 
 import Image from 'next/image';
 
-import { sourceToLogo } from './dataset';
+import { DatasetSource } from '@/types/datasets';
+export const sourceToLogoWhite: Record<
+  DatasetSource,
+  { src: string; alt: string; width: number; height: number }
+> = {
+  INRAE: {
+    src: '/assets/logos/inrae.svg',
+    alt: 'INRAE',
+    width: 54,
+    height: 12,
+  },
+  CIRAD: {
+    src: '/assets/logos/cirad.svg',
+    alt: 'CIRAD',
+    width: 64,
+    height: 24,
+  },
+  HARVARD: {
+    src: '/assets/logos/harvard.svg',
+    alt: 'Harvard University',
+    width: 81,
+    height: 20,
+  },
+  ZENODO: {
+    src: '/assets/logos/zenodo.svg',
+    alt: 'Zenodo',
+    width: 55,
+    height: 16,
+  },
+  JRC: {
+    src: '/assets/logos/jrc.svg',
+    alt: 'Joint Research Centre',
+    width: 62,
+    height: 28,
+  },
+};
 
 export default function DatasetsModuleLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,7 +53,7 @@ export default function DatasetsModuleLayout({ children }: { children: React.Rea
       <footer className="fixed bottom-0 flex h-[68px] w-[calc(100vw-90px)] items-center justify-between gap-10 bg-gray-800 py-4 pl-10 pr-12">
         <p className="text-sm leading-7 text-white">Trusted sources:</p>
         <ul className="flex items-center gap-10">
-          {Object.entries(sourceToLogo).map(([source, { src, alt, width, height }]) => (
+          {Object.entries(sourceToLogoWhite).map(([source, { src, alt, width, height }]) => (
             <li key={source}>
               <Image src={src} alt={alt} width={width} height={height} />
             </li>

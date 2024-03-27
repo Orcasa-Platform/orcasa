@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { Filter } from 'lucide-react';
+import Filter from 'public/images/filter.svg';
 
 import { useDatasetsFilters, useFiltersCount } from '@/store/datasets';
 
@@ -34,32 +34,34 @@ export default function DatasetsModule() {
   return (
     <div className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]">
       <div className="p-10">
-        <header className="mb-[30px] flex">
-          <h1 className="font-serif leading-[30px] text-white">
+        <header className="mb-[30px] flex gap-8">
+          <h1 className="flex-1 font-serif leading-[30px] text-white">
             {intro && <MarkdownRenderer variant="bold" content={intro} />}
           </h1>
-          <Search
-            containerClassName="basis-full"
-            placeholder="Search"
-            defaultValue={filters.search}
-            onChange={(keywords) => setFilters({ ...filters, search: keywords })}
-          />
-          <Button
-            type="button"
-            variant={filterSidebarOpen ? 'filters' : 'primary'}
-            className="group shrink-0 transition-colors duration-500"
-            onClick={() => {
-              setFilterSidebarOpen(!filterSidebarOpen);
-            }}
-          >
-            <Filter className="mr-4 h-6 w-6" />
-            Filters
-            {filtersCount > 0 && (
-              <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-purple-900 font-semibold transition group-hover:bg-gray-900">
-                {filtersCount}
-              </span>
-            )}
-          </Button>
+          <div className="flex flex-1 gap-2">
+            <Search
+              containerClassName="basis-full h-9 text-white"
+              placeholder="Search"
+              defaultValue={filters.search}
+              onChange={(keywords) => setFilters({ ...filters, search: keywords })}
+            />
+            <Button
+              type="button"
+              variant={filterSidebarOpen ? 'filters' : 'primary'}
+              className="group shrink-0 transition-colors duration-500"
+              onClick={() => {
+                setFilterSidebarOpen(!filterSidebarOpen);
+              }}
+            >
+              <Filter className="mr-4 h-6 w-6" />
+              Filters
+              {filtersCount > 0 && (
+                <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-purple-900 font-semibold transition group-hover:bg-gray-900">
+                  {filtersCount}
+                </span>
+              )}
+            </Button>
+          </div>
         </header>
         <p className="mb-5 flex items-start justify-between text-sm text-gray-200">
           {!!query.data &&

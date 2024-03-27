@@ -14,6 +14,7 @@ import type { Practice, PracticeListResponseDataItem } from '@/types/generated/s
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
+import Tag from '@/components/tag';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
 
@@ -26,10 +27,10 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
 
   return (
     <div className="relative flex flex-wrap gap-x-1 gap-y-2">
-      <div className="flex max-w-[200px] items-center rounded-2xl border border-green-700 px-2 text-2xs text-green-700">
+      <Tag>
         {countriesNames && <WithEllipsis triggerClassName="text-start" text={countriesNames} />}
-      </div>
-      <div className="flex items-center rounded-2xl border border-green-700 px-2 text-2xs uppercase text-green-700">
+      </Tag>
+      <div className="flex items-center rounded-2xl border border-green-700 px-2 text-2xs font-medium uppercase text-green-700">
         {language?.join(', ')}
       </div>
       {source_name === 'WOCAT' && (

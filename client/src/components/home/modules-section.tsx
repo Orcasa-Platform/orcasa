@@ -22,6 +22,12 @@ import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
 
+import DatasetsIcon from '@/styles/icons/homepage-datasets.svg';
+import GeospatialDataIcon from '@/styles/icons/homepage-geospatial-data.svg';
+import NetworkIcon from '@/styles/icons/homepage-network.svg';
+import PracticesIcon from '@/styles/icons/homepage-practices.svg';
+import ScientificEvidenceIcon from '@/styles/icons/homepage-scientific-evidence.svg';
+
 const modulesInfo = {
   'geospatial-data': {
     tooltipText:
