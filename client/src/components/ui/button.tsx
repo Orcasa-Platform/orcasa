@@ -4,18 +4,17 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center text-base lg:text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-sans',
+  'inline-flex items-center justify-center text-base lg:text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 disabled:pointer-events-none disabled:opacity-50 font-sans',
   {
     variants: {
       variant: {
         // From the UI kit
-        default: 'bg-gray-650 hover:bg-gray-600 rounded-lg focus-visible:ring-offset-0',
+        default: 'bg-gray-650 hover:bg-gray-600 rounded-lg',
         primary: 'h-10 text-white rounded-lg bg-green-700 hover:bg-green-800',
         filters: 'h-10 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-gray-700',
         legend: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
-        outline:
-          'border border-gray-700 px-4 py-2 hover:bg-gray-50 text-gray-700 hover:bg-slate-700 hover:text-white',
+        outline: 'border border-gray-300 rounded-lg px-6 py-4 hover:bg-gray-150 text-gray-700',
         'outline-dark':
           'rounded-lg border border-gray-300 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
         // Not reviewed yet

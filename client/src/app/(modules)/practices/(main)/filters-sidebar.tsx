@@ -228,7 +228,7 @@ export default function FiltersSidebar() {
                 <MultiCombobox
                   id="source"
                   key="source"
-                  name="Source"
+                  name="Sources"
                   placeholder="Select"
                   value={filters.sourceName ?? []}
                   options={practicesFiltersOptions.sourceName}
