@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import Filter from 'public/images/filter.svg';
 
+import { cn } from '@/lib/classnames';
+
 import { useDatasetsFilters, useFiltersCount } from '@/store/datasets';
 
 import { useGetPages } from '@/types/generated/page';
@@ -55,11 +57,6 @@ export default function DatasetsModule() {
             >
               <Filter className="mr-4 h-6 w-6" />
               Filters
-              {filtersCount > 0 && (
-                <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-purple-900 font-semibold transition group-hover:bg-gray-900">
-                  {filtersCount}
-                </span>
-              )}
             </Button>
           </div>
         </header>
@@ -70,7 +67,12 @@ export default function DatasetsModule() {
         </p>
         <DatasetList {...query} />
       </div>
-      <div>
+      <div
+        className={cn('fixed right-0 h-full transform transition-transform duration-500', {
+          'translate-x-full': !filterSidebarOpen,
+          'translate-x-0': filterSidebarOpen,
+        })}
+      >
         <FiltersSidebar
           filterSidebarOpen={filterSidebarOpen}
           setFilterSidebarOpen={setFilterSidebarOpen}
