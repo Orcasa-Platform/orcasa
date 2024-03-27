@@ -34,19 +34,23 @@ const calendarDayVariants = cva('text-white hover:text-white focus:text-white', 
 });
 
 export type CalendarProps = ComponentProps<typeof DayPicker> &
-  VariantProps<typeof calendarDayVariants>;
+  VariantProps<typeof calendarDayVariants> & {
+    id: string;
+  };
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
   variant,
+  id,
   ...props
 }: CalendarProps) {
   return (
     <DayPicker
+      id={id}
       showOutsideDays={showOutsideDays}
-      className={cn('p-6', className)}
+      className={cn('p-6 text-gray-700', className)}
       classNames={{
         months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
         month: 'space-y-4 w-full',
@@ -55,7 +59,7 @@ function Calendar({
         caption_dropdowns: 'flex gap-x-4',
         vhidden: 'hidden',
         nav: 'space-x-1 flex items-center',
-        nav_button: buttonVariants({ size: 'icon' }),
+        nav_button: cn(buttonVariants({ variant: 'secondary', size: 'icon' })),
         nav_button_previous: 'absolute left-1',
         nav_button_next: 'absolute right-1',
         table: 'mx-auto border-collapse space-y-1',
@@ -65,16 +69,17 @@ function Calendar({
         cell: 'h-9 w-10 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20',
         day: cn(
           buttonVariants({ variant: 'ghost' }),
-          'h-9 w-10 p-0 font-semibold aria-selected:opacity-100 cursor-pointer',
+          'h-9 w-10 p-0 font-semibold aria-selected:opacity-100 cursor-pointer text-white',
         ),
         day_range_end: 'day-range-end',
         day_selected: calendarDayVariants({ variant }),
-        day_today: 'bg-accent text-accent-foreground',
+        day_today: 'bg-gray-600',
         day_outside:
           'day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
         day_disabled: 'text-muted-foreground opacity-50',
         day_range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
         day_hidden: 'invisible',
+        root: 'rounded-lg border-none bg-gray-650',
         ...classNames,
       }}
       components={{
@@ -133,7 +138,7 @@ function Calendar({
         },
         CaptionLabel: (captionLabelProps) =>
           props.captionLayout === 'dropdown' ||
-          props.captionLayout === 'dropdown-buttons' ? null : (
+            props.captionLayout === 'dropdown-buttons' ? null : (
             <CaptionLabel {...captionLabelProps} />
           ),
       }}
