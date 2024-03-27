@@ -4,18 +4,22 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center text-base ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-sans',
+  'inline-flex items-center justify-center text-base lg:text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 disabled:pointer-events-none disabled:opacity-50 font-sans',
   {
     variants: {
       variant: {
         // From the UI kit
-        default: 'bg-gray-50 hover:bg-gray-150 rounded-lg',
-        primary: 'bg-green-700 hover:bg-green-800 text-white rounded-lg',
+        default: 'bg-gray-650 hover:bg-gray-600 rounded-lg',
+        primary: 'h-10 text-white rounded-lg bg-green-700 hover:bg-green-800',
+        filters: 'h-10 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-gray-700',
+        legend: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
         outline: 'border border-gray-300 rounded-lg px-6 py-4 hover:bg-gray-150 text-gray-700',
+        'outline-dark':
+          'rounded-lg border border-gray-300 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
         // Not reviewed yet
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50 rounded-lg',
         'button-switch': 'text-white !px-2',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
@@ -33,10 +37,10 @@ const buttonVariants = cva(
         'icon-sm': 'h-8 w-8',
         'icon-xs': 'h-6 w-6',
         // Not reviewed yet
-        default: 'h-10 px-6 py-2 box-content',
+        default: 'h-10 px-4 py-0 box-content',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
-        icon: 'h-9 w-9',
+        icon: 'h-8 w-8',
         auto: '',
       },
     },

@@ -57,7 +57,7 @@ export default function Sidebar({
   const widthClassName = useMemo(() => {
     const sectionMaxWidth: Partial<Record<Section, string>> = {
       'geospatial-data': 'w-[min(35%,_490px)]',
-      practices: 'w-[min(45%,_820px)]',
+      practices: 'w-[min(45%,_580px)]',
       network: 'w-[min(45%,_860px)]',
     };
     return sectionMaxWidth[section] ?? '';
@@ -73,7 +73,7 @@ export default function Sidebar({
         '-translate-x-full': !open,
       })}
     >
-      <div className="absolute left-full top-4 z-10">
+      <div className="absolute left-full top-4 -z-10">
         <Button
           variant="opener-dark"
           size="icon"

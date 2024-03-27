@@ -68,15 +68,14 @@ export default function FiltersSidebar() {
         <Button
           ref={closeButtonRef}
           type="button"
-          variant="primary"
           size="icon"
-          className="absolute right-0 top-0"
+          className="absolute right-6 top-4"
           onClick={() => setFilterSidebarOpen(false)}
         >
           <span className="sr-only">Close</span>
-          <X className="h-6 w-6" />
+          <X className="h-4 w-4" />
         </Button>
-        <h1 className="font-serif text-3.8xl">Filters</h1>
+        <h2 className="mb-6 font-serif text-2xl text-yellow-500">Filters</h2>
         <div className="flex flex-col gap-y-10">
           <fieldset className="flex flex-col gap-y-4">
             <legend className="mb-4 font-semibold">Type</legend>
@@ -133,7 +132,6 @@ export default function FiltersSidebar() {
             <legend className="mb-4 font-semibold">Organisation</legend>
             <Button
               type="button"
-              variant="vanilla"
               size="auto"
               className="absolute bottom-full right-0 -translate-y-4 text-base font-semibold text-blue-500 hover:text-blue-800 disabled:text-gray-300 disabled:opacity-100"
               disabled={organizationFiltersCount === 0}

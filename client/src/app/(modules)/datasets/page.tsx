@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 
-import { Filter, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import Filter from 'public/images/filter.svg';
 
 import { format } from '@/lib/utils/formats';
 
@@ -64,10 +65,10 @@ export default function DatasetsModule() {
           <DialogTrigger asChild>
             <Button
               type="button"
-              variant="primary"
-              className="group h-auto shrink-0 bg-purple-700 px-4 text-base hover:bg-purple-900"
+              variant="filters"
+              className="group h-auto shrink-0 bg-purple-700 px-4 text-gray-700 hover:bg-purple-900"
             >
-              <Filter className="mr-4 h-6 w-6" />
+              <Filter className="mr-4 h-6 w-6 text-gray-700" />
               Filters
               {filtersCount > 0 && (
                 <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-purple-900 font-semibold transition group-hover:bg-gray-900">
@@ -100,7 +101,6 @@ export default function DatasetsModule() {
               <div className="mt-4 grid grid-cols-3 gap-4">
                 <MultiCombobox
                   name="Source"
-                  variant="datasets"
                   value={filters.source ?? []}
                   options={[
                     { label: 'Cirad dataverse', value: DatasetSource.Cirad },

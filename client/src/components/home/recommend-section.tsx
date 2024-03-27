@@ -55,7 +55,7 @@ const RecommendSection = () => {
               detailed information about carbon farming schemes in Europe and around the world. This
               platform has been developed in the framework of the EJP Soil Road4Schemes project.
             </div>
-            <Button variant="outline" className="flex self-start" asChild>
+            <Button variant="outline" className="flex h-14 self-start" size="lg" asChild>
               <Link
                 href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
                 target="_blank"

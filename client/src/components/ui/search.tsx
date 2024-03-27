@@ -20,7 +20,7 @@ const Search = ({
   defaultValue = '',
   className,
   containerClassName,
-  placeholder = 'Search by keyword',
+  placeholder = 'Search',
   onChange,
 }: SearchProps) => {
   const [value, setValue] = useState(defaultValue);

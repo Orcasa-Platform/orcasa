@@ -38,6 +38,7 @@ export interface LegendProps extends PropsWithChildren {
   className?: string;
   sortable: Sortable;
   onChangeOrder?: OnChangeOrder;
+  hideToggle?: boolean;
 }
 
 export interface LegendItemProps extends LegendItemEvents {

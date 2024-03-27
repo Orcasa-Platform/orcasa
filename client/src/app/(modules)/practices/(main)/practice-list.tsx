@@ -37,7 +37,7 @@ export default function PracticeList({
       isError={isError}
     >
       {!data?.length && (
-        <p className="py-8 text-center text-gray-700">No results based on your search criteria</p>
+        <p className="py-8 text-center text-white">No results based on your search criteria</p>
       )}
       <ul>
         {data?.map((g) => {

@@ -10,13 +10,14 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 export const itemVariants = cva(
-  'relative flex cursor-default select-none px-2 py-1 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 flex-col items-start',
+  'relative flex cursor-default select-none px-2 py-1 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 items-center rounded',
   {
     variants: {
       variant: {
-        small: 'text-sm',
+        small: 'text-sm focus:bg-accent',
+        dark: 'h-10 flex justify-between w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-gray-600',
         // To review
-        default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)]',
+        default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-accent',
         'network-organization': 'data-[highsmalled]:bg-blue-50 data-[state=checked]:bg-blue-50',
         practices: 'data-[highsmalled]:bg-gray-700 data-[state=checked]:bg-gray-700',
         'network-initiative': 'data-[highsmalled]:bg-peach-50 data-[state=checked]:bg-peach-50',
@@ -35,6 +36,7 @@ export const contentVariants = cva(
     variants: {
       variant: {
         small: '',
+        dark: 'bg-gray-650 text-white',
         // To review
         default: 'min-w-[8rem] border border-gray-400 ',
       },
@@ -45,7 +47,7 @@ export const contentVariants = cva(
   },
 );
 export const triggerVariants = cva(
-  'flex w-full items-center justify-between border border-gray-300 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg text-left',
+  'flex w-full items-center justify-between border border-gray-300 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-700 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg text-left',
   {
     variants: {
       variant: {
@@ -84,7 +86,7 @@ const SelectTrigger = React.forwardRef<
     {children}
     <SelectPrimitive.Icon asChild>
       <ChevronDown
-        className={cn('ml-1 h-4 w-4 flex-shrink-0 transform data-[state=open]:rotate-180', {
+        className={cn('ml-1 h-6 w-6 transform data-[state=open]:rotate-180', {
           'text-gray-700': variant === 'small',
           'text-white': variant === 'default',
         })}
@@ -150,10 +152,10 @@ const SelectItem = React.forwardRef<
     }
 >(({ className, children, variant, description, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
-    <div className="flex items-center">
+    <div className="flex w-full items-center justify-between">
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator>
-        <Check className="ml-1 h-4 w-4 text-green-700" />
+        <Check className="ml-1 h-4 w-4 text-white" />
       </SelectPrimitive.ItemIndicator>
     </div>
     {description && <div className="pt-3 text-sm leading-7 text-gray-500">{description}</div>}

@@ -207,6 +207,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "layer_groups",
+        "default_basemap"
+      ],
       "edit": [
         [
           {
@@ -264,12 +270,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "layer_groups",
-        "default_basemap"
       ]
     }
   },

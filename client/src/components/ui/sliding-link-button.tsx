@@ -2,26 +2,54 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { LucideIcon } from 'lucide-react';
+
 import { cn } from '@/lib/classnames';
+
+const buttonVariants = cva(
+  'mr-[15px] h-[32px] w-[32px] rounded-lg px-2 transition-colors group-hover:bg-green-700 group-hover:text-white group-focus:bg-green-700 group-focus:text-white group-focus:ring-2 group-focus:ring-green-700 group-focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'bg-gray-100',
+        dark: 'bg-gray-300 group-focus:ring-offset-gray-700',
+      },
+      defaultVariants: {
+        variant: 'default',
+      },
+    },
+  },
+);
 
 const SlidingLinkButton = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentProps<typeof Link> & {
-    buttonClassName?: string;
-    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-    position?: 'left' | 'right' | undefined;
-    isCompact?: boolean;
-  }
+  React.ComponentProps<typeof Link> &
+    VariantProps<typeof buttonVariants> & {
+      buttonClassName?: string;
+      Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | LucideIcon;
+      position?: 'left' | 'right' | undefined;
+      isCompact?: boolean;
+    }
 >(
   (
-    { children, className, buttonClassName, Icon, position = 'left', isCompact = false, ...props },
+    {
+      children,
+      className,
+      buttonClassName,
+      Icon,
+      position = 'left',
+      variant = 'default',
+      isCompact = false,
+      ...props
+    },
     ref,
   ) => {
     return (
       <>
         <Link
           className={cn(
-            'group flex items-center justify-start',
+            'group flex items-center justify-start focus:outline-none',
             { 'flex-row-reverse': position === 'right' },
             className,
           )}
@@ -29,9 +57,7 @@ const SlidingLinkButton = React.forwardRef<
           {...props}
         >
           <Icon
-            className={cn({
-              'mr-[15px] h-[34px] w-[34px] bg-gray-100 px-1 py-1 transition-colors group-hover:bg-slate-700 group-hover:text-white group-focus:bg-slate-700 group-focus:text-white':
-                true,
+            className={cn(buttonVariants({ variant }), {
               [buttonClassName ?? '']: !!buttonClassName,
             })}
           />
@@ -44,7 +70,7 @@ const SlidingLinkButton = React.forwardRef<
                   isCompact,
                 '-translate-x-1/3 group-hover:translate-x-0 group-focus:translate-x-0':
                   position === 'left',
-                'translate-x-0 group-hover:-translate-x-1/3 group-focus:-translate-x-1/3':
+                'translate-x-0 group-hover:-translate-x-1/4 group-focus:-translate-x-1/4':
                   position === 'right',
               },
             )}

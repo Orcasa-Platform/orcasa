@@ -143,13 +143,7 @@ const HoverTooltip = ({ children, intro, slug }: HoverTooltipProps) => {
           <div className="mt-4 text-sm leading-normal">{modulesInfo[slug].tooltipText}</div>
           <div className="mt-auto flex items-center self-end whitespace-nowrap">
             Learn more
-            <Button
-              variant="icon-primary"
-              size="icon-sm"
-              aria-hidden
-              tabIndex={-1}
-              className="ml-2 bg-gray-700 hover:bg-gray-700"
-            >
+            <Button size="icon-sm" aria-hidden tabIndex={-1} className="ml-2 bg-gray-700">
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

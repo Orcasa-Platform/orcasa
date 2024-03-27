@@ -2,13 +2,12 @@ import { FormatProps } from '@/lib/utils/formats';
 
 import { Practice } from '@/types/generated/strapi.schemas';
 
-import { TypedPractice } from '../types';
+import { TypedPractice } from '../(main)/types';
 
 import type { FieldType } from './field';
 
 export const getPracticeFields = (practice: Practice): FieldType[] => {
   const {
-    short_description: shortDescription,
     source_name: source,
     language,
     publication_date: publicationDate,
@@ -25,7 +24,7 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
 
   if (publicationDate) {
     fields.push({
-      label: 'Publication Date',
+      label: 'Publication date',
       value: publicationDate,
       formatId: 'formatDate' as FormatProps['id'],
     });
@@ -36,27 +35,23 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   }
 
   if (source && source.length > 0) {
-    fields.push({ label: 'Source', value: source, logo: true });
-  }
-
-  if (shortDescription && shortDescription.length > 0) {
-    fields.push({ label: 'Description', value: shortDescription });
+    fields.push({ label: 'Source', value: source });
   }
 
   if (mainIntervention) {
-    fields.push({ label: 'Main Intervention', value: mainIntervention });
+    fields.push({ label: 'Main intervention', value: mainIntervention });
   }
 
   if (landUsePriors && landUsePriors?.data?.length) {
     fields.push({
-      label: `Land Use Type${landUsePriors?.data?.length > 1 ? 's' : ''}`,
+      label: `Land use type${landUsePriors?.data?.length > 1 ? 's' : ''}`,
       value: landUsePriors?.data?.map((landUsePrior) => landUsePrior.attributes?.name).join(', '),
     });
   }
 
   if (landUseTypes && landUseTypes?.data?.length) {
     fields.push({
-      label: `New Land Use Type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
+      label: `New land use type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
       value: landUseTypes?.data?.map((landUseType) => landUseType.attributes?.name).join(', '),
     });
   }
@@ -102,13 +97,13 @@ export const getPracticeImplementationFields = (practice: Practice): FieldType[]
 
   if (implementationDate) {
     fields.push({
-      label: 'Implementation Date',
+      label: 'Implementation date',
       value: implementationDate,
       formatId: 'formatDate' as FormatProps['id'],
     });
   } else if (implementationDecade) {
     fields.push({
-      label: 'Implementation Decade',
+      label: 'Implementation decade',
       value: implementationDecade,
     });
   }

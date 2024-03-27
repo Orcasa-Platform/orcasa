@@ -7,13 +7,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Globe2, Users, Sheet, BarChart4 } from 'lucide-react';
+import Tractor from 'public/images/tractor.svg';
 
 import { cn } from '@/lib/classnames';
 
 import { Module, modules } from '@/constants/modules';
-
-// Module '"lucide-react"' has no exported member 'Tractor'
-import Tractor from '@/styles/icons/tractor.svg';
 
 type NavLinkProps = PropsWithChildren<
   Omit<Module, 'name'> & {
@@ -72,7 +70,7 @@ export default function Nav() {
           {modules.map((module) => {
             const { href, name, slug } = module as Module;
             return (
-              <NavLink key={href} slug={slug} href={href} active={pathname.startsWith(href)}>
+              <NavLink key={href} slug={slug} href={href} active={pathname?.startsWith(href)}>
                 {name}
               </NavLink>
             );
