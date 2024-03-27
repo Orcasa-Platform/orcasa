@@ -138,7 +138,7 @@ function Calendar({
         },
         CaptionLabel: (captionLabelProps) =>
           props.captionLayout === 'dropdown' ||
-            props.captionLayout === 'dropdown-buttons' ? null : (
+          props.captionLayout === 'dropdown-buttons' ? null : (
             <CaptionLabel {...captionLabelProps} />
           ),
       }}

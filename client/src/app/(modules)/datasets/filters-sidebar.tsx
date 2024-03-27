@@ -16,7 +16,6 @@ import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-
 import Reset from '@/styles/icons/reset.svg';
 
 export default function FiltersSidebar({
@@ -143,8 +142,8 @@ export default function FiltersSidebar({
                       toDate={
                         filters.maxDate
                           ? // We're making sure the user can't select the same date in both date
-                          // pickers because the API considers the max date as exclusive
-                          new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
+                            // pickers because the API considers the max date as exclusive
+                            new Date(+new Date(filters.maxDate) - 24 * 3600 * 1000)
                           : new Date()
                       }
                       selected={filters.minDate ? new Date(filters.minDate) : undefined}
@@ -153,9 +152,9 @@ export default function FiltersSidebar({
                           ...filters,
                           minDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                              2,
-                              '0',
-                            )}-${`${date.getDate()}`.padStart(2, '0')}`
+                                2,
+                                '0',
+                              )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }
@@ -200,8 +199,8 @@ export default function FiltersSidebar({
                       fromDate={
                         filters.minDate
                           ? // We're making sure the user can't select the same date in both date
-                          // pickers because the API considers the max date as exclusive
-                          new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
+                            // pickers because the API considers the max date as exclusive
+                            new Date(+new Date(filters.minDate) + 24 * 3600 * 1000)
                           : new Date('2000-01-01')
                       }
                       toDate={new Date()}
@@ -211,9 +210,9 @@ export default function FiltersSidebar({
                           ...filters,
                           maxDate: date
                             ? `${date.getFullYear()}-${`${date.getMonth() + 1}`.padStart(
-                              2,
-                              '0',
-                            )}-${`${date.getDate()}`.padStart(2, '0')}`
+                                2,
+                                '0',
+                              )}-${`${date.getDate()}`.padStart(2, '0')}`
                             : undefined,
                         })
                       }
