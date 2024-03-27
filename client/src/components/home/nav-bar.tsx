@@ -3,43 +3,37 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { cn } from '@/lib/classnames';
 import { handleSmoothScroll } from '@/lib/utils/ui';
 
-import { modules, moduleColors } from '@/constants/modules';
+import { modules } from '@/constants/modules';
 
 import MobileMenu from '@/components/mobile-menu';
 import MobileMenuButton from '@/components/mobile-menu-button';
 import { Dialog } from '@/components/ui/dialog';
 
 const NavBar = () => (
-  <div className="fixed z-20 flex h-[72px] w-full items-center justify-between gap-10 border-b border-gray-100 bg-white bg-opacity-80 px-10 backdrop-blur-[20px]">
+  <div className="fixed z-20 flex h-[60px] w-full items-center justify-between gap-10 bg-gray-800 px-10 text-white">
     <a
       href="/#hero"
       onClick={handleSmoothScroll}
       className="flex min-w-fit items-center justify-start gap-2"
     >
       <Image src="/images/logo.png" width={30} height={30} alt="Impact4Soil" />
-      <h1 className="font-serif text-xl font-semibold text-gray-700">Impact4Soil</h1>
-      <span className="rounded bg-gray-100 px-2 py-[3px] font-sans text-xs font-normal text-gray-700">
-        Beta
-      </span>
+      <h1 className="font-serif text-xl font-semibold">Impact4Soil</h1>
+      <span className="rounded bg-gray-700 px-2 py-[3px] font-sans text-xs font-normal">Beta</span>
     </a>
     <Dialog>
       <MobileMenuButton />
       <MobileMenu />
     </Dialog>
-    <nav className="hidden h-full items-center justify-center gap-10 font-serif text-base text-gray-500 lg:flex">
+    <nav className="hidden h-full items-center justify-center font-serif text-base lg:flex">
       {modules.map((module) => {
-        const { href, name, color } = module;
+        const { href, name } = module;
         return 'external' in module && module.external ? (
           <a
             key={href}
             href={href}
-            className={cn(
-              'box-border flex h-full items-center border-t-8 border-t-transparent',
-              moduleColors[color].hoverBorder,
-            )}
+            className="relative flex h-full items-center px-5 before:absolute before:left-1/2 before:top-0 before:block before:h-1 before:w-full before:-translate-x-1/2 before:scale-x-0 before:rounded-b-sm before:bg-yellow-500 before:transition-transform before:duration-500 hover:before:scale-x-100"
           >
             <div className="-mt-2 flex h-full items-center">{name}</div>
           </a>
@@ -47,10 +41,7 @@ const NavBar = () => (
           <Link
             key={href}
             href={href}
-            className={cn(
-              'box-border flex h-full items-center border-t-8 border-t-transparent',
-              moduleColors[color].hoverBorder,
-            )}
+            className="relative flex h-full items-center px-5 before:absolute before:left-1/2 before:top-0 before:block before:h-1 before:w-full before:-translate-x-1/2 before:scale-x-0 before:rounded-b-sm before:bg-yellow-500 before:transition-transform before:duration-500 hover:before:scale-x-100"
           >
             <div className="-mt-2 flex h-full items-center">{name}</div>
           </Link>
@@ -60,9 +51,9 @@ const NavBar = () => (
         key="about-link"
         onClick={handleSmoothScroll}
         href="/#about"
-        className="hover:text-gray-300"
+        className="relative flex h-full items-center before:absolute before:left-1/2 before:top-0 before:block before:h-1 before:w-full before:-translate-x-1/2 before:scale-x-0 before:rounded-b-sm before:bg-yellow-500 before:transition-transform before:duration-500 hover:before:scale-x-100"
       >
-        <div className="border-l border-gray-500 px-10">About the project</div>
+        <div className="-mt-2 border-l border-gray-600 px-5">About the project</div>
       </a>
     </nav>
   </div>

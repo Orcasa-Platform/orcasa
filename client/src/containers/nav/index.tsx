@@ -68,15 +68,9 @@ export default function Nav() {
         </Link>
         <div className="mx-3 flex flex-col gap-3 py-px">
           {modules.map((module) => {
-            const { href, color, name, slug } = module as Module;
+            const { href, name, slug } = module as Module;
             return (
-              <NavLink
-                key={href}
-                slug={slug}
-                href={href}
-                color={color}
-                active={pathname?.startsWith(href)}
-              >
+              <NavLink key={href} slug={slug} href={href} active={pathname.startsWith(href)}>
                 {name}
               </NavLink>
             );

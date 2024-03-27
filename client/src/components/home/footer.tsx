@@ -8,7 +8,7 @@ import MailIcon from 'public/images/mail-icon.svg';
 import XIcon from 'public/images/x-icon.svg';
 
 const Footer = () => (
-  <div id="about">
+  <div id="about" className="!mt-0">
     <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px] text-center lg:flex-col lg:text-left">
       <Link
         className="block items-center justify-center gap-2.5 hover:opacity-90 lg:flex"
@@ -52,7 +52,7 @@ const Footer = () => (
             <LinkedinIcon className="min-w-4 h-4 w-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="#">
+          <Link href="mailto:impact4soil@groupes.renater.fr">
             <MailIcon className="min-w-5 h-4 w-5 hover:opacity-90" />
           </Link>
         </div>

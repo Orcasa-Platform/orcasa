@@ -76,7 +76,8 @@ module.exports = {
         green: {
           // Scientific evidence
           700: '#2BB3A7',
-          800: '#3C7481',
+          800: '#239288',
+          900: '#3C7481',
         },
         purple: {
           // Datasets

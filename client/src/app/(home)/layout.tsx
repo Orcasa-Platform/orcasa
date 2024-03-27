@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       id="main-scroll"
     >
       <NavBar />
-      <div className="mt-[72px] space-y-8 bg-white lg:space-y-[120px]">
+      <div className="mt-[60px] space-y-8 bg-white lg:space-y-20">
         {children}
         <Footer />
       </div>
