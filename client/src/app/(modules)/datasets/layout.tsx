@@ -7,7 +7,8 @@ export const metadata = {
 import Image from 'next/image';
 
 import { DatasetSource } from '@/types/datasets';
-export const sourceToLogoWhite: Record<
+
+const sourceToLogoWhite: Record<
   DatasetSource,
   { src: string; alt: string; width: number; height: number }
 > = {
