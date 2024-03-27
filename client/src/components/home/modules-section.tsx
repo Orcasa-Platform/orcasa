@@ -12,7 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
-
 import DatasetsIcon from '@/styles/icons/homepage-datasets.svg';
 import GeospatialDataIcon from '@/styles/icons/homepage-geospatial-data.svg';
 import NetworkIcon from '@/styles/icons/homepage-network.svg';

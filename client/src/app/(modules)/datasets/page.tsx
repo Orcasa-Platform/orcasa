@@ -6,7 +6,7 @@ import Filter from 'public/images/filter.svg';
 
 import { cn } from '@/lib/classnames';
 
-import { useDatasetsFilters, useFiltersCount } from '@/store/datasets';
+import { useDatasetsFilters } from '@/store/datasets';
 
 import { useGetPages } from '@/types/generated/page';
 
@@ -21,7 +21,6 @@ import FiltersSidebar from './filters-sidebar';
 
 export default function DatasetsModule() {
   const [filters, setFilters] = useDatasetsFilters();
-  const filtersCount = useFiltersCount(['search']);
   const query = useGetDatasetsInfinite({
     size: 20,
     q: filters.search,
