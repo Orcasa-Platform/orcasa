@@ -70,7 +70,7 @@ export default function Nav() {
           {modules.map((module) => {
             const { href, name, slug } = module as Module;
             return (
-              <NavLink key={href} slug={slug} href={href} active={pathname.startsWith(href)}>
+              <NavLink key={href} slug={slug} href={href} active={pathname?.startsWith(href)}>
                 {name}
               </NavLink>
             );

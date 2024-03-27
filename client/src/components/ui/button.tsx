@@ -11,7 +11,7 @@ const buttonVariants = cva(
         // From the UI kit
         default: 'bg-gray-650 hover:bg-gray-600 rounded-lg focus-visible:ring-offset-0',
         primary: 'h-10 text-white rounded-lg bg-green-700 hover:bg-green-800',
-        filters: 'h-10 text-white rounded-lg bg-yellow-500 hover:bg-yellow-600 text-gray-700',
+        filters: 'h-10 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-gray-700',
         legend: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
         outline:

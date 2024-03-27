@@ -3,8 +3,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
-import { cn } from '@/lib/classnames';
-
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import Map from 'public/images/homepage-map.svg';
 
@@ -14,13 +12,11 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
-
 import DatasetsIcon from '@/styles/icons/homepage-datasets.svg';
 import GeospatialDataIcon from '@/styles/icons/homepage-geospatial-data.svg';
 import NetworkIcon from '@/styles/icons/homepage-network.svg';
 import PracticesIcon from '@/styles/icons/homepage-practices.svg';
 import ScientificEvidenceIcon from '@/styles/icons/homepage-scientific-evidence.svg';
-
 
 const modulesInfo = {
   'geospatial-data': {
@@ -147,13 +143,7 @@ const HoverTooltip = ({ children, intro, slug }: HoverTooltipProps) => {
           <div className="mt-4 text-sm leading-normal">{modulesInfo[slug].tooltipText}</div>
           <div className="mt-auto flex items-center self-end whitespace-nowrap">
             Learn more
-            <Button
-              variant="icon-primary"
-              size="icon-sm"
-              aria-hidden
-              tabIndex={-1}
-              className="ml-2 bg-gray-700 hover:bg-gray-700"
-            >
+            <Button size="icon-sm" aria-hidden tabIndex={-1} className="ml-2 bg-gray-700">
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
