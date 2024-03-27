@@ -587,7 +587,9 @@
           "slug",
           "color",
           "external_url",
-          "intro"
+          "intro",
+          "default_labels",
+          "default_boundaries"
         ]
       },
       "conditions": [],
@@ -618,7 +620,9 @@
           "slug",
           "color",
           "external_url",
-          "intro"
+          "intro",
+          "default_labels",
+          "default_boundaries"
         ]
       },
       "conditions": [],
@@ -635,7 +639,9 @@
           "slug",
           "color",
           "external_url",
-          "intro"
+          "intro",
+          "default_labels",
+          "default_boundaries"
         ]
       },
       "conditions": [],
