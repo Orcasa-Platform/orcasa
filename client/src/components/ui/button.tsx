@@ -15,6 +15,8 @@ const buttonVariants = cva(
         legend: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
         outline: 'border border-gray-300 rounded-lg px-6 py-4 hover:bg-gray-150 text-gray-700',
+        'outline-rounded':
+          'rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-50 text-gray-700 hover:bg-slate-700 hover:text-white',
         'outline-dark':
           'rounded-lg border border-gray-300 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
         // Not reviewed yet
