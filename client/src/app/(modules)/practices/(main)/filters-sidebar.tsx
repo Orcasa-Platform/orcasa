@@ -20,6 +20,7 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
+
 import Reset from '@/styles/icons/reset.svg';
 
 const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
