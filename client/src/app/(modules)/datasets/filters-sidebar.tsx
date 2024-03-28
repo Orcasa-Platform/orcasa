@@ -49,7 +49,7 @@ export default function FiltersSidebar({
       // `inert` is not yet supported by React so that's why it is spread below:
       // https://github.com/facebook/react/issues/17157
       {...(!filterSidebarOpen ? { inert: '' } : {})}
-      className={cn('ml-6 h-full w-[275px] transform border-l border-gray-300 bg-gray-700')}
+      className={cn('h-full w-[275px] transform border-l border-gray-500 bg-gray-700')}
     >
       <div
         ref={scrollableContainerRef}
@@ -111,6 +111,7 @@ export default function FiltersSidebar({
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
+                      id="from-date"
                       size="auto"
                       type="button"
                       className="flex h-10 w-full justify-between border border-gray-300 bg-gray-700 px-4 py-2 text-left text-base hover:!bg-gray-700 focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-green-700 data-[state=open]:border-gray-400"
@@ -124,13 +125,12 @@ export default function FiltersSidebar({
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent
-                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                    className="mt-2.5 w-[330px] overflow-y-auto rounded-lg border border-gray-400 bg-gray-650 p-0 text-base shadow-none"
                     side="bottom"
                     sideOffset={-1}
-                    align="start"
+                    align="end"
                   >
                     <Calendar
-                      id="from-date"
                       initialFocus
                       variant="datasets"
                       mode="single"
@@ -169,6 +169,7 @@ export default function FiltersSidebar({
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
+                      id="to-date"
                       size="auto"
                       type="button"
                       className="flex h-10 w-full justify-between border border-gray-300 bg-gray-700 px-4 py-2 text-left text-base hover:!bg-gray-700 focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-green-700 data-[state=open]:border-gray-400"
@@ -182,13 +183,12 @@ export default function FiltersSidebar({
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent
-                    className="w-[330px] overflow-y-auto rounded-none border border-gray-400 p-0 text-base shadow-none"
+                    className="mt-2.5 w-[330px] overflow-y-auto rounded-lg border border-gray-400 bg-gray-650 p-0 text-base shadow-none"
                     side="bottom"
                     sideOffset={-1}
-                    align="start"
+                    align="end"
                   >
                     <Calendar
-                      id="to-date"
                       initialFocus
                       variant="datasets"
                       mode="single"

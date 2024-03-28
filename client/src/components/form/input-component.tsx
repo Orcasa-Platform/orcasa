@@ -221,7 +221,6 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
           align="start"
         >
           <Calendar
-            id={`calendar-${id}`}
             initialFocus
             variant={variant}
             mode="single"
