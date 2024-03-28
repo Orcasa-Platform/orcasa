@@ -11,7 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
-const optionVariants = cva('py-3 h-10 px-3 flex items-start gap-x-2 group', {
+const optionVariants = cva('py-2 px-4 flex items-start gap-x-2 group', {
   variants: {
     variant: {
       default: '',
@@ -164,7 +164,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
               <TooltipTrigger asChild>
                 <ComboboxPrimitive.Input
                   autoFocus
-                  className="placeholder:font-base h-10 w-full rounded-lg border border-gray-400 bg-gray-700 p-2 pl-4 pr-14 placeholder:text-gray-400 focus-visible:outline-none focus-visible:outline-gray-400 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="placeholder:font-base h-10 w-full rounded-lg border border-gray-400 bg-gray-700 p-2 pl-4 pr-14 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-0"
                   placeholder="Search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -187,7 +187,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                 sideOffset={-1}
                 className="mt-2.5 max-h-80 w-[var(--radix-tooltip-trigger-width)] overflow-y-auto rounded-lg border border-gray-400 bg-gray-650 p-0 text-base shadow-none"
               >
-                <div className="sticky top-0 z-10 flex justify-end gap-x-4 border-b border-gray-400 bg-gray-650 px-3 py-2">
+                <div className="sticky top-0 z-10 flex justify-end gap-x-4 border-b border-gray-400 bg-gray-650 px-4 py-2">
                   {allowSelectAll && (
                     <Button
                       type="button"

@@ -15,13 +15,15 @@ const buttonVariants = cva(
         legend: 'bg-gray-700 hover:bg-gray-800 text-white',
         vanilla: '',
         outline: 'border border-gray-300 rounded-lg px-6 py-4 hover:bg-gray-150 text-gray-700',
+        'outline-rounded':
+          'rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-50 text-gray-700 hover:bg-slate-700 hover:text-white',
         'outline-dark':
           'rounded-lg border border-gray-300 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
         // Not reviewed yet
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50 rounded-lg',
         'button-switch': 'text-white !px-2',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        ghost: 'hover:bg-accent hover:text-accent-foreground rounded-lg',
         link: 'text-primary underline-offset-4 hover:underline',
         icon: '!p-0 !h-6',
         'icon-primary':
