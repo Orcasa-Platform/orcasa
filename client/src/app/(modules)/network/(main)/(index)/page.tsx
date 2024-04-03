@@ -78,8 +78,8 @@ export default function NetworkModule() {
   }, [filters, previousFilters, setSidebarScroll]);
 
   return (
-    <div className="space-y-10">
-      <h1 className="max-w-[372px] font-serif leading-7">
+    <div className="space-y-8">
+      <h1 className="font-serif leading-7">
         {intro && <MarkdownRenderer variant="bold" content={intro} />}
       </h1>
       <div className="flex justify-between gap-x-4">
@@ -105,7 +105,7 @@ export default function NetworkModule() {
           )}
         </Button>
       </div>
-      <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
+      <div className="text-xs text-gray-200">
         {loadOrganizations &&
           loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${

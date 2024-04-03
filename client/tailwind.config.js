@@ -82,7 +82,10 @@ module.exports = {
         purple: {
           // Datasets
           50: '#F0EBF4',
+          100: '#E9E7F5',
+          200: '#D9D4ED',
           400: '#B6B1DB',
+          500: '#8380BC',
           700: '#8380BC',
           900: '#584484',
         },

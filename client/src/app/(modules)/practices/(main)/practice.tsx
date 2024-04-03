@@ -30,9 +30,7 @@ const Icons = ({ attributes }: { attributes: TypedPractice | undefined }) => {
       <Tag>
         {countriesNames && <WithEllipsis triggerClassName="text-start" text={countriesNames} />}
       </Tag>
-      <div className="flex items-center rounded-2xl border border-green-700 px-2 text-2xs font-medium uppercase text-green-700">
-        {language?.join(', ')}
-      </div>
+      <Tag className="uppercase">{language?.join(', ')}</Tag>
       {source_name === 'WOCAT' && (
         <Image
           src="/assets/logos/wocat.png"
@@ -62,8 +60,8 @@ export default function Practice({ id, attributes }: PracticeListResponseDataIte
   const isOverTwoLines = useIsOverTwoLines(ref, true);
 
   return (
-    <li key={id} className="mb-2 flex min-h-[252px] w-full gap-4 rounded-lg bg-gray-50">
-      <div className="flex w-full flex-col justify-between gap-4 p-6 text-base text-slate-500">
+    <li key={id} className="mb-2 flex min-h-[252px] w-full gap-4 rounded-lg bg-white">
+      <div className="flex w-full flex-col justify-between gap-4 p-6 text-gray-500">
         <header className="flex flex-col gap-4">
           <Icons attributes={attributes as TypedPractice} />
           <div className="font-serif text-lg leading-7 text-gray-700">{title}</div>
