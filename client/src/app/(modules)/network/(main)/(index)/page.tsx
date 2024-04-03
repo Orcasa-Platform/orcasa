@@ -2,12 +2,12 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Filter } from 'lucide-react';
+import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
-import { useFiltersCount, useNetworkFilters, useNetworkFilterSidebarOpen } from '@/store/network';
+import { useNetworkFilters, useNetworkFilterSidebarOpen } from '@/store/network';
 
 import { useGetPages } from '@/types/generated/page';
 
@@ -33,9 +33,6 @@ export default function NetworkModule() {
 
   const networks = useNetworks({ filters, regionsCount });
   const networksCount = useNetworksCount(filters);
-
-  // The keywords search is not counted because it's shown in the main sidebar
-  const filtersCount = useFiltersCount(filters, ['search']);
 
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
@@ -96,13 +93,8 @@ export default function NetworkModule() {
           aria-pressed={filterSidebarOpen}
           onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
         >
-          <Filter className="mr-4 h-6 w-6" />
+          <Filter className="mr-2 h-6 w-6" />
           Filters
-          {filtersCount > 0 && (
-            <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-blue-800 font-semibold transition group-hover:bg-gray-900">
-              {filtersCount}
-            </span>
-          )}
         </Button>
       </div>
       <div className="text-xs text-gray-200">
