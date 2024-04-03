@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Filter, Users2 } from 'lucide-react';
+import { Filter } from 'lucide-react';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
@@ -16,7 +16,6 @@ import { useNetworks, useNetworksCount, useRegionsCount } from '@/hooks/networks
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
-import NewButtons from '@/components/new-buttons';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
@@ -78,20 +77,6 @@ export default function NetworkModule() {
     }
   }, [filters, previousFilters, setSidebarScroll]);
 
-  const renderFormButtons = (
-    <div className="fixed bottom-0 left-0 flex w-full flex-wrap items-center justify-between border-r border-gray-200 bg-white px-4 py-6 lg:flex-nowrap">
-      <div className="flex items-center">
-        <Users2 className="mb-1 mr-2 h-7 w-10 min-w-fit whitespace-nowrap text-blue-400" />
-        <div className="flex-shrink font-serif text-base font-semibold">
-          Help us building the soil-
-          <wbr />
-          carbon network
-        </div>
-      </div>
-      <NewButtons className="mt-2 min-w-fit space-x-4 lg:ml-2 lg:mt-0" />
-    </div>
-  );
-
   return (
     <div className="space-y-10">
       <h1 className="max-w-[372px] font-serif leading-7">
@@ -138,7 +123,6 @@ export default function NetworkModule() {
       <div className="!mt-6">
         <NetworkList {...networks} />
       </div>
-      {renderFormButtons}
     </div>
   );
 }

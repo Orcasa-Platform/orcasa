@@ -208,7 +208,7 @@ export default function MapContainer() {
   );
 
   return (
-    <div className="absolute bottom-2 left-[90px] top-2 h-[calc(100vh-16px)] w-[calc(100vw-98px)] overflow-hidden rounded-lg">
+    <div className="absolute bottom-2 left-[90px] top-2 w-[calc(100vw-98px)] overflow-hidden rounded-lg">
       <Map
         mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         id={id}
@@ -222,7 +222,7 @@ export default function MapContainer() {
       >
         {() => (
           <>
-            <Controls className="absolute right-5 z-40 sm:right-6 sm:top-6">
+            <Controls className="absolute z-40 right-5 sm:right-6 sm:top-6">
               <SettingsControl>
                 <MapSettings />
               </SettingsControl>

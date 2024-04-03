@@ -1,16 +1,9 @@
-import Sidebar from '@/containers/sidebar';
-
-import FiltersSidebar from './filters-sidebar';
+export const metadata = {
+  title: 'Network',
+  description:
+    'Find synergies and promote cooperation between heterogeneous actors and initiatives within the soil carbon field.',
+};
 
 export default function NetworkModuleLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Sidebar section="network">
-        {children}
-        <div className="!mt-0">
-          <FiltersSidebar />
-        </div>
-      </Sidebar>
-    </>
-  );
+  return children;
 }
