@@ -18,7 +18,7 @@ const buttonVariants = cva(
         'outline-rounded':
           'rounded-lg border border-gray-300 px-4 py-2 hover:bg-gray-50 text-gray-700 hover:bg-slate-700 hover:text-white',
         'outline-dark':
-          'rounded-lg border border-gray-300 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
+          'rounded-lg border border-gray-500 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
         // Not reviewed yet
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50 rounded-lg',

@@ -27,10 +27,11 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
       <Sidebar section="network">
         <SlidingLinkButton
           href={`/network?${mapSearchParams.toString()}`}
+          variant="dark"
           Icon={ArrowLeft}
           scroll={false}
         >
-          Back to Results
+          Back to results
         </SlidingLinkButton>
         {children}
       </Sidebar>

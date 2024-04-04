@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 
 import Link from 'next/link';
 
-import { Info } from 'lucide-react';
+import InfoButton from 'public/images/info-dark.svg';
 
 import { cn } from '@/lib/classnames';
 
@@ -51,13 +51,18 @@ const Field = ({
   const renderSingleLink = (url: string, external = false) => {
     if (!external) {
       return (
-        <Link className="text-sm text-peach-700" href={`${url}`}>
+        <Link className="text-sm font-semibold text-purple-400" href={`${url}`}>
           {value}
         </Link>
       );
     } else {
       return (
-        <a href={url} target="_blank" rel="noreferrer" className="text-sm text-peach-700">
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm font-semibold text-purple-400"
+        >
           {value}
         </a>
       );
@@ -73,7 +78,11 @@ const Field = ({
               value?.[index] && (
                 <>
                   {index !== 0 ? <br /> : ''}
-                  <Link key={elemUrl} className="text-sm text-peach-700" href={`${elemUrl}`}>
+                  <Link
+                    key={elemUrl}
+                    className="text-sm font-semibold text-purple-400"
+                    href={`${elemUrl}`}
+                  >
                     {value[index]}
                   </Link>
                 </>
@@ -94,7 +103,7 @@ const Field = ({
                     href={elemUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-sm text-peach-700"
+                    className="text-sm text-purple-400"
                   >
                     {value[index]}
                   </a>
@@ -116,9 +125,9 @@ const Field = ({
   return (
     <div className="flex gap-6">
       <div
-        className={cn('text-sm font-semibold', {
-          'w-[224px] min-w-[224px]': type === 'project',
-          'w-[144px] min-w-[144px]': type === 'organization',
+        className={cn('shrink-0 text-sm', {
+          'w-[160px]': type === 'project',
+          'w-[144px]': type === 'organization',
         })}
       >
         {label}
@@ -126,7 +135,7 @@ const Field = ({
       {url ? (
         renderLink(url, external)
       ) : (
-        <div>
+        <div className="text-gray-200">
           {markup ? (
             <MarkdownRenderer
               variant="lists"
@@ -151,8 +160,8 @@ const Field = ({
                   <Tooltip delayDuration={0} open={openInfo} onOpenChange={setInfoOpen}>
                     <TooltipTrigger asChild onClick={handleInfoClick}>
                       <Button type="button" size="auto" variant="icon">
-                        <span className="sr-only">Description</span>
-                        <Info />
+                        <span className="sr-only">Info</span>
+                        <InfoButton className="h-4 w-4" />
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent variant="dark" className="max-w-[293px] text-sm leading-7">
@@ -165,15 +174,15 @@ const Field = ({
             </div>
           )}
           {isOverTwoLines && (
-            <button
+            <Button
+              type="button"
+              variant="vanilla"
+              size="auto"
               onClick={toggleExpanded}
-              className={cn('text-sm font-semibold', {
-                'text-blue-500': type === 'organization',
-                'text-peach-700': type === 'project',
-              })}
+              className="font-semibold text-purple-400"
             >
               {isExpanded ? 'Show less' : 'Show more'}
-            </button>
+            </Button>
           )}
         </div>
       )}
