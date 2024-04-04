@@ -3,7 +3,7 @@ import React from 'react';
 import { ControllerRenderProps, useForm } from 'react-hook-form';
 import 'react-quill/dist/quill.snow.css';
 
-import { ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
@@ -55,7 +55,6 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
     maxSize,
     placeholder,
     id,
-    index,
     'aria-describedby': ariaDescribedBy,
     'aria-invalid': ariaInvalid,
     form,
@@ -66,7 +65,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
     validationDependantField,
   } = props;
 
-  const { watch, register } = form;
+  const { watch } = form;
   const { name, onChange, value } = field;
   if (type === 'wysiwyg' && window !== undefined) {
     const watchField = watch(name) as string;
@@ -74,7 +73,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
     const onlyTextCount = watchField?.replace(/<[^>]*>?/gm, '').length || 0;
     const hasError: boolean = !!watchField && !!maxSize && +onlyTextCount > maxSize;
     return (
-      <div className="w-full">
+      <>
         <ReactQuill
           {...field}
           id={id}
@@ -95,26 +94,22 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
         {maxSize && (
           <div
             id={counterId}
-            className={cn('flex justify-end text-sm text-gray-500', {
-              'text-destructive': hasError,
+            className={cn('text-xs text-gray-300', {
+              'text-red-500': hasError,
             })}
           >
             {watchField ? onlyTextCount : '0'} / {maxSize}
           </div>
         )}
-      </div>
+      </>
     );
   }
 
   if (type === 'select') {
-    const registerProjectsField =
-      id && variant === 'network-organization' ? register(`projects.${index}.${name}`) : undefined;
-
     return (
       <Select
         onValueChange={onChange}
         defaultValue={value as string | undefined}
-        {...registerProjectsField}
         required={required}
       >
         <SelectTrigger
@@ -122,12 +117,13 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
           name={name}
           aria-describedby={ariaDescribedBy}
           aria-invalid={!!ariaInvalid}
+          className="h-10 text-sm"
         >
           <span className="max-w-full truncate">
             <SelectValue placeholder={placeholder || 'Select'} />
           </span>
         </SelectTrigger>
-        <SelectContent className="max-w-[632px]">
+        <SelectContent variant={variant} className="w-[var(--radix-select-trigger-width)]">
           {options?.map(({ label, value, disabled, description }) => (
             <SelectItem
               key={value}
@@ -135,6 +131,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
               disabled={disabled}
               variant={variant}
               description={description}
+              className="w-full"
             >
               {label}
             </SelectItem>
@@ -162,8 +159,8 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
         {maxSize && (
           <div
             id={counterId}
-            className={cn('flex justify-end text-sm text-gray-500', {
-              'text-destructive': hasError,
+            className={cn('text-xs text-gray-300', {
+              'text-red-500': hasError,
             })}
           >
             {watchField ? watchField.length : '0'} / {maxSize}
@@ -198,31 +195,25 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
             variant="vanilla"
             size="auto"
             className={cn(
-              'relative w-full justify-start border border-gray-300 p-4 pr-12 text-base focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-gray-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-[3px] data-[state=open]:border-gray-400',
-              { 'border-destructive': ariaInvalid },
+              'group relative flex h-10 w-full justify-between rounded-lg border border-gray-500 bg-gray-700 px-3 py-2 text-left text-base hover:!bg-gray-700 focus-visible:!outline-1 focus-visible:!outline-offset-0 focus-visible:!outline-green-700 data-[state=open]:border-gray-400',
+              { 'border-red-500': ariaInvalid },
             )}
             id={id}
           >
-            <span className="flex items-center gap-2">
-              <CalendarIcon />
-              {value ? (
-                format({ id: 'formatDate', value })
-              ) : (
-                <span className="text-gray-500">Select date</span>
-              )}
+            <span className="text-white">
+              {value ? format({ id: 'formatDate', value }) : 'Select date'}
             </span>
-            <ChevronDown className="absolute right-4 top-4 h-6 w-6 flex-shrink-0" />
+            <ChevronDown className="absolute right-4 top-1/2 h-6 w-6 flex-shrink-0 -translate-y-1/2 group-data-[state=open]:rotate-180" />
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[330px] overflow-y-auto rounded-none border p-0 text-base shadow-md"
+          className="my-2.5 w-[330px] overflow-y-auto rounded-lg border border-gray-400 bg-gray-650 p-0 text-base shadow-none"
           side="bottom"
-          sideOffset={4}
+          sideOffset={-1}
           align="start"
         >
           <Calendar
             initialFocus
-            variant={variant}
             mode="single"
             captionLayout="dropdown-buttons"
             defaultMonth={value ? new Date(value as string) : undefined}
@@ -275,6 +266,7 @@ const InputComponent = React.forwardRef<typeof ReactQuill, InputComponentProps>(
         }
         field.onBlur();
       }}
+      className="text-sm"
     />
   );
 });

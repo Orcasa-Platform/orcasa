@@ -15,9 +15,7 @@ const optionVariants = cva('py-2 px-4 flex items-start gap-x-2 group', {
   variants: {
     variant: {
       default: '',
-      // To review
-      'network-organization': '',
-      'network-initiative': '',
+      dark: '',
     },
   },
   defaultVariants: {
@@ -31,9 +29,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: '',
-        // To review
-        'network-organization': '',
-        'network-initiative': '',
+        dark: '',
       },
     },
     defaultVariants: {
@@ -140,7 +136,7 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             variant="vanilla"
             size="auto"
             className={cn(
-              'relative h-10 w-full justify-between rounded-lg border border-gray-300 px-4 py-2 text-base focus-visible:ring-offset-0',
+              'relative h-10 w-full justify-between rounded-lg border border-gray-500 px-4 py-2 text-base focus-visible:ring-offset-0',
             )}
             title={selectedLabels}
             onClick={() => setOpen(true)}

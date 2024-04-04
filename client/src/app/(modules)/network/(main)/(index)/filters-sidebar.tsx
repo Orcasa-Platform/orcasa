@@ -141,7 +141,7 @@ export default function FiltersSidebar() {
               id="organisation-type"
               name="Organisation type"
               placeholder="Select"
-              variant="network-organization"
+              variant="dark"
               value={filters.organizationType ?? []}
               options={organizationFiltersOptions.organizationType}
               onChange={(value) => setFilters({ ...filters, organizationType: value })}
@@ -158,7 +158,7 @@ export default function FiltersSidebar() {
               id="organisation-thematic"
               name="Organisation thematic"
               placeholder="Select"
-              variant="network-organization"
+              variant="dark"
               value={filters.thematic ?? []}
               options={organizationFiltersOptions.thematic}
               onChange={(value) => setFilters({ ...filters, thematic: value })}
@@ -175,7 +175,7 @@ export default function FiltersSidebar() {
               id="organisation-country"
               name="Organisation country"
               placeholder="Select"
-              variant="network-organization"
+              variant="dark"
               value={filters.country ?? []}
               options={organizationFiltersOptions.country}
               onChange={(value) => setFilters({ ...filters, country: value })}
@@ -192,7 +192,7 @@ export default function FiltersSidebar() {
               id="initiative-type"
               name="Initiative type"
               placeholder="Select"
-              variant="network-initiative"
+              variant="dark"
               value={filters.projectType ?? []}
               options={projectFiltersOptions.projectType}
               onChange={(value) => setFilters({ ...filters, projectType: value })}
@@ -209,7 +209,7 @@ export default function FiltersSidebar() {
               id="initiative-status"
               name="Initiative status"
               placeholder="Select"
-              variant="network-initiative"
+              variant="dark"
               value={filters.status ?? []}
               options={projectFiltersOptions.status}
               onChange={(value) => setFilters({ ...filters, status: value })}
@@ -225,7 +225,7 @@ export default function FiltersSidebar() {
             <MultiCombobox
               id="initiative-year"
               name="Initiative active on year"
-              variant="network-initiative"
+              variant="dark"
               placeholder="Select"
               value={filters.year ?? []}
               options={projectFiltersOptions.year}
@@ -246,7 +246,7 @@ export default function FiltersSidebar() {
               id="initiative-coordination-country"
               name="Initiative's country of coordination"
               placeholder="Select"
-              variant="network-initiative"
+              variant="dark"
               value={filters.coordinationCountry ?? []}
               options={projectFiltersOptions.coordinationCountry}
               onChange={(value) => setFilters({ ...filters, coordinationCountry: value })}
@@ -266,7 +266,7 @@ export default function FiltersSidebar() {
               id="initiative-intervention-region"
               name="Initiative's region of intervention"
               placeholder="Select"
-              variant="network-initiative"
+              variant="dark"
               value={filters.interventionRegion ?? []}
               options={projectFiltersOptions.interventionRegion}
               onChange={(value) => setFilters({ ...filters, interventionRegion: value })}
@@ -286,7 +286,7 @@ export default function FiltersSidebar() {
               id="initiative-intervention-country"
               name="Initiative's country of intervention"
               placeholder="Select"
-              variant="network-initiative"
+              variant="dark"
               value={filters.interventionCountry ?? []}
               options={projectFiltersOptions.interventionCountry}
               onChange={(value) => setFilters({ ...filters, interventionCountry: value })}
@@ -306,7 +306,7 @@ export default function FiltersSidebar() {
               id="initiative-intervention-area"
               name="Initiative's area of intervention"
               placeholder="Select"
-              variant="network-initiative"
+              variant="dark"
               value={filters.interventionArea ?? []}
               options={projectFiltersOptions.interventionArea}
               onChange={(value) => setFilters({ ...filters, interventionArea: value })}

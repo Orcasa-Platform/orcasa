@@ -20,7 +20,6 @@ const RenderField = ({
   index,
   fields,
   form,
-  variant,
 }: {
   id: string;
   index?: number;
@@ -30,7 +29,6 @@ const RenderField = ({
     };
   };
   form: ReturnType<typeof useForm>;
-  variant: 'network-initiative' | 'network-organization';
 }) => {
   const field = fields[id];
   const {
@@ -46,30 +44,7 @@ const RenderField = ({
     validationDependantField,
   } = field;
   const richEditorRef = useRef<ReactQuill | null>(null);
-  const Label = () => {
-    const labelContent = (
-      <>
-        {label}
-        {required && (
-          <>
-            {' '}
-            <span className="text-red-700">*</span>
-          </>
-        )}
-      </>
-    );
-    return type === 'wysiwyg' ? (
-      <button
-        type="button"
-        className="cursor-default"
-        onClick={() => richEditorRef?.current?.focus()}
-      >
-        {labelContent}
-      </button>
-    ) : (
-      <span>{labelContent}</span>
-    );
-  };
+
   return (
     <FormField
       key={id}
@@ -79,9 +54,20 @@ const RenderField = ({
         const { field } = f;
         return (
           <FormItem>
-            <FormLabel className="flex justify-between">
-              <Label />
-              {!required && <span className="text-sm text-gray-700">Optional</span>}
+            <FormLabel
+              className="flex justify-between"
+              {...(type === 'wysiwyg' ? { onClick: () => richEditorRef?.current?.focus() } : {})}
+            >
+              <span className="text-gray-300">
+                {label}
+                {required && (
+                  <>
+                    {' '}
+                    <span className="text-red-500">*</span>
+                  </>
+                )}
+              </span>
+              {!required && <span className="text-sm text-gray-300">Optional</span>}
             </FormLabel>
             <FormControl>
               <InputComponent
@@ -91,7 +77,7 @@ const RenderField = ({
                     string
                   >
                 }
-                variant={variant}
+                variant="dark"
                 key={id}
                 index={index}
                 name={id}
@@ -108,7 +94,7 @@ const RenderField = ({
                 placeholder={placeholder}
               />
             </FormControl>
-            <FormDescription className="text-sm text-slate-500">{description}</FormDescription>
+            <FormDescription>{description}</FormDescription>
             <FormMessage className="max-w-[632px]" />
           </FormItem>
         );

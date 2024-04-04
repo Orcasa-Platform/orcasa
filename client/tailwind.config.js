@@ -29,6 +29,10 @@ module.exports = {
       },
       colors: {
         main: 'hsl(var(--main))',
+        red: {
+          500: '#B95E6F',
+          700: '#79526A',
+        },
         yellow: {
           50: '#FFF7E6',
           // Geospatial data

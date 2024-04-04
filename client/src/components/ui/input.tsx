@@ -19,7 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'flex h-10 w-full rounded-lg border border-gray-500 bg-gray-700 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 disabled:cursor-not-allowed disabled:opacity-50',
             icon ? 'pl-[44px]' : 'pl-4',
             className,
-            { 'border-destructive': error || ariaInvalid },
+            { 'border-red-500': error || ariaInvalid },
           )}
           ref={ref}
           {...props}

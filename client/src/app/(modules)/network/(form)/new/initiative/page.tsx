@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -10,10 +10,8 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-import { AlertCircle, Check, CircleSlash } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { z } from 'zod';
-
-import { cn } from '@/lib/classnames';
 
 import { useIsFormDirty } from '@/store/network';
 
@@ -28,8 +26,15 @@ import RenderField from '@/components/form/render-field';
 import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import Alert from '@/styles/icons/alert.svg';
+import Email from '@/styles/icons/email.svg';
+import Info from '@/styles/icons/info.svg';
+import Notebook from '@/styles/icons/notebook.svg';
+import Users from '@/styles/icons/users.svg';
 
 export default function ProjectForm() {
+  const formContainerRef = useRef<HTMLDivElement | null>(null);
+
   const {
     countries,
     organizations,
@@ -95,7 +100,7 @@ export default function ProjectForm() {
       })),
     },
     project_coordinator_email: {
-      label: 'Generic Email',
+      label: 'Generic email',
       zod: z
         .string()
         .email('Please, enter a valid email.')
@@ -109,7 +114,7 @@ export default function ProjectForm() {
           if (value && projectCoordinatorWebsite) {
             return refinementContext.addIssue({
               code: z.ZodIssueCode.custom,
-              message: 'Only one of the two fields can be filled: Generic Email or Contact url.',
+              message: 'Only one of the two fields can be filled: Generic email or Contact url.',
             });
           }
           return refinementContext;
@@ -169,14 +174,14 @@ export default function ProjectForm() {
       type: 'text',
       maxSize: 255,
       description: (
-        <div className="leading-normal text-gray-500">
+        <>
           Accepted URLs format:
           <ul className="ml-4 list-disc">
             <li>https://irc-orcasa.eu/ or https://www.irc-orcasa.eu/</li>
             <li>www.irc-orcasa.eu/</li>
             <li>irc-orcasa.eu/</li>
           </ul>
-        </div>
+        </>
       ),
     },
     short_description: {
@@ -404,6 +409,18 @@ export default function ProjectForm() {
         message: 'Email is limited to 255 characters.',
       }),
       type: 'email',
+      description: (
+        <div className="mt-6">
+          Only the team in charge of the administration of Impact4Soil may access your email. You
+          have the right to ask for deletion of your email by writing to:{' '}
+          <Link
+            href="mailto:impact4soil@groupes.renater.fr"
+            className="font-semibold text-green-700"
+          >
+            impact4soil@groupes.renater.fr
+          </Link>
+        </div>
+      ),
     },
   };
 
@@ -482,6 +499,12 @@ export default function ProjectForm() {
   const [, setIsFormDirty] = useIsFormDirty();
   useBeforeUnloadDirtyForm(form);
 
+  useEffect(() => {
+    if (error) {
+      formContainerRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [error, formContainerRef]);
+
   if (!hasData || !fields) {
     return null;
   }
@@ -511,73 +534,67 @@ export default function ProjectForm() {
   const renderFields = (fieldsArray: (keyof typeof fields)[]) =>
     Object.keys(fields)
       .filter((key) => fieldsArray.includes(key))
-      .map((key) => (
-        <RenderField key={key} id={key} form={form} fields={fields} variant="network-initiative" />
-      ));
+      .map((key) => <RenderField key={key} id={key} form={form} fields={fields} />);
   return (
     <>
       <Form {...form}>
         <form
           noValidate
-          className="min-w-[632px] max-w-[632px] pb-10"
+          className="min-w-[500px] max-w-[500px] pb-10"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="fixed top-0 z-30 -ml-1 w-[calc(632px+8px)] bg-white px-1">
-            <div className="mb-2 flex items-center justify-between border-b border-dashed border-gray-300 pb-6 pt-20">
-              <h1 className="font-serif text-3.5xl text-peach-700">New Initiative</h1>
-              <Button
-                type="submit"
-                variant="primary"
-                className="gap-2 bg-peach-700 hover:bg-peach-900"
-              >
-                <Check className="h-6 w-6" />
-                <div>Submit</div>
+          <div className="sticky top-0 z-30 -ml-1 w-[calc(500px+8px)] bg-gray-700 px-1">
+            <div className="mb-2 flex items-center justify-between pb-4 pt-10">
+              <h1 className="font-serif text-4xl">New initiative</h1>
+              <Button type="submit" variant="primary" className="gap-2">
+                <Check className="h-4 w-4" />
+                <span>Submit</span>
               </Button>
             </div>
+          </div>
+          <div ref={formContainerRef} className="scroll-mt-[108px] space-y-8">
             {!!error && (
-              <div className="mt-3 flex w-full gap-3 rounded-md bg-pink-50 p-4 text-red-700">
-                <CircleSlash className="relative h-5 w-5" />
-                <div className="text-sm" aria-live="polite">
+              <div className="flex gap-4 rounded-md bg-red-700 p-4 text-sm leading-7 text-white">
+                <Alert className="h-6 w-6" />
+                <div aria-live="polite">
                   <div className="mb-2 font-semibold">Something went wrong</div>
-                  <div className="text-gray-600">{error?.message}</div>
+                  <p>{error?.message}</p>
                 </div>
               </div>
             )}
-          </div>
-          <div
-            className={cn('space-y-6', {
-              'mt-36': !error,
-              'mt-56': !!error,
-            })}
-          >
-            <h2 className="font-serif text-2xl leading-10 text-gray-700">Initiative network</h2>
-            <div className="text-gray-700">
+            <div className="text-sm text-gray-300">
               <span>Fields marked with </span>
-              <span className="text-red-700">*</span>
+              <span className="text-red-500">*</span>
               <span> are mandatory.</span>
             </div>
-            <div className="flex w-full gap-3 rounded-md bg-peach-50 p-4">
-              <AlertCircle className="w-min-fit h-5 w-5 pt-0.5 text-peach-700" />
-              <div className="font-serif text-sm leading-6 text-gray-600">
+            <div className="flex gap-4 rounded-md bg-gray-650 p-4 text-sm leading-7 text-white">
+              <Info className="h-6 w-6 shrink-0" />
+              <div>
                 If the organisation you are looking for is not on the list, please use the{' '}
                 <Link
                   href="/network/new/organisation"
-                  className="text-sm font-semibold text-peach-700"
+                  className="text-sm font-semibold text-green-700"
                 >
                   organisation form
                 </Link>{' '}
                 to add it first.
               </div>
             </div>
+            <h2 className="flex items-center justify-start border-b border-gray-650 pb-4 font-serif text-xl">
+              <Users aria-hidden className="mr-2 h-6 w-6" />
+              Initiative network
+            </h2>
             {renderFields(['lead_partner', 'partners', 'funders'])}
-            <h2 className="mt-10 flex items-center gap-2 font-serif text-2xl text-gray-700">
+            <h2 className="flex items-center justify-start border-b border-gray-650 pb-4 font-serif text-xl">
+              <Email aria-hidden className="mr-2 h-6 w-6" />
               Initiative&apos;s contact
             </h2>
-            <p className="mt-14 font-serif text-base text-gray-700">
-              You can add one of the next options:
-            </p>
+            <p className="text-sm text-gray-300">You can add one of the next options:</p>
             {renderFields(['project_coordinator_email', 'project_coordinator_website'])}
-            <h2 className="mt-10 font-serif text-2xl text-gray-700">Initiative information</h2>
+            <h2 className="flex items-center justify-start border-b border-gray-650 pb-4 font-serif text-xl">
+              <Notebook aria-hidden className="mr-2 h-6 w-6" />
+              Initiative information
+            </h2>
             {renderFields([
               'name',
               'website',
@@ -600,19 +617,17 @@ export default function ProjectForm() {
               'land_use_types',
             ])}
 
-            <div className="space-y-6 border-t border-dashed border-gray-300">
-              <h2 className="mt-6 font-serif text-2xl text-gray-700">Contact Information</h2>
-              <div className="text-gray-700">
+            <div className="space-y-6">
+              <h2 className="flex items-center justify-start border-b border-gray-650 pb-4 font-serif text-xl">
+                <Email aria-hidden className="mr-2 h-6 w-6" />
+                Contact Information
+              </h2>
+              <div className="text-sm text-gray-300">
                 The information you have added is going to be reviewed and validated. This process
                 could require clarifications from our team, please enter your email so we can
                 contact you about it.
               </div>
-              <RenderField
-                id="user_email"
-                form={form}
-                fields={fields}
-                variant="network-initiative"
-              />
+              <RenderField id="user_email" form={form} fields={fields} />
             </div>
           </div>
         </form>

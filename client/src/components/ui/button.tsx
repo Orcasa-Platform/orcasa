@@ -20,7 +20,7 @@ const buttonVariants = cva(
         'outline-dark':
           'rounded-lg border border-gray-500 hover:bg-gray-600 text-white hover:text-white focus-visible:ring-offset-gray-700',
         // Not reviewed yet
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        destructive: 'bg-red-500 text-red-500 hover:bg-red-500/90',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-gray-50 rounded-lg',
         'button-switch': 'text-white !px-2',
         ghost: 'hover:bg-accent hover:text-accent-foreground rounded-lg',

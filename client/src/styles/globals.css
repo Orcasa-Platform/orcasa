@@ -112,12 +112,31 @@
 
 /* React Quill Rich editor */
 .ql-toolbar.ql-snow {
-  @apply border-gray-300 !important;
+  @apply border-gray-500 rounded-t-lg !important;
 }
 
 .ql-container.ql-snow {
-  @apply border-gray-300 text-base !important;
-  border-top: none !important;
+  @apply border-none !important;
+}
+
+.ql-editor {
+  @apply border border-gray-500 text-sm rounded-b-lg border-t-0 !important;
+}
+
+.ql-editor:focus-visible {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 !important;
+}
+
+.ql-snow .ql-stroke {
+  @apply stroke-gray-300 !important;
+}
+
+.ql-snow .ql-fill {
+  @apply fill-gray-300 !important;
+}
+
+.ql-snow .ql-formats button {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 rounded-md !important;
 }
 
 /* These styles are applied to the editor on the network forms
@@ -129,11 +148,11 @@ Check lib/utils/markup-renderer renderMarkup function list variant */
 }
 
 .ql-editor ul {
-  @apply list-inside list-disc leading-6 text-gray-700 !important;
+  @apply list-inside list-disc leading-6 text-white !important;
 }
 
 .ql-editor ol {
-  @apply list-inside list-decimal leading-6 text-gray-700 !important;
+  @apply list-inside list-decimal leading-6 text-white !important;
 }
 
 .ql-editor li {
