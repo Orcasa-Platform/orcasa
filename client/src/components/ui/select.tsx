@@ -150,7 +150,7 @@ const SelectItem = React.forwardRef<
     VariantProps<typeof itemVariants> & {
       description?: string;
     }
->(({ className, children, variant, description, ...props }, ref) => (
+>(({ className, children, variant, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
     <div className="flex w-full items-center justify-between">
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

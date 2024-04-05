@@ -113,7 +113,9 @@ export default function PracticesModule() {
                 setFilters({
                   ...filters,
                   [filter]: Array.isArray(filterValue)
-                    ? filterValue?.filter((filterValue) => filterValue !== value)
+                    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      filterValue?.filter((filterValue) => filterValue !== value)
                     : undefined,
                 });
               }}
