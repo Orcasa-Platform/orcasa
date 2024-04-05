@@ -72,7 +72,7 @@ type GroupedNetworks = {
   [key: string]: (OrganizationProperties | ProjectProperties)[];
 };
 
-type NetworkProperties = {
+export type NetworkProperties = {
   countryName: string;
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];

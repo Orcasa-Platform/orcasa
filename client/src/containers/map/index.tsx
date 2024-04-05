@@ -222,7 +222,7 @@ export default function MapContainer() {
       >
         {() => (
           <>
-            <Controls className="absolute z-40 right-5 sm:right-6 sm:top-6">
+            <Controls className="absolute right-5 z-40 sm:right-6 sm:top-6">
               <SettingsControl>
                 <MapSettings />
               </SettingsControl>

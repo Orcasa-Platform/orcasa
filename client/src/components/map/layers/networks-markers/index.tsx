@@ -20,6 +20,7 @@ import type {
   OrganizationProperties,
   ProjectProperties,
   PointFeatureWithNetworkProperties,
+  NetworkProperties,
 } from '@/hooks/networks';
 
 import NetworksPopup, { PopupAttributes } from '@/components/map/networks-popup';
@@ -29,23 +30,23 @@ export type NetworksLayerProps = LayerProps & {
 };
 
 const sizes = {
-  '1-10': 'h-[40px] w-[20px]',
-  '10-50': 'h-[60px] w-[40px]',
-  '50-100': 'h-[80px] w-[60px]',
-  '>100': 'h-[100px] w-[80px]',
+  '1-10': 'h-6 w-6',
+  '10-100': 'h-10 w-10',
+  '100-1k': 'h-[60px] w-[60px]',
+  '>1k': 'h-20 w-20',
 };
 
 const getSize = (size: number) => {
   if (size < 10) {
     return sizes['1-10'];
   }
-  if (size < 50) {
-    return sizes['10-50'];
-  }
   if (size < 100) {
-    return sizes['50-100'];
+    return sizes['10-100'];
   }
-  return sizes['>100'];
+  if (size < 1000) {
+    return sizes['100-1k'];
+  }
+  return sizes['>1k'];
 };
 
 type MarkerProps = {
@@ -54,7 +55,7 @@ type MarkerProps = {
   latitude: number;
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];
-  isCluster?: boolean;
+  highlight?: 'project' | 'organization';
   onClick?: (type: 'project' | 'organization') => void;
 };
 
@@ -64,11 +65,11 @@ const MarkerComponent = ({
   latitude,
   organizations,
   projects,
-  isCluster = false,
+  highlight,
   onClick,
 }: MarkerProps) => (
   <Marker key={`marker-${id}`} longitude={longitude} latitude={latitude}>
-    <div className="flex items-center gap-px">
+    <div className="flex items-center gap-1">
       {organizations.length > 0 && (
         <button
           type="button"
@@ -77,12 +78,15 @@ const MarkerComponent = ({
             if (onClick) onClick('organization');
           }}
           className={cn(
-            'flex origin-left items-center justify-center bg-blue-500',
+            'flex origin-left items-center justify-center rounded-full bg-green-700',
             getSize(organizations?.length),
-            { 'border-2 border-gray-700': !isCluster },
+            {
+              'relative after:absolute after:-z-10 after:block after:h-full after:w-full after:animate-pulse-ping after:rounded-full after:bg-green-700 after:content-[""]':
+                highlight === 'organization',
+            },
           )}
         >
-          <div className="text-sm text-white">
+          <div className="font-sans text-sm text-white">
             {format({ id: 'formatNumber', value: organizations.length })}
           </div>
         </button>
@@ -95,12 +99,15 @@ const MarkerComponent = ({
             if (onClick) onClick('project');
           }}
           className={cn(
-            'flex origin-left items-center justify-center bg-peach-700',
+            'flex origin-left items-center justify-center rounded-full bg-purple-500',
             getSize(projects?.length),
-            { 'border-2 border-gray-700': !isCluster },
+            {
+              'relative after:absolute after:-z-10 after:block after:h-full after:w-full after:animate-pulse-ping after:rounded-full after:bg-purple-500 after:content-[""]':
+                highlight === 'project',
+            },
           )}
         >
-          <div className="text-sm text-white">
+          <div className="font-sans text-sm text-white">
             {format({ id: 'formatNumber', value: projects.length })}
           </div>
         </button>
@@ -137,8 +144,8 @@ const NetworkMarkersWithData = ({
     }
   }, [map, onClickMap]);
 
-  const SUPERCLUSTER: Supercluster = useMemo(
-    () => features && new Supercluster({ radius: 100 }).load(features),
+  const SUPERCLUSTER = useMemo(
+    () => features && new Supercluster<NetworkProperties>({ radius: 90 }).load(features),
     [features],
   );
 
@@ -197,6 +204,15 @@ const NetworkMarkersWithData = ({
             (acc, leaf) => [...acc, ...leaf.properties.projects],
             [],
           );
+
+          const isOrganizationHighlighted =
+            !!id &&
+            type === 'organization' &&
+            organizations.some((organization) => organization.id === id);
+
+          const isProjectHighlighted =
+            !!id && type === 'project' && projects.some((project) => project.id === id);
+
           return (
             <MarkerComponent
               onClick={() => {
@@ -212,13 +228,25 @@ const NetworkMarkersWithData = ({
               latitude={latitude}
               organizations={organizations}
               projects={projects}
-              isCluster
+              highlight={
+                (isOrganizationHighlighted ? 'organization' : undefined) ??
+                (isProjectHighlighted ? 'project' : undefined)
+              }
             />
           );
         }
 
         // If is not a cluster, it's a country marker
-        const { countryName, organizations, projects } = properties;
+        const { countryName, organizations, projects } = properties as NetworkProperties;
+
+        const isOrganizationHighlighted =
+          !!id &&
+          type === 'organization' &&
+          organizations.some((organization) => organization.id === id);
+
+        const isProjectHighlighted =
+          !!id && type === 'project' && projects.some((project) => project.id === id);
+
         return (
           <MarkerComponent
             key={`marker-${countryName}`}
@@ -227,6 +255,10 @@ const NetworkMarkersWithData = ({
             latitude={latitude}
             organizations={organizations}
             projects={projects}
+            highlight={
+              (isOrganizationHighlighted ? 'organization' : undefined) ??
+              (isProjectHighlighted ? 'project' : undefined)
+            }
             onClick={(type) => {
               setPopup({
                 type,
@@ -265,11 +297,6 @@ const NetworksMarkers = () => {
   };
 
   // We need to separate the components to avoid conditional rendering of the hooks
-  // Also avoid fetching for a singular network if we are on one form page ('new')
-  return !!type && type !== 'new' ? (
-    <NetworkMarkerRelations {...network} />
-  ) : (
-    <NetworkMarkersFull />
-  );
+  return !!type ? <NetworkMarkerRelations {...network} /> : <NetworkMarkersFull />;
 };
 export default NetworksMarkers;
