@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 import { X } from 'lucide-react';
+import InfoButton from 'public/images/info-dark.svg';
 
 import { cn } from '@/lib/classnames';
 
@@ -14,6 +15,7 @@ import {
 } from '@/hooks/networks';
 
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 import {
   Select,
@@ -185,9 +187,34 @@ export default function FiltersSidebar() {
             />
           </div>
           <div>
-            <label htmlFor="initiative-type" className="block pb-1 text-sm text-gray-200">
-              Initiative type
-            </label>
+            <div className="flex items-center justify-start gap-2 pb-1">
+              <label htmlFor="initiative-type" className="block text-sm text-gray-200">
+                Initiative type
+              </label>
+              {projectFiltersOptions.projectType.some(({ description }) => !!description) && (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button type="button" size="auto" variant="icon">
+                      <span className="sr-only">Info</span>
+                      <InfoButton className="h-4 w-4" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+                    <h1 className="font-serif text-2xl leading-10">Initiative types</h1>
+                    {projectFiltersOptions.projectType
+                      .filter(({ description }) => !!description)
+                      .map(({ label, description }) => (
+                        <div key={label}>
+                          <h2 className="mb-2 text-sm font-semibold leading-7">{label}</h2>
+                          <p className="whitespace-pre-wrap text-sm leading-7 text-gray-650">
+                            {description}
+                          </p>
+                        </div>
+                      ))}
+                  </DialogContent>
+                </Dialog>
+              )}
+            </div>
             <MultiCombobox
               id="initiative-type"
               name="Initiative type"

@@ -158,7 +158,6 @@ const SelectItem = React.forwardRef<
         <Check className="ml-1 h-4 w-4 text-white" />
       </SelectPrimitive.ItemIndicator>
     </div>
-    {description && <div className="pt-3 text-sm leading-7 text-gray-500">{description}</div>}
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;

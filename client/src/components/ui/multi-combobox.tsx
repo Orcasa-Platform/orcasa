@@ -245,11 +245,6 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
                           className="pointer-events-none leading-normal"
                         >
                           {option.label}
-                          {option.description && (
-                            <div className="mt-3 text-sm leading-7 text-gray-500">
-                              {option.description}
-                            </div>
-                          )}
                         </Label>
                       </ComboboxPrimitive.Option>
                     );

@@ -215,12 +215,24 @@ export default function ProjectForm() {
     },
     project_type: {
       label: 'Initiative type',
+      labelDescription: projectTypes?.some(({ description }) => !!description) ? (
+        <>
+          <h1 className="font-serif text-2xl leading-10">Initiative types</h1>
+          {projectTypes
+            ?.filter(({ description }) => !!description)
+            .map(({ name, description }) => (
+              <div key={name}>
+                <h2 className="mb-2 text-sm font-semibold leading-7">{name}</h2>
+                <p className="whitespace-pre-wrap text-sm leading-7 text-gray-650">{description}</p>
+              </div>
+            ))}
+        </>
+      ) : undefined,
       zod: z.enum(projectTypes?.map((type) => type.id.toString()) as [string, ...string[]]),
       type: 'select',
       options: projectTypes?.map((type) => ({
         label: type.name,
         value: type.id.toString(),
-        description: type.description,
       })),
       required: true,
     },

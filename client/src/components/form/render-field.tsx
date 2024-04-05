@@ -3,7 +3,11 @@ import { useRef } from 'react';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 
+import InfoButton from 'public/images/info-dark.svg';
+
 import InputComponent from '@/components/form/input-component';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import {
   FormDescription,
   FormField,
@@ -33,6 +37,7 @@ const RenderField = ({
   const field = fields[id];
   const {
     label,
+    labelDescription,
     required,
     type,
     options,
@@ -58,15 +63,28 @@ const RenderField = ({
               className="flex justify-between"
               {...(type === 'wysiwyg' ? { onClick: () => richEditorRef?.current?.focus() } : {})}
             >
-              <span className="text-gray-300">
+              <div className="flex items-center justify-start text-gray-300">
                 {label}
                 {required && (
-                  <>
-                    {' '}
+                  <span>
+                    &nbsp;
                     <span className="text-red-500">*</span>
-                  </>
+                  </span>
                 )}
-              </span>
+                {!!labelDescription && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button type="button" size="auto" variant="icon" className="ml-2">
+                        <span className="sr-only">Info</span>
+                        <InfoButton className="h-4 w-4" />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+                      {labelDescription}
+                    </DialogContent>
+                  </Dialog>
+                )}
+              </div>
               {!required && <span className="text-sm text-gray-300">Optional</span>}
             </FormLabel>
             <FormControl>

@@ -9,6 +9,7 @@ export type ZodField =
 
 export type Field = {
   label: string;
+  labelDescription?: string | React.ReactNode;
   required?: boolean;
   zod: ZodField;
   description?: string | React.ReactNode;
