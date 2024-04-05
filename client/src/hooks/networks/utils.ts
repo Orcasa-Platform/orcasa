@@ -66,17 +66,8 @@ export const getPopulateForFilters = (type: 'organization' | 'project' | undefin
     : String([
         'country_of_coordination',
         'lead_partner.country',
-        'lead_partner.lead_projects.country_of_coordination',
-        'lead_partner.partner_projects.country_of_coordination',
-        'lead_partner.funded_projects.country_of_coordination',
         'partners.country',
-        'partners.lead_project.country_of_coordination',
-        'partners.partner_projects.country_of_coordination',
-        'partners.funded_projects.country_of_coordination',
         'funders.country',
-        'funders.lead_projects.country_of_coordination',
-        'funders.partner_projects.country_of_coordination',
-        'funders.funded_projects.country_of_coordination',
       ]);
 
 // Get country data from the organization or project
