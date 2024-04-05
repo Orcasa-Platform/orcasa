@@ -10,12 +10,12 @@ import { Check, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/classnames';
 
 export const itemVariants = cva(
-  'relative flex cursor-default select-none px-2 py-1 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 items-center rounded',
+  'relative flex cursor-default select-none px-4 py-2 text-sm leading-[22px] outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 items-center rounded',
   {
     variants: {
       variant: {
-        small: 'text-sm focus:bg-accent',
-        dark: 'h-10 flex justify-between w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-gray-600',
+        small: 'focus:bg-accent',
+        dark: 'flex justify-between w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-gray-600',
         // To review
         default: 'w-[calc(var(--radix-select-trigger-width)-1.25rem)] focus:bg-accent',
         'network-organization': 'data-[highsmalled]:bg-blue-50 data-[state=checked]:bg-blue-50',
@@ -47,7 +47,7 @@ export const contentVariants = cva(
   },
 );
 export const triggerVariants = cva(
-  'flex w-full items-center justify-between border border-gray-300 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-700 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg text-left',
+  'flex w-full items-center justify-between border border-gray-500 bg-transparent ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-green-700 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:border-gray-400 [&[data-state=open]>svg]:rotate-180 w-full rounded-lg text-left',
   {
     variants: {
       variant: {
@@ -79,7 +79,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(triggerVariants({ variant }), className, {
-      'border-destructive': error || ariaInvalid,
+      'border-red-500': error || ariaInvalid,
     })}
     {...props}
   >
@@ -150,7 +150,7 @@ const SelectItem = React.forwardRef<
     VariantProps<typeof itemVariants> & {
       description?: string;
     }
->(({ className, children, variant, description, ...props }, ref) => (
+>(({ className, children, variant, ...props }, ref) => (
   <SelectPrimitive.Item ref={ref} className={cn(itemVariants({ variant }), className)} {...props}>
     <div className="flex w-full items-center justify-between">
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -158,7 +158,6 @@ const SelectItem = React.forwardRef<
         <Check className="ml-1 h-4 w-4 text-white" />
       </SelectPrimitive.ItemIndicator>
     </div>
-    {description && <div className="pt-3 text-sm leading-7 text-gray-500">{description}</div>}
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;

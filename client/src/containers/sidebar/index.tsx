@@ -58,7 +58,7 @@ export default function Sidebar({
     const sectionMaxWidth: Partial<Record<Section, string>> = {
       'geospatial-data': 'w-[min(35%,_490px)]',
       practices: 'w-[min(45%,_580px)]',
-      network: 'w-[min(45%,_860px)]',
+      network: 'w-[min(45%,_580px)]',
     };
     return sectionMaxWidth[section] ?? '';
   }, [section]);

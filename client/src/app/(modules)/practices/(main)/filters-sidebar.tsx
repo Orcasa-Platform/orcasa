@@ -48,8 +48,10 @@ const SelectFilter = ({
   const selectedLabel = practicesFiltersOptions[source || type]?.find(
     ({ value }) => value === filters[type],
   )?.label;
+
   const handleValueChange = (value: string | number | undefined) => {
     let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
+
     if (typeof returnedValue === 'string') {
       const selectedOption = practicesFiltersOptions[source || type].find(
         ({ value }) => String(value) === returnedValue,
@@ -59,24 +61,9 @@ const SelectFilter = ({
       }
     }
 
-    // When we select Land use change as Main intervention
-    // we should move the current value of Land use type to Land use type prior
-    // to match the Scientific Evidence functionality
-    const getMainInterventionUpdates = () => {
-      if (type !== 'mainIntervention') return {};
-      if (value === 'Land Use Change') {
-        return { landUseTypes: undefined, priorLandUseTypes: filters.landUseTypes };
-      }
-      // Reset the filters when the main intervention is Management or all
-      return {
-        landUseTypes: filters.priorLandUseTypes || filters.landUseTypes,
-        priorLandUseTypes: undefined,
-      };
-    };
     return setFilters({
       ...filters,
       [type]: returnedValue,
-      ...getMainInterventionUpdates(),
     });
   };
 
@@ -96,12 +83,7 @@ const SelectFilter = ({
           All
         </SelectItem>
         {options.map(({ label, value }) => (
-          <SelectItem
-            variant="dark"
-            key={value}
-            value={String(value)}
-            className="w-full capitalize"
-          >
+          <SelectItem variant="dark" key={value} value={String(value)} className="w-full">
             {label}
           </SelectItem>
         ))}
@@ -111,7 +93,7 @@ const SelectFilter = ({
     <MultiCombobox
       id={toKebabCase(type)}
       key={toKebabCase(type)}
-      name={toKebabCase(type)}
+      name={label}
       value={filters[type] ? (filters[type] as number[]) : []}
       options={options || []}
       onChange={(value) =>
@@ -121,8 +103,7 @@ const SelectFilter = ({
         })
       }
       disabled={disabled}
-      className="!mt-0 capitalize"
-      showSelected
+      className="!mt-0"
     />
   );
 
@@ -191,123 +172,115 @@ export default function FiltersSidebar() {
           ref={closeButtonRef}
           type="button"
           size="icon"
-          className="absolute right-6 top-4"
+          className="absolute right-6 top-4 z-10"
           onClick={() => setFilterSidebarOpen(false)}
         >
           <span className="sr-only">Close</span>
           <X className="h-4 w-4" />
         </Button>
-        <h2 className="mb-6 font-serif text-2xl text-yellow-500">Filters</h2>
-        <div className="flex flex-col gap-y-10">
-          <fieldset className="relative">
-            <Button
-              type="button"
-              size="xs"
-              className="absolute bottom-full left-0 flex -translate-y-4 items-center gap-1 rounded-2xl text-sm text-gray-50 hover:bg-gray-500 disabled:text-gray-300 disabled:opacity-100"
-              onClick={() =>
-                setFilters({
-                  ...filters,
-                  country: [],
-                  year: [],
-                  landUseTypes: undefined,
-                  priorLandUseTypes: undefined,
-                  mainIntervention: undefined,
-                  subInterventions: undefined,
-                  sourceName: [],
-                })
-              }
-            >
-              Reset all
-              <Reset className="h-5 w-5" />
-            </Button>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="source" className="text-sm text-gray-200">
-                  Sources
-                </label>
-                <MultiCombobox
-                  id="source"
-                  key="source"
-                  name="Sources"
-                  placeholder="Select"
-                  value={filters.sourceName ?? []}
-                  options={practicesFiltersOptions.sourceName}
-                  onChange={(value) =>
-                    setFilters({ ...filters, sourceName: value as SourceName[] })
-                  }
-                />
-              </div>
-              <div>
-                <label htmlFor="country" className="text-sm text-gray-200">
-                  Country
-                </label>
-                <MultiCombobox
-                  id="country"
-                  key="country"
-                  name="Country"
-                  placeholder="Select"
-                  value={filters.country ?? []}
-                  options={practicesFiltersOptions.country}
-                  onChange={(value) => setFilters({ ...filters, country: value as number[] })}
-                />
-              </div>
-              <div>
-                <label htmlFor="published-year" className="text-sm text-gray-200">
-                  Published year
-                </label>
-                <MultiCombobox
-                  id="published-year"
-                  name="Published on year"
-                  placeholder="Select"
-                  value={filters.year ?? []}
-                  options={practicesFiltersOptions.year}
-                  onChange={(value) => setFilters({ ...filters, year: value as number[] })}
-                />
-              </div>
-              <SelectFilter
-                type="mainIntervention"
-                label="Main intervention"
-                placeholder="Select"
-                setFilters={setFilters}
-                practicesFiltersOptions={practicesFiltersOptions}
-                filters={filters}
-              />
-              <SelectFilter
-                source="landUseTypes"
-                type={
-                  filters?.mainIntervention === 'Land Use Change'
-                    ? 'priorLandUseTypes'
-                    : 'landUseTypes'
-                }
-                label="Land use type"
-                multiple
-                setFilters={setFilters}
-                practicesFiltersOptions={practicesFiltersOptions}
-                filters={filters}
-              />
-              {filters?.mainIntervention === 'Land Use Change' && (
-                <SelectFilter
-                  type="landUseTypes"
-                  label="New land use type"
-                  multiple
-                  setFilters={setFilters}
-                  practicesFiltersOptions={practicesFiltersOptions}
-                  filters={filters}
-                />
-              )}
-              {filters?.mainIntervention === 'Management' && (
-                <SelectFilter
-                  type="subInterventions"
-                  label="Sub-intervention"
-                  disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
-                  multiple
-                  setFilters={setFilters}
-                  practicesFiltersOptions={practicesFiltersOptions}
-                  filters={filters}
-                />
-              )}
-            </div>
-          </fieldset>
+        <h2 className="font-serif text-2xl text-yellow-500">Filters</h2>
+        <Button
+          type="button"
+          size="xs"
+          className="flex items-center gap-1 self-start !rounded-2xl pr-1 text-sm text-gray-50 hover:bg-gray-500 disabled:text-gray-300 disabled:opacity-100"
+          onClick={() =>
+            setFilters({
+              ...filters,
+              country: [],
+              year: [],
+              landUseTypes: [],
+              priorLandUseTypes: [],
+              mainIntervention: undefined,
+              subInterventions: [],
+              sourceName: [],
+            })
+          }
+        >
+          Reset all
+          <Reset className="h-5 w-5" />
+        </Button>
+        <div className="space-y-6">
+          <div>
+            <label htmlFor="source" className="block pb-1 text-sm text-gray-200">
+              Sources
+            </label>
+            <MultiCombobox
+              id="source"
+              key="source"
+              name="Sources"
+              placeholder="Select"
+              value={filters.sourceName ?? []}
+              options={practicesFiltersOptions.sourceName}
+              onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
+            />
+          </div>
+          <div>
+            <label htmlFor="country" className="block pb-1 text-sm text-gray-200">
+              Country
+            </label>
+            <MultiCombobox
+              id="country"
+              key="country"
+              name="Country"
+              placeholder="Select"
+              value={filters.country ?? []}
+              options={practicesFiltersOptions.country}
+              onChange={(value) => setFilters({ ...filters, country: value as number[] })}
+            />
+          </div>
+          <div>
+            <label htmlFor="published-year" className="block pb-1 text-sm text-gray-200">
+              Published year
+            </label>
+            <MultiCombobox
+              id="published-year"
+              name="Published on year"
+              placeholder="Select"
+              value={filters.year ?? []}
+              options={practicesFiltersOptions.year}
+              onChange={(value) => setFilters({ ...filters, year: value as number[] })}
+            />
+          </div>
+          <SelectFilter
+            type="mainIntervention"
+            label="Main intervention"
+            placeholder="Select"
+            setFilters={setFilters}
+            practicesFiltersOptions={practicesFiltersOptions}
+            filters={filters}
+          />
+          <SelectFilter
+            source="landUseTypes"
+            type={
+              filters?.mainIntervention === 'Land Use Change' ? 'priorLandUseTypes' : 'landUseTypes'
+            }
+            label="Land use type"
+            multiple
+            setFilters={setFilters}
+            practicesFiltersOptions={practicesFiltersOptions}
+            filters={filters}
+          />
+          {filters?.mainIntervention === 'Land Use Change' && (
+            <SelectFilter
+              type="landUseTypes"
+              label="New land use type"
+              multiple
+              setFilters={setFilters}
+              practicesFiltersOptions={practicesFiltersOptions}
+              filters={filters}
+            />
+          )}
+          {filters?.mainIntervention === 'Management' && (
+            <SelectFilter
+              type="subInterventions"
+              label="Sub-intervention"
+              disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
+              multiple
+              setFilters={setFilters}
+              practicesFiltersOptions={practicesFiltersOptions}
+              filters={filters}
+            />
+          )}
         </div>
       </div>
     </div>

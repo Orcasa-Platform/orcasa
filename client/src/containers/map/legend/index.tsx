@@ -128,8 +128,8 @@ const MapLegends = ({ className = '' }) => {
 
   return (
     <div
-      className={cn('absolute bottom-8 right-6 z-10 w-full max-w-xs', {
-        'w-32': isPracticesPage,
+      className={cn('absolute bottom-8 right-6 z-10 max-w-xs', {
+        'w-full': !isPracticesPage && !isNetworkPage,
       })}
     >
       <Legend
@@ -141,7 +141,7 @@ const MapLegends = ({ className = '' }) => {
           enabled: sortable,
           handle: true,
         }}
-        hideToggle={isPracticesPage}
+        hideToggle={isPracticesPage || isNetworkPage}
         onChangeOrder={handleChangeOrder}
       >
         {ITEMS}

@@ -42,7 +42,7 @@ const PracticesPopup = ({ popup, setPopup }: PracticesPopupProps) => {
       closeButton={false}
       offset={20}
       maxWidth="332px"
-      className="gap- z-50 flex h-[332px] w-[332px] flex-col p-0 font-serif"
+      className="z-50 flex h-[332px] w-[332px] flex-col p-0 font-serif"
     >
       <div className="p-6">
         <Button
@@ -55,7 +55,7 @@ const PracticesPopup = ({ popup, setPopup }: PracticesPopupProps) => {
           <span className="sr-only">Close</span>
           <X className="h-4 w-4 text-gray-500" />
         </Button>
-        <header className="pb-6 text-lg text-slate-700">
+        <header className="pb-6 pr-9 text-lg text-slate-700">
           <span>Practices in </span>
           <span className="font-semibold">{countryName}</span>
         </header>

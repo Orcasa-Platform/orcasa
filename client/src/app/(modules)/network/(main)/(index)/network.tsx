@@ -14,13 +14,10 @@ import {
   Project,
 } from '@/types/generated/strapi.schemas';
 
+import Tag from '@/components/tag';
 import InfoTooltip from '@/components/ui/info-tooltip';
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 import { WithEllipsis } from '@/components/ui/with-ellipsis';
-import CalendarIcon from '@/styles/icons/calendar.svg';
-import FolderIcon from '@/styles/icons/folder.svg';
-import GlobeIcon from '@/styles/icons/globe.svg';
-import OrganizationIcon from '@/styles/icons/organisation.svg';
 
 const Icons = ({
   type,
@@ -44,40 +41,32 @@ const Icons = ({
     const regionName = isWorldwide
       ? 'Worldwide'
       : region_of_interventions?.data?.map((r) => r.attributes?.name).join(', ');
-    const projectTypeContent = <div className="text-base text-slate-500">{projectType}</div>;
 
     return (
-      <div className="flex flex-wrap gap-x-4 gap-y-2">
+      <div className="flex flex-wrap gap-x-1 gap-y-2">
+        {regionName && (
+          <Tag className="border-purple-500 text-purple-500">
+            <WithEllipsis text={regionName} />
+          </Tag>
+        )}
+        {startDate && (
+          <Tag className="border-purple-500 text-purple-500">
+            {format({ id: 'formatDate', value: startDate })}
+            {endDate ? ` - ${format({ id: 'formatDate', value: endDate })}` : ''}
+          </Tag>
+        )}
         {projectType && (
-          <div className="flex gap-2">
-            <FolderIcon className="mt-0.5 h-6 w-6 min-w-min" />
+          <Tag className="border-purple-500 text-purple-500">
             {projectTypeDescription ? (
               <InfoTooltip
-                triggerContent={projectTypeContent}
+                triggerContent={projectType}
                 content={<p>{projectTypeDescription}</p>}
                 className="max-w-[293px]"
               />
             ) : (
-              projectTypeContent
+              projectType
             )}
-          </div>
-        )}
-        {startDate && (
-          <div className="flex gap-2">
-            <CalendarIcon className="mt-0.5 h-6 w-6 min-w-min" />
-            <div className="text-base text-slate-500">
-              {format({ id: 'formatDate', value: startDate })}
-              {endDate ? ` - ${format({ id: 'formatDate', value: endDate })}` : ''}
-            </div>
-          </div>
-        )}
-        {regionName && (
-          <div className="flex gap-2">
-            <GlobeIcon className="mt-0.5 h-6 w-6 min-w-min" />
-            <div className="text-base text-slate-500">
-              <WithEllipsis text={regionName} />
-            </div>
-          </div>
+          </Tag>
         )}
       </div>
     );
@@ -87,18 +76,12 @@ const Icons = ({
     const countryName = country?.data?.attributes?.name;
     const organizationTypeName = organization_type?.data?.attributes?.name;
     return (
-      <div className="flex flex-wrap gap-x-4 gap-y-2">
-        <div className="flex gap-2">
-          <GlobeIcon className="mt-0.5 h-6 w-6 min-w-min" />
-          <div className="text-base text-slate-500">{countryName}</div>
-        </div>
-        {organization_type && (
-          <div className="flex gap-2">
-            <OrganizationIcon className="mt-0.5 h-6 w-6 min-w-min" />
-            <div className="text-base text-slate-500">
-              {organizationTypeName && <WithEllipsis text={organizationTypeName} />}
-            </div>
-          </div>
+      <div className="flex flex-wrap gap-x-1 gap-y-2">
+        <Tag>{countryName}</Tag>
+        {organizationTypeName && (
+          <Tag>
+            <WithEllipsis text={organizationTypeName} />
+          </Tag>
         )}
       </div>
     );
@@ -122,23 +105,18 @@ export default function Network({
   return (
     <li
       key={id}
-      className={cn('mb-2 flex min-h-[240px] w-full gap-4 bg-gray-50', {
-        'bg-peach-50': type === 'project',
-        'bg-blue-50': type === 'organization',
-      })}
+      className={cn(
+        'mb-2 flex min-h-[232px] w-full gap-4 rounded-lg border border-white bg-white',
+        {
+          'border-purple-200 bg-purple-100': type === 'project',
+        },
+      )}
     >
-      <div className="flex w-full flex-col justify-between gap-6 px-12 py-10 text-base text-slate-500">
-        <header className="flex flex-col gap-6">
+      <div className="flex w-full flex-col justify-between gap-4 p-6 text-gray-500">
+        <header className="flex flex-col gap-4">
           <Icons type={type} attributes={attributes} isWorldwide={isWorldwide} />
-          <div
-            className={cn('font-serif text-2xl leading-10', {
-              'text-peach-700': type === 'project',
-              'text-blue-500': type === 'organization',
-            })}
-          >
-            {name}
-          </div>
-          <p>{shortDescription}</p>
+          <div className="font-serif text-lg leading-7 text-gray-700">{name}</div>
+          <p className="text-xs leading-5">{shortDescription}</p>
         </header>
         <div className="flex items-center justify-end">
           <SlidingLinkButton
@@ -148,8 +126,8 @@ export default function Network({
               type === 'project' ? 'initiative' : type
             }/${id}?${searchParams.toString()}`}
             buttonClassName={cn({
-              'bg-peach-100': type === 'project',
-              'bg-blue-100': type === 'organization',
+              'bg-purple-200 group-hover:bg-purple-500 group-focus:bg-purple-500 group-focus:ring-purple-500':
+                type === 'project',
             })}
             // Next.js has a bug where the sidebar is not scrolled up to the top when navigating but
             // up to where `{children}` is visually located *within* the layout. Paddings around

@@ -8,6 +8,9 @@ import { useMapSearchParams } from '@/store';
 
 import { useNetworkFilterSidebarOpen } from '@/store/network';
 
+import Map from '@/containers/map';
+import Sidebar from '@/containers/sidebar';
+
 import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
 
 export default function NetworkModuleDetailsLayout({ children }: { children: React.ReactNode }) {
@@ -21,14 +24,18 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
 
   return (
     <>
-      <SlidingLinkButton
-        href={`/network?${mapSearchParams.toString()}`}
-        Icon={ArrowLeft}
-        scroll={false}
-      >
-        Back to Results
-      </SlidingLinkButton>
-      {children}
+      <Sidebar section="network">
+        <SlidingLinkButton
+          href={`/network?${mapSearchParams.toString()}`}
+          variant="dark"
+          Icon={ArrowLeft}
+          scroll={false}
+        >
+          Back to results
+        </SlidingLinkButton>
+        {children}
+      </Sidebar>
+      <Map />
     </>
   );
 }

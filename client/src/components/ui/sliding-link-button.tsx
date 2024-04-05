@@ -13,7 +13,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-gray-100',
-        dark: 'bg-gray-300 group-focus:ring-offset-gray-700',
+        dark: 'bg-gray-500 group-focus:ring-offset-gray-700',
       },
       defaultVariants: {
         variant: 'default',

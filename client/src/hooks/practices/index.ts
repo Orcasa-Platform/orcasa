@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { PointFeature } from 'supercluster';
 
-import { PracticesDropdownFilters, PracticesFilters } from '@/store/practices';
+import { PracticesDropdownFilters, PracticesFilters, usePracticesFilters } from '@/store/practices';
 
 import { useGetCountries } from '@/types/generated/country';
 import { useGetLandUseTypes } from '@/types/generated/land-use-type';
@@ -545,8 +545,12 @@ export const usePracticesFiltersOptions = (
   const subInterventions = useMemo(
     () =>
       subInterventionData?.data
-        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          subInterventionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        ? subInterventionData.data.map((d) => ({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            label: `${d.attributes!.name[0].toUpperCase()}${d.attributes!.name.substring(1)}`,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            value: d.id!,
+          }))
         : [],
     [subInterventionData],
   );
@@ -565,4 +569,53 @@ export const usePracticesFiltersOptions = (
     mainIntervention,
     subInterventions,
   };
+};
+
+export const usePracticesActiveFilters = () => {
+  const [filters] = usePracticesFilters();
+  const filtersOptions = usePracticesFiltersOptions(filters);
+
+  return Object.entries(filters)
+    .map(([key, value]: [string, unknown | unknown[]]) => {
+      const options = filtersOptions[key as keyof PracticesDropdownFilters];
+
+      // If all the options of a filter are active, it's the same as if the filter is not applied,
+      // so we ignore it
+      if (!options || (Array.isArray(value) && options.length === value.length)) {
+        return [];
+      }
+
+      if (Array.isArray(value)) {
+        return value
+          .map((filterValue) => {
+            const option = options?.find(({ value }) => value === filterValue);
+            if (option) {
+              return {
+                filter: key,
+                label: option.label,
+                value: option.value,
+              };
+            }
+          })
+          .filter((filter) => !!filter?.value) as {
+          filter: string;
+          label: string;
+          value: number;
+        }[];
+      } else {
+        const option = options?.find((option) => option.value === value);
+        if (!option) {
+          return [];
+        }
+
+        return [
+          {
+            filter: key,
+            label: option.label,
+            value,
+          },
+        ];
+      }
+    })
+    .flat();
 };

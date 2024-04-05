@@ -14,82 +14,81 @@ import { useMapSearchParams } from '@/store';
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import type { Category } from '@/hooks/networks/utils';
-import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
+import { Button } from '@/components/ui/button';
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
-import { SlidingLinkButton } from '@/components/ui/sliding-link-button';
-import Document from '@/styles/icons/document.svg';
 
 type PathProps = {
   heightIndex: number;
   category: Category;
   isGranchild?: boolean;
-  hasDot?: boolean;
 };
 
-const Path = ({ heightIndex, category, isGranchild = false, hasDot = false }: PathProps) => {
+const Path = ({ heightIndex, category, isGranchild = false }: PathProps) => {
   if (typeof heightIndex === 'undefined') return null;
 
-  // Padding to place the path at the middle of the item
-  const PADDING = 45;
-  const ITEM_HEIGHT = 70;
-  // Additional height to take into account the space between the items
-  const additionalHeight = heightIndex * 25;
-  const topHeight = (heightIndex + 1) * ITEM_HEIGHT + additionalHeight;
+  const WIDTH = 40;
+  const ITEM_HEIGHT = 56;
+  const ITEM_GAP = 24;
+  const CIRCLE_RADIUS = 8;
+  const STROKE_WIDTH = 2;
+  const CURVE_PADDING = 8;
 
-  // Allow some padding to show the full circle
-  const CIRCLE_PADDING = 10;
-  // Allow some padding to show the full width of the strokes
-  const STROKE_PADDING = 2;
+  // The vertical path is higher if the previous item is expanded. This offset increases the height
+  // of the svg element and push the curve and the circle to the bottom.
+  const verticalOffset =
+    !isGranchild && heightIndex > 0 ? heightIndex * (ITEM_HEIGHT + ITEM_GAP) : 0;
 
   const pathProps = {
     strokeWidth: '2',
     strokeDasharray: category === 'funder' ? '4' : '0',
   };
-  const circleColorClass = category === 'partner' ? 'text-gray-300' : 'text-gray-700';
+
+  const circleColorClass = category === 'coordinator' ? 'text-white' : 'text-gray-500';
+
   const Letter =
     category === 'coordinator'
       ? CoordinatorLetter
       : category === 'funder'
       ? FunderLetter
       : PartnerLetter;
+
   return (
     <>
-      {hasDot && (
-        <span
-          className="dot absolute left-[14px] z-20 h-2 w-2 rounded-full bg-black"
-          style={{ top: 'calc(100% - 4px)' }}
-        />
-      )}
       <svg
-        height={`${PADDING + topHeight + CIRCLE_PADDING}px`}
-        width="40"
+        height={`${ITEM_GAP + (ITEM_HEIGHT * 3) / 2 + CIRCLE_RADIUS + verticalOffset}px`}
+        width={WIDTH}
         className="absolute -left-10 z-10 fill-transparent stroke-primary"
-        style={{
-          top: `-${topHeight}px`,
-        }}
+        style={{ top: `${-1 * (ITEM_GAP + ITEM_HEIGHT + verticalOffset)}px` }}
       >
         <path
-          d={`M${STROKE_PADDING},${
-            isGranchild ? topHeight - ITEM_HEIGHT : '0'
-          } L${STROKE_PADDING},${topHeight + 25}`}
+          d={`M ${STROKE_WIDTH / 2} 0 v ${ITEM_GAP + ITEM_HEIGHT + verticalOffset}`}
           className={cn('stroke-current', circleColorClass)}
           {...pathProps}
         />
         <path
-          d={`M${STROKE_PADDING},${topHeight + 25} Q${STROKE_PADDING},${PADDING + topHeight} 50,
-          ${PADDING + topHeight - STROKE_PADDING}`}
+          d={`M ${STROKE_WIDTH / 2} ${ITEM_GAP + ITEM_HEIGHT + verticalOffset} v ${
+            CURVE_PADDING / 2
+          } Q ${STROKE_WIDTH / 2} ${ITEM_GAP + (ITEM_HEIGHT * 3) / 2 + verticalOffset} ${
+            WIDTH - CURVE_PADDING
+          } ${ITEM_GAP + (ITEM_HEIGHT * 3) / 2 + verticalOffset} h ${
+            CIRCLE_RADIUS + CURVE_PADDING
+          }`}
           className={cn('stroke-current', circleColorClass)}
           {...pathProps}
         />
-        <g transform={`translate(20, ${PADDING + topHeight - STROKE_PADDING})`}>
+        <g
+          transform={`translate(${WIDTH - CURVE_PADDING - CIRCLE_RADIUS}, ${
+            ITEM_GAP + (ITEM_HEIGHT * 3) / 2 + verticalOffset
+          })`}
+        >
           <circle
-            cx="4"
+            cx="0"
             cy="0"
-            r="8"
+            r={CIRCLE_RADIUS}
             className={cn('fill-current stroke-none', circleColorClass)}
           />
-          <g transform="translate(1, -3.5)">
+          <g transform="translate(-3, -3.5)">
             <Letter />
           </g>
         </g>
@@ -107,7 +106,6 @@ type ItemProps = Pick<Project | Organization, 'name'> & {
   heightIndex?: number;
   hasChildren: boolean;
   isFirst?: boolean;
-  hasDot?: boolean;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -120,7 +118,6 @@ const Item = ({
   onToggle,
   heightIndex,
   hasChildren,
-  hasDot,
   className,
   style,
 }: ItemProps) => {
@@ -132,74 +129,65 @@ const Item = ({
     onToggle?.(opened);
   };
   const ref = useRef<HTMLAnchorElement>(null);
-  const isOverTwoLines = useIsOverTwoLines(ref, true);
   const canExpandWithChildren = typeof onToggle !== 'undefined' && hasChildren;
-  const canExpandWithoutChildren = typeof onToggle !== 'undefined' && !hasChildren;
+
   return (
-    <div className={cn('relative z-30 -mt-6 w-full', className)} style={style}>
+    <div className={cn('relative w-full', className)} style={style}>
       {/* PATH */}
       {!isFirstNode && typeof heightIndex !== 'undefined' && (
-        <Path
-          heightIndex={heightIndex}
-          category={category}
-          isGranchild={isGranchild}
-          hasDot={(isFirstNode && hasChildren) || (hasChildren && category && opened)}
-        />
-      )}
-      {hasDot && (
-        <span
-          className="absolute left-[14px] z-20 h-2 w-2 rounded-full bg-black"
-          style={{ top: 'calc(100% - 4px)' }}
-        />
+        <Path heightIndex={heightIndex} category={category} isGranchild={isGranchild} />
       )}
       {/* CONTENT */}
       <div
         className={cn(
-          'z-30 mt-10 flex h-20 w-fit min-w-full items-center justify-between gap-6 p-4',
+          'group mt-6 flex h-14 w-fit min-w-full items-center justify-between gap-6 rounded-lg px-4 py-2',
           {
-            'border border-slate-700': isFirstNode || opened,
-            'bg-blue-50': type === 'organization',
-            'bg-peach-50': type === 'project',
+            'bg-gray-650 text-gray-200': type === 'organization',
+            'bg-purple-500 text-white': type === 'project',
           },
         )}
       >
         <Link
-          className={cn('text-sm text-slate-700', {
-            'line-clamp-2': isOverTwoLines,
-          })}
+          className="line-clamp-2 text-sm"
           href={`/network/${
             type === 'project' ? 'initiative' : type
           }/${id}?${searchParams.toString()}`}
           ref={ref}
-          {...(isOverTwoLines ? { title: name } : {})}
+          title={name}
         >
           {name}
         </Link>
         {category && (
-          <div className="flex min-w-fit max-w-fit items-center gap-4">
-            <SlidingLinkButton
-              isCompact
-              buttonClassName={cn('p-0 m-0', {
-                'bg-blue-100': type === 'organization',
-                'bg-peach-100': type === 'project',
-                // Compensate for the missing button
-                'mr-10': canExpandWithoutChildren,
-              })}
-              href={`/network/${
-                type === 'project' ? 'initiative' : type
-              }/${id}?${searchParams.toString()}`}
-              position="right"
-              Icon={Document}
+          <div className="hidden min-w-fit max-w-fit items-center gap-4 group-hover:flex">
+            <Button
+              asChild
+              variant="outline-dark"
+              size="sm"
+              className="border-white/25 bg-transparent hover:bg-white/5 focus-visible:bg-white/5"
             >
-              Learn more
-            </SlidingLinkButton>
+              <Link
+                href={`/network/${
+                  type === 'project' ? 'initiative' : type
+                }/${id}?${searchParams.toString()}`}
+              >
+                See details
+              </Link>
+            </Button>
+
             {canExpandWithChildren && (
-              <CollapsibleTrigger onClick={toggleOpenCollapsible}>
-                <ChevronDown
-                  className={cn('transform transition-transform', {
-                    'rotate-180': opened,
-                  })}
-                />
+              <CollapsibleTrigger asChild onClick={toggleOpenCollapsible}>
+                <Button
+                  variant="outline-dark"
+                  size="icon"
+                  className="hidden border-white/25 bg-transparent hover:bg-white/5 focus-visible:bg-white/5 group-hover:inline-flex"
+                >
+                  <span className="sr-only">Expand/collapse</span>
+                  <ChevronDown
+                    className={cn(' h-4 w-4 transform transition-transform', {
+                      'rotate-180': opened,
+                    })}
+                  />
+                </Button>
               </CollapsibleTrigger>
             )}
           </div>

@@ -7,7 +7,12 @@ import { uniqBy } from 'lodash';
 import { useDebounce } from 'rooks';
 import { PointFeature } from 'supercluster';
 
-import { NetworkFilters, NetworkOrganizationFilters, NetworkProjectFilters } from '@/store/network';
+import {
+  NetworkFilters,
+  NetworkOrganizationFilters,
+  NetworkProjectFilters,
+  useNetworkFilters,
+} from '@/store/network';
 
 import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
@@ -72,7 +77,7 @@ type GroupedNetworks = {
   [key: string]: (OrganizationProperties | ProjectProperties)[];
 };
 
-type NetworkProperties = {
+export type NetworkProperties = {
   countryName: string;
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];
@@ -891,7 +896,7 @@ export const useNetworksCount = (filters: NetworkFilters) => {
 
 export const useNetworkOrganizationFiltersOptions = (): Record<
   keyof NetworkOrganizationFilters,
-  { label: string; value: number }[]
+  { label: string; value: number; description?: string }[]
 > => {
   const { data: countryData } = useGetCountries(
     {
@@ -974,7 +979,7 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
 
 export const useNetworkProjectFiltersOptions = (): Record<
   keyof NetworkProjectFilters,
-  { label: string; value: number }[]
+  { label: string; value: number; description?: string }[]
 > => {
   const { data: countryData } = useGetCountries(
     {
@@ -1091,6 +1096,39 @@ export const useNetworkProjectFiltersOptions = (): Record<
       value: 2010 + index,
     })),
   };
+};
+
+export const useNetworkActiveFilters = () => {
+  const organizationFiltersOptions = useNetworkOrganizationFiltersOptions();
+  const projectFiltersOptions = useNetworkProjectFiltersOptions();
+  const [filters] = useNetworkFilters();
+
+  return Object.entries(filters)
+    .map(([key, value]: [string, unknown[]]) => {
+      const options =
+        organizationFiltersOptions[key as keyof NetworkOrganizationFilters] ??
+        projectFiltersOptions[key as keyof NetworkProjectFilters];
+
+      // If all the options of a filter are active, it's the same as if the filter is not applied,
+      // so we ignore it
+      if (!options || options.length === value.length) {
+        return [];
+      }
+
+      return value
+        .map((filterValue) => {
+          const option = options?.find(({ value }) => value === filterValue);
+          if (option) {
+            return {
+              filter: key,
+              label: option.label,
+              value: option.value,
+            };
+          }
+        })
+        .filter((filter) => !!filter?.value) as { filter: string; label: string; value: number }[];
+    })
+    .flat();
 };
 
 /**

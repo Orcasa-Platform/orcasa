@@ -2,16 +2,21 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
+import { X } from 'lucide-react';
 import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
-import { usePracticesFilterSidebarOpen, usePracticesFilters } from '@/store/practices';
+import {
+  PracticesDropdownFilters,
+  usePracticesFilterSidebarOpen,
+  usePracticesFilters,
+} from '@/store/practices';
 
 import { useGetPages } from '@/types/generated/page';
 
-import { usePractices, usePracticesCount } from '@/hooks/practices';
+import { usePractices, usePracticesActiveFilters, usePracticesCount } from '@/hooks/practices';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -32,6 +37,7 @@ export default function PracticesModule() {
 
   const practices = usePractices({ filters });
   const practicesCount = usePracticesCount(filters);
+  const activeFilters = usePracticesActiveFilters();
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
@@ -74,24 +80,52 @@ export default function PracticesModule() {
       <h1 className="font-serif leading-7">
         {intro && <MarkdownRenderer variant="bold" content={intro} />}
       </h1>
-      <div className="flex justify-between gap-x-4">
-        <Search
-          containerClassName="basis-full"
-          defaultValue={filters.search}
-          placeholder="Search practice"
-          onChange={(keywords) => setFilters({ ...filters, search: keywords })}
-        />
-        <Button
-          ref={filtersButtonRef}
-          type="button"
-          variant={filterSidebarOpen ? 'filters' : 'primary'}
-          className="group shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700"
-          aria-pressed={filterSidebarOpen}
-          onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
-        >
-          <Filter className="mr-2 h-6 w-6" />
-          Filters
-        </Button>
+      <div className="flex flex-col gap-y-2">
+        <div className="flex justify-between gap-x-4">
+          <Search
+            containerClassName="basis-full"
+            defaultValue={filters.search}
+            placeholder="Search practice"
+            onChange={(keywords) => setFilters({ ...filters, search: keywords })}
+          />
+          <Button
+            ref={filtersButtonRef}
+            type="button"
+            variant={filterSidebarOpen ? 'filters' : 'primary'}
+            className="group shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700"
+            aria-pressed={filterSidebarOpen}
+            onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
+          >
+            <Filter className="mr-2 h-6 w-6" />
+            Filters
+          </Button>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {activeFilters.map(({ filter, label, value }) => (
+            <Button
+              key={[filter, value].join('-')}
+              type="button"
+              variant="filter-tag"
+              size="xs"
+              title={label}
+              onClick={() => {
+                const filterValue = filters?.[filter as keyof PracticesDropdownFilters];
+                setFilters({
+                  ...filters,
+                  [filter]: Array.isArray(filterValue)
+                    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      filterValue?.filter((filterValue) => filterValue !== value)
+                    : undefined,
+                });
+              }}
+            >
+              <span className="sr-only">Remove filter:&nbsp;</span>
+              <span className="line-clamp-1">{label}</span>
+              <X className="ml-1 h-4 w-4 shrink-0" />
+            </Button>
+          ))}
+        </div>
       </div>
       <div className="text-xs text-gray-200">
         {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}

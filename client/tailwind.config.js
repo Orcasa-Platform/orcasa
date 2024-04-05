@@ -29,6 +29,10 @@ module.exports = {
       },
       colors: {
         main: 'hsl(var(--main))',
+        red: {
+          500: '#B95E6F',
+          700: '#79526A',
+        },
         yellow: {
           50: '#FFF7E6',
           // Geospatial data
@@ -82,7 +86,10 @@ module.exports = {
         purple: {
           // Datasets
           50: '#F0EBF4',
+          100: '#E9E7F5',
+          200: '#D9D4ED',
           400: '#B6B1DB',
+          500: '#8380BC',
           700: '#8380BC',
           900: '#584484',
         },
@@ -132,10 +139,21 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
+        'pulse-ping': {
+          '0%, 100%': {
+            transform: 'scale(0.5)',
+            opacity: 0.2,
+          },
+          '50%': {
+            transform: 'scale(1.5)',
+            opacity: 0.4,
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'pulse-ping': 'pulse-ping 1.9s ease-out infinite',
       },
       boxShadow: {
         DEFAULT: '0 1px 2px 0 rgb(0 0 0 / 0.06), 0 1px 3px 0 rgb(0 0 0 / 0.1)',

@@ -28,7 +28,7 @@ const InfoTooltip = ({
       <Tooltip>
         <TooltipTrigger className={triggerClassName}>{triggerContent}</TooltipTrigger>
         <TooltipContent
-          className={cn('text-sm leading-7', className)}
+          className={cn('max-w-xs text-xs leading-5', className)}
           variant="dark"
           sideOffset={sideOffset}
         >
