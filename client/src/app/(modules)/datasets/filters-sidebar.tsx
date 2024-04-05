@@ -10,7 +10,7 @@ import { format } from '@/lib/utils/formats';
 
 import { useDatasetsFilters } from '@/store/datasets';
 
-import { DatasetSource } from '@/types/datasets';
+import { useDatasetsFiltersOptions } from '@/hooks/datasets';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -26,6 +26,8 @@ export default function FiltersSidebar({
   setFilterSidebarOpen: (open: boolean) => void;
 }) {
   const [filters, setFilters] = useDatasetsFilters();
+
+  const filtersOptions = useDatasetsFiltersOptions();
 
   const scrollableContainerRef = useRef<HTMLDivElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -94,13 +96,7 @@ export default function FiltersSidebar({
                   name="Sources"
                   placeholder="Select"
                   value={filters.source ?? []}
-                  options={[
-                    { label: 'Cirad dataverse', value: DatasetSource.Cirad },
-                    { label: 'Harvard dataverse', value: DatasetSource.Harvard },
-                    { label: 'Inrae dataverse', value: DatasetSource.Inrae },
-                    { label: 'Joint Research Centre Data Catalogue', value: DatasetSource.JRC },
-                    { label: 'Zenodo', value: DatasetSource.Zenodo },
-                  ]}
+                  options={filtersOptions.source}
                   onChange={(value) => setFilters({ ...filters, source: value })}
                 />
               </div>

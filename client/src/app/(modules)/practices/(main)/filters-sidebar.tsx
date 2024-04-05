@@ -48,8 +48,10 @@ const SelectFilter = ({
   const selectedLabel = practicesFiltersOptions[source || type]?.find(
     ({ value }) => value === filters[type],
   )?.label;
+
   const handleValueChange = (value: string | number | undefined) => {
     let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
+
     if (typeof returnedValue === 'string') {
       const selectedOption = practicesFiltersOptions[source || type].find(
         ({ value }) => String(value) === returnedValue,
@@ -59,24 +61,9 @@ const SelectFilter = ({
       }
     }
 
-    // When we select Land use change as Main intervention
-    // we should move the current value of Land use type to Land use type prior
-    // to match the Scientific Evidence functionality
-    const getMainInterventionUpdates = () => {
-      if (type !== 'mainIntervention') return {};
-      if (value === 'Land Use Change') {
-        return { landUseTypes: undefined, priorLandUseTypes: filters.landUseTypes };
-      }
-      // Reset the filters when the main intervention is Management or all
-      return {
-        landUseTypes: filters.priorLandUseTypes || filters.landUseTypes,
-        priorLandUseTypes: undefined,
-      };
-    };
     return setFilters({
       ...filters,
       [type]: returnedValue,
-      ...getMainInterventionUpdates(),
     });
   };
 
@@ -96,12 +83,7 @@ const SelectFilter = ({
           All
         </SelectItem>
         {options.map(({ label, value }) => (
-          <SelectItem
-            variant="dark"
-            key={value}
-            value={String(value)}
-            className="w-full capitalize"
-          >
+          <SelectItem variant="dark" key={value} value={String(value)} className="w-full">
             {label}
           </SelectItem>
         ))}
@@ -111,7 +93,7 @@ const SelectFilter = ({
     <MultiCombobox
       id={toKebabCase(type)}
       key={toKebabCase(type)}
-      name={toKebabCase(type)}
+      name={label}
       value={filters[type] ? (filters[type] as number[]) : []}
       options={options || []}
       onChange={(value) =>
@@ -121,8 +103,7 @@ const SelectFilter = ({
         })
       }
       disabled={disabled}
-      className="!mt-0 capitalize"
-      showSelected
+      className="!mt-0"
     />
   );
 
@@ -207,10 +188,10 @@ export default function FiltersSidebar() {
               ...filters,
               country: [],
               year: [],
-              landUseTypes: undefined,
-              priorLandUseTypes: undefined,
+              landUseTypes: [],
+              priorLandUseTypes: [],
               mainIntervention: undefined,
-              subInterventions: undefined,
+              subInterventions: [],
               sourceName: [],
             })
           }

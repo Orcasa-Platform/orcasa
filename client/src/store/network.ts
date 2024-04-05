@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai';
 
-interface NetworkGeneralFilters {
+export interface NetworkGeneralFilters {
   type?: string[];
   search?: string;
 }

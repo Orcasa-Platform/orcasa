@@ -7,7 +7,9 @@ import {
   useInfiniteQuery,
 } from '@tanstack/react-query';
 
-import { DatasetListResponse, GetDatasetsParams } from '@/types/datasets';
+import { DatasetsFilters, useDatasetsFilters } from '@/store/datasets';
+
+import { DatasetListResponse, DatasetSource, GetDatasetsParams } from '@/types/datasets';
 
 import API, { ErrorType } from '@/services/api/datasets';
 
@@ -70,4 +72,68 @@ export const useGetDatasetsInfinite = <
   query.queryKey = queryOptions.queryKey;
 
   return query;
+};
+
+export const useDatasetsFiltersOptions = (): Record<
+  keyof Pick<DatasetsFilters, 'source'>,
+  { label: string; value: string }[]
+> => {
+  return {
+    source: [
+      { label: 'Cirad dataverse', value: DatasetSource.Cirad },
+      { label: 'Harvard dataverse', value: DatasetSource.Harvard },
+      { label: 'Inrae dataverse', value: DatasetSource.Inrae },
+      { label: 'Joint Research Centre Data Catalogue', value: DatasetSource.JRC },
+      { label: 'Zenodo', value: DatasetSource.Zenodo },
+    ],
+  };
+};
+
+export const useDatasetsActiveFilters = () => {
+  const filtersOptions = useDatasetsFiltersOptions();
+  const [filters] = useDatasetsFilters();
+
+  return Object.entries(filters)
+    .map(([key, value]: [string, unknown | unknown[]]) => {
+      const options = filtersOptions[key as keyof typeof filtersOptions];
+
+      // If all the options of a filter are active, it's the same as if the filter is not applied,
+      // so we ignore it
+      if (!options || (Array.isArray(value) && options.length === value.length)) {
+        return [];
+      }
+
+      if (Array.isArray(value)) {
+        return value
+          .map((filterValue) => {
+            const option = options?.find(({ value }) => value === filterValue);
+            if (option) {
+              return {
+                filter: key,
+                label: option.label,
+                value: option.value,
+              };
+            }
+          })
+          .filter((filter) => !!filter?.value) as {
+          filter: string;
+          label: string;
+          value: string;
+        }[];
+      } else {
+        const option = options?.find((option) => option.value === value);
+        if (!option) {
+          return [];
+        }
+
+        return [
+          {
+            filter: key,
+            label: option.label,
+            value,
+          },
+        ];
+      }
+    })
+    .flat();
 };
