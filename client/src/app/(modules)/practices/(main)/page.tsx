@@ -76,12 +76,15 @@ export default function PracticesModule() {
   }, [filters, previousFilters, setSidebarScroll]);
 
   return (
-    <div className="space-y-10">
+    <div className="m-4 mt-[72px] space-y-4 lg:m-0 lg:space-y-10">
       <h1 className="font-serif leading-7">
-        {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        <div className="font-serif text-2xl text-white lg:hidden">Practices</div>
+        <div className="hidden lg:block">
+          {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        </div>
       </h1>
       <div className="flex flex-col gap-y-2">
-        <div className="flex justify-between gap-x-4">
+        <div className="flex justify-between gap-x-4 text-white">
           <Search
             containerClassName="basis-full"
             defaultValue={filters.search}
@@ -92,7 +95,7 @@ export default function PracticesModule() {
             ref={filtersButtonRef}
             type="button"
             variant={filterSidebarOpen ? 'filters' : 'primary'}
-            className="group shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700"
+            className="group hidden shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700 lg:flex"
             aria-pressed={filterSidebarOpen}
             onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
           >
@@ -127,7 +130,7 @@ export default function PracticesModule() {
           ))}
         </div>
       </div>
-      <div className="text-xs text-gray-200">
+      <div className="text-sm text-gray-200 lg:text-xs">
         {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
       </div>
       <div className="!mt-6">

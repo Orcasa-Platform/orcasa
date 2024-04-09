@@ -12,7 +12,7 @@ export default function GeospatialDataModuleLayout({ children }: { children: Rea
   return (
     <div className="bg-gray-800">
       <Map />
-      <MobileFooter />
+      <MobileFooter section="geospatial-data" />
       <Sidebar section="geospatial-data">{children}</Sidebar>
     </div>
   );

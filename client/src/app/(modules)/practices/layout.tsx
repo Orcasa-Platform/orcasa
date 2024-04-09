@@ -1,3 +1,4 @@
+import MobileFooter from '@/containers/mobile-footer';
 export const metadata = {
   title: 'Practices',
   description:
@@ -5,5 +6,10 @@ export const metadata = {
 };
 
 export default function PracticesModuleLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <MobileFooter section="practices" />
+    </>
+  );
 }

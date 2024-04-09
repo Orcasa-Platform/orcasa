@@ -59,7 +59,7 @@ const MobileFooterMenu = ({ buttons }: { buttons: FooterButton[] }) => {
   return (
     <div className="fixed bottom-0 z-10 h-fit w-full lg:hidden">
       <Banner />
-      <nav className="flex h-full transform divide-x bg-green-700 text-white">
+      <nav className="z-20 flex h-full transform divide-x bg-green-700 text-white">
         {buttons.map(({ label, count, content }) => (
           <Drawer key={label}>
             <DrawerTrigger className="flex-1">
