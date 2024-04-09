@@ -24,7 +24,7 @@ const Banner = () => {
   if (isBannerClosed || !bannerOpen) return null;
 
   return (
-    <div className="relative h-[230px] bg-gray-800 text-white">
+    <div className="relative z-10 h-[230px] bg-gray-800 text-white">
       <div className="flex justify-center gap-6 self-stretch px-4 pb-6 pt-4">
         <div className="font-serif text-base leading-relaxed">
           <span>Navigate in a </span>
@@ -57,7 +57,7 @@ const Banner = () => {
 
 const MobileFooterMenu = ({ buttons }: { buttons: FooterButton[] }) => {
   return (
-    <div className="fixed bottom-0 z-50 h-fit w-full lg:hidden">
+    <div className="fixed bottom-0 z-10 h-fit w-full lg:hidden">
       <Banner />
       <nav className="flex h-full transform divide-x bg-green-700 text-white">
         {buttons.map(({ label, count, content }) => (

@@ -30,7 +30,7 @@ const Basemaps = () => {
       <RadioGroup
         value={basemap}
         onValueChange={onChange}
-        className="mt-4 flex justify-between gap-x-2 px-1 pt-1"
+        className="mt-4 flex gap-x-4 px-1 pt-1 lg:justify-between"
       >
         {BASEMAPS.map((basemap) => (
           <Fragment key={basemap.value}>
