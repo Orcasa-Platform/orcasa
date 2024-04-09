@@ -76,7 +76,7 @@ export default function PracticesModule() {
   }, [filters, previousFilters, setSidebarScroll]);
 
   return (
-    <div className="m-4 mt-[72px] space-y-4 lg:m-0 lg:space-y-10">
+    <div className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
       <h1 className="font-serif leading-7">
         <div className="font-serif text-2xl text-white lg:hidden">Practices</div>
         <div className="hidden lg:block">

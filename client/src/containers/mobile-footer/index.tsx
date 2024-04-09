@@ -5,10 +5,11 @@ import { useLayers } from '@/store';
 
 import { useGetPages } from '@/types/generated/page';
 
+import PracticesFilters from '@/app/(modules)/practices/(main)/filters-sidebar';
+
 import LayerGroupsList from '@/containers/layer-groups-list';
 
 import MobileFooterMenu from '@/components/mobile-footer-menu';
-
 const Legend = dynamic(() => import('@/containers/map/legend'), {
   ssr: false,
 });
@@ -49,14 +50,7 @@ const geospatialButtons = ({
 const practicesButtons = () => [
   {
     label: 'Filters',
-    content: (
-      <div className="flex h-[130px] flex-col justify-center text-center text-gray-700">
-        <div className="text-center font-serif text-xl leading-[30px]">
-          There isn&apos;t any practice available
-        </div>
-        <div className="text-sm leading-7">Add a practice to see it here.</div>
-      </div>
-    ),
+    content: <PracticesFilters isMobile />,
   },
 ];
 
@@ -77,7 +71,10 @@ export default function MobileFooter({ section }: { section: ButtonSection }) {
   };
   return (
     <>
-      <MobileFooterMenu buttons={buttons[section]} />
+      <MobileFooterMenu
+        {...(section === 'practices' ? { variant: 'dark' } : {})}
+        buttons={buttons[section]}
+      />
     </>
   );
 }

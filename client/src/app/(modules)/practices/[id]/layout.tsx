@@ -11,7 +11,7 @@ export default function PracticeDetailsLayout({ children }: { children: React.Re
 
   return (
     <>
-      <div className="h-[calc(100vh-56px)] overflow-auto bg-gray-700 p-4 pb-14 pt-[72px] lg:hidden">
+      <div className="mt-[56px] h-[calc(100vh-56px)] overflow-auto bg-gray-700 p-4 pb-6 lg:hidden">
         {children}
       </div>
       <div

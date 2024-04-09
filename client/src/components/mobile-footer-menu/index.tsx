@@ -55,7 +55,13 @@ const Banner = () => {
   );
 };
 
-const MobileFooterMenu = ({ buttons }: { buttons: FooterButton[] }) => {
+const MobileFooterMenu = ({
+  buttons,
+  variant = 'light',
+}: {
+  buttons: FooterButton[];
+  variant?: 'dark' | 'light';
+}) => {
   return (
     <div className="fixed bottom-0 z-10 h-fit w-full lg:hidden">
       <Banner />
@@ -76,7 +82,9 @@ const MobileFooterMenu = ({ buttons }: { buttons: FooterButton[] }) => {
                 )}
               </Button>
             </DrawerTrigger>
-            <DrawerContent className="max-h-[80vh]">{content}</DrawerContent>
+            <DrawerContent variant={variant} className="max-h-[80vh]">
+              {content}
+            </DrawerContent>
           </Drawer>
         ))}
       </nav>
