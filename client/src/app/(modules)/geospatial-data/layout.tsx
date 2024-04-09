@@ -1,4 +1,5 @@
 import Map from '@/containers/map';
+import MobileFooter from '@/containers/mobile-footer';
 import Sidebar from '@/containers/sidebar';
 
 export const metadata = {
@@ -11,6 +12,7 @@ export default function GeospatialDataModuleLayout({ children }: { children: Rea
   return (
     <div className="bg-gray-800">
       <Map />
+      <MobileFooter />
       <Sidebar section="geospatial-data">{children}</Sidebar>
     </div>
   );

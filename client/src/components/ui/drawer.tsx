@@ -47,7 +47,7 @@ const DrawerContent = React.forwardRef<
       )}
       {...props}
     >
-      <CloseDrawer className="mx-auto w-fit fill-current text-gray-700" />
+      <CloseDrawer className="mx-auto block h-6 min-h-[24px] w-6 fill-current text-gray-700" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>

@@ -5,7 +5,7 @@ import MobileMenuButton from '@/components/mobile-menu-button';
 
 const MobileMenuBar = () => {
   return (
-    <nav className="z-50 flex items-center justify-between bg-gray-700 px-6 py-4 text-white lg:hidden">
+    <nav className="fixed inset-0 z-50 flex h-[56px] w-full items-center justify-between bg-gray-700 px-6 py-4 text-white lg:hidden">
       <Link href="/" className="flex items-center justify-center gap-3">
         <Image src="/images/logo.png" width={30} height={30} alt="Impact4Soil" priority />
         <span>Impact4Soil</span>

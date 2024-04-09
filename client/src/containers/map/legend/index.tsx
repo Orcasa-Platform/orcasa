@@ -13,7 +13,7 @@ import Legend from '@/components/map/legend';
 import NetworkLegend from './network-legend';
 import PracticesLegend from './practices-legend';
 
-const MapLegends = ({ className = '' }) => {
+const MapLegends = ({ className = '', isMobile }: { className?: string; isMobile?: boolean }) => {
   const [layers, setLayers] = useLayers();
   const [layersSettings, setLayersSettings] = useLayersSettings();
   const pathname = usePathname();
@@ -128,9 +128,13 @@ const MapLegends = ({ className = '' }) => {
 
   return (
     <div
-      className={cn('absolute bottom-9 right-6 z-10 max-w-xs min-[1810px]:bottom-8', {
-        'w-full': !isPracticesPage && !isNetworkPage,
-      })}
+      className={cn(
+        !isMobile &&
+        'absolute bottom-9 right-6 z-10 hidden max-w-xs lg:block min-[1810px]:bottom-8',
+        {
+          'w-full': !isPracticesPage && !isNetworkPage,
+        },
+      )}
     >
       <Legend
         className={cn(
@@ -141,7 +145,7 @@ const MapLegends = ({ className = '' }) => {
           enabled: sortable,
           handle: true,
         }}
-        hideToggle={isPracticesPage || isNetworkPage}
+        hideToggle={isMobile || isPracticesPage || isNetworkPage}
         onChangeOrder={handleChangeOrder}
       >
         {ITEMS}
