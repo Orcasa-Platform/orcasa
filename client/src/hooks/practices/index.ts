@@ -597,7 +597,7 @@ export const usePracticesActiveFilters = () => {
               };
             }
           })
-          .filter((filter) => !!filter?.value) as {
+          .filter((filter) => filter?.value !== undefined && filter?.value !== null) as {
           filter: string;
           label: string;
           value: number;

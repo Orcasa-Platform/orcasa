@@ -1126,7 +1126,11 @@ export const useNetworkActiveFilters = () => {
             };
           }
         })
-        .filter((filter) => !!filter?.value) as { filter: string; label: string; value: number }[];
+        .filter((filter) => filter?.value !== undefined && filter?.value !== null) as {
+        filter: string;
+        label: string;
+        value: number;
+      }[];
     })
     .flat();
 };
