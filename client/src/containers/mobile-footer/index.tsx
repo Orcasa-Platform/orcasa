@@ -5,6 +5,7 @@ import { useLayers } from '@/store';
 
 import { useGetPages } from '@/types/generated/page';
 
+import DatasetsFilters from '@/app/(modules)/datasets/filters-sidebar';
 import NetworkFilters from '@/app/(modules)/network/(main)/(index)/filters-sidebar';
 import PracticesFilters from '@/app/(modules)/practices/(main)/filters-sidebar';
 
@@ -62,7 +63,14 @@ const networkButtons = () => [
   },
 ];
 
-type ButtonSection = 'geospatial-data' | 'practices' | 'network';
+const datasetsButtons = () => [
+  {
+    label: 'Filters',
+    content: <DatasetsFilters isMobile />,
+  },
+];
+
+type ButtonSection = 'geospatial-data' | 'practices' | 'network' | 'datasets';
 
 export default function MobileFooter({ section }: { section: ButtonSection }) {
   const pages = useGetPages({ filters: { slug: section } });
@@ -77,11 +85,13 @@ export default function MobileFooter({ section }: { section: ButtonSection }) {
     'geospatial-data': geospatialButtons({ pageId, layers }),
     practices: practicesButtons(),
     network: networkButtons(),
+    datasets: datasetsButtons(),
   };
 
   const variants = {
     practices: 'dark',
     network: 'dark',
+    datasets: 'dark',
     'geospatial-data': 'light',
   };
   return (

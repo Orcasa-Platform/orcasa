@@ -39,11 +39,14 @@ export default function DatasetsModule() {
 
   return (
     <div className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]">
-      <div className="p-10">
+      <div className="p-4 lg:p-10">
         <div className="mb-[30px]">
-          <header className="mb-2 flex gap-8 ">
+          <header className="mb-2 flex flex-col gap-4 lg:flex-row lg:gap-8 ">
             <h1 className="flex-1 font-serif leading-[30px] text-white">
-              {intro && <MarkdownRenderer variant="bold" content={intro} />}
+              <div className="font-serif text-2xl text-white lg:hidden">Datasets</div>
+              <div className="hidden lg:block">
+                {intro && <MarkdownRenderer variant="bold" content={intro} />}
+              </div>
             </h1>
             <div className="flex flex-1 gap-2">
               <Search
@@ -55,7 +58,7 @@ export default function DatasetsModule() {
               <Button
                 type="button"
                 variant={filterSidebarOpen ? 'filters' : 'primary'}
-                className="group shrink-0 transition-colors duration-500"
+                className="group hidden shrink-0 transition-colors duration-500 lg:flex"
                 onClick={() => {
                   setFilterSidebarOpen(!filterSidebarOpen);
                 }}
@@ -65,7 +68,7 @@ export default function DatasetsModule() {
               </Button>
             </div>
           </header>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex-wrap gap-2">
             {activeFilters.map(({ filter, label, value }) => (
               <Button
                 key={[filter, value].join('-')}
@@ -157,10 +160,13 @@ export default function DatasetsModule() {
         <DatasetList {...query} />
       </div>
       <div
-        className={cn('fixed right-0 h-full transform transition-transform duration-500', {
-          'translate-x-full': !filterSidebarOpen,
-          'translate-x-0': filterSidebarOpen,
-        })}
+        className={cn(
+          'fixed right-0 hidden h-full transform transition-transform duration-500 lg:block',
+          {
+            'translate-x-full': !filterSidebarOpen,
+            'translate-x-0': filterSidebarOpen,
+          },
+        )}
       >
         <FiltersSidebar
           filterSidebarOpen={filterSidebarOpen}
