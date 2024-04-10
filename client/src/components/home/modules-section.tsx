@@ -238,11 +238,11 @@ const ModulesSection = () => (
           5 modules for climate impact
         </div>
         <div className="flex flex-col items-center gap-8">
-          <h2 className="text-center font-serif text-2xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
+          <h2 className="text-center font-serif text-3xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
             What can Impact4Soil do for me?
           </h2>
           <div className="h-2 w-20 rounded-lg bg-yellow-500" />
-          <div className="text-center text-gray-700 lg:w-[600px]">
+          <div className="text-center leading-7 text-gray-500 lg:w-[600px] lg:leading-normal">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
             together the soil carbon community.
             <br />
@@ -253,7 +253,7 @@ const ModulesSection = () => (
         </div>
       </div>
     </div>
-    <div className="relative flex min-h-[1040px] items-center justify-center lg:min-h-[616px]">
+    <div className="relative flex min-h-[916px] items-center justify-center lg:min-h-[616px]">
       <div className="absolute top-0">
         <Map className="w-[125%] lg:h-[616px] lg:w-full" />
       </div>

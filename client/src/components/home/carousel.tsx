@@ -58,7 +58,7 @@ const Card = ({ card }: CardProps) => {
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: content || '' }}
-        className="flex-grow text-sm leading-[22px] text-gray-500"
+        className="flex-grow text-xs leading-[22px] text-gray-500 lg:text-sm"
       />
       <div>
         <div className="text-gray-700">{name}</div>
