@@ -5,6 +5,7 @@ import { useLayers } from '@/store';
 
 import { useGetPages } from '@/types/generated/page';
 
+import NetworkFilters from '@/app/(modules)/network/(main)/(index)/filters-sidebar';
 import PracticesFilters from '@/app/(modules)/practices/(main)/filters-sidebar';
 
 import LayerGroupsList from '@/containers/layer-groups-list';
@@ -54,7 +55,14 @@ const practicesButtons = () => [
   },
 ];
 
-type ButtonSection = 'geospatial-data' | 'practices';
+const networkButtons = () => [
+  {
+    label: 'Filters',
+    content: <NetworkFilters isMobile />,
+  },
+];
+
+type ButtonSection = 'geospatial-data' | 'practices' | 'network';
 
 export default function MobileFooter({ section }: { section: ButtonSection }) {
   const pages = useGetPages({ filters: { slug: section } });
@@ -68,11 +76,18 @@ export default function MobileFooter({ section }: { section: ButtonSection }) {
   const buttons = {
     'geospatial-data': geospatialButtons({ pageId, layers }),
     practices: practicesButtons(),
+    network: networkButtons(),
+  };
+
+  const variants = {
+    practices: 'dark',
+    network: 'dark',
+    'geospatial-data': 'light',
   };
   return (
     <>
       <MobileFooterMenu
-        {...(section === 'practices' ? { variant: 'dark' } : {})}
+        variant={variants[section] as 'dark' | 'light'}
         buttons={buttons[section]}
       />
     </>

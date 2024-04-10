@@ -88,9 +88,12 @@ export default function NetworkModule() {
   }, [filters, previousFilters, setSidebarScroll]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 lg:space-y-8">
       <h1 className="font-serif leading-7">
-        {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        <div className="font-serif text-2xl text-white lg:hidden">Network</div>
+        <div className="hidden lg:block">
+          {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        </div>
       </h1>
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between gap-x-4">
@@ -103,7 +106,7 @@ export default function NetworkModule() {
             ref={filtersButtonRef}
             type="button"
             variant={filterSidebarOpen ? 'filters' : 'primary'}
-            className="group shrink-0 transition-colors duration-500"
+            className="group hidden shrink-0 transition-colors duration-500 lg:flex"
             aria-pressed={filterSidebarOpen}
             onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
           >
@@ -135,7 +138,7 @@ export default function NetworkModule() {
           ))}
         </div>
       </div>
-      <div className="text-xs text-gray-200">
+      <div className="text-sm text-gray-200 lg:text-xs">
         {loadOrganizations &&
           loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
