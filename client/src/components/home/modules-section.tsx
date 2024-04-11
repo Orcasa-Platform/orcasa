@@ -257,8 +257,8 @@ const ModulesSection = () => (
       <div className="absolute top-0">
         <Map className="w-[125%] lg:h-[616px] lg:w-full" />
       </div>
-      <div className="absolute top-0 z-10 flex flex-col items-center pt-20 lg:h-[616px]">
-        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-[72px]">
+      <div className="absolute top-0 z-10 flex flex-col flex-wrap items-center pt-20 lg:h-[616px]">
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:max-xl:gap-[46px] xl:gap-[72px]">
           <Card title="Geospatial data" slug="geospatial-data" Icon={GeospatialDataIcon} />
           <Card
             title="Scientific evidence"
@@ -267,7 +267,7 @@ const ModulesSection = () => (
           />
           <Card title="Network" Icon={NetworkIcon} slug="network" />
         </div>
-        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-36 lg:flex-row lg:gap-24">
+        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-36 lg:flex-row lg:max-xl:gap-[46px] xl:gap-24">
           <Card title="Practices" slug="practices" Icon={PracticesIcon} />
           <Card title="Datasets" slug="datasets" Icon={DatasetsIcon} />
         </div>
