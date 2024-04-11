@@ -10,7 +10,12 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ModulesSection />
-      <ImageSlider />
+      <div className="lg:hidden">
+        <ImageSlider isMobile />
+      </div>
+      <div className="hidden lg:block">
+        <ImageSlider />
+      </div>
       <SolutionsSection />
       <div
         className="relative !mt-0 h-[605px] w-full bg-cover bg-center bg-no-repeat"

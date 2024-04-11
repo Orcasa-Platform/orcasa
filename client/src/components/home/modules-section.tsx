@@ -172,12 +172,12 @@ const Card = ({
   const cardModule = modules.find((module) => module.slug === slug);
   const content = (
     <div className="flex h-full max-h-[90vh] w-full flex-col justify-between overflow-auto lg:flex-row">
-      <div className="h-full flex-1 space-y-6 p-10 pb-4 lg:w-1/2 lg:pb-10">
+      <div className="h-full flex-1 space-y-6 p-10 pb-2 lg:w-1/2 lg:pb-10">
         <Icon className="currentColor h-fit w-[48px] min-w-[48px]" />
         <div className="font-serif text-2xl leading-10">{title}</div>
         <div className="flex flex-col gap-6">{modulesInfo[slug].modalText}</div>
       </div>
-      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 lg:w-1/2 lg:pt-[160px]">
+      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-4 lg:w-1/2 lg:pt-[160px]">
         <ul className="flex flex-col gap-6 pb-6 lg:pb-0">
           {modulesInfo[slug].modalList.map((listElement) => (
             <li key={listElement} className="flex gap-2 text-sm">
