@@ -300,7 +300,7 @@ export default function FiltersSidebar({ isMobile = false }: { isMobile?: boolea
   );
 
   if (isMobile) {
-    return <div className="relative flex flex-col p-4 pt-0">{renderFilters}</div>;
+    return <div className="relative flex flex-col overflow-auto p-4 pt-0">{renderFilters}</div>;
   }
 
   return (
