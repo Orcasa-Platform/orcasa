@@ -54,7 +54,7 @@ const HeroSection = () => {
       <div className="absolute hidden h-full w-full justify-center p-10 pt-0 lg:flex xl:items-center">
         <BackgroundShape className="h-[616px] w-full text-gray-700" />
       </div>
-      <div className="h-full w-full justify-center px-4 text-white lg:absolute lg:flex lg:pt-24 xl:items-center xl:px-0 xl:pt-0 xl:pt-16">
+      <div className="h-full w-full justify-center px-4 text-white lg:absolute lg:flex lg:pt-24 xl:items-center xl:px-0 xl:pt-16">
         <div className="gap-x-[100px] gap-y-20 lg:flex lg:max-w-[948px] lg:flex-wrap xl:max-w-[1048px]">
           <div className="md:max-lg:flex md:max-lg:flex-col md:max-lg:items-center">
             <h2 className="mb-6 font-serif text-3xl md:max-lg:text-center lg:w-[476px] lg:text-5xl lg:leading-[72px]">

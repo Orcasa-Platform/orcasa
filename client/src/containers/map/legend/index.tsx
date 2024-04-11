@@ -68,7 +68,7 @@ const MapLegends = ({ className = '', isMobile }: { className?: string; isMobile
     [layers, layersSettings, setLayers, setLayersSettings],
   );
 
-  const sortable = layers?.length > 1;
+  const sortable = !isMobile && layers?.length > 1;
   const getPosition = (i: number, totalNumber: number) => {
     if (totalNumber === 1) {
       return 'only';
@@ -110,7 +110,7 @@ const MapLegends = ({ className = '', isMobile }: { className?: string; isMobile
           }}
           sortable={{
             enabled: sortable,
-            handle: layers.length > 1,
+            handle: sortable,
           }}
         />
       );
