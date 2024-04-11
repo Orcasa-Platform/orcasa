@@ -43,13 +43,13 @@ const Attributions = () => {
 
         let content = name;
         if (name === 'RW' || name === 'ResourceWatch' || name === 'Resource Watch') {
-          content = `<a href="https://resourcewatch.org/" rel="noopener noreferrer">${name}</a>`;
+          content = `<a href="https://resourcewatch.org/" rel="noopener noreferrer" target="_blank">${name}</a>`;
         } else if (
           name === 'GFW' ||
           name === 'GlobalForestWatch' ||
           name === 'Global Forest Watch'
         ) {
-          content = `<a href="https://www.globalforestwatch.org/" rel="noopener noreferrer">${name}</a>`;
+          content = `<a href="https://www.globalforestwatch.org/" rel="noopener noreferrer" target="_blank">${name}</a>`;
         }
 
         if (isFirst) {
