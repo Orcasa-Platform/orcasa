@@ -22,6 +22,7 @@ import { Bbox } from '@/types/map';
 
 import { useMapPadding } from '@/hooks/map';
 
+import Attributions from '@/containers/map/attributions';
 import Popup from '@/containers/map/popup';
 import MapSettings from '@/containers/map/settings';
 import MapSettingsManager from '@/containers/map/settings/manager';
@@ -219,6 +220,7 @@ export default function MapContainer() {
         interactiveLayerIds={layersInteractiveIds.map((id) => id.toString())}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
+        attributionControl={false}
       >
         {() => (
           <>
@@ -235,6 +237,8 @@ export default function MapContainer() {
             <MapSettingsManager />
 
             <Legend />
+
+            <Attributions />
           </>
         )}
       </Map>

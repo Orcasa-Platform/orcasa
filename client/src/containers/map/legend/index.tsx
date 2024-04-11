@@ -128,7 +128,7 @@ const MapLegends = ({ className = '' }) => {
 
   return (
     <div
-      className={cn('absolute bottom-8 right-6 z-10 max-w-xs', {
+      className={cn('absolute bottom-9 right-6 z-10 max-w-xs min-[1810px]:bottom-8', {
         'w-full': !isPracticesPage && !isNetworkPage,
       })}
     >

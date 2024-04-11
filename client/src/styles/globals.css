@@ -81,7 +81,7 @@
 
 /* Overrides */
 
-/* Maplibre */
+/* Mapbox */
 .mapboxgl-popup-content {
   @apply !rounded-lg !p-0;
 }
@@ -91,7 +91,7 @@
 }
 
 .mapboxgl-ctrl-bottom-right {
-  @apply max-w-[65%];
+  @apply max-w-[calc(100%_-_min(45%,_580px))];
 }
 
 .mapboxgl-ctrl-attrib {
