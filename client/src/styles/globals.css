@@ -98,10 +98,6 @@
   @apply !px-1 !py-px font-sans font-medium text-white !bg-gray-800/80 text-2xs;
 }
 
-.mapboxgl-ctrl-attrib-inner {
-  @apply !line-clamp-1;
-}
-
 .mapboxgl-ctrl-attrib.mapboxgl-compact {
   @apply !rounded-md;
 }
