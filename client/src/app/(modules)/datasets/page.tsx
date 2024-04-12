@@ -39,7 +39,7 @@ export default function DatasetsModule() {
 
   return (
     <div className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]">
-      <div className="p-4 lg:p-10">
+      <div className="p-4 max-lg:w-full lg:p-10">
         <div className="mb-[30px]">
           <header className="mb-2 flex flex-col gap-4 lg:flex-row lg:gap-8 ">
             <h1 className="flex-1 font-serif leading-[30px] text-white">

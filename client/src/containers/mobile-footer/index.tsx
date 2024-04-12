@@ -10,8 +10,10 @@ import NetworkFilters from '@/app/(modules)/network/(main)/(index)/filters-sideb
 import PracticesFilters from '@/app/(modules)/practices/(main)/filters-sidebar';
 
 import LayerGroupsList from '@/containers/layer-groups-list';
+import Banner from '@/containers/mobile-footer/banner';
 
 import MobileFooterMenu from '@/components/mobile-footer-menu';
+
 const Legend = dynamic(() => import('@/containers/map/legend'), {
   ssr: false,
 });
@@ -99,6 +101,7 @@ export default function MobileFooter({ section }: { section: ButtonSection }) {
       <MobileFooterMenu
         variant={variants[section] as 'dark' | 'light'}
         buttons={buttons[section]}
+        banner={<Banner section={section} />}
       />
     </>
   );
