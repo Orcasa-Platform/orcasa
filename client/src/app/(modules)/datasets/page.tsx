@@ -2,17 +2,15 @@
 
 import { useState } from 'react';
 
-import { X } from 'lucide-react';
 import Filter from 'public/images/filter.svg';
 
 import { cn } from '@/lib/classnames';
-import { format } from '@/lib/utils/formats';
 
-import { DatasetsFilters, useDatasetsFilters } from '@/store/datasets';
+import { useDatasetsFilters } from '@/store/datasets';
 
 import { useGetPages } from '@/types/generated/page';
 
-import { useDatasetsActiveFilters, useGetDatasetsInfinite } from '@/hooks/datasets';
+import { useGetDatasetsInfinite } from '@/hooks/datasets';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
 import { Button } from '@/components/ui/button';
@@ -23,7 +21,6 @@ import FiltersSidebar from './filters-sidebar';
 
 export default function DatasetsModule() {
   const [filters, setFilters] = useDatasetsFilters();
-  const activeFilters = useDatasetsActiveFilters();
 
   const query = useGetDatasetsInfinite({
     size: 20,
@@ -68,89 +65,6 @@ export default function DatasetsModule() {
               </Button>
             </div>
           </header>
-          <div className="flex-wrap gap-2">
-            {activeFilters.map(({ filter, label, value }) => (
-              <Button
-                key={[filter, value].join('-')}
-                type="button"
-                variant="filter-tag"
-                size="xs"
-                title={label}
-                onClick={() => {
-                  const filterValue = filters?.[filter as keyof DatasetsFilters];
-                  setFilters({
-                    ...filters,
-                    [filter]: Array.isArray(filterValue)
-                      ? filterValue?.filter((filterValue) => filterValue !== value)
-                      : undefined,
-                  });
-                }}
-              >
-                <span className="sr-only">Remove filter:&nbsp;</span>
-                <span className="line-clamp-1">{label}</span>
-                <X className="ml-1 h-4 w-4 shrink-0" />
-              </Button>
-            ))}
-            {!!filters.minDate && !filters.maxDate && (
-              <Button
-                type="button"
-                variant="filter-tag"
-                size="xs"
-                onClick={() => {
-                  setFilters({
-                    ...filters,
-                    minDate: undefined,
-                  });
-                }}
-              >
-                <span className="sr-only">Remove filter:&nbsp;</span>
-                <span className="line-clamp-1">
-                  From {format({ id: 'formatDate', value: filters.minDate })}
-                </span>
-                <X className="ml-1 h-4 w-4 shrink-0" />
-              </Button>
-            )}
-            {!filters.minDate && !!filters.maxDate && (
-              <Button
-                type="button"
-                variant="filter-tag"
-                size="xs"
-                onClick={() => {
-                  setFilters({
-                    ...filters,
-                    maxDate: undefined,
-                  });
-                }}
-              >
-                <span className="sr-only">Remove filter:&nbsp;</span>
-                <span className="line-clamp-1">
-                  To {format({ id: 'formatDate', value: filters.maxDate })}
-                </span>
-                <X className="ml-1 h-4 w-4 shrink-0" />
-              </Button>
-            )}
-            {!!filters.minDate && !!filters.maxDate && (
-              <Button
-                type="button"
-                variant="filter-tag"
-                size="xs"
-                onClick={() => {
-                  setFilters({
-                    ...filters,
-                    minDate: undefined,
-                    maxDate: undefined,
-                  });
-                }}
-              >
-                <span className="sr-only">Remove filter:&nbsp;</span>
-                <span className="line-clamp-1">
-                  {format({ id: 'formatDate', value: filters.minDate })} to{' '}
-                  {format({ id: 'formatDate', value: filters.maxDate })}
-                </span>
-                <X className="ml-1 h-4 w-4 shrink-0" />
-              </Button>
-            )}
-          </div>
         </div>
         <p className="mb-5 flex items-start justify-between text-sm text-gray-200">
           {!!query.data &&

@@ -7,7 +7,7 @@ import {
   useInfiniteQuery,
 } from '@tanstack/react-query';
 
-import { DatasetsFilters, useDatasetsFilters } from '@/store/datasets';
+import { DatasetsFilters } from '@/store/datasets';
 
 import { DatasetListResponse, DatasetSource, GetDatasetsParams } from '@/types/datasets';
 
@@ -87,53 +87,4 @@ export const useDatasetsFiltersOptions = (): Record<
       { label: 'Zenodo', value: DatasetSource.Zenodo },
     ],
   };
-};
-
-export const useDatasetsActiveFilters = () => {
-  const filtersOptions = useDatasetsFiltersOptions();
-  const [filters] = useDatasetsFilters();
-
-  return Object.entries(filters)
-    .map(([key, value]: [string, unknown | unknown[]]) => {
-      const options = filtersOptions[key as keyof typeof filtersOptions];
-
-      // If all the options of a filter are active, it's the same as if the filter is not applied,
-      // so we ignore it
-      if (!options || (Array.isArray(value) && options.length === value.length)) {
-        return [];
-      }
-
-      if (Array.isArray(value)) {
-        return value
-          .map((filterValue) => {
-            const option = options?.find(({ value }) => value === filterValue);
-            if (option) {
-              return {
-                filter: key,
-                label: option.label,
-                value: option.value,
-              };
-            }
-          })
-          .filter((filter) => filter?.value !== undefined && filter?.value !== null) as {
-          filter: string;
-          label: string;
-          value: string;
-        }[];
-      } else {
-        const option = options?.find((option) => option.value === value);
-        if (!option) {
-          return [];
-        }
-
-        return [
-          {
-            filter: key,
-            label: option.label,
-            value,
-          },
-        ];
-      }
-    })
-    .flat();
 };

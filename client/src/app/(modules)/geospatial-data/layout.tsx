@@ -1,5 +1,6 @@
+import MobileGeospatialFooter from '@/app/(modules)/geospatial-data/mobile-geospatial-footer';
+
 import Map from '@/containers/map';
-import MobileFooter from '@/containers/mobile-footer';
 import Sidebar from '@/containers/sidebar';
 
 export const metadata = {
@@ -12,7 +13,7 @@ export default function GeospatialDataModuleLayout({ children }: { children: Rea
   return (
     <div className="bg-gray-800">
       <Map />
-      <MobileFooter section="geospatial-data" />
+      <MobileGeospatialFooter />
       <Sidebar section="geospatial-data">{children}</Sidebar>
     </div>
   );

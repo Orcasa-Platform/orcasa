@@ -2,27 +2,16 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { X } from 'lucide-react';
 import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
-import {
-  NetworkFilters,
-  NetworkGeneralFilters,
-  useNetworkFilters,
-  useNetworkFilterSidebarOpen,
-} from '@/store/network';
+import { useNetworkFilters, useNetworkFilterSidebarOpen } from '@/store/network';
 
 import { useGetPages } from '@/types/generated/page';
 
-import {
-  useNetworkActiveFilters,
-  useNetworks,
-  useNetworksCount,
-  useRegionsCount,
-} from '@/hooks/networks';
+import { useNetworks, useNetworksCount, useRegionsCount } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -44,8 +33,6 @@ export default function NetworkModule() {
 
   const networks = useNetworks({ filters, regionsCount });
   const networksCount = useNetworksCount(filters);
-
-  const activeFilters = useNetworkActiveFilters();
 
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
@@ -114,44 +101,21 @@ export default function NetworkModule() {
             Filters
           </Button>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {activeFilters.map(({ filter, label, value }) => (
-            <Button
-              key={[filter, value].join('-')}
-              type="button"
-              variant="filter-tag"
-              size="xs"
-              title={label}
-              onClick={() =>
-                setFilters({
-                  ...filters,
-                  [filter]: filters?.[
-                    filter as keyof Omit<NetworkFilters, keyof NetworkGeneralFilters>
-                  ]?.filter((filterValue) => filterValue !== value),
-                })
-              }
-            >
-              <span className="sr-only">Remove filter:&nbsp;</span>
-              <span className="line-clamp-1">{label}</span>
-              <X className="ml-1 h-4 w-4 shrink-0" />
-            </Button>
-          ))}
-        </div>
       </div>
       <div className="text-sm text-gray-200 lg:text-xs">
         {loadOrganizations &&
           loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
-            networksCount.organisation > 1 ? 's' : ''
-          } and ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
+            networksCount.organisation === 1 ? '' : 's'
+          } and ${networksCount.project} initiative${networksCount.project === 1 ? '' : 's'}.`}
         {loadOrganizations &&
           !loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
-            networksCount.organisation > 1 ? 's' : ''
+            networksCount.organisation === 1 ? '' : 's'
           }.`}
         {!loadOrganizations &&
           loadInitiatives &&
-          `Showing ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
+          `Showing ${networksCount.project} initiative${networksCount.project === 1 ? '' : 's'}.`}
       </div>
       <div className="!mt-6">
         <NetworkList {...networks} />

@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 import { DatasetSource } from '@/types/datasets';
 
-import MobileFooter from '@/containers/mobile-footer';
+import MobileDatasetsFooterMenu from '@/app/(modules)/datasets/mobile-datasets-footer';
 
 const sourceToLogoWhite: Record<
   DatasetSource,
@@ -52,7 +52,7 @@ export default function DatasetsModuleLayout({ children }: { children: React.Rea
       {/* Mobile */}
       <div className="mt-[56px] h-[calc(100vh-56px)] overflow-auto bg-gray-700 pb-[60px] lg:hidden">
         {children}
-        <MobileFooter section="datasets" />
+        <MobileDatasetsFooterMenu />
       </div>
       {/* Rest */}
       <div

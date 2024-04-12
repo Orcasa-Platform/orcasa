@@ -53,3 +53,25 @@ const isFormDirtyAtom = atom<boolean>(false);
 export const useIsFormDirty = () => {
   return useAtom(isFormDirtyAtom);
 };
+
+export const useFiltersCount = (
+  filters: NetworkFilters,
+  ignoreFiltersKeys: (keyof NetworkFilters)[] = [],
+) => {
+  return Object.keys(filters).filter((key) => {
+    if (ignoreFiltersKeys.includes(key as keyof NetworkFilters)) {
+      return false;
+    }
+
+    const value = filters[key as keyof NetworkFilters];
+
+    let hasValue = true;
+    if (Array.isArray(value) || typeof value === 'string') {
+      hasValue = (value as string | unknown[]).length > 0;
+    } else {
+      hasValue = value !== null && value !== undefined;
+    }
+
+    return hasValue;
+  }).length;
+};

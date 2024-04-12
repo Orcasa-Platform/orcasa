@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 import Image from 'next/image';
@@ -19,10 +21,13 @@ const Banner = ({
   const [bannerOpen, setBannerOpen] = useState(true);
   const closeBanner = () => {
     setBannerOpen(false);
-    localStorage.setItem('ORCASA_DESKTOP_BANNER_CLOSED', 'true');
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ORCASA_DESKTOP_BANNER_CLOSED', 'true');
+    }
   };
 
-  const isBannerClosed = localStorage.getItem('ORCASA_DESKTOP_BANNER_CLOSED');
+  const isBannerClosed =
+    typeof window !== 'undefined' && localStorage.getItem('ORCASA_DESKTOP_BANNER_CLOSED');
   if (isBannerClosed || !bannerOpen) return null;
   return (
     <div className="relative z-10 h-[230px] bg-gray-800 text-white">

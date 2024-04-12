@@ -1,18 +1,39 @@
+'use client';
+import { useFiltersCount } from '@/store/network';
+import { useNetworkFilters } from '@/store/network';
+
+import NetworkFilters from '@/app/(modules)/network/(main)/(index)/filters-sidebar';
+
 import Map from '@/containers/map';
-import MobileFooter from '@/containers/mobile-footer';
 import Sidebar from '@/containers/sidebar';
 
+import Banner from '@/components/mobile-banner';
+import MobileFooterMenu from '@/components/mobile-footer-menu';
 import NewButtons from '@/components/new-buttons';
 
 import FiltersSidebar from './filters-sidebar';
 
 export default function NetworkModuleLayout({ children }: { children: React.ReactNode }) {
+  const [filters] = useNetworkFilters();
+  const networkFiltersCount = useFiltersCount(filters);
   return (
     <div className="flex h-full w-full flex-col">
       <div className="mt-[56px] h-[calc(100vh-56px)] overflow-auto bg-gray-700 p-4 pb-[60px] text-white lg:hidden">
         {children}
       </div>
-      <MobileFooter section="network" />
+      <div className="lg:hidden">
+        <MobileFooterMenu
+          variant="dark"
+          buttons={[
+            {
+              label: 'Filters',
+              count: networkFiltersCount,
+              content: <NetworkFilters isMobile />,
+            },
+          ]}
+          banner={<Banner section="network" />}
+        />
+      </div>
       <div className="relative hidden flex-grow lg:block">
         <Sidebar section="network">
           {children}

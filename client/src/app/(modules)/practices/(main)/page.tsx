@@ -2,21 +2,20 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { X } from 'lucide-react';
 import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
 import { useSidebarScroll } from '@/store';
 
 import {
-  PracticesDropdownFilters,
   usePracticesFilterSidebarOpen,
   usePracticesFilters,
+  useFiltersCount,
 } from '@/store/practices';
 
 import { useGetPages } from '@/types/generated/page';
 
-import { usePractices, usePracticesActiveFilters, usePracticesCount } from '@/hooks/practices';
+import { usePractices, usePracticesCount } from '@/hooks/practices';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -37,7 +36,6 @@ export default function PracticesModule() {
 
   const practices = usePractices({ filters });
   const practicesCount = usePracticesCount(filters);
-  const activeFilters = usePracticesActiveFilters();
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
@@ -75,6 +73,9 @@ export default function PracticesModule() {
     }
   }, [filters, previousFilters, setSidebarScroll]);
 
+  // The keywords search is not counted because it's shown in the main sidebar
+  const filtersCount = useFiltersCount(filters, ['search']);
+
   return (
     <div className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
       <h1 className="font-serif leading-7">
@@ -101,37 +102,16 @@ export default function PracticesModule() {
           >
             <Filter className="mr-2 h-6 w-6" />
             Filters
+            {filtersCount > 0 && (
+              <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-blue-800 font-semibold transition group-hover:bg-gray-900">
+                {filtersCount}
+              </span>
+            )}
           </Button>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {activeFilters.map(({ filter, label, value }) => (
-            <Button
-              key={[filter, value].join('-')}
-              type="button"
-              variant="filter-tag"
-              size="xs"
-              title={label}
-              onClick={() => {
-                const filterValue = filters?.[filter as keyof PracticesDropdownFilters];
-                setFilters({
-                  ...filters,
-                  [filter]: Array.isArray(filterValue)
-                    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      filterValue?.filter((filterValue) => filterValue !== value)
-                    : undefined,
-                });
-              }}
-            >
-              <span className="sr-only">Remove filter:&nbsp;</span>
-              <span className="line-clamp-1">{label}</span>
-              <X className="ml-1 h-4 w-4 shrink-0" />
-            </Button>
-          ))}
         </div>
       </div>
       <div className="text-sm text-gray-200 lg:text-xs">
-        {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
+        {`Showing ${practicesCount} practice${practicesCount === 1 ? '' : 's'}.`}
       </div>
       <div className="!mt-6">
         <PracticeList {...practices} />
