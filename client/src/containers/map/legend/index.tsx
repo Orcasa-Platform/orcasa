@@ -130,7 +130,7 @@ const MapLegends = ({ className = '', isMobile }: { className?: string; isMobile
     <div
       className={cn(
         !isMobile &&
-        'absolute bottom-9 right-6 z-10 hidden max-w-xs lg:block min-[1810px]:bottom-8',
+          'absolute bottom-9 right-6 z-10 hidden max-w-xs lg:block min-[1810px]:bottom-8',
         {
           'w-full': !isPracticesPage && !isNetworkPage,
         },
