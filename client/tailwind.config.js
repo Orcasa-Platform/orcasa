@@ -39,6 +39,7 @@ module.exports = {
           500: '#FFD500',
           // Geospatial data highlighted text
           600: '#FFC200',
+          700: '#E4AE00'
         },
         blue: {
           50: '#F2F7FB',

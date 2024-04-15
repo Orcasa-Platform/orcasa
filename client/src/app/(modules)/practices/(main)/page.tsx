@@ -5,6 +5,8 @@ import { useEffect, useLayoutEffect, useRef } from 'react';
 import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
+import { cn } from '@/lib/classnames';
+
 import { useSidebarScroll } from '@/store';
 
 import {
@@ -96,16 +98,24 @@ export default function PracticesModule() {
             ref={filtersButtonRef}
             type="button"
             variant={filterSidebarOpen ? 'filters' : 'primary'}
-            className="group hidden shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700 lg:flex"
+            className="group hidden shrink-0 gap-2 transition-colors duration-500 focus-visible:ring-offset-gray-700 lg:flex"
             aria-pressed={filterSidebarOpen}
             onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
           >
-            <Filter className="mr-2 h-6 w-6" />
+            <Filter className="h-6 w-6" />
             Filters
             {filtersCount > 0 && (
-              <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-blue-800 font-semibold transition group-hover:bg-gray-900">
+              <div
+                className={cn(
+                  'flex h-[22px] w-[22px] items-center justify-center rounded-full p-1 text-2xs',
+                  {
+                    'bg-yellow-700': filterSidebarOpen,
+                    'bg-green-900': !filterSidebarOpen,
+                  },
+                )}
+              >
                 {filtersCount}
-              </span>
+              </div>
             )}
           </Button>
         </div>

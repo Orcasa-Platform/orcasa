@@ -7,6 +7,7 @@ import Filter from 'public/images/filter.svg';
 import { cn } from '@/lib/classnames';
 
 import { useDatasetsFilters } from '@/store/datasets';
+import { useFiltersCount } from '@/store/datasets';
 
 import { useGetPages } from '@/types/generated/page';
 
@@ -33,6 +34,7 @@ export default function DatasetsModule() {
   const data = pages?.data?.data?.[0];
   const { attributes: { intro = undefined } = {} } = data || {};
   const [filterSidebarOpen, setFilterSidebarOpen] = useState(false);
+  const datasetsFiltersCount = useFiltersCount();
 
   return (
     <div className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]">
@@ -55,13 +57,26 @@ export default function DatasetsModule() {
               <Button
                 type="button"
                 variant={filterSidebarOpen ? 'filters' : 'primary'}
-                className="group hidden shrink-0 transition-colors duration-500 lg:flex"
+                className="group hidden shrink-0 gap-2 transition-colors duration-500 lg:flex"
                 onClick={() => {
                   setFilterSidebarOpen(!filterSidebarOpen);
                 }}
               >
-                <Filter className="mr-4 h-6 w-6" />
+                <Filter className="h-6 w-6" />
                 Filters
+                {datasetsFiltersCount > 0 && (
+                  <div
+                    className={cn(
+                      'flex h-[22px] w-[22px] items-center justify-center rounded-full p-1 text-2xs',
+                      {
+                        'bg-yellow-700': filterSidebarOpen,
+                        'bg-green-900': !filterSidebarOpen,
+                      },
+                    )}
+                  >
+                    {datasetsFiltersCount}
+                  </div>
+                )}
               </Button>
             </div>
           </header>
