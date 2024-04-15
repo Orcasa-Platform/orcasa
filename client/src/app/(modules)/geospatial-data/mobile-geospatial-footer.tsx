@@ -8,12 +8,12 @@ import { useGetPages } from '@/types/generated/page';
 
 import LayerGroupsList from '@/containers/layer-groups-list';
 
-import Banner from '@/components/mobile-banner';
 const Legend = dynamic(() => import('@/containers/map/legend'), {
   ssr: false,
 });
-import MobileFooterMenu from '@/components/mobile-footer-menu';
-
+const MobileFooterMenu = dynamic(() => import('@/components/mobile-footer-menu'), {
+  ssr: false,
+});
 const MobileGeospatialFooter = () => {
   const pages = useGetPages({ filters: { slug: 'geospatial-data' } });
   const data = pages?.data?.data?.[0];
@@ -53,7 +53,7 @@ const MobileGeospatialFooter = () => {
           ),
         },
       ]}
-      banner={<Banner section="geospatial-data" />}
+      section="geospatial-data"
     />
   );
 };

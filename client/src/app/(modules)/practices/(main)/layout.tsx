@@ -1,5 +1,7 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 import { useFiltersCount, usePracticesFilters } from '@/store/practices';
 
 import PracticesFilters from '@/app/(modules)/practices/(main)/filters-sidebar';
@@ -7,9 +9,9 @@ import PracticesFilters from '@/app/(modules)/practices/(main)/filters-sidebar';
 import Map from '@/containers/map';
 import Sidebar from '@/containers/sidebar';
 
-import Banner from '@/components/mobile-banner';
-import MobileFooterMenu from '@/components/mobile-footer-menu';
-
+const MobileFooterMenu = dynamic(() => import('@/components/mobile-footer-menu'), {
+  ssr: false,
+});
 import PracticesSidebar from './filters-sidebar';
 
 export default function PracticesModuleLayout({ children }: { children: React.ReactNode }) {
@@ -31,7 +33,7 @@ export default function PracticesModuleLayout({ children }: { children: React.Re
             content: <PracticesFilters isMobile />,
           },
         ]}
-        banner={<Banner section="practices" />}
+        section="practices"
       />
       {/* Rest */}
       <div className="hidden lg:block">

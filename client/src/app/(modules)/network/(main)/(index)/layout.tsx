@@ -1,4 +1,6 @@
 'use client';
+import dynamic from 'next/dynamic';
+
 import { useFiltersCount } from '@/store/network';
 import { useNetworkFilters } from '@/store/network';
 
@@ -6,9 +8,10 @@ import NetworkFilters from '@/app/(modules)/network/(main)/(index)/filters-sideb
 
 import Map from '@/containers/map';
 import Sidebar from '@/containers/sidebar';
+const MobileFooterMenu = dynamic(() => import('@/components/mobile-footer-menu'), {
+  ssr: false,
+});
 
-import Banner from '@/components/mobile-banner';
-import MobileFooterMenu from '@/components/mobile-footer-menu';
 import NewButtons from '@/components/new-buttons';
 
 import FiltersSidebar from './filters-sidebar';
@@ -31,7 +34,7 @@ export default function NetworkModuleLayout({ children }: { children: React.Reac
               content: <NetworkFilters isMobile />,
             },
           ]}
-          banner={<Banner section="network" />}
+          section="network"
         />
       </div>
       <div className="relative hidden flex-grow lg:block">

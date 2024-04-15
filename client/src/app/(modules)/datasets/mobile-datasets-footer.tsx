@@ -1,11 +1,14 @@
 'use client';
 
+import dynamic from 'next/dynamic';
+
 import { useFiltersCount } from '@/store/datasets';
 
 import DatasetsFilters from '@/app/(modules)/datasets/filters-sidebar';
 
-import Banner from '@/components/mobile-banner';
-import MobileFooterMenu from '@/components/mobile-footer-menu';
+const MobileFooterMenu = dynamic(() => import('@/components/mobile-footer-menu'), {
+  ssr: false,
+});
 
 const MobileDatasetsFooter = () => {
   const datasetsFiltersCount = useFiltersCount();
@@ -20,7 +23,7 @@ const MobileDatasetsFooter = () => {
           content: <DatasetsFilters isMobile />,
         },
       ]}
-      banner={<Banner section="datasets" />}
+      section="datasets"
     />
   );
 };
