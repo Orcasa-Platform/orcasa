@@ -10,25 +10,3 @@ export const BASEMAPS = [
     preview: '/assets/images/basemap-light.png',
   },
 ];
-
-export const LABELS = [
-  {
-    label: 'Light',
-    slug: 'light',
-  },
-  {
-    label: 'Dark',
-    slug: 'dark',
-  },
-];
-
-export const BOUNDARIES = [
-  {
-    label: 'Light',
-    slug: 'light',
-  },
-  {
-    label: 'Dark',
-    slug: 'dark',
-  },
-];

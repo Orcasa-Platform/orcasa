@@ -1297,8 +1297,12 @@ export interface ApiPagePage extends Schema.CollectionType {
           preset: 'custom';
         }
       >;
-    default_labels: Attribute.Enumeration<['light', 'dark']>;
-    default_boundaries: Attribute.Enumeration<['light', 'dark']>;
+    default_labels: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    default_boundaries: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

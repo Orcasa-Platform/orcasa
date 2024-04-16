@@ -15,11 +15,11 @@ export const useMapSettings = () => {
     'map-settings',
     parseAsJson<{
       basemap?: string;
-      boundaries: string | null;
-      labels: string | null;
+      boundaries: boolean;
+      labels: boolean;
     }>().withDefault({
-      boundaries: null,
-      labels: null,
+      boundaries: false,
+      labels: false,
     }),
   );
 };

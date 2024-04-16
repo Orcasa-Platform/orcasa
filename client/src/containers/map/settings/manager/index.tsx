@@ -6,8 +6,6 @@ import type { AnyLayer } from 'mapbox-gl';
 
 import { useMapSettings } from '@/store/index';
 
-import { BOUNDARIES, LABELS } from '@/constants/basemaps';
-
 type AnyLayerWithMetadata = AnyLayer & {
   metadata: Record<string, unknown>;
 };
@@ -62,11 +60,11 @@ const MapSettingsManager = () => {
     if (basemap) {
       handleGroup(['basemap'], basemap);
     }
-    handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
+    handleGroup(['labels'], `labels-${basemap === 'basemap-satellite' ? 'light' : 'dark'}`, labels);
     handleGroup(
       ['boundaries'],
-      `boundaries-${boundaries ?? BOUNDARIES[0].slug}`,
-      boundaries !== null,
+      `boundaries-${basemap === 'basemap-satellite' ? 'dark' : 'light'}`,
+      boundaries,
     );
   }, [basemap, boundaries, labels, handleGroup]);
 
@@ -87,11 +85,11 @@ const MapSettingsManager = () => {
       handleGroup(['basemap'], basemap);
     }
 
-    handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
+    handleGroup(['labels'], `labels-${basemap === 'basemap-satellite' ? 'light' : 'dark'}`, labels);
     handleGroup(
       ['boundaries'],
-      `boundaries-${boundaries ?? BOUNDARIES[0].slug}`,
-      boundaries !== null,
+      `boundaries-${basemap === 'basemap-satellite' ? 'dark' : 'light'}`,
+      boundaries,
     );
   }, [mapRef, loaded, basemap, boundaries, labels, handleGroup]);
 
