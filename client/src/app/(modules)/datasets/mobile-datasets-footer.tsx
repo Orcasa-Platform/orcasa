@@ -11,7 +11,7 @@ const MobileFooterMenu = dynamic(() => import('@/components/mobile-footer-menu')
 });
 
 const MobileDatasetsFooter = () => {
-  const datasetsFiltersCount = useFiltersCount();
+  const datasetsFiltersCount = useFiltersCount(['search']);
 
   return (
     <MobileFooterMenu

@@ -34,7 +34,7 @@ export default function DatasetsModule() {
   const data = pages?.data?.data?.[0];
   const { attributes: { intro = undefined } = {} } = data || {};
   const [filterSidebarOpen, setFilterSidebarOpen] = useState(false);
-  const datasetsFiltersCount = useFiltersCount();
+  const datasetsFiltersCount = useFiltersCount(['search']);
 
   return (
     <div className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]">
