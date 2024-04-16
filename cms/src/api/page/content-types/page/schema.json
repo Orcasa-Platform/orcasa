@@ -44,18 +44,14 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "default_labels": {
-      "type": "enumeration",
-      "enum": [
-        "light",
-        "dark"
-      ]
+      "type": "boolean",
+      "default": false,
+      "required": true
     },
     "default_boundaries": {
-      "type": "enumeration",
-      "enum": [
-        "light",
-        "dark"
-      ]
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
