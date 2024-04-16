@@ -19,7 +19,7 @@ const MobileFooterMenu = ({
   section: 'geospatial-data' | 'network' | 'practices' | 'datasets';
 }) => {
   return (
-    <div className="fixed bottom-0 z-10 h-fit w-full lg:hidden">
+    <div className="safe-area-inset-bottom fixed bottom-0 z-10 h-fit min-h-[60px] w-full lg:hidden">
       <Banner section={section} />
       <nav className="relative z-20 flex h-full transform divide-x bg-green-700 text-white">
         {buttons.map(({ label, count, content }) => (
