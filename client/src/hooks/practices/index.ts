@@ -171,6 +171,15 @@ const getQueryFilters = (filters: PracticesFilters) => {
                 $and: [
                   {
                     practice_intervention: {
+                      $eq: 'None',
+                    },
+                  },
+                ],
+              },
+              {
+                $and: [
+                  {
+                    practice_intervention: {
                       $eq: 'Management',
                     },
                   },
