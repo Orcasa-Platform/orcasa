@@ -87,7 +87,7 @@ const NetworkDiagram = ({
             type={type}
             hasChildren={networks?.length > 0}
             className="-mt-6"
-            style={{ zIndex: 1000 + networks.length }}
+            style={{ zIndex: 20 + networks.length }}
           />
           {
             [...networks]
@@ -106,7 +106,7 @@ const NetworkDiagram = ({
                     key={network.id}
                     className="relative ml-14"
                     // We use the z-index to make sure each path is above the following one
-                    style={{ zIndex: 1000 + childIndex }}
+                    style={{ zIndex: 20 + childIndex }}
                   >
                     <Item
                       key={network.id}
@@ -119,7 +119,7 @@ const NetworkDiagram = ({
                       heightIndex={getIndex(childIndex)}
                       hasChildren={network?.children?.length > 0}
                       className="mt-0"
-                      style={{ zIndex: 1000 + childIndex }}
+                      style={{ zIndex: 20 + childIndex }}
                     />
                     <CollapsibleContent className="ml-14">
                       {
@@ -139,7 +139,7 @@ const NetworkDiagram = ({
                                   hasChildren={false}
                                   style={{
                                     zIndex:
-                                      1000 + childIndex + grandChildIndex - network.children.length,
+                                      20 + childIndex + grandChildIndex - network.children.length,
                                   }}
                                 />
                               ),

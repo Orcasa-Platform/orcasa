@@ -58,11 +58,11 @@ export default async function PracticeDetails({ params }: PracticeDetailsProps) 
   const implementationFields = getPracticeImplementationFields(practice);
 
   return (
-    <div className="flex gap-16">
-      <div className="flex flex-1 flex-col gap-6">
-        <h1 className="font-serif text-4xl">{title}</h1>
-        <p className="leading-7 text-gray-200">{practice?.short_description}</p>
-        <Button className="h-9 w-fit text-sm" variant="outline-dark" asChild disabled={!url}>
+    <div className="flex flex-col gap-10 text-white lg:flex-row lg:gap-16">
+      <div className="flex flex-1 flex-col gap-2 lg:gap-6">
+        <h1 className="font-serif text-2xl lg:text-4xl">{title}</h1>
+        <p className="leading-7 text-gray-200 max-lg:pb-4">{practice?.short_description}</p>
+        <Button className="h-9 text-sm lg:w-fit" variant="outline-dark" asChild disabled={!url}>
           <a href={url} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />
             {practice?.source_name}

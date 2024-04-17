@@ -104,7 +104,7 @@ const Field = ({ label, value, url, hasEllipsis, logo, formatId }: FieldType) =>
   };
   return (
     <div className="flex gap-6">
-      <div className="w-[224px] min-w-[224px] text-sm">{label}</div>
+      <div className="w-[128px] min-w-[128px] text-sm lg:w-[224px] lg:min-w-[224px]">{label}</div>
       {renderField()}
     </div>
   );

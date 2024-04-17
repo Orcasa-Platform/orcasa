@@ -27,7 +27,6 @@ const ContentLoader = ({
   return (
     <div className="relative">
       {isFetching && !isFetched && <Skeleton className={cn('h-20 w-full', skeletonClassName)} />}
-
       {isError && isFetched && !isFetching && (
         <p className="py-8 text-center font-semibold text-slate-500">An error occurred</p>
       )}

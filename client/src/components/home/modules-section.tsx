@@ -172,12 +172,12 @@ const Card = ({
   const cardModule = modules.find((module) => module.slug === slug);
   const content = (
     <div className="flex h-full max-h-[90vh] w-full flex-col justify-between overflow-auto lg:flex-row">
-      <div className="h-full flex-1 space-y-6 p-10 pb-4 lg:w-1/2 lg:pb-10">
+      <div className="h-full flex-1 space-y-6 p-10 pb-2 lg:w-1/2 lg:pb-10">
         <Icon className="currentColor h-fit w-[48px] min-w-[48px]" />
         <div className="font-serif text-2xl leading-10">{title}</div>
         <div className="flex flex-col gap-6">{modulesInfo[slug].modalText}</div>
       </div>
-      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 lg:w-1/2 lg:pt-[160px]">
+      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-4 lg:w-1/2 lg:pt-[160px]">
         <ul className="flex flex-col gap-6 pb-6 lg:pb-0">
           {modulesInfo[slug].modalList.map((listElement) => (
             <li key={listElement} className="flex gap-2 text-sm">
@@ -238,11 +238,11 @@ const ModulesSection = () => (
           5 modules for climate impact
         </div>
         <div className="flex flex-col items-center gap-8">
-          <h2 className="text-center font-serif text-2xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
+          <h2 className="text-center font-serif text-3xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
             What can Impact4Soil do for me?
           </h2>
           <div className="h-2 w-20 rounded-lg bg-yellow-500" />
-          <div className="text-center text-gray-700 lg:w-[600px]">
+          <div className="text-center leading-7 text-gray-500 lg:w-[600px] lg:leading-normal">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
             together the soil carbon community.
             <br />
@@ -253,12 +253,12 @@ const ModulesSection = () => (
         </div>
       </div>
     </div>
-    <div className="relative flex min-h-[1040px] items-center justify-center lg:min-h-[616px]">
+    <div className="relative flex min-h-[916px] items-center justify-center lg:min-h-[616px]">
       <div className="absolute top-0">
         <Map className="w-[125%] lg:h-[616px] lg:w-full" />
       </div>
-      <div className="absolute top-0 z-10 flex flex-col items-center pt-20 lg:h-[616px]">
-        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-[72px]">
+      <div className="absolute top-0 z-10 flex flex-col flex-wrap items-center pt-20 lg:h-[616px]">
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:max-xl:gap-[46px] xl:gap-[72px]">
           <Card title="Geospatial data" slug="geospatial-data" Icon={GeospatialDataIcon} />
           <Card
             title="Scientific evidence"
@@ -267,7 +267,7 @@ const ModulesSection = () => (
           />
           <Card title="Network" Icon={NetworkIcon} slug="network" />
         </div>
-        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-36 lg:flex-row lg:gap-24">
+        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-36 lg:flex-row lg:max-xl:gap-[46px] xl:gap-24">
           <Card title="Practices" slug="practices" Icon={PracticesIcon} />
           <Card title="Datasets" slug="datasets" Icon={DatasetsIcon} />
         </div>

@@ -158,12 +158,12 @@ const Item = ({
           {name}
         </Link>
         {category && (
-          <div className="hidden min-w-fit max-w-fit items-center gap-4 group-hover:flex">
+          <div className="min-w-fit max-w-fit items-center gap-4 group-hover:flex lg:hidden">
             <Button
               asChild
               variant="outline-dark"
               size="sm"
-              className="border-white/25 bg-transparent hover:bg-white/5 focus-visible:bg-white/5"
+              className="hidden border-white/25 bg-transparent hover:bg-white/5 focus-visible:bg-white/5 lg:flex"
             >
               <Link
                 href={`/network/${
@@ -179,7 +179,7 @@ const Item = ({
                 <Button
                   variant="outline-dark"
                   size="icon"
-                  className="hidden border-white/25 bg-transparent hover:bg-white/5 focus-visible:bg-white/5 group-hover:inline-flex"
+                  className="border-white/25 bg-transparent hover:bg-white/5 focus-visible:bg-white/5 group-hover:inline-flex lg:hidden"
                 >
                   <span className="sr-only">Expand/collapse</span>
                   <ChevronDown

@@ -112,7 +112,12 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
             </SelectTrigger>
             <SelectContent variant="small">
               {scenarioOptions.map(({ label, value }) => (
-                <SelectItem variant="small" key={value} value={value} className="w-full">
+                <SelectItem
+                  variant="small"
+                  key={value}
+                  value={value}
+                  className="w-full max-w-[90vw]"
+                >
                   {label}
                 </SelectItem>
               ))}

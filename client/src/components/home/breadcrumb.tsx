@@ -9,7 +9,7 @@ const Breadcrumb = () => {
     return str.charAt(0).toUpperCase() + str.slice(1).replaceAll('-', ' ');
   };
   return (
-    <nav className="ml-10 pt-6">
+    <nav className="ml-10 hidden pt-6 lg:block">
       <ul className="flex gap-2 text-sm">
         <li>
           <Link href="/" className="font-semibold">

@@ -2,27 +2,18 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { X } from 'lucide-react';
 import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
 
+import { cn } from '@/lib/classnames';
+
 import { useSidebarScroll } from '@/store';
 
-import {
-  NetworkFilters,
-  NetworkGeneralFilters,
-  useNetworkFilters,
-  useNetworkFilterSidebarOpen,
-} from '@/store/network';
+import { useNetworkFilters, useNetworkFilterSidebarOpen, useFiltersCount } from '@/store/network';
 
 import { useGetPages } from '@/types/generated/page';
 
-import {
-  useNetworkActiveFilters,
-  useNetworks,
-  useNetworksCount,
-  useRegionsCount,
-} from '@/hooks/networks';
+import { useNetworks, useNetworksCount, useRegionsCount } from '@/hooks/networks';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -45,8 +36,6 @@ export default function NetworkModule() {
   const networks = useNetworks({ filters, regionsCount });
   const networksCount = useNetworksCount(filters);
 
-  const activeFilters = useNetworkActiveFilters();
-
   const [filterSidebarOpen, setFilterSidebarOpen] = useNetworkFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
@@ -57,6 +46,9 @@ export default function NetworkModule() {
 
   const loadOrganizations = !filters.type?.length || filters.type.includes('organization');
   const loadInitiatives = !filters.type?.length || filters.type.includes('project');
+
+  // The keywords search is not counted because it's shown in the main sidebar
+  const filtersCount = useFiltersCount(filters, ['search']);
 
   // We store the sidebar's scroll position when navigating away from the list view. `useEffect`
   // can't be used because it would be executed after repainting i.e. after navigating.
@@ -88,9 +80,12 @@ export default function NetworkModule() {
   }, [filters, previousFilters, setSidebarScroll]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 lg:space-y-8">
       <h1 className="font-serif leading-7">
-        {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        <div className="font-serif text-2xl text-white lg:hidden">Network</div>
+        <div className="hidden lg:block">
+          {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        </div>
       </h1>
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between gap-x-4">
@@ -103,52 +98,42 @@ export default function NetworkModule() {
             ref={filtersButtonRef}
             type="button"
             variant={filterSidebarOpen ? 'filters' : 'primary'}
-            className="group shrink-0 transition-colors duration-500"
+            className="group hidden shrink-0 gap-2 transition-colors duration-500 lg:flex"
             aria-pressed={filterSidebarOpen}
             onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
           >
-            <Filter className="mr-2 h-6 w-6" />
+            <Filter className="h-6 w-6" />
             Filters
+            {filtersCount > 0 && (
+              <div
+                className={cn(
+                  'flex h-[22px] w-[22px] items-center justify-center rounded-full p-1 text-2xs',
+                  {
+                    'bg-yellow-700': filterSidebarOpen,
+                    'bg-green-900': !filterSidebarOpen,
+                  },
+                )}
+              >
+                {filtersCount}
+              </div>
+            )}
           </Button>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {activeFilters.map(({ filter, label, value }) => (
-            <Button
-              key={[filter, value].join('-')}
-              type="button"
-              variant="filter-tag"
-              size="xs"
-              title={label}
-              onClick={() =>
-                setFilters({
-                  ...filters,
-                  [filter]: filters?.[
-                    filter as keyof Omit<NetworkFilters, keyof NetworkGeneralFilters>
-                  ]?.filter((filterValue) => filterValue !== value),
-                })
-              }
-            >
-              <span className="sr-only">Remove filter:&nbsp;</span>
-              <span className="line-clamp-1">{label}</span>
-              <X className="ml-1 h-4 w-4 shrink-0" />
-            </Button>
-          ))}
-        </div>
       </div>
-      <div className="text-xs text-gray-200">
+      <div className="text-sm text-gray-200 lg:text-xs">
         {loadOrganizations &&
           loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
-            networksCount.organisation > 1 ? 's' : ''
-          } and ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
+            networksCount.organisation === 1 ? '' : 's'
+          } and ${networksCount.project} initiative${networksCount.project === 1 ? '' : 's'}.`}
         {loadOrganizations &&
           !loadInitiatives &&
           `Showing ${networksCount.organisation} organisation${
-            networksCount.organisation > 1 ? 's' : ''
+            networksCount.organisation === 1 ? '' : 's'
           }.`}
         {!loadOrganizations &&
           loadInitiatives &&
-          `Showing ${networksCount.project} initiative${networksCount.project > 1 ? 's' : ''}.`}
+          `Showing ${networksCount.project} initiative${networksCount.project === 1 ? '' : 's'}.`}
       </div>
       <div className="!mt-6">
         <NetworkList {...networks} />

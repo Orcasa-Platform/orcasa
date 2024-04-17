@@ -48,7 +48,7 @@ export default function DatasetList({
           </Fragment>
         ))}
       </ul>
-      {hasNextPage && <Skeleton ref={ref} className="h-[240px] w-full" />}
+      {hasNextPage && <Skeleton ref={ref} className="mt-4 h-[240px] w-full" />}
     </ContentLoader>
   );
 }

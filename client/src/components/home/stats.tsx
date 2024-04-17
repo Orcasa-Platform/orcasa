@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic';
+
 import { cn } from '@/lib/classnames';
 
 import { getPractices } from '@/types/generated/practice';
@@ -6,7 +8,9 @@ import { getProjects } from '@/types/generated/project';
 import { getDatasets } from '@/hooks/datasets';
 import { getScientificEvidenceMockStats } from '@/hooks/scientific-evidence';
 
-import Counter from './counter';
+const Counter = dynamic(() => import('./counter'), {
+  ssr: false,
+});
 
 export default async function Stats({ className }: { className: string }) {
   const data: { title: string; value?: number }[] = [

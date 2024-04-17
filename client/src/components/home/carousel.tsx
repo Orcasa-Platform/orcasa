@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 
+import Autoplay from 'embla-carousel-autoplay';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, LucideIcon } from 'lucide-react';
 import Factory from 'public/images/factory.svg';
@@ -123,7 +124,14 @@ const Carousel = () => {
         </div>
       ) : null}
       {/* For mobile */}
-      <CarouselComponent className="block lg:hidden">
+      <CarouselComponent
+        className="block lg:hidden"
+        plugins={[
+          Autoplay({
+            delay: 5000,
+          }),
+        ]}
+      >
         <CarouselContent className="p-1">
           {testimonies.map((testimony) => (
             <CarouselItem key={testimony.id} className="flex justify-center">

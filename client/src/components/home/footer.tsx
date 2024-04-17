@@ -32,14 +32,14 @@ const Footer = () => (
       </Link>
     </div>
     <div className="flex w-full flex-col items-start justify-between space-y-4 bg-gray-700 px-4 py-8 lg:flex-row lg:items-center lg:space-y-0 lg:px-10">
-      <div className="flex flex-col items-start justify-center gap-4 lg:flex-row lg:items-center">
+      <div className="flex flex-col items-start justify-center gap-6 lg:flex-row lg:items-center lg:gap-4">
         <EuropeFlag className="h-[48px] min-w-[72px]" />
         <div className="max-w-[543px] text-xs leading-[18px] text-gray-300">
           The ORCaSa project has received funding from the European Union’s Horizon Europe research
           programme under grant agreement n°101059863.
         </div>
       </div>
-      <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
+      <div className="flex flex-col space-y-6 lg:flex-row lg:space-y-0">
         <div className="flex items-center gap-6 border-white border-opacity-20 pr-5 lg:border-r">
           <Link href="https://twitter.com/IRC_ORCaSa" target="_blank">
             <XIcon className="min-w-4 h-4 w-4" />

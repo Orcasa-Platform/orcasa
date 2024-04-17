@@ -95,7 +95,7 @@
 }
 
 .mapboxgl-ctrl-attrib {
-  @apply !px-1 !py-px font-sans font-medium text-white !bg-gray-800/80 text-2xs;
+  @apply !px-1 !py-px font-sans font-medium text-white !bg-gray-800/80 text-2xs !mb-[60px] lg:!mb-0;
 }
 
 .mapboxgl-ctrl-attrib.mapboxgl-compact {

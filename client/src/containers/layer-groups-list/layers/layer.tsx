@@ -26,7 +26,7 @@ const renderField = ({ key, value, url }: Field) => {
   if (!key || !value) return null;
   return (
     <div key={key} className="flex gap-10 text-sm">
-      <div className="w-[134px] min-w-[134px] font-semibold">{key}</div>
+      <div className="w-[64px] min-w-[64px] font-semibold lg:w-[134px] lg:min-w-[134px]">{key}</div>
       {url ? (
         <a
           href={url}

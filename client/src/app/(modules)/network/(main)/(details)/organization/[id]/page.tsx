@@ -46,7 +46,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
 
   return (
     <>
-      <h1 className="mb-6 mt-10 font-serif text-3xl leading-10">{name}</h1>
+      <h1 className="mb-6 mt-10 font-serif text-2xl leading-10 lg:text-3xl">{name}</h1>
       {!!short_description && (
         <p className="text-sm leading-7 text-gray-200">{short_description}</p>
       )}

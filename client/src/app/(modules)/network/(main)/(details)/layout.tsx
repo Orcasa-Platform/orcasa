@@ -24,18 +24,23 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
 
   return (
     <>
-      <Sidebar section="network">
-        <SlidingLinkButton
-          href={`/network?${mapSearchParams.toString()}`}
-          variant="dark"
-          Icon={ArrowLeft}
-          scroll={false}
-        >
-          Back to results
-        </SlidingLinkButton>
+      <div className="mt-4 h-[calc(100vh-16px)] space-y-6 overflow-auto bg-gray-700 p-4 pb-6 text-white lg:hidden">
         {children}
-      </Sidebar>
-      <Map />
+      </div>
+      <div className="hidden lg:block">
+        <Sidebar section="network">
+          <SlidingLinkButton
+            href={`/network?${mapSearchParams.toString()}`}
+            variant="dark"
+            Icon={ArrowLeft}
+            scroll={false}
+          >
+            Back to results
+          </SlidingLinkButton>
+          {children}
+        </Sidebar>
+        <Map />
+      </div>
     </>
   );
 }

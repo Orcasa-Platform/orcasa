@@ -5,5 +5,5 @@ export const metadata = {
 };
 
 export default function PracticesModuleLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return children;
 }

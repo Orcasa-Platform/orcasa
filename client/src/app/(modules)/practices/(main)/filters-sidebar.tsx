@@ -132,7 +132,7 @@ const SelectFilter = ({
   );
 };
 
-export default function FiltersSidebar() {
+export default function FiltersSidebar({ isMobile = false }: { isMobile?: boolean }) {
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const [filters, setFilters] = usePracticesFilters();
   const practicesFiltersOptions = usePracticesFiltersOptions(filters);
@@ -153,6 +153,118 @@ export default function FiltersSidebar() {
       scrollableContainerRef.current.scrollTo({ top: 0 });
     }
   }, [filterSidebarOpen, scrollableContainerRef]);
+
+  const renderFilters = (
+    <>
+      <Button
+        type="button"
+        size="xs"
+        className="mb-4 flex items-center gap-1 self-end !rounded-2xl pr-1 text-sm text-gray-50 hover:bg-gray-500 disabled:text-gray-300 disabled:opacity-100 lg:mb-0 lg:self-start"
+        onClick={() =>
+          setFilters({
+            ...filters,
+            country: [],
+            year: [],
+            landUseTypes: [],
+            priorLandUseTypes: [],
+            mainIntervention: undefined,
+            subInterventions: [],
+            sourceName: [],
+          })
+        }
+      >
+        Reset all
+        <Reset className="h-5 w-5" />
+      </Button>
+      <div className="space-y-6">
+        <div>
+          <label htmlFor="source" className="block pb-1 text-sm text-gray-200">
+            Sources
+          </label>
+          <MultiCombobox
+            id="source"
+            key="source"
+            name="Sources"
+            placeholder="Select"
+            value={filters.sourceName ?? []}
+            options={practicesFiltersOptions.sourceName}
+            onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
+          />
+        </div>
+        <div>
+          <label htmlFor="country" className="block pb-1 text-sm text-gray-200">
+            Country
+          </label>
+          <MultiCombobox
+            id="country"
+            key="country"
+            name="Country"
+            placeholder="Select"
+            value={filters.country ?? []}
+            options={practicesFiltersOptions.country}
+            onChange={(value) => setFilters({ ...filters, country: value as number[] })}
+          />
+        </div>
+        <div>
+          <label htmlFor="published-year" className="block pb-1 text-sm text-gray-200">
+            Published year
+          </label>
+          <MultiCombobox
+            id="published-year"
+            name="Published on year"
+            placeholder="Select"
+            value={filters.year ?? []}
+            options={practicesFiltersOptions.year}
+            onChange={(value) => setFilters({ ...filters, year: value as number[] })}
+          />
+        </div>
+        <SelectFilter
+          type="mainIntervention"
+          label="Main intervention"
+          placeholder="Select"
+          setFilters={setFilters}
+          practicesFiltersOptions={practicesFiltersOptions}
+          filters={filters}
+        />
+        <SelectFilter
+          source="landUseTypes"
+          type={
+            filters?.mainIntervention === 'Land Use Change' ? 'priorLandUseTypes' : 'landUseTypes'
+          }
+          label="Land use type"
+          multiple
+          setFilters={setFilters}
+          practicesFiltersOptions={practicesFiltersOptions}
+          filters={filters}
+        />
+        {filters?.mainIntervention === 'Land Use Change' && (
+          <SelectFilter
+            type="landUseTypes"
+            label="New land use type"
+            multiple
+            setFilters={setFilters}
+            practicesFiltersOptions={practicesFiltersOptions}
+            filters={filters}
+          />
+        )}
+        {filters?.mainIntervention === 'Management' && (
+          <SelectFilter
+            type="subInterventions"
+            label="Sub-intervention"
+            disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
+            multiple
+            setFilters={setFilters}
+            practicesFiltersOptions={practicesFiltersOptions}
+            filters={filters}
+          />
+        )}
+      </div>
+    </>
+  );
+
+  if (isMobile) {
+    return <div className="relative flex flex-col overflow-auto p-4 pt-0">{renderFilters}</div>;
+  }
 
   return (
     <div
@@ -179,109 +291,7 @@ export default function FiltersSidebar() {
           <X className="h-4 w-4" />
         </Button>
         <h2 className="font-serif text-2xl text-yellow-500">Filters</h2>
-        <Button
-          type="button"
-          size="xs"
-          className="flex items-center gap-1 self-start !rounded-2xl pr-1 text-sm text-gray-50 hover:bg-gray-500 disabled:text-gray-300 disabled:opacity-100"
-          onClick={() =>
-            setFilters({
-              ...filters,
-              country: [],
-              year: [],
-              landUseTypes: [],
-              priorLandUseTypes: [],
-              mainIntervention: undefined,
-              subInterventions: [],
-              sourceName: [],
-            })
-          }
-        >
-          Reset all
-          <Reset className="h-5 w-5" />
-        </Button>
-        <div className="space-y-6">
-          <div>
-            <label htmlFor="source" className="block pb-1 text-sm text-gray-200">
-              Sources
-            </label>
-            <MultiCombobox
-              id="source"
-              key="source"
-              name="Sources"
-              placeholder="Select"
-              value={filters.sourceName ?? []}
-              options={practicesFiltersOptions.sourceName}
-              onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
-            />
-          </div>
-          <div>
-            <label htmlFor="country" className="block pb-1 text-sm text-gray-200">
-              Country
-            </label>
-            <MultiCombobox
-              id="country"
-              key="country"
-              name="Country"
-              placeholder="Select"
-              value={filters.country ?? []}
-              options={practicesFiltersOptions.country}
-              onChange={(value) => setFilters({ ...filters, country: value as number[] })}
-            />
-          </div>
-          <div>
-            <label htmlFor="published-year" className="block pb-1 text-sm text-gray-200">
-              Published year
-            </label>
-            <MultiCombobox
-              id="published-year"
-              name="Published on year"
-              placeholder="Select"
-              value={filters.year ?? []}
-              options={practicesFiltersOptions.year}
-              onChange={(value) => setFilters({ ...filters, year: value as number[] })}
-            />
-          </div>
-          <SelectFilter
-            type="mainIntervention"
-            label="Main intervention"
-            placeholder="Select"
-            setFilters={setFilters}
-            practicesFiltersOptions={practicesFiltersOptions}
-            filters={filters}
-          />
-          <SelectFilter
-            source="landUseTypes"
-            type={
-              filters?.mainIntervention === 'Land Use Change' ? 'priorLandUseTypes' : 'landUseTypes'
-            }
-            label="Land use type"
-            multiple
-            setFilters={setFilters}
-            practicesFiltersOptions={practicesFiltersOptions}
-            filters={filters}
-          />
-          {filters?.mainIntervention === 'Land Use Change' && (
-            <SelectFilter
-              type="landUseTypes"
-              label="New land use type"
-              multiple
-              setFilters={setFilters}
-              practicesFiltersOptions={practicesFiltersOptions}
-              filters={filters}
-            />
-          )}
-          {filters?.mainIntervention === 'Management' && (
-            <SelectFilter
-              type="subInterventions"
-              label="Sub-intervention"
-              disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
-              multiple
-              setFilters={setFilters}
-              practicesFiltersOptions={practicesFiltersOptions}
-              filters={filters}
-            />
-          )}
-        </div>
+        {renderFilters}
       </div>
     </div>
   );

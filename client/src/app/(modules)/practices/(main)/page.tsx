@@ -2,21 +2,22 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { X } from 'lucide-react';
 import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
+
+import { cn } from '@/lib/classnames';
 
 import { useSidebarScroll } from '@/store';
 
 import {
-  PracticesDropdownFilters,
   usePracticesFilterSidebarOpen,
   usePracticesFilters,
+  useFiltersCount,
 } from '@/store/practices';
 
 import { useGetPages } from '@/types/generated/page';
 
-import { usePractices, usePracticesActiveFilters, usePracticesCount } from '@/hooks/practices';
+import { usePractices, usePracticesCount } from '@/hooks/practices';
 
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
@@ -37,7 +38,6 @@ export default function PracticesModule() {
 
   const practices = usePractices({ filters });
   const practicesCount = usePracticesCount(filters);
-  const activeFilters = usePracticesActiveFilters();
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
@@ -75,13 +75,19 @@ export default function PracticesModule() {
     }
   }, [filters, previousFilters, setSidebarScroll]);
 
+  // The keywords search is not counted because it's shown in the main sidebar
+  const filtersCount = useFiltersCount(filters, ['search']);
+
   return (
-    <div className="space-y-10">
+    <div className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
       <h1 className="font-serif leading-7">
-        {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        <div className="font-serif text-2xl text-white lg:hidden">Practices</div>
+        <div className="hidden lg:block">
+          {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        </div>
       </h1>
       <div className="flex flex-col gap-y-2">
-        <div className="flex justify-between gap-x-4">
+        <div className="flex justify-between gap-x-4 text-white">
           <Search
             containerClassName="basis-full"
             defaultValue={filters.search}
@@ -92,43 +98,30 @@ export default function PracticesModule() {
             ref={filtersButtonRef}
             type="button"
             variant={filterSidebarOpen ? 'filters' : 'primary'}
-            className="group shrink-0 transition-colors duration-500 focus-visible:ring-offset-gray-700"
+            className="group hidden shrink-0 gap-2 transition-colors duration-500 focus-visible:ring-offset-gray-700 lg:flex"
             aria-pressed={filterSidebarOpen}
             onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
           >
-            <Filter className="mr-2 h-6 w-6" />
+            <Filter className="h-6 w-6" />
             Filters
+            {filtersCount > 0 && (
+              <div
+                className={cn(
+                  'flex h-[22px] w-[22px] items-center justify-center rounded-full p-1 text-2xs',
+                  {
+                    'bg-yellow-700': filterSidebarOpen,
+                    'bg-green-900': !filterSidebarOpen,
+                  },
+                )}
+              >
+                {filtersCount}
+              </div>
+            )}
           </Button>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {activeFilters.map(({ filter, label, value }) => (
-            <Button
-              key={[filter, value].join('-')}
-              type="button"
-              variant="filter-tag"
-              size="xs"
-              title={label}
-              onClick={() => {
-                const filterValue = filters?.[filter as keyof PracticesDropdownFilters];
-                setFilters({
-                  ...filters,
-                  [filter]: Array.isArray(filterValue)
-                    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      filterValue?.filter((filterValue) => filterValue !== value)
-                    : undefined,
-                });
-              }}
-            >
-              <span className="sr-only">Remove filter:&nbsp;</span>
-              <span className="line-clamp-1">{label}</span>
-              <X className="ml-1 h-4 w-4 shrink-0" />
-            </Button>
-          ))}
-        </div>
       </div>
-      <div className="text-xs text-gray-200">
-        {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
+      <div className="text-sm text-gray-200 lg:text-xs">
+        {`Showing ${practicesCount} practice${practicesCount === 1 ? '' : 's'}.`}
       </div>
       <div className="!mt-6">
         <PracticeList {...practices} />
