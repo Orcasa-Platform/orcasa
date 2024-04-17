@@ -203,6 +203,24 @@ const getQueryFilters = (filters: PracticesFilters) => {
                   },
                 ],
               },
+              {
+                $and: [
+                  {
+                    practice_intervention: {
+                      $eq: 'Land Use Change',
+                    },
+                  },
+                  {
+                    $or: filters.landUseTypes.map((id) => ({
+                      land_use_types: {
+                        id: {
+                          $eq: id,
+                        },
+                      },
+                    })),
+                  },
+                ],
+              },
             ],
           },
         ]
