@@ -24,15 +24,22 @@ module.exports = {
       fontSize: {
         '3.5xl': ['32px', '48px'],
         '3.8xl': ['34px', '50px'],
+        '4xl': ['36px', '52px'],
+        '2xs': ['10px', '16px'],
       },
       colors: {
         main: 'hsl(var(--main))',
+        red: {
+          500: '#B95E6F',
+          700: '#79526A',
+        },
         yellow: {
           50: '#FFF7E6',
           // Geospatial data
           500: '#FFD500',
           // Geospatial data highlighted text
           600: '#FFC200',
+          700: '#E4AE00'
         },
         blue: {
           50: '#F2F7FB',
@@ -46,12 +53,14 @@ module.exports = {
         gray: {
           50: '#F7F7F9',
           100: '#F0F0F5',
+          150: '#E9EAF0',
           200: '#CFD1DB',
           // Disabled for buttons / labels
           300: '#B2B5C5',
           400: '#8B90A4',
           500: '#7C7F8F',
           600: '#565D79',
+          650: '#4D5370',
           700: '#3C4363',
           800: '#2C324B',
           900: '#1D2133',
@@ -72,10 +81,16 @@ module.exports = {
         green: {
           // Scientific evidence
           700: '#2BB3A7',
+          800: '#239288',
+          900: '#3C7481',
         },
         purple: {
           // Datasets
           50: '#F0EBF4',
+          100: '#E9E7F5',
+          200: '#D9D4ED',
+          400: '#B6B1DB',
+          500: '#8380BC',
           700: '#8380BC',
           900: '#584484',
         },
@@ -116,11 +131,6 @@ module.exports = {
       textColor: {
         default: 'hsl(var(--main))',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       keyframes: {
         'accordion-down': {
           from: { height: 0 },
@@ -130,10 +140,21 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
+        'pulse-ping': {
+          '0%, 100%': {
+            transform: 'scale(0.5)',
+            opacity: 0.2,
+          },
+          '50%': {
+            transform: 'scale(1.5)',
+            opacity: 0.4,
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'pulse-ping': 'pulse-ping 1.9s ease-out infinite',
       },
       boxShadow: {
         DEFAULT: '0 1px 2px 0 rgb(0 0 0 / 0.06), 0 1px 3px 0 rgb(0 0 0 / 0.1)',

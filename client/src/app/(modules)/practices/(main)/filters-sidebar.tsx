@@ -20,6 +20,7 @@ import {
   SelectItem,
   SelectValue,
 } from '@/components/ui/select';
+import Reset from '@/styles/icons/reset.svg';
 
 const toKebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
@@ -29,6 +30,7 @@ const SelectFilter = ({
   label,
   disabled,
   multiple,
+  placeholder,
   setFilters,
   practicesFiltersOptions,
   filters,
@@ -38,6 +40,7 @@ const SelectFilter = ({
   label: string;
   disabled?: boolean;
   multiple?: boolean;
+  placeholder?: string;
   setFilters: (filters: ReturnType<typeof usePracticesFilters>[0]) => void;
   practicesFiltersOptions: ReturnType<typeof usePracticesFiltersOptions>;
   filters: ReturnType<typeof usePracticesFilters>[0];
@@ -45,8 +48,10 @@ const SelectFilter = ({
   const selectedLabel = practicesFiltersOptions[source || type]?.find(
     ({ value }) => value === filters[type],
   )?.label;
+
   const handleValueChange = (value: string | number | undefined) => {
     let returnedValue: string | number | undefined = value === 'all' ? undefined : value;
+
     if (typeof returnedValue === 'string') {
       const selectedOption = practicesFiltersOptions[source || type].find(
         ({ value }) => String(value) === returnedValue,
@@ -56,43 +61,29 @@ const SelectFilter = ({
       }
     }
 
-    // When we select Land use change as Main intervention
-    // we should move the current value of Land use type to Land use type prior
-    // to match the Scientific Evidence functionality
-    const getMainInterventionUpdates = () => {
-      if (type !== 'mainIntervention') return {};
-      if (value === 'Land Use Change') {
-        return { landUseTypes: undefined, priorLandUseTypes: filters.landUseTypes };
-      }
-      // Reset the filters when the main intervention is Management or all
-      return {
-        landUseTypes: filters.priorLandUseTypes || filters.landUseTypes,
-        priorLandUseTypes: undefined,
-      };
-    };
     return setFilters({
       ...filters,
       [type]: returnedValue,
-      ...getMainInterventionUpdates(),
     });
   };
 
   const options = practicesFiltersOptions[source || type].sort((a, b) =>
     a.label.localeCompare(b.label),
   );
+
   const select = !multiple ? (
     <Select value={String(filters[type])} onValueChange={handleValueChange} disabled={disabled}>
-      <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-12">
+      <SelectTrigger id={toKebabCase(type)} className="!mt-0 h-10">
         <SelectValue>
-          <span className="text-sm">{selectedLabel ? selectedLabel : 'All'}</span>
+          <span className="text-sm">{selectedLabel ? selectedLabel : placeholder || 'All'}</span>
         </SelectValue>
       </SelectTrigger>
-      <SelectContent className="w-[var(--radix-select-trigger-width)]">
-        <SelectItem key="all" value="all" className="w-full border-b border-dashed border-gray-300">
+      <SelectContent variant="dark" className="w-[var(--radix-select-trigger-width)]">
+        <SelectItem variant="dark" key="all" value="" className="w-full border-gray-300">
           All
         </SelectItem>
         {options.map(({ label, value }) => (
-          <SelectItem key={value} value={String(value)} className="w-full capitalize">
+          <SelectItem variant="dark" key={value} value={String(value)} className="w-full">
             {label}
           </SelectItem>
         ))}
@@ -102,8 +93,7 @@ const SelectFilter = ({
     <MultiCombobox
       id={toKebabCase(type)}
       key={toKebabCase(type)}
-      name={toKebabCase(type)}
-      variant="practices"
+      name={label}
       value={filters[type] ? (filters[type] as number[]) : []}
       options={options || []}
       onChange={(value) =>
@@ -113,14 +103,13 @@ const SelectFilter = ({
         })
       }
       disabled={disabled}
-      className="!mt-0 max-w-[284px] capitalize"
-      showSelected
+      className="!mt-0"
     />
   );
 
   return (
     <>
-      <label htmlFor={toKebabCase(type)} className="block text-sm font-medium text-gray-700">
+      <label htmlFor={toKebabCase(type)} className="block text-sm text-gray-200">
         {label}
       </label>
       {disabled ? (
@@ -143,7 +132,7 @@ const SelectFilter = ({
   );
 };
 
-export default function FiltersSidebar() {
+export default function FiltersSidebar({ isMobile = false }: { isMobile?: boolean }) {
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const [filters, setFilters] = usePracticesFilters();
   const practicesFiltersOptions = usePracticesFiltersOptions(filters);
@@ -165,125 +154,144 @@ export default function FiltersSidebar() {
     }
   }, [filterSidebarOpen, scrollableContainerRef]);
 
+  const renderFilters = (
+    <>
+      <Button
+        type="button"
+        size="xs"
+        className="mb-4 flex items-center gap-1 self-end !rounded-2xl pr-1 text-sm text-gray-50 hover:bg-gray-500 disabled:text-gray-300 disabled:opacity-100 lg:mb-0 lg:self-start"
+        onClick={() =>
+          setFilters({
+            ...filters,
+            countries: [],
+            year: [],
+            landUseTypes: [],
+            priorLandUseTypes: [],
+            mainIntervention: undefined,
+            subInterventions: [],
+            sourceName: [],
+          })
+        }
+      >
+        Reset all
+        <Reset className="h-5 w-5" />
+      </Button>
+      <div className="space-y-6">
+        <div>
+          <label htmlFor="source" className="block pb-1 text-sm text-gray-200">
+            Sources
+          </label>
+          <MultiCombobox
+            id="source"
+            key="source"
+            name="Sources"
+            placeholder="Select"
+            value={filters.sourceName ?? []}
+            options={practicesFiltersOptions.sourceName}
+            onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
+          />
+        </div>
+        <div>
+          <label htmlFor="country" className="block pb-1 text-sm text-gray-200">
+            Country
+          </label>
+          <MultiCombobox
+            id="country"
+            key="country"
+            name="Country"
+            placeholder="Select"
+            value={filters.countries ?? []}
+            options={practicesFiltersOptions.countries}
+            onChange={(value) => setFilters({ ...filters, countries: value as number[] })}
+          />
+        </div>
+        <div>
+          <label htmlFor="published-year" className="block pb-1 text-sm text-gray-200">
+            Published year
+          </label>
+          <MultiCombobox
+            id="published-year"
+            name="Published on year"
+            placeholder="Select"
+            value={filters.year ?? []}
+            options={practicesFiltersOptions.year}
+            onChange={(value) => setFilters({ ...filters, year: value as number[] })}
+          />
+        </div>
+        <SelectFilter
+          type="mainIntervention"
+          label="Main intervention"
+          placeholder="Select"
+          setFilters={setFilters}
+          practicesFiltersOptions={practicesFiltersOptions}
+          filters={filters}
+        />
+        <SelectFilter
+          source="landUseTypes"
+          type={
+            filters?.mainIntervention === 'Land Use Change' ? 'priorLandUseTypes' : 'landUseTypes'
+          }
+          label="Land use type"
+          multiple
+          setFilters={setFilters}
+          practicesFiltersOptions={practicesFiltersOptions}
+          filters={filters}
+        />
+        {filters?.mainIntervention === 'Land Use Change' && (
+          <SelectFilter
+            type="landUseTypes"
+            label="New land use type"
+            multiple
+            setFilters={setFilters}
+            practicesFiltersOptions={practicesFiltersOptions}
+            filters={filters}
+          />
+        )}
+        {filters?.mainIntervention === 'Management' && (
+          <SelectFilter
+            type="subInterventions"
+            label="Sub-intervention"
+            disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
+            multiple
+            setFilters={setFilters}
+            practicesFiltersOptions={practicesFiltersOptions}
+            filters={filters}
+          />
+        )}
+      </div>
+    </>
+  );
+
+  if (isMobile) {
+    return <div className="relative flex flex-col overflow-auto p-4 pt-0">{renderFilters}</div>;
+  }
+
   return (
     <div
       // `inert` is not yet supported by React so that's why it is spread below:
       // https://github.com/facebook/react/issues/17157
       {...(!filterSidebarOpen ? { inert: '' } : {})}
-      className={cn('absolute left-full top-0 -z-10 h-full w-[380px] bg-white duration-500', {
+      className={cn('absolute left-full top-0 -z-10 h-full w-[380px] bg-gray-700 duration-500', {
         '-translate-x-full': !filterSidebarOpen,
         'translate-x-0': filterSidebarOpen,
       })}
     >
       <div
         ref={scrollableContainerRef}
-        className="flex h-full flex-col gap-y-10 overflow-y-auto p-12"
+        className="flex h-full flex-col gap-y-10 overflow-y-auto p-10 pt-4"
       >
         <Button
           ref={closeButtonRef}
           type="button"
-          variant="primary"
           size="icon"
-          className="absolute right-0 top-0"
+          className="absolute right-6 top-4 z-10"
           onClick={() => setFilterSidebarOpen(false)}
         >
           <span className="sr-only">Close</span>
-          <X className="h-6 w-6" />
+          <X className="h-4 w-4" />
         </Button>
-        <h1 className="mb-6 font-serif text-3.8xl">Filters</h1>
-        <div className="flex flex-col gap-y-10">
-          <fieldset className="relative">
-            <Button
-              type="button"
-              variant="vanilla"
-              size="auto"
-              className="absolute bottom-full left-0 -translate-y-4 text-base font-semibold text-brown-500 hover:text-brown-800 disabled:text-gray-300 disabled:opacity-100"
-              onClick={() =>
-                setFilters({
-                  ...filters,
-                  countries: [],
-                  year: [],
-                  landUseTypes: undefined,
-                  priorLandUseTypes: undefined,
-                  mainIntervention: undefined,
-                  subInterventions: undefined,
-                  sourceName: [],
-                })
-              }
-            >
-              Reset all
-            </Button>
-            <div className="space-y-4">
-              <MultiCombobox
-                id="source"
-                key="source"
-                name="Source"
-                variant="practices"
-                value={filters.sourceName ?? []}
-                options={practicesFiltersOptions.sourceName}
-                onChange={(value) => setFilters({ ...filters, sourceName: value as SourceName[] })}
-              />
-              <MultiCombobox
-                id="country"
-                key="country"
-                name="Country"
-                variant="practices"
-                value={filters.countries ?? []}
-                options={practicesFiltersOptions.countries}
-                onChange={(value) => setFilters({ ...filters, countries: value as number[] })}
-              />
-              <MultiCombobox
-                id="published-year"
-                name="Published on year"
-                variant="practices"
-                value={filters.year ?? []}
-                options={practicesFiltersOptions.year}
-                onChange={(value) => setFilters({ ...filters, year: value as number[] })}
-              />
-              <SelectFilter
-                type="mainIntervention"
-                label="Main intervention"
-                setFilters={setFilters}
-                practicesFiltersOptions={practicesFiltersOptions}
-                filters={filters}
-              />
-              <SelectFilter
-                source="landUseTypes"
-                type={
-                  filters?.mainIntervention === 'Land Use Change'
-                    ? 'priorLandUseTypes'
-                    : 'landUseTypes'
-                }
-                label="Land use type"
-                multiple
-                setFilters={setFilters}
-                practicesFiltersOptions={practicesFiltersOptions}
-                filters={filters}
-              />
-              {filters?.mainIntervention === 'Land Use Change' && (
-                <SelectFilter
-                  type="landUseTypes"
-                  label="New land use type"
-                  multiple
-                  setFilters={setFilters}
-                  practicesFiltersOptions={practicesFiltersOptions}
-                  filters={filters}
-                />
-              )}
-              {filters?.mainIntervention === 'Management' && (
-                <SelectFilter
-                  type="subInterventions"
-                  label="Sub-intervention"
-                  disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
-                  multiple
-                  setFilters={setFilters}
-                  practicesFiltersOptions={practicesFiltersOptions}
-                  filters={filters}
-                />
-              )}
-            </div>
-          </fieldset>
-        </div>
+        <h2 className="font-serif text-2xl text-yellow-500">Filters</h2>
+        {renderFilters}
       </div>
     </div>
   );

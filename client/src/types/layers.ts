@@ -1,6 +1,4 @@
-import { AnySource } from 'react-map-gl';
-
-import { MapStyle } from 'react-map-gl/maplibre';
+import type { AnyLayer, AnySource, SkyLayer } from 'react-map-gl';
 
 import { FormatProps } from '@/lib/utils/formats';
 
@@ -8,7 +6,7 @@ import type { Layer } from '@/types/generated/strapi.schemas';
 
 export type Config = {
   source: AnySource;
-  styles: MapStyle['layers'];
+  styles: Exclude<AnyLayer, SkyLayer>[];
 };
 
 export type ParamsConfigValue = {

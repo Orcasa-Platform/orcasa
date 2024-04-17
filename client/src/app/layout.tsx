@@ -11,11 +11,11 @@ import { cn } from '@/lib/classnames';
 
 import Providers from '@/app/layout-providers';
 
-import DefaultBasemap from '@/containers/default-basemap';
+import DefaultMapSettings from '@/containers/default-map-settings';
 
 const roboto = Roboto({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
   variable: '--font-roboto',
 });
 
@@ -34,13 +34,6 @@ export const metadata: Metadata = {
   keywords: 'Impact4Soil, ORCaSa, Horizon Europe, carbon capture, climate change',
   robots: 'index, follow',
   authors: { name: 'Vizzuality', url: 'https://vizzuality.com' },
-  ...(process.env.NEXT_PUBLIC_ENABLE_RESPONSIVE !== 'true'
-    ? {
-        viewport: {
-          width: 1200,
-        },
-      }
-    : {}),
   openGraph: {
     title: 'Impact4Soil - Horizon Europe Initiative',
     description: DESCRIPTION,
@@ -87,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Use suspense to render client component without deopting pages
           https://nextjs.org/docs/messages/deopted-into-client-rendering */}
           <Suspense fallback={null}>
-            <DefaultBasemap />
+            <DefaultMapSettings />
           </Suspense>
           {children}
         </body>

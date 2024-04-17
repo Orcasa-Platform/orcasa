@@ -15,10 +15,9 @@ const Renderer = React.forwardRef<
   {
     content: string;
     variant?: 'bold' | 'lists';
-    textClass?: string;
     className?: string;
   }
->(({ content, variant, textClass, className }, ref) => {
+>(({ content, variant, className }, ref) => {
   // Replace components for Markup
   const replace = (content: string) => {
     if (!variant) return content;
@@ -26,7 +25,7 @@ const Renderer = React.forwardRef<
       allowedTags: ['p', 'strong', 'ul', 'ol', 'li'],
       allowedAttributes: {},
     });
-    return renderMarkup(sanitizedHTML, variant, textClass);
+    return renderMarkup(sanitizedHTML, variant);
   };
 
   // Replace components for Markdown
@@ -41,7 +40,9 @@ const Renderer = React.forwardRef<
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     p({ node, ...rest }: Component) {
-      return <p className="m-0 text-base leading-6 text-gray-700" {...rest} />;
+      return (
+        <p className="m-0 text-sm leading-7 text-gray-700 lg:text-base lg:leading-6" {...rest} />
+      );
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ul({ node, ...rest }: Component) {

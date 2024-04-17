@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
-import { ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
+import ExternalLink from 'public/images/external-link.svg';
 
 import { getProjects, getProjectsId } from '@/types/generated/project';
 import { getRegions } from '@/types/generated/region';
@@ -68,32 +68,56 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
   const makeGlobalLink = (link: string) =>
     link.startsWith('http://') || link.startsWith('https://') ? link : `https://${link}`;
 
-  const { name, website } = project;
-
-  const fields: Field[] = getProjectFields({
-    ...project,
-    isWorldwide: regionsCount === project.region_of_interventions?.data?.length,
-  });
+  const { name, short_description, website } = project;
 
   return (
     <>
-      <div className="mb-6 mt-10 font-serif text-3.8xl leading-[50px]">{name}</div>
+      <h1 className="mb-6 mt-10 font-serif text-2xl leading-10 lg:text-3xl">{name}</h1>
+      {!!short_description && (
+        <p className="text-sm leading-7 text-gray-200">{short_description}</p>
+      )}
       <div className="flex flex-col gap-4">
-        {fields.map((field) => (
+        {getProjectFields(
+          {
+            ...project,
+            isWorldwide: regionsCount === project.region_of_interventions?.data?.length,
+          },
+          ['start_date', 'project_type', 'region_of_interventions'],
+        ).map((field) => (
           <Field key={field.label} {...field} type="project" />
         ))}
       </div>
-      <div className="mt-10 flex justify-end gap-4">
+      <NetworkDiagram data={project} id={id} type="project" />
+      <h2 className="font-serif text-xl">More details</h2>
+      <div className="flex flex-col gap-4">
+        {getProjectFields(
+          {
+            ...project,
+            isWorldwide: regionsCount === project.region_of_interventions?.data?.length,
+          },
+          [
+            'description',
+            'country_of_coordination',
+            'lead_partner',
+            'project_coordinator_email',
+            'country_of_interventions',
+            'main_area_of_intervention',
+            'sustainable_development_goals',
+          ],
+        ).map((field) => (
+          <Field key={field.label} {...field} type="project" />
+        ))}
+      </div>
+      <div className="flex justify-end gap-4 border-t border-gray-600 pt-6">
         <SuggestButton id={id} data={project} label="initiative" />
 
-        <Button asChild variant="secondary" disabled={!website}>
+        <Button asChild variant="outline-dark" size="sm" disabled={!website}>
           <a href={makeGlobalLink(website)} target="_blank" rel="noreferrer">
-            <ExternalLink className="mr-2 h-6 w-6" />
+            <ExternalLink className="mr-2 h-4 w-4" />
             Visit Website
           </a>
         </Button>
       </div>
-      <NetworkDiagram data={project} id={id} type="project" />
     </>
   );
 }

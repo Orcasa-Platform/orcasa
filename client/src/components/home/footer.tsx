@@ -8,7 +8,7 @@ import MailIcon from 'public/images/mail-icon.svg';
 import XIcon from 'public/images/x-icon.svg';
 
 const Footer = () => (
-  <div id="about">
+  <div id="about" className="!mt-0">
     <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px] text-center lg:flex-col lg:text-left">
       <Link
         className="block items-center justify-center gap-2.5 hover:opacity-90 lg:flex"
@@ -32,15 +32,14 @@ const Footer = () => (
       </Link>
     </div>
     <div className="flex w-full flex-col items-start justify-between space-y-4 bg-gray-700 px-4 py-8 lg:flex-row lg:items-center lg:space-y-0 lg:px-10">
-      <div className="flex flex-col items-start justify-center gap-4 lg:flex-row lg:items-center">
+      <div className="flex flex-col items-start justify-center gap-6 lg:flex-row lg:items-center lg:gap-4">
         <EuropeFlag className="h-[48px] min-w-[72px]" />
         <div className="max-w-[543px] text-xs leading-[18px] text-gray-300">
-          Impact4Soil has been developed in the framework of ORCaSa project which received funding
-          from the European Union’s Horizon Europe research programme under grant agreement
-          n°101059863.
+          The ORCaSa project has received funding from the European Union’s Horizon Europe research
+          programme under grant agreement n°101059863.
         </div>
       </div>
-      <div className="flex flex-col space-y-4 lg:flex-row lg:space-y-0">
+      <div className="flex flex-col space-y-6 lg:flex-row lg:space-y-0">
         <div className="flex items-center gap-6 border-white border-opacity-20 pr-5 lg:border-r">
           <Link href="https://twitter.com/IRC_ORCaSa" target="_blank">
             <XIcon className="min-w-4 h-4 w-4" />
@@ -53,7 +52,7 @@ const Footer = () => (
             <LinkedinIcon className="min-w-4 h-4 w-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="#">
+          <Link href="mailto:impact4soil@groupes.renater.fr">
             <MailIcon className="min-w-5 h-4 w-5 hover:opacity-90" />
           </Link>
         </div>

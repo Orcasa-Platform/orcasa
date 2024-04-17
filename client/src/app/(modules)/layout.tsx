@@ -17,7 +17,7 @@ export default async function ModulesLayout({ children }: { children: React.Reac
   return (
     <Hydrate state={dehydratedState}>
       <Providers>
-        <main className="flex min-h-screen flex-col">
+        <main className="flex min-h-screen flex-col bg-gray-800">
           <div className="h-screen w-screen">
             <Dialog>
               <MobileMenuBar />

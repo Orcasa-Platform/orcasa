@@ -1,7 +1,5 @@
 import { useMemo } from 'react';
 
-import { cn } from '@/lib/classnames';
-
 import { LegendConfig } from '@/types/layers';
 
 import {
@@ -39,7 +37,6 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
   legends,
   interaction,
   onChangeSettings,
-  sourceLink,
 }) => {
   const tabOptions = useMemo(
     () =>
@@ -83,51 +80,52 @@ const SoilsRevealedSettings: React.FC<SoilsRevealedSettings> = ({
   };
 
   return (
-    <>
-      <div className="flex items-center justify-between gap-x-4">
-        {tabs && (
-          <Tabs defaultValue={tilesURL?.[0]} onValueChange={handleValueChange}>
-            <TabsList>
-              {tabOptions.map(({ label, value }) => (
-                <TabsTrigger key={value} value={value}>
-                  {label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+    <div className="ml-9 space-y-2 text-2xs tracking-wide text-gray-500">
+      <div className="mt-2">
+        {timeFrame?.label ? (
+          <>
+            {timeFrame.label}: {timeFrame?.value}
+          </>
+        ) : (
+          [timeFrame?.value, depth?.value].filter(Boolean).join(', ')
         )}
-        {scenarios && (
+      </div>
+      {tabs && (
+        <Tabs defaultValue={tilesURL?.[0]} onValueChange={handleValueChange}>
+          <TabsList>
+            {tabOptions.map(({ label, value }) => (
+              <TabsTrigger key={value} value={value}>
+                {label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+      )}
+      {scenarios && (
+        <>
+          <label htmlFor="scenarios" className="mb-1 block">
+            Intervention
+          </label>
           <Select value={tilesURL?.[0]} onValueChange={handleValueChange}>
-            <SelectTrigger id="scenarios" className="h-12 w-auto">
+            <SelectTrigger variant="small" id="scenarios" className="w-auto">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent variant="small">
               {scenarioOptions.map(({ label, value }) => (
-                <SelectItem key={value} value={value} className="w-full">
+                <SelectItem
+                  variant="small"
+                  key={value}
+                  value={value}
+                  className="w-full max-w-[90vw]"
+                >
                   {label}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-        )}
-        {!timeFrame.label && <div>{timeFrame?.value}</div>}
-      </div>
-      <div
-        className={cn('flex ', {
-          'justify-between': depth?.value || timeFrame?.label,
-          'justify-end': !depth?.value && !timeFrame?.label,
-        })}
-      >
-        {timeFrame?.label && (
-          <div>
-            <span className="font-semibold">{timeFrame.label}: </span>
-            {timeFrame?.value}
-          </div>
-        )}
-        {depth?.value}
-        {sourceLink}
-      </div>
-    </>
+        </>
+      )}
+    </div>
   );
 };
 

@@ -544,8 +544,12 @@ export const usePracticesFiltersOptions = (
   const subInterventions = useMemo(
     () =>
       subInterventionData?.data
-        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          subInterventionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        ? subInterventionData.data.map((d) => ({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            label: `${d.attributes!.name[0].toUpperCase()}${d.attributes!.name.substring(1)}`,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            value: d.id!,
+          }))
         : [],
     [subInterventionData],
   );

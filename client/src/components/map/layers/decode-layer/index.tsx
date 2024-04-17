@@ -1,12 +1,13 @@
+import { RasterLayer } from 'react-map-gl';
+
 import { Layer, LayerExtension } from '@deck.gl/core/typed';
 import { GeoBoundingBox, TileLayer } from '@deck.gl/geo-layers/typed';
 import { BitmapLayer } from '@deck.gl/layers/typed';
 import GL from '@luma.gl/constants';
-import { RasterSourceSpecification } from 'maplibre-gl';
-import { RasterLayer } from 'react-map-gl/maplibre';
+import { RasterSource } from 'mapbox-gl';
 
 export interface DecodeLayerProps {
-  source: RasterSourceSpecification;
+  source: RasterSource;
   styles: RasterLayer[];
   decodeFunction: string;
   decodeParams: Record<string, unknown>;

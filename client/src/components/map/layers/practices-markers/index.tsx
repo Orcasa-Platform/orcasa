@@ -1,8 +1,9 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 
+import { Marker, useMap } from 'react-map-gl';
+
 import { usePathname } from 'next/navigation';
 
-import { Marker, useMap } from 'react-map-gl/maplibre';
 import Supercluster from 'supercluster';
 
 import { cn } from '@/lib/classnames';
@@ -22,21 +23,21 @@ export type PracticesLayerProps = LayerProps & {
 };
 
 const sizes = {
-  '1-100': 'h-[20px] w-[20px]',
-  '100-500': 'h-[40px] w-[40px]',
-  '500-1k': 'h-[60px] w-[60px]',
-  '>1k': 'h-[80px] w-[80px]',
+  '1-10': 'h-6 w-6',
+  '10-100': 'h-10 w-10',
+  '100-1k': 'h-[60px] w-[60px]',
+  '>1k': 'h-20 w-20',
 };
 
 const getSize = (size: number) => {
-  if (size < 100) {
-    return sizes['1-100'];
+  if (size < 10) {
+    return sizes['1-10'];
   }
-  if (size < 500) {
-    return sizes['100-500'];
+  if (size < 100) {
+    return sizes['10-100'];
   }
   if (size < 1000) {
-    return sizes['500-1k'];
+    return sizes['100-1k'];
   }
   return sizes['>1k'];
 };
@@ -50,14 +51,7 @@ type MarkerProps = {
   onClick?: (type: 'project' | 'organization') => void;
 };
 
-const MarkerComponent = ({
-  id,
-  longitude,
-  latitude,
-  practices,
-  isCluster = false,
-  onClick,
-}: MarkerProps) => (
+const MarkerComponent = ({ id, longitude, latitude, practices, onClick }: MarkerProps) => (
   <Marker key={`marker-${id}`} longitude={longitude} latitude={latitude}>
     {practices.length > 0 && (
       <button
@@ -66,11 +60,12 @@ const MarkerComponent = ({
           e.stopPropagation();
           if (onClick) onClick('organization');
         }}
-        className={cn('flex items-center justify-center bg-brown-500', getSize(practices?.length), {
-          'border-2 border-gray-700': !isCluster,
-        })}
+        className={cn(
+          'flex items-center justify-center rounded-full bg-green-700',
+          getSize(practices?.length),
+        )}
       >
-        <div className="text-sm text-white">
+        <div className="font-sans text-sm text-white">
           {format({ id: 'formatNumber', value: practices.length })}
         </div>
       </button>
@@ -104,7 +99,7 @@ const PracticeMarkersWithData = ({
   }, [map, onClickMap]);
 
   const SUPERCLUSTER: Supercluster = useMemo(
-    () => features && new Supercluster({ radius: 100 }).load(features),
+    () => features && new Supercluster({ radius: 50 }).load(features),
     [features],
   );
 

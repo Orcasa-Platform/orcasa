@@ -13,7 +13,7 @@ import Legend from '@/components/map/legend';
 import NetworkLegend from './network-legend';
 import PracticesLegend from './practices-legend';
 
-const MapLegends = ({ className = '' }) => {
+const MapLegends = ({ className = '', isMobile }: { className?: string; isMobile?: boolean }) => {
   const [layers, setLayers] = useLayers();
   const [layersSettings, setLayersSettings] = useLayersSettings();
   const pathname = usePathname();
@@ -68,7 +68,19 @@ const MapLegends = ({ className = '' }) => {
     [layers, layersSettings, setLayers, setLayersSettings],
   );
 
-  const sortable = layers?.length > 1;
+  const sortable = !isMobile && layers?.length > 1;
+  const getPosition = (i: number, totalNumber: number) => {
+    if (totalNumber === 1) {
+      return 'only';
+    }
+    if (i === 0) {
+      return 'first';
+    }
+    if (i === totalNumber - 1) {
+      return 'last';
+    }
+    return 'middle';
+  };
 
   const ITEMS = useMemo(() => {
     if (isNetworkPage) {
@@ -78,13 +90,14 @@ const MapLegends = ({ className = '' }) => {
       return <PracticesLegend />;
     }
 
-    return layers.map((layer) => {
+    return layers.map((layer, i) => {
       const settings = layersSettings[layer] ?? { opacity: 1, visibility: true };
 
       return (
         <MapLegendItem
           id={layer}
           key={layer}
+          position={getPosition(i, layers.length)}
           settings={settings}
           onChangeOpacity={(opacity: number) => {
             handleChangeOpacity(layer, opacity);
@@ -97,7 +110,7 @@ const MapLegends = ({ className = '' }) => {
           }}
           sortable={{
             enabled: sortable,
-            handle: layers.length > 1,
+            handle: sortable,
           }}
         />
       );
@@ -114,7 +127,15 @@ const MapLegends = ({ className = '' }) => {
   ]);
 
   return (
-    <div className="absolute bottom-16 right-6 z-10 w-full max-w-xs">
+    <div
+      className={cn(
+        !isMobile &&
+          'absolute bottom-9 right-6 z-10 hidden max-w-xs lg:block min-[1810px]:bottom-8',
+        {
+          'w-full': !isPracticesPage && !isNetworkPage,
+        },
+      )}
+    >
       <Legend
         className={cn(
           'max-h-[calc(100vh_-_theme(space.16)_-_theme(space.6)_-_theme(space.48))]',
@@ -124,6 +145,7 @@ const MapLegends = ({ className = '' }) => {
           enabled: sortable,
           handle: true,
         }}
+        hideToggle={isMobile || isPracticesPage || isNetworkPage}
         onChangeOrder={handleChangeOrder}
       >
         {ITEMS}

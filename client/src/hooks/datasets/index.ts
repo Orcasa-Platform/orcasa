@@ -7,7 +7,9 @@ import {
   useInfiniteQuery,
 } from '@tanstack/react-query';
 
-import { DatasetListResponse, GetDatasetsParams } from '@/types/datasets';
+import { DatasetsFilters } from '@/store/datasets';
+
+import { DatasetListResponse, DatasetSource, GetDatasetsParams } from '@/types/datasets';
 
 import API, { ErrorType } from '@/services/api/datasets';
 
@@ -70,4 +72,19 @@ export const useGetDatasetsInfinite = <
   query.queryKey = queryOptions.queryKey;
 
   return query;
+};
+
+export const useDatasetsFiltersOptions = (): Record<
+  keyof Pick<DatasetsFilters, 'source'>,
+  { label: string; value: string }[]
+> => {
+  return {
+    source: [
+      { label: 'Cirad dataverse', value: DatasetSource.Cirad },
+      { label: 'Harvard dataverse', value: DatasetSource.Harvard },
+      { label: 'Inrae dataverse', value: DatasetSource.Inrae },
+      { label: 'Joint Research Centre Data Catalogue', value: DatasetSource.JRC },
+      { label: 'Zenodo', value: DatasetSource.Zenodo },
+    ],
+  };
 };

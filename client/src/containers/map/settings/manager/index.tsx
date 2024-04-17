@@ -1,20 +1,19 @@
 import { useCallback, useEffect } from 'react';
 
-import type { LayerSpecification } from 'maplibre-gl';
-import { useMap } from 'react-map-gl/maplibre';
+import { useMap } from 'react-map-gl';
+
+import type { AnyLayer } from 'mapbox-gl';
 
 import { useMapSettings } from '@/store/index';
 
-import { LABELS } from '@/constants/basemaps';
-
-type AnyLayerWithMetadata = LayerSpecification & {
+type AnyLayerWithMetadata = AnyLayer & {
   metadata: Record<string, unknown>;
 };
 
 const MapSettingsManager = () => {
   const { default: mapRef } = useMap();
   const loaded = mapRef?.loaded();
-  const [{ basemap, labels }] = useMapSettings();
+  const [{ basemap, boundaries, labels }] = useMapSettings();
 
   const handleGroup = useCallback(
     (groups: string[], groupId: string, visible = true) => {
@@ -22,8 +21,8 @@ const MapSettingsManager = () => {
       const map = mapRef.getMap();
       const { layers, metadata } = mapRef.getStyle();
 
-      const { groups: metadataGroups } = metadata as {
-        groups: Record<string, { name: string; [key: string]: unknown }>;
+      const { 'mapbox:groups': metadataGroups } = metadata as {
+        'mapbox:groups': Record<string, { name: string; [key: string]: unknown }>;
       };
 
       const typedLayers = layers as AnyLayerWithMetadata[];
@@ -41,12 +40,12 @@ const MapSettingsManager = () => {
       const GROUPS_LAYERS = typedLayers.filter((l) => {
         const { metadata: layerMetadata } = l;
         if (!layerMetadata) return false;
-        const gr = layerMetadata?.['group'] as string;
+        const gr = layerMetadata?.['mapbox:group'] as string;
         return GROUPS.includes(gr);
       });
 
       GROUPS_LAYERS.forEach((_layer) => {
-        const match = _layer.metadata?.['group'] === GROUP_TO_DISPLAY?.id && visible;
+        const match = _layer.metadata?.['mapbox:group'] === GROUP_TO_DISPLAY?.id && visible;
         if (!match) {
           map.setLayoutProperty(_layer.id, 'visibility', 'none');
         } else {
@@ -61,8 +60,13 @@ const MapSettingsManager = () => {
     if (basemap) {
       handleGroup(['basemap'], basemap);
     }
-    handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
-  }, [basemap, labels, handleGroup]);
+    handleGroup(['labels'], `labels-${basemap === 'basemap-satellite' ? 'light' : 'dark'}`, labels);
+    handleGroup(
+      ['boundaries'],
+      `boundaries-${basemap === 'basemap-satellite' ? 'dark' : 'light'}`,
+      boundaries,
+    );
+  }, [basemap, boundaries, labels, handleGroup]);
 
   // * handle style load
   useEffect(() => {
@@ -74,14 +78,20 @@ const MapSettingsManager = () => {
     };
   }, [mapRef, loaded, handleStyleLoad]);
 
-  // * handle basemap, labels
+  // * handle basemap, boundaries, labels
   useEffect(() => {
     if (!mapRef) return;
     if (basemap) {
       handleGroup(['basemap'], basemap);
     }
-    handleGroup(['labels'], `labels-${labels ?? LABELS[0].slug}`, labels !== null);
-  }, [mapRef, loaded, basemap, labels, handleGroup]);
+
+    handleGroup(['labels'], `labels-${basemap === 'basemap-satellite' ? 'light' : 'dark'}`, labels);
+    handleGroup(
+      ['boundaries'],
+      `boundaries-${basemap === 'basemap-satellite' ? 'dark' : 'light'}`,
+      boundaries,
+    );
+  }, [mapRef, loaded, basemap, boundaries, labels, handleGroup]);
 
   return null;
 };

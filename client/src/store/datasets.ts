@@ -11,6 +11,8 @@ export interface DatasetsFilters {
 
 const filtersAtom = atom<DatasetsFilters>({
   source: [],
+  minDate: undefined,
+  maxDate: undefined,
 });
 
 export const useDatasetsFilters = () => {

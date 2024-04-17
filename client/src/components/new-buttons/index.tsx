@@ -12,14 +12,14 @@ const NewButtons = ({ className }: { className?: string }) => (
   <div className={cn('space-x-4', className)}>
     <Button asChild>
       <Link href="/network/new/organisation">
-        <Plus className="mr-2 h-6 w-6" />
-        <div className="text-base">Organisation</div>
+        <Plus className="mr-2 h-4 w-4" />
+        Organisation
       </Link>
     </Button>
     <Button asChild>
       <Link href="/network/new/initiative">
-        <Plus className="mr-2 h-6 w-6" />
-        <div className="text-base">Initiative</div>
+        <Plus className="mr-2 h-4 w-4" />
+        Initiative
       </Link>
     </Button>
   </div>

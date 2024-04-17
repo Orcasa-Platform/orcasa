@@ -2,15 +2,17 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import { Filter } from 'lucide-react';
+import Filter from 'public/images/filter.svg';
 import { usePreviousImmediate } from 'rooks';
+
+import { cn } from '@/lib/classnames';
 
 import { useSidebarScroll } from '@/store';
 
 import {
-  useFiltersCount,
   usePracticesFilterSidebarOpen,
   usePracticesFilters,
+  useFiltersCount,
 } from '@/store/practices';
 
 import { useGetPages } from '@/types/generated/page';
@@ -36,9 +38,6 @@ export default function PracticesModule() {
 
   const practices = usePractices({ filters });
   const practicesCount = usePracticesCount(filters);
-  // The keywords search is not counted because it's shown in the main sidebar
-  const filtersCount = useFiltersCount(filters, ['search']);
-
   const [filterSidebarOpen, setFilterSidebarOpen] = usePracticesFilterSidebarOpen();
   const previousFilterSidebarOpen = usePreviousImmediate(filterSidebarOpen);
 
@@ -76,36 +75,53 @@ export default function PracticesModule() {
     }
   }, [filters, previousFilters, setSidebarScroll]);
 
+  // The keywords search is not counted because it's shown in the main sidebar
+  const filtersCount = useFiltersCount(filters, ['search']);
+
   return (
-    <div className="space-y-10">
-      <h1 className="border-l-4 border-brown-500 pl-5 font-serif text-lg leading-7">
-        {intro && <MarkdownRenderer variant="bold" textClass="text-brown-500" content={intro} />}
+    <div className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
+      <h1 className="font-serif leading-7">
+        <div className="font-serif text-2xl text-white lg:hidden">Practices</div>
+        <div className="hidden lg:block">
+          {intro && <MarkdownRenderer variant="bold" content={intro} />}
+        </div>
       </h1>
-      <div className="flex justify-between gap-x-4">
-        <Search
-          containerClassName="basis-full"
-          defaultValue={filters.search}
-          onChange={(keywords) => setFilters({ ...filters, search: keywords })}
-        />
-        <Button
-          ref={filtersButtonRef}
-          type="button"
-          variant="primary"
-          className="group shrink-0 bg-brown-500 text-base hover:bg-brown-900"
-          aria-pressed={filterSidebarOpen}
-          onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
-        >
-          <Filter className="mr-4 h-6 w-6" />
-          Filters
-          {filtersCount > 0 && (
-            <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full bg-brown-800 font-semibold transition group-hover:bg-gray-900">
-              {filtersCount}
-            </span>
-          )}
-        </Button>
+      <div className="flex flex-col gap-y-2">
+        <div className="flex justify-between gap-x-4 text-white">
+          <Search
+            containerClassName="basis-full"
+            defaultValue={filters.search}
+            placeholder="Search practice"
+            onChange={(keywords) => setFilters({ ...filters, search: keywords })}
+          />
+          <Button
+            ref={filtersButtonRef}
+            type="button"
+            variant={filterSidebarOpen ? 'filters' : 'primary'}
+            className="group hidden shrink-0 gap-2 transition-colors duration-500 focus-visible:ring-offset-gray-700 lg:flex"
+            aria-pressed={filterSidebarOpen}
+            onClick={() => setFilterSidebarOpen(!filterSidebarOpen)}
+          >
+            <Filter className="h-6 w-6" />
+            Filters
+            {filtersCount > 0 && (
+              <div
+                className={cn(
+                  'flex h-[22px] w-[22px] items-center justify-center rounded-full p-1 text-2xs',
+                  {
+                    'bg-yellow-700': filterSidebarOpen,
+                    'bg-green-900': !filterSidebarOpen,
+                  },
+                )}
+              >
+                {filtersCount}
+              </div>
+            )}
+          </Button>
+        </div>
       </div>
-      <div className="border-t border-dashed border-t-gray-300 pt-6 text-sm text-gray-500">
-        {`Showing ${practicesCount} practice${practicesCount > 1 ? 's' : ''}.`}
+      <div className="text-sm text-gray-200 lg:text-xs">
+        {`Showing ${practicesCount} practice${practicesCount === 1 ? '' : 's'}.`}
       </div>
       <div className="!mt-6">
         <PracticeList {...practices} />

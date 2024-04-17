@@ -2,8 +2,9 @@
 
 import { useCallback } from 'react';
 
+import { LngLatBoundsLike, useMap } from 'react-map-gl';
+
 import { Layer } from '@deck.gl/core/typed';
-import { LngLatBoundsLike, useMap } from 'react-map-gl/maplibre';
 
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 

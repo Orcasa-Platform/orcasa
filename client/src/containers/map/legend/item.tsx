@@ -44,7 +44,7 @@ const getSettingsManager = (data: LayerTyped = {} as LayerTyped): SettingsManage
   };
 };
 
-const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
+const MapLegendItem = ({ id, position, ...props }: MapLegendItemProps) => {
   const [layersSettings] = useLayersSettings();
 
   const { data, isError, isFetched, isFetching, isPlaceholderData } = useGetLayersId(id, {
@@ -87,7 +87,13 @@ const MapLegendItem = ({ id, ...props }: MapLegendItemProps) => {
       isPlaceholderData={isPlaceholderData}
       isError={isError}
     >
-      <LegendItem id={id} name={attributes?.title} settingsManager={settingsManager} {...props}>
+      <LegendItem
+        id={id}
+        position={position}
+        name={attributes?.title}
+        settingsManager={settingsManager}
+        {...props}
+      >
         {LEGEND_COMPONENT}
       </LegendItem>
     </ContentLoader>

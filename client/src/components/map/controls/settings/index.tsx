@@ -1,17 +1,15 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
-import { TooltipPortal } from '@radix-ui/react-tooltip';
-import { Settings, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import Settings from 'public/images/settings.svg';
 
 import { cn } from '@/lib/classnames';
 
-import { useTheme } from '@/hooks/ui/theme';
-
 import { Button } from '@/components/ui/button';
+import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Popover, PopoverContent, PopoverTrigger, PopoverClose } from '@/components/ui/popover';
-import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 import { CONTROL_BUTTON_STYLES } from '../constants';
 
@@ -21,52 +19,61 @@ export const SettingsControl: FC<SettingsControlProps> = ({
   className,
   children,
 }: SettingsControlProps) => {
-  const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const renderButton = (
+    <button
+      className={cn({
+        [CONTROL_BUTTON_STYLES.default]: true,
+        [CONTROL_BUTTON_STYLES.hover]: true,
+        [CONTROL_BUTTON_STYLES.active]: open,
+        [CONTROL_BUTTON_STYLES.focus]: true,
+        [CONTROL_BUTTON_STYLES.disabled]: true,
+      })}
+      aria-label="Map settings"
+      type="button"
+    >
+      <Settings className="h-5 w-5" />
+    </button>
+  );
+
+  const renderPopoverContent = (isMobile = false) => {
+    return isMobile ? (
+      <div className="p-4">{children}</div>
+    ) : (
+      <>
+        {children}
+        <PopoverClose asChild>
+          <Button
+            type="button"
+            size="icon-sm"
+            variant="secondary"
+            className="absolute right-3 top-3"
+          >
+            <span className="sr-only">Close</span>
+            <X className="h-4 w-4" />
+          </Button>
+        </PopoverClose>
+      </>
+    );
+  };
+
   return (
-    <div className={cn('flex flex-col space-y-0.5', className)}>
-      <Popover>
-        <Tooltip>
-          <PopoverTrigger asChild>
-            <TooltipTrigger asChild>
-              <button
-                className={cn({
-                  [CONTROL_BUTTON_STYLES.default]: true,
-                  [CONTROL_BUTTON_STYLES.hover]: true,
-                  [CONTROL_BUTTON_STYLES.active]: true,
-                  [CONTROL_BUTTON_STYLES.dark]: theme === 'dark',
-                })}
-                aria-label="Map style"
-                type="button"
-              >
-                <Settings className="h-[24px] w-[24px]" />
-              </button>
-            </TooltipTrigger>
-          </PopoverTrigger>
-
-          <TooltipPortal>
-            <TooltipContent side="left" align="center">
-              <div className="text-xxs font-serif">Map settings</div>
-              <TooltipArrow className="fill-white" width={10} height={5} />
-            </TooltipContent>
-          </TooltipPortal>
-
-          <PopoverContent side="left" align="start" className="w-[310px] px-6 py-4" sideOffset={16}>
-            {children}
-            <PopoverClose asChild>
-              <Button
-                type="button"
-                variant="primary"
-                size="icon"
-                className="absolute right-0 top-0"
-              >
-                <span className="sr-only">Close</span>
-                <X className="h-6 w-6" />
-              </Button>
-            </PopoverClose>
+    <>
+      {/* Mobile */}
+      <Drawer>
+        <DrawerTrigger className="block lg:hidden">{renderButton}</DrawerTrigger>
+        <DrawerContent>{renderPopoverContent(true)}</DrawerContent>
+      </Drawer>
+      {/* Rest */}
+      <div className={cn('hidden flex-col space-y-0.5 lg:flex', className)}>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>{renderButton}</PopoverTrigger>
+          <PopoverContent side="left" align="start" className="w-[240px] p-6" sideOffset={16}>
+            {renderPopoverContent()}
           </PopoverContent>
-        </Tooltip>
-      </Popover>
-    </div>
+        </Popover>
+      </div>
+    </>
   );
 };
 

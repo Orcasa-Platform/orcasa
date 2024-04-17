@@ -16,8 +16,8 @@ export default function GeospatialDataModule() {
 
   return (
     <>
-      <h1 className="max-w-[372px] border-l-4 border-yellow-500 pl-5 font-serif text-lg leading-7">
-        {intro && <MarkdownRenderer variant="bold" textClass="text-yellow-600" content={intro} />}
+      <h1 className="max-w-[372px] font-serif leading-7">
+        {intro && <MarkdownRenderer variant="bold" content={intro} />}
       </h1>
       <LayerGroupsList pageId={pageId} />
     </>

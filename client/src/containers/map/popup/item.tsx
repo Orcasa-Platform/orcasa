@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useMap } from 'react-map-gl';
+
 import type { Feature } from 'geojson';
 import type { GeoJsonProperties } from 'geojson';
-import { useMap } from 'react-map-gl/maplibre';
 
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
 import { format } from '@/lib/utils/formats';
@@ -142,7 +143,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
   const noData = <div>there is no data</div>;
 
   return (
-    <div className="space-y-3 pt-2 text-gray-700 first:pt-0">
+    <div className="space-y-3 pt-2 font-sans text-xs leading-5 text-gray-700 first:pt-0">
       <ContentLoader
         data={data?.data}
         isFetching={isFetching || (!rendered && !DATA_REF.current)}
@@ -153,13 +154,13 @@ const PopupItem = ({ id }: PopupItemProps) => {
       >
         {click && (
           <>
-            <div className="text-base">
-              At the Coordinates:{' '}
+            <div>
+              At the coordinates{' '}
               <span className="font-semibold">
                 {popup?.lngLat.lng.toFixed(4)}, {popup?.lngLat.lat.toFixed(4)}
               </span>
             </div>{' '}
-            <dl className="flex items-center space-x-1 text-base">
+            <dl className="flex items-center space-x-1">
               {click && !!featuresData && click.values.some((v) => featuresData[v.key]) && (
                 <>
                   {click.values.map((v) => {
@@ -176,6 +177,7 @@ const PopupItem = ({ id }: PopupItemProps) => {
                           <span className="font-semibold">
                             {value} {v.unit}
                           </span>
+                          .
                         </dd>
                       </div>
                     );
