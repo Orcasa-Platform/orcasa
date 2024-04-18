@@ -121,7 +121,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
     ...(filters.mainIntervention
       ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
       : []),
-    ...(filters.mainIntervention === 'Management' && filters.subInterventions
+    ...(filters.mainIntervention === 'Management' && filters.subInterventions.length > 0
       ? [
           {
             $or: filters.subInterventions.map((id) => ({
@@ -134,7 +134,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.mainIntervention === 'Land Use Change' && filters.priorLandUseTypes
+    ...(filters.mainIntervention === 'Land Use Change' && filters.priorLandUseTypes.length > 0
       ? [
           {
             $or: filters.priorLandUseTypes.map((id) => ({
@@ -147,7 +147,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.mainIntervention && filters.landUseTypes
+    ...(filters.mainIntervention && filters.landUseTypes.length > 0
       ? [
           {
             $or: filters.landUseTypes.map((id) => ({
@@ -163,7 +163,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
     // Main intervention is not selected:
     // We have to select all practices that have the selected land use types as land use types or prior land use types
     // and also prior land use types in the case of Land Use Change Management
-    ...(!filters.mainIntervention && filters.landUseTypes
+    ...(!filters.mainIntervention && filters.landUseTypes.length > 0
       ? [
           {
             $or: [
