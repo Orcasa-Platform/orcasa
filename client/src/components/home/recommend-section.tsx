@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ExternalLink } from 'lucide-react';
+import LinkIcon from 'public/images/link.svg';
 
 import { cn } from '@/lib/classnames';
 
@@ -20,13 +20,13 @@ const RecommendSection = () => {
         <Image
           src="/images/ejp-logo.png"
           alt="Road4Schemes logo"
-          className="absolute -left-6 -top-8 flex flex-col items-start justify-start gap-2 bg-white px-3 shadow-2xl"
+          className="absolute -left-6 -top-8 flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg bg-white px-3 shadow-lg"
           width={169}
           height={66}
         />
         <Image
           src="/images/ejpsoil.png"
-          className="shadow-2xl"
+          className="overflow-hidden rounded-lg shadow-lg"
           alt="Road4Schemes demo"
           width={480}
           height={275}
@@ -36,31 +36,37 @@ const RecommendSection = () => {
   );
 
   return (
-    <div className="relative mx-4 h-[680px] w-full lg:mx-0 lg:h-[700px]">
+    <div className="relative mx-4 h-[680px] w-[calc(100%-16px)] lg:mx-0 lg:w-full">
       <div className="absolute hidden h-full w-full items-center justify-center p-10 pt-0 lg:flex">
         <img src="/images/shape3.svg" className="h-[564px] w-full" alt="" />
       </div>
       <div className="h-full w-full items-center justify-center gap-[100px] lg:absolute lg:flex  lg:flex-wrap">
         <div className="flex w-full gap-24 lg:w-[80%] xl:w-[1000px]">
           <div className="flex w-full flex-col gap-6 md:max-lg:flex-col md:max-lg:items-center lg:max-w-[40%]">
-            <div className="h-8 w-[143px] rounded-lg bg-green-700 px-2 py-1.5 text-center text-sm font-semibold uppercase leading-normal tracking-wider text-white">
+            <div className="self-start rounded-2xl bg-green-700 px-3 py-2 text-center font-serif text-sm uppercase leading-3 tracking-wider text-white">
               we recommend
             </div>
-            <h2 className="font-serif text-2xl leading-[48px] text-gray-700 lg:text-3.5xl">
+            <h2 className="font-serif text-3xl font-semibold text-gray-700">
               Carbon schemes inventory platform
             </h2>
             {renderImage(true)}
-            <div className="w-[90%] text-base text-gray-700 lg:w-[374px]">
-              Carbon Schemes Inventories, or C.S.I., is a new web platform dedicated to providing
-              detailed information about carbon farming schemes in Europe and around the world.
+            <div className="w-[90%] text-base leading-7 text-gray-500 lg:w-[374px] lg:leading-normal lg:text-gray-600">
+              Carbon Schemes Inventories, or CSI, is a new web platform dedicated to providing
+              detailed information about carbon farming schemes in Europe and around the world. This
+              platform has been developed in the framework of the EJP Soil Road4Schemes project.
             </div>
-            <Button variant="outline" className="flex w-[90%] px-0 pt-2 lg:w-[173px]" asChild>
+            <Button
+              variant="outline"
+              className="flex h-14 w-[calc(100%-16px)] self-start lg:w-auto"
+              size="lg"
+              asChild
+            >
               <Link
                 href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
                 target="_blank"
               >
-                Visit EJP soil
-                <ExternalLink className="ml-6" />
+                Visit the platform
+                <LinkIcon className="ml-2 h-6 w-6" />
               </Link>
             </Button>
           </div>

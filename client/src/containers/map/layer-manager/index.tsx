@@ -1,8 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { Layer } from 'react-map-gl';
 
-import { Layer } from 'react-map-gl/maplibre';
+import { usePathname } from 'next/navigation';
 
 import { useLayers, useLayersSettings } from '@/store';
 
@@ -28,7 +28,7 @@ const LayerManager = () => {
           - https://github.com/visgl/react-map-gl/issues/939#issuecomment-625290200
         */}
         {layers.map((l, i) => {
-          const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
+          const beforeId = i === 0 ? 'data-layers' : `${layers[i - 1]}-layer`;
           return (
             <Layer
               id={`${l}-layer`}
@@ -45,7 +45,7 @@ const LayerManager = () => {
           The first item will always be at the top of the layers stack
         */}
         {layers.map((l, i) => {
-          const beforeId = i === 0 ? 'custom-layers' : `${layers[i - 1]}-layer`;
+          const beforeId = i === 0 ? 'data-layers' : `${layers[i - 1]}-layer`;
           return (
             <LayerManagerItem
               key={l}

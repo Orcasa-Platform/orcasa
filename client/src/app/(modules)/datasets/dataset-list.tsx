@@ -37,9 +37,9 @@ export default function DatasetList({
       isError={isError}
     >
       {(!data?.pages.length || (data.pages.length === 1 && !data.pages[0].data.length)) && (
-        <p className="py-8 text-center text-gray-700">No results based on your search criteria</p>
+        <p className="py-8 text-center text-white">No results based on your search criteria</p>
       )}
-      <ul>
+      <ul className="grid grid-cols-1 gap-x-6 gap-y-4 lg:grid-cols-2">
         {data?.pages.map((page, index) => (
           <Fragment key={index}>
             {page.data.map((dataset) => (
@@ -48,7 +48,7 @@ export default function DatasetList({
           </Fragment>
         ))}
       </ul>
-      {hasNextPage && <Skeleton ref={ref} className="h-[240px] w-full" />}
+      {hasNextPage && <Skeleton ref={ref} className="mt-4 h-[240px] w-full" />}
     </ContentLoader>
   );
 }

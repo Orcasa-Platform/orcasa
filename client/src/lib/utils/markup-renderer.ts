@@ -1,11 +1,11 @@
 import { cn } from '@/lib/classnames';
 
-export const renderMarkup = (html: string, variant: 'bold' | 'lists', textClass?: string) => {
+export const renderMarkup = (html: string, variant: 'bold' | 'lists') => {
   if (variant === 'bold') {
     return html
-      .replace(/<p>/g, '<span class="mb-4 block text-lg">')
+      .replace(/<p>/g, '<span class="mb-4 block text-xl">')
       .replace(/<\/p>/g, '</span>')
-      .replace(/<strong>/g, `<b class="${cn('text-lg font-semibold', textClass)}">`);
+      .replace(/<strong>/g, `<b class="${cn('text-xl font-bold text-green-700')}">`);
   }
 
   if (variant === 'lists') {

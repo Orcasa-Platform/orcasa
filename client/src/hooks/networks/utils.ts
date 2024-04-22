@@ -124,18 +124,6 @@ export const getPopulateForFilters = (type: 'organization' | 'project' | undefin
             country: {
               populate: true,
             },
-            lead_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
-            partner_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
-            funded_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
           },
           filters: ACCEPTED_STATUS_FILTER,
         },
@@ -144,18 +132,6 @@ export const getPopulateForFilters = (type: 'organization' | 'project' | undefin
             country: {
               populate: true,
             },
-            lead_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
-            partner_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
-            funded_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
           },
           filters: ACCEPTED_STATUS_FILTER,
         },
@@ -163,18 +139,6 @@ export const getPopulateForFilters = (type: 'organization' | 'project' | undefin
           populate: {
             country: {
               populate: true,
-            },
-            lead_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
-            partner_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
-            },
-            funded_projects: {
-              populate: ['country_of_coordination'],
-              filters: ACCEPTED_STATUS_FILTER,
             },
           },
           filters: ACCEPTED_STATUS_FILTER,

@@ -42,7 +42,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed left-[50%] top-[50%] z-50 grid h-[90%] max-h-[568px] w-[90%] max-w-[680px] translate-x-[-50%] translate-y-[-50%] gap-4 overflow-auto bg-background shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] md:w-full lg:w-[680px]',
+        'fixed left-[50%] top-[50%] z-50 grid h-[90%] max-h-[568px] w-[90%] max-w-[680px] translate-x-[-50%] translate-y-[-50%] gap-4 overflow-auto rounded-2xl bg-background shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] md:w-full lg:w-[680px]',
         className,
       )}
       {...props}
@@ -50,8 +50,8 @@ const DialogContent = React.forwardRef<
       <div className={cn('flex flex-col gap-6 overflow-y-auto p-12', contentClassName)}>
         {children}
       </div>
-      <DialogPrimitive.Close className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center bg-slate-700 text-sm font-medium text-white transition-colors hover:bg-slate-500 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="h-6 w-6" />
+      <DialogPrimitive.Close className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gray-50 text-gray-700 transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>

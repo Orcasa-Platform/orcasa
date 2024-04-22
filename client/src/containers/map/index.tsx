@@ -3,19 +3,15 @@
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 
+import { LngLatBoundsLike, MapLayerMouseEvent, useMap, GeoJSONSource } from 'react-map-gl';
+
 import dynamic from 'next/dynamic';
 
-import {
-  LngLatBoundsLike,
-  MapLayerMouseEvent,
-  useMap,
-  MapStyle,
-  GeoJSONSource,
-} from 'react-map-gl/maplibre';
 import { usePreviousImmediate } from 'rooks';
 
+import env from '@/env.mjs';
+
 import { parseConfig, JSON_CONFIGURATION } from '@/lib/json-converter';
-import { getCroppedBounds } from '@/lib/utils/map';
 
 import { useLayersSettings } from '@/store';
 import { useBbox, useLayersInteractive, useLayersInteractiveIds, usePopup } from '@/store';
@@ -26,6 +22,7 @@ import { Bbox } from '@/types/map';
 
 import { useMapPadding } from '@/hooks/map';
 
+import Attributions from '@/containers/map/attributions';
 import Popup from '@/containers/map/popup';
 import MapSettings from '@/containers/map/settings';
 import MapSettingsManager from '@/containers/map/settings/manager';
@@ -36,8 +33,6 @@ import SettingsControl from '@/components/map/controls/settings';
 import ZoomControl from '@/components/map/controls/zoom';
 import { CustomMapProps } from '@/components/map/types';
 
-import Attribution from './attribution';
-import mapStyle from './map-style.json';
 const LayerManager = dynamic(() => import('@/containers/map/layer-manager'), {
   ssr: false,
 });
@@ -144,11 +139,8 @@ export default function MapContainer() {
 
   const handleMapViewStateChange = useCallback(() => {
     if (map) {
-      // By cropping the bounds, we actually get the visible part of the map
       const bounds = map.getBounds();
-      const croppedBounds = getCroppedBounds(bounds, padding, map.project, map.unproject);
-
-      const bbox = croppedBounds
+      const bbox = bounds
         .toArray()
         .flat()
         .map((v: number) => {
@@ -157,17 +149,17 @@ export default function MapContainer() {
 
       setBbox(bbox);
     }
-  }, [map, padding, setBbox]);
+  }, [map, setBbox]);
 
   const handleMapClick = useCallback(
     (e: MapLayerMouseEvent) => {
       // Check if a cluster was clicked
       const features = map?.queryRenderedFeatures(e.point);
-      if (features?.length && features.some((f) => f.properties.cluster)) {
+      if (features?.length && features.some((f) => f.properties?.cluster)) {
         // Get the cluster ID
-        const clusterFeature = features.find((f) => f.properties.cluster_id);
-        const clusterId = clusterFeature?.properties.cluster_id;
-        const id = clusterFeature?.layer?.source;
+        const clusterFeature = features.find((f) => f.properties?.cluster_id);
+        const clusterId = clusterFeature?.properties?.cluster_id;
+        const id = clusterFeature?.layer?.source as string;
 
         // Get the zoom level at which the cluster expands
         if (map && clusterId && id) {
@@ -217,20 +209,22 @@ export default function MapContainer() {
   );
 
   return (
-    <div className="h-screen w-screen">
+    <div className="absolute inset-0 top-0 z-0 w-screen overflow-hidden lg:bottom-2 lg:left-[90px] lg:top-2 lg:w-[calc(100vw-98px)] lg:rounded-lg">
       <Map
+        mapboxAccessToken={env.NEXT_PUBLIC_MAPBOX_TOKEN}
         id={id}
         initialViewState={initialViewState}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        mapStyle={mapStyle as MapStyle}
+        mapStyle="mapbox://styles/orcasa/clu14cfkp01nx01nrc851220b"
         interactiveLayerIds={layersInteractiveIds.map((id) => id.toString())}
         onClick={handleMapClick}
         onMapViewStateChange={handleMapViewStateChange}
+        attributionControl={false}
       >
         {() => (
           <>
-            <Controls className="absolute right-5 z-40 sm:right-6 sm:top-6">
+            <Controls className="absolute right-6 top-[76px] z-50 lg:top-6">
               <SettingsControl>
                 <MapSettings />
               </SettingsControl>
@@ -238,12 +232,13 @@ export default function MapContainer() {
             </Controls>
 
             <LayerManager />
-            <Attribution />
             <Popup />
 
             <MapSettingsManager />
 
             <Legend />
+
+            <Attributions />
           </>
         )}
       </Map>

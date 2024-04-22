@@ -3,7 +3,11 @@ import { useRef } from 'react';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 
+import InfoButton from 'public/images/info-dark.svg';
+
 import InputComponent from '@/components/form/input-component';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import {
   FormDescription,
   FormField,
@@ -20,7 +24,6 @@ const RenderField = ({
   index,
   fields,
   form,
-  variant,
 }: {
   id: string;
   index?: number;
@@ -30,11 +33,11 @@ const RenderField = ({
     };
   };
   form: ReturnType<typeof useForm>;
-  variant: 'network-initiative' | 'network-organization';
 }) => {
   const field = fields[id];
   const {
     label,
+    labelDescription,
     required,
     type,
     options,
@@ -46,30 +49,7 @@ const RenderField = ({
     validationDependantField,
   } = field;
   const richEditorRef = useRef<ReactQuill | null>(null);
-  const Label = () => {
-    const labelContent = (
-      <>
-        {label}
-        {required && (
-          <>
-            {' '}
-            <span className="text-red-700">*</span>
-          </>
-        )}
-      </>
-    );
-    return type === 'wysiwyg' ? (
-      <button
-        type="button"
-        className="cursor-default"
-        onClick={() => richEditorRef?.current?.focus()}
-      >
-        {labelContent}
-      </button>
-    ) : (
-      <span>{labelContent}</span>
-    );
-  };
+
   return (
     <FormField
       key={id}
@@ -79,9 +59,33 @@ const RenderField = ({
         const { field } = f;
         return (
           <FormItem>
-            <FormLabel className="flex justify-between">
-              <Label />
-              {!required && <span className="text-sm text-gray-700">Optional</span>}
+            <FormLabel
+              className="flex justify-between"
+              {...(type === 'wysiwyg' ? { onClick: () => richEditorRef?.current?.focus() } : {})}
+            >
+              <div className="flex items-center justify-start text-gray-300">
+                {label}
+                {required && (
+                  <span>
+                    &nbsp;
+                    <span className="text-red-500">*</span>
+                  </span>
+                )}
+                {!!labelDescription && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button type="button" size="auto" variant="icon" className="ml-2">
+                        <span className="sr-only">Info</span>
+                        <InfoButton className="h-4 w-4" />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+                      {labelDescription}
+                    </DialogContent>
+                  </Dialog>
+                )}
+              </div>
+              {!required && <span className="text-sm text-gray-300">Optional</span>}
             </FormLabel>
             <FormControl>
               <InputComponent
@@ -91,7 +95,7 @@ const RenderField = ({
                     string
                   >
                 }
-                variant={variant}
+                variant="dark"
                 key={id}
                 index={index}
                 name={id}
@@ -108,7 +112,7 @@ const RenderField = ({
                 placeholder={placeholder}
               />
             </FormControl>
-            <FormDescription className="text-sm text-slate-500">{description}</FormDescription>
+            <FormDescription>{description}</FormDescription>
             <FormMessage className="max-w-[632px]" />
           </FormItem>
         );

@@ -121,7 +121,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
     ...(filters.mainIntervention
       ? [{ practice_intervention: { $eq: filters.mainIntervention } }]
       : []),
-    ...(filters.mainIntervention === 'Management' && filters.subInterventions
+    ...(filters.mainIntervention === 'Management' && filters.subInterventions.length > 0
       ? [
           {
             $or: filters.subInterventions.map((id) => ({
@@ -134,7 +134,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.mainIntervention === 'Land Use Change' && filters.priorLandUseTypes
+    ...(filters.mainIntervention === 'Land Use Change' && filters.priorLandUseTypes.length > 0
       ? [
           {
             $or: filters.priorLandUseTypes.map((id) => ({
@@ -147,7 +147,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
           },
         ]
       : []),
-    ...(filters.mainIntervention && filters.landUseTypes
+    ...(filters.mainIntervention && filters.landUseTypes.length > 0
       ? [
           {
             $or: filters.landUseTypes.map((id) => ({
@@ -163,7 +163,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
     // Main intervention is not selected:
     // We have to select all practices that have the selected land use types as land use types or prior land use types
     // and also prior land use types in the case of Land Use Change Management
-    ...(!filters.mainIntervention
+    ...(!filters.mainIntervention && filters.landUseTypes.length > 0
       ? [
           {
             $or: [
@@ -175,7 +175,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
                     },
                   },
                   {
-                    $or: filters.landUseTypes?.map((id) => ({
+                    $or: filters.landUseTypes.map((id) => ({
                       land_use_types: {
                         id: {
                           $eq: id,
@@ -193,7 +193,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
                     },
                   },
                   {
-                    $or: filters.landUseTypes?.map((id) => ({
+                    $or: filters.landUseTypes.map((id) => ({
                       land_use_priors: {
                         id: {
                           $eq: id,
@@ -211,7 +211,7 @@ const getQueryFilters = (filters: PracticesFilters) => {
                     },
                   },
                   {
-                    $or: filters.landUseTypes?.map((id) => ({
+                    $or: filters.landUseTypes.map((id) => ({
                       land_use_types: {
                         id: {
                           $eq: id,
@@ -231,7 +231,6 @@ const getQueryFilters = (filters: PracticesFilters) => {
     $and: [...generalFilters, ...practiceFilters],
   };
 };
-
 export const usePractices = ({
   size = 20,
   filters,
@@ -545,8 +544,12 @@ export const usePracticesFiltersOptions = (
   const subInterventions = useMemo(
     () =>
       subInterventionData?.data
-        ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          subInterventionData.data.map((d) => ({ label: d.attributes!.name, value: d.id! }))
+        ? subInterventionData.data.map((d) => ({
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            label: `${d.attributes!.name[0].toUpperCase()}${d.attributes!.name.substring(1)}`,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            value: d.id!,
+          }))
         : [],
     [subInterventionData],
   );

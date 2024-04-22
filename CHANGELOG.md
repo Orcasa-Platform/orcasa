@@ -1,3 +1,20 @@
+# v7
+
+- Redesign of the platform (except Scientific Evidence)
+- Responsive design for the whole platform (except Scientific Evidence)
+- New style and technology for the map (except Scientific Evidence)
+  - Updated satellite and light basemaps
+  - Updated labels layer
+  - New administrative boundaries layer
+- Display attributions for the external layers visible on the map
+- Add missing link to the email contact icon in the footer
+- [Practices] Address an issue where practices would be filtered by default based on their main intervention
+
+**Breaking changes**:
+
+- New mandatory environment variable: `NEXT_PUBLIC_MAPBOX_TOKEN`
+- Removed environment variable: `NEXT_PUBLIC_ENABLE_RESPONSIVE`
+
 # v6
 
 - Allow admins to manage the homepage's testimonies

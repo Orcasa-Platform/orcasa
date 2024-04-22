@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo } from 'react';
 
+import { MapLayerMouseEvent } from 'react-map-gl';
+
 import { atom, useAtom } from 'jotai';
 import { parseAsJson, useQueryState } from 'next-usequerystate';
-import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 
 // MAP
 
@@ -12,8 +13,13 @@ import { MapLayerMouseEvent } from 'react-map-gl/maplibre';
 export const useMapSettings = () => {
   return useQueryState(
     'map-settings',
-    parseAsJson<{ basemap?: string; labels: string | null }>().withDefault({
-      labels: null,
+    parseAsJson<{
+      basemap?: string;
+      boundaries: boolean;
+      labels: boolean;
+    }>().withDefault({
+      boundaries: false,
+      labels: false,
     }),
   );
 };

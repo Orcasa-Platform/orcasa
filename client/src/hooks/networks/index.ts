@@ -73,7 +73,7 @@ type GroupedNetworks = {
   [key: string]: (OrganizationProperties | ProjectProperties)[];
 };
 
-type NetworkProperties = {
+export type NetworkProperties = {
   countryName: string;
   organizations: OrganizationProperties[];
   projects: ProjectProperties[];
@@ -885,7 +885,7 @@ export const useNetworksCount = (filters: NetworkFilters) => {
 
 export const useNetworkOrganizationFiltersOptions = (): Record<
   keyof NetworkOrganizationFilters,
-  { label: string; value: number }[]
+  { label: string; value: number; description?: string }[]
 > => {
   const { data: countryData } = useGetCountries(
     {
@@ -968,7 +968,7 @@ export const useNetworkOrganizationFiltersOptions = (): Record<
 
 export const useNetworkProjectFiltersOptions = (): Record<
   keyof NetworkProjectFilters,
-  { label: string; value: number }[]
+  { label: string; value: number; description?: string }[]
 > => {
   const { data: countryData } = useGetCountries(
     {

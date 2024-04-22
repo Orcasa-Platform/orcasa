@@ -9,11 +9,16 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ImageSlider />
       <ModulesSection />
+      <div className="lg:hidden">
+        <ImageSlider isMobile />
+      </div>
+      <div className="hidden lg:block">
+        <ImageSlider />
+      </div>
       <SolutionsSection />
       <div
-        className="relative h-[408px] w-full bg-cover bg-center bg-no-repeat"
+        className="relative !mt-0 h-[605px] w-full bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/plant.jpg')" }}
       />
       <RecommendSection />

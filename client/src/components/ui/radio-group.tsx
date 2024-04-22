@@ -16,16 +16,16 @@ const RadioGroup = React.forwardRef<
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
 const radioGroupItemVariants = cva(
-  'rounded-full  text-primary ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-300',
+  'transition-colors rounded-full text-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-300',
   {
     variants: {
       variant: {
         // Regular radio buttons
         default:
-          'aspect-square focus:outline-none h-4 w-4 border-2 border-primary data-[state=checked]:border-[5px]',
+          'aspect-square h-4 w-4 hover:border-gray-500 disabled:ring-0 border border-gray-300 data-[state=checked]:border-green-700 data-[state=checked]:border-[5px] data-[state=checked]:hover:border-green-900 data-[state=checked]:disabled:border-gray-300',
         // A simple container for custom radio buttons
         naked:
-          'data-[state=checked]:ring-2 data-[state=checked]:ring-primary data-[state=checked]:ring-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-ring',
+          'rounded-[20px] data-[state=checked]:ring-1 hover:ring-1 hover:ring-gray-200 hover:ring-offset-4 data-[state=checked]:ring-green-700 data-[state=checked]:ring-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-green-700',
       },
     },
     defaultVariants: {

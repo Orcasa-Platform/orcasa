@@ -1,6 +1,6 @@
 'use client';
 
-import { Pencil } from 'lucide-react';
+import Pen from 'public/images/pen.svg';
 
 import { useGetNetworkSuggestion } from '@/types/generated/network-suggestion';
 
@@ -21,7 +21,7 @@ const SuggestButton = ({
     | undefined;
   if (!emails) return null;
   return (
-    <Button variant="secondary" asChild>
+    <Button variant="outline-dark" size="sm" asChild>
       <a
         href={`mailto:${emails.join(',')}?subject=${encodeURIComponent(
           `Impact4Soil - Network - Change suggestion for ${label} "${data.name}", ID: ${id}`,
@@ -29,7 +29,7 @@ const SuggestButton = ({
           `Kindly provide comprehensive details below regarding the changes you'd like to suggest. Include your name, your affiliated organisation, and an email address for potential contact. Thank you for assisting us in keeping the Soil Carbon Network up-to-date! Sincerely, The Impact4Soil Team.`,
         )}`}
       >
-        <Pencil className="mr-2 h-6 w-6" />
+        <Pen className="mr-2 h-4 w-4" />
         Suggest changes
       </a>
     </Button>

@@ -10515,6 +10515,8 @@ export interface Page {
   color?: string;
   external_url?: string;
   intro?: string;
+  default_labels: boolean;
+  default_boundaries: boolean;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -10844,7 +10846,6 @@ export type PageDefaultBasemap = (typeof PageDefaultBasemap)[keyof typeof PageDe
 export const PageDefaultBasemap = {
   'basemap-satellite': 'basemap-satellite',
   'basemap-light': 'basemap-light',
-  'basemap-relief': 'basemap-relief',
 } as const;
 
 export type PageListResponseMetaPagination = {
@@ -10881,7 +10882,6 @@ export type PageRequestDataDefaultBasemap =
 export const PageRequestDataDefaultBasemap = {
   'basemap-satellite': 'basemap-satellite',
   'basemap-light': 'basemap-light',
-  'basemap-relief': 'basemap-relief',
 } as const;
 
 export type PageRequestData = {
@@ -10892,6 +10892,8 @@ export type PageRequestData = {
   color?: string;
   external_url?: string;
   intro?: string;
+  default_labels: boolean;
+  default_boundaries: boolean;
 };
 
 export type OrganizationTypeResponseMeta = { [key: string]: any };

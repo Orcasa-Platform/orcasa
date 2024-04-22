@@ -3,9 +3,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
-import { Globe2, BarChart, Users2, FileSpreadsheet, ArrowRight, CheckCircle } from 'lucide-react';
-
-import { cn } from '@/lib/classnames';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import Map from 'public/images/homepage-map.svg';
 
 import { modules } from '@/constants/modules';
 
@@ -13,8 +12,11 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
-// Module '"lucide-react"' has no exported member 'Tractor'
-import Tractor from '@/styles/icons/tractor.svg';
+import DatasetsIcon from '@/styles/icons/homepage-datasets.svg';
+import GeospatialDataIcon from '@/styles/icons/homepage-geospatial-data.svg';
+import NetworkIcon from '@/styles/icons/homepage-network.svg';
+import PracticesIcon from '@/styles/icons/homepage-practices.svg';
+import ScientificEvidenceIcon from '@/styles/icons/homepage-scientific-evidence.svg';
 
 const modulesInfo = {
   'geospatial-data': {
@@ -44,7 +46,7 @@ const modulesInfo = {
           soil carbon based on a comprehensive global analysis of over 25 thousand peer-reviewed
           scientific papers from trusted sources, such as the Web of Science or Scopus.
         </div>
-        <div className="text-sm">
+        <div className="text-sm leading-7">
           The power of Scientific evidence is a semi-automated scraping, screening and
           characterization of published publications on soil carbon based on scientific standards,
           which makes it a reliable and real-time updated tool.
@@ -67,7 +69,7 @@ const modulesInfo = {
           Find synergies and promote cooperation between heterogeneous actors and initiatives within
           the soil carbon field.
         </div>
-        <div className="text-sm">
+        <div className="text-sm leading-7">
           The current network was created during the foundations of the Soil Carbon International
           Research Consortium. Help us extend it by suggesting new initiatives and organizations to
           be added.
@@ -90,7 +92,7 @@ const modulesInfo = {
           Have a real view of concrete land-management practices that generate a positive impact on
           soil carbon.
         </div>
-        <div className="text-sm">
+        <div className="text-sm leading-7">
           From the outputs of the comprehensive global analysis of Scientific evidence, Impact4Soil
           will question and select the most relevant existing practices related to soil carbon.
         </div>
@@ -125,10 +127,9 @@ type HoverTooltipProps = {
   children: React.ReactNode;
   intro: React.ReactNode;
   slug: Slug;
-  colorClass: string;
 };
 
-const HoverTooltip = ({ children, intro, slug, colorClass }: HoverTooltipProps) => {
+const HoverTooltip = ({ children, intro, slug }: HoverTooltipProps) => {
   return (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>{children}</TooltipTrigger>
@@ -136,18 +137,15 @@ const HoverTooltip = ({ children, intro, slug, colorClass }: HoverTooltipProps) 
         <TooltipContent
           // The props below makes sure that the tooltip is always centered on the trigger
           avoidCollisions={false}
-          className={cn(
-            'absolute -left-[162.5px] -top-[63px] z-50 flex h-[292px] w-[325px]  cursor-pointer flex-col gap-4 p-6',
-            colorClass,
-          )}
+          className="absolute -left-[153px] -top-[109px] z-50 flex h-[346px] w-[306px] cursor-pointer flex-col border-none bg-green-800 p-6 text-white zoom-in-100 data-[state=closed]:zoom-out-100"
         >
-          {intro}
-          <div className="text-sm leading-normal text-gray-700 ">
-            {modulesInfo[slug].tooltipText}
-          </div>
-          <div className="mt-auto flex items-center justify-end">
+          <div className="flex flex-col gap-y-4">{intro}</div>
+          <div className="mt-4 text-sm leading-normal">{modulesInfo[slug].tooltipText}</div>
+          <div className="mt-auto flex items-center self-end whitespace-nowrap">
             Learn more
-            <ArrowRight className="ml-6" />
+            <Button size="icon-sm" aria-hidden tabIndex={-1} className="ml-2 bg-gray-700">
+              <ArrowRight className="h-4 w-4" />
+            </Button>
           </div>
         </TooltipContent>
       </TooltipPortal>
@@ -159,32 +157,28 @@ const Card = ({
   title,
   slug,
   Icon,
-  bgColorClass,
-  textColorClass,
 }: {
   title: string;
   slug: Slug;
-  Icon: typeof Globe2;
-  bgColorClass: string;
-  textColorClass: string;
+  Icon: typeof GeospatialDataIcon;
 }) => {
   const intro = (
     <>
-      <Icon className="min-h-6 min-w-6 h-6 w-6" />
-      <div className="text-left font-serif text-2xl text-gray-700">{title}</div>
+      <Icon className="h-10 w-10 shrink-0" />
+      <div className="text-left font-serif text-xl leading-[30px]">{title}</div>
     </>
   );
 
   const cardModule = modules.find((module) => module.slug === slug);
   const content = (
     <div className="flex h-full max-h-[90vh] w-full flex-col justify-between overflow-auto lg:flex-row">
-      <div className="h-full flex-1 space-y-6 p-10 pb-4 lg:w-1/2 lg:pb-10">
-        <Icon className={cn('currentColor h-fit w-[48px] min-w-[48px]', textColorClass)} />
+      <div className="h-full flex-1 space-y-6 p-10 pb-2 lg:w-1/2 lg:pb-10">
+        <Icon className="currentColor h-fit w-[48px] min-w-[48px]" />
         <div className="font-serif text-2xl leading-10">{title}</div>
-        <div className="flex flex-col gap-4">{modulesInfo[slug].modalText}</div>
+        <div className="flex flex-col gap-6">{modulesInfo[slug].modalText}</div>
       </div>
-      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 lg:w-1/2 lg:pt-[160px]">
-        <ul className="flex flex-col gap-4 pb-6 lg:pb-0">
+      <div className="flex h-full flex-1 flex-col justify-between border-l border-dashed border-gray-700 border-opacity-50 p-10 pt-4 lg:w-1/2 lg:pt-[160px]">
+        <ul className="flex flex-col gap-6 pb-6 lg:pb-0">
           {modulesInfo[slug].modalList.map((listElement) => (
             <li key={listElement} className="flex gap-2 text-sm">
               <CheckCircle className="h-4 w-4 min-w-fit" />
@@ -202,7 +196,9 @@ const Card = ({
     </div>
   );
   const card = (
-    <h3 className={cn('flex h-40 w-[245px] flex-col gap-4 p-6', bgColorClass)}>{intro}</h3>
+    <h3 className="flex h-32 w-[306px] flex-col gap-4 rounded-lg bg-green-700 p-6 text-white">
+      {intro}
+    </h3>
   );
   return (
     <>
@@ -210,7 +206,7 @@ const Card = ({
       <div className="hidden lg:block">
         <Dialog>
           <DialogTrigger>
-            <HoverTooltip colorClass={bgColorClass} intro={intro} slug={slug}>
+            <HoverTooltip intro={intro} slug={slug}>
               {card}
             </HoverTooltip>
           </DialogTrigger>
@@ -242,63 +238,38 @@ const ModulesSection = () => (
           5 modules for climate impact
         </div>
         <div className="flex flex-col items-center gap-8">
-          <h2 className="text-center font-serif text-2xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
+          <h2 className="text-center font-serif text-3xl font-semibold text-gray-700 lg:text-left lg:text-3.5xl">
             What can Impact4Soil do for me?
           </h2>
-          <div className="h-2 w-20 bg-teal-500" />
-          <div className="text-center text-gray-700 lg:w-[600px]">
+          <div className="h-2 w-20 rounded-lg bg-yellow-500" />
+          <div className="text-center leading-7 text-gray-500 lg:w-[600px] lg:leading-normal">
             Impact4Soil is a unique, reliable and inter-institutional knowledge platform that brings
-            altogether actors and experts of the soil carbon community.
+            together the soil carbon community.
             <br />
-            It provides key information on the latest researches and their results, including
-            methodologies for soil carbon balance monitoring, practices, networks, and data.
+            It is a source of key information and the latest research findings and results,
+            including methodologies for soil carbon balance monitoring, practices, networks, and
+            datasets.
           </div>
         </div>
       </div>
     </div>
-    <div className="relative flex min-h-[1040px] items-center justify-center lg:min-h-[616px]">
+    <div className="relative flex min-h-[916px] items-center justify-center lg:min-h-[616px]">
       <div className="absolute top-0">
-        <img src="/images/map.png" className="w-[125%] lg:h-[616px] lg:w-full" alt="" />
+        <Map className="w-[125%] lg:h-[616px] lg:w-full" />
       </div>
-      <div className="absolute top-0 z-10 flex flex-col items-center pt-10 lg:h-[616px] lg:pt-0">
-        <div className="flex flex-col items-center gap-10 lg:flex-row lg:gap-24">
+      <div className="absolute top-0 z-10 flex flex-col flex-wrap items-center pt-20 lg:h-[616px]">
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:max-xl:gap-[46px] xl:gap-[72px]">
+          <Card title="Geospatial data" slug="geospatial-data" Icon={GeospatialDataIcon} />
           <Card
-            title="Geospatial Data"
-            slug="geospatial-data"
-            Icon={Globe2}
-            bgColorClass="bg-yellow-500"
-            textColorClass="text-yellow-500"
-          />
-          <Card
-            title="Scientific Evidence"
+            title="Scientific evidence"
             slug="scientific-evidence"
-            Icon={BarChart}
-            bgColorClass="bg-green-700"
-            textColorClass="text-green-700"
+            Icon={ScientificEvidenceIcon}
           />
-          <Card
-            title="Network"
-            Icon={Users2}
-            slug="network"
-            bgColorClass="bg-blue-500"
-            textColorClass="text-blue-500"
-          />
+          <Card title="Network" Icon={NetworkIcon} slug="network" />
         </div>
-        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-24 lg:flex-row lg:gap-24">
-          <Card
-            title="Practices"
-            slug="practices"
-            Icon={Tractor}
-            bgColorClass="bg-brown-500"
-            textColorClass="text-brown-500"
-          />
-          <Card
-            title="Datasets"
-            slug="datasets"
-            Icon={FileSpreadsheet}
-            bgColorClass="bg-purple-700"
-            textColorClass="text-purple-700"
-          />
+        <div className="mt-10 flex flex-col items-center justify-center gap-10 lg:mt-36 lg:flex-row lg:max-xl:gap-[46px] xl:gap-24">
+          <Card title="Practices" slug="practices" Icon={PracticesIcon} />
+          <Card title="Datasets" slug="datasets" Icon={DatasetsIcon} />
         </div>
       </div>
     </div>

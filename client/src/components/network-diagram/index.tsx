@@ -1,11 +1,14 @@
 'use client';
 import React, { useState } from 'react';
 
+import { ChevronDown } from 'lucide-react';
+
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import { useNetworkDiagram } from '@/hooks/networks';
 
-import { CollapsibleContent, Collapsible } from '@/components/ui/collapsible';
+import { Button } from '@/components/ui/button';
+import { CollapsibleContent, Collapsible, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 import Item from './item';
 
@@ -31,9 +34,11 @@ const NetworkDiagram = ({
   id: number;
   type: 'project' | 'organization';
 }) => {
+  const [expanded, setExpanded] = useState(true);
+  const [openCollapsibles, setOpenCollapsibles] = useState<number[]>([]);
+
   const { name } = data;
 
-  const [openCollapsibles, setOpenCollapsibles] = useState<number[]>([]);
   const {
     data: networks,
     isError,
@@ -57,18 +62,32 @@ const NetworkDiagram = ({
   };
 
   return (
-    <div>
-      <div className="my-6 border-t border-dashed border-t-gray-200" />
-      <div className="mb-6 font-serif text-2xl text-slate-700">Network</div>
-      <div className="flex flex-col-reverse justify-between gap-4 xl:flex-row">
-        <div className="-mt-4 flex-grow overflow-hidden">
+    <Collapsible
+      className="border-y border-gray-600 py-8"
+      open={expanded}
+      onOpenChange={setExpanded}
+    >
+      <div className="flex items-center justify-between">
+        <h2 className="font-serif text-xl">Network</h2>
+        <CollapsibleTrigger className="group" asChild>
+          <Button
+            size="icon"
+            className="!bg-gray-500 hover:!bg-green-700 focus-visible:!bg-green-700 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-700"
+          >
+            <span className="sr-only">Expand/collapse the network</span>
+            <ChevronDown className="h-4 w-4 transform transition-transform group-data-[state=open]:rotate-180" />
+          </Button>
+        </CollapsibleTrigger>
+      </div>
+      <CollapsibleContent className="mt-6 flex flex-col-reverse justify-between gap-8 empty:mt-0">
+        <div className="flex-grow overflow-hidden">
           <Item
             name={name}
             id={id}
             type={type}
             hasChildren={networks?.length > 0}
-            hasDot={networks?.length > 0}
-            style={{ zIndex: 1000 + networks.length }}
+            className="-mt-6"
+            style={{ zIndex: 20 + networks.length }}
           />
           {
             [...networks]
@@ -87,7 +106,7 @@ const NetworkDiagram = ({
                     key={network.id}
                     className="relative ml-14"
                     // We use the z-index to make sure each path is above the following one
-                    style={{ zIndex: 1000 + childIndex }}
+                    style={{ zIndex: 20 + childIndex }}
                   >
                     <Item
                       key={network.id}
@@ -99,7 +118,8 @@ const NetworkDiagram = ({
                       opened={openCollapsibles.includes(network.id)}
                       heightIndex={getIndex(childIndex)}
                       hasChildren={network?.children?.length > 0}
-                      style={{ zIndex: 1000 + childIndex }}
+                      className="mt-0"
+                      style={{ zIndex: 20 + childIndex }}
                     />
                     <CollapsibleContent className="ml-14">
                       {
@@ -119,7 +139,7 @@ const NetworkDiagram = ({
                                   hasChildren={false}
                                   style={{
                                     zIndex:
-                                      1000 + childIndex + grandChildIndex - network.children.length,
+                                      20 + childIndex + grandChildIndex - network.children.length,
                                   }}
                                 />
                               ),
@@ -134,31 +154,34 @@ const NetworkDiagram = ({
               .reverse() // We reverse it again to have the same order as the original array
           }
         </div>
-        <div className="flex h-fit w-[177px] flex-col gap-2 border border-dashed border-gray-200 p-4 text-slate-700">
-          <div className="relative flex items-center gap-2">
-            <span className="h-[3px] w-10 bg-gray-700" />
-            <span className="min-w-5 absolute left-2.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-700 text-xs text-white">
-              C
+        <div className="flex gap-6 text-xs text-gray-200">
+          <div className="flex items-center gap-2">
+            <span className="relative h-0 w-10 border-t-2 border-white">
+              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xs text-gray-800">
+                C
+              </span>
             </span>
             <span>Coordinator</span>
           </div>
-          <div className="relative flex items-center gap-2">
-            <span className="h-[3px] w-10 bg-gray-300" />
-            <span className="min-w-5 absolute left-2.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-300 text-xs text-white">
-              P
+          <div className="flex items-center gap-2">
+            <span className="relative h-0 w-10 border-t-2 border-gray-500">
+              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-500 text-2xs text-white">
+                P
+              </span>
             </span>
             <span>Partner</span>
           </div>
-          <div className="relative flex items-center gap-2">
-            <span className="relative h-[3px] w-10 border-t-2 border-dashed border-gray-700" />
-            <span className="min-w-5 absolute left-2.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-700 text-xs text-white">
-              F
+          <div className="flex items-center gap-2">
+            <span className="relative h-0 w-10 border-t-2 border-dashed border-gray-500">
+              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-500 text-2xs text-white">
+                F
+              </span>
             </span>
             <span>Funder</span>
           </div>
         </div>
-      </div>
-    </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
 
