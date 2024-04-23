@@ -65,7 +65,7 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
         )}
       </div>
       <div className="flex justify-end gap-4 border-t border-gray-600 pt-6">
-        <SuggestButton id={id} data={organization} label="organisation" />
+        <SuggestButton data={organization} label="organisation" />
         <Button asChild variant="outline-dark" size="sm" disabled={!url}>
           <a href={makeGlobalLink(url)} target="_blank" rel="noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />

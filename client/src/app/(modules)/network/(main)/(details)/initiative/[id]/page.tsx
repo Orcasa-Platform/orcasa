@@ -109,7 +109,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
         ))}
       </div>
       <div className="flex justify-end gap-4 border-t border-gray-600 pt-6">
-        <SuggestButton id={id} data={project} label="initiative" />
+        <SuggestButton data={project} label="initiative" />
 
         <Button asChild variant="outline-dark" size="sm" disabled={!website}>
           <a href={makeGlobalLink(website)} target="_blank" rel="noreferrer">
