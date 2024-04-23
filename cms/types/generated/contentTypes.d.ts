@@ -911,6 +911,53 @@ export interface ApiCountryCountry extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomepageRecommendationHomepageRecommendation
+  extends Schema.SingleType {
+  collectionName: 'homepage_recommendations';
+  info: {
+    singularName: 'homepage-recommendation';
+    pluralName: 'homepage-recommendations';
+    displayName: 'Homepage Recommendation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    link_text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    link_url: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::homepage-recommendation.homepage-recommendation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::homepage-recommendation.homepage-recommendation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandUseTypeLandUseType extends Schema.CollectionType {
   collectionName: 'land_use_types';
   info: {
@@ -1813,6 +1860,7 @@ declare module '@strapi/types' {
       'api::area-of-intervention.area-of-intervention': ApiAreaOfInterventionAreaOfIntervention;
       'api::continent.continent': ApiContinentContinent;
       'api::country.country': ApiCountryCountry;
+      'api::homepage-recommendation.homepage-recommendation': ApiHomepageRecommendationHomepageRecommendation;
       'api::land-use-type.land-use-type': ApiLandUseTypeLandUseType;
       'api::layer.layer': ApiLayerLayer;
       'api::layer-group.layer-group': ApiLayerGroupLayerGroup;
