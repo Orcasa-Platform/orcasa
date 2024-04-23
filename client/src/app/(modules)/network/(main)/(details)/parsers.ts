@@ -81,7 +81,10 @@ export const getProjectFields = (
     });
   }
 
-  if (hasData(fields.project_coordinator_email) || hasData(project.project_coordinator_website)) {
+  if (
+    hasData(fields.project_coordinator_email) ||
+    ('project_coordinator_email' in fields && hasData(project.project_coordinator_website))
+  ) {
     const makeGlobalLink = (link: string) =>
       link.startsWith('http://') || link.startsWith('https://')
         ? link
