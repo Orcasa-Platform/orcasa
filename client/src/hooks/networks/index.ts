@@ -587,57 +587,118 @@ export const useNetworkDiagram = ({
 }) => {
   const useFunction = type === 'organization' ? useGetOrganizations : useGetProjects;
   const filterPublicationStatus = { filters: { publication_status: { $eq: 'accepted' } } };
+  const sort = { sort: 'name' };
   const populate =
     type === 'organization'
       ? {
           lead_projects: {
             ...filterPublicationStatus,
+            ...sort,
             populate: {
-              lead_partner: filterPublicationStatus,
-              partners: filterPublicationStatus,
-              funders: filterPublicationStatus,
+              lead_partner: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              partners: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              funders: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
             },
           },
           partner_projects: {
             ...filterPublicationStatus,
+            ...sort,
             populate: {
-              lead_partner: filterPublicationStatus,
-              partners: filterPublicationStatus,
-              funders: filterPublicationStatus,
+              lead_partner: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              partners: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              funders: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
             },
           },
           funded_projects: {
             ...filterPublicationStatus,
+            ...sort,
             populate: {
-              lead_partner: filterPublicationStatus,
-              partners: filterPublicationStatus,
-              funders: filterPublicationStatus,
+              lead_partner: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              partners: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              funders: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
             },
           },
         }
       : {
           lead_partner: {
             ...filterPublicationStatus,
+            ...sort,
             populate: {
-              lead_projects: filterPublicationStatus,
-              partner_projects: filterPublicationStatus,
-              funded_projects: filterPublicationStatus,
+              lead_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              partner_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              funded_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
             },
           },
           partners: {
             ...filterPublicationStatus,
+            ...sort,
             populate: {
-              lead_projects: filterPublicationStatus,
-              partner_projects: filterPublicationStatus,
-              funded_projects: filterPublicationStatus,
+              lead_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              partner_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              funded_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
             },
           },
           funders: {
             ...filterPublicationStatus,
+            ...sort,
             populate: {
-              lead_projects: filterPublicationStatus,
-              partner_projects: filterPublicationStatus,
-              funded_projects: filterPublicationStatus,
+              lead_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              partner_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
+              funded_projects: {
+                ...filterPublicationStatus,
+                ...sort,
+              },
             },
           },
         };
