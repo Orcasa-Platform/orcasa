@@ -124,11 +124,6 @@ const getQueryFilters = (filters: NetworkFilters) => {
                   $containsi: filters.search,
                 },
               },
-              {
-                description: {
-                  $containsi: filters.search,
-                },
-              },
             ],
           },
         ]
