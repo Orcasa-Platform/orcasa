@@ -86,7 +86,7 @@ const SelectTrigger = React.forwardRef<
     {children}
     <SelectPrimitive.Icon asChild>
       <ChevronDown
-        className={cn('ml-1 h-6 w-6 transform data-[state=open]:rotate-180', {
+        className={cn('ml-1 h-6 w-6 flex-shrink-0 transform data-[state=open]:rotate-180', {
           'text-gray-700': variant === 'small',
           'text-white': variant === 'default',
         })}
