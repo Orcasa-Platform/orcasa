@@ -30,16 +30,9 @@ export default async function RecommendSection() {
     >
       <div className="ml-auto lg:ml-0 lg:max-w-none">
         <Image
-          src="/images/ejp-logo.png"
-          alt="Road4Schemes logo"
-          className="absolute -left-6 -top-8 flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg bg-white px-3 shadow-lg"
-          width={169}
-          height={66}
-        />
-        <Image
-          src="/images/ejpsoil.png"
+          src="/images/homepage-recommendation.png"
           className="overflow-hidden rounded-lg shadow-lg"
-          alt="Road4Schemes demo"
+          alt=""
           width={480}
           height={275}
         />
