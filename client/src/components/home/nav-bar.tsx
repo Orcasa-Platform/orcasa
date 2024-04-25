@@ -20,9 +20,6 @@ const NavBar = () => (
     >
       <Image src="/images/logo.png" width={30} height={30} alt="Impact4Soil" />
       <h1 className="font-serif text-base lg:text-xl lg:font-semibold">Impact4Soil</h1>
-      <span className="rounded bg-gray-650 px-2 py-[3px] font-sans text-xs font-normal lg:bg-gray-700">
-        Beta
-      </span>
     </a>
     <Dialog>
       <MobileMenuButton />
