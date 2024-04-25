@@ -1,7 +1,6 @@
 {
   "key": "plugin_content_manager_configuration_content_types::api::static-page.static-page",
   "value": {
-    "uid": "api::static-page.static-page",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -146,7 +145,8 @@
           }
         ]
       ]
-    }
+    },
+    "uid": "api::static-page.static-page"
   },
   "type": "object",
   "environment": null,

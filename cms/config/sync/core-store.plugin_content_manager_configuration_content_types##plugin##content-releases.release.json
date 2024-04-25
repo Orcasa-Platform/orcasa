@@ -1,7 +1,6 @@
 {
   "key": "plugin_content_manager_configuration_content_types::plugin::content-releases.release",
   "value": {
-    "uid": "plugin::content-releases.release",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -203,7 +202,8 @@
           }
         ]
       ]
-    }
+    },
+    "uid": "plugin::content-releases.release"
   },
   "type": "object",
   "environment": null,
