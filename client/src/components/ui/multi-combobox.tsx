@@ -142,16 +142,18 @@ export const MultiCombobox = <T extends NonNullable<unknown>>({
             onClick={() => setOpen(true)}
             disabled={disabled}
           >
-            {showSelected ? (
-              <span className={cn({ 'max-h-14 max-w-full truncate capitalize': showSelected })}>
-                {selectedLabels}
-              </span>
-            ) : value.length > 0 ? (
-              `${name} (${value.length})`
-            ) : (
-              placeholder ?? name
-            )}
-            <ChevronDown className="absolute right-4 top-2 h-6 w-6 flex-shrink-0" />
+            <span className="truncate">
+              {showSelected ? (
+                <span className={cn({ 'max-h-14 max-w-full truncate capitalize': showSelected })}>
+                  {selectedLabels}
+                </span>
+              ) : value.length > 0 ? (
+                `${name} (${value.length})`
+              ) : (
+                placeholder ?? name
+              )}
+            </span>
+            <ChevronDown className="ml-1 h-6 w-6 flex-shrink-0" />
           </Button>
         )}
         {open && (
