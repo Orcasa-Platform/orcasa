@@ -17,7 +17,9 @@ export default async function RecommendSection() {
   try {
     const { data } = await getHomepageRecommendation();
     recommendation = data;
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+  }
 
   const renderImage = (isMobile: boolean) => (
     <div
