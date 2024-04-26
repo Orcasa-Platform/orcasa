@@ -25,6 +25,9 @@
       "action": "api::homepage-recommendation.homepage-recommendation.find"
     },
     {
+      "action": "api::homepage-recommendation.homepage-recommendation.update"
+    },
+    {
       "action": "api::land-use-type.land-use-type.find"
     },
     {
