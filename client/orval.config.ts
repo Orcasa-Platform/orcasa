@@ -82,6 +82,7 @@ export default {
           'Subintervention',
           'Sustainable-dev-goal',
           'Testimony',
+          'Homepage-recommendation',
         ],
       },
     },

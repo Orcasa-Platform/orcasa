@@ -1,3 +1,14 @@
+# v8
+
+- Allow admins to manage the homepage's recommendation section
+- [Practices] Give a time reference for the implementation decade field
+- [Network] Remove the organisation/initiative ID from the template of the suggestion email
+- [Network] Do not use the detailed description to perform keyword searches
+- [Network] Order the organisations/initiatives by their relation and alphabetically in the diagram
+- [Network] Modify the content of the initiative's tooltip on the map when viewing the details of an initiative
+- [Network] Address an issue where the contact details of an initiative would appear twice on the detailed view
+- [Network] Address an issue where the value of the multi-selection dropdowns could be overlapped by the down arrow icon
+
 # v7
 
 - Redesign of the platform (except Scientific Evidence)

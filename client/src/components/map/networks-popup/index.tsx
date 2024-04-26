@@ -31,25 +31,53 @@ type NetworksPopupProps = {
   parentName?: string | undefined;
 };
 
-const networkDetailSentencePart = (parentType: Type, parentName: string, type: Type) => {
-  if (!parentType) return null;
+const networkDetailSentencePart = (
+  parentType: Type | undefined,
+  parentName: string | undefined,
+  type: Type,
+  countryName: string,
+) => {
   const parentSpan = <span className="font-semibold">{parentName}</span>;
-  if (parentType === 'project')
+
+  // Used on the detailed view
+  if (parentType === 'organization') {
     return (
-      <span>
-        {type === 'project' ? <> related to {parentSpan}</> : <> participating in {parentSpan}</>}
-      </span>
+      <>
+        <span>{type === 'project' ? 'Initiatives coordinated in ' : 'Organisations from '}</span>
+        <span className="font-semibold">{countryName}</span>
+        <span>
+          {type === 'project' ? (
+            <> in which {parentSpan} participates</>
+          ) : (
+            <> related to {parentSpan}</>
+          )}
+        </span>
+      </>
     );
-  if (parentType === 'organization')
+  }
+
+  // Used on the detailed view
+  if (parentType === 'project') {
+    if (type === 'project') {
+      return <span>Selected initiative</span>;
+    }
+
     return (
-      <span>
-        {type === 'project' ? (
-          <> in which {parentSpan} participates</>
-        ) : (
-          <> related to {parentSpan}</>
-        )}
-      </span>
+      <>
+        <span>Organisations from </span>
+        <span className="font-semibold">{countryName}</span>
+        <span> participating in {parentSpan}</span>
+      </>
     );
+  }
+
+  // Used on the global view
+  return (
+    <>
+      <span>{type === 'project' ? 'Initiatives coordinated in ' : 'Organisations from '}</span>
+      <span className="font-semibold">{countryName}</span>
+    </>
+  );
 };
 
 const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopupProps) => {
@@ -88,9 +116,7 @@ const NetworksPopup = ({ popup, setPopup, parentType, parentName }: NetworksPopu
           <X className="h-4 w-4 text-gray-500" />
         </Button>
         <header className="pb-6 pr-9 text-lg text-slate-700">
-          <span>{type === 'project' ? 'Initiatives coordinated in ' : 'Organisations from '}</span>
-          <span className="font-semibold">{countryName}</span>
-          {parentType && parentName && networkDetailSentencePart(parentType, parentName, type)}
+          {networkDetailSentencePart(parentType, parentName, type, countryName)}
         </header>
         <ul className="flex max-h-[232px] list-inside list-disc flex-col items-start justify-start gap-2 overflow-y-auto">
           {networks.map(({ id, name, type }) => (

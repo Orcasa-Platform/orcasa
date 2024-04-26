@@ -220,16 +220,6 @@
             "size": 6
           },
           {
-            "name": "default_basemap",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "layer_groups",
-            "size": 6
-          },
-          {
             "name": "slug",
             "size": 6
           }
@@ -263,11 +253,11 @@
         [
           {
             "name": "default_labels",
-            "size": 6
+            "size": 4
           },
           {
             "name": "default_boundaries",
-            "size": 6
+            "size": 4
           }
         ]
       ]

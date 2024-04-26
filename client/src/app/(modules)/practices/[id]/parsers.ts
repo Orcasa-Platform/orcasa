@@ -105,6 +105,7 @@ export const getPracticeImplementationFields = (practice: Practice): FieldType[]
     fields.push({
       label: 'Implementation decade',
       value: implementationDecade,
+      description: 'Effective from the date of publication',
     });
   }
 

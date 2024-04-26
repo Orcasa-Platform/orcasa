@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepage_recommendations",
+  "info": {
+    "singularName": "homepage-recommendation",
+    "pluralName": "homepage-recommendations",
+    "displayName": "Homepage Recommendation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 250
+    },
+    "link_text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "link_url": {
+      "type": "string",
+      "required": true,
+      "regex": "((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[\\-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9\\.\\-]+|(?:www\\.|[\\-;:&=\\+\\$,\\w]+@)[A-Za-z0-9\\.\\-]+)((?:\\/[\\+~%\\/\\.\\w\\-_]*)?\\??(?:[\\-\\+=&;%@\\.\\w_]*)#?(?:[\\.\\!\\/\\\\\\w]*))?)"
+    }
+  }
+}

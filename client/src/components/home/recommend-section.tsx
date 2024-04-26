@@ -6,9 +6,21 @@ import LinkIcon from 'public/images/link.svg';
 
 import { cn } from '@/lib/classnames';
 
+import { getHomepageRecommendation } from '@/types/generated/homepage-recommendation';
+import type { HomepageRecommendationResponseDataObject } from '@/types/generated/strapi.schemas';
+
 import { Button } from '../ui/button';
 
-const RecommendSection = () => {
+export default async function RecommendSection() {
+  let recommendation: HomepageRecommendationResponseDataObject | undefined;
+
+  try {
+    const { data } = await getHomepageRecommendation();
+    recommendation = data;
+  } catch (e) {
+    console.error(e);
+  }
+
   const renderImage = (isMobile: boolean) => (
     <div
       className={cn('relative ml-6 mr-8 mt-10 lg:mx-0', {
@@ -18,22 +30,19 @@ const RecommendSection = () => {
     >
       <div className="ml-auto lg:ml-0 lg:max-w-none">
         <Image
-          src="/images/ejp-logo.png"
-          alt="Road4Schemes logo"
-          className="absolute -left-6 -top-8 flex flex-col items-start justify-start gap-2 overflow-hidden rounded-lg bg-white px-3 shadow-lg"
-          width={169}
-          height={66}
-        />
-        <Image
-          src="/images/ejpsoil.png"
+          src="/images/homepage-recommendation.png"
           className="overflow-hidden rounded-lg shadow-lg"
-          alt="Road4Schemes demo"
+          alt=""
           width={480}
           height={275}
         />
       </div>
     </div>
   );
+
+  if (!recommendation?.attributes) {
+    return null;
+  }
 
   return (
     <div className="relative mx-4 h-[680px] w-[calc(100%-16px)] lg:mx-0 lg:w-full">
@@ -47,13 +56,11 @@ const RecommendSection = () => {
               we recommend
             </div>
             <h2 className="font-serif text-3xl font-semibold text-gray-700">
-              Carbon schemes inventory platform
+              {recommendation.attributes.title}
             </h2>
             {renderImage(true)}
             <div className="w-[90%] text-base leading-7 text-gray-500 lg:w-[374px] lg:leading-normal lg:text-gray-600">
-              Carbon Schemes Inventories, or CSI, is a new web platform dedicated to providing
-              detailed information about carbon farming schemes in Europe and around the world. This
-              platform has been developed in the framework of the EJP Soil Road4Schemes project.
+              {recommendation.attributes.description}
             </div>
             <Button
               variant="outline"
@@ -61,11 +68,8 @@ const RecommendSection = () => {
               size="lg"
               asChild
             >
-              <Link
-                href={'http://reports.crea.gov.it/powerbi/CarbonSchemesInventory.html'}
-                target="_blank"
-              >
-                Visit the platform
+              <Link href={recommendation.attributes.link_url} target="_blank">
+                {recommendation.attributes.link_text}
                 <LinkIcon className="ml-2 h-6 w-6" />
               </Link>
             </Button>
@@ -75,6 +79,4 @@ const RecommendSection = () => {
       </div>
     </div>
   );
-};
-
-export default RecommendSection;
+}
