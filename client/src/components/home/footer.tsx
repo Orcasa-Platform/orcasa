@@ -52,9 +52,9 @@ const Footer = () => (
             <LinkedinIcon className="min-w-4 h-4 w-4" />
             <span className="sr-only">LinkedIn</span>
           </Link>
-          <Link href="mailto:impact4soil@groupes.renater.fr">
+          <a href="mailto:impact4soil@groupes.renater.fr">
             <MailIcon className="min-w-5 h-4 w-5 hover:opacity-90" />
-          </Link>
+          </a>
         </div>
         <div className="flex items-center justify-start gap-4">
           <Link

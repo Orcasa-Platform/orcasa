@@ -425,12 +425,9 @@ export default function ProjectForm() {
         <div className="mt-6">
           Only the team in charge of the administration of Impact4Soil may access your email. You
           have the right to ask for deletion of your email by writing to:{' '}
-          <Link
-            href="mailto:impact4soil@groupes.renater.fr"
-            className="font-semibold text-green-700"
-          >
+          <a href="mailto:impact4soil@groupes.renater.fr" className="font-semibold text-green-700">
             impact4soil@groupes.renater.fr
-          </Link>
+          </a>
         </div>
       ),
     },
