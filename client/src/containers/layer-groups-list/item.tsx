@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import Info from 'public/images/info.svg';
+import Info from 'public/images/info.svg?unoptimized';
 
 import { LayerGroupListResponseDataItem } from '@/types/generated/strapi.schemas';
 
@@ -36,7 +36,7 @@ export default function LayerGroupItem(props: Required<LayerGroupListResponseDat
           {description && (
             <Tooltip delayDuration={0} open={infoOpen} onOpenChange={setInfoOpen}>
               <TooltipTrigger asChild onClick={() => setInfoOpen(!infoOpen)}>
-                <Button variant="vanilla" size="auto" className="mr-2 rounded-full">
+                <Button variant="vanilla" size="auto" className="mr-2 rounded-full text-gray-800">
                   <span className="sr-only">Info button</span>
                   <Info className="h-4 w-4" />
                 </Button>

@@ -2,7 +2,7 @@
 
 import { ReactElement, cloneElement, useCallback, useMemo } from 'react';
 
-import Info from 'public/images/info.svg';
+import Info from 'public/images/info.svg?unoptimized';
 import Link from 'public/images/link.svg';
 
 import { cn } from '@/lib/classnames';
