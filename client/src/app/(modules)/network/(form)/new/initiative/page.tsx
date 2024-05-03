@@ -28,7 +28,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import Alert from '@/styles/icons/alert.svg';
 import Email from '@/styles/icons/email.svg';
-import Info from '@/styles/icons/info.svg';
+import Info from '@/styles/icons/info.svg?unoptimized';
 import Notebook from '@/styles/icons/notebook.svg';
 import Users from '@/styles/icons/users.svg';
 
