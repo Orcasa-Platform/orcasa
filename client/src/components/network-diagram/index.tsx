@@ -9,6 +9,9 @@ import { useNetworkDiagram } from '@/hooks/networks';
 
 import { Button } from '@/components/ui/button';
 import { CollapsibleContent, Collapsible, CollapsibleTrigger } from '@/components/ui/collapsible';
+import Active from '@/styles/icons/initiative-active.svg';
+import Finished from '@/styles/icons/initiative-finished.svg';
+import NotStarted from '@/styles/icons/initiative-not-started.svg';
 
 import Item from './item';
 
@@ -79,7 +82,48 @@ const NetworkDiagram = ({
           </Button>
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent className="mt-6 flex flex-col-reverse justify-between gap-8 empty:mt-0">
+      <CollapsibleContent className="mt-6 flex flex-col justify-between gap-6 empty:mt-0">
+        <div className="flex gap-6 text-xs text-gray-200">
+          <div className="flex items-center gap-2">
+            <span className="relative h-0 w-10 border-t-2 border-white">
+              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xs text-gray-800">
+                C
+              </span>
+            </span>
+            <span>Coordinator</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="relative h-0 w-10 border-t-2 border-gray-500">
+              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-500 text-2xs text-white">
+                P
+              </span>
+            </span>
+            <span>Partner</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="relative h-0 w-10 border-t-2 border-dashed border-gray-500">
+              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-500 text-2xs text-white">
+                F
+              </span>
+            </span>
+            <span>Funder</span>
+          </div>
+        </div>
+        <div className="flex gap-6 text-xs text-gray-200">
+          <div>Initiative status:</div>
+          <div className="flex items-center gap-2">
+            <Active className="h-4 w-4" />
+            Active
+          </div>
+          <div className="flex items-center gap-2">
+            <Finished className="h-4 w-4" />
+            Finished
+          </div>
+          <div className="flex items-center gap-2">
+            <NotStarted className="h-4 w-4" />
+            Not started
+          </div>
+        </div>
         <div className="flex-grow overflow-hidden">
           <Item
             name={name}
@@ -112,6 +156,7 @@ const NetworkDiagram = ({
                       key={network.id}
                       name={network.name}
                       type={network.type as 'organization' | 'project'}
+                      status={network.status}
                       category={network.category}
                       id={network.id}
                       onToggle={(open) => handleOnToggle(open, network.id, setOpenCollapsibles)}
@@ -133,6 +178,7 @@ const NetworkDiagram = ({
                                   key={child?.id}
                                   name={child.name}
                                   type={child.type as 'organization' | 'project'}
+                                  status={child.status}
                                   category={child.category}
                                   id={child?.id}
                                   heightIndex={grandChildIndex}
@@ -153,32 +199,6 @@ const NetworkDiagram = ({
               })
               .reverse() // We reverse it again to have the same order as the original array
           }
-        </div>
-        <div className="flex gap-6 text-xs text-gray-200">
-          <div className="flex items-center gap-2">
-            <span className="relative h-0 w-10 border-t-2 border-white">
-              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-2xs text-gray-800">
-                C
-              </span>
-            </span>
-            <span>Coordinator</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="relative h-0 w-10 border-t-2 border-gray-500">
-              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-500 text-2xs text-white">
-                P
-              </span>
-            </span>
-            <span>Partner</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="relative h-0 w-10 border-t-2 border-dashed border-gray-500">
-              <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-500 text-2xs text-white">
-                F
-              </span>
-            </span>
-            <span>Funder</span>
-          </div>
         </div>
       </CollapsibleContent>
     </Collapsible>
