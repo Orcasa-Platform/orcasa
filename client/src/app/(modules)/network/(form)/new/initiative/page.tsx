@@ -131,9 +131,14 @@ export default function ProjectForm() {
         .max(255, {
           message: 'Website is limited to 255 characters.',
         })
-        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
-          message: 'Please, enter a valid URL.',
-        })
+        .regex(
+          new RegExp(
+            '^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+(\\/[a-zA-Z0-9-]*)*$',
+          ),
+          {
+            message: 'Please, enter a valid URL.',
+          },
+        )
         .superRefine((value, refinementContext) => {
           const projectCoordinatorEmail = watch('project_coordinator_email');
           if (value && projectCoordinatorEmail) {
@@ -168,9 +173,14 @@ export default function ProjectForm() {
         .max(255, {
           message: 'Website is limited to 255 characters.',
         })
-        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
-          message: 'Please, enter a valid URL.',
-        }),
+        .regex(
+          new RegExp(
+            '^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+(\\/[a-zA-Z0-9-]*)*$',
+          ),
+          {
+            message: 'Please, enter a valid URL.',
+          },
+        ),
       type: 'text',
       maxSize: 255,
       description: (
