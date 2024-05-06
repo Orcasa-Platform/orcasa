@@ -17,6 +17,9 @@ import type { Category } from '@/hooks/networks/utils';
 
 import { Button } from '@/components/ui/button';
 import { CollapsibleTrigger } from '@/components/ui/collapsible';
+import Active from '@/styles/icons/initiative-active.svg';
+import Finished from '@/styles/icons/initiative-finished.svg';
+import NotStarted from '@/styles/icons/initiative-not-started.svg';
 
 type PathProps = {
   heightIndex: number;
@@ -100,6 +103,7 @@ const Path = ({ heightIndex, category, isGranchild = false }: PathProps) => {
 type ItemProps = Pick<Project | Organization, 'name'> & {
   id: number;
   type: 'organization' | 'project';
+  status?: 'active' | 'finished' | 'not-started';
   category?: Category;
   opened?: boolean;
   onToggle?: (opened: boolean) => void;
@@ -113,6 +117,7 @@ const Item = ({
   name,
   id,
   type,
+  status,
   category,
   opened = false,
   onToggle,
@@ -147,16 +152,27 @@ const Item = ({
           },
         )}
       >
-        <Link
-          className="line-clamp-2 text-sm"
-          href={`/network/${
-            type === 'project' ? 'initiative' : type
-          }/${id}?${searchParams.toString()}`}
-          ref={ref}
-          title={name}
-        >
-          {name}
-        </Link>
+        <div className="flex items-center gap-2">
+          {!isFirstNode && type === 'project' && status === 'active' && (
+            <Active className="h-4 w-4 shrink-0" />
+          )}
+          {!isFirstNode && type === 'project' && status === 'finished' && (
+            <Finished className="h-4 w-4 shrink-0" />
+          )}
+          {!isFirstNode && type === 'project' && status === 'not-started' && (
+            <NotStarted className="h-4 w-4 shrink-0" />
+          )}
+          <Link
+            className="line-clamp-2 text-sm"
+            href={`/network/${
+              type === 'project' ? 'initiative' : type
+            }/${id}?${searchParams.toString()}`}
+            ref={ref}
+            title={name}
+          >
+            {name}
+          </Link>
+        </div>
         {category && (
           <div className="min-w-fit max-w-fit items-center gap-4 group-hover:flex lg:hidden">
             <Button
