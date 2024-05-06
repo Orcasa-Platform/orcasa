@@ -69,23 +69,25 @@ export default async function PracticeDetails({ params }: PracticeDetailsProps) 
           </a>
         </Button>
       </div>
-      <div className="flex flex-1 flex-col gap-6">
-        <header className="flex gap-2 border-b border-gray-600 pb-1">
-          <NotepadText className="h-6 w-6" />
-          <h2 className="mb-4 font-serif text-xl">Details</h2>
-        </header>
-        {fields.map((field) => (
-          <Field key={field.label} {...field} />
-        ))}
-      </div>
-      <div className="flex flex-1 flex-col gap-6">
-        <header className="flex gap-2 border-b border-gray-600 pb-1">
-          <Tractor className="h-6 w-6" />
-          <h2 className="mb-4 font-serif text-xl">Implementation</h2>
-        </header>
-        {implementationFields.map((field) => (
-          <Field key={field.label} {...field} />
-        ))}
+      <div className="flex flex-col gap-10 lg:basis-2/3 lg:gap-16">
+        <div className="flex flex-1 flex-col gap-6">
+          <header className="flex gap-2 border-b border-gray-600 pb-1">
+            <Tractor className="h-6 w-6" />
+            <h2 className="mb-4 font-serif text-xl">Implementation</h2>
+          </header>
+          {implementationFields.map((field) => (
+            <Field key={field.label} {...field} />
+          ))}
+        </div>
+        <div className="flex flex-1 flex-col gap-6">
+          <header className="flex gap-2 border-b border-gray-600 pb-1">
+            <NotepadText className="h-6 w-6" />
+            <h2 className="mb-4 font-serif text-xl">Details</h2>
+          </header>
+          {fields.map((field) => (
+            <Field key={field.label} {...field} />
+          ))}
+        </div>
       </div>
     </div>
   );
