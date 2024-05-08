@@ -45,7 +45,7 @@ export default async function RecommendSection() {
   }
 
   return (
-    <div className="relative mx-4 h-[680px] w-[calc(100%-16px)] lg:mx-0 lg:w-full">
+    <div className="relative mx-4 w-[calc(100%-16px)] pb-8 lg:mx-0 lg:h-[680px] lg:w-full lg:pb-0">
       <div className="absolute hidden h-full w-full items-center justify-center p-10 pt-0 lg:flex">
         <img src="/images/shape3.svg" className="h-[564px] w-full" alt="" />
       </div>
