@@ -10,13 +10,13 @@ import { Button } from '@/components/ui/button';
 
 const NewButtons = ({ className }: { className?: string }) => (
   <div className={cn('space-x-4', className)}>
-    <Button asChild>
+    <Button variant="primary" asChild>
       <Link href="/network/new/organisation">
         <Plus className="mr-2 h-4 w-4" />
         Organisation
       </Link>
     </Button>
-    <Button asChild>
+    <Button variant="primary" asChild>
       <Link href="/network/new/initiative">
         <Plus className="mr-2 h-4 w-4" />
         Initiative
