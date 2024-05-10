@@ -24,7 +24,15 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
 
   return (
     <>
-      <div className="mt-4 h-[calc(100vh-16px)] space-y-6 overflow-auto bg-gray-700 p-4 pb-6 text-white lg:hidden">
+      <div className="mt-14 h-[calc(100vh-56px)] space-y-6 overflow-auto bg-gray-700 p-4 pb-6 text-white lg:hidden">
+        <SlidingLinkButton
+          href={`/network?${mapSearchParams.toString()}`}
+          variant="dark"
+          Icon={ArrowLeft}
+          scroll={false}
+        >
+          Back to results
+        </SlidingLinkButton>
         {children}
       </div>
       <div className="hidden lg:block">
