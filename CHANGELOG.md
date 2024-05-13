@@ -1,3 +1,20 @@
+# v9
+
+- Remove “beta” from the platform
+- Tweak the logo size and menu items alignment in the main navigation bar
+- Address an issue where clickable emails would open the email composer window multiple times
+- Address an issue where the logo wouldn't link to the homepage on the static pages
+- Address multiple small layout issues on mobile
+- Address an issue where the Strapi configuration (Config Sync plugin) may not be imported when deploying
+- [Geospatial Data] Address an issue where the info buttons wouldn't be displayed correctly on Chrome-based browsers
+- [Scientific Evidence] Redesign of the module
+- [Practices] Display the detailed description and sub-interventions in the detailed view
+- [Practices] Add a button to allow users to go back to the list view on mobile
+- [Network] Indicate the status of the initiatives in the diagram
+- [Network] Support URLs with path (e.g. https://www.naturefund.de/en) in the URL fields
+- [Network] Highlight the buttons to create new organisations/initiatives
+- [Network] Add a button to allow users to go back to the list view on mobile
+
 # v8
 
 - Allow admins to manage the homepage's recommendation section
