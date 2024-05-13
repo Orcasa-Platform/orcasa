@@ -482,7 +482,9 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url"
+          "external_url",
+          "default_labels",
+          "default_boundaries"
         ]
       },
       "conditions": [],
@@ -512,7 +514,9 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url"
+          "external_url",
+          "default_labels",
+          "default_boundaries"
         ]
       },
       "conditions": [],
@@ -528,7 +532,9 @@
           "layer_groups",
           "slug",
           "color",
-          "external_url"
+          "external_url",
+          "default_labels",
+          "default_boundaries"
         ]
       },
       "conditions": [],
@@ -536,7 +542,6 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
       "subject": "api::practice-import.practice-import",
       "properties": {
         "fields": [
@@ -546,18 +551,18 @@
           "output"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
       "subject": "api::practice-import.practice-import",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
       "subject": "api::practice-import.practice-import",
       "properties": {
         "fields": [
@@ -567,11 +572,11 @@
           "output"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
       "subject": "api::practice-import.practice-import",
       "properties": {
         "fields": [
@@ -581,11 +586,11 @@
           "output"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -617,18 +622,18 @@
           "organizations"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {},
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -660,11 +665,11 @@
           "organizations"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
       "subject": "api::practice.practice",
       "properties": {
         "fields": [
@@ -696,18 +701,19 @@
           "organizations"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
-      "actionParameters": {},
       "subject": "api::project-type.project-type",
       "properties": {
         "fields": [
           "name"
         ]
       },
-      "conditions": []
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",

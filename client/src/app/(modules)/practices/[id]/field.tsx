@@ -99,7 +99,7 @@ const Field = ({ label, value, description, url, hasEllipsis, logo, formatId }: 
     return url ? (
       renderLink(url)
     ) : (
-      <>
+      <div>
         <div className="flex items-center space-x-2">
           <div
             ref={ref}
@@ -127,11 +127,11 @@ const Field = ({ label, value, description, url, hasEllipsis, logo, formatId }: 
           )}
         </div>
         {isOverTwoLines && (
-          <button onClick={toggleExpanded} className="text-sm font-semibold">
+          <button onClick={toggleExpanded} className="text-sm font-semibold text-purple-400">
             {isExpanded ? 'Show less' : 'Show more'}
           </button>
         )}
-      </>
+      </div>
     );
   };
 

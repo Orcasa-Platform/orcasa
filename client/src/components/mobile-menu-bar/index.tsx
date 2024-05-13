@@ -9,9 +9,6 @@ const MobileMenuBar = () => {
       <Link href="/" className="flex items-center justify-center gap-2 lg:gap-3">
         <Image src="/images/logo.png" width={30} height={30} alt="Impact4Soil" priority />
         <span className="font-serif">Impact4Soil</span>
-        <span className="rounded bg-gray-650 px-2 py-[3px] font-sans text-xs font-normal text-white">
-          Beta
-        </span>
       </Link>
       <MobileMenuButton />
     </nav>

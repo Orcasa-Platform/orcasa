@@ -8,6 +8,8 @@ import type { FieldType } from './field';
 
 export const getPracticeFields = (practice: Practice): FieldType[] => {
   const {
+    detailed_description: detailedDescription,
+    subinterventions,
     source_name: source,
     language,
     publication_date: publicationDate,
@@ -21,6 +23,14 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
   } = practice as TypedPractice;
 
   const fields = [];
+
+  if (detailedDescription) {
+    fields.push({
+      label: 'Description',
+      value: detailedDescription,
+      hasEllipsis: true,
+    });
+  }
 
   if (publicationDate) {
     fields.push({
@@ -53,6 +63,20 @@ export const getPracticeFields = (practice: Practice): FieldType[] => {
     fields.push({
       label: `New land use type${landUseTypes?.data?.length > 1 ? 's' : ''}`,
       value: landUseTypes?.data?.map((landUseType) => landUseType.attributes?.name).join(', '),
+    });
+  }
+
+  if (subinterventions && subinterventions.data?.length) {
+    fields.push({
+      label: `Sub-intervention${subinterventions.data.length > 1 ? 's' : ''}`,
+      value: subinterventions.data
+        .map(
+          (subIntervention) =>
+            `${subIntervention.attributes?.name
+              .substr(0, 1)
+              .toUpperCase()}${subIntervention.attributes?.name.substr(1)}`,
+        )
+        .join(', '),
     });
   }
 

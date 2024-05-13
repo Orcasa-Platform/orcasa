@@ -161,6 +161,62 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::homepage-recommendation.homepage-recommendation",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "link_text",
+          "link_url"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::homepage-recommendation.homepage-recommendation",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::homepage-recommendation.homepage-recommendation",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::homepage-recommendation.homepage-recommendation",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "link_text",
+          "link_url"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::homepage-recommendation.homepage-recommendation",
+      "properties": {
+        "fields": [
+          "title",
+          "description",
+          "link_text",
+          "link_url"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::land-use-type.land-use-type",
       "properties": {
         "fields": [

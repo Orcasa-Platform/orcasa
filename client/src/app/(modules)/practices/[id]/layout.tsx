@@ -11,7 +11,15 @@ export default function PracticeDetailsLayout({ children }: { children: React.Re
 
   return (
     <>
-      <div className="mt-[56px] h-[calc(100vh-56px)] overflow-auto bg-gray-700 p-4 pb-6 lg:hidden">
+      <div className="mt-14 h-[calc(100vh-56px)] space-y-6 overflow-auto bg-gray-700 p-4 pb-6 text-white lg:hidden">
+        <SlidingLinkButton
+          href={`/practices?${mapSearchParams.toString()}`}
+          variant="dark"
+          Icon={ArrowLeft}
+          scroll={false}
+        >
+          Back to results
+        </SlidingLinkButton>
         {children}
       </div>
       <div

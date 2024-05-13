@@ -63,14 +63,14 @@ const SlidingLinkButton = React.forwardRef<
           />
           <span
             className={cn(
-              'text-xs opacity-0 transition group-hover:opacity-100 group-focus:opacity-100',
+              'text-xs transition group-hover:opacity-100 group-focus:opacity-100 lg:opacity-0',
               {
                 'min-w-fit duration-500': !isCompact,
                 'max-w-0 duration-0 group-hover:max-w-fit group-hover:duration-500 group-focus:max-w-fit group-focus:duration-500':
                   isCompact,
-                '-translate-x-1/3 group-hover:translate-x-0 group-focus:translate-x-0':
+                'group-hover:translate-x-0 group-focus:translate-x-0 lg:-translate-x-1/3':
                   position === 'left',
-                'translate-x-0 group-hover:-translate-x-1/4 group-focus:-translate-x-1/4':
+                '-translate-x-1/4 group-hover:-translate-x-1/4 group-focus:-translate-x-1/4 lg:translate-x-0':
                   position === 'right',
               },
             )}

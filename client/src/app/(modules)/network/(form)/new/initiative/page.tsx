@@ -28,7 +28,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import Alert from '@/styles/icons/alert.svg';
 import Email from '@/styles/icons/email.svg';
-import Info from '@/styles/icons/info.svg';
+import Info from '@/styles/icons/info.svg?unoptimized';
 import Notebook from '@/styles/icons/notebook.svg';
 import Users from '@/styles/icons/users.svg';
 
@@ -131,9 +131,14 @@ export default function ProjectForm() {
         .max(255, {
           message: 'Website is limited to 255 characters.',
         })
-        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
-          message: 'Please, enter a valid URL.',
-        })
+        .regex(
+          new RegExp(
+            '^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+(\\/[a-zA-Z0-9-]*)*$',
+          ),
+          {
+            message: 'Please, enter a valid URL.',
+          },
+        )
         .superRefine((value, refinementContext) => {
           const projectCoordinatorEmail = watch('project_coordinator_email');
           if (value && projectCoordinatorEmail) {
@@ -168,9 +173,14 @@ export default function ProjectForm() {
         .max(255, {
           message: 'Website is limited to 255 characters.',
         })
-        .regex(new RegExp('^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+\\/?$'), {
-          message: 'Please, enter a valid URL.',
-        }),
+        .regex(
+          new RegExp(
+            '^(https?:\\/\\/)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)+(\\/[a-zA-Z0-9-]*)*$',
+          ),
+          {
+            message: 'Please, enter a valid URL.',
+          },
+        ),
       type: 'text',
       maxSize: 255,
       description: (
@@ -425,12 +435,9 @@ export default function ProjectForm() {
         <div className="mt-6">
           Only the team in charge of the administration of Impact4Soil may access your email. You
           have the right to ask for deletion of your email by writing to:{' '}
-          <Link
-            href="mailto:impact4soil@groupes.renater.fr"
-            className="font-semibold text-green-700"
-          >
+          <a href="mailto:impact4soil@groupes.renater.fr" className="font-semibold text-green-700">
             impact4soil@groupes.renater.fr
-          </Link>
+          </a>
         </div>
       ),
     },

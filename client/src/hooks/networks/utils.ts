@@ -195,6 +195,31 @@ const getCategory = (category: ProjectKey | OrganizationKey): Category =>
     funders: 'funder',
   }[category] as Category);
 
+const getProjectStatus = (
+  project:
+    | OrganizationLeadProjectsDataItem
+    | OrganizationPartnerProjectsDataItem
+    | OrganizationFundedProjectsDataItem,
+) => {
+  const startDate = project.attributes?.start_date;
+  const endDate = project.attributes?.end_date;
+
+  let status: 'active' | 'finished' | 'not-started' | undefined;
+  if (
+    startDate &&
+    new Date(startDate) < new Date() &&
+    (!endDate || new Date(endDate) > new Date())
+  ) {
+    status = 'active';
+  } else if (endDate && new Date(endDate) < new Date()) {
+    status = 'finished';
+  } else if (startDate && new Date(startDate) > new Date()) {
+    status = 'not-started';
+  }
+
+  return status;
+};
+
 const getProjectData = (
   key: OrganizationKey,
   project:
@@ -205,6 +230,7 @@ const getProjectData = (
   id: project.id,
   name: project?.attributes?.name,
   type: 'project',
+  status: getProjectStatus(project),
   category: getCategory(key),
 });
 
@@ -217,6 +243,7 @@ const getOrganizationData = (
   id: org.id,
   name: org?.attributes?.name,
   type: 'organization',
+  status: undefined,
   category: getCategory(key),
   children: ORGANIZATION_KEYS.map((organizationKey: OrganizationKey) => {
     const child = org?.attributes?.[organizationKey]?.data;
@@ -245,6 +272,7 @@ export const parseOrganization = (organizationData: OrganizationResponse | undef
         id: project.id,
         name: project?.attributes?.name,
         type: 'project',
+        status: getProjectStatus(project),
         category: getCategory(key),
         children: PROJECT_KEYS.map((projectKey: ProjectKey) => {
           const child = project?.attributes?.[projectKey]?.data;

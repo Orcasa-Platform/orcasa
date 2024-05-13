@@ -4,7 +4,7 @@
 SCRIPT_DIR="$(pwd)"
 CMS_ENV_FILE="$SCRIPT_DIR/cms/.env"
 echo $CMS_ENV_FILE
-if [[ -f "$CMS_ENV_FILE" ]] ; then
+if [ -f "$CMS_ENV_FILE" ] ; then
     echo "Importing CMS config.."
     cd ./cms && yarn config-sync import -y
 else
