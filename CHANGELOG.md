@@ -15,6 +15,11 @@
 - [Network] Highlight the buttons to create new organisations/initiatives
 - [Network] Add a button to allow users to go back to the list view on mobile
 
+**Breaking changes**:
+
+- New mandatory variable, `window.MAPBOX_TOKEN`, inside `env.js` for Scientific Evidence ([details](https://github.com/Orcasa-Platform/orcasa-review4c?tab=readme-ov-file#installation))
+- Removed environment variable: `IMPORT_STRAPI_CONFIG`
+
 # v8
 
 - Allow admins to manage the homepage's recommendation section
@@ -25,11 +30,6 @@
 - [Network] Modify the content of the initiative's tooltip on the map when viewing the details of an initiative
 - [Network] Address an issue where the contact details of an initiative would appear twice on the detailed view
 - [Network] Address an issue where the value of the multi-selection dropdowns could be overlapped by the down arrow icon
-
-**Breaking changes**:
-
-- New mandatory variable, `window.MAPBOX_TOKEN`, inside `env.js` for Scientific Evidence ([details](https://github.com/Orcasa-Platform/orcasa-review4c?tab=readme-ov-file#installation))
-- Removed environment variable: `IMPORT_STRAPI_CONFIG`
 
 # v7
 
