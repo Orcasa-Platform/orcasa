@@ -109,19 +109,21 @@ const NetworkDiagram = ({
             <span>Funder</span>
           </div>
         </div>
-        <div className="flex gap-6 text-xs text-gray-200">
+        <div className="flex flex-col gap-4 text-xs text-gray-200 lg:flex-row lg:gap-6">
           <div>Initiative status:</div>
-          <div className="flex items-center gap-2">
-            <Active className="h-4 w-4" />
-            Active
-          </div>
-          <div className="flex items-center gap-2">
-            <Finished className="h-4 w-4" />
-            Finished
-          </div>
-          <div className="flex items-center gap-2">
-            <NotStarted className="h-4 w-4" />
-            Not started
+          <div className="flex gap-6">
+            <div className="flex items-center gap-2">
+              <Active className="h-4 w-4" />
+              Active
+            </div>
+            <div className="flex items-center gap-2">
+              <Finished className="h-4 w-4" />
+              Finished
+            </div>
+            <div className="flex items-center gap-2">
+              <NotStarted className="h-4 w-4" />
+              Not started
+            </div>
           </div>
         </div>
         <div className="flex-grow overflow-hidden">

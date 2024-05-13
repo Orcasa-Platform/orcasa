@@ -70,7 +70,7 @@ const SlidingLinkButton = React.forwardRef<
                   isCompact,
                 'group-hover:translate-x-0 group-focus:translate-x-0 lg:-translate-x-1/3':
                   position === 'left',
-                'translate-x-0 group-hover:-translate-x-1/4 group-focus:-translate-x-1/4':
+                '-translate-x-1/4 group-hover:-translate-x-1/4 group-focus:-translate-x-1/4 lg:translate-x-0':
                   position === 'right',
               },
             )}
