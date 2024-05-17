@@ -2,19 +2,21 @@
 'use client';
 import { PropsWithChildren } from 'react';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { Globe2, Users, Sheet, BarChart4 } from 'lucide-react';
 import Tractor from 'public/images/tractor.svg';
-import { useMediaMatch } from 'rooks';
 
 import { cn } from '@/lib/classnames';
 
 import { Module, modules } from '@/constants/modules';
 
-import ScientificEvidenceBanner from '@/components/scientific-evidence-banner';
+const ScientificEvidenceBanner = dynamic(() => import('@/components/scientific-evidence-banner'), {
+  ssr: false,
+});
 
 type NavLinkProps = PropsWithChildren<
   Omit<Module, 'name'> & {
@@ -52,7 +54,6 @@ const NavLink = ({ href, children, active, slug, ...rest }: NavLinkProps) => {
 
 export default function Nav() {
   const pathname = usePathname();
-  const isMobile = useMediaMatch('(max-width: 1024px)');
   return (
     <div className="js-main-nav absolute left-0 z-50 hidden h-full w-[90px] lg:block">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-gray-800 py-6">
@@ -67,7 +68,7 @@ export default function Nav() {
           />
           <span className="sr-only">Impact4Soil</span>
         </Link>
-        {!isMobile && <ScientificEvidenceBanner />}
+        <ScientificEvidenceBanner />
         <div className="mx-3 flex flex-col gap-3 py-px">
           {modules.map((module) => {
             const { href, name, slug } = module as Module;

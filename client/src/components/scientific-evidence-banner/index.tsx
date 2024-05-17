@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 
+import { useMediaMatch } from 'rooks';
+
 import { Button } from '@/components/ui/button';
 
 const ScientificEvidenceBanner = () => {
+  const isMobile = useMediaMatch('(max-width: 1024px)');
   const [bannerOpen, setBannerOpen] = useState(true);
   const closeBanner = () => {
     setBannerOpen(false);
@@ -16,7 +19,7 @@ const ScientificEvidenceBanner = () => {
   const isBannerClosed =
     typeof window !== 'undefined' && localStorage.getItem('SCIENTIFIC_EVIDENCE_BANNER_CLOSED');
 
-  if (isBannerClosed || !bannerOpen) return null;
+  if (isMobile || isBannerClosed || !bannerOpen) return null;
 
   return (
     <div className="se-banner absolute left-[95px] top-[260px] z-40 flex h-[76px] w-[196px] items-center justify-center shadow">
