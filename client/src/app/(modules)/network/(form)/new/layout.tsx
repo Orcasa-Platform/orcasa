@@ -11,6 +11,7 @@ export default function NetworkModuleLayout({ children }: { children: React.Reac
         Icon={ArrowLeft}
         scroll={false}
         className="fixed left-[130px] top-10 z-40"
+        buttonClassName="mr-[15px]"
       >
         Go back
       </SlidingLinkButton>

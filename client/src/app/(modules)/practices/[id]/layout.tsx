@@ -17,6 +17,7 @@ export default function PracticeDetailsLayout({ children }: { children: React.Re
           variant="dark"
           Icon={ArrowLeft}
           scroll={false}
+          buttonClassName="mr-[15px]"
         >
           Back to results
         </SlidingLinkButton>
@@ -31,6 +32,7 @@ export default function PracticeDetailsLayout({ children }: { children: React.Re
           variant="dark"
           Icon={ArrowLeft}
           scroll={false}
+          buttonClassName="mr-[15px]"
         >
           Back to results
         </SlidingLinkButton>

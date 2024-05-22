@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { cn } from '@/lib/classnames';
 import { format } from '@/lib/utils/formats';
@@ -120,14 +120,13 @@ export default function Network({
         </header>
         <div className="flex items-center justify-end">
           <SlidingLinkButton
-            Icon={ChevronRight}
+            Icon={ArrowRight}
             position="right"
             href={`/network/${
               type === 'project' ? 'initiative' : type
             }/${id}?${searchParams.toString()}`}
             buttonClassName={cn({
-              'bg-purple-200 group-hover:bg-purple-500 group-focus:bg-purple-500 group-focus:ring-purple-500':
-                type === 'project',
+              'bg-purple-200': type === 'project',
             })}
             // Next.js has a bug where the sidebar is not scrolled up to the top when navigating but
             // up to where `{children}` is visually located *within* the layout. Paddings around
