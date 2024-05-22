@@ -54,6 +54,7 @@ const NavLink = ({ href, children, active, slug, ...rest }: NavLinkProps) => {
 
 export default function Nav() {
   const pathname = usePathname();
+  const isPractices = pathname?.startsWith('/practices');
   return (
     <div className="js-main-nav absolute left-0 z-50 hidden h-full w-[90px] lg:block">
       <div className="flex h-full w-full flex-col items-center justify-start gap-20 overflow-y-auto overflow-x-hidden bg-gray-800 py-6">
@@ -68,7 +69,7 @@ export default function Nav() {
           />
           <span className="sr-only">Impact4Soil</span>
         </Link>
-        <ScientificEvidenceBanner />
+        {isPractices && <ScientificEvidenceBanner />}
         <div className="mx-3 flex flex-col gap-3 py-px">
           {modules.map((module) => {
             const { href, name, slug } = module as Module;
