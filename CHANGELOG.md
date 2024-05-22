@@ -1,3 +1,16 @@
+# v10
+
+- [Scientific Evidence] Address an issue where the layout would be inconsistent when resizing the screen
+- [Scientific Evidence] Address an issue where the “Reset all” button wouldn't reset all the filters
+- [Scientific Evidence] Address an issue where the values of the filters would be based on the selected land use type
+- [Scientific Evidence] Address an issue where the map wouldn't be updated when selecting a land use type
+- [Scientific Evidence] Improve the consistency of the module compared to the others
+- [Scientific Evidence] Indicate which filters apply to the map
+- [Scientific Evidence] Improve the design of the map tooltips
+- [Scientific Evidence] Display the land use types in bold in the title on top of the charts
+- [Scientific Evidence] Display a tooltip to invite users to visit the Practices module
+- [Practices] Display a tooltip to invite users to visit the Scientific Evidence module
+
 # v9
 
 - Remove “beta” from the platform

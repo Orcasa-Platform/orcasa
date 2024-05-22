@@ -28,6 +28,7 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
         <SlidingLinkButton
           href={`/network?${mapSearchParams.toString()}`}
           variant="dark"
+          buttonClassName="mr-[15px]"
           Icon={ArrowLeft}
           scroll={false}
         >
@@ -42,6 +43,7 @@ export default function NetworkModuleDetailsLayout({ children }: { children: Rea
             variant="dark"
             Icon={ArrowLeft}
             scroll={false}
+            buttonClassName="mr-[15px]"
           >
             Back to results
           </SlidingLinkButton>
