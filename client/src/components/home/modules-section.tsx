@@ -4,7 +4,8 @@
 import Link from 'next/link';
 
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import Map from 'public/images/homepage-map.svg';
+
+import Map from '/public/images/homepage-map.svg';
 
 import { modules } from '@/constants/modules';
 

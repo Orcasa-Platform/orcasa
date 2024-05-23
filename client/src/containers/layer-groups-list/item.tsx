@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import Info from 'public/images/info.svg?unoptimized';
+import Info from '/public/images/info.svg?unoptimized';
 
 import { LayerGroupListResponseDataItem } from '@/types/generated/strapi.schemas';
 

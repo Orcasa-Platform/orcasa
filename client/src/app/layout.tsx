@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     site: '@IRC_ORCaSa',
     creator: '@Vizzuality',
   },
-  themeColor: '#ffffff',
   metadataBase: new URL('https://impact4soil.com/'),
   alternates: {
     canonical: `/`,

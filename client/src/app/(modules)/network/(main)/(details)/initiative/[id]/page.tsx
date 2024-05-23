@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
-import ExternalLink from 'public/images/external-link.svg';
+
+import ExternalLink from '/public/images/external-link.svg';
 
 import { getProjects, getProjectsId } from '@/types/generated/project';
 import { getRegions } from '@/types/generated/region';

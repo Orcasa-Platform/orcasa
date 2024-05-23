@@ -3,18 +3,18 @@
 import { useEffect, useRef } from 'react';
 
 import { X } from 'lucide-react';
-import InfoButton from 'public/images/info-dark.svg';
+
+import InfoButton from '/public/images/info-dark.svg';
 
 import { cn } from '@/lib/classnames';
 
 import { useNetworkFilterSidebarOpen, useNetworkFilters } from '@/store/network';
-
+import { Button } from '@/components/ui/button';
 import {
   useNetworkOrganizationFiltersOptions,
   useNetworkProjectFiltersOptions,
 } from '@/hooks/networks';
 
-import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 import {

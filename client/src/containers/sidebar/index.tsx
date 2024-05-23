@@ -3,15 +3,15 @@
 
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-import ChevronLeft from 'public/images/chevron-left.svg';
+import ChevronLeft from '/public/images/chevron-left.svg';
 
 import { cn } from '@/lib/classnames';
 
 import { useSidebarOpen } from '@/store';
 
-import { Section } from '@/types/app';
-
 import { Button } from '@/components/ui/button';
+
+import { Section } from '@/types/app';
 
 /**
  * Get and (immediately) set the scroll position of the sidebar

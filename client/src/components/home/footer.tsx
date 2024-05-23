@@ -2,10 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { ExternalLink } from 'lucide-react';
-import EuropeFlag from 'public/images/europe-flag.svg';
-import LinkedinIcon from 'public/images/linkedin-icon.svg';
-import MailIcon from 'public/images/mail-icon.svg';
-import XIcon from 'public/images/x-icon.svg';
+
+import EuropeFlag from '/public/images/europe-flag.svg';
+import LinkedinIcon from '/public/images/linkedin-icon.svg';
+import MailIcon from '/public/images/mail-icon.svg';
+import XIcon from '/public/images/x-icon.svg';
 
 const Footer = () => (
   <div id="about" className="!mt-0">

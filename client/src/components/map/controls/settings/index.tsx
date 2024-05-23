@@ -3,7 +3,8 @@
 import { FC, useState } from 'react';
 
 import { X } from 'lucide-react';
-import Settings from 'public/images/settings.svg';
+
+import Settings from '/public/images/settings.svg';
 
 import { cn } from '@/lib/classnames';
 

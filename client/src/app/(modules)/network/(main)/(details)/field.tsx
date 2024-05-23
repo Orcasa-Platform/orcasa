@@ -4,11 +4,9 @@ import { useRef, useState } from 'react';
 
 import Link from 'next/link';
 
-import InfoButton from 'public/images/info-dark.svg';
+import InfoButton from '/public/images/info-dark.svg';
 
 import { cn } from '@/lib/classnames';
-
-import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
 import { Button } from '@/components/ui/button';
@@ -19,6 +17,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+
+import { useIsOverTwoLines } from '@/hooks/ui/utils';
 
 type Type = 'project' | 'organization';
 type Field = {
