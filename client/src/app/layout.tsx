@@ -61,6 +61,9 @@ export const metadata: Metadata = {
     icon: '/metadata/favicon_48x48.png',
     apple: '/metadata/apple-touch-icon-180x180.png',
   },
+  other: {
+    'google-site-verification': 'Ha6jwp3A4AayEYH4yYeXjGcZWjv3utaIa9vBqMb9QkU',
+  },
 };
 
 const NEXT_PUBLIC_MATOMO_URL = process.env.NEXT_PUBLIC_MATOMO_URL;
