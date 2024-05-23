@@ -30,4 +30,10 @@ const nextConfig = {
   },
 };
 
+// https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+// TODO: Find where is useSearchParams used apart from the explicit hooks/navigation and wrap it in Suspense
+nextConfig.experimental = {
+  missingSuspenseWithCSRBailout: false
+};
+
 export default nextConfig;

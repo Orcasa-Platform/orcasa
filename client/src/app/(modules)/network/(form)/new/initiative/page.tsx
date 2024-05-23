@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef, Suspense } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -26,6 +26,7 @@ import RenderField from '@/components/form/render-field';
 import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+
 import Alert from '@/styles/icons/alert.svg';
 import Email from '@/styles/icons/email.svg';
 import Info from '@/styles/icons/info.svg?unoptimized';
@@ -555,7 +556,7 @@ export default function ProjectForm() {
       .filter((key) => fieldsArray.includes(key))
       .map((key) => <RenderField key={key} id={key} form={form} fields={fields} />);
   return (
-    <>
+    <Suspense>
       <Form {...form}>
         <form
           noValidate
@@ -651,6 +652,6 @@ export default function ProjectForm() {
           </div>
         </form>
       </Form>
-    </>
+    </Suspense>
   );
 }

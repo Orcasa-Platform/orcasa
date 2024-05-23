@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, Suspense } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -25,6 +25,7 @@ import RenderField from '@/components/form/render-field';
 import { Field } from '@/components/form/types';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+
 import Alert from '@/styles/icons/alert.svg';
 import Email from '@/styles/icons/email.svg';
 import Notebook from '@/styles/icons/notebook.svg';
@@ -297,7 +298,7 @@ export default function OrganisationForm() {
   };
 
   return (
-    <>
+    <Suspense>
       <Form {...form}>
         <form
           noValidate
@@ -355,6 +356,6 @@ export default function OrganisationForm() {
           </div>
         </form>
       </Form>
-    </>
+    </Suspense>
   );
 }
