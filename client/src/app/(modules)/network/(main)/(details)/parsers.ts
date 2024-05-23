@@ -111,14 +111,6 @@ export const getProjectFields = (
     });
   }
 
-  if (hasData(fields.practices) && fields.practices?.data?.length) {
-    res.push({
-      label: `Practice${fields.practices?.data?.length > 1 ? 's' : ''}`,
-      value: fields.practices?.data?.map((practice) => practice.attributes?.title),
-      url: fields.practices?.data?.map((practice) => `/practices/${practice.id}`),
-    });
-  }
-
   if (hasData(fields.land_use_types) && fields.land_use_types?.data?.length) {
     res.push({
       label: `Land use type${fields.land_use_types?.data?.length > 1 ? 's' : ''}`,
@@ -166,6 +158,14 @@ export const getProjectFields = (
     res.push({
       label: `Main area${mainAreaOfInterventions.length > 1 ? 's' : ''} of intervention`,
       value: mainAreaOfInterventions.join(', '),
+    });
+  }
+
+  if (hasData(fields.practices) && fields.practices?.data?.length) {
+    res.push({
+      label: `Practice${fields.practices?.data?.length > 1 ? 's' : ''}`,
+      value: fields.practices?.data?.map((practice) => practice.attributes?.title),
+      url: fields.practices?.data?.map((practice) => `/practices/${practice.id}`),
     });
   }
 
