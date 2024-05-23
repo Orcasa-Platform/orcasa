@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import React from 'react';
 
-import { JSONConfiguration, JSONConverter } from '@deck.gl/json/typed';
+import { JSONConfiguration, JSONConverter } from '@deck.gl/json';
 
 import FUNCTIONS from '@/lib/utils';
 
