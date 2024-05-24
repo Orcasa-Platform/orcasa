@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from 'react';
 
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import { init, push } from '@socialgouv/matomo-next';
 
 import env from '@/env.mjs';
 
 const Matomo = () => {
-  const searchParams = useSearchParams();
   const pathname = usePathname();
 
   const [initialised, setInitialised] = useState(false);
@@ -26,12 +25,9 @@ const Matomo = () => {
   // Send page views
   useEffect(() => {
     if (!pathname) return;
-
-    const url = pathname + (searchParams ? '?' + searchParams.toString() : '');
-
-    push(['setCustomUrl', url]);
+    push(['setCustomUrl', pathname]);
     push(['trackPageView']);
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return null;
 };
