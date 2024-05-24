@@ -11,6 +11,7 @@ import { NetworkFilters, NetworkOrganizationFilters, NetworkProjectFilters } fro
 
 import { useGetAreaOfInterventions } from '@/types/generated/area-of-intervention';
 import { useGetCountries } from '@/types/generated/country';
+import { useGetLandUseTypes } from '@/types/generated/land-use-type';
 import {
   useGetOrganizations,
   useGetOrganizationsId,
@@ -339,6 +340,19 @@ const getQueryFilters = (filters: NetworkFilters) => {
                 },
               ])
               .flat(),
+          },
+        ]
+      : []),
+    ...(filters.interventionLandUseTypes.length > 0
+      ? [
+          {
+            $or: filters.interventionLandUseTypes.map((id) => ({
+              land_use_types: {
+                id: {
+                  $in: id,
+                },
+              },
+            })),
           },
         ]
       : []),
@@ -1124,11 +1138,39 @@ export const useNetworkProjectFiltersOptions = (): Record<
     [interventionAreaData],
   );
 
+  const { data: landUseTypesData } = useGetLandUseTypes(
+    {
+      fields: ['name'],
+      sort: 'name',
+      'pagination[pageSize]': 9999,
+    },
+    {
+      query: {
+        queryKey: ['intervention-land-use-types'],
+      },
+    },
+  );
+
+  const interventionLandUseTypes = useMemo(() => {
+    if (!landUseTypesData || typeof landUseTypesData?.data === 'undefined') {
+      return [];
+    }
+    return landUseTypesData?.data
+      .map((item) => ({
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        label: item.attributes!.name,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        value: item.id!,
+      }))
+      .filter((l) => !!l.label && !!l.value);
+  }, [landUseTypesData]);
+
   return {
     coordinationCountry: country,
     interventionCountry: country,
     interventionRegion: region,
     interventionArea,
+    interventionLandUseTypes,
     projectType,
     status: [
       { label: 'Active', value: NetworkProjectStatusFilter.Active },

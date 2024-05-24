@@ -68,6 +68,7 @@ export default function FiltersSidebar({ isMobile = false }: { isMobile?: boolea
             interventionRegion: [],
             interventionCountry: [],
             interventionArea: [],
+            interventionLandUseTypes: [],
           })
         }
       >
@@ -292,6 +293,21 @@ export default function FiltersSidebar({ isMobile = false }: { isMobile?: boolea
             value={filters.interventionArea ?? []}
             options={projectFiltersOptions.interventionArea}
             onChange={(value) => setFilters({ ...filters, interventionArea: value })}
+            disabled={filters.type?.includes('organization') && !filters.type?.includes('project')}
+          />
+        </div>
+        <div>
+          <label htmlFor="initiative-land-use-type" className="block pb-1 text-sm text-gray-200">
+            {"Initiative's"} land use type
+          </label>
+          <MultiCombobox
+            id="initiative-land-use-type"
+            name="Initiative's land use type"
+            placeholder="Select"
+            variant="dark"
+            value={filters.interventionLandUseTypes ?? []}
+            options={projectFiltersOptions.interventionLandUseTypes}
+            onChange={(value) => setFilters({ ...filters, interventionLandUseTypes: value })}
             disabled={filters.type?.includes('organization') && !filters.type?.includes('project')}
           />
         </div>
