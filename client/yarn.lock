@@ -3018,7 +3018,6 @@ __metadata:
     "@radix-ui/react-switch": "npm:^1.0.3"
     "@radix-ui/react-tabs": "npm:^1.0.4"
     "@radix-ui/react-tooltip": "npm:^1.0.6"
-    "@socialgouv/matomo-next": "npm:^1.9.0"
     "@svgr/webpack": "npm:^8.1.0"
     "@t3-oss/env-nextjs": "npm:0.4.1"
     "@tailwindcss/typography": "npm:0.5.9"
@@ -4161,15 +4160,6 @@ __metadata:
   version: 1.10.2
   resolution: "@rushstack/eslint-patch@npm:1.10.2"
   checksum: 10/a92563ee28aa903ee37f5d34c747a8f5641c0a5a7020881902da8fccf94e208c923ed708aef41989f4b1d328cb4c216166ab108c6c2d72ebf0b5b6c18d1461d0
-  languageName: node
-  linkType: hard
-
-"@socialgouv/matomo-next@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "@socialgouv/matomo-next@npm:1.9.0"
-  peerDependencies:
-    next: ">= 9.5.5"
-  checksum: 10/4079c0a377b64ce071939f094578bae55be9ffef3ee2e9d28861131b30623daf1ffe47d44503f2479c29787386ba70f2f8dfdc02b26865bcd8b00a694ddad5e8
   languageName: node
   linkType: hard
 
