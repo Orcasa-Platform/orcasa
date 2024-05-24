@@ -52,7 +52,7 @@ const FieldLink = ({
       <ExternalLink className="ml-2 inline h-4 w-4 min-w-fit" />
     </a>
   ) : (
-    <Link className="text-sm font-semibold leading-7 text-purple-400" href={`${url}`}>
+    <Link className="text-sm font-semibold text-purple-400" href={`${url}`}>
       {children}
     </Link>
   );

@@ -149,6 +149,7 @@ const Item = ({
           {
             'bg-gray-650 text-gray-200': type === 'organization',
             'bg-purple-500 text-white': type === 'project',
+            'bg-green-700 text-white': type === 'organization' && isFirstNode,
           },
         )}
       >
