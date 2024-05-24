@@ -103,6 +103,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
             'country_of_interventions',
             'main_area_of_intervention',
             'practices',
+            'land_use_types',
             'sustainable_development_goals',
           ],
         ).map((field) => (
