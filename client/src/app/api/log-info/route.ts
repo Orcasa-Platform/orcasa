@@ -1,7 +1,7 @@
 // utils/gitUtils.js
 import { execSync } from 'child_process';
 
-export function getLastCommitInfo() {
+function getLastCommitInfo() {
   try {
     // Fetch the last commit SHA and message
     const commitInfo = execSync('git log -1 --format=%H%n%B').toString().trim();
