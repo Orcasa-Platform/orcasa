@@ -82,8 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Suspense fallback={null}>
             <DefaultMapSettings />
             <Matomo />
+            {children}
           </Suspense>
-          {children}
         </body>
       </html>
     </Providers>
