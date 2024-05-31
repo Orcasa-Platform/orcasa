@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 
-import CloseDrawer from 'public/images/close-drawer.svg';
+import CloseDrawer from '/public/images/close-drawer.svg';
+
 import { Drawer as DrawerPrimitive } from 'vaul';
 
 import { cn } from '@/lib/classnames';

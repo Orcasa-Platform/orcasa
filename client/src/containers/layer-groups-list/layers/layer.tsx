@@ -2,19 +2,19 @@
 
 import { ReactElement, cloneElement, useCallback, useMemo } from 'react';
 
-import Info from 'public/images/info.svg?unoptimized';
-import Link from 'public/images/link.svg';
+import Info from '/public/images/info.svg?unoptimized';
+import Link from '/public/images/link.svg';
 
 import { cn } from '@/lib/classnames';
 import { JSON_CONFIGURATION, parseConfig } from '@/lib/json-converter';
 
 import { useLayers, useLayersSettings } from '@/store';
 
-import { LayerGroupLayersDataItem } from '@/types/generated/strapi.schemas';
-
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Switch } from '@/components/ui/switch';
+
+import { LayerGroupLayersDataItem } from '@/types/generated/strapi.schemas';
 
 interface Field {
   key: string;

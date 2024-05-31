@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     site: '@IRC_ORCaSa',
     creator: '@Vizzuality',
   },
-  themeColor: '#ffffff',
   metadataBase: new URL('https://impact4soil.com/'),
   alternates: {
     canonical: `/`,
@@ -83,8 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Suspense fallback={null}>
             <DefaultMapSettings />
             <Matomo />
+            {children}
           </Suspense>
-          {children}
         </body>
       </html>
     </Providers>

@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
-import ExternalLink from 'public/images/external-link.svg';
-import NotepadText from 'public/images/notepad-text.svg';
-import Tractor from 'public/images/tractor.svg';
+
+import ExternalLink from '/public/images/external-link.svg';
+import NotepadText from '/public/images/notepad-text.svg';
+import Tractor from '/public/images/tractor.svg';
 
 import { getPractices, getPracticesId } from '@/types/generated/practice';
 

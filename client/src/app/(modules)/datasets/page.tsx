@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import Filter from 'public/images/filter.svg';
+import Filter from '/public/images/filter.svg';
 
 import { cn } from '@/lib/classnames';
 

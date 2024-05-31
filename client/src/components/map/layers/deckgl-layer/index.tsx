@@ -3,7 +3,7 @@
 
 import { useEffect } from 'react';
 
-import { Layer } from '@deck.gl/core/typed';
+import { Layer } from '@deck.gl/core';
 
 import { LayerProps } from '@/types/layers';
 

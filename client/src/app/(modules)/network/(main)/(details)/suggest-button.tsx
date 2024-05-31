@@ -1,6 +1,6 @@
 'use client';
 
-import Pen from 'public/images/pen.svg';
+import Pen from '/public/images/pen.svg';
 
 import { useGetNetworkSuggestion } from '@/types/generated/network-suggestion';
 

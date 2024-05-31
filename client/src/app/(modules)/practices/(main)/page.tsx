@@ -2,7 +2,8 @@
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
 
-import Filter from 'public/images/filter.svg';
+import Filter from '/public/images/filter.svg';
+
 import { usePreviousImmediate } from 'rooks';
 
 import { cn } from '@/lib/classnames';

@@ -6,13 +6,10 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 
 import { ExternalLink } from 'lucide-react';
-import InfoButton from 'public/images/info-dark.svg';
 
-import { cn } from '@/lib/classnames';
-import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
+import InfoButton from '/public/images/info-dark.svg';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
-
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
@@ -21,6 +18,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+
+import { cn } from '@/lib/classnames';
+import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
 
 export type FieldType = {
   label: string;

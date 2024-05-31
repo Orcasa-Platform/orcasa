@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import LinkIcon from 'public/images/link.svg';
+import LinkIcon from '/public/images/link.svg';
 
 import { cn } from '@/lib/classnames';
 

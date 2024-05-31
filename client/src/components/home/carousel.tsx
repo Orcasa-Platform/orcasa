@@ -5,11 +5,12 @@ import React, { useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, LucideIcon } from 'lucide-react';
-import Factory from 'public/images/factory.svg';
-import HeartHandshake from 'public/images/heart-handshake.svg';
-import Landmark from 'public/images/landmark.svg';
-import Microscope from 'public/images/microscope.svg';
-import Scale from 'public/images/scale.svg';
+
+import Factory from '/public/images/factory.svg';
+import HeartHandshake from '/public/images/heart-handshake.svg';
+import Landmark from '/public/images/landmark.svg';
+import Microscope from '/public/images/microscope.svg';
+import Scale from '/public/images/scale.svg';
 
 import { Testimony } from '@/types/generated/strapi.schemas';
 

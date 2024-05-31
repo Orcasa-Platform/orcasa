@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
 import ReactQuill from 'react-quill';
 
-import InfoButton from 'public/images/info-dark.svg';
+import InfoButton from '/public/images/info-dark.svg';
 
 import InputComponent from '@/components/form/input-component';
 import { Button } from '@/components/ui/button';
