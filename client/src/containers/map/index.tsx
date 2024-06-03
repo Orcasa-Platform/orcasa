@@ -65,7 +65,7 @@ const getMapsDefaultProps = (
   };
 };
 
-export default function MapContainer() {
+export default function MapContainer({ maxZoom: _maxZoom }: { maxZoom?: number }) {
   const padding = useMapPadding();
   const previousPadding = usePreviousImmediate(padding);
 
@@ -215,7 +215,7 @@ export default function MapContainer() {
         id={id}
         initialViewState={initialViewState}
         minZoom={minZoom}
-        maxZoom={maxZoom}
+        maxZoom={_maxZoom || maxZoom}
         mapStyle="mapbox://styles/orcasa/clu14cfkp01nx01nrc851220b"
         interactiveLayerIds={layersInteractiveIds.map((id) => id.toString())}
         onClick={handleMapClick}

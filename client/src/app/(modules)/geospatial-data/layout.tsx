@@ -12,7 +12,7 @@ export const metadata = {
 export default function GeospatialDataModuleLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-gray-800">
-      <Map />
+      <Map maxZoom={15} />
       <MobileGeospatialFooter />
       <Sidebar section="geospatial-data">{children}</Sidebar>
     </div>
