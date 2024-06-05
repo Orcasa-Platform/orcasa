@@ -491,6 +491,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "source_name",
+        "source_id",
+        "title"
+      ],
       "edit": [
         [
           {
@@ -508,25 +514,11 @@
             "size": 6
           },
           {
-            "name": "practice_url",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "language",
-            "size": 6
-          },
-          {
-            "name": "publication_date",
-            "size": 4
-          }
-        ],
-        [
-          {
             "name": "short_description",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "detailed_description",
             "size": 6
@@ -534,47 +526,17 @@
         ],
         [
           {
-            "name": "sync",
-            "size": 4
-          },
-          {
-            "name": "reviewed",
-            "size": 4
-          },
-          {
-            "name": "has_changed",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "organizations",
+            "name": "project_fund",
             "size": 6
           },
           {
-            "name": "projects",
+            "name": "institution_funding",
             "size": 6
           }
         ],
         [
-          {
-            "name": "review_comments",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "countries",
-            "size": 6
-          },
           {
             "name": "state_province",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "map_location",
             "size": 6
           },
           {
@@ -584,33 +546,7 @@
         ],
         [
           {
-            "name": "practice_intervention",
-            "size": 6
-          },
-          {
-            "name": "land_use_has_changed",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "land_use_priors",
-            "size": 6
-          },
-          {
-            "name": "land_use_types",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "subinterventions",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "implem_decade",
+            "name": "map_location",
             "size": 6
           },
           {
@@ -620,11 +556,11 @@
         ],
         [
           {
-            "name": "institution_funding",
-            "size": 6
+            "name": "publication_date",
+            "size": 4
           },
           {
-            "name": "project_fund",
+            "name": "implem_decade",
             "size": 6
           }
         ],
@@ -634,16 +570,80 @@
             "size": 6
           },
           {
+            "name": "has_changed",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "land_use_has_changed",
+            "size": 6
+          },
+          {
             "name": "degradation_assessed",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "language",
+            "size": 6
+          },
+          {
+            "name": "land_use_types",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "sync",
+            "size": 4
+          },
+          {
+            "name": "practice_url",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "land_use_priors",
+            "size": 6
+          },
+          {
+            "name": "subinterventions",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "practice_intervention",
+            "size": 6
+          },
+          {
+            "name": "projects",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "organizations",
+            "size": 6
+          },
+          {
+            "name": "countries",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "reviewed",
+            "size": 4
+          },
+          {
+            "name": "review_comments",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "source_name",
-        "source_id",
-        "title"
       ]
     },
     "uid": "api::practice.practice"
