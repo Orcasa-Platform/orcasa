@@ -403,6 +403,34 @@
           "sortable": false
         }
       },
+      "reviewed": {
+        "edit": {
+          "label": "Reviewed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Reviewed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "review_comments": {
+        "edit": {
+          "label": "Review Comments",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Review Comments",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -463,12 +491,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "source_name",
-        "source_id",
-        "title"
-      ],
       "edit": [
         [
           {
@@ -486,73 +508,7 @@
             "size": 6
           },
           {
-            "name": "short_description",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "detailed_description",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "project_fund",
-            "size": 6
-          },
-          {
-            "name": "institution_funding",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "state_province",
-            "size": 6
-          },
-          {
-            "name": "further_location",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "map_location",
-            "size": 6
-          },
-          {
-            "name": "implem_date",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "publication_date",
-            "size": 4
-          },
-          {
-            "name": "implem_decade",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "main_purposes",
-            "size": 6
-          },
-          {
-            "name": "has_changed",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "land_use_has_changed",
-            "size": 6
-          },
-          {
-            "name": "degradation_assessed",
+            "name": "practice_url",
             "size": 6
           }
         ],
@@ -562,7 +518,17 @@
             "size": 6
           },
           {
-            "name": "land_use_types",
+            "name": "publication_date",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "short_description",
+            "size": 6
+          },
+          {
+            "name": "detailed_description",
             "size": 6
           }
         ],
@@ -572,23 +538,17 @@
             "size": 4
           },
           {
-            "name": "practice_url",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "land_use_priors",
-            "size": 6
+            "name": "reviewed",
+            "size": 4
           },
           {
-            "name": "subinterventions",
-            "size": 6
+            "name": "has_changed",
+            "size": 4
           }
         ],
         [
           {
-            "name": "practice_intervention",
+            "name": "organizations",
             "size": 6
           },
           {
@@ -598,14 +558,92 @@
         ],
         [
           {
-            "name": "organizations",
+            "name": "review_comments",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "countries",
             "size": 6
+          },
+          {
+            "name": "state_province",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "map_location",
+            "size": 6
+          },
+          {
+            "name": "further_location",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "practice_intervention",
+            "size": 6
+          },
+          {
+            "name": "land_use_has_changed",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "land_use_priors",
+            "size": 6
+          },
+          {
+            "name": "land_use_types",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "subinterventions",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "implem_decade",
+            "size": 6
+          },
+          {
+            "name": "implem_date",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "institution_funding",
+            "size": 6
+          },
+          {
+            "name": "project_fund",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "main_purposes",
+            "size": 6
+          },
+          {
+            "name": "degradation_assessed",
+            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "source_name",
+        "source_id",
+        "title"
       ]
     },
     "uid": "api::practice.practice"
