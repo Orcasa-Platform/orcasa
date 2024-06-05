@@ -1501,6 +1501,8 @@ export type TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAt
     practice_intervention?: TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects;
     organizations?: TestimonyCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -3009,6 +3011,8 @@ export type SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDat
     practice_intervention?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesProjects;
     organizations?: SustainableDevGoalProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -3965,6 +3969,8 @@ export type SubinterventionPracticesDataItemAttributes = {
   practice_intervention?: SubinterventionPracticesDataItemAttributesPracticeIntervention;
   projects?: SubinterventionPracticesDataItemAttributesProjects;
   organizations?: SubinterventionPracticesDataItemAttributesOrganizations;
+  reviewed?: boolean;
+  review_comments?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -6010,6 +6016,8 @@ export type RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesP
     practice_intervention?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesProjects;
     organizations?: RegionProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -7837,6 +7845,8 @@ export type ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjec
     practice_intervention?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects;
     organizations?: ProjectCountryOfCoordinationDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -9092,6 +9102,8 @@ export interface Practice {
   practice_intervention: PracticePracticeIntervention;
   projects?: PracticeProjects;
   organizations?: PracticeOrganizations;
+  reviewed?: boolean;
+  review_comments?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -9570,6 +9582,8 @@ export type PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataI
     practice_intervention?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects;
     organizations?: PracticeCountriesDataItemAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -10543,6 +10557,8 @@ export type PracticeRequestData = {
   practice_intervention: PracticeRequestDataPracticeIntervention;
   projects?: PracticeRequestDataProjectsItem[];
   organizations?: PracticeRequestDataOrganizationsItem[];
+  reviewed?: boolean;
+  review_comments?: string;
 };
 
 export type PageResponseMeta = { [key: string]: any };
@@ -11986,6 +12002,8 @@ export type OrganizationCountryDataAttributesRegionDataAttributesProjectsDataIte
     practice_intervention?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesProjects;
     organizations?: OrganizationCountryDataAttributesRegionDataAttributesProjectsDataItemAttributesLeadPartnerDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -13947,6 +13965,8 @@ export type LandUseTypePracticesPriorDataItemAttributes = {
   practice_intervention?: LandUseTypePracticesPriorDataItemAttributesPracticeIntervention;
   projects?: LandUseTypePracticesPriorDataItemAttributesProjects;
   organizations?: LandUseTypePracticesPriorDataItemAttributesOrganizations;
+  reviewed?: boolean;
+  review_comments?: string;
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;
@@ -16091,6 +16111,8 @@ export type CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordi
     practice_intervention?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesPracticeIntervention;
     projects?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesProjects;
     organizations?: CountryRegionDataAttributesProjectsDataItemAttributesCountryOfCoordinationDataAttributesPracticesDataItemAttributesOrganizations;
+    reviewed?: boolean;
+    review_comments?: string;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;

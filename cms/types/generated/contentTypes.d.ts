@@ -1444,6 +1444,8 @@ export interface ApiPracticePractice extends Schema.CollectionType {
       'manyToMany',
       'api::organization.organization'
     >;
+    reviewed: Attribute.Boolean & Attribute.DefaultTo<false>;
+    review_comments: Attribute.Text & Attribute.Private;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
