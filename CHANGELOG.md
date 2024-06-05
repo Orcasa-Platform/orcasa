@@ -1,3 +1,29 @@
+# v11
+
+- Send page view events to Matomo when navigating the platform
+- Ability to opt-out of the Matomo analytics on the Personal data protection page
+- Add the Google verification meta tag
+- Address several Node.js vulnerabilities
+  - As part of this change, Strapi has been upgraded to 4.24.4
+- Allow easier access to debug information in the platform (`/api/log`)
+- [Geospatial Data] Increase the map's maximum zoom level to 15
+- [Scientific Evidence] Ability to go back to the first screen to see the total number of meta-analyses and primary studies
+- [Scientific Evidence] Change the scale of the impact charts to -100% to 100%
+  - Lines that overflow are displayed as discontinued past the extremities of the scale
+- [Scientifice Evidence] Indicate the selected land use type in the sentence at the top of the results
+- [Scientific Evidence] Address incorrect positive/negative signs in the tooltips of the impact charts
+- [Scientific Evidence] Address an issue where the chart in the filters panel would appear empty
+- [Scientific Evidence] Improve the layout of the detailed view on smaller desktop screens
+- [Practices] Import the FAO data
+- [Practices] Address inconsistent spacing on the detailed view
+- [Practices] Add two new fields to the Practices model: `reviewed` (boolean) and `review_comments` (text)
+  - `reviewed` defaults to `false` but is automatically set to `true` for all the existing practices
+- [Network] Ability to filter the initiatives by land use type
+- [Network] Display linked practices in the detailed views of the organisations and initiatives
+- [Network] Display the top level organisation on a green background in the diagram
+
+
+
 # v10
 
 - [Scientific Evidence] Address an issue where the layout would be inconsistent when resizing the screen

@@ -19,6 +19,7 @@ export interface NetworkProjectFilters {
   interventionRegion: number[];
   interventionCountry: number[];
   interventionArea: number[];
+  interventionLandUseTypes: number[];
 }
 
 export type NetworkFilters = NetworkGeneralFilters &
@@ -42,6 +43,7 @@ const filtersAtom = atom<NetworkFilters>({
   interventionRegion: [],
   interventionCountry: [],
   interventionArea: [],
+  interventionLandUseTypes: [],
 });
 
 export const useNetworkFilters = () => {

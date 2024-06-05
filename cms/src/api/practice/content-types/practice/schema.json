@@ -136,6 +136,14 @@
       "relation": "manyToMany",
       "target": "api::organization.organization",
       "mappedBy": "practices"
+    },
+    "reviewed": {
+      "type": "boolean",
+      "default": false
+    },
+    "review_comments": {
+      "type": "text",
+      "private": true
     }
   }
 }

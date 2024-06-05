@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, Suspense } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -297,7 +297,7 @@ export default function OrganisationForm() {
   };
 
   return (
-    <>
+    <Suspense>
       <Form {...form}>
         <form
           noValidate
@@ -355,6 +355,6 @@ export default function OrganisationForm() {
           </div>
         </form>
       </Form>
-    </>
+    </Suspense>
   );
 }

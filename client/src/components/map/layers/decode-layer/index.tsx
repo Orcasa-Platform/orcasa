@@ -1,9 +1,9 @@
 import { RasterLayer } from 'react-map-gl';
 
-import { Layer, LayerExtension } from '@deck.gl/core/typed';
-import { GeoBoundingBox, TileLayer } from '@deck.gl/geo-layers/typed';
-import { BitmapLayer } from '@deck.gl/layers/typed';
-import GL from '@luma.gl/constants';
+import { Layer, LayerExtension } from '@deck.gl/core';
+import { GeoBoundingBox, TileLayer } from '@deck.gl/geo-layers';
+import { BitmapLayer } from '@deck.gl/layers';
+import { GL } from '@luma.gl/constants';
 import { RasterSource } from 'mapbox-gl';
 
 export interface DecodeLayerProps {
@@ -78,7 +78,6 @@ class DecodeLayer {
 
         const { zoom } = subLayerTile;
         const { west, south, east, north } = subLayerTile.bbox as GeoBoundingBox;
-
         if (subLayerData) {
           return new BitmapLayer({
             id: subLayerId,

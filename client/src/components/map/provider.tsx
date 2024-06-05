@@ -4,8 +4,8 @@ import { createContext, PropsWithChildren, useCallback, useContext, useMemo, use
 
 import { useControl } from 'react-map-gl';
 
-import { Layer, LayersList } from '@deck.gl/core/typed';
-import { MapboxOverlay, MapboxOverlayProps } from '@deck.gl/mapbox/typed';
+import { Layer, LayersList } from '@deck.gl/core';
+import { MapboxOverlay, MapboxOverlayProps } from '@deck.gl/mapbox';
 
 interface DeckMapboxOverlayContext {
   addLayer: (layer: Layer<object>) => void;

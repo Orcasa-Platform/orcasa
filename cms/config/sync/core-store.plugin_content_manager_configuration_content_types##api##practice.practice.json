@@ -403,6 +403,34 @@
           "sortable": false
         }
       },
+      "reviewed": {
+        "edit": {
+          "label": "Reviewed",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Reviewed",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "review_comments": {
+        "edit": {
+          "label": "Review Comments",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Review Comments",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "CreatedAt",
@@ -603,6 +631,16 @@
           },
           {
             "name": "countries",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "reviewed",
+            "size": 4
+          },
+          {
+            "name": "review_comments",
             "size": 6
           }
         ]

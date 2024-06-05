@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
-import ExternalLink from 'public/images/external-link.svg';
+
+import ExternalLink from '/public/images/external-link.svg';
 
 import { getOrganizationsId } from '@/types/generated/organization';
 
@@ -58,11 +59,13 @@ export default async function OrganizationDetails({ params }: OrganizationDetail
       <NetworkDiagram data={organization} id={id} type="organization" />
       <h2 className="font-serif text-xl">More details</h2>
       <div className="flex flex-col gap-4">
-        {getOrganizationFields(organization, ['description', 'main_organization_theme']).map(
-          (field) => (
-            <Field key={field.label} {...field} type="organization" />
-          ),
-        )}
+        {getOrganizationFields(organization, [
+          'description',
+          'main_organization_theme',
+          'practices',
+        ]).map((field) => (
+          <Field key={field.label} {...field} type="organization" />
+        ))}
       </div>
       <div className="flex justify-end gap-4 border-t border-gray-600 pt-6">
         <SuggestButton data={organization} label="organisation" />

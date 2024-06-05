@@ -3,14 +3,12 @@ import { useRef } from 'react';
 import Link from 'next/link';
 
 import { ChevronDown } from 'lucide-react';
-import CoordinatorLetter from 'public/images/network-links/coordinator.svg';
-import FunderLetter from 'public/images/network-links/funder.svg';
-import PartnerLetter from 'public/images/network-links/partner.svg';
 
-import { cn } from '@/lib/classnames';
+import CoordinatorLetter from '/public/images/network-links/coordinator.svg';
+import FunderLetter from '/public/images/network-links/funder.svg';
+import PartnerLetter from '/public/images/network-links/partner.svg';
 
 import { useMapSearchParams } from '@/store';
-
 import { Organization, Project } from '@/types/generated/strapi.schemas';
 
 import type { Category } from '@/hooks/networks/utils';
@@ -20,6 +18,8 @@ import { CollapsibleTrigger } from '@/components/ui/collapsible';
 import Active from '@/styles/icons/initiative-active.svg';
 import Finished from '@/styles/icons/initiative-finished.svg';
 import NotStarted from '@/styles/icons/initiative-not-started.svg';
+
+import { cn } from '@/lib/classnames';
 
 type PathProps = {
   heightIndex: number;
@@ -149,6 +149,7 @@ const Item = ({
           {
             'bg-gray-650 text-gray-200': type === 'organization',
             'bg-purple-500 text-white': type === 'project',
+            'bg-green-700 text-white': type === 'organization' && isFirstNode,
           },
         )}
       >

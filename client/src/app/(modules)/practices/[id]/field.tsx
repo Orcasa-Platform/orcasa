@@ -6,13 +6,10 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 
 import { ExternalLink } from 'lucide-react';
-import InfoButton from 'public/images/info-dark.svg';
 
-import { cn } from '@/lib/classnames';
-import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
+import InfoButton from '/public/images/info-dark.svg';
 
 import { useIsOverTwoLines } from '@/hooks/ui/utils';
-
 import { Button } from '@/components/ui/button';
 import {
   Tooltip,
@@ -21,6 +18,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+
+import { cn } from '@/lib/classnames';
+import { FormatProps, format as formatFunction } from '@/lib/utils/formats';
 
 export type FieldType = {
   label: string;
@@ -52,7 +52,7 @@ const FieldLink = ({
       <ExternalLink className="ml-2 inline h-4 w-4 min-w-fit" />
     </a>
   ) : (
-    <Link className="text-sm font-semibold leading-7 text-purple-400" href={`${url}`}>
+    <Link className="text-sm font-semibold text-purple-400" href={`${url}`}>
       {children}
     </Link>
   );

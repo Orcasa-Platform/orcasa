@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 
 import { Metadata } from 'next';
-import ExternalLink from 'public/images/external-link.svg';
+
+import ExternalLink from '/public/images/external-link.svg';
 
 import { getProjects, getProjectsId } from '@/types/generated/project';
 import { getRegions } from '@/types/generated/region';
@@ -102,6 +103,8 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
             'project_coordinator_email',
             'country_of_interventions',
             'main_area_of_intervention',
+            'practices',
+            'land_use_types',
             'sustainable_development_goals',
           ],
         ).map((field) => (
