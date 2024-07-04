@@ -1,3 +1,9 @@
+# v12
+
+- [Scientific Evidence] Break lines in the table cells of the detailed view of meta-analyses
+- [Scientific Evidence] Improve the display of the interventions and values in the impact charts
+- [Network] Display all the organisations in green in the diagram
+
 # v11
 
 - Send page view events to Matomo when navigating the platform
