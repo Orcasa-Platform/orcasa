@@ -27,6 +27,12 @@ const sourceToLogo: Record<
     width: 64,
     height: 24,
   },
+  ISRIC: {
+    src: '/assets/logos/color/isric.png',
+    alt: 'ISRIC Data Hub',
+    width: 68,
+    height: 24,
+  },
   HARVARD: {
     src: '/assets/logos/color/harvard.svg',
     alt: 'Harvard University',

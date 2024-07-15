@@ -82,6 +82,7 @@ export const useDatasetsFiltersOptions = (): Record<
     source: [
       { label: 'Cirad dataverse', value: DatasetSource.Cirad },
       { label: 'Harvard dataverse', value: DatasetSource.Harvard },
+      { label: 'ISRIC Data Hub', value: DatasetSource.ISRIC },
       { label: 'Inrae dataverse', value: DatasetSource.Inrae },
       { label: 'Joint Research Centre Data Catalogue', value: DatasetSource.JRC },
       { label: 'Zenodo', value: DatasetSource.Zenodo },

@@ -4,6 +4,7 @@ export enum DatasetSource {
   Inrae = 'INRAE',
   JRC = 'JRC',
   Zenodo = 'ZENODO',
+  ISRIC = 'ISRIC',
 }
 
 export interface Dataset {
