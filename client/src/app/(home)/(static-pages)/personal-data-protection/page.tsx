@@ -16,9 +16,8 @@ export default async function PersonalDataProtection() {
 
 export const metadata: Metadata = {
   title: 'Personal data protection',
-  // TODO: update description
   description:
-    'Learn about ORCaSa, a Horizon Europe initiative that unites international stakeholders to develop techniques for capturing and storing carbon in soil. Join the effort to combat climate change today.',
+    'Powered by the Soil Carbon International Research Consortium, Impact4soil offers data and meta-analysis on soil carbon, practices, and land management solutions.',
 };
 
 export const revalidate = 0;

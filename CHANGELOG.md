@@ -1,3 +1,8 @@
+# v13
+
+- Update the default meta data description
+- [Datasets] Add a new source: ISRIC Data Hub
+
 # v12
 
 - [Scientific Evidence] Break lines in the table cells of the detailed view of meta-analyses
