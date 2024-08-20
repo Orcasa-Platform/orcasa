@@ -1,3 +1,7 @@
+# v14
+
+- [Scientific Evidence] Reset all the filters when changing the land use type
+
 # v13
 
 - Update the default meta data description
