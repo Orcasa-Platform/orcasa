@@ -13,7 +13,7 @@ import Tractor from '/public/images/tractor.svg';
 import env from '@/env.mjs';
 
 import ScientificEvidenceNavTooltip from '@/components/scientific-evidence-nav-tooltip';
-import SurveyNavTooltip from '@/components/survey-nav-tooltip';
+import SurveyNavDialog from '@/components/survey-nav-dialog';
 import { Button } from '@/components/ui/button';
 
 import { cn } from '@/lib/classnames';
@@ -90,11 +90,11 @@ export default function Nav() {
           })}
         </div>
         {!!env.NEXT_PUBLIC_SURVEY_URL && (
-          <SurveyNavTooltip>
+          <SurveyNavDialog>
             <Button type="button" variant="outline-dark" size="xs" className="mt-auto text-white">
               Survey
             </Button>
-          </SurveyNavTooltip>
+          </SurveyNavDialog>
         )}
       </div>
     </div>
