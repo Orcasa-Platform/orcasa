@@ -57,7 +57,7 @@ const SurveyNavDialog = ({ children }: SurveyNavDialogProps) => {
           </a>
           .
         </p>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col-reverse gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-2">
             <Checkbox
               id="survey-hide"
