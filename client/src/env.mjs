@@ -25,6 +25,16 @@ export const env = createEnv({
     NEXT_PUBLIC_MATOMO_SITE_ID: z.string().optional(),
     NEXT_PUBLIC_MATOMO_URL: z.string().optional(),
     NEXT_PUBLIC_MAPBOX_TOKEN: z.string(),
+    NEXT_PUBLIC_SURVEY_URL: z.string().optional(),
+    NEXT_PUBLIC_SURVEY_DIALOG_EXPANDED_UNTIL: z
+      .string()
+      .refine((value) => {
+        if (value === '') return true;
+
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        return regex.test(value);
+      })
+      .optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -44,6 +54,8 @@ export const env = createEnv({
     NEXT_PUBLIC_MATOMO_URL: process.env.NEXT_PUBLIC_MATOMO_URL,
     NEXT_USE_RESTRICTIVE_ROBOTS_TXT: process.env.NEXT_USE_RESTRICTIVE_ROBOTS_TXT,
     NEXT_PUBLIC_MAPBOX_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
+    NEXT_PUBLIC_SURVEY_URL: process.env.NEXT_PUBLIC_SURVEY_URL,
+    NEXT_PUBLIC_SURVEY_DIALOG_EXPANDED_UNTIL: process.env.NEXT_PUBLIC_SURVEY_DIALOG_EXPANDED_UNTIL,
   },
 });
 
