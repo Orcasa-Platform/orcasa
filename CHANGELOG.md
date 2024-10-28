@@ -1,3 +1,10 @@
+# v15
+
+- Add survey dialog to the modules
+  - New optional variables:
+    - `NEXT_PUBLIC_SURVEY_URL` (`window.SURVEY_URL` for Scientific evidence)
+    - `NEXT_PUBLIC_SURVEY_DIALOG_EXPANDED_UNTIL` (`window.SURVEY_DIALOG_EXPANDED_UNTIL` for Scientific evidence)
+
 # v14
 
 - [Scientific Evidence] Reset all the filters when changing the land use type
