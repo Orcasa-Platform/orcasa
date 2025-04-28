@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
+
 import DatasetsIcon from '@/styles/icons/homepage-datasets.svg';
 import GeospatialDataIcon from '@/styles/icons/homepage-geospatial-data.svg';
 import NetworkIcon from '@/styles/icons/homepage-network.svg';
@@ -188,7 +189,7 @@ const Card = ({
           ))}
         </ul>
         <Button variant="outline" asChild>
-          <Link href={cardModule?.href ?? '#'}>
+          <Link className="my-2" href={cardModule?.href ?? '#'}>
             Go to {cardModule?.name}
             <ArrowRight className="ml-4" />
           </Link>
