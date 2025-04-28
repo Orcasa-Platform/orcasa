@@ -2,7 +2,7 @@
 
 import Map from '/public/images/homepage-map.svg';
 
-import { Drawer, DrawerTrigger } from '@/components/ui/drawer';
+import { Drawer, DrawerTrigger, DrawerContent } from '@/components/ui/drawer';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipPortal } from '@/components/ui/tooltip';
 import DatasetsIcon from '@/styles/icons/homepage-datasets.svg';
 import GeospatialDataIcon from '@/styles/icons/homepage-geospatial-data.svg';
@@ -90,6 +90,9 @@ const Card = ({
       <div className="block lg:hidden">
         <Drawer>
           <DrawerTrigger>{card}</DrawerTrigger>
+          <DrawerContent>
+            <p className="h-full p-10 pb-2 lg:w-1/2 lg:pb-10">{modulesInfo[slug].tooltipText}</p>
+          </DrawerContent>
         </Drawer>
       </div>
     </>
