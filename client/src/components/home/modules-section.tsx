@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
 
 import Map from '/public/images/homepage-map.svg';
 
@@ -191,6 +191,12 @@ const Card = ({
           <Link href={cardModule?.href ?? '#'}>
             Go to {cardModule?.name}
             <ArrowRight className="ml-4" />
+          </Link>
+        </Button>
+        <Button variant="outline" asChild>
+          <Link href={cardModule?.videoHref ?? '#'} target="_blank">
+            Watch {cardModule?.name} tutorial
+            <ExternalLink className="ml-4" />
           </Link>
         </Button>
       </div>
