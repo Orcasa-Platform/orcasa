@@ -14,6 +14,7 @@ import { useGetPages } from '@/types/generated/page';
 import { useGetDatasetsInfinite } from '@/hooks/datasets';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
+import TutorialButton from '@/components/map/tutorial-button';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
@@ -41,12 +42,15 @@ export default function DatasetsModule() {
       <div className="p-4 max-lg:w-full lg:p-10">
         <div className="mb-[30px]">
           <header className="mb-2 flex flex-col gap-4 lg:flex-row lg:gap-8 ">
-            <h1 className="flex-1 font-serif leading-[30px] text-white">
-              <div className="font-serif text-2xl text-white lg:hidden">Datasets</div>
-              <div className="hidden lg:block">
-                {intro && <MarkdownRenderer variant="bold" content={intro} />}
-              </div>
-            </h1>
+            <div className="flex flex-1 flex-col gap-2">
+              <h1 className="font-serif leading-[30px] text-white">
+                <div className="font-serif text-2xl text-white lg:hidden">Datasets</div>
+                <div className="hidden lg:block">
+                  {intro && <MarkdownRenderer variant="bold" content={intro} />}
+                </div>
+              </h1>
+              <TutorialButton className="max-w-[130px]" href="https://vimeo.com/1060780286" />
+            </div>
             <div className="flex flex-1 gap-2">
               <Search
                 containerClassName="basis-full h-9 text-white"

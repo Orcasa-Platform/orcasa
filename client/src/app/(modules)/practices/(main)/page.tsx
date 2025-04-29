@@ -23,6 +23,7 @@ import { usePractices, usePracticesCount } from '@/hooks/practices';
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
+import TutorialButton from '@/components/map/tutorial-button';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
@@ -87,6 +88,7 @@ export default function PracticesModule() {
           {intro && <MarkdownRenderer variant="bold" content={intro} />}
         </div>
       </h1>
+      <TutorialButton href="https://vimeo.com/1060783048" />
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between gap-x-4 text-white">
           <Search
