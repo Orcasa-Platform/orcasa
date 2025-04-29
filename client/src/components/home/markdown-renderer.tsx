@@ -16,8 +16,9 @@ const Renderer = React.forwardRef<
     content: string;
     variant?: 'bold' | 'lists';
     className?: string;
+    markupClassName?: string;
   }
->(({ content, variant, className }, ref) => {
+>(({ content, variant, className, markupClassName }, ref) => {
   // Replace components for Markup
   const replace = (content: string) => {
     if (!variant) return content;
@@ -25,7 +26,7 @@ const Renderer = React.forwardRef<
       allowedTags: ['p', 'strong', 'ul', 'ol', 'li'],
       allowedAttributes: {},
     });
-    return renderMarkup(sanitizedHTML, variant);
+    return renderMarkup(sanitizedHTML, variant, markupClassName);
   };
 
   // Replace components for Markdown

@@ -14,6 +14,7 @@ import { useGetPages } from '@/types/generated/page';
 import { useGetDatasetsInfinite } from '@/hooks/datasets';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
+import InfoButton from '@/components/map/info-button';
 import TutorialButton from '@/components/map/tutorial-button';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
@@ -46,7 +47,26 @@ export default function DatasetsModule() {
               <h1 className="font-serif leading-[30px] text-white">
                 <div className="font-serif text-2xl text-white lg:hidden">Datasets</div>
                 <div className="hidden lg:block">
-                  {intro && <MarkdownRenderer variant="bold" content={intro} />}
+                  {intro && (
+                    <span>
+                      <MarkdownRenderer
+                        variant="bold"
+                        content={intro}
+                        className="inline"
+                        markupClassName="inline"
+                      />
+                      <InfoButton>
+                        Here you will find an inventory of SOC datasets from reliable sources. The
+                        datasets come from external sources and are not linked between them, they
+                        may therefore present different results. Due to the diversity of sources,
+                        contrasted data might results for similar locations. This module helps
+                        simplify the process of searching for datasets related to SOC but requires
+                        data analysis according to your needs (e.g. spatial scale of your research).
+                        Datasets are automatically updated whenever the source updates them.
+                        Additionally, new datasets will be occasionally added in Impact4Soil.
+                      </InfoButton>
+                    </span>
+                  )}
                 </div>
               </h1>
               <TutorialButton className="max-w-[130px]" href="https://vimeo.com/1060780286" />
