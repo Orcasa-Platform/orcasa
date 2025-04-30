@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Filter from '/public/images/filter.svg';
 
@@ -25,6 +25,8 @@ import FiltersSidebar from './filters-sidebar';
 export default function DatasetsModule() {
   const [filters, setFilters] = useDatasetsFilters();
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const query = useGetDatasetsInfinite({
     size: 20,
     q: filters.search,
@@ -39,7 +41,10 @@ export default function DatasetsModule() {
   const datasetsFiltersCount = useFiltersCount(['search']);
 
   return (
-    <div className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]">
+    <div
+      ref={containerRef}
+      className="container flex lg:max-w-[calc(100vw-90px)] xl:max-w-[1200px]"
+    >
       <div className="p-4 max-lg:w-full lg:p-10">
         <div className="mb-[30px]">
           <header className="mb-2 flex flex-col gap-4 lg:flex-row lg:gap-8 ">
@@ -55,7 +60,7 @@ export default function DatasetsModule() {
                         className="inline"
                         markupClassName="inline"
                       />
-                      <InfoButton>
+                      <InfoButton container={containerRef}>
                         Here you will find an inventory of SOC datasets from reliable sources. The
                         datasets come from external sources and are not linked between them, they
                         may therefore present different results. Due to the diversity of sources,
@@ -69,7 +74,7 @@ export default function DatasetsModule() {
                   )}
                 </div>
               </h1>
-              <TutorialButton className="max-w-[130px]" href="https://vimeo.com/1060780286" />
+              <TutorialButton className="w-fit" href="https://vimeo.com/1060780286" />
             </div>
             <div className="flex flex-1 gap-2">
               <Search

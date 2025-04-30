@@ -34,6 +34,8 @@ export default function NetworkModule() {
   const data = pages?.data?.data?.[0];
   const { attributes: { intro = undefined } = {} } = data || {};
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const regionsCount = useRegionsCount();
 
   const networks = useNetworks({ filters, regionsCount });
@@ -83,7 +85,7 @@ export default function NetworkModule() {
   }, [filters, previousFilters, setSidebarScroll]);
 
   return (
-    <div className="space-y-4 lg:space-y-8">
+    <div ref={containerRef} className="space-y-4 lg:space-y-8">
       <h1 className="mb-2 font-serif leading-7">
         <div className="font-serif text-2xl text-white lg:hidden">Network</div>
         <div className="hidden lg:block">
@@ -95,7 +97,7 @@ export default function NetworkModule() {
               markupClassName="inline"
             />
           )}
-          <InfoButton>
+          <InfoButton container={containerRef}>
             This module allows users to explore ongoing projects to discover potential synergies, to
             identify research organisations that can provide valuable data, up-to-date methods, and
             innovative practices, to identify potential funders for their future collaborative

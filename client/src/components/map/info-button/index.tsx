@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 
-import { useState } from 'react';
+import { RefObject, useState } from 'react';
 
 import {
   Tooltip,
@@ -15,9 +15,11 @@ import InfoButtonIcon from '/public/images/info.svg';
 export default function InfoButton({
   children,
   className,
+  container,
 }: {
   children: React.ReactNode;
   className?: string;
+  container?: RefObject<HTMLElement>;
 }) {
   const [openInfo, setInfoOpen] = useState(false);
   const handleInfoClick = () => setInfoOpen((prevOpen) => !prevOpen);
@@ -31,9 +33,13 @@ export default function InfoButton({
             <InfoButtonIcon className="h-4 w-4 text-white" />
           </Button>
         </TooltipTrigger>
-        <TooltipContent variant="dark" className="max-w-[400px] text-sm leading-5">
+        <TooltipContent
+          collisionBoundary={container?.current}
+          variant="dark"
+          className="max-w-[400px] text-sm leading-5"
+        >
           {children}
-          <TooltipArrow variant="dark" className="-ml-3" />
+          <TooltipArrow variant="dark" />
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

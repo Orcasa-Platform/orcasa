@@ -36,6 +36,8 @@ export default function PracticesModule() {
   const data = pages?.data?.data?.[0];
   const { attributes: { intro = undefined } = {} } = data || {};
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
   const [filters, setFilters] = usePracticesFilters();
   const previousFilters = usePreviousImmediate(filters);
 
@@ -82,7 +84,7 @@ export default function PracticesModule() {
   const filtersCount = useFiltersCount(filters, ['search']);
 
   return (
-    <div className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
+    <div ref={containerRef} className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
       <h1 className="mb-2 font-serif leading-7">
         <div className="font-serif text-2xl text-white lg:hidden">Practices</div>
         <div className="hidden lg:block">
@@ -94,7 +96,7 @@ export default function PracticesModule() {
               markupClassName="inline"
             />
           )}
-          <InfoButton>
+          <InfoButton container={containerRef}>
             This module explores a range of scientifically documented practices related to soil
             carbon management. These practices can be displayed by land use type and land management
             practices. There is an automatic update of practices (from WOCAT, etc.) on a monthly
