@@ -4,7 +4,7 @@
   "info": {
     "singularName": "subintervention",
     "pluralName": "subinterventions",
-    "displayName": "Subintervention",
+    "displayName": "Land management practices",
     "description": ""
   },
   "options": {
@@ -26,7 +26,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::practice.practice",
-      "mappedBy": "subinterventions"
+      "mappedBy": "land_management_practices"
     }
   }
 }

@@ -346,7 +346,7 @@
       },
       "subinterventions": {
         "edit": {
-          "label": "Subinterventions",
+          "label": "Land Management Practices",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -491,12 +491,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "source_name",
-        "source_id",
-        "title"
-      ],
       "edit": [
         [
           {
@@ -644,6 +638,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "source_name",
+        "source_id",
+        "title"
       ]
     },
     "uid": "api::practice.practice"

@@ -250,7 +250,7 @@ export default function FiltersSidebar({ isMobile = false }: { isMobile?: boolea
         {filters?.mainIntervention === 'Management' && (
           <SelectFilter
             type="subInterventions"
-            label="Sub-intervention"
+            label="Land management practices"
             disabled={!filters.landUseTypes?.length || !filters.mainIntervention}
             multiple
             setFilters={setFilters}

@@ -1722,7 +1722,7 @@ export interface ApiSubinterventionSubintervention
   info: {
     singularName: 'subintervention';
     pluralName: 'subinterventions';
-    displayName: 'Subintervention';
+    displayName: 'Land management practices';
     description: '';
   };
   options: {

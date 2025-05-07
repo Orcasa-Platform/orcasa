@@ -23,6 +23,8 @@ import { usePractices, usePracticesCount } from '@/hooks/practices';
 import { useSidebarScrollHelpers } from '@/containers/sidebar';
 
 import MarkdownRenderer from '@/components/home/markdown-renderer';
+import InfoButton from '@/components/map/info-button';
+import TutorialButton from '@/components/map/tutorial-button';
 import { Button } from '@/components/ui/button';
 import { Search } from '@/components/ui/search';
 
@@ -33,6 +35,8 @@ export default function PracticesModule() {
 
   const data = pages?.data?.data?.[0];
   const { attributes: { intro = undefined } = {} } = data || {};
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const [filters, setFilters] = usePracticesFilters();
   const previousFilters = usePreviousImmediate(filters);
@@ -80,13 +84,27 @@ export default function PracticesModule() {
   const filtersCount = useFiltersCount(filters, ['search']);
 
   return (
-    <div className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
-      <h1 className="font-serif leading-7">
+    <div ref={containerRef} className="m-4 space-y-4 pt-4 lg:m-0 lg:space-y-10">
+      <h1 className="mb-2 font-serif leading-7">
         <div className="font-serif text-2xl text-white lg:hidden">Practices</div>
         <div className="hidden lg:block">
-          {intro && <MarkdownRenderer variant="bold" content={intro} />}
+          {intro && (
+            <MarkdownRenderer
+              variant="bold"
+              content={intro}
+              className="inline"
+              markupClassName="inline"
+            />
+          )}
+          <InfoButton container={containerRef}>
+            This module explores a range of scientifically documented practices related to soil
+            carbon management. These practices can be displayed by land use type and land management
+            practices. There is an automatic update of practices (from WOCAT, etc.) on a monthly
+            basis. Additionally, new practices are occasionally added manually.
+          </InfoButton>
         </div>
       </h1>
+      <TutorialButton href="https://vimeo.com/1060783048" />
       <div className="flex flex-col gap-y-2">
         <div className="flex justify-between gap-x-4 text-white">
           <Search

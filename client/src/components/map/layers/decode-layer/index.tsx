@@ -84,10 +84,9 @@ class DecodeLayer {
             image: subLayerData,
             bounds: [west, south, east, north],
             textureParameters: {
-              [GL.TEXTURE_MIN_FILTER]: GL.NEAREST,
-              [GL.TEXTURE_MAG_FILTER]: GL.NEAREST,
-              [GL.TEXTURE_WRAP_S]: GL.CLAMP_TO_EDGE,
-              [GL.TEXTURE_WRAP_T]: GL.CLAMP_TO_EDGE,
+              minFilter: 'nearest',
+              magFilter: 'nearest',
+              mipmapFilter: undefined,
             },
             zoom,
             visible: subLayerVisible,
