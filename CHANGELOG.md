@@ -1,3 +1,11 @@
+# v16
+
+- New content for the homepage
+- Video tutorials added in each module and the homepage
+- Module description in an info button in each module
+- [Scientific Evidence] New content for the methodology page
+- [Practices] “Sub-intervention” filter renamed as “Land management practices”
+
 # v15
 
 - Add survey dialog to the modules
