@@ -1,3 +1,7 @@
+# v17
+
+- Style tweaks on the homepage
+
 # v16
 
 - New content for the homepage

@@ -1,5 +1,11 @@
 'use client';
 
+import Factory from '/public/images/factory.svg';
+import HeartHandshake from '/public/images/heart-handshake.svg';
+import Landmark from '/public/images/landmark.svg';
+import Microscope from '/public/images/microscope.svg';
+import Scale from '/public/images/scale.svg';
+
 const usersInfo = {
   'policy-makers':
     'Explore concrete use cases and assess the impact of specific actions on the ground to shape effective policies and monitor activities related to soil health; identify research organizations who could provide with useful data, up to date methods, results, activities, and best practices to take informed decisions.',
@@ -12,10 +18,21 @@ const usersInfo = {
     'Visualize the location of experimental trials on soil carbon to identify areas where the effect of agricultural practices on carbon has been extensively studied and areas where it has not; add and edit information about relevant projects and stakeholders; discover efficient practices to increase soil carbon.',
 };
 
-const Paragraph = ({ title, slug }: { title: string; slug: keyof typeof usersInfo }) => {
+const Paragraph = ({
+  title,
+  slug,
+  icon: Icon,
+}: {
+  title: string;
+  slug: keyof typeof usersInfo;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+}) => {
   return (
     <div>
-      <h3 className="mb-2 font-semibold">{title}</h3>
+      <h3 className="mb-2 font-semibold">
+        <Icon className="mr-2 inline-block align-middle" />
+        {title}
+      </h3>
       {usersInfo[slug] && <p className="text-sm leading-[22px] text-gray-500">{usersInfo[slug]}</p>}
     </div>
   );
@@ -33,11 +50,11 @@ const UsersSection = () => (
       </div>
     </div>
     <div className="container relative grid w-full grid-cols-1 gap-8 lg:w-[80%] lg:grid-cols-3 lg:gap-16 xl:w-[1000px]">
-      <Paragraph title="Policy makers" slug="policy-makers" />
-      <Paragraph title="Funding agencies" slug="funding-agencies" />
-      <Paragraph title="Researchers" slug="researchers" />
-      <Paragraph title="NGOs" slug="ngos" />
-      <Paragraph title="Companies" slug="companies" />
+      <Paragraph title="Policy makers" slug="policy-makers" icon={Scale} />
+      <Paragraph title="Funding agencies" slug="funding-agencies" icon={Landmark} />
+      <Paragraph title="Researchers" slug="researchers" icon={Microscope} />
+      <Paragraph title="NGOs" slug="ngos" icon={HeartHandshake} />
+      <Paragraph title="Companies" slug="companies" icon={Factory} />
     </div>
   </div>
 );
