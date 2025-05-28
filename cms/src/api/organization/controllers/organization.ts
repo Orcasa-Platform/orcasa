@@ -25,7 +25,15 @@ export default factories.createCoreController('api::organization.organization', 
   },
 
   async find(ctx) {
-    ctx.query.filters = { ...ctx.query.filters, publication_status: { $eq: 'accepted' } }
+    // Only allow to search for the organizations with the proposed status if we don't retrieve their attributes. This
+    // can be useful to determine if one already exists with a specific name.
+    // It is not totally safe though as the filters can be used to guess the attributes by brute-force.
+    const canSearchProposedStatus = ctx.query.fields.length === 1 && ctx.query.fields[0] === 'id';
+
+    ctx.query.filters = {
+      ...ctx.query.filters,
+      ...(canSearchProposedStatus ? {} : { publication_status: { $eq: 'accepted' } }),
+    };
 
     return await super.find(ctx);
   },
