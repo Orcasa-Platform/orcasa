@@ -53,7 +53,12 @@ export default function ProjectForm() {
     ?.id?.toString();
   const hasData =
     countries && organizations && regions && areasOfIntervention && sustainableDevelopmentGoals;
-  const [error, setError] = useState<AxiosError | undefined>();
+  const [error, setError] = useState<
+    | AxiosError<{
+        error: { details: { errors: { name: string; message: string; path: string[] }[] } };
+      }>
+    | undefined
+  >();
   const secondaryAreasOfIntervention = areasOfIntervention?.filter(
     (type) => type?.id?.toString() !== otherId,
   );
@@ -541,7 +546,6 @@ export default function ProjectForm() {
       data: normalizedData,
     } as unknown as ProjectRequest)
       .then(() => {
-        setIsFormDirty(false);
         router.push(`/network/new/initiative/thank-you`);
       })
       .catch((err) => {
@@ -578,6 +582,29 @@ export default function ProjectForm() {
                 <div aria-live="polite">
                   <div className="mb-2 font-semibold">Something went wrong</div>
                   <p>{error?.message}</p>
+                  {error?.response?.data?.error?.details?.errors &&
+                    error?.response?.data?.error?.details?.errors?.length > 0 && (
+                      <ul className="ml-4 mt-4 list-disc leading-normal">
+                        {error.response.data.error.details.errors.map(({ path, message }) => {
+                          const field = fields[path[0]];
+                          if (!field) {
+                            return null;
+                          }
+
+                          let parsedMessage = message;
+                          if (parsedMessage.endsWith('must be unique')) {
+                            parsedMessage =
+                              'This value must be unique and is already used by another initiative';
+                          }
+
+                          return (
+                            <li key={field.label}>
+                              <span className="font-bold">{field.label}</span>: {parsedMessage}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                 </div>
               </div>
             )}
