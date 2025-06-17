@@ -28,7 +28,8 @@ export default factories.createCoreController('api::organization.organization', 
     // Only allow to search for the organizations with the proposed status if we don't retrieve their attributes. This
     // can be useful to determine if one already exists with a specific name.
     // It is not totally safe though as the filters can be used to guess the attributes by brute-force.
-    const canSearchProposedStatus = ctx.query.fields.length === 1 && ctx.query.fields[0] === 'id';
+    const canSearchProposedStatus = ctx.query.fields !== undefined && ctx.query.fields !== null
+      && ctx.query.fields.length === 1 && ctx.query.fields[0] === 'id';
 
     ctx.query.filters = {
       ...ctx.query.filters,
