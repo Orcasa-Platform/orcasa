@@ -1,3 +1,7 @@
+# v19
+
+- [Network] Address a regression from v18 affecting the access to the module
+
 # v18
 
 - [Network] Prevent users from suggesting already existing organisations/initiatives
