@@ -1,3 +1,8 @@
+# v18
+
+- [Network] Prevent users from suggesting already existing organisations/initiatives
+- [Network] Fix issue redirecting to the thank you page after suggesting an organisation/initiative
+
 # v17
 
 - Style tweaks on the homepage
