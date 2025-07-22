@@ -10,24 +10,24 @@ import XIcon from '/public/images/x-icon.svg';
 
 const Footer = () => (
   <div id="about" className="!mt-0">
-    <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px] text-center lg:flex-col lg:text-left">
+    <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-50 px-10 py-[74px] text-center lg:flex-col lg:text-left">
       <Link
         className="block items-center justify-center gap-2.5 hover:opacity-90 lg:flex"
-        href="https://irc-orcasa.eu/"
+        href="https://soilcarbonfutures.earth/"
         target="_blank"
       >
-        <div className="inline font-serif text-sm leading-[32px] text-green-700 lg:text-lg lg:leading-[42px]">
-          Impact4Soil has been created thanks to the ORCaSa project
+        <div className="inline font-serif text-sm leading-[32px] text-slate-700 lg:text-lg lg:leading-[42px]">
+          Impact4Soil has been created thanks to Soil Carbon Futures
         </div>
-        <ExternalLink className="relative ml-2 inline h-6 w-6 text-green-700 lg:ml-0" />
+        <ExternalLink className="relative ml-2 inline h-6 w-6 text-slate-700 lg:ml-0" />
       </Link>
-      <Link href="https://irc-orcasa.eu/" target="_blank">
+      <Link href="https://soilcarbonfutures.earth/" target="_blank">
         <Image
-          src="/images/orcasa-logo-with-text.png"
-          alt="ORCaSa logo"
+          src="/images/soil-carbon-futures-logo.png"
+          alt="Soil Carbon Futures, the global hub for Soil Carbon Intelligence"
           width={255}
-          height={77}
-          className="h-[57px] w-[188px] lg:h-[77px] lg:w-[255px]"
+          height={68}
+          className="h-[50px] w-[188px] lg:h-[68px] lg:w-[255px]"
         />
         <span className="sr-only">ORCaSa</span>
       </Link>
@@ -36,8 +36,9 @@ const Footer = () => (
       <div className="flex flex-col items-start justify-center gap-6 lg:flex-row lg:items-center lg:gap-4">
         <EuropeFlag className="h-[48px] min-w-[72px]" />
         <div className="max-w-[543px] text-xs leading-[18px] text-gray-300">
-          The ORCaSa project has received funding from the European Union’s Horizon Europe research
-          programme under grant agreement n°101059863.
+          The Soil Carbon Futures initiative was launched as part of the ORCaSa project, which has
+          received funding from the European Union’s Horizon Europe research programme under grant
+          agreement No. 101059863.
         </div>
       </div>
       <div className="flex flex-col space-y-6 lg:flex-row lg:space-y-0">

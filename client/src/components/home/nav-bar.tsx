@@ -80,7 +80,7 @@ const NavBar = () => {
           className="relative flex h-full items-center before:absolute before:left-1/2 before:top-0 before:block before:h-1 before:w-full before:-translate-x-1/2 before:scale-x-0 before:rounded-b-sm before:bg-yellow-500 before:transition-transform before:duration-500 hover:before:scale-x-100"
         >
           <div className="border-l border-gray-600 px-5 lg:max-xl:text-center">
-            About the project
+            Soil Carbon Futures
           </div>
         </a>
       </nav>

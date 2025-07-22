@@ -1,3 +1,7 @@
+# v20
+
+- Update and rename the about section of the homepage
+
 # v19
 
 - [Network] Address a regression from v18 affecting the access to the module
