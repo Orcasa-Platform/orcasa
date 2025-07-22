@@ -42,7 +42,7 @@ const MobileMenu = () => {
               className="box-border flex items-center border-b-4 border-transparent pb-2 transition-colors hover:border-yellow-500"
               onClick={() => setIsOpen(false)}
             >
-              About
+              Soil Carbon Futures
             </a>
           </div>
         </nav>
