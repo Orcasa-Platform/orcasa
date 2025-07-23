@@ -1,3 +1,7 @@
+# v21
+
+- Update the Soil Carbon Futures logo on the homepage
+
 # v20
 
 - Update and rename the about section of the homepage
