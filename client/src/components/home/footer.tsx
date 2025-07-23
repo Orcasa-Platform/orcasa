@@ -10,16 +10,16 @@ import XIcon from '/public/images/x-icon.svg';
 
 const Footer = () => (
   <div id="about" className="!mt-0">
-    <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-50 px-10 py-[74px] text-center lg:flex-col lg:text-left">
+    <div className="flex w-full flex-col-reverse items-center justify-center gap-[20px] bg-gray-800 px-10 py-[74px] text-center lg:flex-col lg:text-left">
       <Link
         className="block items-center justify-center gap-2.5 hover:opacity-90 lg:flex"
         href="https://soilcarbonfutures.earth/"
         target="_blank"
       >
-        <div className="inline font-serif text-sm leading-[32px] text-slate-700 lg:text-lg lg:leading-[42px]">
+        <div className="inline font-serif text-sm leading-[32px] text-green-700 lg:text-lg lg:leading-[42px]">
           Impact4Soil has been created thanks to Soil Carbon Futures
         </div>
-        <ExternalLink className="relative ml-2 inline h-6 w-6 text-slate-700 lg:ml-0" />
+        <ExternalLink className="relative ml-2 inline h-6 w-6 text-green-700 lg:ml-0" />
       </Link>
       <Link href="https://soilcarbonfutures.earth/" target="_blank">
         <Image
