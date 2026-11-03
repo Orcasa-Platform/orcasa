@@ -7816,15 +7816,15 @@ __metadata:
   linkType: hard
 
 "git-diff@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "git-diff@npm:2.0.6"
+  version: 2.0.7
+  resolution: "git-diff@npm:2.0.7"
   dependencies:
     chalk: "npm:^2.3.2"
     diff: "npm:^3.5.0"
     loglevel: "npm:^1.6.1"
     shelljs: "npm:^0.8.1"
     shelljs.exec: "npm:^1.1.7"
-  checksum: 10/a9caedee2d23eac22bb2f069b68da00716ed2a7ee74202785cea69d37b5462ab1de987930a6642ece065d1c490259496d41e9aa101a6e5d741e6316414d8a5a8
+  checksum: 10/839f4de3c96cf14a496d9ed6013d28c7a08a970a720b4e86d68e76b85c9b22ab13c74cea28315ccdf687ef010bd5e844ece12941742376ab5c9d59f70ebe0a34
   languageName: node
   linkType: hard
 
